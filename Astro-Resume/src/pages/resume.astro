@@ -41,69 +41,48 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
     <p class="section-subtitle">A short overview of my professional background</p>
   </div>
 
-  <div class="experience-panel">
-    <div class="experience-list">
-      <article class="experience-item">
-        <div class="experience-head">
-          <div>
-            <h3 class="experience-title">Creative Developer</h3>
-            <p class="experience-company">Company Name</p>
-          </div>
-          <p class="experience-period">2023 — Present</p>
-        </div>
-
-        <p class="experience-description">
-          Short description of your role, what kind of work you did, and what made it interesting or impactful.
+  <div class="contact-block">
+    <ul class="post-list">
+      <li class="post-card">
+        <h3 class="card-title">Creative Developer</h3>
+        <p class="post-meta">Company Name · 2023 — Present</p>
+        <p class="post-excerpt">
+          Short description of your role, what kind of work you did, and what made it
+          interesting or impactful.
         </p>
-      </article>
+      </li>
 
-      <article class="experience-item">
-        <div class="experience-head">
-          <div>
-            <h3 class="experience-title">3D Generalist / Technical Artist</h3>
-            <p class="experience-company">Previous Company</p>
-          </div>
-          <p class="experience-period">2021 — 2023</p>
-        </div>
-
-        <p class="experience-description">
-          A second role that is immediately visible. You can mention tools, projects, or collaboration here.
+      <li class="post-card">
+        <h3 class="card-title">3D Generalist / Technical Artist</h3>
+        <p class="post-meta">Previous Company · 2021 — 2023</p>
+        <p class="post-excerpt">
+          A second role that is immediately visible. You can mention tools, projects,
+          collaboration, or the kind of results you delivered.
         </p>
-      </article>
-    </div>
+      </li>
+    </ul>
 
-    <details class="experience-more">
-      <summary class="experience-toggle">Show more experience</summary>
+    <details style="margin-top: 0.75rem;">
+      <summary class="section-link" style="cursor: pointer;">Show more experience</summary>
 
-      <div class="experience-list experience-list-more">
-        <article class="experience-item">
-          <div class="experience-head">
-            <div>
-              <h3 class="experience-title">Intern / Junior Role</h3>
-              <p class="experience-company">Earlier Company</p>
-            </div>
-            <p class="experience-period">2020 — 2021</p>
-          </div>
-
-          <p class="experience-description">
-            Placeholder text for an older role. Add a short summary of responsibilities or outcomes.
+      <ul class="post-list" style="margin-top: 0.9rem;">
+        <li class="post-card">
+          <h3 class="card-title">Intern / Junior Role</h3>
+          <p class="post-meta">Earlier Company · 2020 — 2021</p>
+          <p class="post-excerpt">
+            Placeholder text for an older role. Add a short summary of responsibilities,
+            outcomes, or notable work.
           </p>
-        </article>
+        </li>
 
-        <article class="experience-item">
-          <div class="experience-head">
-            <div>
-              <h3 class="experience-title">Freelance Creative Technologist</h3>
-              <p class="experience-company">Self-employed</p>
-            </div>
-            <p class="experience-period">2018 — 2020</p>
-          </div>
-
-          <p class="experience-description">
+        <li class="post-card">
+          <h3 class="card-title">Freelance Creative Technologist</h3>
+          <p class="post-meta">Self-employed · 2018 — 2020</p>
+          <p class="post-excerpt">
             Placeholder text for freelance or project-based work.
           </p>
-        </article>
-      </div>
+        </li>
+      </ul>
     </details>
   </div>
 </section>
