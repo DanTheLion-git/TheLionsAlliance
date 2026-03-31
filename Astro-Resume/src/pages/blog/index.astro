@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/ResumeLayout.astro";
+import { getPosts, type WPPost } from "../../lib/wp";
+import { decodeHTML } from "../../lib/html";
+
+const posts: WPPost[] = await getPosts(100);
+---
+
+<Layout title="Blog | The Lions Alliance">
+  <section class="section">
+    <div class="section-header">
+      <h1 class="section-title">All Blog Posts</h1>
+      <p class="section-subtitle">
+        Notes, project logs, experiments, and progress updates.
+      </p>
+    </div>
+
+    {posts.length === 0 && (
+      <p>No posts found yet. Once you publish on WordPress, they’ll show up here.</p>
+    )}
+
+    {posts.length > 0 && (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-card">
+            <a href={`/blog/${post.slug}/`} class="post-title">
+              {decodeHTML(post.title.rendered)}
+            </a>
+
+            <p class="post-meta">
+              <time datetime={post.date}>
+                {new Date(post.date).toLocaleDateString("en-GB", {
+                  year: "numeric",
+                  month: "short",
+                  day: "2-digit",
+                })}
+              </time>
+            </p>
+
+            <p class="post-excerpt" set:html={post.excerpt.rendered} />
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Layout>
