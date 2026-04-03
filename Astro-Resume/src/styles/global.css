@@ -515,3 +515,40 @@ body {
   }
   .proj-panel.open { transform: translateY(0); }
 }
+
+/* ===============================
+   Light theme overrides
+   Applied when <html class="theme-light">
+   =============================== */
+
+html.theme-light {
+  --bg:                #f4f7f1;
+  --bg-alt:            #edf2e9;
+  --fg:                #1a2018;
+  --fg-muted:          #4a5544;
+  --accent-green:      #235c23;
+  --accent-green-light:#2d7a2d;
+  --accent-brown:      #6b4d35;
+  --card-bg:           #ffffff;
+  --border:            #c5d5bd;
+}
+
+html.theme-light body {
+  background: radial-gradient(circle at top, #d8ecd2, #f4f7f1 55%);
+}
+
+html.theme-light .site-header {
+  background: rgba(244, 247, 241, 0.88);
+}
+
+html.theme-light .podium-wrapper {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -5%, rgba(45,122,45,.07), transparent 65%),
+    #eef3eb;
+}
+
+html.theme-light .hero-side {
+  background:
+    radial-gradient(circle at top,    rgba(58,120,58,.12), transparent),
+    radial-gradient(circle at bottom, rgba(107,77,53,.10), transparent);
+}
