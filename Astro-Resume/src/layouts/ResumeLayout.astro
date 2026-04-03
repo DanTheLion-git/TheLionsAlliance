@@ -18,6 +18,14 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Three.js import map — used by the /resume page 3-D podium -->
+    <script is:inline type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js"
+      }
+    }
+    </script>
   </head>
 
   <body>
@@ -41,5 +49,8 @@ const {
     <footer class="site-footer">
       <p>© {new Date().getFullYear()} The Lions Alliance</p>
     </footer>
+
+    <!-- Pages can inject scripts here without polluting <main> -->
+    <slot name="body-end" />
   </body>
 </html>
