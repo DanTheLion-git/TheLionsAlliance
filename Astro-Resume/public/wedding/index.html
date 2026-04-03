@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,12 +7,9 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
-
 <body>
 
   <!-- NAV -->
@@ -21,40 +17,50 @@
     <div class="nav__inner">
       <a href="#" class="nav__logo">WeddingCamBox</a>
       <ul class="nav__links">
-        <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#cameras">The cameras</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#gallery">Your gallery</a></li>
-        <li><a href="photoportal/" class="btn btn--sm btn--ghost">My gallery login</a></li>
-        <li><a href="#contact" class="btn btn--sm">Book now</a></li>
+        <li><a href="#how-it-works" data-i18n="navHowItWorks">How it works</a></li>
+        <li><a href="#cameras"      data-i18n="navCameras">The cameras</a></li>
+        <li><a href="#pricing"      data-i18n="navPricing">Pricing</a></li>
+        <li><a href="#gallery"      data-i18n="navGallery">Your gallery</a></li>
+        <li><a href="photoportal/" class="btn btn--sm btn--ghost" data-i18n="navGalleryLogin">My gallery login</a></li>
+        <li><a href="#contact"      class="btn btn--sm" data-i18n="navBookNow">Book now</a></li>
+        <li class="nav__lang-item">
+          <div class="lang-switch" id="langSwitch">
+            <button class="lang-switch__btn lang-switch__btn--active" data-lang="en" id="langEn">EN</button>
+            <span class="lang-switch__sep">/</span>
+            <button class="lang-switch__btn" data-lang="nl" id="langNl">NL</button>
+          </div>
+        </li>
       </ul>
-      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav__right">
+        <div class="lang-switch lang-switch--mobile" id="langSwitchMobile">
+          <button class="lang-switch__btn lang-switch__btn--active" data-lang="en">EN</button>
+          <span class="lang-switch__sep">/</span>
+          <button class="lang-switch__btn" data-lang="nl">NL</button>
+        </div>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
     <ul class="nav__mobile" id="mobileMenu">
-      <li><a href="#how-it-works">How it works</a></li>
-      <li><a href="#cameras">The cameras</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#gallery">Your gallery</a></li>
-      <li><a href="photoportal/">My gallery login</a></li>
-      <li><a href="#contact">Book now</a></li>
+      <li><a href="#how-it-works" data-i18n="navHowItWorks">How it works</a></li>
+      <li><a href="#cameras"      data-i18n="navCameras">The cameras</a></li>
+      <li><a href="#pricing"      data-i18n="navPricing">Pricing</a></li>
+      <li><a href="#gallery"      data-i18n="navGallery">Your gallery</a></li>
+      <li><a href="photoportal/"  data-i18n="navGalleryLogin">My gallery login</a></li>
+      <li><a href="#contact"      data-i18n="navBookNow">Book now</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="hero__content">
-      <span class="hero__eyebrow">10 cameras · endless memories</span>
-      <h1 class="hero__title">Let your guests<br />tell your story</h1>
-      <p class="hero__subtitle">
-        Rent our set of 10 thumb-sized cameras for your wedding reception.
-        Pass them around, and watch your day come to life through the eyes
-        of the people you love most.
-      </p>
+      <span class="hero__eyebrow" data-i18n="heroEyebrow">10 cameras &middot; endless memories</span>
+      <h1 class="hero__title" data-i18n-html="heroTitle">Let your guests<br />tell your story</h1>
+      <p class="hero__subtitle" data-i18n="heroSubtitle">Rent our set of 10 thumb-sized cameras for your wedding reception. Pass them around, and watch your day come to life through the eyes of the people you love most.</p>
       <div class="hero__cta">
-        <a href="#contact" class="btn btn--primary">Check availability</a>
-        <a href="#how-it-works" class="btn btn--ghost">See how it works</a>
+        <a href="#contact"       class="btn btn--primary" data-i18n="heroCtaPrimary">Check availability</a>
+        <a href="#how-it-works"  class="btn btn--ghost"   data-i18n="heroCtaSecondary">See how it works</a>
       </div>
     </div>
     <div class="hero__visual">
@@ -70,34 +76,32 @@
         <div class="camera-card" style="--delay:1.2s"><img src="camera.png" alt="WeddingCamBox mini camera" /></div>
         <div class="camera-card" style="--delay:1.35s"><img src="camera.png" alt="WeddingCamBox mini camera" /></div>
       </div>
-      <p class="camera-grid__label">10 cameras included in every rental</p>
+      <p class="camera-grid__label" data-i18n="heroCameraLabel">10 cameras included in every rental</p>
     </div>
   </header>
 
   <!-- HOW IT WORKS -->
   <section class="section" id="how-it-works">
     <div class="container">
-      <h2 class="section__title">How it works</h2>
-      <p class="section__subtitle">Three simple steps from booking to beautiful photos.</p>
+      <h2 class="section__title"   data-i18n="howTitle">How it works</h2>
+      <p  class="section__subtitle" data-i18n="howSubtitle">Three simple steps from booking to beautiful photos.</p>
       <div class="steps">
         <div class="step">
           <div class="step__number">01</div>
-          <h3>Book your date</h3>
-          <p>Fill in our booking form with your wedding date and we'll confirm availability within 24 hours.</p>
+          <h3 data-i18n="step1Title">Book your date</h3>
+          <p  data-i18n="step1Desc">Fill in our booking form with your wedding date and we'll confirm availability within 24 hours.</p>
         </div>
         <div class="step__connector"></div>
         <div class="step">
           <div class="step__number">02</div>
-          <h3>Receive the box</h3>
-          <p>We ship all 10 cameras to you before your big day — pre-charged, ready to shoot, and easy to hand around.
-          </p>
+          <h3 data-i18n="step2Title">Receive the box</h3>
+          <p  data-i18n="step2Desc">We ship all 10 cameras to you before your big day &mdash; pre-charged, ready to shoot, and easy to hand around.</p>
         </div>
         <div class="step__connector"></div>
         <div class="step">
           <div class="step__number">03</div>
-          <h3>Send them back</h3>
-          <p>After the reception, drop the cameras back in the prepaid return box. We extract and deliver all photos
-            digitally within 5 days.</p>
+          <h3 data-i18n="step3Title">Send them back</h3>
+          <p  data-i18n="step3Desc">After the reception, drop the cameras back in the prepaid return box. We extract and deliver all photos digitally within 5 days.</p>
         </div>
       </div>
     </div>
@@ -106,44 +110,38 @@
   <!-- CAMERAS -->
   <section class="section section--alt" id="cameras">
     <div class="container">
-      <h2 class="section__title">The cameras</h2>
-      <p class="section__subtitle">Small enough to fit in a pocket. Powerful enough to capture the moment.</p>
+      <h2 class="section__title"    data-i18n="camTitle">The cameras</h2>
+      <p  class="section__subtitle" data-i18n="camSubtitle">Small enough to fit in a pocket. Powerful enough to capture the moment.</p>
       <div class="features">
         <div class="feature">
           <div class="feature__icon"><i data-lucide="film"></i></div>
-          <h3>1080P HD photos &amp; video</h3>
-          <p>Crisp, full HD resolution in every lighting condition — from golden-hour outdoor shots to the dance floor
-            at midnight.</p>
+          <h3 data-i18n="feat1Title">1080P HD photos &amp; video</h3>
+          <p  data-i18n="feat1Desc">Crisp, full HD resolution in every lighting condition &mdash; from golden-hour outdoor shots to the dance floor at midnight.</p>
         </div>
         <div class="feature">
           <div class="feature__icon"><i data-lucide="box"></i></div>
-          <h3>Thumb-sized &amp; portable</h3>
-          <p>Each camera is literally pocket-sized — small enough that guests barely notice they're holding one, until
-            the perfect moment happens.</p>
+          <h3 data-i18n="feat2Title">Thumb-sized &amp; portable</h3>
+          <p  data-i18n="feat2Desc">Each camera is literally pocket-sized &mdash; small enough that guests barely notice they're holding one, until the perfect moment happens.</p>
         </div>
         <div class="feature">
           <div class="feature__icon"><i data-lucide="monitor"></i></div>
-          <h3>Built-in HD screen</h3>
-          <p>A tiny built-in screen lets guests instantly review each shot — so they know they captured the moment
-            before passing it on.</p>
+          <h3 data-i18n="feat3Title">Built-in HD screen</h3>
+          <p  data-i18n="feat3Desc">A tiny built-in screen lets guests instantly review each shot &mdash; so they know they captured the moment before passing it on.</p>
         </div>
         <div class="feature">
           <div class="feature__icon"><i data-lucide="battery-charging"></i></div>
-          <h3>Pre-charged &amp; ready</h3>
-          <p>Every camera arrives fully charged before your big day — no fiddling, no dead batteries, no technical
-            knowledge required.</p>
+          <h3 data-i18n="feat4Title">Pre-charged &amp; ready</h3>
+          <p  data-i18n="feat4Desc">Every camera arrives fully charged before your big day &mdash; no fiddling, no dead batteries, no technical knowledge required.</p>
         </div>
         <div class="feature">
           <div class="feature__icon"><i data-lucide="pointer"></i></div>
-          <h3>One-click shooting</h3>
-          <p>Dead-simple operation — a single button takes the photo. Any guest can pick one up and start shooting in
-            seconds.</p>
+          <h3 data-i18n="feat5Title">One-click shooting</h3>
+          <p  data-i18n="feat5Desc">Dead-simple operation &mdash; a single button takes the photo. Any guest can pick one up and start shooting in seconds.</p>
         </div>
         <div class="feature">
           <div class="feature__icon"><i data-lucide="hard-drive"></i></div>
-          <h3>32 GB storage per camera</h3>
-          <p> Enough for approximately 6,700 photos per camera. That's over 67,000 shots across all 10 cameras combined.
-          </p>
+          <h3 data-i18n="feat6Title">32 GB storage per camera</h3>
+          <p  data-i18n="feat6Desc">Enough for approximately 6,700 photos per camera. That's over 67,000 shots across all 10 cameras combined.</p>
         </div>
       </div>
     </div>
@@ -152,8 +150,8 @@
   <!-- PRICING -->
   <section class="section" id="pricing">
     <div class="container">
-      <h2 class="section__title">Choose your package</h2>
-      <p class="section__subtitle">All packages include 10 cameras and your photos delivered within 5 days.</p>
+      <h2 class="section__title"    data-i18n="pricingTitle">Choose your package</h2>
+      <p  class="section__subtitle" data-i18n="pricingSubtitle">All packages include 10 cameras and your photos delivered within 5 days.</p>
 
       <div class="pricing-grid">
 
@@ -163,65 +161,65 @@
           <div class="pricing-card__price">
             <span class="pricing-card__currency">&#8364;</span>
             <span class="pricing-card__amount">89</span>
-            <span class="pricing-card__period">/ wedding</span>
+            <span class="pricing-card__period" data-i18n="pricingPeriod">/ wedding</span>
           </div>
           <ul class="pricing-card__list">
-            <li><i data-lucide="check"></i> 10 thumb-sized cameras</li>
-            <li><i data-lucide="check"></i> Pre-charged &amp; ready to shoot</li>
-            <li><i data-lucide="check"></i> Raw photo files delivered</li>
-            <li><i data-lucide="check"></i> Private download link</li>
-            <li class="list-muted"><i data-lucide="minus"></i> No online gallery</li>
-            <li class="list-muted"><i data-lucide="minus"></i> No sorting or curation</li>
+            <li><i data-lucide="check"></i> <span data-i18n="p1i1">10 thumb-sized cameras</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p1i2">Pre-charged &amp; ready to shoot</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p1i3">Raw photo files delivered</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p1i4">Private download link</span></li>
+            <li class="list-muted"><i data-lucide="minus"></i> <span data-i18n="p1i5">No online gallery</span></li>
+            <li class="list-muted"><i data-lucide="minus"></i> <span data-i18n="p1i6">No sorting or curation</span></li>
           </ul>
-          <a href="#contact" class="btn btn--ghost btn--full">Book Basic</a>
+          <a href="#contact" class="btn btn--ghost btn--full" data-i18n="bookBasic">Book Basic</a>
         </div>
 
         <!-- STANDARD -->
         <div class="pricing-card pricing-card--featured">
-          <div class="pricing-card__badge">Most popular</div>
+          <div class="pricing-card__badge" data-i18n="pricingMostPopular">Most popular</div>
           <div class="pricing-card__tier">Standard</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">&#8364;</span>
             <span class="pricing-card__amount">119</span>
-            <span class="pricing-card__period">/ wedding</span>
+            <span class="pricing-card__period" data-i18n="pricingPeriod">/ wedding</span>
           </div>
           <ul class="pricing-card__list">
-            <li><i data-lucide="check"></i> 10 thumb-sized cameras</li>
-            <li><i data-lucide="check"></i> Pre-charged &amp; ready to shoot</li>
-            <li><i data-lucide="check"></i> Online photo gallery</li>
-            <li><i data-lucide="check"></i> Photo curation before sharing</li>
-            <li><i data-lucide="check"></i> Guest sharing link</li>
-            <li><i data-lucide="check"></i> Download in full resolution</li>
+            <li><i data-lucide="check"></i> <span data-i18n="p2i1">10 thumb-sized cameras</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p2i2">Pre-charged &amp; ready to shoot</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p2i3">Online photo gallery</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p2i4">Photo curation before sharing</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p2i5">Guest sharing link</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p2i6">Download in full resolution</span></li>
           </ul>
-          <a href="#contact" class="btn btn--primary btn--full">Book Standard</a>
+          <a href="#contact" class="btn btn--primary btn--full" data-i18n="bookStandard">Book Standard</a>
         </div>
 
         <!-- PREMIUM (coming soon) -->
         <div class="pricing-card pricing-card--disabled">
-          <div class="pricing-card__badge pricing-card__badge--muted">Coming soon</div>
+          <div class="pricing-card__badge pricing-card__badge--muted" data-i18n="pricingComingSoon">Coming soon</div>
           <div class="pricing-card__tier">Premium</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">&#8364;</span>
             <span class="pricing-card__amount">149</span>
-            <span class="pricing-card__period">/ wedding</span>
+            <span class="pricing-card__period" data-i18n="pricingPeriod">/ wedding</span>
           </div>
           <ul class="pricing-card__list">
-            <li><i data-lucide="check"></i> Everything in Standard</li>
-            <li><i data-lucide="check"></i> Custom branded camera labels</li>
-            <li><i data-lucide="check"></i> Custom branded online portal</li>
-            <li><i data-lucide="check"></i> Digital photobook creator</li>
+            <li><i data-lucide="check"></i> <span data-i18n="p3i1">Everything in Standard</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p3i2">Custom branded camera labels</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p3i3">Custom branded online portal</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="p3i4">Digital photobook creator</span></li>
           </ul>
-          <button class="btn btn--primary btn--full" disabled>Coming soon</button>
+          <button class="btn btn--primary btn--full" disabled data-i18n="pricingComingSoon">Coming soon</button>
         </div>
 
       </div>
 
       <div class="pricing-shipping">
         <i data-lucide="package"></i>
-        <p>Add <strong>PostNL shipping</strong> (send &amp; return) to any package for <strong>+&#8364;15,00</strong> &mdash; or pick up in person for free.</p>
+        <p data-i18n-html="shippingNote">Add <strong>PostNL shipping</strong> (send &amp; return) to any package for <strong>+&#8364;15,00</strong> &mdash; or pick up in person for free.</p>
       </div>
 
-      <p class="pricing__note">
+      <p class="pricing__note" data-i18n-html="pricingNote">
         Want extra cameras or a longer rental period? <a href="#contact">Get in touch</a> for a custom quote.
       </p>
     </div>
@@ -230,54 +228,48 @@
   <!-- GALLERY PORTAL -->
   <section class="section" id="gallery">
     <div class="container">
-      <h2 class="section__title">Your photos, your way</h2>
-      <p class="section__subtitle">After the wedding, every shot from every camera lands in your own private portal.</p>
+      <h2 class="section__title"    data-i18n="galleryTitle">Your photos, your way</h2>
+      <p  class="section__subtitle" data-i18n="gallerySubtitle">After the wedding, every shot from every camera lands in your own private portal.</p>
       <div class="portal-grid">
         <div class="portal-step">
           <div class="portal-step__num">01</div>
           <div class="portal-step__icon"><i data-lucide="layout-grid"></i></div>
-          <h3>Browse &amp; curate</h3>
-          <p>All photos from all 10 cameras are automatically collected and uploaded to your private gallery — sorted
-            and ready to explore.</p>
+          <h3 data-i18n="ps1Title">Browse &amp; curate</h3>
+          <p  data-i18n="ps1Desc">All photos from all 10 cameras are automatically collected and uploaded to your private gallery &mdash; sorted and ready to explore.</p>
         </div>
         <div class="portal-step">
           <div class="portal-step__num">02</div>
           <div class="portal-step__icon"><i data-lucide="trash-2"></i></div>
-          <h3>Delete what you don't want</h3>
-          <p>Not every shot is a keeper. Easily remove the blurry, unflattering, or duplicate photos before anyone else
-            sees them.</p>
+          <h3 data-i18n="ps2Title">Delete what you don't want</h3>
+          <p  data-i18n="ps2Desc">Not every shot is a keeper. Easily remove the blurry, unflattering, or duplicate photos before anyone else sees them.</p>
         </div>
         <div class="portal-step">
           <div class="portal-step__num">03</div>
           <div class="portal-step__icon"><i data-lucide="download"></i></div>
-          <h3>Download in full resolution</h3>
-          <p>Save individual photos or the whole collection at full 1080P resolution — yours to keep, print, and
-            treasure forever.</p>
+          <h3 data-i18n="ps3Title">Download in full resolution</h3>
+          <p  data-i18n="ps3Desc">Save individual photos or the whole collection at full 1080P resolution &mdash; yours to keep, print, and treasure forever.</p>
         </div>
         <div class="portal-step">
           <div class="portal-step__num">04</div>
           <div class="portal-step__icon"><i data-lucide="share-2"></i></div>
-          <h3>Share with your guests</h3>
-          <p>Once you're happy with the collection, generate a share link and send it to everyone who attended. They can
-            browse and download their favourites too.</p>
+          <h3 data-i18n="ps4Title">Share with your guests</h3>
+          <p  data-i18n="ps4Desc">Once you're happy with the collection, generate a share link and send it to everyone who attended. They can browse and download their favourites too.</p>
         </div>
       </div>
       <div class="portal-coming-soon">
-        <span class="portal-badge">Coming soon</span>
-        <p>The full online portal is currently in development. For now, all photos are delivered as a private download
-          link — we'll notify all customers as soon as it launches.</p>
+        <span class="portal-badge" data-i18n="comingSoonBadge">Coming soon</span>
+        <p data-i18n="comingSoonDesc">The full online portal is currently in development. For now, all photos are delivered as a private download link &mdash; we'll notify all customers as soon as it launches.</p>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIAL / STORY -->
-  <!-- Add a real customer review here when available. Remove the HTML comment tags to make it visible. -->
+  <!-- TESTIMONIAL (template — uncomment when you have a real review) -->
   <!--
   <section class="section section--alt">
     <div class="container container--narrow">
       <blockquote class="quote">
         <p>"Your review text here."</p>
-        <footer>— Name, married Month Year</footer>
+        <footer>&mdash; Name, married Month Year</footer>
       </blockquote>
     </div>
   </section>
@@ -286,39 +278,39 @@
   <!-- CONTACT / BOOKING -->
   <section class="section" id="contact">
     <div class="container container--narrow">
-      <h2 class="section__title">Check availability</h2>
-      <p class="section__subtitle">Fill in the form and we'll get back to you within 24 hours.</p>
+      <h2 class="section__title"    data-i18n="contactTitle">Check availability</h2>
+      <p  class="section__subtitle" data-i18n="contactSubtitle">Fill in the form and we'll get back to you within 24 hours.</p>
       <form class="form" id="bookingForm" novalidate>
         <div class="form__row">
           <div class="form__group">
-            <label for="name">Your name</label>
-            <input type="text" id="name" name="name" placeholder="e.g. Emma de Vries" required />
+            <label for="name" data-i18n="labelName">Your name</label>
+            <input type="text"  id="name"  name="name"  placeholder="e.g. Emma de Vries"  data-i18n-placeholder="placeholderName"  required />
             <span class="form__error" id="nameError"></span>
           </div>
           <div class="form__group">
-            <label for="email">Email address</label>
-            <input type="email" id="email" name="email" placeholder="emma@example.com" required />
+            <label for="email" data-i18n="labelEmail">Email address</label>
+            <input type="email" id="email" name="email" placeholder="emma@example.com"      data-i18n-placeholder="placeholderEmail" required />
             <span class="form__error" id="emailError"></span>
           </div>
         </div>
         <div class="form__row">
           <div class="form__group">
-            <label for="date">Wedding date</label>
-            <input type="date" id="date" name="date" required />
+            <label for="date" data-i18n="labelDate">Wedding date</label>
+            <input type="date"   id="date"   name="date"   required />
             <span class="form__error" id="dateError"></span>
           </div>
           <div class="form__group">
-            <label for="guests">Approximate guest count</label>
-            <input type="number" id="guests" name="guests" placeholder="e.g. 80" min="1" />
+            <label for="guests" data-i18n="labelGuests">Approximate guest count</label>
+            <input type="number" id="guests" name="guests" placeholder="e.g. 80" data-i18n-placeholder="placeholderGuests" min="1" />
           </div>
         </div>
         <div class="form__group">
-          <label for="message">Anything else we should know? (optional)</label>
-          <textarea id="message" name="message" rows="4" placeholder="Venue, special requests, questions..."></textarea>
+          <label for="message" data-i18n="labelMessage">Anything else we should know? (optional)</label>
+          <textarea id="message" name="message" rows="4" placeholder="Venue, special requests, questions..." data-i18n-placeholder="placeholderMessage"></textarea>
         </div>
-        <button type="submit" class="btn btn--primary btn--full">Send booking request</button>
-        <div class="form__success" id="formSuccess">
-          🎉 Thanks! We'll be in touch within 24 hours to confirm your date.
+        <button type="submit" class="btn btn--primary btn--full" data-i18n="submitBtn">Send booking request</button>
+        <div class="form__success" id="formSuccess" data-i18n="formSuccess">
+          Thanks! We'll be in touch within 24 hours to confirm your date.
         </div>
       </form>
     </div>
@@ -328,13 +320,12 @@
   <footer class="footer">
     <div class="container">
       <p class="footer__logo">WeddingCamBox</p>
-      <p class="footer__tagline">Making wedding memories accessible for everyone.</p>
-      <p class="footer__copy">&copy; 2025 WeddingCamBox. All rights reserved.</p>
+      <p class="footer__tagline" data-i18n="footerTagline">Making wedding memories accessible for everyone.</p>
+      <p class="footer__copy"    data-i18n="footerCopy">&copy; 2025 WeddingCamBox. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
   <script>lucide.createIcons();</script>
 </body>
-
 </html>

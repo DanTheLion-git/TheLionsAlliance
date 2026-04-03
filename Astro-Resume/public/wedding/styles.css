@@ -662,3 +662,56 @@ h1, h2, h3 { font-family: var(--ff-serif); line-height: 1.2; }
   .camera-card { font-size: 1.2rem; }
   .pricing-card { padding: 2rem 1.5rem; }
 }
+
+/* =========================================================
+   LANGUAGE SWITCH
+   ========================================================= */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: .15rem;
+  background: var(--clr-blush);
+  border: 1.5px solid var(--clr-border);
+  border-radius: 999px;
+  padding: .2rem .35rem;
+}
+.lang-switch__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--ff-sans);
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--clr-muted);
+  padding: .2rem .45rem;
+  border-radius: 999px;
+  transition: background .15s, color .15s;
+  line-height: 1.4;
+  letter-spacing: .04em;
+}
+.lang-switch__btn:hover { color: var(--clr-charcoal); }
+.lang-switch__btn--active {
+  background: var(--clr-rose);
+  color: var(--clr-white);
+}
+.lang-switch__btn--active:hover { background: var(--clr-rose-dk); color: var(--clr-white); }
+.lang-switch__sep {
+  font-size: .7rem;
+  color: var(--clr-border);
+  user-select: none;
+}
+
+/* Mobile lang switch — shown next to hamburger */
+.lang-switch--mobile { display: none; }
+
+@media (max-width: 800px) {
+  .nav__lang-item    { display: none; }
+  .lang-switch--mobile { display: flex; }
+  .nav__hamburger    { display: flex; }
+}
