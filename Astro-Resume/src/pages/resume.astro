@@ -90,24 +90,18 @@ const posts: WPPost[] = await getPosts(3);
     </div>
   </section>
 
-  <!-- ── Client Projects (3D Podium) ────────────────────────── -->
+  <!-- ── Client Projects (Carousel) ───────────────────────── -->
   <section id="work" class="section">
     <div class="section-header">
       <h2 class="section-title">Client Projects</h2>
-      <p class="section-subtitle">Drag to rotate · click a project to learn more</p>
+      <p class="section-subtitle">Click the arrows or swipe to browse</p>
     </div>
-    <div class="projects-layout">
-      <div id="podium-wrapper" class="podium-canvas-wrap">
-        <canvas id="podium-canvas"></canvas>
-      </div>
-      <aside id="proj-panel" class="proj-panel" aria-hidden="true" aria-label="Project details">
-        <button id="proj-close" aria-label="Close">&#x2715;</button>
-        <h3 id="proj-title"></h3>
-        <p id="proj-meta" class="post-meta"></p>
-        <p id="proj-desc" class="post-excerpt"></p>
-        <div id="proj-links" class="proj-links"></div>
-      </aside>
+    <div class="carousel-wrap">
+      <button class="carousel-btn carousel-prev" aria-label="Previous project">&#8249;</button>
+      <div class="carousel-track" id="carousel-track"></div>
+      <button class="carousel-btn carousel-next" aria-label="Next project">&#8250;</button>
     </div>
+    <div class="carousel-dots" id="carousel-dots"></div>
   </section>
 
   <!-- ── Skills & Tools ─────────────────────────────────────── -->
@@ -163,269 +157,168 @@ const posts: WPPost[] = await getPosts(3);
 </Layout>
 
 <Fragment slot="body-end">
-<script is:inline type="module">
-import * as THREE from 'three';
-import { RGBELoader }  from 'three/addons/loaders/RGBELoader.js';
-import { GLTFLoader }  from 'three/addons/loaders/GLTFLoader.js';
+<script is:inline>
+(function () {
 
 // ═══════════════════════════════════════════════════════════════════
-// PROJECT CONFIG — edit titles, colours, positions and rotations here
+// PROJECT CONFIG — edit your project cards here
 // ═══════════════════════════════════════════════════════════════════
-// folder : subfolder inside /models/projects/
-//          Place model.glb there to replace the coloured cube.
-// color  : fallback cube colour (hex, e.g. 0x3b82f6)
-// pos    : { x, y, z }  offset from default circle position (metres)
-// rot    : { x, y, z }  rotation in degrees
-// scale  : uniform scale applied to the loaded GLB model
+// title   : project name
+// meta    : subtitle / tech stack shown below the title
+// image   : static image path, e.g. '/images/projects/myproject.jpg'
+//           → set to null if you use youtube instead
+// youtube : any YouTube URL (youtu.be/ID  or  watch?v=ID)
+//           → set to null if you use image instead
+//           → youtube takes priority when both are set
+// desc    : description paragraph on the card
+// link    : optional button  →  { label: 'Visit', href: 'https://...' }
+//           set to null for no button
 // ═══════════════════════════════════════════════════════════════════
-const PROJECTS = [
+var PROJECTS = [
   {
-    title: 'Amsterdam Rederij', folder: 'amsterdam-rederij',
-    meta:  'VR Boat Tour · 360° Experience', color: 0x3b82f6,
-    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
-    desc:  'A 360° VR experience developed for VR Voyage, allowing people to glipse into the golden age of Amsterdam while taking a boat tour around the city. Being guided by Schipper Piet, and meeting various characters from our rich history along the way.',
-    links: [{ label:'Final Videos', href:'https://www.youtube.com/playlist?list=PLh7EOh1n0_buBScK2L7dAFNsPW2xpWRCT', newTab:true }]
+    title:   'Amsterdam Rederij',
+    meta:    'Interactive WebGL · 3D Experience',
+    image:   null,
+    youtube: null,
+    desc:    'Interactive 3D web experience created for Amsterdam Rederij.',
+    link:    null,
   },
   {
-    title: 'Martens Beton', folder: 'martens-beton',
-    meta:  'Product Visualisation · 3D', color: 0x94a3b8,
-    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
-    desc:  'Product visualisation project for Martens Beton.',
-    links: []
+    title:   'Martens Beton',
+    meta:    'Product Visualisation · 3D',
+    image:   null,
+    youtube: null,
+    desc:    'Product visualisation project for Martens Beton.',
+    link:    null,
   },
   {
-    title: 'Werken bij Schiphol', folder: 'werken-bij-schiphol',
-    meta:  'Recruitment Campaign · Interactive', color: 0x1d4ed8,
-    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
-    desc:  'Interactive recruitment experience for Werken bij Schiphol.',
-    links: []
+    title:   'Werken bij Schiphol',
+    meta:    'Recruitment Campaign · Interactive',
+    image:   null,
+    youtube: null,
+    desc:    'Interactive recruitment experience for Werken bij Schiphol.',
+    link:    null,
   },
   {
-    title: 'Lucardi', folder: 'lucardi',
-    meta:  'Product Showcase · WebGL', color: 0xf59e0b,
-    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
-    desc:  'Interactive WebGL product showcase for Lucardi jewellery.',
-    links: []
+    title:   'Lucardi',
+    meta:    'Product Showcase · WebGL',
+    image:   null,
+    youtube: null,
+    desc:    'Interactive WebGL product showcase for Lucardi jewellery.',
+    link:    null,
   },
   {
-    title: 'Oosterschelde', folder: 'oosterschelde',
-    meta:  '360 Interactive Video · Custom Hardware', color: 0x10b981,
-    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
-    desc:  'Immersive 360 underwater VR experience for the Oosterschelde nature reserve.',
-    links: [{ label:'(WIP) Video', href:'https://youtu.be/VprojdpSWek', newTab:true }]
+    title:   'Oosterschelde',
+    meta:    '360° Interactive Video · Custom Hardware',
+    image:   null,
+    youtube: 'https://youtu.be/VprojdpSWek',
+    desc:    'Immersive 360° underwater VR experience for the Oosterschelde nature reserve.',
+    link:    null,
   },
   {
-    title: 'Garbage Gary', folder: 'garbage-gary',
-    meta:  'Game Development · Unity', color: 0x84cc16,
-    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
-    desc:  'A game project created in collaboration with a team of other students for the Oyfo Museum. Created for a large touch screen with the goal of teaching children about the effect of littering.',
-    links: [{ label:'Play Game', href:'https://daanvanleeuwen.itch.io/viktor-vuilnis', newTab:true }]
+    title:   'Garbage Gary',
+    meta:    'Game Development · Unity',
+    image:   null,
+    youtube: null,
+    desc:    'A game project featuring the loveable Garbage Gary.',
+    link:    null,
   },
   {
-    title: 'Meijel Museum', folder: 'meijel-museum',
-    meta:  'Interactive Museum Experience', color: 0xb45309,
-    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
-    desc:  'Interactive digital experience developed for Meijel Museum.',
-    links: []
+    title:   'Meijel Museum',
+    meta:    'Interactive Museum Experience',
+    image:   null,
+    youtube: null,
+    desc:    'Interactive digital experience developed for Meijel Museum.',
+    link:    null,
   },
 ];
 
-// ─── Scene setup ────────────────────────────────────────────────────
-const wrapper    = document.getElementById('podium-wrapper');
-const canvas     = document.getElementById('podium-canvas');
-const panel      = document.getElementById('proj-panel');
-const panelTitle = document.getElementById('proj-title');
-const panelMeta  = document.getElementById('proj-meta');
-const panelDesc  = document.getElementById('proj-desc');
-const panelLinks = document.getElementById('proj-links');
-const closeBtn   = document.getElementById('proj-close');
-if (!wrapper || !canvas) throw new Error('Podium elements not found');
-
-const W = () => wrapper.offsetWidth;
-const H = () => wrapper.offsetHeight;
-
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-renderer.setSize(W(), H());
-renderer.toneMapping        = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.2;
-renderer.outputColorSpace   = THREE.SRGBColorSpace;
-renderer.shadowMap.enabled  = false;
-
-const scene  = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, W()/H(), 0.1, 50);
-
-// Camera config
-const LOOK_TARGET = new THREE.Vector3(0, 0.28, 0);
-const CAM_DIST    = 3.0;
-const CAM_ELEV    = 14 * (Math.PI / 180);
-const EASE_RATE   = 0.10;
-const camH = LOOK_TARGET.y + CAM_DIST * Math.sin(CAM_ELEV);
-const camR = CAM_DIST * Math.cos(CAM_ELEV);
-let targetTheta = 0, currentTheta = 0;
-
-function updateCamera() {
-  currentTheta += (targetTheta - currentTheta) * EASE_RATE;
-  camera.position.set(Math.sin(currentTheta) * camR, camH, Math.cos(currentTheta) * camR);
-  camera.lookAt(LOOK_TARGET);
-}
-updateCamera();
-
-// HDRI environment — local first, Polyhaven CDN fallback, ambient last resort
-const pmrem = new THREE.PMREMGenerator(renderer);
-pmrem.compileEquirectangularShader();
-function applyEnv(tex) {
-  scene.environment = pmrem.fromEquirectangular(tex).texture;
-  tex.dispose(); pmrem.dispose();
-}
-const rgbeLoader = new RGBELoader();
-rgbeLoader.load('/hdri/scene.hdr', applyEnv, undefined, () =>
-  rgbeLoader.load(
-    'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_08_1k.hdr',
-    applyEnv, undefined,
-    () => { scene.add(new THREE.AmbientLight(0xffffff, 1.4)); pmrem.dispose(); }
-  )
-);
-
-// White flat display platform
-const plateMesh = new THREE.Mesh(
-  new THREE.CylinderGeometry(0.88, 0.88, 0.04, 64),
-  new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.05, roughness: 0.22, envMapIntensity: 1.0 })
-);
-plateMesh.position.y = 0.02;
-scene.add(plateMesh);
-
-// ─── Project objects — full 360° circle layout ──────────────────────
-const DEG          = Math.PI / 180;
-const N            = PROJECTS.length;
-const ARC_R        = 0.55;           // circle radius (stay within platform r=0.88)
-const CUBE_SIZE    = 0.095;          // fallback cube side length
-const PODIUM_TOP_Y = 0.04 + CUBE_SIZE / 2;
-const podiumGroup  = new THREE.Group();
-const allMeshes    = [];             // flat list of all raycaster targets
-const gltfLoader   = new GLTFLoader();
-
-for (let i = 0; i < N; i++) {
-  const cfg   = PROJECTS[i];
-  const angle = (i / N) * Math.PI * 2;   // evenly spaced around full circle
-
-  const group = new THREE.Group();
-  group.position.set(
-    Math.sin(angle) * ARC_R + cfg.pos.x,
-    PODIUM_TOP_Y            + cfg.pos.y,
-    Math.cos(angle) * ARC_R + cfg.pos.z
-  );
-  group.rotation.set(cfg.rot.x * DEG, cfg.rot.y * DEG, cfg.rot.z * DEG);
-  group.userData.projectIndex = i;
-  podiumGroup.add(group);
-
-  // Fallback cube — stays until a GLB with real meshes loads
-  const mat  = new THREE.MeshStandardMaterial({
-    color: cfg.color, metalness: 0.25, roughness: 0.35,
-    emissive: new THREE.Color(cfg.color), emissiveIntensity: 0.0, envMapIntensity: 1.0
-  });
-  const cube = new THREE.Mesh(new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE), mat);
-  cube.userData.projectIndex = i;
-  group.add(cube);
-  allMeshes.push(cube);
-
-  // Try to load real GLB — swap out cube only when the model has geometry
-  gltfLoader.load(
-    '/models/projects/' + cfg.folder + '/model.glb',
-    (gltf) => {
-      let hasMesh = false;
-      gltf.scene.traverse(c => { if (c.isMesh) hasMesh = true; });
-      if (hasMesh) {
-        group.remove(cube);
-        allMeshes.splice(allMeshes.indexOf(cube), 1);
-        gltf.scene.scale.setScalar(cfg.scale);
-        gltf.scene.traverse(child => {
-          if (child.isMesh) { child.userData.projectIndex = i; allMeshes.push(child); }
-        });
-        group.add(gltf.scene);
-      }
-    },
-    undefined,
-    () => { /* load failed — cube stays */ }
-  );
-}
-scene.add(podiumGroup);
-
-// ─── Selection ────────────────────────────────────────────────────
-let selectedIndex = -1;
-
-function selectProject(idx) {
-  if (selectedIndex >= 0 && selectedIndex < podiumGroup.children.length) {
-    const prev = podiumGroup.children[selectedIndex];
-    prev.traverse(c => { if (c.isMesh && c.material) c.material.emissiveIntensity = 0.0; });
-    prev.scale.setScalar(1.0);
-  }
-  selectedIndex = idx;
-  if (idx < 0) {
-    panel.classList.remove('open');
-    panel.setAttribute('aria-hidden', 'true');
-    return;
-  }
-  const sel = podiumGroup.children[idx];
-  sel.traverse(c => { if (c.isMesh && c.material) c.material.emissiveIntensity = 0.40; });
-  sel.scale.setScalar(1.22);
-  const p = PROJECTS[idx];
-  panelTitle.textContent = p.title;
-  panelMeta.textContent  = p.meta;
-  panelDesc.textContent  = p.desc;
-  panelLinks.innerHTML   = '';
-  p.links.forEach(({ label, href, newTab }) => {
-    const a = document.createElement('a');
-    a.className = 'button-ghost'; a.href = href; a.textContent = label;
-    if (newTab) { a.target = '_blank'; a.rel = 'noopener'; }
-    panelLinks.appendChild(a);
-  });
-  panel.classList.add('open');
-  panel.setAttribute('aria-hidden', 'false');
+// ── Helpers ─────────────────────────────────────────────────────────
+function toEmbedUrl(url) {
+  var m = url.match(/(?:youtu\.be\/|[?&]v=)([\w-]{11})/);
+  return m ? 'https://www.youtube.com/embed/' + m[1] + '?rel=0' : url;
 }
 
-document.getElementById('proj-close').addEventListener('click', () => selectProject(-1));
+// ── Build cards ─────────────────────────────────────────────────────
+var track  = document.getElementById('carousel-track');
+var dotsEl = document.getElementById('carousel-dots');
+if (!track) return;
 
-// ─── Drag-to-orbit (full 360°) ────────────────────────────────────
-let isDragging = false, lastX = 0, totalDrag = 0;
-canvas.addEventListener('pointerdown', (e) => {
-  isDragging = true; lastX = e.clientX; totalDrag = 0;
-  canvas.setPointerCapture(e.pointerId);
-});
-window.addEventListener('pointermove', (e) => {
-  if (!isDragging) return;
-  const dx = e.clientX - lastX; lastX = e.clientX; totalDrag += Math.abs(dx);
-  targetTheta -= (dx / W()) * (Math.PI * 2);
-});
-window.addEventListener('pointerup', (e) => {
-  if (!isDragging) return;
-  isDragging = false;
-  if (totalDrag < 6) handleClick(e);
-});
+PROJECTS.forEach(function (p) {
+  var card = document.createElement('div');
+  card.className = 'project-card';
 
-// ─── Click-to-select ──────────────────────────────────────────────
-const raycaster = new THREE.Raycaster();
-const pointer   = new THREE.Vector2();
-function handleClick(e) {
-  const rect = canvas.getBoundingClientRect();
-  pointer.x  =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
-  pointer.y  = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
-  raycaster.setFromCamera(pointer, camera);
-  const hits = raycaster.intersectObjects(allMeshes, true);
-  if (hits.length > 0) {
-    const idx = hits[0].object.userData.projectIndex;
-    selectProject(idx === selectedIndex ? -1 : idx);
+  var heroHtml;
+  if (p.youtube) {
+    heroHtml = '<div class="project-card-hero"><iframe src="' + toEmbedUrl(p.youtube)
+      + '" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"'
+      + ' allowfullscreen></iframe></div>';
+  } else if (p.image) {
+    heroHtml = '<div class="project-card-hero"><img src="' + p.image
+      + '" alt="' + p.title + '" loading="lazy"></div>';
   } else {
-    selectProject(-1);
+    heroHtml = '<div class="project-card-hero project-card-hero--empty"><span>' + p.title + '</span></div>';
   }
+
+  var linkHtml = p.link
+    ? '<a href="' + p.link.href + '" class="button-ghost proj-card-btn" target="_blank" rel="noopener noreferrer">'
+      + p.link.label + '</a>'
+    : '';
+
+  card.innerHTML = heroHtml
+    + '<div class="project-card-body">'
+    + '<h3 class="project-card-title">' + p.title + '</h3>'
+    + '<p class="project-card-meta">' + p.meta + '</p>'
+    + '<p class="project-card-desc">' + p.desc + '</p>'
+    + linkHtml + '</div>';
+
+  track.appendChild(card);
+});
+
+// ── Carousel navigation ──────────────────────────────────────────────
+function cpv() { return window.innerWidth >= 680 ? 2 : 1; }
+
+function cardStride() {
+  var first = track.firstElementChild;
+  if (!first) return 300;
+  return first.offsetWidth + (parseFloat(getComputedStyle(track).gap) || 24);
 }
 
-new ResizeObserver(() => {
-  renderer.setSize(W(), H());
-  camera.aspect = W() / H();
-  camera.updateProjectionMatrix();
-}).observe(wrapper);
+function buildDots() {
+  dotsEl.innerHTML = '';
+  var n = Math.ceil(PROJECTS.length / cpv());
+  for (var i = 0; i < n; i++) {
+    (function (idx) {
+      var d = document.createElement('button');
+      d.className = 'carousel-dot';
+      d.setAttribute('aria-label', 'Slide ' + (idx + 1));
+      d.addEventListener('click', function () { goTo(idx); });
+      dotsEl.appendChild(d);
+    })(i);
+  }
+  updateDots();
+}
 
-(function animate() { requestAnimationFrame(animate); updateCamera(); renderer.render(scene, camera); })();
+function updateDots() {
+  var stride = cardStride();
+  var slide  = stride > 0 ? Math.round(track.scrollLeft / (stride * cpv())) : 0;
+  dotsEl.querySelectorAll('.carousel-dot')
+    .forEach(function (d, i) { d.classList.toggle('active', i === slide); });
+}
+
+function goTo(slideIdx) {
+  track.scrollTo({ left: slideIdx * cardStride() * cpv(), behavior: 'smooth' });
+}
+
+document.querySelector('.carousel-prev')
+  .addEventListener('click', function () { track.scrollBy({ left: -cardStride(), behavior: 'smooth' }); });
+document.querySelector('.carousel-next')
+  .addEventListener('click', function () { track.scrollBy({ left:  cardStride(), behavior: 'smooth' }); });
+
+track.addEventListener('scroll', updateDots, { passive: true });
+window.addEventListener('resize', buildDots);
+buildDots();
+
+})();
 </script>
 </Fragment>
