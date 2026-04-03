@@ -179,6 +179,7 @@ function renderGallery() {
   });
 
   updateGalleryToolbar();
+  if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
 function buildPhotoCard(photo, draggable) {
@@ -196,7 +197,7 @@ function buildPhotoCard(photo, draggable) {
           <input type="checkbox" class="photo-checkbox" data-id="${photo.id}" ${photo.selected ? 'checked' : ''} />
           <span class="photo-check__mark">✓</span>
         </label>
-        <button class="photo-card__open-btn" data-id="${photo.id}" title="View full size">⤢ View</button>
+        <button class="photo-card__open-btn" data-id="${photo.id}" title="View full size"><i data-lucide="expand"></i> View</button>
       </div>
     </div>
     <div class="photo-card__body">
@@ -205,8 +206,8 @@ function buildPhotoCard(photo, draggable) {
         <span class="photo-card__sub">${photo.camera} · ${time}</span>
       </div>
       <div class="photo-card__actions">
-        <button class="photo-action photo-action--download" data-id="${photo.id}" title="Download">⬇</button>
-        <button class="photo-action photo-action--delete" data-id="${photo.id}" title="Delete">🗑</button>
+        <button class="photo-action photo-action--download" data-id="${photo.id}" title="Download"><i data-lucide="download"></i></button>
+        <button class="photo-action photo-action--delete" data-id="${photo.id}" title="Delete"><i data-lucide="trash-2"></i></button>
       </div>
     </div>`;
 
@@ -226,7 +227,7 @@ function buildPhotoCard(photo, draggable) {
   // Individual download
   card.querySelector('.photo-action--download').addEventListener('click', (e) => {
     e.stopPropagation();
-    showToast('⬇ Download is being prepared — this feature is coming soon!', 'info');
+    showToast('Download is being prepared — this feature is coming soon!', 'info');
   });
 
   // Individual delete
@@ -255,8 +256,8 @@ function updateGalleryToolbar() {
   document.getElementById('galleryCountLabel').textContent = `${total} photo${total !== 1 ? 's' : ''}`;
   document.getElementById('selCountBadge').textContent     = selected;
   document.getElementById('deleteSelectedBtn').disabled    = selected === 0;
-  document.getElementById('selectAllBtn').textContent      = selected === total && total > 0
-    ? '☐ Deselect all' : '☑ Select all';
+  document.getElementById('selectAllLabel').textContent    = selected === total && total > 0
+    ? 'Deselect all' : 'Select all';
 }
 
 // ============================================================
@@ -288,7 +289,7 @@ function deletePhoto(id) {
   state.photos = state.photos.filter(p => p.id !== id);
   savePhotos();
   renderGallery();
-  showToast('🗑 Photo deleted.', 'info');
+  showToast('Photo deleted.', 'info');
 }
 
 function deleteSelected() {
@@ -298,7 +299,7 @@ function deleteSelected() {
   state.photos = state.photos.filter(p => !p.selected);
   savePhotos();
   renderGallery();
-  showToast(`🗑 ${count} photo${count > 1 ? 's' : ''} deleted.`, 'info');
+  showToast(`${count} photo${count > 1 ? 's' : ''} deleted.`, 'info');
 }
 
 // ============================================================
@@ -415,7 +416,7 @@ function renderAddressBook() {
         <span class="ab-contact__name">${escHtml(contact.name || contact.email.split('@')[0])}</span>
         <span class="ab-contact__email">${escHtml(contact.email)}</span>
       </div>
-      <button class="ab-contact__remove" data-id="${contact.id}" title="Remove contact">✕</button>`;
+      <button class="ab-contact__remove" data-id="${contact.id}" title="Remove contact"><i data-lucide="x"></i></button>`;
 
     row.querySelector('.ab-contact__check').addEventListener('click', () => toggleContact(contact.id));
     row.querySelector('.ab-contact__remove').addEventListener('click', () => removeContact(contact.id));
@@ -427,6 +428,8 @@ function renderAddressBook() {
   selHint.textContent = selCount > 0
     ? `${selCount} contact${selCount > 1 ? 's' : ''} selected`
     : 'Select contacts to send a share link';
+
+  if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
 function toggleContact(id) {
@@ -558,7 +561,7 @@ function init() {
 
   // ── Download all (placeholder)
   document.getElementById('downloadAllBtn').addEventListener('click', () => {
-    showToast('⬇ Preparing your download — this feature is coming soon!', 'info');
+    showToast('Preparing your download — this feature is coming soon!', 'info');
   });
 
   // ── Lightbox controls
@@ -586,7 +589,7 @@ function init() {
     addContact(name || email, email);
     document.getElementById('addName').value  = '';
     document.getElementById('addEmail').value = '';
-    showToast(`✓ ${email} added to address book.`, 'success');
+    showToast(`${email} added to address book.`, 'success');
   });
 
   // ── Send share link button
@@ -596,14 +599,14 @@ function init() {
   document.getElementById('shareModalClose').addEventListener('click', closeShareModal);
   document.getElementById('copyLinkBtn').addEventListener('click', () => {
     const link = document.getElementById('shareLinkInput').value;
-    navigator.clipboard.writeText(link).then(() => showToast('🔗 Link copied to clipboard!', 'success'))
-      .catch(() => { document.getElementById('shareLinkInput').select(); document.execCommand('copy'); showToast('🔗 Link copied!', 'success'); });
+    navigator.clipboard.writeText(link).then(() => showToast('Link copied to clipboard!', 'success'))
+      .catch(() => { document.getElementById('shareLinkInput').select(); document.execCommand('copy'); showToast('Link copied!', 'success'); });
   });
   document.getElementById('confirmSendBtn').addEventListener('click', () => {
     const selected = state.addressBook.filter(c => c.selected);
     closeShareModal();
     const names = selected.map(c => c.name || c.email).join(', ');
-    showToast(`✉️ Share link sent to: ${names}`, 'success');
+    showToast(`Share link sent to: ${names}`, 'success');
   });
 
   // Close modal on overlay click
@@ -620,6 +623,7 @@ function launchPortal() {
   showTab('gallery');
   renderGallery();
   renderAddressBook();
+  if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
 document.addEventListener('DOMContentLoaded', init);

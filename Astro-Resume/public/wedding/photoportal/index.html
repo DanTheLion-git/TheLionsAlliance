@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -15,10 +16,10 @@
   <div class="view view--login" id="viewLogin">
     <div class="login-wrap">
       <div class="login-card">
-        <a href="../" class="login-back">← Back to site</a>
+        <a href="../" class="login-back"><i data-lucide="arrow-left"></i> Back to site</a>
         <div class="login-brand">
           <span class="login-brand__logo">WeddingCamBox</span>
-          <p class="login-brand__tagline">Your photos are waiting for you 📷</p>
+          <p class="login-brand__tagline">Your photos are waiting for you</p>
         </div>
         <form class="login-form" id="loginForm" novalidate>
           <div class="form-group">
@@ -28,7 +29,7 @@
           <div class="form-group form-group--password">
             <label for="loginPassword">Password</label>
             <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required />
-            <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password visibility">👁</button>
+            <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password visibility"><i data-lucide="eye"></i></button>
           </div>
           <div class="login-error" id="loginError"></div>
           <button type="submit" class="btn btn--primary btn--full">Sign in to my gallery</button>
@@ -60,10 +61,10 @@
     <!-- Tab bar -->
     <nav class="p-tabs" id="tabBar">
       <button class="p-tab p-tab--active" data-tab="gallery">
-        📷 Gallery <span class="p-tab__badge" id="photoCountBadge">0</span>
+        <i data-lucide="images"></i> Gallery <span class="p-tab__badge" id="photoCountBadge">0</span>
       </button>
       <button class="p-tab" data-tab="addressbook">
-        📋 Address Book <span class="p-tab__badge" id="abCountBadge">0</span>
+        <i data-lucide="book-open"></i> Address Book <span class="p-tab__badge" id="abCountBadge">0</span>
       </button>
     </nav>
 
@@ -82,18 +83,18 @@
           <span class="g-toolbar__count" id="galleryCountLabel">0 photos</span>
         </div>
         <div class="g-toolbar__right">
-          <button class="g-btn" id="selectAllBtn">☑ Select all</button>
+          <button class="g-btn" id="selectAllBtn"><i data-lucide="check-square"></i> <span id="selectAllLabel">Select all</span></button>
           <button class="g-btn g-btn--danger" id="deleteSelectedBtn" disabled>
-            🗑 Delete <span class="g-btn__badge" id="selCountBadge">0</span>
+            <i data-lucide="trash-2"></i> Delete <span class="g-btn__badge" id="selCountBadge">0</span>
           </button>
-          <button class="g-btn g-btn--download" id="downloadAllBtn">⬇ Download all</button>
+          <button class="g-btn g-btn--download" id="downloadAllBtn"><i data-lucide="download"></i> Download all</button>
         </div>
       </div>
 
       <div class="photo-grid" id="photoGrid"></div>
 
       <div class="gallery-empty" id="galleryEmpty" style="display:none">
-        <div class="gallery-empty__icon">🖼️</div>
+        <div class="gallery-empty__icon"><i data-lucide="images"></i></div>
         <h3>Your gallery is empty</h3>
         <p>Photos will appear here once they have been uploaded to your account.</p>
       </div>
@@ -123,12 +124,12 @@
         </div>
 
         <div class="ab-empty" id="abEmpty" style="display:none">
-          <p>📭 No contacts yet. Add email addresses above to start building your list.</p>
+          <p><i data-lucide="inbox"></i> No contacts yet. Add email addresses above to start building your list.</p>
         </div>
 
         <div class="ab-actions">
           <span class="ab-actions__hint" id="abSelHint">Select contacts to send a share link</span>
-          <button class="g-btn g-btn--download" id="sendShareBtn" disabled>🔗 Send download link to selected</button>
+          <button class="g-btn g-btn--download" id="sendShareBtn" disabled><i data-lucide="share-2"></i> Send download link to selected</button>
         </div>
 
       </div>
@@ -139,8 +140,8 @@
   <!-- ===================== LIGHTBOX ===================== -->
   <div class="lightbox" id="lightbox" style="display:none" role="dialog" aria-modal="true" aria-label="Photo viewer">
     <div class="lightbox__bg" id="lightboxBg"></div>
-    <button class="lightbox__close" id="lightboxClose" aria-label="Close">✕</button>
-    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close"><i data-lucide="x"></i></button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous photo"><i data-lucide="chevron-left"></i></button>
     <div class="lightbox__stage">
       <img src="" alt="" id="lightboxImg" />
       <div class="lightbox__meta">
@@ -148,14 +149,14 @@
         <span class="lightbox__info" id="lightboxInfo"></span>
       </div>
     </div>
-    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next photo">›</button>
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next photo"><i data-lucide="chevron-right"></i></button>
   </div>
 
   <!-- ===================== SHARE MODAL ===================== -->
   <div class="modal-overlay" id="shareModal" style="display:none">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
-      <button class="modal__close" id="shareModalClose" aria-label="Close">✕</button>
-      <h3 id="shareModalTitle">🔗 Share your gallery</h3>
+      <button class="modal__close" id="shareModalClose" aria-label="Close"><i data-lucide="x"></i></button>
+      <h3 id="shareModalTitle">Share your gallery</h3>
       <p class="modal__desc">Copy and share the link below, or send it directly to the contacts you've selected.</p>
 
       <div class="share-link-row">
@@ -168,7 +169,7 @@
         <div class="share-contacts__list" id="shareContactsList"></div>
       </div>
 
-      <button class="btn btn--primary btn--full" id="confirmSendBtn">✉️ Send link by email</button>
+      <button class="btn btn--primary btn--full" id="confirmSendBtn"><i data-lucide="send"></i> Send link by email</button>
     </div>
   </div>
 

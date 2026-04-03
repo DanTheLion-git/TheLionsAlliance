@@ -597,6 +597,14 @@ h1, h2, h3 { font-family: var(--ff-serif); line-height: 1.2; }
 }
 
 /* =========================================================
+   LUCIDE ICON SIZING
+   ========================================================= */
+.feature__icon svg        { width: 2rem;   height: 2rem;   color: var(--clr-rose); stroke-width: 1.5; }
+.portal-step__icon svg    { width: 1.75rem; height: 1.75rem; color: var(--clr-rose); stroke-width: 1.5; }
+.camera-card svg          { width: 1.6rem;  height: 1.6rem;  color: var(--clr-rose); stroke-width: 1.5; }
+.delivery-option__icon svg { width: 1.4rem; height: 1.4rem; stroke-width: 1.5; }
+
+/* =========================================================
    QUOTE / TESTIMONIAL
    ========================================================= */
 .quote {

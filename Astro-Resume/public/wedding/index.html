@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -54,16 +55,16 @@
     </div>
     <div class="hero__visual">
       <div class="camera-grid">
-        <div class="camera-card" style="--delay:0s">📷</div>
-        <div class="camera-card" style="--delay:.15s">📸</div>
-        <div class="camera-card" style="--delay:.3s">📷</div>
-        <div class="camera-card" style="--delay:.45s">📸</div>
-        <div class="camera-card" style="--delay:.6s">📷</div>
-        <div class="camera-card" style="--delay:.75s">📸</div>
-        <div class="camera-card" style="--delay:.9s">📷</div>
-        <div class="camera-card" style="--delay:1.05s">📸</div>
-        <div class="camera-card" style="--delay:1.2s">📷</div>
-        <div class="camera-card" style="--delay:1.35s">📸</div>
+        <div class="camera-card" style="--delay:0s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:.15s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:.3s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:.45s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:.6s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:.75s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:.9s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:1.05s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:1.2s"><i data-lucide="camera"></i></div>
+        <div class="camera-card" style="--delay:1.35s"><i data-lucide="camera"></i></div>
       </div>
       <p class="camera-grid__label">10 cameras included in every rental</p>
     </div>
@@ -103,32 +104,32 @@
       <p class="section__subtitle">Small enough to fit in a pocket. Powerful enough to capture the moment.</p>
       <div class="features">
         <div class="feature">
-          <div class="feature__icon">🎥</div>
+          <div class="feature__icon"><i data-lucide="film"></i></div>
           <h3>1080P HD photos &amp; video</h3>
           <p>Crisp, full HD resolution in every lighting condition — from golden-hour outdoor shots to the dance floor at midnight.</p>
         </div>
         <div class="feature">
-          <div class="feature__icon">👆</div>
+          <div class="feature__icon"><i data-lucide="box"></i></div>
           <h3>Thumb-sized &amp; portable</h3>
           <p>Each camera is literally pocket-sized — small enough that guests barely notice they're holding one, until the perfect moment happens.</p>
         </div>
         <div class="feature">
-          <div class="feature__icon">📺</div>
+          <div class="feature__icon"><i data-lucide="monitor"></i></div>
           <h3>Built-in HD screen</h3>
           <p>A tiny built-in screen lets guests instantly review each shot — so they know they captured the moment before passing it on.</p>
         </div>
         <div class="feature">
-          <div class="feature__icon">🔋</div>
+          <div class="feature__icon"><i data-lucide="battery-charging"></i></div>
           <h3>Pre-charged &amp; ready</h3>
           <p>Every camera arrives fully charged before your big day — no fiddling, no dead batteries, no technical knowledge required.</p>
         </div>
         <div class="feature">
-          <div class="feature__icon">🤝</div>
+          <div class="feature__icon"><i data-lucide="pointer"></i></div>
           <h3>One-click shooting</h3>
           <p>Dead-simple operation — a single button takes the photo. Any guest can pick one up and start shooting in seconds.</p>
         </div>
         <div class="feature">
-          <div class="feature__icon">🔒</div>
+          <div class="feature__icon"><i data-lucide="shield-check"></i></div>
           <h3>Loss &amp; damage covered</h3>
           <p>Every rental includes loss &amp; damage coverage so you can relax and enjoy your day without worry about the cameras.</p>
         </div>
@@ -166,30 +167,23 @@
               <label class="delivery-option">
                 <input type="radio" name="delivery" value="pickup" checked />
                 <span class="delivery-option__box">
-                  <span class="delivery-option__icon">🚗</span>
+                  <span class="delivery-option__icon"><i data-lucide="map-pin"></i></span>
                   <span class="delivery-option__text">Pick up myself</span>
                   <span class="delivery-option__tag">Free</span>
                 </span>
               </label>
               <label class="delivery-option">
-                <input type="radio" name="delivery" value="delivery" />
+                <input type="radio" name="delivery" value="postal" />
                 <span class="delivery-option__box">
-                  <span class="delivery-option__icon">📦</span>
-                  <span class="delivery-option__text">Deliver to my address</span>
-                  <span class="delivery-option__tag">+€0.20/km</span>
+                  <span class="delivery-option__icon"><i data-lucide="package"></i></span>
+                  <span class="delivery-option__text">Send via PostNL</span>
+                  <span class="delivery-option__tag" id="postalTag">+€15,00</span>
                 </span>
               </label>
             </div>
-            <div class="delivery-address-wrap" id="deliveryAddressWrap">
-              <div class="delivery-address-row">
-                <input type="text" id="addressInput" placeholder="e.g. Keizersgracht 123, Amsterdam" autocomplete="street-address" />
-                <button type="button" class="btn btn--sm btn--primary" id="calcDistance">
-                  <span id="calcBtnText">Calculate</span>
-                </button>
-              </div>
-              <p class="delivery-hint">We'll calculate the road distance from our location to yours.</p>
-              <div class="delivery-result" id="deliveryResult"></div>
-            </div>
+            <p class="delivery-hint" id="postalHint" style="display:none">
+              Includes both outbound delivery and return shipping — just drop the box at any PostNL point after the wedding.
+            </p>
           </div>
 
           <!-- Price breakdown -->
@@ -199,7 +193,7 @@
               <span>€79,99</span>
             </div>
             <div class="pricing__breakdown__row" id="deliveryCostRow" style="display:none">
-              <span>Delivery (<span id="deliveryKm">0</span> km × €0,20)</span>
+              <span>PostNL shipping (send &amp; return)</span>
               <span id="deliveryCostAmount">€0,00</span>
             </div>
             <div class="pricing__breakdown__row pricing__breakdown__row--total">
@@ -226,25 +220,25 @@
       <div class="portal-grid">
         <div class="portal-step">
           <div class="portal-step__num">01</div>
-          <div class="portal-step__icon">🖼️</div>
+          <div class="portal-step__icon"><i data-lucide="layout-grid"></i></div>
           <h3>Browse &amp; curate</h3>
           <p>All photos from all 10 cameras are automatically collected and uploaded to your private gallery — sorted and ready to explore.</p>
         </div>
         <div class="portal-step">
           <div class="portal-step__num">02</div>
-          <div class="portal-step__icon">🗑️</div>
+          <div class="portal-step__icon"><i data-lucide="trash-2"></i></div>
           <h3>Delete what you don't want</h3>
           <p>Not every shot is a keeper. Easily remove the blurry, unflattering, or duplicate photos before anyone else sees them.</p>
         </div>
         <div class="portal-step">
           <div class="portal-step__num">03</div>
-          <div class="portal-step__icon">⬇️</div>
+          <div class="portal-step__icon"><i data-lucide="download"></i></div>
           <h3>Download in full resolution</h3>
           <p>Save individual photos or the whole collection at full 1080P resolution — yours to keep, print, and treasure forever.</p>
         </div>
         <div class="portal-step">
           <div class="portal-step__num">04</div>
-          <div class="portal-step__icon">🔗</div>
+          <div class="portal-step__icon"><i data-lucide="share-2"></i></div>
           <h3>Share with your guests</h3>
           <p>Once you're happy with the collection, generate a share link and send it to everyone who attended. They can browse and download their favourites too.</p>
         </div>
@@ -257,14 +251,17 @@
   </section>
 
   <!-- TESTIMONIAL / STORY -->
+  <!-- Add a real customer review here when available. Remove the HTML comment tags to make it visible. -->
+  <!--
   <section class="section section--alt">
     <div class="container container--narrow">
       <blockquote class="quote">
-        <p>"We couldn't afford a photographer, so we tried WeddingCamBox — and honestly, the candid shots our guests took are <em>better</em> than any posed photo could ever be. We laughed, we cried, and we have 400+ photos to show for it."</p>
-        <footer>— Sophie &amp; Liam, married April 2025</footer>
+        <p>"Your review text here."</p>
+        <footer>— Name, married Month Year</footer>
       </blockquote>
     </div>
   </section>
+  -->
 
   <!-- CONTACT / BOOKING -->
   <section class="section" id="contact">
@@ -317,5 +314,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>

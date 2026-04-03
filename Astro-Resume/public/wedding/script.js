@@ -1,10 +1,8 @@
 // =========================================================
-// CONFIGURATION — update this to your actual pickup location
+// CONFIGURATION
 // =========================================================
-const BUSINESS_COORDS = { lat: 52.3676, lon: 4.9041 }; // Default: Amsterdam
-
-const BASE_PRICE = 79.99;
-const KM_RATE   = 0.20;
+const BASE_PRICE   = 79.99;
+const POSTAL_PRICE = 15.00; // PostNL send + return — update if PostNL rates change
 
 // =========================================================
 // STICKY NAV
@@ -25,103 +23,36 @@ mobileMenu.querySelectorAll('a').forEach(link => {
 });
 
 // =========================================================
-// DELIVERY CALCULATOR
+// DELIVERY CALCULATOR — PostNL flat rate
 // =========================================================
-let currentDeliveryKm = 0;
-
-const deliveryRadios      = document.querySelectorAll('input[name="delivery"]');
-const deliveryAddressWrap = document.getElementById('deliveryAddressWrap');
-const addressInput        = document.getElementById('addressInput');
-const calcBtn             = document.getElementById('calcDistance');
-const calcBtnText         = document.getElementById('calcBtnText');
-const deliveryResult      = document.getElementById('deliveryResult');
+const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
 
 deliveryRadios.forEach(radio => {
   radio.addEventListener('change', () => {
-    const isDelivery = radio.value === 'delivery';
-    deliveryAddressWrap.classList.toggle('open', isDelivery);
-    if (!isDelivery) {
-      currentDeliveryKm = 0;
-      deliveryResult.className = 'delivery-result';
-      deliveryResult.textContent = '';
-      updatePriceDisplay();
-    }
+    const isPostal = radio.value === 'postal';
+    document.getElementById('postalHint').style.display = isPostal ? '' : 'none';
+    updatePriceDisplay(isPostal);
   });
 });
-
-async function geocodeAddress(address) {
-  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`;
-  const res  = await fetch(url, { headers: { 'Accept-Language': 'nl,en' } });
-  const data = await res.json();
-  if (!data.length) throw new Error('Address not found. Try adding your city or postal code.');
-  return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
-}
-
-async function getRoadDistanceKm(from, to) {
-  const url  = `https://router.project-osrm.org/route/v1/driving/${from.lon},${from.lat};${to.lon},${to.lat}?overview=false`;
-  const res  = await fetch(url);
-  const data = await res.json();
-  if (data.code !== 'Ok' || !data.routes?.length) throw new Error('Could not calculate route. Please check the address.');
-  return data.routes[0].distance / 1000;
-}
 
 function formatPrice(amount) {
   return '€' + amount.toFixed(2).replace('.', ',');
 }
 
-function updatePriceDisplay() {
-  const deliveryCost    = currentDeliveryKm * KM_RATE;
-  const total           = BASE_PRICE + deliveryCost;
+function updatePriceDisplay(includePostal = false) {
+  const shippingCost    = includePostal ? POSTAL_PRICE : 0;
+  const total           = BASE_PRICE + shippingCost;
   const deliveryCostRow = document.getElementById('deliveryCostRow');
   const grandTotalEl    = document.getElementById('grandTotal');
   const bookBtn         = document.getElementById('bookBtn');
 
-  if (currentDeliveryKm > 0) {
-    deliveryCostRow.style.display = 'flex';
-    document.getElementById('deliveryKm').textContent         = Math.round(currentDeliveryKm);
-    document.getElementById('deliveryCostAmount').textContent = formatPrice(deliveryCost);
-  } else {
-    deliveryCostRow.style.display = 'none';
+  deliveryCostRow.style.display = includePostal ? 'flex' : 'none';
+  if (includePostal) {
+    document.getElementById('deliveryCostAmount').textContent = formatPrice(shippingCost);
   }
 
   grandTotalEl.textContent = formatPrice(total);
   bookBtn.textContent      = `Book for ${formatPrice(total)}`;
-}
-
-calcBtn.addEventListener('click', async () => {
-  const address = addressInput.value.trim();
-  if (!address) {
-    setDeliveryResult('error', 'Please enter a delivery address first.');
-    return;
-  }
-
-  calcBtnText.textContent = '…';
-  calcBtn.disabled = true;
-  deliveryResult.className = 'delivery-result';
-  deliveryResult.textContent = '';
-
-  try {
-    const dest = await geocodeAddress(address);
-    const km   = await getRoadDistanceKm(BUSINESS_COORDS, dest);
-    currentDeliveryKm = km;
-    const cost = km * KM_RATE;
-    setDeliveryResult('success', `📍 ${Math.round(km)} km — delivery costs ${formatPrice(cost)}`);
-    updatePriceDisplay();
-  } catch (err) {
-    setDeliveryResult('error', err.message);
-  } finally {
-    calcBtnText.textContent = 'Calculate';
-    calcBtn.disabled = false;
-  }
-});
-
-addressInput.addEventListener('keydown', e => {
-  if (e.key === 'Enter') { e.preventDefault(); calcBtn.click(); }
-});
-
-function setDeliveryResult(type, msg) {
-  deliveryResult.className = `delivery-result ${type}`;
-  deliveryResult.textContent = msg;
 }
 
 // =========================================================
