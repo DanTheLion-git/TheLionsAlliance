@@ -1,39 +1,6 @@
 ---
-const services = [
-  {
-    name: "Jellyfin",
-    description: "Movies & series",
-    href: "http://192.168.178.58:8096",
-    icon: "🎬",
-    color: "teal",
-  },
-  {
-    name: "Lions Alliance Streamer",
-    description: "Movies & series",
-    href: "http://192.168.178.58:5000",
-    icon: "🎬",
-    color: "purple",
-  },
-  {
-    name: "Audiobookshelf",
-    description: "Audiobooks",
-    href: "http://192.168.178.58:13378",
-    icon: "📚",
-    color: "orange",
-  },
-  {
-    name: "Finance",
-    description: "Financial overview",
-    href: "http://192.168.178.58:8085",
-    icon: "💰",
-    color: "blue",
-  },
-  // Add more:
-  // { name: "Pi-hole", description: "DNS / Ads", href: "http://192.168.178.58:8081", icon: "🛡️", color: "red" },
-];
-
-const pageTitle = "The Lions Alliance";
-const subtitle = "Home services (local network)";
+// Public-facing homepage for The Lions Alliance
+// This is the first thing potential clients see at thelionsalliance.com
 ---
 
 <!doctype html>
@@ -41,198 +8,523 @@ const subtitle = "Home services (local network)";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{pageTitle}</title>
-    <meta name="description" content="Local dashboard for Raspberry Pi services." />
+    <title>The Lions Alliance — Creative Studio</title>
+    <meta name="description" content="The Lions Alliance is a creative studio specialising in cinematic wedding films, 3D animation, VFX, and interactive digital experiences." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
   </head>
 
   <body>
-    <main class="wrap">
-      <header class="header">
-        <h1>{pageTitle}</h1>
-        <p>{subtitle}</p>
-      </header>
+    <!-- Navigation -->
+    <header class="nav-bar">
+      <div class="nav-inner">
+        <a href="/" class="brand">
+          <span class="brand-lion">&#9650;</span>
+          The Lions Alliance
+        </a>
+        <nav class="nav-links">
+          <a href="/wedding">Wedding</a>
+          <a href="/resume">Portfolio</a>
+          <a href="/blog">Blog</a>
+          <a href="mailto:info.mvdvl@gmail.com" class="nav-cta">Get in touch</a>
+        </nav>
+      </div>
+    </header>
 
-      <section class="grid" aria-label="Services">
-        {services.map((s) => (
-          <a class={`card ${s.color}`} href={s.href}>
-            <div class="cardTop">
-              <div class="icon" aria-hidden="true">{s.icon}</div>
-              <div class="titleBlock">
-                <div class="name">{s.name}</div>
-                <div class="desc">{s.description}</div>
-              </div>
-            </div>
-
-            <div class="cta">
-              Open <span aria-hidden="true">→</span>
-            </div>
-          </a>
-        ))}
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-inner">
+          <p class="eyebrow">Creative Studio · Est. 2020</p>
+          <h1 class="hero-title">
+            Stories told with<br />
+            <em>craft and technology</em>
+          </h1>
+          <p class="hero-sub">
+            We create cinematic wedding films, immersive 3D experiences, and interactive
+            digital content — bringing your story to life with precision and artistry.
+          </p>
+          <div class="hero-ctas">
+            <a href="/wedding" class="btn-primary">
+              Wedding Films
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/resume" class="btn-ghost">View Portfolio</a>
+          </div>
+        </div>
+        <div class="hero-ornament" aria-hidden="true">
+          <div class="orb orb-1"></div>
+          <div class="orb orb-2"></div>
+          <div class="orb orb-3"></div>
+        </div>
       </section>
 
-      <footer class="footer">
-        <small>
-          these links only work on the home network or through VPN MeshNet.
-        </small>
-      </footer>
+      <!-- Services -->
+      <section class="services">
+        <div class="section-inner">
+          <p class="section-label">What we do</p>
+          <h2 class="section-title">A full creative suite</h2>
+          <div class="service-grid">
+
+            <article class="service-card service-wedding">
+              <div class="service-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+                </svg>
+              </div>
+              <h3>Wedding Cinematography</h3>
+              <p>Timeless cinematic films that capture the emotion, elegance, and detail of your most important day.</p>
+              <a href="/wedding" class="service-link">
+                See our work
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </article>
+
+            <article class="service-card service-3d">
+              <div class="service-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2 2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h3>3D Animation &amp; VFX</h3>
+              <p>From product visualisations and architectural renders to full character animation for film and game.</p>
+              <a href="/resume" class="service-link">
+                View portfolio
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </article>
+
+            <article class="service-card service-interactive">
+              <div class="service-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <h3>Interactive Experiences</h3>
+              <p>VR productions, real-time WebGL showcases, and interactive installations that engage and immerse.</p>
+              <a href="/resume#work" class="service-link">
+                Explore projects
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider quote -->
+      <section class="quote-band">
+        <div class="section-inner">
+          <blockquote>
+            "Every project is a collaboration — we bring the craft, you bring the story."
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- About / contact strip -->
+      <section class="about-strip">
+        <div class="section-inner about-grid">
+          <div class="about-text">
+            <p class="section-label">About</p>
+            <h2 class="section-title">Daniël van Leeuwen</h2>
+            <p>Based in the Netherlands — independent creative technologist with a background in 3D animation, motion capture, real-time development, and cinematic video production. Available for freelance projects worldwide.</p>
+            <a href="/resume" class="btn-ghost" style="margin-top:1.2rem; display:inline-flex;">
+              Full résumé &amp; portfolio →
+            </a>
+          </div>
+          <div class="about-contact">
+            <p class="section-label">Contact</p>
+            <p class="contact-email">
+              <a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a>
+            </p>
+            <div class="social-links">
+              <a href="https://www.youtube.com/@DanTheLionVFX" target="_blank" rel="noopener">YouTube</a>
+              <a href="https://sketchfab.com/superwortel" target="_blank" rel="noopener">Sketchfab</a>
+              <a href="https://daanvanleeuwen.itch.io" target="_blank" rel="noopener">Itch.io</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="section-inner footer-inner">
+        <span>© {new Date().getFullYear()} The Lions Alliance</span>
+        <span class="footer-sep">·</span>
+        <span>Netherlands</span>
+        <span class="footer-sep">·</span>
+        <a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a>
+      </div>
+    </footer>
   </body>
 </html>
 
 <style>
   :root {
-    /* Customize site-wide colors here */
-    --bg: #0b0f17;
-    --panel: rgba(255, 255, 255, 0.06);
-    --panelHover: rgba(255, 255, 255, 0.10);
-    --text: rgba(255, 255, 255, 0.92);
-    --muted: rgba(255, 255, 255, 0.62);
-    --outline: rgba(255, 255, 255, 0.14);
-
-    --radius: 18px;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-
-    --maxWidth: 1050px;
+    --bg:      #08090a;
+    --surface: rgba(255,255,255,.055);
+    --surfH:   rgba(255,255,255,.085);
+    --border:  rgba(255,255,255,.10);
+    --fg:      #f0ede8;
+    --muted:   rgba(240,237,232,.58);
+    --gold:    #c9a84c;
+    --goldL:   #e0c06a;
+    --green:   #3a6b2a;
+    --greenL:  #4d8c38;
+    --radius:  16px;
+    --max:     1100px;
+    --ease:    cubic-bezier(.4,0,.2,1);
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
-  * { box-sizing: border-box; }
-  html, body { height: 100%; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; }
 
   body {
-    margin: 0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-    color: var(--text);
-    background:
-      radial-gradient(1200px 700px at 20% 0%, rgba(99, 102, 241, 0.25), transparent 55%),
-      radial-gradient(900px 700px at 80% 20%, rgba(20, 184, 166, 0.22), transparent 60%),
-      radial-gradient(900px 700px at 50% 100%, rgba(168, 85, 247, 0.18), transparent 55%),
-      var(--bg);
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    overflow-x: hidden;
   }
 
-  .wrap {
-    max-width: var(--maxWidth);
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Nav ── */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,9,10,.82);
+    backdrop-filter: blur(12px);
+  }
+  .nav-inner {
+    max-width: var(--max);
     margin: 0 auto;
-    padding: 42px 18px 28px;
-  }
-
-  .header {
+    padding: 0 1.5rem;
+    height: 58px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 26px;
-  }
-
-  h1 {
-    font-size: clamp(28px, 4vw, 44px);
-    line-height: 1.1;
-    margin: 0;
-    letter-spacing: -0.02em;
-  }
-
-  .header p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 16px;
-  }
-
-  .grid {
-    display: grid;
-    gap: 14px;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    gap: 18px;
+    gap: 1rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    color: var(--fg);
+  }
+  .brand-lion {
+    font-size: .7rem;
+    color: var(--gold);
+    transform: rotate(-30deg);
+    display: inline-block;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: .88rem;
+  }
+  .nav-links a {
+    padding: .3rem .7rem;
+    border-radius: 999px;
+    color: var(--muted);
+    transition: color 140ms, background 140ms;
+  }
+  .nav-links a:hover { color: var(--fg); background: var(--surface); }
+  .nav-cta {
+    margin-left: .5rem;
+    padding: .35rem .9rem !important;
+    border-radius: 999px !important;
+    border: 1px solid var(--border) !important;
+    color: var(--fg) !important;
+    font-weight: 500;
+    transition: border-color 140ms, background 140ms !important;
+  }
+  .nav-cta:hover { border-color: var(--gold) !important; background: rgba(201,168,76,.08) !important; }
 
-    padding: 18px 18px;
+  /* ── Shared ── */
+  .section-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .section-label {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    color: var(--gold);
+    margin-bottom: .5rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .55rem 1.3rem;
+    border-radius: 999px;
+    font-size: .92rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--gold), #a07830);
+    color: #1a1108;
+    border: none;
+    cursor: pointer;
+    transition: filter 150ms, transform 150ms;
+  }
+  .btn-primary:hover { filter: brightness(1.10); transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .52rem 1.2rem;
+    border-radius: 999px;
+    font-size: .92rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 150ms, color 150ms, transform 150ms;
+  }
+  .btn-ghost:hover { border-color: var(--fg); color: var(--fg); transform: translateY(-2px); }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    padding: 7rem 1.5rem 6rem;
+    overflow: hidden;
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .eyebrow {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: .9rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -.02em;
+    margin-bottom: 1.4rem;
+    max-width: 14ch;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 42ch;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    align-items: center;
+  }
+
+  /* Decorative orbs */
+  .hero-ornament {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .25;
+  }
+  .orb-1 { width: 600px; height: 600px; top: -120px; right: -80px; background: radial-gradient(circle, rgba(201,168,76,.7), transparent 60%); }
+  .orb-2 { width: 400px; height: 400px; bottom: -80px; left: -60px;  background: radial-gradient(circle, rgba(58,107,42,.8), transparent 60%); }
+  .orb-3 { width: 300px; height: 300px; top: 40%;    right: 25%;     background: radial-gradient(circle, rgba(80,60,180,.5), transparent 60%); }
+
+  /* ── Services ── */
+  .services {
+    padding: 5rem 0 5.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: var(--panel);
-    border: 1px solid var(--outline);
-    box-shadow: var(--shadow);
-    text-decoration: none;
-    color: inherit;
-
-    transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+    padding: 1.8rem;
+    transition: transform 160ms var(--ease), border-color 160ms;
     position: relative;
     overflow: hidden;
-    min-height: 122px;
   }
-
-  .card:hover {
-    transform: translateY(-2px);
-    background: var(--panelHover);
-    border-color: rgba(255, 255, 255, 0.24);
+  .service-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,.20);
   }
-
-  .cardTop {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: -50% -30% 70% -30%;
+    filter: blur(40px);
+    opacity: .20;
+    pointer-events: none;
   }
+  .service-wedding::before { background: radial-gradient(circle, rgba(201,100,100,.8), transparent 60%); }
+  .service-3d::before      { background: radial-gradient(circle, rgba(58,107,180,.8), transparent 60%); }
+  .service-interactive::before { background: radial-gradient(circle, rgba(58,150,90,.8), transparent 60%); }
 
-  .icon {
-    width: 46px;
-    height: 46px;
+  .service-icon {
+    width: 48px;
+    height: 48px;
     border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surfH);
     display: grid;
     place-items: center;
-    font-size: 22px;
-    background: rgba(255, 255, 255, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    margin-bottom: 1rem;
+    color: var(--goldL);
   }
-
-  .name {
-    font-weight: 650;
-    font-size: 18px;
-    letter-spacing: -0.01em;
-  }
-
-  .desc {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 2px;
-  }
-
-  .cta {
+  .service-card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.2rem;
     font-weight: 600;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.86);
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-    opacity: 0.9;
+    margin-bottom: .55rem;
   }
-
-  .footer {
-    margin-top: 22px;
+  .service-card p {
+    font-size: .9rem;
     color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+  }
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--goldL);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    transition: gap 150ms;
+  }
+  .service-link:hover { gap: .65rem; }
+
+  /* ── Quote band ── */
+  .quote-band {
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .quote-band blockquote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--muted);
+    max-width: 44ch;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 
-  /* Per-service accent “glow” — pick one of these in the services list via `color` */
-
-  .card.teal::before,
-  .card.purple::before,
-  .card.blue::before,
-  .card.red::before,
-  .card.orange::before,
-  .card.green::before {
-    content: "";
-    position: absolute;
-    inset: -30% -30% auto -30%;
-    height: 120%;
-    filter: blur(30px);
-    opacity: 0.35;
-    pointer-events: none;
-    transform: translateZ(0);
+  /* ── About strip ── */
+  .about-strip {
+    padding: 5rem 0 5.5rem;
   }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .about-text p:not(.section-label) {
+    font-size: .95rem;
+    color: var(--muted);
+    max-width: 42ch;
+    line-height: 1.75;
+  }
+  .contact-email a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    transition: color 150ms;
+  }
+  .contact-email a:hover { color: var(--goldL); }
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1rem;
+  }
+  .social-links a {
+    padding: .3rem .8rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-size: .82rem;
+    color: var(--muted);
+    transition: border-color 150ms, color 150ms;
+  }
+  .social-links a:hover { border-color: var(--fg); color: var(--fg); }
 
-  .card.teal::before   { background: radial-gradient(circle at 30% 30%, rgba(20, 184, 166, 0.9), transparent 60%); }
-  .card.purple::before { background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.9), transparent 60%); }
-  .card.blue::before   { background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.9), transparent 60%); }
-  .card.red::before    { background: radial-gradient(circle at 30% 30%, rgba(239, 68, 68, 0.9), transparent 60%); }
-  .card.orange::before { background: radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.9), transparent 60%); }
-  .card.green::before  { background: radial-gradient(circle at 30% 30%, rgba(34, 197, 94, 0.9), transparent 60%); }
+  /* ── Footer ── */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 1.4rem 0 2rem;
+    color: var(--muted);
+    font-size: .82rem;
+  }
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem .8rem;
+    align-items: center;
+  }
+  .footer-sep { opacity: .4; }
+  .site-footer a { color: var(--muted); transition: color 150ms; }
+  .site-footer a:hover { color: var(--fg); }
+
+  /* ── Responsive ── */
+  @media (min-width: 640px) {
+    .service-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 900px) {
+    .service-grid { grid-template-columns: repeat(3, 1fr); }
+    .about-grid   { grid-template-columns: 2fr 1fr; }
+  }
 </style>
