@@ -96,8 +96,10 @@ const posts: WPPost[] = await getPosts(3);
       <h2 class="section-title">Client Projects</h2>
       <p class="section-subtitle">Drag to rotate · click a project to learn more</p>
     </div>
-    <div id="podium-wrapper" class="podium-wrapper">
-      <canvas id="podium-canvas"></canvas>
+    <div class="projects-layout">
+      <div id="podium-wrapper" class="podium-canvas-wrap">
+        <canvas id="podium-canvas"></canvas>
+      </div>
       <aside id="proj-panel" class="proj-panel" aria-hidden="true" aria-label="Project details">
         <button id="proj-close" aria-label="Close">&#x2715;</button>
         <h3 id="proj-title"></h3>
