@@ -604,58 +604,38 @@ html.theme-light .btn-social {
    =============================== */
 
 html.theme-light {
-  /* Muted sage base — dark bark + leaf tones, no peach */
-  --bg:                #e4ead8;   /* light sage */
-  --bg-alt:            #dae1ce;   /* deeper sage */
-  --fg:                #1c1208;   /* dark bark brown */
-  --fg-muted:          #485430;   /* olive-brown */
-  --accent-green:      #2b6415;   /* deep leaf green */
-  --accent-green-light:#3d8420;   /* bright canopy green */
-  --accent-brown:      #5e3212;   /* dark tree bark */
-  --card-bg:           #ecf0e6;   /* frosted leaf white */
-  --border:            #88a86a;   /* mossy olive */
+  --bg:                #ffffff;
+  --bg-alt:            #f1f5f9;
+  --fg:                #0f172a;
+  --fg-muted:          #475569;
+  --accent-green:      #1e40af;
+  --accent-green-light:#2563eb;
+  --accent-brown:      #1d4ed8;
+  --card-bg:           #f8fafc;
+  --border:            #e2e8f0;
 }
-
 html.theme-light body {
-  background:
-    /* dark canopy pressing in from top */
-    radial-gradient(ellipse 130% 48% at 50%   0%,  rgba(16,44,10,.22)  0%, transparent 60%),
-    /* bark shadow on left edge */
-    radial-gradient(ellipse  32% 90% at  0%  50%,  rgba(36,16,5,.13)   0%, transparent 52%),
-    /* bark shadow on right edge */
-    radial-gradient(ellipse  32% 90% at 100% 50%,  rgba(36,16,5,.13)   0%, transparent 52%),
-    /* mossy ground at bottom */
-    radial-gradient(ellipse 110% 45% at 50% 110%,  rgba(20,50,12,.10)  0%, transparent 55%),
-    #e4ead8;
+  background: #ffffff;
 }
-
 html.theme-light .site-header {
-  background: rgba(218, 226, 210, 0.92);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #e2e8f0;
 }
-
 html.theme-light .hero-side {
-  background:
-    radial-gradient(circle at top,    rgba(28,80,14,.14), transparent),
-    radial-gradient(circle at bottom, rgba(60,28,8,.10),  transparent);
-  border-color: rgba(70, 95, 40, 0.35);
+  background: #f1f5f9;
+  border-color: #bfdbfe;
 }
-
 html.theme-light .podium-wrapper {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -5%, rgba(28,80,14,.10), transparent 65%),
-    #ecf0e6;
-  border-color: var(--border);
+  background: #f8fafc;
+  border-color: #e2e8f0;
 }
-
 html.theme-light .pill {
-  border-color: rgba(43,100,21,.45);
-  background: radial-gradient(circle at top left, rgba(43,100,21,.10), transparent);
+  border-color: rgba(37, 99, 235, 0.40);
+  background: rgba(219, 234, 254, 0.35);
 }
-
 html.theme-light .nav a:hover {
-  background: rgba(43,100,21,.15);
+  background: rgba(37, 99, 235, 0.10);
 }
-
 html.theme-light .post-card:hover,
 html.theme-light .card:hover {
   border-color: var(--accent-green-light);
