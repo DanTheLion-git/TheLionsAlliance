@@ -4,25 +4,28 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  /** Pass "light" to activate the light colour-scheme overrides. */
+  theme?: 'dark' | 'light';
 }
 
 const {
   title = "The Lions Alliance",
   description = "Bringing stories to life with technology and a touch of magic.",
+  theme = 'dark',
 } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class={`theme-${theme}`}>
   <head>
     <meta charset="utf-8" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Three.js import map — used by the /resume page 3-D podium -->
     <script is:inline type="importmap">
     {
       "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js"
+        "three":          "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js",
+        "three/addons/":  "https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/"
       }
     }
     </script>
@@ -50,7 +53,6 @@ const {
       <p>© {new Date().getFullYear()} The Lions Alliance</p>
     </footer>
 
-    <!-- Pages can inject scripts here without polluting <main> -->
     <slot name="body-end" />
   </body>
 </html>
