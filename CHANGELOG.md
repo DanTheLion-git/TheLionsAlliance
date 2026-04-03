@@ -5,6 +5,31 @@ Timestamps without a known exact time are marked as the date only.
 
 ---
 
+## [2026-04-04] — CV redesign white/blue + 7 client projects + docs to GitHub
+
+**Request:** Redesign `/resume` as a proper Curriculum Vitae with a clean, modern, white/blue style. Update the ThreeJS component with 7 new client projects (Amsterdam Rederij, Martens Beton, Werken bij Schiphol, Lucardi, Oosterschelde, Garbage Gary, Meijel Museum). Add transform config per project. Add placeholder `.glb` files. Push CHANGELOG.md and REFERENCE.md to GitHub.
+
+**Changes (live repo — DanTheLion-git/DanTheLion-Resume):**
+
+- `Astro-Resume/src/pages/resume.astro` — Full CV redesign:
+  - Hero retitled "CURRICULUM VITAE · CREATIVE TECHNOLOGIST"; kept "Currently Exploring" sidebar
+  - Work Experience preserved with show/hide structure (2 main + 3 in `<details>`)
+  - "Finished Projects" renamed "Client Projects"
+  - Three.js PROJECTS array updated with 7 new entries, each with `folder`, `color`, `pos`, `rot`, `scale` config keys
+  - Added `GLTFLoader` import: tries `/models/projects/[folder]/model.glb`; falls back to colored cube if load fails or model has no geometry
+  - Cube layout changed from 0.80π arc (5 items) to full 360° circle (7 items), `ARC_R=0.55`, `CUBE_SIZE=0.095`
+  - Added Skills & Tools section
+- `Astro-Resume/src/styles/global.css` — Light theme overhauled from sage/forest to clean white/blue CV palette:
+  - `--bg:#ffffff`, `--fg:#0f172a`, `--card-bg:#f8fafc`, `--border:#e2e8f0`
+  - `--accent-green-light:#2563eb` (blue accent), `--accent-green:#1e40af`
+  - Plain white body background (removed forest gradient)
+  - Updated `.site-header`, `.hero-side`, `.podium-wrapper`, `.pill`, `.nav a:hover` overrides
+- `Astro-Resume/public/models/projects/[folder]/model.glb` × 7 — Minimal valid placeholder GLBs created for all 7 projects; replace with real models when ready
+- `CHANGELOG.md` — Pushed to repo root (accessible from any device)
+- `REFERENCE.md` — Pushed to repo root (accessible from any device)
+
+---
+
 ## [2026-04-03T14:28] — Homepage redesign: Creative Craft Tech Light
 
 **Request:** Redesign homepage from Elegant Dark to Creative Craft Tech Light. Change service cards to Interactive Experiences / Customized Products / Film & Photography. Adjust hero to match. Only link to /wedding and /resume.
