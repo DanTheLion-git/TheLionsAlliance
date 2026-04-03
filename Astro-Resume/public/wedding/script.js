@@ -282,6 +282,22 @@ form.addEventListener('submit', (e) => {
   submitBtn.disabled    = true;
   submitBtn.textContent = currentLang === 'nl' ? 'Versturen\u2026' : 'Sending\u2026';
 
+  // Save booking request to localStorage for the admin portal
+  const request = {
+    id:          'req_' + Date.now(),
+    name:        document.getElementById('name').value.trim(),
+    email:       document.getElementById('email').value.trim(),
+    date:        document.getElementById('date').value,
+    guests:      document.getElementById('guests').value || '',
+    package:     document.getElementById('package').value,
+    message:     document.getElementById('message').value.trim(),
+    submittedAt: new Date().toISOString(),
+    status:      'pending',
+  };
+  const existing = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
+  existing.push(request);
+  localStorage.setItem('wcb_booking_requests', JSON.stringify(existing));
+
   setTimeout(() => {
     form.reset();
     submitBtn.style.display = 'none';

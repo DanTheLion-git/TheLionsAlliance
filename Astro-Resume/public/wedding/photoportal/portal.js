@@ -1,7 +1,7 @@
 // ============================================================
 // CONFIG
 // ============================================================
-const USERS = {
+let USERS = {
   'admin':          { password: 'Hondje01',    name: 'Admin',            isAdmin: true },
   'bob-linda':      { password: 'bobwed25',    name: 'Bob & Linda',      wedding: '15 March 2025' },
   'james-kim':      { password: 'kimwed25',    name: 'James & Kim',      wedding: '28 February 2025' },
@@ -10,11 +10,21 @@ const USERS = {
 };
 
 // Customer metadata (admin dashboard)
-const CUSTOMERS = {
+let CUSTOMERS = {
   'bob-linda':      { name: 'Bob & Linda',      weddingDate: '2025-03-15' },
   'james-kim':      { name: 'James & Kim',      weddingDate: '2025-02-28' },
   'suzie-nathasja': { name: 'Suzie & Nathasja', weddingDate: '2026-09-20' },
 };
+
+// Merge any dynamically approved users from localStorage
+(function loadDynamicUsers() {
+  try {
+    const du = JSON.parse(localStorage.getItem('wcb_dynamic_users') || '{}');
+    const dc = JSON.parse(localStorage.getItem('wcb_dynamic_customers') || '{}');
+    Object.assign(USERS, du);
+    Object.assign(CUSTOMERS, dc);
+  } catch (_) {}
+})();
 
 // ============================================================
 // EMAIL CONFIG — fill in after setting up emailjs.com (free)
@@ -236,6 +246,159 @@ function renderDashboard() {
   }).join('');
 
   lucide.createIcons();
+  updateRequestsBadge();
+}
+
+// ── Admin tab switching ──
+function switchAdminTab(tab) {
+  document.getElementById('panelClients').style.display  = tab === 'clients'  ? '' : 'none';
+  document.getElementById('panelRequests').style.display = tab === 'requests' ? '' : 'none';
+  document.getElementById('tabClients').classList.toggle('admin-tab--active',  tab === 'clients');
+  document.getElementById('tabRequests').classList.toggle('admin-tab--active', tab === 'requests');
+  if (tab === 'requests') renderRequests();
+}
+
+function updateRequestsBadge() {
+  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
+  const pending  = requests.filter(r => r.status === 'pending').length;
+  const badge    = document.getElementById('requestsBadge');
+  badge.style.display = pending > 0 ? '' : 'none';
+  badge.textContent   = pending;
+}
+
+// ── Requests panel ──
+function renderRequests() {
+  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
+  const list = document.getElementById('requestsList');
+
+  if (requests.length === 0) {
+    list.innerHTML = '<p class="requests-empty"><i data-lucide="inbox"></i> No booking requests yet. They will appear here when someone fills in the form on the homepage.</p>';
+    lucide.createIcons({ nodes: [list] });
+    return;
+  }
+
+  list.innerHTML = requests.slice().reverse().map(r => {
+    const date = new Date(r.submittedAt).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+    const wDate = r.date ? new Date(r.date).toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }) : '—';
+    const isPending  = r.status === 'pending';
+    const isApproved = r.status === 'approved';
+    const statusCls  = isPending ? 'status-pill--future' : isApproved ? 'status-pill--done' : 'status-pill--missing';
+    const statusTxt  = isPending ? 'Pending' : isApproved ? 'Approved' : 'Declined';
+    return `
+      <div class="request-card ${isApproved ? 'request-card--approved' : ''}">
+        <div class="request-card__head">
+          <div>
+            <h3 class="request-card__name">${escHtml(r.name)}</h3>
+            <span class="request-card__meta">Submitted ${escHtml(date)}</span>
+          </div>
+          <span class="status-pill ${statusCls}">${statusTxt}</span>
+        </div>
+        <div class="request-card__info">
+          <div class="request-info-row"><i data-lucide="mail"></i><a href="mailto:${escHtml(r.email)}">${escHtml(r.email)}</a></div>
+          <div class="request-info-row"><i data-lucide="calendar"></i>${escHtml(wDate)}</div>
+          <div class="request-info-row"><i data-lucide="package"></i>${escHtml(r.package || '—')}</div>
+          ${r.guests ? `<div class="request-info-row"><i data-lucide="users"></i>${escHtml(r.guests)} guests (approx.)</div>` : ''}
+          ${r.message ? `<div class="request-info-row request-info-row--message"><i data-lucide="message-square"></i><span>${escHtml(r.message)}</span></div>` : ''}
+        </div>
+        ${isPending ? `
+        <div class="request-card__actions">
+          <button class="btn btn--primary btn--sm" onclick="openApproveModal('${escHtml(r.id)}')">
+            <i data-lucide="check"></i> Approve
+          </button>
+          <button class="btn btn--ghost btn--sm" onclick="declineRequest('${escHtml(r.id)}')">
+            <i data-lucide="x"></i> Decline
+          </button>
+        </div>` : ''}
+      </div>`;
+  }).join('');
+
+  lucide.createIcons({ nodes: [list] });
+}
+
+// ── Approve flow ──
+let approveTargetId = null;
+
+function openApproveModal(requestId) {
+  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
+  const req = requests.find(r => r.id === requestId);
+  if (!req) return;
+  approveTargetId = requestId;
+
+  // Generate username from name: "Emma & James" → "emma-james"
+  const suggested = req.name.toLowerCase().replace(/\s*&\s*/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+  document.getElementById('approveUsername').value = suggested || 'couple';
+  document.getElementById('approvePassword').value = generatePassword();
+  document.getElementById('approvePackage').value  = req.package || 'Standard';
+  document.getElementById('approveModal').style.display = '';
+  lucide.createIcons({ nodes: [document.getElementById('approveModal')] });
+}
+
+function generatePassword() {
+  const chars = 'abcdefghjkmnpqrstuvwxyz23456789';
+  return Array.from({ length: 8 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+}
+
+function regeneratePassword() {
+  document.getElementById('approvePassword').value = generatePassword();
+}
+
+document.getElementById('approveModalClose').addEventListener('click',  () => { document.getElementById('approveModal').style.display = 'none'; });
+document.getElementById('approveModalClose2').addEventListener('click', () => { document.getElementById('approveModal').style.display = 'none'; });
+
+document.getElementById('approveConfirmBtn').addEventListener('click', () => {
+  const username = document.getElementById('approveUsername').value.trim();
+  const password = document.getElementById('approvePassword').value.trim();
+  const pkg      = document.getElementById('approvePackage').value;
+  if (!username || !password) { showToast('Username and password are required.', 'error'); return; }
+  if (USERS[username]) { showToast(`Username "${username}" already exists. Choose a different one.`, 'error'); return; }
+
+  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
+  const req = requests.find(r => r.id === approveTargetId);
+  if (!req) return;
+
+  // Update request status
+  req.status = 'approved';
+  req.approvedUsername = username;
+  localStorage.setItem('wcb_booking_requests', JSON.stringify(requests));
+
+  // Create user + customer in memory
+  const weddingDateFormatted = req.date
+    ? new Date(req.date).toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' })
+    : '';
+  const newUser     = { password, name: req.name, wedding: weddingDateFormatted };
+  const newCustomer = { name: req.name, weddingDate: req.date || '', package: pkg };
+  USERS[username]     = newUser;
+  CUSTOMERS[username] = newCustomer;
+
+  // Persist dynamic users/customers to localStorage
+  const dynUsers = JSON.parse(localStorage.getItem('wcb_dynamic_users')     || '{}');
+  const dynCusts = JSON.parse(localStorage.getItem('wcb_dynamic_customers') || '{}');
+  dynUsers[username] = newUser;
+  dynCusts[username] = newCustomer;
+  localStorage.setItem('wcb_dynamic_users',     JSON.stringify(dynUsers));
+  localStorage.setItem('wcb_dynamic_customers', JSON.stringify(dynCusts));
+
+  // Initialise empty photo/guest/bin storage for the new client
+  if (!localStorage.getItem(`wcb_${username}_photos`)) {
+    localStorage.setItem(`wcb_${username}_photos`, JSON.stringify([]));
+    localStorage.setItem(`wcb_${username}_guests`, JSON.stringify([]));
+    localStorage.setItem(`wcb_${username}_bin`,    JSON.stringify([]));
+  }
+
+  document.getElementById('approveModal').style.display = 'none';
+  approveTargetId = null;
+  updateRequestsBadge();
+  renderRequests();
+  showToast(`Account created for ${req.name}. Username: ${username} / Password: ${password}`, 'success');
+});
+
+function declineRequest(requestId) {
+  if (!confirm('Decline this booking request?')) return;
+  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
+  const req = requests.find(r => r.id === requestId);
+  if (req) { req.status = 'declined'; localStorage.setItem('wcb_booking_requests', JSON.stringify(requests)); }
+  updateRequestsBadge();
+  renderRequests();
 }
 
 // ── Enter a customer's portal as admin ──

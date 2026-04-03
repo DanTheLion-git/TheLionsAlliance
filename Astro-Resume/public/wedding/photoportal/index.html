@@ -74,10 +74,66 @@
         </div>
       </div>
 
-      <div class="client-grid" id="clientGrid">
-        <!-- injected by JS -->
+      <!-- Admin tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab admin-tab--active" id="tabClients" onclick="switchAdminTab('clients')">
+          <i data-lucide="users"></i> Clients
+        </button>
+        <button class="admin-tab" id="tabRequests" onclick="switchAdminTab('requests')">
+          <i data-lucide="inbox"></i> Booking Requests
+          <span class="admin-tab__badge" id="requestsBadge" style="display:none"></span>
+        </button>
       </div>
 
+      <!-- Clients panel -->
+      <div id="panelClients">
+        <div class="client-grid" id="clientGrid">
+          <!-- injected by JS -->
+        </div>
+      </div>
+
+      <!-- Requests panel -->
+      <div id="panelRequests" style="display:none">
+        <div class="requests-list" id="requestsList">
+          <!-- injected by JS -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Approve Request Modal ── -->
+    <div class="modal-overlay" id="approveModal" style="display:none">
+      <div class="modal approve-modal">
+        <button class="modal__close" id="approveModalClose" aria-label="Close"><i data-lucide="x"></i></button>
+        <h3>Approve Booking Request</h3>
+        <p class="modal__desc">Review the credentials that will be created for this couple's portal account.</p>
+        <div class="approve-fields">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="approveUsername" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div style="display:flex;gap:.5rem;align-items:center">
+              <input type="text" id="approvePassword" style="flex:1" />
+              <button type="button" class="btn btn--ghost btn--sm" onclick="regeneratePassword()"><i data-lucide="refresh-cw"></i></button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Package</label>
+            <select id="approvePackage">
+              <option value="Basic">Basic</option>
+              <option value="Standard">Standard</option>
+              <option value="Premium">Premium</option>
+            </select>
+          </div>
+        </div>
+        <p class="approve-note"><i data-lucide="info"></i> Send these credentials to the couple by email after approving.</p>
+        <div class="approve-actions">
+          <button class="btn btn--ghost" id="approveModalClose2">Cancel</button>
+          <button class="btn btn--primary" id="approveConfirmBtn"><i data-lucide="check"></i> Approve &amp; create account</button>
+        </div>
+      </div>
     </div>
 
     <!-- ── Upload Modal ── -->

@@ -1183,3 +1183,155 @@ p   { margin: 0; }
   .client-grid { grid-template-columns: 1fr; }
   .client-card__actions .btn { font-size: .8rem; }
 }
+/* =========================================================
+   ADMIN TABS
+   ========================================================= */
+.admin-tabs {
+  display: flex;
+  gap: .5rem;
+  border-bottom: 2px solid var(--clr-border);
+  margin-bottom: 1.5rem;
+}
+.admin-tab {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .6rem 1.1rem;
+  border: none;
+  background: none;
+  font-family: var(--ff-sans);
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--clr-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color .15s, border-color .15s;
+  position: relative;
+}
+.admin-tab:hover { color: var(--clr-charcoal); }
+.admin-tab--active { color: var(--clr-rose); border-bottom-color: var(--clr-rose); }
+.admin-tab__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-rose);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding: 0 .3rem;
+  border-radius: 99px;
+}
+
+/* =========================================================
+   BOOKING REQUESTS
+   ========================================================= */
+.requests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.requests-empty {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--clr-muted);
+  font-size: .95rem;
+  padding: 2rem 0;
+}
+.request-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+.request-card--approved {
+  opacity: .7;
+}
+.request-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.request-card__name {
+  font-family: var(--ff-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-charcoal);
+  margin-bottom: .2rem;
+}
+.request-card__meta {
+  font-size: .8rem;
+  color: var(--clr-muted);
+}
+.request-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+.request-info-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .88rem;
+  color: var(--clr-charcoal);
+}
+.request-info-row svg { width: 1rem; height: 1rem; color: var(--clr-muted); flex-shrink: 0; }
+.request-info-row a { color: var(--clr-rose); text-decoration: none; }
+.request-info-row a:hover { text-decoration: underline; }
+.request-info-row--message { align-items: flex-start; }
+.request-info-row--message span { color: var(--clr-muted); font-style: italic; }
+.request-card__actions {
+  display: flex;
+  gap: .6rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--clr-border);
+}
+
+/* =========================================================
+   APPROVE MODAL
+   ========================================================= */
+.approve-modal { max-width: 440px; }
+.approve-fields {
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+  margin: 1.2rem 0;
+}
+.approve-fields .form-group { display: flex; flex-direction: column; gap: .3rem; }
+.approve-fields label { font-size: .85rem; font-weight: 600; color: var(--clr-charcoal); }
+.approve-fields input,
+.approve-fields select {
+  padding: .55rem .75rem;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--ff-sans);
+  font-size: .9rem;
+  background: var(--clr-cream);
+  color: var(--clr-charcoal);
+  width: 100%;
+}
+.approve-note {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .8rem;
+  color: var(--clr-muted);
+  background: var(--clr-blush);
+  padding: .6rem .9rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+.approve-note svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+.approve-actions {
+  display: flex;
+  gap: .75rem;
+  justify-content: flex-end;
+}
