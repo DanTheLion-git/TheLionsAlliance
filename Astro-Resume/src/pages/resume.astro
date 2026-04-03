@@ -5,13 +5,19 @@ import { decodeHTML } from "../lib/html";
 const posts: WPPost[] = await getPosts(3);
 ---
 
-<Layout title="The Lions Alliance" theme="light">
+<Layout title="Daniël van Leeuwen — CV" theme="light">
+
+  <!-- ── CV Identity ─────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-main">
-        <p class="hero-tagline">PORTFOLIO · WEB · 3D</p>
-        <h1 class="hero-title">Hi, I'm <span class="hero-highlight">Daniël</span></h1>
-        <p class="hero-text">I do a lot of really cool things with programming, 3D, storytelling, and electronics. This portfolio contains both my development blog where I write about my projects as I am working on them, as well as a showcase of the finished projects.</p>
+        <p class="hero-tagline">CURRICULUM VITAE · CREATIVE TECHNOLOGIST</p>
+        <h1 class="hero-title">Daniël <span class="hero-highlight">van Leeuwen</span></h1>
+        <p class="hero-text">
+          Creative developer based in the Netherlands with 5+ years of experience in
+          interactive 3D, WebGL / Three.js, motion capture, VR production, and custom
+          hardware development. Available for freelance projects worldwide.
+        </p>
         <div class="hero-actions">
           <a href="https://www.youtube.com/@DanTheLionVFX" class="btn-social btn-yt" target="_blank" rel="noopener noreferrer">
             <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M15.7 1.9A2 2 0 0 0 14.3.5C13 .2 8 .2 8 .2S3 .2 1.7.5A2 2 0 0 0 .3 1.9C0 3.2 0 6 0 6s0 2.8.3 4.1A2 2 0 0 0 1.7 11.5C3 11.8 8 11.8 8 11.8s5 0 6.3-.3a2 2 0 0 0 1.4-1.4C16 8.8 16 6 16 6s0-2.8-.3-4.1zM6.4 8.6V3.4L10.6 6 6.4 8.6z"/></svg>
@@ -26,17 +32,23 @@ const posts: WPPost[] = await getPosts(3);
             Itch.io
           </a>
         </div>
+        <p class="hero-subnote">info.mvdvl@gmail.com &nbsp;·&nbsp; The Netherlands &nbsp;·&nbsp; Available for freelance</p>
       </div>
       <aside class="hero-side">
         <div class="pill">Currently exploring</div>
         <ul class="hero-side-list">
-          <li>• Touch Screen Table</li><li>• Robotic Horse</li><li>• Brief aan Jan</li>
-          <li>• Amsterdam 2.0</li><li>• Puzzle Lantern</li><li>• Home Streaming</li>
+          <li>• Touch Screen Table</li>
+          <li>• Robotic Horse</li>
+          <li>• Brief aan Jan</li>
+          <li>• Amsterdam 2.0</li>
+          <li>• Puzzle Lantern</li>
+          <li>• Home Streaming</li>
         </ul>
       </aside>
     </div>
   </section>
 
+  <!-- ── Work Experience ─────────────────────────────────────── -->
   <section id="experience" class="section">
     <div class="section-header">
       <h2 class="section-title">Work Experience</h2>
@@ -44,23 +56,44 @@ const posts: WPPost[] = await getPosts(3);
     </div>
     <div class="contact-block">
       <ul class="post-list">
-        <li class="post-card"><h3 class="card-title">Software Developer</h3><p class="post-meta">Pebble · 2026-02 — present</p><p class="post-excerpt">Worked with ASP.NET, C#, and Azure enable data access at ASML by developing a web application that streamlined setting up retention policies for data storage.</p></li>
-        <li class="post-card"><h3 class="card-title">3D Animation and Video Developer</h3><p class="post-meta">Enversed Studios · 2023-12 — 2026-02</p><p class="post-excerpt">Created 3D animations and videos using Blender and After Effects. Used Xsens motion capture and Reallusion to create realistic character animations. Performed on-site recordings.</p></li>
+        <li class="post-card">
+          <h3 class="card-title">Software Developer</h3>
+          <p class="post-meta">Pebble · Feb 2026 – present</p>
+          <p class="post-excerpt">Worked with ASP.NET, C#, and Azure to enable data access at ASML by developing a web application that streamlined setting up retention policies for data storage.</p>
+        </li>
+        <li class="post-card">
+          <h3 class="card-title">3D Animation and Video Developer</h3>
+          <p class="post-meta">Enversed Studios · Dec 2023 – Feb 2026</p>
+          <p class="post-excerpt">Created 3D animations and videos using Blender and After Effects. Used Xsens motion capture and Reallusion to create realistic character animations. Performed on-site recordings at client locations.</p>
+        </li>
       </ul>
       <details style="margin-top:0.75rem">
         <summary class="section-link" style="cursor:pointer">Show more experience</summary>
         <ul class="post-list" style="margin-top:0.9rem">
-          <li class="post-card"><h3 class="card-title">Graduation Internship</h3><p class="post-meta">Het Nieuwe Kader · 2023-01 — 2023-07</p><p class="post-excerpt">Created a custom web-based automatic rigging tool for remote motion-capture sessions.</p></li>
-          <li class="post-card"><h3 class="card-title">Intern Product Specialist</h3><p class="post-meta">Movella/Xsens · 2022-03 — 2022-08</p><p class="post-excerpt">Documentation, customer demos and technical support for the Xsens MVN Animate platform.</p></li>
-          <li class="post-card"><h3 class="card-title">Junior VR Developer</h3><p class="post-meta">Wired Workers · 2020-07 — 2021-08</p><p class="post-excerpt">WebGL digital showroom for collaborative robot arms; 3D models and animations.</p></li>
+          <li class="post-card">
+            <h3 class="card-title">Graduation Internship</h3>
+            <p class="post-meta">Het Nieuwe Kader · Jan 2023 – Jul 2023</p>
+            <p class="post-excerpt">Created a custom web-based automatic rigging tool for remote motion-capture sessions.</p>
+          </li>
+          <li class="post-card">
+            <h3 class="card-title">Intern Product Specialist</h3>
+            <p class="post-meta">Movella / Xsens · Mar 2022 – Aug 2022</p>
+            <p class="post-excerpt">Documentation, customer demos and technical support for the Xsens MVN Animate platform.</p>
+          </li>
+          <li class="post-card">
+            <h3 class="card-title">Junior VR Developer</h3>
+            <p class="post-meta">Wired Workers · Jul 2020 – Aug 2021</p>
+            <p class="post-excerpt">WebGL digital showroom for collaborative robot arms; 3D models and animations.</p>
+          </li>
         </ul>
       </details>
     </div>
   </section>
 
+  <!-- ── Client Projects (3D Podium) ────────────────────────── -->
   <section id="work" class="section">
     <div class="section-header">
-      <h2 class="section-title">Finished Projects</h2>
+      <h2 class="section-title">Client Projects</h2>
       <p class="section-subtitle">Drag to rotate · click a project to learn more</p>
     </div>
     <div id="podium-wrapper" class="podium-wrapper">
@@ -75,137 +108,322 @@ const posts: WPPost[] = await getPosts(3);
     </div>
   </section>
 
-  <section id="writing" class="section">
-    <div class="section-header"><h2 class="section-title">Latest Blogposts</h2><a href="/blog/" class="section-link">View all posts →</a></div>
-    {posts.length === 0 && <p>No posts found yet.</p>}
-    {posts.length > 0 && (<ul class="post-list">{posts.map((post)=>(<li class="post-card"><a href={`/blog/${post.slug}/`} class="post-title">{decodeHTML(post.title.rendered)}</a><p class="post-meta"><time datetime={post.date}>{new Date(post.date).toLocaleDateString("en-GB",{year:"numeric",month:"short",day:"2-digit"})}</time></p><p class="post-excerpt" set:html={post.excerpt.rendered}/></li>))}</ul>)}
+  <!-- ── Skills & Tools ─────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Skills &amp; Tools</h2>
+    </div>
+    <div class="contact-block">
+      <p class="post-meta" style="margin-bottom:0.4rem"><strong>3D &amp; Animation</strong></p>
+      <p class="post-excerpt" style="margin-bottom:0.85rem">Blender · After Effects · Xsens Motion Capture · Reallusion · Unity · Unreal Engine</p>
+      <p class="post-meta" style="margin-bottom:0.4rem"><strong>Development</strong></p>
+      <p class="post-excerpt" style="margin-bottom:0.85rem">Three.js · WebGL · Python · C# · ASP.NET · Azure · TypeScript · HTML / CSS / JavaScript</p>
+      <p class="post-meta" style="margin-bottom:0.4rem"><strong>Production &amp; Hardware</strong></p>
+      <p class="post-excerpt">Video editing · 360° VR filming · On-site recording · Custom electronics · Arduino · Raspberry Pi</p>
+    </div>
   </section>
 
-  <section class="section">
-    <div class="section-header"><h2 class="section-title">Get in contact</h2></div>
-    <div class="contact-block"><p>Feel free to reach out if you are interested in my work, have any questions, or just want to say hi!</p><p>You can reach me at <a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a>.</p></div>
+  <!-- ── Latest Blogposts ────────────────────────────────────── -->
+  <section id="writing" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Latest Blogposts</h2>
+      <a href="/blog/" class="section-link">View all posts →</a>
+    </div>
+    {posts.length === 0 && <p>No posts found yet.</p>}
+    {posts.length > 0 && (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-card">
+            <a href={`/blog/${post.slug}/`} class="post-title">{decodeHTML(post.title.rendered)}</a>
+            <p class="post-meta">
+              <time datetime={post.date}>
+                {new Date(post.date).toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" })}
+              </time>
+            </p>
+            <p class="post-excerpt" set:html={post.excerpt.rendered} />
+          </li>
+        ))}
+      </ul>
+    )}
   </section>
+
+  <!-- ── Contact ─────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Get in contact</h2>
+    </div>
+    <div class="contact-block">
+      <p>Feel free to reach out if you are interested in my work, have any questions, or just want to say hi!</p>
+      <p>You can reach me at <a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a>.</p>
+    </div>
+  </section>
+
 </Layout>
 
 <Fragment slot="body-end">
 <script is:inline type="module">
 import * as THREE from 'three';
-import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import { RGBELoader }  from 'three/addons/loaders/RGBELoader.js';
+import { GLTFLoader }  from 'three/addons/loaders/GLTFLoader.js';
 
+// ═══════════════════════════════════════════════════════════════════
+// PROJECT CONFIG — edit titles, colours, positions and rotations here
+// ═══════════════════════════════════════════════════════════════════
+// folder : subfolder inside /models/projects/
+//          Place model.glb there to replace the coloured cube.
+// color  : fallback cube colour (hex, e.g. 0x3b82f6)
+// pos    : { x, y, z }  offset from default circle position (metres)
+// rot    : { x, y, z }  rotation in degrees
+// scale  : uniform scale applied to the loaded GLB model
+// ═══════════════════════════════════════════════════════════════════
 const PROJECTS = [
-  { title:'Python Auto-Rigger',      meta:'Three.js · Python (PyMel, Waitress, Watchdog)',         color:0x6aa9ff, desc:'A web-based automatic rigging tool for remote motion-capture sessions, built as a graduation internship project at Het Nieuwe Kader.', links:[{label:'Video',href:'https://youtu.be/zupK9LBxZwk',newTab:true},{label:'Blog',href:'https://danthelion-git.github.io/DanTheLion-Resume/PythonAutorigger.html',newTab:false}] },
-  { title:'Azure Static Site',       meta:'Personal Project · Azure Cloud',                         color:0x4fc3f7, desc:'Resume/portfolio hosted on Azure Blob Storage as a static website, combined with serverless Azure Functions for backend logic.', links:[{label:'Live',href:'https://danielresumestorage.z6.web.core.windows.net/',newTab:true}] },
-  { title:'Oosterschelde VR',        meta:'360° Interactive Video · Custom Hardware',               color:0x34d399, desc:'Immersive 360° underwater VR experience for the Oosterschelde nature reserve — shot, edited, and delivered end-to-end under strict hardware constraints.', links:[{label:'(WIP) Video',href:'https://youtu.be/VprojdpSWek',newTab:true},{label:'(WIP) Blog',href:'https://danthelion-git.github.io/DanTheLion-Resume/Oosterschelde.html',newTab:false}] },
-  { title:'VR Voyage Amsterdam',     meta:'Historical VR · Pipeline Automation · Render Cost',     color:0xfbbf24, desc:'Historical VR experience taking viewers to 17th-century Amsterdam, with automated pipeline tooling that cut render cost significantly.', links:[{label:'Video',href:'https://youtu.be/OL2vQRpIjFM',newTab:true},{label:'Blog',href:'https://danthelion-git.github.io/DanTheLion-Resume/VRVoyage.html',newTab:false}] },
-  { title:'Wired Workers Showroom',  meta:'Unity WebGL · 3D Animation · Performance',              color:0xf87171, desc:'Virtual showroom for collaborative robot solutions built in Unity WebGL with animated product demonstrations optimised for browser performance.', links:[{label:'Video',href:'https://youtu.be/XgOcEGr6uVE',newTab:true}] },
+  {
+    title: 'Amsterdam Rederij', folder: 'amsterdam-rederij',
+    meta:  'Interactive WebGL · 3D Experience', color: 0x3b82f6,
+    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
+    desc:  'Interactive 3D web experience created for Amsterdam Rederij.',
+    links: []
+  },
+  {
+    title: 'Martens Beton', folder: 'martens-beton',
+    meta:  'Product Visualisation · 3D', color: 0x94a3b8,
+    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
+    desc:  'Product visualisation project for Martens Beton.',
+    links: []
+  },
+  {
+    title: 'Werken bij Schiphol', folder: 'werken-bij-schiphol',
+    meta:  'Recruitment Campaign · Interactive', color: 0x1d4ed8,
+    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
+    desc:  'Interactive recruitment experience for Werken bij Schiphol.',
+    links: []
+  },
+  {
+    title: 'Lucardi', folder: 'lucardi',
+    meta:  'Product Showcase · WebGL', color: 0xf59e0b,
+    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
+    desc:  'Interactive WebGL product showcase for Lucardi jewellery.',
+    links: []
+  },
+  {
+    title: 'Oosterschelde', folder: 'oosterschelde',
+    meta:  '360 Interactive Video · Custom Hardware', color: 0x10b981,
+    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
+    desc:  'Immersive 360 underwater VR experience for the Oosterschelde nature reserve.',
+    links: [{ label:'(WIP) Video', href:'https://youtu.be/VprojdpSWek', newTab:true }]
+  },
+  {
+    title: 'Garbage Gary', folder: 'garbage-gary',
+    meta:  'Game Development · Unity', color: 0x84cc16,
+    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
+    desc:  'A game project featuring the loveable Garbage Gary.',
+    links: []
+  },
+  {
+    title: 'Meijel Museum', folder: 'meijel-museum',
+    meta:  'Interactive Museum Experience', color: 0xb45309,
+    pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, scale: 1.0,
+    desc:  'Interactive digital experience developed for Meijel Museum.',
+    links: []
+  },
 ];
 
-const wrapper=document.getElementById('podium-wrapper'),canvas=document.getElementById('podium-canvas'),panel=document.getElementById('proj-panel'),panelTitle=document.getElementById('proj-title'),panelMeta=document.getElementById('proj-meta'),panelDesc=document.getElementById('proj-desc'),panelLinks=document.getElementById('proj-links'),closeBtn=document.getElementById('proj-close');
-if(!wrapper||!canvas) throw new Error('Podium elements not found');
-const W=()=>wrapper.offsetWidth, H=()=>wrapper.offsetHeight;
+// ─── Scene setup ────────────────────────────────────────────────────
+const wrapper    = document.getElementById('podium-wrapper');
+const canvas     = document.getElementById('podium-canvas');
+const panel      = document.getElementById('proj-panel');
+const panelTitle = document.getElementById('proj-title');
+const panelMeta  = document.getElementById('proj-meta');
+const panelDesc  = document.getElementById('proj-desc');
+const panelLinks = document.getElementById('proj-links');
+const closeBtn   = document.getElementById('proj-close');
+if (!wrapper || !canvas) throw new Error('Podium elements not found');
 
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-renderer.setSize(W(),H());
-renderer.toneMapping=THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure=1.2;
-renderer.outputColorSpace=THREE.SRGBColorSpace;
-renderer.shadowMap.enabled=false;
+const W = () => wrapper.offsetWidth;
+const H = () => wrapper.offsetHeight;
 
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(50,W()/H(),0.1,50);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(W(), H());
+renderer.toneMapping        = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+renderer.outputColorSpace   = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled  = false;
 
-/* Camera — look target raised so platform sits in lower-centre of frame */
-const LOOK_TARGET=new THREE.Vector3(0,0.28,0);
-const CAM_DIST=3.0, CAM_ELEV=14*(Math.PI/180), EASE_RATE=0.10;
-const camH=LOOK_TARGET.y+CAM_DIST*Math.sin(CAM_ELEV);
-const camR=CAM_DIST*Math.cos(CAM_ELEV);
-let targetTheta=0,currentTheta=0;
-function updateCamera(){
-  currentTheta+=(targetTheta-currentTheta)*EASE_RATE;
-  camera.position.set(Math.sin(currentTheta)*camR,camH,Math.cos(currentTheta)*camR);
+const scene  = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, W()/H(), 0.1, 50);
+
+// Camera config
+const LOOK_TARGET = new THREE.Vector3(0, 0.28, 0);
+const CAM_DIST    = 3.0;
+const CAM_ELEV    = 14 * (Math.PI / 180);
+const EASE_RATE   = 0.10;
+const camH = LOOK_TARGET.y + CAM_DIST * Math.sin(CAM_ELEV);
+const camR = CAM_DIST * Math.cos(CAM_ELEV);
+let targetTheta = 0, currentTheta = 0;
+
+function updateCamera() {
+  currentTheta += (targetTheta - currentTheta) * EASE_RATE;
+  camera.position.set(Math.sin(currentTheta) * camR, camH, Math.cos(currentTheta) * camR);
   camera.lookAt(LOOK_TARGET);
 }
 updateCamera();
 
-/* HDRI environment — local first, Polyhaven CDN fallback, ambient last resort */
-const pmrem=new THREE.PMREMGenerator(renderer);
+// HDRI environment — local first, Polyhaven CDN fallback, ambient last resort
+const pmrem = new THREE.PMREMGenerator(renderer);
 pmrem.compileEquirectangularShader();
-function applyEnv(tex){
-  scene.environment=pmrem.fromEquirectangular(tex).texture;
+function applyEnv(tex) {
+  scene.environment = pmrem.fromEquirectangular(tex).texture;
   tex.dispose(); pmrem.dispose();
 }
-const loader=new RGBELoader();
-loader.load('/hdri/scene.hdr',applyEnv,undefined,()=>
-  loader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_08_1k.hdr',applyEnv,undefined,
-    ()=>{ scene.add(new THREE.AmbientLight(0xffffff,1.4)); pmrem.dispose(); }
+const rgbeLoader = new RGBELoader();
+rgbeLoader.load('/hdri/scene.hdr', applyEnv, undefined, () =>
+  rgbeLoader.load(
+    'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_08_1k.hdr',
+    applyEnv, undefined,
+    () => { scene.add(new THREE.AmbientLight(0xffffff, 1.4)); pmrem.dispose(); }
   )
 );
 
-/* Single white flat cylinder — display platform */
-const plateMesh=new THREE.Mesh(
-  new THREE.CylinderGeometry(0.88,0.88,0.04,64),
-  new THREE.MeshStandardMaterial({color:0xffffff,metalness:0.05,roughness:0.22,envMapIntensity:1.0})
+// White flat display platform
+const plateMesh = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.88, 0.88, 0.04, 64),
+  new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.05, roughness: 0.22, envMapIntensity: 1.0 })
 );
-plateMesh.position.y=0.02;
+plateMesh.position.y = 0.02;
 scene.add(plateMesh);
 
-/* Project cubes (no rotation) */
-const podiumGroup=new THREE.Group();
-const PODIUM_TOP_Y=0.04+0.115/2;
-const ARC_R=0.27, N=PROJECTS.length, cubes=[];
-for(let i=0;i<N;i++){
-  const angle=N>1?(i/(N-1)-0.5)*(Math.PI*0.80):0;
-  const cube=new THREE.Mesh(
-    new THREE.BoxGeometry(0.115,0.115,0.115),
-    new THREE.MeshStandardMaterial({color:PROJECTS[i].color,metalness:0.25,roughness:0.35,emissive:new THREE.Color(PROJECTS[i].color),emissiveIntensity:0.0,envMapIntensity:1.0})
+// ─── Project objects — full 360° circle layout ──────────────────────
+const DEG          = Math.PI / 180;
+const N            = PROJECTS.length;
+const ARC_R        = 0.55;           // circle radius (stay within platform r=0.88)
+const CUBE_SIZE    = 0.095;          // fallback cube side length
+const PODIUM_TOP_Y = 0.04 + CUBE_SIZE / 2;
+const podiumGroup  = new THREE.Group();
+const allMeshes    = [];             // flat list of all raycaster targets
+const gltfLoader   = new GLTFLoader();
+
+for (let i = 0; i < N; i++) {
+  const cfg   = PROJECTS[i];
+  const angle = (i / N) * Math.PI * 2;   // evenly spaced around full circle
+
+  const group = new THREE.Group();
+  group.position.set(
+    Math.sin(angle) * ARC_R + cfg.pos.x,
+    PODIUM_TOP_Y            + cfg.pos.y,
+    Math.cos(angle) * ARC_R + cfg.pos.z
   );
-  cube.position.set(Math.sin(angle)*ARC_R,PODIUM_TOP_Y,Math.cos(angle)*ARC_R);
-  cube.userData.projectIndex=i;
-  podiumGroup.add(cube); cubes.push(cube);
+  group.rotation.set(cfg.rot.x * DEG, cfg.rot.y * DEG, cfg.rot.z * DEG);
+  group.userData.projectIndex = i;
+  podiumGroup.add(group);
+
+  // Fallback cube — stays until a GLB with real meshes loads
+  const mat  = new THREE.MeshStandardMaterial({
+    color: cfg.color, metalness: 0.25, roughness: 0.35,
+    emissive: new THREE.Color(cfg.color), emissiveIntensity: 0.0, envMapIntensity: 1.0
+  });
+  const cube = new THREE.Mesh(new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE), mat);
+  cube.userData.projectIndex = i;
+  group.add(cube);
+  allMeshes.push(cube);
+
+  // Try to load real GLB — swap out cube only when the model has geometry
+  gltfLoader.load(
+    '/models/projects/' + cfg.folder + '/model.glb',
+    (gltf) => {
+      let hasMesh = false;
+      gltf.scene.traverse(c => { if (c.isMesh) hasMesh = true; });
+      if (hasMesh) {
+        group.remove(cube);
+        allMeshes.splice(allMeshes.indexOf(cube), 1);
+        gltf.scene.scale.setScalar(cfg.scale);
+        gltf.scene.traverse(child => {
+          if (child.isMesh) { child.userData.projectIndex = i; allMeshes.push(child); }
+        });
+        group.add(gltf.scene);
+      }
+    },
+    undefined,
+    () => { /* load failed — cube stays */ }
+  );
 }
 scene.add(podiumGroup);
 
-/* Selection */
-let selectedIndex=-1;
-function selectProject(idx){
-  if(selectedIndex>=0&&selectedIndex<cubes.length){cubes[selectedIndex].material.emissiveIntensity=0.0;cubes[selectedIndex].scale.setScalar(1.0);}
-  selectedIndex=idx;
-  if(idx<0){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');return;}
-  cubes[idx].material.emissiveIntensity=0.40;cubes[idx].scale.setScalar(1.22);
-  const p=PROJECTS[idx];
-  panelTitle.textContent=p.title; panelMeta.textContent=p.meta; panelDesc.textContent=p.desc;
-  panelLinks.innerHTML='';
-  p.links.forEach(({label,href,newTab})=>{
-    const a=document.createElement('a');a.className='button-ghost';a.href=href;a.textContent=label;
-    if(newTab){a.target='_blank';a.rel='noopener';}
+// ─── Selection ────────────────────────────────────────────────────
+let selectedIndex = -1;
+
+function selectProject(idx) {
+  if (selectedIndex >= 0 && selectedIndex < podiumGroup.children.length) {
+    const prev = podiumGroup.children[selectedIndex];
+    prev.traverse(c => { if (c.isMesh && c.material) c.material.emissiveIntensity = 0.0; });
+    prev.scale.setScalar(1.0);
+  }
+  selectedIndex = idx;
+  if (idx < 0) {
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    return;
+  }
+  const sel = podiumGroup.children[idx];
+  sel.traverse(c => { if (c.isMesh && c.material) c.material.emissiveIntensity = 0.40; });
+  sel.scale.setScalar(1.22);
+  const p = PROJECTS[idx];
+  panelTitle.textContent = p.title;
+  panelMeta.textContent  = p.meta;
+  panelDesc.textContent  = p.desc;
+  panelLinks.innerHTML   = '';
+  p.links.forEach(({ label, href, newTab }) => {
+    const a = document.createElement('a');
+    a.className = 'button-ghost'; a.href = href; a.textContent = label;
+    if (newTab) { a.target = '_blank'; a.rel = 'noopener'; }
     panelLinks.appendChild(a);
   });
-  panel.classList.add('open');panel.setAttribute('aria-hidden','false');
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden', 'false');
 }
-closeBtn.addEventListener('click',()=>selectProject(-1));
 
-/* Full 360° drag */
-let isDragging=false,lastX=0,totalDrag=0;
-canvas.addEventListener('pointerdown',(e)=>{isDragging=true;lastX=e.clientX;totalDrag=0;canvas.setPointerCapture(e.pointerId);});
-window.addEventListener('pointermove',(e)=>{
-  if(!isDragging)return;
-  const dx=e.clientX-lastX; lastX=e.clientX; totalDrag+=Math.abs(dx);
-  targetTheta-=(dx/W())*(Math.PI*2);
+document.getElementById('proj-close').addEventListener('click', () => selectProject(-1));
+
+// ─── Drag-to-orbit (full 360°) ────────────────────────────────────
+let isDragging = false, lastX = 0, totalDrag = 0;
+canvas.addEventListener('pointerdown', (e) => {
+  isDragging = true; lastX = e.clientX; totalDrag = 0;
+  canvas.setPointerCapture(e.pointerId);
 });
-window.addEventListener('pointerup',(e)=>{if(!isDragging)return;isDragging=false;if(totalDrag<6)handleClick(e);});
-const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
-function handleClick(e){
-  const rect=canvas.getBoundingClientRect();
-  pointer.x=((e.clientX-rect.left)/rect.width)*2-1;
-  pointer.y=-((e.clientY-rect.top)/rect.height)*2+1;
-  raycaster.setFromCamera(pointer,camera);
-  const hits=raycaster.intersectObjects(cubes);
-  if(hits.length>0){const idx=hits[0].object.userData.projectIndex;selectProject(idx===selectedIndex?-1:idx);}
-  else selectProject(-1);
-}
-new ResizeObserver(()=>{renderer.setSize(W(),H());camera.aspect=W()/H();camera.updateProjectionMatrix();}).observe(wrapper);
-(function animate(){requestAnimationFrame(animate);updateCamera();renderer.render(scene,camera);})();
-</script>
+window.addEventListener('pointermove', (e) => {
+  if (!isDragging) return;
+  const dx = e.clientX - lastX; lastX = e.clientX; totalDrag += Math.abs(dx);
+  targetTheta -= (dx / W()) * (Math.PI * 2);
+});
+window.addEventListener('pointerup', (e) => {
+  if (!isDragging) return;
+  isDragging = false;
+  if (totalDrag < 6) handleClick(e);
+});
 
+// ─── Click-to-select ──────────────────────────────────────────────
+const raycaster = new THREE.Raycaster();
+const pointer   = new THREE.Vector2();
+function handleClick(e) {
+  const rect = canvas.getBoundingClientRect();
+  pointer.x  =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
+  pointer.y  = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+  raycaster.setFromCamera(pointer, camera);
+  const hits = raycaster.intersectObjects(allMeshes, true);
+  if (hits.length > 0) {
+    const idx = hits[0].object.userData.projectIndex;
+    selectProject(idx === selectedIndex ? -1 : idx);
+  } else {
+    selectProject(-1);
+  }
+}
+
+new ResizeObserver(() => {
+  renderer.setSize(W(), H());
+  camera.aspect = W() / H();
+  camera.updateProjectionMatrix();
+}).observe(wrapper);
+
+(function animate() { requestAnimationFrame(animate); updateCamera(); renderer.render(scene, camera); })();
+</script>
 </Fragment>
