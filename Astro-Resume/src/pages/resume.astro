@@ -3,7 +3,7 @@ import Layout from "../layouts/ResumeLayout.astro";
 import { getPosts, type WPPost } from "../lib/wp";
 import { decodeHTML } from "../lib/html";
 
-const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
+const posts: WPPost[] = await getPosts(3);
 ---
 
 <Layout title="The Lions Alliance">
@@ -29,7 +29,6 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
           >
             YouTube
           </a>
-
           <a
             href="https://sketchfab.com/superwortel"
             class="button-ghost"
@@ -38,7 +37,6 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
           >
             Sketchfab
           </a>
-
           <a
             href="https://daanvanleeuwen.itch.io"
             class="button-ghost"
@@ -52,7 +50,6 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
 
       <aside class="hero-side">
         <div class="pill">Currently exploring</div>
-        <!-- <h2 class="hero-side-title">side title</h2> -->
         <ul class="hero-side-list">
           <li>• Touch Screen Table</li>
           <li>• Robotic Horse</li>
@@ -101,7 +98,6 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
         <summary class="section-link" style="cursor: pointer;"
           >Show more experience</summary
         >
-
         <ul class="post-list" style="margin-top: 0.9rem;">
           <li class="post-card">
             <h3 class="card-title">Graduation Internship</h3>
@@ -112,7 +108,6 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
               remotely directed motion capture sessions.
             </p>
           </li>
-
           <li class="post-card">
             <h3 class="card-title">Intern Product Specialist</h3>
             <p class="post-meta">Movella/Xsens · 2022-03 — 2022-08</p>
@@ -122,7 +117,6 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
               technical support.
             </p>
           </li>
-
           <li class="post-card">
             <h3 class="card-title">Junior VR Developer</h3>
             <p class="post-meta">Wired Workers · 2020-07 — 2021-08</p>
@@ -137,44 +131,23 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
     </div>
   </section>
 
+  <!-- ── Finished Projects — interactive 3-D podium ──────────────────────── -->
   <section id="work" class="section">
     <div class="section-header">
       <h2 class="section-title">Finished Projects</h2>
-      <p class="section-subtitle">
-        A quick overview of some of the projects I have finished
-      </p>
+      <p class="section-subtitle">Drag to rotate · click a project to learn more</p>
     </div>
 
-    <div class="cards-grid">
-      <article class="card">
-        <h3 class="card-title">VR Voyage</h3>
-        <p class="card-meta">VR Blender Experience</p>
-        <p>
-          A VR experience created in Blender where the user can experience
-          Amsterdam in the year 1600 while on board a boat. Meeting various
-          historic characters along the way.
-        </p>
-      </article>
+    <div id="podium-wrapper" class="podium-wrapper">
+      <canvas id="podium-canvas"></canvas>
 
-      <article class="card">
-        <h3 class="card-title">Martens Beton</h3>
-        <p class="card-meta">Marketing Animation Video</p>
-        <p>
-          A short video created in Blender and After Effects that showcases
-          Martens Beton's new productline; the Qube system.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3 class="card-title">Python Autorigger</h3>
-        <p class="card-meta">Animation Automation Tool</p>
-        <p>
-          A web based automatic rigging tool for 3D characters built using
-          Autodesk Maya's PyMel and Flask. It allows users to upload their 3D
-          character models and automatically generates a rig for them, making
-          the animation process much faster and more efficient.
-        </p>
-      </article>
+      <aside id="proj-panel" class="proj-panel" aria-hidden="true" aria-label="Project details">
+        <button id="proj-close" aria-label="Close">&#x2715;</button>
+        <h3 id="proj-title"></h3>
+        <p  id="proj-meta"  class="post-meta"></p>
+        <p  id="proj-desc"  class="post-excerpt"></p>
+        <div id="proj-links" class="proj-links"></div>
+      </aside>
     </div>
   </section>
 
@@ -187,7 +160,7 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
     {
       posts.length === 0 && (
         <p>
-          No posts found yet. Once you publish on WordPress, they’ll show up
+          No posts found yet. Once you publish on WordPress, they'll show up
           here.
         </p>
       )
@@ -201,7 +174,6 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
               <a href={`/blog/${post.slug}/`} class="post-title">
                 {decodeHTML(post.title.rendered)}
               </a>
-
               <p class="post-meta">
                 <time datetime={post.date}>
                   {new Date(post.date).toLocaleDateString("en-GB", {
@@ -211,7 +183,6 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
                   })}
                 </time>
               </p>
-
               <p class="post-excerpt" set:html={post.excerpt.rendered} />
             </li>
           ))}
@@ -236,3 +207,286 @@ const posts: WPPost[] = await getPosts(3); // show 3 latest on the frontpage
     </div>
   </section>
 </Layout>
+
+<!-- ── Three.js podium script ─────────────────────────────────────────────── -->
+<Fragment slot="body-end">
+<script is:inline type="module">
+import * as THREE from 'three';
+
+const PROJECTS = [
+  {
+    title: 'Python Auto-Rigger',
+    meta: 'Three.js · Python (PyMel, Waitress, Watchdog)',
+    desc: 'A web-based automatic rigging tool for remote motion-capture sessions, built as a graduation internship project at Het Nieuwe Kader.',
+    color: 0x6aa9ff,
+    links: [
+      { label: 'Video', href: 'https://youtu.be/zupK9LBxZwk',                newTab: true  },
+      { label: 'Blog',  href: 'https://danthelion-git.github.io/DanTheLion-Resume/PythonAutorigger.html', newTab: false },
+    ],
+  },
+  {
+    title: 'Azure Static Site',
+    meta: 'Personal Project · Azure Cloud',
+    desc: 'Resume/portfolio hosted on Azure Blob Storage as a static website, combined with serverless Azure Functions for backend logic.',
+    color: 0x4fc3f7,
+    links: [
+      { label: 'Live', href: 'https://danielresumestorage.z6.web.core.windows.net/', newTab: true },
+    ],
+  },
+  {
+    title: 'Oosterschelde VR',
+    meta: '360° Interactive Video · Custom Hardware',
+    desc: 'Immersive 360° underwater VR experience for the Oosterschelde nature reserve — shot, edited, and delivered end-to-end under strict hardware constraints.',
+    color: 0x34d399,
+    links: [
+      { label: '(WIP) Video', href: 'https://youtu.be/VprojdpSWek', newTab: true  },
+      { label: '(WIP) Blog',  href: 'https://danthelion-git.github.io/DanTheLion-Resume/Oosterschelde.html', newTab: false },
+    ],
+  },
+  {
+    title: 'VR Voyage Amsterdam',
+    meta: 'Historical VR · Pipeline Automation · Render Cost',
+    desc: 'Historical VR experience taking viewers to 17th-century Amsterdam, with automated pipeline tooling that cut render cost significantly.',
+    color: 0xfbbf24,
+    links: [
+      { label: 'Video', href: 'https://youtu.be/OL2vQRpIjFM', newTab: true  },
+      { label: 'Blog',  href: 'https://danthelion-git.github.io/DanTheLion-Resume/VRVoyage.html', newTab: false },
+    ],
+  },
+  {
+    title: 'Wired Workers Showroom',
+    meta: 'Unity WebGL · 3D Animation · Performance',
+    desc: 'Virtual showroom for collaborative robot solutions built in Unity WebGL with animated product demonstrations optimised for browser performance.',
+    color: 0xf87171,
+    links: [
+      { label: 'Video', href: 'https://youtu.be/XgOcEGr6uVE', newTab: true },
+    ],
+  },
+];
+
+const wrapper    = document.getElementById('podium-wrapper');
+const canvas     = document.getElementById('podium-canvas');
+const panel      = document.getElementById('proj-panel');
+const panelTitle = document.getElementById('proj-title');
+const panelMeta  = document.getElementById('proj-meta');
+const panelDesc  = document.getElementById('proj-desc');
+const panelLinks = document.getElementById('proj-links');
+const closeBtn   = document.getElementById('proj-close');
+
+if (!wrapper || !canvas) throw new Error('Podium elements not found');
+
+const W = () => wrapper.offsetWidth;
+const H = () => wrapper.offsetHeight;
+
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(W(), H());
+renderer.toneMapping       = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+renderer.outputColorSpace  = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
+
+const scene  = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, W() / H(), 0.1, 50);
+
+const LOOK_TARGET    = new THREE.Vector3(0, 0.45, 0);
+const CAM_DIST       = 3.6;
+const CAM_ELEV       = 22 * (Math.PI / 180);
+const CAM_HALF_RANGE = 60 * (Math.PI / 180);
+const EASE_RATE      = 0.10;
+
+const camH = LOOK_TARGET.y + CAM_DIST * Math.sin(CAM_ELEV);
+const camR = CAM_DIST * Math.cos(CAM_ELEV);
+
+let targetTheta  = 0;
+let currentTheta = 0;
+
+function updateCamera() {
+  currentTheta += (targetTheta - currentTheta) * EASE_RATE;
+  camera.position.set(
+    Math.sin(currentTheta) * camR,
+    camH,
+    Math.cos(currentTheta) * camR,
+  );
+  camera.lookAt(LOOK_TARGET);
+}
+updateCamera();
+
+// Lighting — warm key + green forest fill
+scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+
+const keyLight = new THREE.DirectionalLight(0xfff4e0, 1.8);
+keyLight.position.set(4, 8, 4);
+keyLight.castShadow = true;
+keyLight.shadow.mapSize.set(1024, 1024);
+keyLight.shadow.camera.near   = 0.1;
+keyLight.shadow.camera.far    = 20;
+keyLight.shadow.camera.left   = -2.5;
+keyLight.shadow.camera.right  =  2.5;
+keyLight.shadow.camera.top    =  2.5;
+keyLight.shadow.camera.bottom = -2.5;
+scene.add(keyLight);
+
+const rimLight = new THREE.DirectionalLight(0x4c7b4c, 0.6);
+rimLight.position.set(-4, 2, -3);
+scene.add(rimLight);
+
+const topGlow = new THREE.PointLight(0x7ab87a, 2.0, 5, 2);
+topGlow.position.set(0, 3.5, 0);
+scene.add(topGlow);
+
+// Podium — dark metallic, matching --card-bg
+const podiumGroup = new THREE.Group();
+const podMat = new THREE.MeshStandardMaterial({ color: 0x1a1f18, metalness: 0.55, roughness: 0.45 });
+
+[
+  { r: 0.72, h: 0.13, y: 0.065 },
+  { r: 0.60, h: 0.13, y: 0.195 },
+  { r: 0.48, h: 0.33, y: 0.425 },
+].forEach(({ r, h, y }) => {
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 48), podMat);
+  m.position.y = y;
+  m.castShadow = m.receiveShadow = true;
+  podiumGroup.add(m);
+});
+
+// Accent ring — mossy green
+const ringMesh = new THREE.Mesh(
+  new THREE.TorusGeometry(0.46, 0.013, 8, 80),
+  new THREE.MeshBasicMaterial({ color: 0x4c7b4c, transparent: true, opacity: 0.55 }),
+);
+ringMesh.rotation.x = Math.PI / 2;
+ringMesh.position.y = 0.592;
+podiumGroup.add(ringMesh);
+scene.add(podiumGroup);
+
+// Ground disc
+const ground = new THREE.Mesh(
+  new THREE.CircleGeometry(2.2, 64),
+  new THREE.MeshStandardMaterial({ color: 0x0a0c09, roughness: 1, metalness: 0 }),
+);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -0.01;
+ground.receiveShadow = true;
+scene.add(ground);
+
+// Project cubes
+const PODIUM_TOP_Y = 0.592;
+const ARC_R        = 0.27;
+const N            = PROJECTS.length;
+const cubes        = [];
+
+for (let i = 0; i < N; i++) {
+  const angle = N > 1 ? (i / (N - 1) - 0.5) * (Math.PI * 0.80) : 0;
+  const cube  = new THREE.Mesh(
+    new THREE.BoxGeometry(0.115, 0.115, 0.115),
+    new THREE.MeshStandardMaterial({
+      color:             PROJECTS[i].color,
+      metalness:         0.25,
+      roughness:         0.35,
+      emissive:          new THREE.Color(PROJECTS[i].color),
+      emissiveIntensity: 0.0,
+    }),
+  );
+  cube.position.set(Math.sin(angle) * ARC_R, PODIUM_TOP_Y, Math.cos(angle) * ARC_R);
+  cube.castShadow = true;
+  cube.userData.projectIndex = i;
+  podiumGroup.add(cube);
+  cubes.push(cube);
+}
+
+// Selection
+let selectedIndex = -1;
+
+function selectProject(idx) {
+  if (selectedIndex >= 0 && selectedIndex < cubes.length) {
+    cubes[selectedIndex].material.emissiveIntensity = 0.0;
+    cubes[selectedIndex].scale.setScalar(1.0);
+  }
+  selectedIndex = idx;
+
+  if (idx < 0) {
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    return;
+  }
+
+  cubes[idx].material.emissiveIntensity = 0.40;
+  cubes[idx].scale.setScalar(1.22);
+
+  const p      = PROJECTS[idx];
+  panelTitle.textContent = p.title;
+  panelMeta.textContent  = p.meta;
+  panelDesc.textContent  = p.desc;
+  panelLinks.innerHTML   = '';
+  p.links.forEach(({ label, href, newTab }) => {
+    const a       = document.createElement('a');
+    a.className   = 'button-ghost';
+    a.href        = href;
+    a.textContent = label;
+    if (newTab) { a.target = '_blank'; a.rel = 'noopener'; }
+    panelLinks.appendChild(a);
+  });
+
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden', 'false');
+}
+
+closeBtn.addEventListener('click', () => selectProject(-1));
+
+// Input
+let isDragging = false, lastX = 0, totalDrag = 0;
+
+canvas.addEventListener('pointerdown', (e) => {
+  isDragging = true;
+  lastX = e.clientX;
+  totalDrag = 0;
+  canvas.setPointerCapture(e.pointerId);
+});
+
+window.addEventListener('pointermove', (e) => {
+  if (!isDragging) return;
+  const dx  = e.clientX - lastX;
+  lastX      = e.clientX;
+  totalDrag += Math.abs(dx);
+  const next = targetTheta - (dx / W()) * (120 * Math.PI / 180);
+  targetTheta = Math.max(-CAM_HALF_RANGE, Math.min(CAM_HALF_RANGE, next));
+});
+
+window.addEventListener('pointerup', (e) => {
+  if (!isDragging) return;
+  isDragging = false;
+  if (totalDrag < 6) handleClick(e);
+});
+
+const raycaster = new THREE.Raycaster();
+const pointer   = new THREE.Vector2();
+
+function handleClick(e) {
+  const rect  = canvas.getBoundingClientRect();
+  pointer.x   =  ((e.clientX - rect.left) / rect.width ) * 2 - 1;
+  pointer.y   = -((e.clientY - rect.top ) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(pointer, camera);
+  const hits = raycaster.intersectObjects(cubes);
+  if (hits.length > 0) {
+    const idx = hits[0].object.userData.projectIndex;
+    selectProject(idx === selectedIndex ? -1 : idx);
+  } else {
+    selectProject(-1);
+  }
+}
+
+new ResizeObserver(() => {
+  renderer.setSize(W(), H());
+  camera.aspect = W() / H();
+  camera.updateProjectionMatrix();
+}).observe(wrapper);
+
+(function animate() {
+  requestAnimationFrame(animate);
+  updateCamera();
+  renderer.render(scene, camera);
+})();
+</script>
+</Fragment>
