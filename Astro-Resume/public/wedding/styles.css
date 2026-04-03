@@ -238,47 +238,6 @@ h1, h2, h3 { font-family: var(--ff-serif); line-height: 1.2; }
   margin-bottom: .75rem;
 }
 
-/* Storage / photo capacity stats row */
-.camera-stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .75rem;
-  flex-wrap: wrap;
-  background: var(--clr-white);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
-  padding: .75rem 1.25rem;
-  box-shadow: var(--shadow);
-  width: 100%;
-  max-width: 340px;
-}
-.camera-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .1rem;
-}
-.camera-stat strong {
-  font-family: var(--ff-serif);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--clr-rose);
-  line-height: 1.1;
-}
-.camera-stat span {
-  font-size: .68rem;
-  color: var(--clr-muted);
-  text-align: center;
-  line-height: 1.3;
-}
-.camera-stat__sep {
-  width: 1px;
-  height: 2rem;
-  background: var(--clr-border);
-  flex-shrink: 0;
-}
-
 @keyframes floatIn {
   from { opacity: 0; transform: translateY(16px) scale(.9); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
