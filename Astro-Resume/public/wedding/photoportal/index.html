@@ -9,11 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- EmailJS SDK — used for sending gallery links to guests -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
   <!-- ==================== LOGIN ==================== -->
-  <div class="view view--login" id="viewLogin">
+  <div class="view view--login" id="viewLogin" style="display:none">
     <div class="login-wrap">
       <div class="login-card">
         <a href="../" class="login-back"><i data-lucide="arrow-left"></i> Back to site</a>
@@ -39,8 +41,80 @@
     </div>
   </div>
 
+  <!-- ==================== ADMIN DASHBOARD ==================== -->
+  <div class="view view--admin" id="viewAdmin" style="display:none">
+
+    <header class="p-header">
+      <div class="p-header__inner">
+        <div style="display:flex;align-items:center;gap:.75rem">
+          <a href="../" class="p-header__logo">WeddingCamBox</a>
+          <span class="admin-badge"><i data-lucide="shield"></i> Admin</span>
+        </div>
+        <button class="btn btn--sm btn--ghost" id="adminLogoutBtn">Sign out</button>
+      </div>
+    </header>
+
+    <div class="admin-container">
+
+      <!-- Config warning -->
+      <div class="config-warning" id="emailConfigWarning">
+        <i data-lucide="alert-triangle"></i>
+        <div>
+          <strong>Email sending is not configured.</strong>
+          Add your EmailJS keys to <code>EMAILJS_CONFIG</code> in <code>portal.js</code> to enable direct email delivery.
+          Until then, the portal will fall back to opening your local email client.
+          <a href="https://www.emailjs.com" target="_blank" rel="noopener">Set up EmailJS free &rarr;</a>
+        </div>
+      </div>
+
+      <div class="admin-hd">
+        <div>
+          <h1 class="admin-title">Dashboard</h1>
+          <p class="admin-subtitle">Manage clients, upload photos, and track gallery status.</p>
+        </div>
+      </div>
+
+      <div class="client-grid" id="clientGrid">
+        <!-- injected by JS -->
+      </div>
+
+    </div>
+
+    <!-- ── Upload Modal ── -->
+    <div class="modal-overlay" id="uploadModal" style="display:none">
+      <div class="modal upload-modal">
+        <button class="modal__close" id="uploadModalClose" aria-label="Close"><i data-lucide="x"></i></button>
+        <h3>Upload Photos</h3>
+        <p class="modal__desc">Select the photos from the SD cards to add to this couple's gallery.</p>
+
+        <div class="upload-drop-zone" id="uploadDropZone">
+          <i data-lucide="image-plus"></i>
+          <p>Drop photos here or <button type="button" class="upload-browse-link" id="uploadBrowseBtn">browse files</button></p>
+          <span class="upload-drop-hint">JPEG, PNG &mdash; any size</span>
+        </div>
+        <input type="file" id="uploadFileInput" multiple accept="image/*" style="display:none" />
+
+        <div class="upload-preview-grid" id="uploadPreviewGrid"></div>
+        <p class="upload-status" id="uploadStatus">No files selected.</p>
+
+        <div class="upload-actions">
+          <p class="upload-note"><i data-lucide="info"></i> Photos are added to the gallery for this session. Connect cloud storage (Cloudinary / Supabase) for permanent hosting — see INSTRUCTIONS.md.</p>
+          <button class="btn btn--primary" id="uploadConfirmBtn" disabled><i data-lucide="upload"></i> Add to gallery</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end view--admin -->
+
   <!-- ==================== PORTAL ==================== -->
   <div class="view view--portal" id="viewPortal" style="display:none">
+
+    <!-- Admin managing banner -->
+    <div class="admin-banner" id="adminBanner" style="display:none">
+      <i data-lucide="shield"></i>
+      Managing: <strong id="adminBannerName"></strong>
+      <button class="admin-banner__back" id="adminBannerBack"><i data-lucide="arrow-left"></i> Back to dashboard</button>
+    </div>
 
     <!-- Header -->
     <header class="p-header">
@@ -73,10 +147,9 @@
       </div>
     </div>
 
-    <!-- ===== STEP 1: PHOTOS ===== -->
+    <!-- STEP 1: PHOTOS -->
     <div class="step-panel" id="panel1">
       <div class="panel-inner">
-
         <div class="panel-hd">
           <div>
             <h2 class="panel-title">Your Photos</h2>
@@ -90,16 +163,12 @@
             </button>
           </div>
         </div>
-
         <div class="photo-grid" id="photoGrid"></div>
-
         <div class="gallery-empty" id="galleryEmpty" style="display:none">
           <i data-lucide="images"></i>
           <h3>No photos yet</h3>
-          <p>Photos will appear here once they&rsquo;ve been uploaded to your account.</p>
+          <p>Photos will appear here once they&rsquo;ve been uploaded.</p>
         </div>
-
-        <!-- Recycle Bin Drawer -->
         <div class="recycle-bin" id="recycleBin" style="display:none">
           <div class="recycle-bin__header">
             <h3><i data-lucide="trash-2"></i> Recycle Bin</h3>
@@ -108,18 +177,16 @@
               <button class="g-btn" id="closeBinBtn"><i data-lucide="x"></i></button>
             </div>
           </div>
-          <p class="recycle-bin__hint">Photos in the recycle bin will not be included in your gallery. Restore them if you change your mind, or empty the bin to permanently delete them.</p>
+          <p class="recycle-bin__hint">Photos here are excluded from the gallery. Restore or permanently delete them below.</p>
           <div class="photo-grid photo-grid--bin" id="binGrid"></div>
           <div class="recycle-bin__empty" id="binEmpty"><i data-lucide="check-circle"></i> The recycle bin is empty.</div>
         </div>
-
       </div>
     </div>
 
-    <!-- ===== STEP 2: GUESTS ===== -->
+    <!-- STEP 2: GUESTS -->
     <div class="step-panel" id="panel2" style="display:none">
       <div class="panel-inner panel-inner--narrow">
-
         <div class="panel-hd">
           <div>
             <h2 class="panel-title">Guest List</h2>
@@ -127,7 +194,6 @@
           </div>
           <span class="guest-count-badge" id="guestCountBadge">0 guests</span>
         </div>
-
         <form class="guest-add-form" id="guestForm" novalidate>
           <div class="guest-add-form__fields">
             <input type="text"  id="guestName"  placeholder="Name (optional)" />
@@ -136,31 +202,35 @@
           <button type="submit" class="btn btn--primary"><i data-lucide="plus"></i> Add</button>
           <span class="form-error" id="guestError"></span>
         </form>
-
         <div class="guest-list" id="guestList"></div>
-
         <div class="guest-empty" id="guestEmpty">
           <i data-lucide="users"></i>
-          <p>No guests added yet. Add email addresses above to build your list.</p>
+          <p>No guests added yet.</p>
         </div>
-
       </div>
     </div>
 
-    <!-- ===== STEP 3: SEND ===== -->
+    <!-- STEP 3: SEND -->
     <div class="step-panel" id="panel3" style="display:none">
       <div class="panel-inner">
-
         <div class="panel-hd">
           <div>
             <h2 class="panel-title">Send Gallery Link</h2>
-            <p class="panel-desc">Write a personal message. When you click &ldquo;Send&rdquo;, your email client will open with everything pre-filled and ready to go.</p>
+            <p class="panel-desc">Write a personal message and send the gallery link directly to all your guests.</p>
+          </div>
+        </div>
+
+        <!-- EmailJS not configured notice -->
+        <div class="emailjs-notice" id="emailjsNotice" style="display:none">
+          <i data-lucide="mail-warning"></i>
+          <div>
+            <strong>EmailJS not yet configured</strong> &mdash; emails will open your local email client instead.
+            Add your keys to <code>EMAILJS_CONFIG</code> in <code>portal.js</code> to send directly from this page.
+            <a href="https://www.emailjs.com" target="_blank" rel="noopener">emailjs.com &rarr;</a>
           </div>
         </div>
 
         <div class="composer-layout">
-
-          <!-- Editor side -->
           <div class="email-composer">
             <div class="email-fields">
               <div class="email-field-row">
@@ -174,14 +244,13 @@
                 <input class="email-subject" type="text" id="emailSubject" value="Your photos from our wedding are ready!" />
               </div>
             </div>
-
             <div class="editor-wrap">
               <div class="editor-toolbar">
-                <button type="button" class="fmt-btn" data-cmd="bold"                 title="Bold"><i data-lucide="bold"></i></button>
-                <button type="button" class="fmt-btn" data-cmd="italic"               title="Italic"><i data-lucide="italic"></i></button>
-                <button type="button" class="fmt-btn" data-cmd="underline"            title="Underline"><i data-lucide="underline"></i></button>
+                <button type="button" class="fmt-btn" data-cmd="bold"                title="Bold"><i data-lucide="bold"></i></button>
+                <button type="button" class="fmt-btn" data-cmd="italic"              title="Italic"><i data-lucide="italic"></i></button>
+                <button type="button" class="fmt-btn" data-cmd="underline"           title="Underline"><i data-lucide="underline"></i></button>
                 <div class="fmt-sep"></div>
-                <button type="button" class="fmt-btn" data-cmd="insertUnorderedList"  title="Bullet list"><i data-lucide="list"></i></button>
+                <button type="button" class="fmt-btn" data-cmd="insertUnorderedList" title="Bullet list"><i data-lucide="list"></i></button>
               </div>
               <div class="email-body" id="emailBody" contenteditable="true" spellcheck="true">
                 <p>Dear friends &amp; family,</p>
@@ -189,7 +258,6 @@
                 <p>With love,<br>[Your names]</p>
               </div>
             </div>
-
             <div class="send-bar">
               <span class="send-bar__hint" id="sendHint"></span>
               <button class="btn btn--primary" id="sendBtn" disabled>
@@ -197,8 +265,6 @@
               </button>
             </div>
           </div>
-
-          <!-- Preview side -->
           <div class="email-preview">
             <div class="email-preview__label"><i data-lucide="eye"></i> Email preview</div>
             <div class="email-preview__frame">
@@ -214,12 +280,11 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
 
-    <!-- Step footer navigation -->
+    <!-- Step footer nav -->
     <div class="step-footer" id="stepFooter">
       <button class="btn btn--ghost" id="prevBtn" disabled><i data-lucide="arrow-left"></i> Back</button>
       <button class="btn btn--primary" id="nextBtn">Next: Add Guests <i data-lucide="arrow-right"></i></button>
@@ -236,7 +301,7 @@
       <img src="" alt="" id="lightboxImg" />
       <div class="lightbox__meta">
         <span class="lightbox__title" id="lightboxTitle"></span>
-        <span class="lightbox__info" id="lightboxInfo"></span>
+        <span class="lightbox__info"  id="lightboxInfo"></span>
       </div>
     </div>
     <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next"><i data-lucide="chevron-right"></i></button>

@@ -909,3 +909,277 @@ p   { margin: 0; }
   .panel-hd   { flex-direction: column; align-items: flex-start; }
   .stepper__label { display: none; }
 }
+/* =========================================================
+   ADMIN BADGE
+   ========================================================= */
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .25rem .75rem;
+  background: var(--clr-charcoal);
+  color: var(--clr-cream);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.admin-badge svg { width: .75rem; height: .75rem; }
+
+/* =========================================================
+   ADMIN CONTAINER & HEADER
+   ========================================================= */
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.admin-hd { margin-bottom: 2rem; }
+.admin-title    { font-family: var(--ff-serif); font-size: 2rem; font-weight: 700; margin-bottom: .35rem; }
+.admin-subtitle { color: var(--clr-muted); font-size: .95rem; }
+
+/* Config warning */
+.config-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  background: #fffbeb;
+  border: 1.5px solid #f59e0b;
+  border-radius: var(--radius-sm);
+  padding: .9rem 1.25rem;
+  font-size: .875rem;
+  color: #78350f;
+  margin-bottom: 1.75rem;
+}
+.config-warning svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; color: #f59e0b; margin-top: .1rem; }
+.config-warning a   { color: #92400e; text-decoration: underline; margin-left: .35rem; }
+.config-warning code { background: rgba(0,0,0,.08); padding: .1rem .4rem; border-radius: 4px; font-size: .8rem; }
+
+/* =========================================================
+   CLIENT GRID
+   ========================================================= */
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.client-card {
+  background: var(--clr-white);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  transition: box-shadow .2s, transform .2s;
+}
+.client-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+.client-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+}
+.client-card__name {
+  font-family: var(--ff-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: .2rem;
+}
+.client-card__date { font-size: .8rem; color: var(--clr-muted); }
+.client-card__days {
+  background: var(--clr-blush);
+  border: 1px solid var(--clr-border);
+  border-radius: 999px;
+  padding: .25rem .8rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--clr-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.client-card__days--future {
+  background: #eaf7f0;
+  border-color: #a3d9b8;
+  color: var(--clr-success);
+}
+
+/* Status pills */
+.client-card__status {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .85rem;
+  color: var(--clr-muted);
+}
+.status-pill svg { width: .9rem; height: .9rem; flex-shrink: 0; }
+.status-pill--done    { color: var(--clr-success); }
+.status-pill--done svg { color: var(--clr-success); }
+.status-pill--missing svg { color: var(--clr-muted); }
+.status-pill--future  { color: #b45309; }
+.status-pill--future svg { color: #f59e0b; }
+
+/* Card action buttons */
+.client-card__actions {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-top: .25rem;
+}
+.client-card__actions .btn { flex: 1; justify-content: center; min-width: 120px; }
+
+/* =========================================================
+   ADMIN MANAGING BANNER
+   ========================================================= */
+.admin-banner {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .65rem 1.5rem;
+  background: var(--clr-charcoal);
+  color: var(--clr-cream);
+  font-size: .85rem;
+}
+.admin-banner svg { width: .9rem; height: .9rem; }
+.admin-banner strong { margin: 0 .15rem; }
+.admin-banner__back {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  background: rgba(255,255,255,.12);
+  border: none;
+  border-radius: 999px;
+  padding: .35rem .9rem;
+  font-size: .8rem;
+  color: var(--clr-cream);
+  cursor: pointer;
+  transition: background .2s;
+}
+.admin-banner__back:hover { background: rgba(255,255,255,.22); }
+.admin-banner__back svg   { width: .8rem; height: .8rem; }
+
+/* =========================================================
+   UPLOAD MODAL
+   ========================================================= */
+.upload-modal { max-width: 560px; }
+
+.upload-drop-zone {
+  border: 2px dashed var(--clr-border);
+  border-radius: var(--radius);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--clr-muted);
+  transition: border-color .2s, background .2s;
+  margin: 1.25rem 0 1rem;
+}
+.upload-drop-zone svg { width: 2.5rem; height: 2.5rem; margin: 0 auto .75rem; opacity: .5; }
+.upload-drop-zone p   { font-size: .9rem; margin-bottom: .35rem; }
+.upload-drop-hint     { font-size: .78rem; }
+.upload-browse-link {
+  background: none; border: none; cursor: pointer;
+  color: var(--clr-rose); text-decoration: underline; font-size: .9rem;
+}
+
+.upload-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: .5rem;
+  margin-bottom: .75rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.upload-thumb {
+  width: 100%; aspect-ratio: 1; object-fit: cover;
+  border-radius: var(--radius-sm); border: 1px solid var(--clr-border);
+}
+
+.upload-status { font-size: .82rem; color: var(--clr-muted); margin-bottom: 1rem; }
+
+.upload-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.upload-note {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: .4rem;
+  font-size: .8rem;
+  color: var(--clr-muted);
+  line-height: 1.5;
+  min-width: 180px;
+}
+.upload-note svg { width: .85rem; height: .85rem; flex-shrink: 0; margin-top: .15rem; }
+
+/* =========================================================
+   EMAILJS NOTICE (step 3)
+   ========================================================= */
+.emailjs-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  background: #eff6ff;
+  border: 1.5px solid #93c5fd;
+  border-radius: var(--radius-sm);
+  padding: .85rem 1.1rem;
+  font-size: .875rem;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+}
+.emailjs-notice svg  { width: 1rem; height: 1rem; flex-shrink: 0; margin-top: .1rem; }
+.emailjs-notice a    { color: #1d4ed8; text-decoration: underline; margin-left: .25rem; }
+.emailjs-notice code { background: rgba(0,0,0,.07); padding: .1rem .35rem; border-radius: 4px; font-size: .8rem; }
+
+/* =========================================================
+   MODAL (shared)
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44,40,38,.55);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.modal {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 2rem 2rem 1.75rem;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal h3      { font-family: var(--ff-serif); font-size: 1.3rem; margin-bottom: .5rem; }
+.modal__desc   { color: var(--clr-muted); font-size: .9rem; margin-bottom: 1.25rem; }
+.modal__close  {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; cursor: pointer;
+  color: var(--clr-muted); transition: color .2s;
+}
+.modal__close:hover { color: var(--clr-charcoal); }
+.modal__close svg   { width: 1.1rem; height: 1.1rem; }
+
+/* =========================================================
+   RESPONSIVE — admin
+   ========================================================= */
+@media (max-width: 640px) {
+  .client-grid { grid-template-columns: 1fr; }
+  .client-card__actions .btn { font-size: .8rem; }
+}
