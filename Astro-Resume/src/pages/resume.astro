@@ -2,18 +2,14 @@
 import Layout from "../layouts/ResumeLayout.astro";
 import { getPosts, type WPPost } from "../lib/wp";
 import { decodeHTML } from "../lib/html";
-
 const posts: WPPost[] = await getPosts(3);
 ---
-
-<Layout title="The Lions Alliance">
+<Layout title="The Lions Alliance" theme="dark">
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-main">
         <p class="hero-tagline">PORTFOLIO · WEB · 3D</p>
-        <h1 class="hero-title">
-          Hi, I'm <span class="hero-highlight">Daniël</span>
-        </h1>
+        <h1 class="hero-title">Hi, I'm <span class="hero-highlight">Daniël</span></h1>
         <p class="hero-text">
           I do a lot of really cool things with programming, 3D, storytelling,
           and electronics. This portfolio contains both my development blog
@@ -21,33 +17,11 @@ const posts: WPPost[] = await getPosts(3);
           showcase of the finished projects.
         </p>
         <div class="hero-actions">
-          <a
-            href="https://www.youtube.com/@DanTheLionVFX"
-            class="button-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            YouTube
-          </a>
-          <a
-            href="https://sketchfab.com/superwortel"
-            class="button-ghost"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Sketchfab
-          </a>
-          <a
-            href="https://daanvanleeuwen.itch.io"
-            class="button-ghost"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Itch.io
-          </a>
+          <a href="https://www.youtube.com/@DanTheLionVFX" class="button-primary" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://sketchfab.com/superwortel" class="button-ghost" target="_blank" rel="noopener noreferrer">Sketchfab</a>
+          <a href="https://daanvanleeuwen.itch.io" class="button-ghost" target="_blank" rel="noopener noreferrer">Itch.io</a>
         </div>
       </div>
-
       <aside class="hero-side">
         <div class="pill">Currently exploring</div>
         <ul class="hero-side-list">
@@ -65,82 +39,51 @@ const posts: WPPost[] = await getPosts(3);
   <section id="experience" class="section">
     <div class="section-header">
       <h2 class="section-title">Work Experience</h2>
-      <p class="section-subtitle">
-        A short overview of my professional background
-      </p>
+      <p class="section-subtitle">A short overview of my professional background</p>
     </div>
-
     <div class="contact-block">
       <ul class="post-list">
         <li class="post-card">
           <h3 class="card-title">Software Developer</h3>
           <p class="post-meta">Pebble · 2026-02 — present</p>
-          <p class="post-excerpt">
-            Worked with ASP.NET, C#, and Azure enable data access at ASML by
-            developing a web application that streamlined setting up retention
-            policies for data storage.
-          </p>
+          <p class="post-excerpt">Worked with ASP.NET, C#, and Azure enable data access at ASML by developing a web application that streamlined setting up retention policies for data storage.</p>
         </li>
-
         <li class="post-card">
           <h3 class="card-title">3D Animation and Video Developer</h3>
           <p class="post-meta">Enversed Studios · 2023-12 — 2026-02</p>
-          <p class="post-excerpt">
-            Created 3D animations and videos using Blender and After Effects.
-            Used Xsens motion capture and Reallusion to create realistic
-            character animations. Used Marvelous Designer for custom clothing.
-            Performed on-site recordings with and without greenscreen.
-          </p>
+          <p class="post-excerpt">Created 3D animations and videos using Blender and After Effects. Used Xsens motion capture and Reallusion to create realistic character animations. Used Marvelous Designer for custom clothing. Performed on-site recordings with and without greenscreen.</p>
         </li>
       </ul>
-
       <details style="margin-top: 0.75rem;">
-        <summary class="section-link" style="cursor: pointer;"
-          >Show more experience</summary
-        >
+        <summary class="section-link" style="cursor: pointer;">Show more experience</summary>
         <ul class="post-list" style="margin-top: 0.9rem;">
           <li class="post-card">
             <h3 class="card-title">Graduation Internship</h3>
             <p class="post-meta">Het Nieuwe Kader · 2023-01 — 2023-07</p>
-            <p class="post-excerpt">
-              Created a custom web-based automatic rigging tool to enable
-              clients to quickly rig their 3D characters in order to preview
-              remotely directed motion capture sessions.
-            </p>
+            <p class="post-excerpt">Created a custom web-based automatic rigging tool to enable clients to quickly rig their 3D characters in order to preview remotely directed motion capture sessions.</p>
           </li>
           <li class="post-card">
             <h3 class="card-title">Intern Product Specialist</h3>
             <p class="post-meta">Movella/Xsens · 2022-03 — 2022-08</p>
-            <p class="post-excerpt">
-              Worked on the documentation for the Xsens MVN Animate Pro software
-              and hardware. Performed demo's for customers and provided
-              technical support.
-            </p>
+            <p class="post-excerpt">Worked on the documentation for the Xsens MVN Animate Pro software and hardware. Performed demo's for customers and provided technical support.</p>
           </li>
           <li class="post-card">
             <h3 class="card-title">Junior VR Developer</h3>
             <p class="post-meta">Wired Workers · 2020-07 — 2021-08</p>
-            <p class="post-excerpt">
-              Worked part-time on developing a WebGL-based digital showroom for
-              a range of collaborative robot arms. Created 3D models and
-              animations for several applications.
-            </p>
+            <p class="post-excerpt">Worked part-time on developing a WebGL-based digital showroom for a range of collaborative robot arms. Created 3D models and animations for several applications.</p>
           </li>
         </ul>
       </details>
     </div>
   </section>
 
-  <!-- ── Finished Projects — interactive 3-D podium ──────────────────────── -->
   <section id="work" class="section">
     <div class="section-header">
       <h2 class="section-title">Finished Projects</h2>
       <p class="section-subtitle">Drag to rotate · click a project to learn more</p>
     </div>
-
     <div id="podium-wrapper" class="podium-wrapper">
       <canvas id="podium-canvas"></canvas>
-
       <aside id="proj-panel" class="proj-panel" aria-hidden="true" aria-label="Project details">
         <button id="proj-close" aria-label="Close">&#x2715;</button>
         <h3 id="proj-title"></h3>
@@ -156,78 +99,50 @@ const posts: WPPost[] = await getPosts(3);
       <h2 class="section-title">Latest Blogposts</h2>
       <a href="/blog/" class="section-link">View all posts →</a>
     </div>
-
-    {
-      posts.length === 0 && (
-        <p>
-          No posts found yet. Once you publish on WordPress, they'll show up
-          here.
-        </p>
-      )
-    }
-
-    {
-      posts.length > 0 && (
-        <ul class="post-list">
-          {posts.map((post) => (
-            <li class="post-card">
-              <a href={`/blog/${post.slug}/`} class="post-title">
-                {decodeHTML(post.title.rendered)}
-              </a>
-              <p class="post-meta">
-                <time datetime={post.date}>
-                  {new Date(post.date).toLocaleDateString("en-GB", {
-                    year: "numeric",
-                    month: "short",
-                    day: "2-digit",
-                  })}
-                </time>
-              </p>
-              <p class="post-excerpt" set:html={post.excerpt.rendered} />
-            </li>
-          ))}
-        </ul>
-      )
-    }
+    {posts.length === 0 && <p>No posts found yet.</p>}
+    {posts.length > 0 && (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-card">
+            <a href={`/blog/${post.slug}/`} class="post-title">{decodeHTML(post.title.rendered)}</a>
+            <p class="post-meta"><time datetime={post.date}>{new Date(post.date).toLocaleDateString("en-GB",{year:"numeric",month:"short",day:"2-digit"})}</time></p>
+            <p class="post-excerpt" set:html={post.excerpt.rendered} />
+          </li>
+        ))}
+      </ul>
+    )}
   </section>
 
   <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Get in contact</h2>
-    </div>
+    <div class="section-header"><h2 class="section-title">Get in contact</h2></div>
     <div class="contact-block">
-      <p>
-        Feel free to reach out if you are interested in my work, have any
-        questions, or just want to say hi!
-      </p>
-      <p>
-        You can reach me at
-        <a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a>.
-      </p>
+      <p>Feel free to reach out if you are interested in my work, have any questions, or just want to say hi!</p>
+      <p>You can reach me at <a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a>.</p>
     </div>
   </section>
 </Layout>
 
-<!-- ── Three.js podium script ─────────────────────────────────────────────── -->
 <Fragment slot="body-end">
 <script is:inline type="module">
 import * as THREE from 'three';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
+// ── Project data ──────────────────────────────────────────────────────────────
 const PROJECTS = [
   {
     title: 'Python Auto-Rigger',
-    meta: 'Three.js · Python (PyMel, Waitress, Watchdog)',
-    desc: 'A web-based automatic rigging tool for remote motion-capture sessions, built as a graduation internship project at Het Nieuwe Kader.',
+    meta:  'Three.js · Python (PyMel, Waitress, Watchdog)',
+    desc:  'A web-based automatic rigging tool for remote motion-capture sessions, built as a graduation internship project at Het Nieuwe Kader.',
     color: 0x6aa9ff,
     links: [
-      { label: 'Video', href: 'https://youtu.be/zupK9LBxZwk',                newTab: true  },
+      { label: 'Video', href: 'https://youtu.be/zupK9LBxZwk', newTab: true  },
       { label: 'Blog',  href: 'https://danthelion-git.github.io/DanTheLion-Resume/PythonAutorigger.html', newTab: false },
     ],
   },
   {
     title: 'Azure Static Site',
-    meta: 'Personal Project · Azure Cloud',
-    desc: 'Resume/portfolio hosted on Azure Blob Storage as a static website, combined with serverless Azure Functions for backend logic.',
+    meta:  'Personal Project · Azure Cloud',
+    desc:  'Resume/portfolio hosted on Azure Blob Storage as a static website, combined with serverless Azure Functions for backend logic.',
     color: 0x4fc3f7,
     links: [
       { label: 'Live', href: 'https://danielresumestorage.z6.web.core.windows.net/', newTab: true },
@@ -235,8 +150,8 @@ const PROJECTS = [
   },
   {
     title: 'Oosterschelde VR',
-    meta: '360° Interactive Video · Custom Hardware',
-    desc: 'Immersive 360° underwater VR experience for the Oosterschelde nature reserve — shot, edited, and delivered end-to-end under strict hardware constraints.',
+    meta:  '360° Interactive Video · Custom Hardware',
+    desc:  'Immersive 360° underwater VR experience for the Oosterschelde nature reserve — shot, edited, and delivered end-to-end under strict hardware constraints.',
     color: 0x34d399,
     links: [
       { label: '(WIP) Video', href: 'https://youtu.be/VprojdpSWek', newTab: true  },
@@ -245,8 +160,8 @@ const PROJECTS = [
   },
   {
     title: 'VR Voyage Amsterdam',
-    meta: 'Historical VR · Pipeline Automation · Render Cost',
-    desc: 'Historical VR experience taking viewers to 17th-century Amsterdam, with automated pipeline tooling that cut render cost significantly.',
+    meta:  'Historical VR · Pipeline Automation · Render Cost',
+    desc:  'Historical VR experience taking viewers to 17th-century Amsterdam, with automated pipeline tooling that cut render cost significantly.',
     color: 0xfbbf24,
     links: [
       { label: 'Video', href: 'https://youtu.be/OL2vQRpIjFM', newTab: true  },
@@ -255,8 +170,8 @@ const PROJECTS = [
   },
   {
     title: 'Wired Workers Showroom',
-    meta: 'Unity WebGL · 3D Animation · Performance',
-    desc: 'Virtual showroom for collaborative robot solutions built in Unity WebGL with animated product demonstrations optimised for browser performance.',
+    meta:  'Unity WebGL · 3D Animation · Performance',
+    desc:  'Virtual showroom for collaborative robot solutions built in Unity WebGL with animated product demonstrations optimised for browser performance.',
     color: 0xf87171,
     links: [
       { label: 'Video', href: 'https://youtu.be/XgOcEGr6uVE', newTab: true },
@@ -264,6 +179,7 @@ const PROJECTS = [
   },
 ];
 
+// ── DOM refs ──────────────────────────────────────────────────────────────────
 const wrapper    = document.getElementById('podium-wrapper');
 const canvas     = document.getElementById('podium-canvas');
 const panel      = document.getElementById('proj-panel');
@@ -272,29 +188,28 @@ const panelMeta  = document.getElementById('proj-meta');
 const panelDesc  = document.getElementById('proj-desc');
 const panelLinks = document.getElementById('proj-links');
 const closeBtn   = document.getElementById('proj-close');
-
 if (!wrapper || !canvas) throw new Error('Podium elements not found');
 
 const W = () => wrapper.offsetWidth;
 const H = () => wrapper.offsetHeight;
 
+// ── Renderer ──────────────────────────────────────────────────────────────────
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 renderer.setSize(W(), H());
-renderer.toneMapping       = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.0;
-renderer.outputColorSpace  = THREE.SRGBColorSpace;
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
+renderer.toneMapping        = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+renderer.outputColorSpace   = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled  = false;   // no shadow-casting lights with HDRI-only
 
+// ── Scene & camera ────────────────────────────────────────────────────────────
 const scene  = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, W() / H(), 0.1, 50);
 
-const LOOK_TARGET    = new THREE.Vector3(0, 0.45, 0);
-const CAM_DIST       = 3.6;
-const CAM_ELEV       = 22 * (Math.PI / 180);
-const CAM_HALF_RANGE = 60 * (Math.PI / 180);
-const EASE_RATE      = 0.10;
+const LOOK_TARGET = new THREE.Vector3(0, 0.07, 0);
+const CAM_DIST    = 3.0;
+const CAM_ELEV    = 20 * (Math.PI / 180);
+const EASE_RATE   = 0.10;
 
 const camH = LOOK_TARGET.y + CAM_DIST * Math.sin(CAM_ELEV);
 const camR = CAM_DIST * Math.cos(CAM_ELEV);
@@ -313,66 +228,45 @@ function updateCamera() {
 }
 updateCamera();
 
-// Lighting — warm key + green forest fill
-scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+// ── HDRI environment lighting ─────────────────────────────────────────────────
+// Tries /hdri/scene.hdr first; falls back to a Polyhaven studio HDR from CDN;
+// final fallback: plain ambient light so the scene always renders.
+const pmrem  = new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
 
-const keyLight = new THREE.DirectionalLight(0xfff4e0, 1.8);
-keyLight.position.set(4, 8, 4);
-keyLight.castShadow = true;
-keyLight.shadow.mapSize.set(1024, 1024);
-keyLight.shadow.camera.near   = 0.1;
-keyLight.shadow.camera.far    = 20;
-keyLight.shadow.camera.left   = -2.5;
-keyLight.shadow.camera.right  =  2.5;
-keyLight.shadow.camera.top    =  2.5;
-keyLight.shadow.camera.bottom = -2.5;
-scene.add(keyLight);
+function applyEnv(tex) {
+  scene.environment = pmrem.fromEquirectangular(tex).texture;
+  tex.dispose();
+  pmrem.dispose();
+}
 
-const rimLight = new THREE.DirectionalLight(0x4c7b4c, 0.6);
-rimLight.position.set(-4, 2, -3);
-scene.add(rimLight);
+const loader = new RGBELoader();
+loader.load(
+  '/hdri/scene.hdr',
+  applyEnv,
+  undefined,
+  () => loader.load(
+    'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_08_1k.hdr',
+    applyEnv,
+    undefined,
+    () => { scene.add(new THREE.AmbientLight(0xffffff, 1.4)); pmrem.dispose(); },
+  ),
+);
 
-const topGlow = new THREE.PointLight(0x7ab87a, 2.0, 5, 2);
-topGlow.position.set(0, 3.5, 0);
-scene.add(topGlow);
-
-// Podium — dark metallic, matching --card-bg
-const podiumGroup = new THREE.Group();
-const podMat = new THREE.MeshStandardMaterial({ color: 0x1a1f18, metalness: 0.55, roughness: 0.45 });
-
-[
-  { r: 0.72, h: 0.13, y: 0.065 },
-  { r: 0.60, h: 0.13, y: 0.195 },
-  { r: 0.48, h: 0.33, y: 0.425 },
-].forEach(({ r, h, y }) => {
-  const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 48), podMat);
-  m.position.y = y;
-  m.castShadow = m.receiveShadow = true;
-  podiumGroup.add(m);
+// ── Display platform — single white flat cylinder ─────────────────────────────
+const plateMat = new THREE.MeshStandardMaterial({
+  color:       0xffffff,
+  metalness:   0.05,
+  roughness:   0.22,
+  envMapIntensity: 1.0,
 });
+const plateMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.88, 0.88, 0.04, 64), plateMat);
+plateMesh.position.y = 0.02;
+scene.add(plateMesh);
 
-// Accent ring — mossy green
-const ringMesh = new THREE.Mesh(
-  new THREE.TorusGeometry(0.46, 0.013, 8, 80),
-  new THREE.MeshBasicMaterial({ color: 0x4c7b4c, transparent: true, opacity: 0.55 }),
-);
-ringMesh.rotation.x = Math.PI / 2;
-ringMesh.position.y = 0.592;
-podiumGroup.add(ringMesh);
-scene.add(podiumGroup);
-
-// Ground disc
-const ground = new THREE.Mesh(
-  new THREE.CircleGeometry(2.2, 64),
-  new THREE.MeshStandardMaterial({ color: 0x0a0c09, roughness: 1, metalness: 0 }),
-);
-ground.rotation.x = -Math.PI / 2;
-ground.position.y = -0.01;
-ground.receiveShadow = true;
-scene.add(ground);
-
-// Project cubes
-const PODIUM_TOP_Y = 0.592;
+// ── Project cubes (group is static — no rotation) ─────────────────────────────
+const podiumGroup  = new THREE.Group();
+const PODIUM_TOP_Y = 0.04 + 0.115 / 2;   // disc top + half-cube height
 const ARC_R        = 0.27;
 const N            = PROJECTS.length;
 const cubes        = [];
@@ -387,16 +281,17 @@ for (let i = 0; i < N; i++) {
       roughness:         0.35,
       emissive:          new THREE.Color(PROJECTS[i].color),
       emissiveIntensity: 0.0,
+      envMapIntensity:   1.0,
     }),
   );
   cube.position.set(Math.sin(angle) * ARC_R, PODIUM_TOP_Y, Math.cos(angle) * ARC_R);
-  cube.castShadow = true;
   cube.userData.projectIndex = i;
   podiumGroup.add(cube);
   cubes.push(cube);
 }
+scene.add(podiumGroup);
 
-// Selection
+// ── Selection ─────────────────────────────────────────────────────────────────
 let selectedIndex = -1;
 
 function selectProject(idx) {
@@ -435,7 +330,7 @@ function selectProject(idx) {
 
 closeBtn.addEventListener('click', () => selectProject(-1));
 
-// Input
+// ── Full 360° drag-to-orbit ───────────────────────────────────────────────────
 let isDragging = false, lastX = 0, totalDrag = 0;
 
 canvas.addEventListener('pointerdown', (e) => {
@@ -447,11 +342,11 @@ canvas.addEventListener('pointerdown', (e) => {
 
 window.addEventListener('pointermove', (e) => {
   if (!isDragging) return;
-  const dx  = e.clientX - lastX;
-  lastX      = e.clientX;
-  totalDrag += Math.abs(dx);
-  const next = targetTheta - (dx / W()) * (120 * Math.PI / 180);
-  targetTheta = Math.max(-CAM_HALF_RANGE, Math.min(CAM_HALF_RANGE, next));
+  const dx   = e.clientX - lastX;
+  lastX       = e.clientX;
+  totalDrag  += Math.abs(dx);
+  // Full-width drag = one full 360° rotation
+  targetTheta -= (dx / W()) * (Math.PI * 2);
 });
 
 window.addEventListener('pointerup', (e) => {
@@ -489,4 +384,5 @@ new ResizeObserver(() => {
   renderer.render(scene, camera);
 })();
 </script>
+
 </Fragment>
