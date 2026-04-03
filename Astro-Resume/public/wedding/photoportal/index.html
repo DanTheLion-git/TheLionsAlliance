@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WeddingCamBox — Your Gallery</title>
+  <title>WeddingCamBox — Photo Portal</title>
   <link rel="stylesheet" href="portal.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <!-- ===================== LOGIN VIEW ===================== -->
+  <!-- ==================== LOGIN ==================== -->
   <div class="view view--login" id="viewLogin">
     <div class="login-wrap">
       <div class="login-card">
@@ -28,120 +28,210 @@
           </div>
           <div class="form-group form-group--password">
             <label for="loginPassword">Password</label>
-            <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required />
+            <input type="password" id="loginPassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password" required />
             <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password visibility"><i data-lucide="eye"></i></button>
           </div>
           <div class="login-error" id="loginError"></div>
-          <button type="submit" class="btn btn--primary btn--full">Sign in to my gallery</button>
+          <button type="submit" class="btn btn--primary btn--full">Sign in</button>
         </form>
-        <p class="login-footer">
-          Don't have credentials yet? You'll receive your personal login by email once your photos have been processed and uploaded.
-        </p>
+        <p class="login-footer">Don&rsquo;t have credentials yet? You&rsquo;ll receive your login by email once your photos have been processed.</p>
       </div>
     </div>
   </div>
 
-  <!-- ===================== PORTAL VIEW ===================== -->
+  <!-- ==================== PORTAL ==================== -->
   <div class="view view--portal" id="viewPortal" style="display:none">
 
     <!-- Header -->
-    <header class="p-header" id="portalHeader">
+    <header class="p-header">
       <div class="p-header__inner">
         <a href="../" class="p-header__logo">WeddingCamBox</a>
         <div class="p-header__user">
-          <div class="p-header__info">
-            <span class="p-header__name" id="headerName">Sophie &amp; Liam</span>
-            <span class="p-header__wedding" id="headerWedding">12 April 2025</span>
-          </div>
+          <span class="p-header__name" id="headerName"></span>
           <button class="btn btn--sm btn--ghost" id="logoutBtn">Sign out</button>
         </div>
       </div>
     </header>
 
-    <!-- Tab bar -->
-    <nav class="p-tabs" id="tabBar">
-      <button class="p-tab p-tab--active" data-tab="gallery">
-        <i data-lucide="images"></i> Gallery <span class="p-tab__badge" id="photoCountBadge">0</span>
-      </button>
-      <button class="p-tab" data-tab="addressbook">
-        <i data-lucide="book-open"></i> Address Book <span class="p-tab__badge" id="abCountBadge">0</span>
-      </button>
-    </nav>
-
-    <!-- ── GALLERY TAB ── -->
-    <div class="p-content" id="tabGallery">
-
-      <div class="g-toolbar">
-        <div class="g-toolbar__left">
-          <select class="g-select" id="sortSelect" title="Sort photos">
-            <option value="date-desc">📅 Newest first</option>
-            <option value="date-asc">📅 Oldest first</option>
-            <option value="name-asc">🔤 Name A–Z</option>
-            <option value="name-desc">🔤 Name Z–A</option>
-            <option value="custom">✋ Custom order (drag)</option>
-          </select>
-          <span class="g-toolbar__count" id="galleryCountLabel">0 photos</span>
+    <!-- Stepper -->
+    <div class="stepper-bar">
+      <div class="stepper">
+        <div class="stepper__item stepper__item--active" data-step="1">
+          <div class="stepper__circle"><span class="stepper__num">1</span><i data-lucide="check" class="stepper__check"></i></div>
+          <div class="stepper__label">Curate Photos</div>
         </div>
-        <div class="g-toolbar__right">
-          <button class="g-btn" id="selectAllBtn"><i data-lucide="check-square"></i> <span id="selectAllLabel">Select all</span></button>
-          <button class="g-btn g-btn--danger" id="deleteSelectedBtn" disabled>
-            <i data-lucide="trash-2"></i> Delete <span class="g-btn__badge" id="selCountBadge">0</span>
-          </button>
-          <button class="g-btn g-btn--download" id="downloadAllBtn"><i data-lucide="download"></i> Download all</button>
+        <div class="stepper__connector"></div>
+        <div class="stepper__item" data-step="2">
+          <div class="stepper__circle"><span class="stepper__num">2</span><i data-lucide="check" class="stepper__check"></i></div>
+          <div class="stepper__label">Add Guests</div>
+        </div>
+        <div class="stepper__connector"></div>
+        <div class="stepper__item" data-step="3">
+          <div class="stepper__circle"><span class="stepper__num">3</span><i data-lucide="check" class="stepper__check"></i></div>
+          <div class="stepper__label">Send Gallery</div>
         </div>
       </div>
-
-      <div class="photo-grid" id="photoGrid"></div>
-
-      <div class="gallery-empty" id="galleryEmpty" style="display:none">
-        <div class="gallery-empty__icon"><i data-lucide="images"></i></div>
-        <h3>Your gallery is empty</h3>
-        <p>Photos will appear here once they have been uploaded to your account.</p>
-      </div>
-
     </div>
 
-    <!-- ── ADDRESS BOOK TAB ── -->
-    <div class="p-content" id="tabAddressbook" style="display:none">
-      <div class="ab-container">
+    <!-- ===== STEP 1: PHOTOS ===== -->
+    <div class="step-panel" id="panel1">
+      <div class="panel-inner">
 
-        <div class="ab-header">
-          <h2>Address Book</h2>
-          <p>Manage your guests' email addresses and send them a link to your photo gallery when you're ready to share.</p>
-        </div>
-
-        <form class="ab-add-form" id="addContactForm" novalidate>
-          <div class="ab-add-form__fields">
-            <input type="text" id="addName" placeholder="Name (e.g. Aunt Maria)" />
-            <input type="email" id="addEmail" placeholder="Email address" required />
+        <div class="panel-hd">
+          <div>
+            <h2 class="panel-title">Your Photos</h2>
+            <p class="panel-desc">Review all photos and delete any you don&rsquo;t want shared. Deleted photos go to the recycle bin &mdash; nothing is permanently removed until you empty it.</p>
           </div>
-          <button type="submit" class="btn btn--primary">+ Add contact</button>
-          <span class="form-error" id="addContactError"></span>
-        </form>
-
-        <div class="ab-list" id="abList">
-          <!-- Contacts injected by JS -->
+          <div class="panel-hd__actions">
+            <span class="photo-count-label" id="photoCountLabel">0 photos</span>
+            <button class="g-btn" id="recycleBinBtn">
+              <i data-lucide="trash-2"></i> Recycle bin
+              <span class="g-badge" id="binBadge" style="display:none">0</span>
+            </button>
+          </div>
         </div>
 
-        <div class="ab-empty" id="abEmpty" style="display:none">
-          <p><i data-lucide="inbox"></i> No contacts yet. Add email addresses above to start building your list.</p>
+        <div class="photo-grid" id="photoGrid"></div>
+
+        <div class="gallery-empty" id="galleryEmpty" style="display:none">
+          <i data-lucide="images"></i>
+          <h3>No photos yet</h3>
+          <p>Photos will appear here once they&rsquo;ve been uploaded to your account.</p>
         </div>
 
-        <div class="ab-actions">
-          <span class="ab-actions__hint" id="abSelHint">Select contacts to send a share link</span>
-          <button class="g-btn g-btn--download" id="sendShareBtn" disabled><i data-lucide="share-2"></i> Send download link to selected</button>
+        <!-- Recycle Bin Drawer -->
+        <div class="recycle-bin" id="recycleBin" style="display:none">
+          <div class="recycle-bin__header">
+            <h3><i data-lucide="trash-2"></i> Recycle Bin</h3>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <button class="g-btn g-btn--danger" id="emptyBinBtn"><i data-lucide="trash"></i> Empty bin</button>
+              <button class="g-btn" id="closeBinBtn"><i data-lucide="x"></i></button>
+            </div>
+          </div>
+          <p class="recycle-bin__hint">Photos in the recycle bin will not be included in your gallery. Restore them if you change your mind, or empty the bin to permanently delete them.</p>
+          <div class="photo-grid photo-grid--bin" id="binGrid"></div>
+          <div class="recycle-bin__empty" id="binEmpty"><i data-lucide="check-circle"></i> The recycle bin is empty.</div>
         </div>
 
       </div>
+    </div>
+
+    <!-- ===== STEP 2: GUESTS ===== -->
+    <div class="step-panel" id="panel2" style="display:none">
+      <div class="panel-inner panel-inner--narrow">
+
+        <div class="panel-hd">
+          <div>
+            <h2 class="panel-title">Guest List</h2>
+            <p class="panel-desc">Add the email addresses of your guests. Everyone on this list will receive the gallery link in step 3.</p>
+          </div>
+          <span class="guest-count-badge" id="guestCountBadge">0 guests</span>
+        </div>
+
+        <form class="guest-add-form" id="guestForm" novalidate>
+          <div class="guest-add-form__fields">
+            <input type="text"  id="guestName"  placeholder="Name (optional)" />
+            <input type="email" id="guestEmail" placeholder="Email address" required />
+          </div>
+          <button type="submit" class="btn btn--primary"><i data-lucide="plus"></i> Add</button>
+          <span class="form-error" id="guestError"></span>
+        </form>
+
+        <div class="guest-list" id="guestList"></div>
+
+        <div class="guest-empty" id="guestEmpty">
+          <i data-lucide="users"></i>
+          <p>No guests added yet. Add email addresses above to build your list.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== STEP 3: SEND ===== -->
+    <div class="step-panel" id="panel3" style="display:none">
+      <div class="panel-inner">
+
+        <div class="panel-hd">
+          <div>
+            <h2 class="panel-title">Send Gallery Link</h2>
+            <p class="panel-desc">Write a personal message. When you click &ldquo;Send&rdquo;, your email client will open with everything pre-filled and ready to go.</p>
+          </div>
+        </div>
+
+        <div class="composer-layout">
+
+          <!-- Editor side -->
+          <div class="email-composer">
+            <div class="email-fields">
+              <div class="email-field-row">
+                <span class="email-field-label">To</span>
+                <div class="email-field-value" id="emailTo">
+                  <span class="email-field-placeholder">&mdash; add guests in step 2 &mdash;</span>
+                </div>
+              </div>
+              <div class="email-field-row">
+                <span class="email-field-label">Subject</span>
+                <input class="email-subject" type="text" id="emailSubject" value="Your photos from our wedding are ready!" />
+              </div>
+            </div>
+
+            <div class="editor-wrap">
+              <div class="editor-toolbar">
+                <button type="button" class="fmt-btn" data-cmd="bold"                 title="Bold"><i data-lucide="bold"></i></button>
+                <button type="button" class="fmt-btn" data-cmd="italic"               title="Italic"><i data-lucide="italic"></i></button>
+                <button type="button" class="fmt-btn" data-cmd="underline"            title="Underline"><i data-lucide="underline"></i></button>
+                <div class="fmt-sep"></div>
+                <button type="button" class="fmt-btn" data-cmd="insertUnorderedList"  title="Bullet list"><i data-lucide="list"></i></button>
+              </div>
+              <div class="email-body" id="emailBody" contenteditable="true" spellcheck="true">
+                <p>Dear friends &amp; family,</p>
+                <p>We wanted to personally share the photos from our special day with you. Click the button below to view and download all the memories you helped us capture.</p>
+                <p>With love,<br>[Your names]</p>
+              </div>
+            </div>
+
+            <div class="send-bar">
+              <span class="send-bar__hint" id="sendHint"></span>
+              <button class="btn btn--primary" id="sendBtn" disabled>
+                <i data-lucide="send"></i> Send to all guests
+              </button>
+            </div>
+          </div>
+
+          <!-- Preview side -->
+          <div class="email-preview">
+            <div class="email-preview__label"><i data-lucide="eye"></i> Email preview</div>
+            <div class="email-preview__frame">
+              <div class="email-preview__header">
+                <span class="email-preview__logo">WeddingCamBox</span>
+              </div>
+              <div class="email-preview__body" id="previewBody"></div>
+              <div class="email-preview__cta">
+                <span class="email-preview__btn">View &amp; Download Your Photos</span>
+              </div>
+              <div class="email-preview__footer">
+                Sent via WeddingCamBox &bull; <a href="https://thelionsalliance.com/wedding">thelionsalliance.com/wedding</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Step footer navigation -->
+    <div class="step-footer" id="stepFooter">
+      <button class="btn btn--ghost" id="prevBtn" disabled><i data-lucide="arrow-left"></i> Back</button>
+      <button class="btn btn--primary" id="nextBtn">Next: Add Guests <i data-lucide="arrow-right"></i></button>
     </div>
 
   </div><!-- end view--portal -->
 
-  <!-- ===================== LIGHTBOX ===================== -->
-  <div class="lightbox" id="lightbox" style="display:none" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <!-- ==================== LIGHTBOX ==================== -->
+  <div class="lightbox" id="lightbox" style="display:none" role="dialog" aria-modal="true">
     <div class="lightbox__bg" id="lightboxBg"></div>
     <button class="lightbox__close" id="lightboxClose" aria-label="Close"><i data-lucide="x"></i></button>
-    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous photo"><i data-lucide="chevron-left"></i></button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
     <div class="lightbox__stage">
       <img src="" alt="" id="lightboxImg" />
       <div class="lightbox__meta">
@@ -149,31 +239,10 @@
         <span class="lightbox__info" id="lightboxInfo"></span>
       </div>
     </div>
-    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next photo"><i data-lucide="chevron-right"></i></button>
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next"><i data-lucide="chevron-right"></i></button>
   </div>
 
-  <!-- ===================== SHARE MODAL ===================== -->
-  <div class="modal-overlay" id="shareModal" style="display:none">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
-      <button class="modal__close" id="shareModalClose" aria-label="Close"><i data-lucide="x"></i></button>
-      <h3 id="shareModalTitle">Share your gallery</h3>
-      <p class="modal__desc">Copy and share the link below, or send it directly to the contacts you've selected.</p>
-
-      <div class="share-link-row">
-        <input type="text" class="share-link-input" id="shareLinkInput" readonly aria-label="Share link" />
-        <button class="btn btn--sm btn--primary" id="copyLinkBtn">Copy</button>
-      </div>
-
-      <div class="share-contacts" id="shareContactsWrap">
-        <p class="share-contacts__title">Send to:</p>
-        <div class="share-contacts__list" id="shareContactsList"></div>
-      </div>
-
-      <button class="btn btn--primary btn--full" id="confirmSendBtn"><i data-lucide="send"></i> Send link by email</button>
-    </div>
-  </div>
-
-  <!-- ===================== TOAST ===================== -->
+  <!-- ==================== TOAST ==================== -->
   <div class="toast-container" id="toastContainer"></div>
 
   <script src="portal.js"></script>
