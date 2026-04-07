@@ -1,0 +1,275 @@
+---
+// Standalone print page — no site CSS, no navigation.
+// Track data is read from localStorage key 'hitster_print_job'.
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hitster — Print Sheet</title>
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #fff; font-family: Arial, Helvetica, sans-serif; color: #000; }
+
+    /* ── Controls bar (hidden when printing) ── */
+    #controls {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: #222;
+      color: #fff;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+    #controls button {
+      background: #fff;
+      color: #222;
+      border: none;
+      border-radius: 4px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    #controls button:hover { background: #ddd; }
+    #controls span { opacity: 0.7; font-size: 0.8rem; }
+
+    /* ── Print pages wrapper — leave room for the controls bar ── */
+    #pages { padding-top: 52px; }
+
+    /* ── One A4 page ── */
+    .print-page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 4mm;
+      padding: 10mm;
+      background: #fff;
+      display: flex;
+      align-items: flex-start;
+      box-shadow: 0 0 8px rgba(0,0,0,.15); /* visible on screen only */
+    }
+
+    /*
+     * 3 × 4 = 12 cards per A4.
+     * Printable area (10 mm margins): 190 mm × 277 mm
+     *   card width  = (190 - 2×3) / 3 = 61.33 mm
+     *   card height = (277 - 3×3) / 4 = 67.00 mm
+     */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 61.33mm);
+      grid-template-rows: repeat(4, 67mm);
+      gap: 3mm;
+    }
+
+    .print-card {
+      width: 61.33mm;
+      height: 67mm;
+      border: 0.35mm solid #c8c8c8;
+      border-radius: 1.5mm;
+      background: #fff;
+      color: #000;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    /* ── QR front card ── */
+    .qr-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3mm;
+      gap: 1mm;
+    }
+    .qr-card .card-brand {
+      font-size: 6pt;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #555;
+      text-transform: uppercase;
+    }
+    .qr-card img { width: 82%; height: auto; display: block; }
+
+    /* ── Song info back card ── */
+    .info-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5mm 3mm;
+      text-align: center;
+    }
+    .info-artist {
+      font-size: 8pt;
+      font-weight: 400;
+      color: #000;
+      line-height: 1.3;
+      width: 100%;
+    }
+    .info-year {
+      font-size: 72pt;
+      font-weight: 900;
+      color: #000;
+      line-height: 1;
+    }
+    .info-song {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #000;
+      line-height: 1.3;
+      width: 100%;
+    }
+
+    /* ── Error / loading states ── */
+    #status {
+      padding: 3rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* ── Print overrides ── */
+    @media print {
+      #controls { display: none !important; }
+      #pages { padding-top: 0; }
+
+      .print-page {
+        width: 100%;
+        margin: 0;
+        padding: 10mm;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+      }
+      /* last page should NOT force a blank extra page */
+      .print-page:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="controls">
+  <button onclick="window.print()">🖨 Print / Save PDF</button>
+  <button onclick="window.close()">✕ Close</button>
+  <span id="sheet-count"></span>
+</div>
+
+<div id="status">Loading print data…</div>
+<div id="pages"></div>
+
+<script type="module">
+  // ── QR library ────────────────────────────────────────────────────────────
+  const { default: QRCode } = await import('https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm');
+
+  // ── Helpers ───────────────────────────────────────────────────────────────
+  function esc(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+
+  function mirrorRow(arr, cols) {
+    const out = [];
+    for (let row = 0; row < Math.ceil(arr.length / cols); row++) {
+      const slice = arr.slice(row * cols, (row + 1) * cols);
+      out.push(...[...slice].reverse());
+    }
+    return out;
+  }
+
+  // ── Read job from localStorage ────────────────────────────────────────────
+  const raw = localStorage.getItem('hitster_print_job');
+  const status = document.getElementById('status');
+  const pages  = document.getElementById('pages');
+
+  if (!raw) {
+    status.textContent = 'No print data found. Go back to the admin page and click "Generate Cards".';
+    throw new Error('No hitster_print_job in localStorage');
+  }
+
+  let tracks;
+  try { tracks = JSON.parse(raw); }
+  catch { status.textContent = 'Print data is corrupted. Please regenerate.'; throw new Error('parse fail'); }
+
+  if (!Array.isArray(tracks) || tracks.length === 0) {
+    status.textContent = 'No tracks to print.';
+    throw new Error('empty tracks');
+  }
+
+  // ── Generate QR codes ─────────────────────────────────────────────────────
+  status.textContent = `Generating QR codes for ${tracks.length} tracks…`;
+
+  const cards = [];
+  for (let i = 0; i < tracks.length; i++) {
+    const t = tracks[i];
+    status.textContent = `Generating QR codes… ${i + 1} / ${tracks.length}`;
+    const qrDataUrl = await QRCode.toDataURL(t.uri, {
+      width: 300, margin: 2,
+      color: { dark: '#000000', light: '#ffffff' },
+      errorCorrectionLevel: 'M',
+    });
+    cards.push({ track: t, qrDataUrl });
+  }
+
+  // ── Build pages ───────────────────────────────────────────────────────────
+  const COLS     = 3;
+  const PER_PAGE = 12;
+  const total    = Math.ceil(cards.length / PER_PAGE);
+
+  for (let p = 0; p < total; p++) {
+    const slice    = cards.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
+    const mirrored = mirrorRow(slice, COLS);
+
+    // Front page
+    const front = document.createElement('div');
+    front.className = 'print-page';
+    const fg = document.createElement('div');
+    fg.className = 'cards-grid';
+    slice.forEach(c => {
+      const el = document.createElement('div');
+      el.className = 'print-card qr-card';
+      el.innerHTML = `<div class="card-brand">HITSTER</div><img src="${c.qrDataUrl}" alt="QR" />`;
+      fg.appendChild(el);
+    });
+    front.appendChild(fg);
+    pages.appendChild(front);
+
+    // Back page (columns mirrored per row for long-edge double-sided printing)
+    const back = document.createElement('div');
+    back.className = 'print-page';
+    const bg = document.createElement('div');
+    bg.className = 'cards-grid';
+    mirrored.forEach(c => {
+      const el = document.createElement('div');
+      el.className = 'print-card info-card';
+      el.innerHTML = `
+        <div class="info-artist">${esc(c.track.artist)}</div>
+        <div class="info-year">${c.track.year || '?'}</div>
+        <div class="info-song">${esc(c.track.name)}</div>
+      `;
+      bg.appendChild(el);
+    });
+    back.appendChild(bg);
+    pages.appendChild(back);
+  }
+
+  status.style.display = 'none';
+  document.getElementById('sheet-count').textContent =
+    `${tracks.length} tracks · ${total} sheet${total !== 1 ? 's' : ''} · ${total * 2} pages to print`;
+
+  // Clean up the stored job so it doesn't linger
+  localStorage.removeItem('hitster_print_job');
+</script>
+</body>
+</html>

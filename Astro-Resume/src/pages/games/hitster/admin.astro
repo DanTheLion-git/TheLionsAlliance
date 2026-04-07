@@ -10,135 +10,7 @@ import '../../../styles/games.css';
   <title>Hitster Admin — Card Generator</title>
 
   <style>
-    /* ── Print layout ───────────────────────────────────────────────────── */
-    @media print {
-      .no-print { display: none !important; }
-
-      @page {
-        size: A4 portrait;
-        margin: 10mm;
-      }
-
-      .print-page {
-        display: block !important;
-        page-break-after: always;
-        break-after: page;
-      }
-
-      /*
-       * 3 × 4 = 12 cards per A4 page.
-       * A4 printable area (10mm margins): 190mm × 277mm
-       *   card width  = (190 - 2×3) / 3 = 61.33mm
-       *   card height = (277 - 3×3) / 4 = 67mm
-       * Explicit sizes ensure both front & back pages use the identical grid.
-       */
-      .cards-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 61.33mm);
-        grid-template-rows: repeat(4, 67mm);
-        gap: 3mm;
-      }
-
-      .print-card {
-        width: 61.33mm;
-        height: 67mm;
-        border: 0.35mm solid #c8c8c8;
-        border-radius: 1.5mm;
-        background: #ffffff;
-        color: #000000;
-        overflow: hidden;
-        break-inside: avoid;
-        box-sizing: border-box;
-      }
-
-      /* ── QR front card ── */
-      .qr-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 3mm;
-        gap: 1mm;
-      }
-      .qr-card .card-brand {
-        font-size: 6pt;
-        font-weight: 900;
-        letter-spacing: 2px;
-        color: #555;
-        text-transform: uppercase;
-      }
-      .qr-card img { width: 82%; height: auto; }
-
-      /* ── Song info back card ── */
-      .info-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        padding: 5mm 3mm;
-        text-align: center;
-      }
-      .info-card .info-artist {
-        font-size: 8pt;
-        font-weight: 400;
-        color: #000;
-        line-height: 1.3;
-        width: 100%;
-      }
-      .info-card .info-year {
-        font-size: 72pt;
-        font-weight: 900;
-        color: #000;
-        line-height: 1;
-      }
-      .info-card .info-song {
-        font-size: 8pt;
-        font-weight: 700;
-        color: #000;
-        line-height: 1.3;
-        width: 100%;
-      }
-    }
-
-    /* ── Screen-only preview ────────────────────────────────────────────── */
-    @media screen {
-      .print-only { display: none; }
-
-      .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(90px, 120px));
-        gap: 0.5rem;
-        justify-content: center;
-      }
-
-      .print-card {
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        aspect-ratio: 61 / 67;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 0.4rem;
-        background: #fff;
-        color: #000;
-        font-size: 0.65rem;
-        overflow: hidden;
-      }
-
-      .qr-card { gap: 0.2rem; }
-      .qr-card .card-brand { font-size: 0.48rem; font-weight: 900; letter-spacing: 1px; color: #555; }
-      .qr-card img { width: 74%; height: auto; }
-
-      .info-card {
-        justify-content: space-between;
-        padding: 0.45rem 0.3rem;
-        text-align: center;
-      }
-      .info-card .info-artist { font-size: 0.55rem; color: #000; }
-      .info-card .info-year   { font-size: 1.5rem; font-weight: 900; color: #000; line-height: 1; }
-      .info-card .info-song   { font-size: 0.55rem; font-weight: 700; color: #000; }
-    }
+    /* ── Screen-only styles ─────────────────────────────────────────────────── */
 
     /* ── Admin-specific screen styles ───────────────────────────────────── */
     .track-row {
@@ -376,49 +248,16 @@ import '../../../styles/games.css';
       <div style="display:flex;flex-direction:column;gap:0.5rem;">
         <div id="selection-count" class="g-label" style="text-align:center;"></div>
         <button id="btn-generate" class="g-btn primary" style="font-size:1rem;">
-          🃏 Generate Print Sheet
+          🃏 Open Print Sheet ↗
         </button>
       </div>
 
-      <!-- Print progress -->
-      <div id="gen-progress" class="g-alert info hidden">
-        <span class="spinner"></span>
-        <span id="gen-progress-text">Generating QR codes…</span>
-      </div>
-    </div>
-
-    <!-- Print preview (screen only, shown after generation) -->
-    <div id="preview-section" class="hidden" style="width:100%;display:flex;flex-direction:column;gap:1rem;">
-
-      <div class="g-alert success">
-        ✅ Cards ready! Review the preview below, then print.
-      </div>
-
-      <div class="g-card" style="gap:0.75rem;display:flex;flex-direction:column;">
-        <p style="font-size:0.82rem;color:var(--g-muted);">
-          🖨 Print <strong>double-sided, flip on long edge</strong>. Each sheet: front page (QR codes) then back page (year/song). Cut along the grey lines.
-        </p>
-        <button id="btn-print" class="g-btn green" style="font-size:1rem;">🖨 Print / Save as PDF</button>
-        <button id="btn-back"  class="g-btn secondary">&#8592; Back to track list</button>
-      </div>
-
-      <!-- Dynamically populated by JS -->
-      <div id="preview-content" style="width:100%;display:flex;flex-direction:column;gap:0.5rem;"></div>
-    </div>
-
-  </div><!-- /screen-admin -->
-
-
-  <!-- ══ PRINT SHEET (screen: hidden; print: shown) ═══════════════════════ -->
-  <div id="print-sheet" class="print-only" style="display:none;">
-    <!-- Dynamically populated: alternating front/back pages, 12 cards each -->
-  </div>
+    </div><!-- /screen-admin -->
 
 
   <!-- ══ SCRIPTS ══════════════════════════════════════════════════════════ -->
   <script>
     import { isAuthenticated, getValidToken, logout, startSpotifyAuth, hasScope, grantedScopes } from '../../../lib/spotify';
-    import QRCode from 'qrcode';
 
     // ── Types ──────────────────────────────────────────────────────────────
     interface Track {
@@ -431,9 +270,8 @@ import '../../../styles/games.css';
     }
 
     // ── State ──────────────────────────────────────────────────────────────
-    let allTracks: Track[]        = [];
-    let selectedIds: Set<string>  = new Set();
-    let generatedCards: { track: Track; qrDataUrl: string }[] = [];
+    let allTracks: Track[]       = [];
+    let selectedIds: Set<string> = new Set();
 
     // ── DOM ────────────────────────────────────────────────────────────────
     const $  = (id: string) => document.getElementById(id)!;
@@ -569,66 +407,6 @@ import '../../../styles/games.css';
 
     function escHtml(s: string): string {
       return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-
-    // ── QR + card generation ───────────────────────────────────────────────
-    async function generateCards(tracks: Track[]) {
-      generatedCards = [];
-      const total = tracks.length;
-      const progText = $('gen-progress-text');
-
-      for (let i = 0; i < total; i++) {
-        const t = tracks[i];
-        progText.textContent = `Generating QR codes… ${i + 1} / ${total}`;
-        const qrDataUrl = await QRCode.toDataURL(t.uri, {
-          width:        300,
-          margin:       2,
-          color:        { dark: '#000000', light: '#ffffff' },
-          errorCorrectionLevel: 'M',
-        });
-        generatedCards.push({ track: t, qrDataUrl });
-      }
-    }
-
-    // ── Build card HTML ────────────────────────────────────────────────────
-    function buildFrontCard(c: { track: Track; qrDataUrl: string }): HTMLElement {
-      const div = document.createElement('div');
-      div.className = 'print-card qr-card';
-      div.innerHTML = `
-        <div class="card-brand">HITSTER</div>
-        <img src="${c.qrDataUrl}" alt="QR" />
-      `;
-      return div;
-    }
-
-    function buildBackCard(c: { track: Track; qrDataUrl: string }): HTMLElement {
-      const div = document.createElement('div');
-      div.className = 'print-card info-card';
-      const year = c.track.year || '?';
-      div.innerHTML = `
-        <div class="info-artist">${escHtml(c.track.artist)}</div>
-        <div class="info-year">${year}</div>
-        <div class="info-song">${escHtml(c.track.name)}</div>
-      `;
-      return div;
-    }
-
-    /**
-     * For double-sided printing (flip on long edge), the back sheet needs its
-     * columns mirrored per row so each card aligns with its matching front:
-     *
-     *  Front row:  [1][2][3]   Back row (mirrored):  [3][2][1]
-     *
-     * This way, after flipping the page on the long (vertical) edge, card
-     * position [1] on the front aligns with position [1] on the back.
-     */
-    function mirrorRow<T>(arr: T[], cols: number): T[] {
-      const result: T[] = [];
-      for (let row = 0; row < Math.ceil(arr.length / cols); row++) {
-        const slice = arr.slice(row * cols, (row + 1) * cols);
-        result.push(...slice.reverse());
-      }
-      return result;
     }
 
     // ── CSV Import (Exportify) ─────────────────────────────────────────────
@@ -839,96 +617,26 @@ import '../../../styles/games.css';
       updateSelectionCount();
     });
 
-    // ── Generate print sheet ───────────────────────────────────────────────
-    $('btn-generate').addEventListener('click', async () => {
+    // ── Generate print sheet — open dedicated print tab ────────────────────
+    $('btn-generate').addEventListener('click', () => {
       const selected = allTracks.filter(t => selectedIds.has(t.id));
       if (selected.length === 0) {
         alert('Please select at least one track.');
         return;
       }
 
-      hide('track-section');
-      show('gen-progress');
+      // Serialise tracks into localStorage so the print page can read them
+      const job = selected.map(t => ({
+        id:     t.id,
+        uri:    t.uri,
+        name:   t.name,
+        artist: t.artist,
+        year:   t.year,
+      }));
+      localStorage.setItem('hitster_print_job', JSON.stringify(job));
 
-      try {
-        await generateCards(selected);
-
-        const COLS     = 3;
-        const PER_PAGE = 12; // 3 columns × 4 rows per A4
-
-        // Clear dynamic containers
-        const printSheet    = $('print-sheet');
-        const previewContent = $('preview-content');
-        printSheet.innerHTML    = '';
-        previewContent.innerHTML = '';
-        printSheet.style.display = '';
-
-        const totalPages = Math.ceil(generatedCards.length / PER_PAGE);
-
-        for (let p = 0; p < totalPages; p++) {
-          const slice    = generatedCards.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
-          const mirrored = mirrorRow(slice, COLS);
-
-          // ── Print pages ──────────────────────────────────────────────────
-          // Front print page
-          const frontPrintPage = document.createElement('div');
-          frontPrintPage.className = 'print-page';
-          const frontPrintGrid = document.createElement('div');
-          frontPrintGrid.className = 'cards-grid';
-          slice.forEach(c => frontPrintGrid.appendChild(buildFrontCard(c)));
-          frontPrintPage.appendChild(frontPrintGrid);
-          printSheet.appendChild(frontPrintPage);
-
-          // Back print page
-          const backPrintPage = document.createElement('div');
-          backPrintPage.className = 'print-page';
-          const backPrintGrid = document.createElement('div');
-          backPrintGrid.className = 'cards-grid';
-          mirrored.forEach(c => backPrintGrid.appendChild(buildBackCard(c)));
-          backPrintPage.appendChild(backPrintGrid);
-          printSheet.appendChild(backPrintPage);
-
-          // ── Screen preview ───────────────────────────────────────────────
-          const sheetLabel = document.createElement('h3');
-          sheetLabel.style.cssText = 'font-size:0.85rem;font-weight:700;color:var(--g-muted);text-transform:uppercase;letter-spacing:0.06em;margin:1rem 0 0.5rem;';
-          sheetLabel.textContent = `Sheet ${p + 1} of ${totalPages} — cards ${p * PER_PAGE + 1}–${Math.min((p + 1) * PER_PAGE, generatedCards.length)}`;
-          previewContent.appendChild(sheetLabel);
-
-          const frontLabel = document.createElement('p');
-          frontLabel.style.cssText = 'font-size:0.75rem;color:var(--g-muted);margin:0 0 0.4rem;';
-          frontLabel.textContent = '↑ Front (QR codes)';
-          previewContent.appendChild(frontLabel);
-
-          const frontPreviewGrid = document.createElement('div');
-          frontPreviewGrid.className = 'cards-grid';
-          slice.forEach(c => frontPreviewGrid.appendChild(buildFrontCard(c)));
-          previewContent.appendChild(frontPreviewGrid);
-
-          const backLabel = document.createElement('p');
-          backLabel.style.cssText = 'font-size:0.75rem;color:var(--g-muted);margin:0.75rem 0 0.4rem;';
-          backLabel.textContent = '↑ Back (artist / year / song) — columns mirrored for double-sided flip on long edge';
-          previewContent.appendChild(backLabel);
-
-          const backPreviewGrid = document.createElement('div');
-          backPreviewGrid.className = 'cards-grid';
-          mirrored.forEach(c => backPreviewGrid.appendChild(buildBackCard(c)));
-          previewContent.appendChild(backPreviewGrid);
-        }
-
-        hide('gen-progress');
-        show('preview-section');
-      } catch (err) {
-        hide('gen-progress');
-        $('pl-error').textContent = err instanceof Error ? err.message : String(err);
-        show('pl-error', 'track-section');
-      }
-    });
-
-    $('btn-print').addEventListener('click', () => window.print());
-
-    $('btn-back').addEventListener('click', () => {
-      hide('preview-section');
-      show('track-section');
+      // Open the clean, site-CSS-free print page in a new tab
+      window.open('/games/hitster/print/', '_blank');
     });
 
     $('btn-back-to-playlists').addEventListener('click', () => {
