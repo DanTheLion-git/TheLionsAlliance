@@ -6,7 +6,7 @@ import '../../../styles/games.css';
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>30 Seconds — The Lions Alliance</title>
   <style>
     .setup-block {
@@ -24,17 +24,18 @@ import '../../../styles/games.css';
     .team-input:focus { outline: none; border-color: var(--g-accent); }
     .team-del {
       background: none; border: 1px solid var(--g-border); border-radius: 999px;
-      color: var(--g-muted); cursor: pointer; width: 2rem; height: 2rem;
+      color: var(--g-muted); cursor: pointer; min-width: 2.75rem; min-height: 2.75rem;
       font-size: 1rem; display: flex; align-items: center; justify-content: center;
       transition: border-color 150ms, color 150ms; flex-shrink: 0; font-family: inherit;
     }
     .team-del:hover { border-color: var(--g-accent); color: var(--g-text); }
     .chip-group { display: flex; flex-wrap: wrap; gap: .4rem; }
     .chip {
-      padding: .4rem .9rem; border-radius: 999px;
+      padding: .6rem .9rem; border-radius: 999px;
       border: 1.5px solid var(--g-border); background: var(--g-bg);
       color: var(--g-muted); font-size: .82rem; font-weight: 600;
       cursor: pointer; user-select: none; transition: all 150ms;
+      min-height: 44px; display: inline-flex; align-items: center;
     }
     .chip.on { border-color: var(--g-accent); background: rgba(34,113,177,.15); color: var(--g-text); }
     .timer-bar-wrap { width: 100%; height: 5px; background: var(--g-border); border-radius: 3px; overflow: hidden; }
@@ -68,7 +69,7 @@ import '../../../styles/games.css';
     .prompt-check { font-size: 1.15rem; flex-shrink: 0; color: var(--g-border); transition: color .1s; }
     .score-adj-row { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
     .adj-btn {
-      width: 3rem; height: 3rem; border-radius: 999px;
+      width: clamp(2.75rem, 12vw, 3rem); height: clamp(2.75rem, 12vw, 3rem); border-radius: 999px;
       border: 1.5px solid var(--g-border); background: var(--g-surface2);
       color: var(--g-text); font-size: 1.6rem; font-weight: 700;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -77,7 +78,7 @@ import '../../../styles/games.css';
     .adj-btn:hover { border-color: var(--g-accent2); }
     .score-big { font-size: 5rem; font-weight: 900; color: var(--g-accent2); line-height: 1; text-align: center; }
     .score-label { font-size: .9rem; color: var(--g-muted); text-align: center; margin-top: .25rem; }
-    .scoreboard { display: flex; flex-direction: column; gap: .5rem; width: 100%; }
+    .scoreboard { display: flex; flex-direction: column; gap: .5rem; width: 100%; max-height: 45vh; overflow-y: auto; }
     .score-row {
       display: flex; align-items: center; gap: .75rem;
       padding: .75rem 1rem; background: var(--g-surface);
@@ -137,7 +138,7 @@ import '../../../styles/games.css';
   <div id="screen-setup" class="game-content" style="gap:.85rem;">
 
     <div style="text-align:center;">
-      <div style="font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--g-accent),var(--g-accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">30 SECONDS</div>
+      <div style="font-size:clamp(1.6rem,7vw,2.2rem);font-weight:900;background:linear-gradient(135deg,var(--g-accent),var(--g-accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">30 SECONDS</div>
       <p class="g-subtitle">Describe 5 words in 60 seconds</p>
     </div>
 
@@ -181,7 +182,7 @@ import '../../../styles/games.css';
   </div>
 
   <!-- ══ PLAY ══════════════════════════════════════════════════════════════ -->
-  <div id="screen-play" class="hidden" style="display:flex;flex-direction:column;align-items:center;width:100%;min-height:calc(100vh - 52px);padding:0;">
+  <div id="screen-play" class="hidden" style="display:flex;flex-direction:column;align-items:center;width:100%;flex:1;min-height:calc(100dvh - 52px - 54px);padding:0;">
 
     <div id="play-timer-bar" class="timer-bar-wrap" style="border-radius:0;"></div>
 

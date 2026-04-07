@@ -13,10 +13,11 @@ import '../../../styles/games.css';
     /* ── Chips ──────────────────────────────────────────────────────────── */
     .chip-group { display:flex; flex-wrap:wrap; gap:0.4rem; }
     .chip {
-      padding:.4rem .9rem; border-radius:999px;
+      padding:.6rem .9rem; border-radius:999px;
       border:1.5px solid var(--g-border); background:var(--g-bg);
       color:var(--g-muted); font-size:.82rem; font-weight:600;
       cursor:pointer; user-select:none; white-space:nowrap; transition:all .12s;
+      min-height: 44px; display: inline-flex; align-items: center;
     }
     .chip.on      { border-color:var(--g-accent);  background:rgba(233,69,96,.15);  color:var(--g-text); }
     .chip.lang-on { border-color:#5882ff;           background:rgba(88,130,255,.15); color:#a0b4ff; }
@@ -35,10 +36,10 @@ import '../../../styles/games.css';
 
     .prompt-card {
       background:var(--g-surface); border:2px solid var(--g-border);
-      border-radius:var(--g-radius); padding:2rem 1.5rem;
+      border-radius:var(--g-radius); padding:clamp(1rem,5vw,2rem) clamp(0.75rem,4vw,1.5rem);
       width:100%; text-align:center;
       display:flex; flex-direction:column; align-items:center; gap:.75rem;
-      min-height:200px; justify-content:center;
+      min-height:clamp(150px,35vh,200px); justify-content:center;
       position:relative; transition:border-color .2s, opacity .18s;
     }
     .prompt-card.hidden-card { border-color:var(--g-surface2); background:var(--g-bg); }
@@ -95,7 +96,7 @@ import '../../../styles/games.css';
   <div id="screen-setup" class="game-content" style="gap:.85rem;">
 
     <div style="text-align:center;">
-      <div style="font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--g-accent),var(--g-accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">CHARADES</div>
+      <div style="font-size:clamp(1.5rem,7vw,2rem);font-weight:900;background:linear-gradient(135deg,var(--g-accent),var(--g-accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">CHARADES</div>
       <p class="g-subtitle">Act it out — no talking!</p>
     </div>
 

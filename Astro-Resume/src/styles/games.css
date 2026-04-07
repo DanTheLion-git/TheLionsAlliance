@@ -116,7 +116,7 @@
 
 /* ── Typography ───────────────────────────────────────────────────────────── */
 .g-title {
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 5vw, 1.8rem);
   font-weight: 800;
   letter-spacing: -0.5px;
   color: var(--g-text);
@@ -139,7 +139,7 @@
 
 /* ── Hitster-specific ─────────────────────────────────────────────────────── */
 .hitster-logo {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 8vw, 2.5rem);
   font-weight: 900;
   background: linear-gradient(135deg, var(--g-accent), var(--g-accent2));
   -webkit-background-clip: text;
@@ -167,7 +167,7 @@
 }
 
 .scan-frame {
-  width: 200px; height: 200px;
+  width: min(200px, 70%); height: min(200px, 70%);
   border: 3px solid var(--g-accent2);
   border-radius: var(--g-radius);
   box-shadow: 0 0 0 2000px rgba(0,0,0,0.45);
@@ -209,21 +209,21 @@
 }
 
 .album-art {
-  width: 140px; height: 140px;
+  width: min(140px, 80%); height: auto; aspect-ratio: 1;
   border-radius: var(--g-radius);
   object-fit: cover;
   box-shadow: 0 8px 24px rgba(0,0,0,0.45);
 }
 
 .album-art-placeholder {
-  width: 140px; height: 140px;
+  width: min(140px, 80%); aspect-ratio: 1;
   border-radius: var(--g-radius);
   background: var(--g-surface2);
   display: flex; align-items: center; justify-content: center;
   font-size: 3rem;
 }
 
-.player-controls { display: flex; gap: 0.75rem; width: 100%; }
+.player-controls { display: flex; gap: 0.75rem; width: 100%; flex-wrap: wrap; }
 
 /* ── Reveal card ──────────────────────────────────────────────────────────── */
 .reveal-card {
@@ -243,8 +243,8 @@
   to   { transform: scale(1);    opacity: 1; }
 }
 
-.reveal-year   { font-size: 4rem; font-weight: 900; color: var(--g-accent2); line-height: 1; }
-.reveal-song   { font-size: 1.4rem; font-weight: 700; color: var(--g-text); }
+.reveal-year   { font-size: clamp(2.5rem, 12vw, 4rem); font-weight: 900; color: var(--g-accent2); line-height: 1; }
+.reveal-song   { font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 700; color: var(--g-text); }
 .reveal-artist { font-size: 1rem; color: var(--g-muted); }
 
 /* ── Games Hub ────────────────────────────────────────────────────────────── */
@@ -308,3 +308,22 @@
 .hidden { display: none !important; }
 .center { text-align: center; }
 .w-full { width: 100%; }
+
+/* ── Responsive breakpoints ──────────────────────────────────────────────── */
+@media (max-width: 400px) {
+  .game-content {
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
+  .g-card { padding: 1rem; }
+  .g-btn  { padding: 0.75rem 1rem; font-size: 0.95rem; }
+  .games-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.75rem; }
+  .game-tile { padding: 1rem 0.75rem; }
+  .game-tile .icon { font-size: 2rem; }
+  .now-playing-card { padding: 1rem; }
+}
+
+@media (max-width: 340px) {
+  .game-content { padding: 0.75rem 0.6rem; }
+  .games-grid   { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+}
