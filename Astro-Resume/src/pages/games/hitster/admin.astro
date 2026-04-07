@@ -253,11 +253,17 @@ import '../../../styles/games.css';
       border-color: var(--g-accent2);
       transform: translateY(-2px);
     }
-    .playlist-tile img, .playlist-tile .pl-art-placeholder {
+    .playlist-tile img {
       width: 100%;
-      aspect-ratio: 1;
+      height: 0;
+      padding-bottom: 100%; /* forces perfect 1:1 square */
       object-fit: cover;
       display: block;
+      background: var(--g-surface2);
+    }
+    .playlist-tile .pl-art-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
       background: var(--g-surface2);
       font-size: 2rem;
       display: flex;
@@ -475,14 +481,16 @@ import '../../../styles/games.css';
       while (url) {
         const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
         if (!res.ok) {
+          const body = await res.json().catch(() => ({})) as { error?: { message?: string } };
+          const detail = body?.error?.message ?? '';
           if (res.status === 403) {
-            document.getElementById('btn-reauth')!.classList.remove('hidden');
+            show('btn-reauth');
             throw new Error(
-              'Access denied (403) — your Spotify connection is missing playlist permissions. ' +
+              `Access denied (403)${detail ? ': ' + detail : ''} — your Spotify token is missing playlist permissions. ` +
               'Click "Reconnect Spotify with playlist access" below to re-authorise.'
             );
           }
-          throw new Error(`Track fetch failed (${res.status})`);
+          throw new Error(`Track fetch failed (${res.status})${detail ? ': ' + detail : ''}`);
         }
         const data = await res.json();
 
@@ -666,10 +674,11 @@ import '../../../styles/games.css';
         const btn = document.createElement('button');
         btn.className = 'playlist-tile';
         const artUrl = pl.images?.[0]?.url;
-        btn.innerHTML = artUrl
-          ? `<img src="${artUrl}" alt="" loading="lazy" />`
+        // Use a square wrapper div so the image is always 1:1 regardless of natural dimensions
+        const artHtml = artUrl
+          ? `<div style="width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--g-surface2)"><img src="${artUrl}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>`
           : `<div class="pl-art-placeholder">🎵</div>`;
-        btn.innerHTML += `
+        btn.innerHTML = artHtml + `
           <div class="playlist-tile-info">
             <div class="playlist-tile-name" title="${pl.name}">${pl.name}</div>
             <div class="playlist-tile-count">${pl.tracks?.total ?? '?'} tracks</div>
@@ -799,8 +808,12 @@ import '../../../styles/games.css';
     // ── Logout ─────────────────────────────────────────────────────────────
     $('btn-logout').addEventListener('click', () => { logout(); location.href = '/games/hitster/'; });
 
-    // Re-auth with full scope (forces Spotify consent screen via show_dialog=true)
-    $('btn-reauth').addEventListener('click', () => { logout(); startSpotifyAuth(); });
+    // Re-auth with full scope — store return-to so callback lands back on admin
+    $('btn-reauth').addEventListener('click', () => {
+      sessionStorage.setItem('spotify_return_to', '/games/hitster/admin/');
+      logout();
+      startSpotifyAuth();
+    });
 
     // ── Init ───────────────────────────────────────────────────────────────
     if (isAuthenticated()) {

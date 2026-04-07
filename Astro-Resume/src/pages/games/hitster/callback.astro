@@ -65,8 +65,9 @@ const title = "Hitster — Callback";
       try {
         await exchangeCode(code);
         statusEl.textContent = '✅ Connected! Redirecting…';
-        // Small delay so the user sees the confirmation
-        setTimeout(() => { window.location.href = '/games/hitster/'; }, 800);
+        const returnTo = sessionStorage.getItem('spotify_return_to') ?? '/games/hitster/';
+        sessionStorage.removeItem('spotify_return_to');
+        setTimeout(() => { window.location.href = returnTo; }, 800);
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : String(err);
         statusEl.textContent = `❌ Auth failed: ${msg}`;
