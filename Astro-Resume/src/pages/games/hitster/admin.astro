@@ -19,86 +19,83 @@ import '../../../styles/games.css';
         margin: 10mm;
       }
 
-      /* 3 × 4 = 12 cards per A4 page */
-      .cards-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        gap: 3mm;
-        width: 100%;
-        height: calc(297mm - 20mm); /* full printable height */
-        box-sizing: border-box;
-      }
-
       .print-page {
         display: block !important;
-        width: 100%;
-        height: calc(297mm - 20mm);
-        box-sizing: border-box;
         page-break-after: always;
         break-after: page;
       }
 
+      /*
+       * 3 × 4 = 12 cards per A4 page.
+       * A4 printable area (10mm margins): 190mm × 277mm
+       *   card width  = (190 - 2×3) / 3 = 61.33mm
+       *   card height = (277 - 3×3) / 4 = 67mm
+       * Explicit sizes ensure both front & back pages use the identical grid.
+       */
+      .cards-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 61.33mm);
+        grid-template-rows: repeat(4, 67mm);
+        gap: 3mm;
+      }
+
       .print-card {
-        border: 0.4mm solid #d8d8d8;
-        border-radius: 2mm;
-        overflow: hidden;
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        break-inside: avoid;
+        width: 61.33mm;
+        height: 67mm;
+        border: 0.35mm solid #c8c8c8;
+        border-radius: 1.5mm;
         background: #ffffff;
-        color: #000;
+        color: #000000;
+        overflow: hidden;
+        break-inside: avoid;
         box-sizing: border-box;
       }
 
-      /* QR front card */
-      .qr-card { padding: 3mm; gap: 1mm; }
-
-      .qr-card .card-brand {
-        font-size: 7pt;
-        font-weight: 900;
-        letter-spacing: 2px;
-        color: #e94560;
-        text-transform: uppercase;
-        flex-shrink: 0;
-      }
-
-      .qr-card img { width: 80%; height: auto; flex-shrink: 0; }
-
-      /* Song info back card */
-      .info-card {
-        padding: 4mm 3mm;
-        justify-content: space-between;
-        text-align: center;
-        gap: 0;
-      }
-
-      .info-card .info-artist {
-        font-size: 9pt;
-        font-weight: 600;
-        color: #222;
-        line-height: 1.2;
-        width: 100%;
-      }
-
-      .info-card .info-year {
-        font-size: 46pt;
-        font-weight: 900;
-        color: #e94560;
-        line-height: 1;
-        flex: 1;
+      /* ── QR front card ── */
+      .qr-card {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 3mm;
+        gap: 1mm;
       }
+      .qr-card .card-brand {
+        font-size: 6pt;
+        font-weight: 900;
+        letter-spacing: 2px;
+        color: #555;
+        text-transform: uppercase;
+      }
+      .qr-card img { width: 82%; height: auto; }
 
+      /* ── Song info back card ── */
+      .info-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5mm 3mm;
+        text-align: center;
+      }
+      .info-card .info-artist {
+        font-size: 8pt;
+        font-weight: 400;
+        color: #000;
+        line-height: 1.3;
+        width: 100%;
+      }
+      .info-card .info-year {
+        font-size: 72pt;
+        font-weight: 900;
+        color: #000;
+        line-height: 1;
+      }
       .info-card .info-song {
-        font-size: 9pt;
+        font-size: 8pt;
         font-weight: 700;
         color: #000;
-        line-height: 1.2;
+        line-height: 1.3;
         width: 100%;
       }
     }
@@ -109,7 +106,7 @@ import '../../../styles/games.css';
 
       .cards-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(90px, 130px));
+        grid-template-columns: repeat(3, minmax(90px, 120px));
         gap: 0.5rem;
         justify-content: center;
       }
@@ -117,7 +114,7 @@ import '../../../styles/games.css';
       .print-card {
         border: 1px solid #ccc;
         border-radius: 4px;
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 61 / 67;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -126,23 +123,21 @@ import '../../../styles/games.css';
         background: #fff;
         color: #000;
         font-size: 0.65rem;
-        gap: 0.2rem;
         overflow: hidden;
       }
 
-      .qr-card .card-brand { font-size: 0.5rem; font-weight: 900; letter-spacing: 1px; color: #e94560; }
-      .qr-card img { width: 72%; height: auto; }
+      .qr-card { gap: 0.2rem; }
+      .qr-card .card-brand { font-size: 0.48rem; font-weight: 900; letter-spacing: 1px; color: #555; }
+      .qr-card img { width: 74%; height: auto; }
 
       .info-card {
         justify-content: space-between;
+        padding: 0.45rem 0.3rem;
         text-align: center;
-        padding: 0.5rem 0.4rem;
-        gap: 0;
       }
-
-      .info-card .info-artist { font-size: 0.6rem; font-weight: 600; color: #222; }
-      .info-card .info-year   { font-size: 1.6rem; font-weight: 900; color: #e94560; line-height: 1; flex: 1; display: flex; align-items: center; justify-content: center; }
-      .info-card .info-song   { font-size: 0.6rem; font-weight: 700; color: #000; }
+      .info-card .info-artist { font-size: 0.55rem; color: #000; }
+      .info-card .info-year   { font-size: 1.5rem; font-weight: 900; color: #000; line-height: 1; }
+      .info-card .info-song   { font-size: 0.55rem; font-weight: 700; color: #000; }
     }
 
     /* ── Admin-specific screen styles ───────────────────────────────────── */
