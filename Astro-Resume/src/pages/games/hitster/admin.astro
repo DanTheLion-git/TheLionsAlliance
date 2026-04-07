@@ -672,9 +672,9 @@ import '../../../styles/games.css';
         btn.innerHTML += `
           <div class="playlist-tile-info">
             <div class="playlist-tile-name" title="${pl.name}">${pl.name}</div>
-            <div class="playlist-tile-count">${pl.tracks.total} tracks</div>
+            <div class="playlist-tile-count">${pl.tracks?.total ?? '?'} tracks</div>
           </div>`;
-        btn.addEventListener('click', () => loadPlaylist(pl.id, pl.name, pl.tracks.total));
+        btn.addEventListener('click', () => loadPlaylist(pl.id, pl.name, pl.tracks?.total ?? 0));
         grid.appendChild(btn);
       }
     }
