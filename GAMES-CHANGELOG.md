@@ -5,6 +5,26 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.5.0] — 2026-04-07
+
+### Changed — Site-wide header & footer unification
+- All game pages (`/games/`, `/games/hitster/`, `/games/charades/`, `/games/30-seconds/`) now use the **exact same header and footer** as the main resume/homepage
+  - Header: "The Lions Alliance" logo + Games / Resume nav links + light/dark theme toggle
+  - Footer: © The Lions Alliance
+  - Anti-flash theme restoration script in every `<head>`
+- Both `global.css` and `games.css` are now imported on game pages so `.site-header` / `.site-footer` styles apply correctly
+- Removed `.game-header` CSS class (replaced by `.site-header` from `global.css`)
+- Updated `.game-page` flex layout: removed `align-items: center`; `.game-content` now self-centers via `margin: 0 auto`
+
+### Changed — Homepage
+- Removed the three nav card buttons (Wedding / Resume / Games) from the homepage body
+- Added **Games** link to the homepage header nav (next to Resume)
+
+### Changed — Resume/Blog pages
+- Added **Games** link to `ResumeLayout.astro` nav (Blog / Resume / **Games** / theme toggle)
+
+---
+
 ## [1.4.1] — 2026-04-07
 
 ### Fixed
