@@ -334,9 +334,10 @@ import '../../../styles/games.css';
       <!-- CSV Import panel — primary method (always works) -->
       <div class="g-card" style="gap:0.75rem;display:flex;flex-direction:column;">
         <div class="g-label" style="font-size:0.9rem;">📋 Import from CSV <span style="background:var(--g-accent);color:#fff;font-size:0.65rem;padding:0.1em 0.4em;border-radius:3px;margin-left:0.4rem;">RECOMMENDED</span></div>
-        <p style="font-size:0.82rem;color:var(--g-muted);margin:0;">
-          1. Go to <a href="https://exportify.net" target="_blank" rel="noopener" style="color:var(--g-accent2);">exportify.net</a> — log in with Spotify, export your playlist as CSV.<br>
-          2. Open the downloaded file, select all, copy, and paste below.
+        <p style="font-size:0.82rem;color:var(--g-muted);margin:0;line-height:1.7;">
+          1. Go to <a href="https://exportify.net" target="_blank" rel="noopener" style="color:var(--g-accent2);">exportify.net</a> — log in with Spotify, click <strong>Export</strong> next to your Hitster playlist.<br>
+          2. Open the downloaded <code style="background:var(--g-surface2);padding:0.1em 0.3em;border-radius:3px;">.csv</code> file in a text editor or Excel → <strong>Select All → Copy</strong>.<br>
+          3. Paste the contents into the field below and click <strong>Load Tracks from CSV</strong>.
         </p>
         <textarea id="csv-input" rows="5"
           placeholder="Paste Exportify CSV here (Spotify URI, Track Name, Artist Name(s), Album Release Date…)"
