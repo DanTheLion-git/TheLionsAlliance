@@ -3,456 +3,217 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Daniel van Leeuwen — Portfolio</title>
-  <meta name="description" content="Portfolio of Daniel van Leeuwen — Generalist engineer with strengths in 3D/VR and cloud (Azure)." />
+  <title>The Lions Alliance</title>
+  <meta name="description" content="The Lions Alliance — coming soon." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="stylesheet.css">
-
-  <!-- Three.js import map — enables `import * as THREE from 'three'` in module scripts -->
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js"
+  <style>
+    /* ── Design Tokens (light theme from resume) ── */
+    :root {
+      --bg:      #f7f9fc;
+      --panel:   #ffffff;
+      --muted:   #53627a;
+      --text:    #10131a;
+      --brand:   #2563eb;
+      --brand-2: #059669;
+      --border:  #e6ecf5;
+      --shadow:  0 10px 30px rgba(18,33,61,.08);
+      --radius:  18px;
     }
-  }
-  </script>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1100px 500px at 80% -10%, rgba(37,99,235,.10), transparent 65%),
+        radial-gradient(800px 400px at -5% 15%, rgba(5,150,105,.07), transparent 65%),
+        var(--bg);
+      background-attachment: fixed;
+    }
+
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 18px 32px;
+    }
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--brand); }
+
+    /* ── Main ── */
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+      gap: 0;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--brand) 8%, var(--panel));
+      color: var(--brand);
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+
+    /* Heading */
+    h1 {
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.5px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    h1 .accent { color: var(--brand); }
+
+    /* Subtitle */
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 52px;
+    }
+
+    /* Divider */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      border-radius: 999px;
+      margin: 0 auto 52px;
+    }
+
+    /* Nav cards */
+    .nav-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      max-width: 720px;
+    }
+
+    .nav-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 22px 28px;
+      min-width: 190px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+    .nav-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(18,33,61,.13);
+      text-decoration: none;
+    }
+
+    .nav-card .icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .nav-card .label {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .nav-card .desc {
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 32px;
+      color: var(--muted);
+      font-size: .9rem;
+      text-align: center;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .nav-card { min-width: 100%; }
+    }
+  </style>
 </head>
 <body>
-  <header class="site" role="banner">
-    <nav class="nav" aria-label="Primary">
-      <div class="brand">Daniël van Leeuwen <small>— Portfolio</small></div>
-      <div class="links">
-        <a class="btn secondary" href="#projects">Projects</a>
-        <a class="btn secondary" href="#skills">Skills</a>
-        <a class="btn secondary" href="#experience">Experience</a>
-        <a class="btn secondary" href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
+  <div class="page">
+    <header>
+      <a class="logo" href="/"><span>The Lions</span> Alliance</a>
+    </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero" id="about">
-      <div class="hero-card">
-        <div class="kicker">Generalist Engineer · 3D/VR & Cloud (Azure)</div>
-        <h1>Hi, I'm Daniel</h1>
-        <p class="sub">I enjoy tackling creative problems together with both the team and the client, aiming for the best possible solution. After two years of working as an artist, I'm ready to take on a new technical challenge.</p>
-        <div class="tags">
-          <span class="tag">Multi-Diciplinary Thinking</span>
-          <span class="tag">3D/VR Pipeline Design</span>
-          <span class="tag">Client Collaboration</span>
-          <span class="tag">Creative Problem Solving</span>
-        </div>
-        <div class="cta">
-          <a class="btn secondary" href="#contact">Get in touch</a>
-        </div>
-      </div>
-      <aside class="hero-aside" aria-label="Highlights">
-        <div class="stat"><b>Cloud</b><small>Azure AZ-900 certified; interested in diving deeper</small></div>
-        <div class="stat"><b>VR Video Projects</b><small>Ran full projects autonomously, handling every stage from concept through delivery </small></div>
-        <div class="stat"><b>Team collaborator</b><small>Bridging departments internally and serving as a clear link to the client</small></div>
-      </aside>
-    </section>
+    <main>
+      <span class="badge">Launching Soon</span>
+      <h1>Something is<br><span class="accent">on its way.</span></h1>
+      <p class="subtitle">
+        The Lions Alliance is being built. In the meantime, explore the pages below.
+      </p>
+      <div class="divider"></div>
 
-    <!-- Projects — interactive 3-D podium -->
-    <section id="projects" class="container">
-      <div class="section-title">
-        <h2>Projects</h2>
-      </div>
+      <nav class="nav-cards" aria-label="Available pages">
+        <a class="nav-card" href="/weddingcambox">
+          <div class="icon">📷</div>
+          <div class="label">WeddingCamBox</div>
+          <div class="desc">Camera rental for your big day</div>
+        </a>
+        <a class="nav-card" href="/resume">
+          <div class="icon">📄</div>
+          <div class="label">Resume</div>
+          <div class="desc">Portfolio &amp; CV</div>
+        </a>
+        <a class="nav-card" href="/games">
+          <div class="icon">🎮</div>
+          <div class="label">Games</div>
+          <div class="desc">Projects &amp; experiments</div>
+        </a>
+      </nav>
+    </main>
 
-      <div id="podium-wrapper" class="podium-wrapper">
-        <canvas id="podium-canvas"></canvas>
+    <footer>
+      &copy; <span id="yr"></span> The Lions Alliance
+    </footer>
+  </div>
 
-        <!-- Slide-in info panel -->
-        <aside id="proj-panel" class="proj-panel" aria-hidden="true" aria-label="Project details">
-          <button id="proj-close" aria-label="Close project panel">&#x2715;</button>
-          <h3 id="proj-title"></h3>
-          <p  id="proj-meta"  class="meta"></p>
-          <p  id="proj-desc"></p>
-          <div id="proj-links" class="cta"></div>
-        </aside>
-      </div>
-
-      <p class="meta podium-hint">Drag to rotate &nbsp;·&nbsp; click a project to learn more</p>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="container">
-      <div class="section-title"><h2>Technical Skills</h2></div>
-      <div class="chips">
-        <span class="chip">Azure AZ-900</span>
-        <span class="chip">Agile/Git workflow</span>
-        <span class="chip">Houdini VEX</span>
-        <span class="chip">Unreal</span>
-        <span class="chip">Blender</span>
-        <span class="chip">Python</span>
-        <span class="chip">Unity C#</span>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="container">
-      <div class="section-title"><h2>Experience</h2></div>
-      <div class="timeline">
-        <div class="row">
-          <time>2023 — present</time>
-          <div>
-            <h4>3D/VR Developer · Enversed Studios (Eindhoven)</h4>
-            <p>Built interactive experiences; optimized assets and pipelines; client collaboration from concept to delivery.</p>
-          </div>
-        </div>
-        <div class="row">
-          <time>jan. 2023 — jul. 2023</time>
-          <div>
-            <h4>Graduation Internship · Het Nieuwe Kader (Arnhem)</h4>
-            <p>R&D to create a web-based automatic rigging tool for remote motion-capture sessions.</p>
-          </div>
-        </div>
-        <div class="row">
-          <time>mrt. 2022 — aug. 2022</time>
-          <div>
-            <h4>Intern Product Specialist · Movella/Xsens (Enschede)</h4>
-            <p>Tech support, Product presentations together with marketing to find solutions for clients.</p>
-          </div>
-        </div>
-        <div class="row">
-          <time>jul. 2020 - aug. 2021</time>
-          <div>
-            <h4>Parttime Junior VR Developer · Wired Workers (Doetinchem)</h4>
-            <p>Created a virtual showroom for all their Collaborate Robot Solutions using Unity WebGL.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="container">
-      <div class="section-title"><h2>Contact</h2></div>
-      <div class="row" style="grid-template-columns: 1fr 1fr;">
-        <div>
-          <p>Based in Meijel, The Netherlands.</p>
-          <p>
-            Email: <a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a><br>
-            LinkedIn: <a href="https://www.linkedin.com/in/dani%C3%ABl-van-leeuwen-235675100/">Daniël van Leeuwen</a><br>
-            YouTube: <a href="https://www.youtube.com/@DanTheLionVFX">DanTheLionVFX</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      © <span id="y"></span> Daniël van Leeuwen
-    </div>
-  </footer>
-
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
-
-  <!-- ── 3-D Podium — Projects Section ─────────────────────────────────────── -->
-  <script type="module">
-  import * as THREE from 'three';
-
-  // ── Project data ──────────────────────────────────────────────────────────
-  const PROJECTS = [
-    {
-      title: 'Python Auto-Rigger',
-      meta: 'Three.js · Python (PyMel, Waitress, Watchdog)',
-      desc: 'A web-based automatic rigging tool for remote motion-capture sessions, built as a graduation internship project at Het Nieuwe Kader.',
-      color: 0x6aa9ff,
-      links: [
-        { label: 'Video',  href: 'https://youtu.be/zupK9LBxZwk',             newTab: true  },
-        { label: 'Blog',   href: 'PythonAutorigger.html',                      newTab: false },
-      ],
-    },
-    {
-      title: 'Azure Static Site',
-      meta: 'Personal Project · Azure Cloud',
-      desc: 'Resume/portfolio hosted on Azure Blob Storage as a static website with serverless Azure Functions for backend logic.',
-      color: 0x4fc3f7,
-      links: [
-        { label: 'Live',   href: 'https://danielresumestorage.z6.web.core.windows.net/', newTab: true },
-      ],
-    },
-    {
-      title: 'Oosterschelde VR',
-      meta: '360° Interactive Video · Custom Hardware',
-      desc: 'Immersive 360° underwater VR experience for the Oosterschelde nature reserve — shot, edited, and delivered end-to-end under strict hardware constraints.',
-      color: 0x34d399,
-      links: [
-        { label: '(WIP) Video', href: 'https://youtu.be/VprojdpSWek',                         newTab: true  },
-        { label: '(WIP) Blog',  href: 'Oosterschelde.html',                                    newTab: false },
-      ],
-    },
-    {
-      title: 'VR Voyage Amsterdam',
-      meta: 'Historical VR · Pipeline Automation · Render Cost',
-      desc: 'Historical VR experience transporting viewers to 17th-century Amsterdam, with automated pipeline tooling to dramatically cut render cost.',
-      color: 0xfbbf24,
-      links: [
-        { label: 'Video', href: 'https://youtu.be/OL2vQRpIjFM', newTab: true  },
-        { label: 'Blog',  href: 'VRVoyage.html',                 newTab: false },
-      ],
-    },
-    {
-      title: 'Wired Workers Showroom',
-      meta: 'Unity WebGL · 3D Animation · Performance',
-      desc: 'Virtual showroom for collaborative robot solutions built in Unity WebGL with animated product demonstrations optimised for browser performance.',
-      color: 0xf87171,
-      links: [
-        { label: 'Video', href: 'https://youtu.be/XgOcEGr6uVE', newTab: true },
-      ],
-    },
-  ];
-
-  // ── DOM refs ──────────────────────────────────────────────────────────────
-  const wrapper    = document.getElementById('podium-wrapper');
-  const canvas     = document.getElementById('podium-canvas');
-  const panel      = document.getElementById('proj-panel');
-  const panelTitle = document.getElementById('proj-title');
-  const panelMeta  = document.getElementById('proj-meta');
-  const panelDesc  = document.getElementById('proj-desc');
-  const panelLinks = document.getElementById('proj-links');
-  const closeBtn   = document.getElementById('proj-close');
-
-  const W = () => wrapper.offsetWidth;
-  const H = () => wrapper.offsetHeight;
-
-  // ── Renderer ──────────────────────────────────────────────────────────────
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.setSize(W(), H());
-  renderer.toneMapping      = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.0;
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
-
-  // ── Scene ─────────────────────────────────────────────────────────────────
-  const scene = new THREE.Scene();
-
-  // ── Camera ────────────────────────────────────────────────────────────────
-  const camera = new THREE.PerspectiveCamera(50, W() / H(), 0.1, 50);
-
-  const LOOK_TARGET    = new THREE.Vector3(0, 0.45, 0);
-  const CAM_DIST       = 3.6;
-  const CAM_ELEV       = 22 * (Math.PI / 180);
-  const CAM_HALF_RANGE = 60 * (Math.PI / 180);   // ±60° = 120° total sweep
-  const EASE_RATE      = 0.10;
-
-  const camH = LOOK_TARGET.y + CAM_DIST * Math.sin(CAM_ELEV);
-  const camR = CAM_DIST * Math.cos(CAM_ELEV);
-
-  let targetTheta  = 0;
-  let currentTheta = 0;
-
-  function updateCamera() {
-    currentTheta += (targetTheta - currentTheta) * EASE_RATE;
-    camera.position.set(
-      Math.sin(currentTheta) * camR,
-      camH,
-      Math.cos(currentTheta) * camR,
-    );
-    camera.lookAt(LOOK_TARGET);
-  }
-  updateCamera();
-
-  // ── Lighting ──────────────────────────────────────────────────────────────
-  scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-
-  const keyLight = new THREE.DirectionalLight(0xfff4e0, 1.8);
-  keyLight.position.set(4, 8, 4);
-  keyLight.castShadow = true;
-  keyLight.shadow.mapSize.set(1024, 1024);
-  keyLight.shadow.camera.near   = 0.1;
-  keyLight.shadow.camera.far    = 20;
-  keyLight.shadow.camera.left   = -2.5;
-  keyLight.shadow.camera.right  =  2.5;
-  keyLight.shadow.camera.top    =  2.5;
-  keyLight.shadow.camera.bottom = -2.5;
-  scene.add(keyLight);
-
-  const rimLight = new THREE.DirectionalLight(0x6aa9ff, 0.5);
-  rimLight.position.set(-4, 2, -3);
-  scene.add(rimLight);
-
-  const topGlow = new THREE.PointLight(0xffe4a0, 2.2, 5, 2);
-  topGlow.position.set(0, 3.5, 0);
-  scene.add(topGlow);
-
-  // ── Podium ────────────────────────────────────────────────────────────────
-  const podiumGroup = new THREE.Group();
-
-  const podMat = new THREE.MeshStandardMaterial({
-    color:     0x1a1e27,
-    metalness: 0.55,
-    roughness: 0.45,
-  });
-
-  // Three tiers — each slightly narrower as they go up
-  [
-    { r: 0.72, h: 0.13, y: 0.065 },
-    { r: 0.60, h: 0.13, y: 0.195 },
-    { r: 0.48, h: 0.33, y: 0.425 },
-  ].forEach(({ r, h, y }) => {
-    const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 48), podMat);
-    m.position.y = y;
-    m.castShadow = m.receiveShadow = true;
-    podiumGroup.add(m);
-  });
-
-  // Glowing accent ring on top face
-  const ringMat = new THREE.MeshBasicMaterial({ color: 0x6aa9ff, transparent: true, opacity: 0.45 });
-  const ringMesh = new THREE.Mesh(new THREE.TorusGeometry(0.46, 0.013, 8, 80), ringMat);
-  ringMesh.rotation.x = Math.PI / 2;
-  ringMesh.position.y = 0.592;
-  podiumGroup.add(ringMesh);
-
-  scene.add(podiumGroup);
-
-  // Subtle ground disc to catch shadows
-  const ground = new THREE.Mesh(
-    new THREE.CircleGeometry(2.2, 64),
-    new THREE.MeshStandardMaterial({ color: 0x0d1018, roughness: 1, metalness: 0 }),
-  );
-  ground.rotation.x = -Math.PI / 2;
-  ground.position.y = -0.01;
-  ground.receiveShadow = true;
-  scene.add(ground);
-
-  // ── Project cubes ─────────────────────────────────────────────────────────
-  const CUBE_SIZE    = 0.115;
-  const PODIUM_TOP_Y = 0.592;
-  const ARC_R        = 0.27;
-  const N            = PROJECTS.length;
-  const cubes        = [];
-
-  for (let i = 0; i < N; i++) {
-    const angle = N > 1 ? (i / (N - 1) - 0.5) * (Math.PI * 0.80) : 0;
-    const cube  = new THREE.Mesh(
-      new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE),
-      new THREE.MeshStandardMaterial({
-        color:            PROJECTS[i].color,
-        metalness:        0.25,
-        roughness:        0.35,
-        emissive:         new THREE.Color(PROJECTS[i].color),
-        emissiveIntensity: 0.0,
-      }),
-    );
-    cube.position.set(
-      Math.sin(angle) * ARC_R,
-      PODIUM_TOP_Y,
-      Math.cos(angle) * ARC_R,
-    );
-    cube.castShadow = true;
-    cube.userData.projectIndex = i;
-    podiumGroup.add(cube);
-    cubes.push(cube);
-  }
-
-  // ── Selection ─────────────────────────────────────────────────────────────
-  let selectedIndex = -1;
-
-  function selectProject(idx) {
-    // Deselect previous
-    if (selectedIndex >= 0 && selectedIndex < cubes.length) {
-      cubes[selectedIndex].material.emissiveIntensity = 0.0;
-      cubes[selectedIndex].scale.setScalar(1.0);
-    }
-    selectedIndex = idx;
-
-    if (idx < 0) {
-      panel.classList.remove('open');
-      panel.setAttribute('aria-hidden', 'true');
-      return;
-    }
-
-    // Highlight selected cube
-    cubes[idx].material.emissiveIntensity = 0.38;
-    cubes[idx].scale.setScalar(1.20);
-
-    // Fill panel
-    const p      = PROJECTS[idx];
-    panelTitle.textContent = p.title;
-    panelMeta.textContent  = p.meta;
-    panelDesc.textContent  = p.desc;
-    panelLinks.innerHTML   = '';
-    p.links.forEach(({ label, href, newTab }) => {
-      const a       = document.createElement('a');
-      a.className   = 'btn secondary';
-      a.href        = href;
-      a.textContent = label;
-      if (newTab) { a.target = '_blank'; a.rel = 'noopener'; }
-      panelLinks.appendChild(a);
-    });
-
-    panel.classList.add('open');
-    panel.setAttribute('aria-hidden', 'false');
-  }
-
-  closeBtn.addEventListener('click', () => selectProject(-1));
-
-  // ── Drag & click ──────────────────────────────────────────────────────────
-  let isDragging = false;
-  let lastX      = 0;
-  let totalDrag  = 0;
-
-  canvas.addEventListener('pointerdown', (e) => {
-    isDragging = true;
-    lastX      = e.clientX;
-    totalDrag  = 0;
-    canvas.setPointerCapture(e.pointerId);
-  });
-
-  window.addEventListener('pointermove', (e) => {
-    if (!isDragging) return;
-    const dx  = e.clientX - lastX;
-    lastX      = e.clientX;
-    totalDrag += Math.abs(dx);
-    const next = targetTheta - (dx / W()) * (120 * Math.PI / 180);
-    targetTheta = Math.max(-CAM_HALF_RANGE, Math.min(CAM_HALF_RANGE, next));
-  });
-
-  window.addEventListener('pointerup', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-    // Short movement = click intent
-    if (totalDrag < 6) handleClick(e);
-  });
-
-  // ── Raycasting ────────────────────────────────────────────────────────────
-  const raycaster = new THREE.Raycaster();
-  const pointer   = new THREE.Vector2();
-
-  function handleClick(e) {
-    const rect  = canvas.getBoundingClientRect();
-    pointer.x   =  ((e.clientX - rect.left) / rect.width ) * 2 - 1;
-    pointer.y   = -((e.clientY - rect.top ) / rect.height) * 2 + 1;
-    raycaster.setFromCamera(pointer, camera);
-    const hits = raycaster.intersectObjects(cubes);
-    if (hits.length > 0) {
-      const idx = hits[0].object.userData.projectIndex;
-      selectProject(idx === selectedIndex ? -1 : idx);
-    } else {
-      selectProject(-1);
-    }
-  }
-
-  // ── Resize ────────────────────────────────────────────────────────────────
-  new ResizeObserver(() => {
-    renderer.setSize(W(), H());
-    camera.aspect = W() / H();
-    camera.updateProjectionMatrix();
-  }).observe(wrapper);
-
-  // ── Animate ───────────────────────────────────────────────────────────────
-  (function animate() {
-    requestAnimationFrame(animate);
-    updateCamera();
-    renderer.render(scene, camera);
-  })();
-  </script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
