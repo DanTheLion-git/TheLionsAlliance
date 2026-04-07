@@ -508,40 +508,24 @@ import '../../../styles/games.css';
 
     async function fetchAllTracks(playlistId: string, token: string): Promise<Track[]> {
       const tracks: Track[] = [];
+      let url: string | null =
+        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=100`;
 
-      // Use GET /v1/playlists/{id} — embeds first-page tracks without needing the /tracks sub-resource
-      const infoRes = await fetch(
-        `https://api.spotify.com/v1/playlists/${playlistId}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      if (!infoRes.ok) {
-        const body = await infoRes.json().catch(() => ({})) as { error?: { message?: string } };
-        throw spotifyError(infoRes.status, body?.error?.message ?? '');
-      }
-      const playlist = await infoRes.json();
-
-      const firstItems: unknown[] = playlist.tracks?.items ?? [];
-      tracks.push(...parseTrackItems(firstItems as Array<{ track: null | Record<string, unknown> }>));
-
-      // Paginate remaining pages via tracks.next
-      let nextUrl: string | null = playlist.tracks?.next ?? null;
-      while (nextUrl) {
-        const pageRes = await fetch(nextUrl, { headers: { Authorization: `Bearer ${token}` } });
-        if (!pageRes.ok) {
-          const body = await pageRes.json().catch(() => ({})) as { error?: { message?: string } };
-          throw spotifyError(pageRes.status, body?.error?.message ?? '');
+      while (url) {
+        const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({})) as { error?: { message?: string } };
+          throw spotifyError(res.status, body?.error?.message ?? '');
         }
-        const page = await pageRes.json();
-        tracks.push(...parseTrackItems(page.items ?? []));
-        nextUrl = page.next ?? null;
+        const data = await res.json();
+        tracks.push(...parseTrackItems(data.items ?? []));
+        url = data.next ?? null;
       }
 
       if (tracks.length === 0) {
-        const total = playlist.tracks?.total ?? '?';
         throw new Error(
-          `Loaded playlist but found 0 playable tracks (API reports ${total} total). ` +
-          `This can happen if all tracks are local files, episodes, or unavailable. ` +
-          `Try a different playlist or check it has regular Spotify songs.`
+          'Playlist loaded but contains 0 playable tracks. ' +
+          'Make sure the playlist has regular Spotify songs (not local files or podcasts).'
         );
       }
 
