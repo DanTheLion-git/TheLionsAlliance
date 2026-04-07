@@ -9,242 +9,185 @@ import '../../../styles/games.css';
   <title>Charades — The Lions Alliance</title>
 
   <style>
-    /* ── Chip toggles ───────────────────────────────────────────────────── */
-    .chip-group { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
+    /* ── Chips ──────────────────────────────────────────────────────────── */
+    .chip-group { display:flex; flex-wrap:wrap; gap:0.4rem; }
     .chip {
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      border: 1.5px solid var(--g-border);
-      background: var(--g-bg);
-      color: var(--g-muted);
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.12s;
-      user-select: none;
-      white-space: nowrap;
+      padding:.4rem .9rem; border-radius:999px;
+      border:1.5px solid var(--g-border); background:var(--g-bg);
+      color:var(--g-muted); font-size:.82rem; font-weight:600;
+      cursor:pointer; user-select:none; white-space:nowrap; transition:all .12s;
     }
-    .chip.on      { border-color: var(--g-accent);  background: rgba(233,69,96,0.15);   color: var(--g-text);   }
-    .chip.lang-on { border-color: #5882ff;           background: rgba(88,130,255,0.15);  color: #a0b4ff;         }
+    .chip.on      { border-color:var(--g-accent);  background:rgba(233,69,96,.15);  color:var(--g-text); }
+    .chip.lang-on { border-color:#5882ff;           background:rgba(88,130,255,.15); color:#a0b4ff; }
 
-    /* ── Setup card ─────────────────────────────────────────────────────── */
+    /* ── Setup blocks ───────────────────────────────────────────────────── */
     .setup-block {
-      background: var(--g-surface);
-      border: 1px solid var(--g-border);
-      border-radius: var(--g-radius);
-      padding: 0.9rem 1rem;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+      background:var(--g-surface); border:1px solid var(--g-border);
+      border-radius:var(--g-radius); padding:.9rem 1rem;
+      width:100%; display:flex; flex-direction:column; gap:.6rem;
     }
 
-    .setup-block summary {
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-    .setup-block summary::-webkit-details-marker { display: none; }
-    .setup-block summary::after { content: '›'; color: var(--g-muted); transition: transform 0.2s; font-size: 1.2rem; }
-    .setup-block[open] summary::after { transform: rotate(90deg); }
+    /* ── Prompt Library screen ──────────────────────────────────────────── */
+    #screen-prompts { padding:0; }
 
-    /* ── Custom prompt manager ──────────────────────────────────────────── */
-    .custom-add-row {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
+    .lib-toolbar {
+      position:sticky; top:0; z-index:10;
+      background:var(--g-surface);
+      border-bottom:1px solid var(--g-border);
+      padding:.65rem 1rem;
+      display:flex; flex-direction:column; gap:.5rem;
     }
 
-    .custom-add-row input[type="text"] {
-      flex: 1;
-      min-width: 130px;
-      padding: 0.45rem 0.7rem;
-      background: var(--g-bg);
-      border: 1px solid var(--g-border);
-      border-radius: var(--g-radius-sm);
-      color: var(--g-text);
-      font-size: 0.88rem;
-    }
-    .custom-add-row input:focus { outline: none; border-color: var(--g-accent); }
-
-    .mini-select {
-      padding: 0.45rem 0.5rem;
-      background: var(--g-bg);
-      border: 1px solid var(--g-border);
-      border-radius: var(--g-radius-sm);
-      color: var(--g-muted);
-      font-size: 0.8rem;
-      cursor: pointer;
+    .lib-toolbar-top {
+      display:flex; align-items:center; gap:.5rem; flex-wrap:wrap;
     }
 
-    .cp-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.35rem 0.6rem;
-      background: var(--g-bg);
-      border: 1px solid var(--g-border);
-      border-radius: var(--g-radius-sm);
-      font-size: 0.82rem;
+    .lib-search {
+      flex:1; min-width:120px;
+      padding:.45rem .75rem;
+      background:var(--g-bg); border:1px solid var(--g-border);
+      border-radius:var(--g-radius-sm); color:var(--g-text); font-size:.88rem;
     }
-    .cp-item .cp-text  { flex: 1; color: var(--g-text); }
-    .cp-item .cp-badge { font-size: 0.68rem; color: var(--g-muted); white-space: nowrap; }
-    .cp-item .cp-del   { background: none; border: none; color: var(--g-muted); cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 2px; }
-    .cp-item .cp-del:hover { color: var(--g-accent); }
+    .lib-search:focus { outline:none; border-color:var(--g-accent); }
 
-    /* ── Prompt browser modal ───────────────────────────────────────────── */
-    #modal-browse {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.82);
-      z-index: 200;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 1rem;
-      overflow-y: auto;
+    .mini-sel {
+      padding:.4rem .45rem; background:var(--g-bg);
+      border:1px solid var(--g-border); border-radius:var(--g-radius-sm);
+      color:var(--g-muted); font-size:.78rem; cursor:pointer;
     }
 
-    .browse-inner {
-      background: var(--g-surface);
-      border: 1px solid var(--g-border);
-      border-radius: var(--g-radius);
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      padding: 1rem;
-      margin: auto;
+    .lib-meta {
+      font-size:.75rem; color:var(--g-muted);
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.3rem;
     }
 
-    .pb-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.6rem;
-      border-radius: var(--g-radius-sm);
-      background: var(--g-bg);
-      font-size: 0.82rem;
+    /* ── Prompt table ───────────────────────────────────────────────────── */
+    .prompt-table-wrap {
+      width:100%; overflow-x:auto;
     }
-    .pb-item .pb-text  { flex: 1; color: var(--g-text); }
-    .pb-item .pb-cat   { font-size: 0.7rem; color: var(--g-muted); }
-    .pb-item .pb-diff  { font-size: 0.66rem; border-radius: 999px; padding: 1px 6px; }
+
+    table.prompt-table {
+      width:100%; border-collapse:collapse; font-size:.82rem;
+    }
+
+    table.prompt-table thead th {
+      background:var(--g-surface2);
+      padding:.5rem .6rem;
+      text-align:left;
+      font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      color:var(--g-muted);
+      border-bottom:1px solid var(--g-border);
+      white-space:nowrap;
+      cursor:pointer;
+      user-select:none;
+    }
+    table.prompt-table thead th:hover { color:var(--g-text); }
+    table.prompt-table thead th.sorted { color:var(--g-accent2); }
+
+    table.prompt-table tbody tr { border-bottom:1px solid var(--g-border); }
+    table.prompt-table tbody tr:hover { background:rgba(255,255,255,.03); }
+
+    table.prompt-table td { padding:.45rem .5rem; vertical-align:middle; }
+
+    /* Text cell — takes most width */
+    .col-text { min-width:160px; }
+    .row-text {
+      width:100%; padding:.35rem .5rem;
+      background:transparent; border:1px solid transparent;
+      border-radius:var(--g-radius-sm); color:var(--g-text); font-size:.85rem;
+      transition:border-color .12s;
+    }
+    .row-text:hover  { border-color:var(--g-border); }
+    .row-text:focus  { outline:none; border-color:var(--g-accent); background:var(--g-bg); }
+
+    /* Compact selects */
+    .row-sel {
+      padding:.3rem .35rem;
+      background:var(--g-bg); border:1px solid var(--g-border);
+      border-radius:var(--g-radius-sm); color:var(--g-muted); font-size:.75rem;
+      cursor:pointer; width:100%;
+    }
+    .row-sel:focus { outline:none; border-color:var(--g-accent); color:var(--g-text); }
+
+    /* Difficulty badge colours inside selects / labels */
+    .badge-easy   { color:var(--g-green);   }
+    .badge-medium { color:var(--g-accent2); }
+    .badge-hard   { color:var(--g-accent);  }
+
+    .row-del {
+      background:none; border:none; color:var(--g-muted);
+      cursor:pointer; font-size:1.1rem; padding:.1rem .3rem; line-height:1;
+    }
+    .row-del:hover { color:var(--g-accent); }
+
+    /* ── Add-new sticky row ─────────────────────────────────────────────── */
+    .add-row td { background:rgba(29,185,84,.06); border-bottom:2px solid var(--g-green) !important; }
+    .add-row .row-text { border-color:var(--g-border); }
+
+    /* ── Save banner ────────────────────────────────────────────────────── */
+    .save-banner {
+      position:sticky; bottom:0;
+      background:var(--g-surface);
+      border-top:1px solid var(--g-border);
+      padding:.65rem 1rem;
+      display:flex; align-items:center; gap:.75rem;
+    }
+    .save-banner .dirty-label { flex:1; font-size:.8rem; color:var(--g-accent2); }
+
+    /* ── Play screen ────────────────────────────────────────────────────── */
+    .timer-bar-wrap { width:100%; height:4px; background:var(--g-border); border-radius:2px; overflow:hidden; }
+    .timer-bar-fill { height:100%; background:var(--g-green); border-radius:2px; transition:width .2s linear, background .3s; }
+    .timer-bar-fill.urgent { background:var(--g-accent); }
+
+    .prompt-card {
+      background:var(--g-surface); border:2px solid var(--g-border);
+      border-radius:var(--g-radius); padding:2rem 1.5rem;
+      width:100%; text-align:center;
+      display:flex; flex-direction:column; align-items:center; gap:.75rem;
+      min-height:200px; justify-content:center;
+      position:relative; transition:border-color .2s, opacity .18s;
+    }
+    .prompt-card.hidden-card { border-color:var(--g-surface2); background:var(--g-bg); }
+    .cat-label   { font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--g-muted); }
+    .prompt-text { font-size:clamp(1.5rem,6vw,2.2rem); font-weight:800; line-height:1.2; color:var(--g-text); }
+    .diff-badge  { font-size:.7rem; border-radius:999px; padding:2px 10px; }
     .diff-easy   { background:rgba(29,185,84,.2);  color:var(--g-green);   }
     .diff-medium { background:rgba(245,166,35,.2); color:var(--g-accent2); }
     .diff-hard   { background:rgba(233,69,96,.2);  color:var(--g-accent);  }
 
-    /* ── Play screen ────────────────────────────────────────────────────── */
-    .timer-bar-wrap {
-      width: 100%; height: 4px;
-      background: var(--g-border);
-      border-radius: 2px; overflow: hidden;
-    }
-    .timer-bar-fill {
-      height: 100%; background: var(--g-green);
-      border-radius: 2px; transition: width 0.2s linear, background 0.3s;
-    }
-    .timer-bar-fill.urgent { background: var(--g-accent); }
-
-    .prompt-card {
-      background: var(--g-surface);
-      border: 2px solid var(--g-border);
-      border-radius: var(--g-radius);
-      padding: 2rem 1.5rem;
-      width: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      min-height: 200px;
-      justify-content: center;
-      position: relative;
-      transition: border-color 0.2s, opacity 0.18s;
-    }
-    .prompt-card.hidden-card { border-color: var(--g-surface2); background: var(--g-bg); }
-
-    .cat-label    { font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--g-muted); }
-    .prompt-text  { font-size:clamp(1.5rem,6vw,2.2rem); font-weight:800; line-height:1.2; color:var(--g-text); }
-    .diff-badge   { font-size:0.7rem; border-radius:999px; padding:2px 10px; }
-
     .hidden-overlay {
-      position: absolute; inset: 0;
-      background: var(--g-bg);
-      border-radius: calc(var(--g-radius) - 2px);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 0.5rem;
-      color: var(--g-muted); font-size:0.9rem; font-weight:600;
+      position:absolute; inset:0; background:var(--g-bg);
+      border-radius:calc(var(--g-radius) - 2px);
+      display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:.5rem;
+      color:var(--g-muted); font-size:.9rem; font-weight:600;
     }
 
-    .play-action-row { display: flex; gap: 0.75rem; width: 100%; }
+    .play-row { display:flex; gap:.75rem; width:100%; }
     .btn-hide { flex:1; background:var(--g-surface2); border:1px solid var(--g-border); color:var(--g-text); }
     .btn-next { flex:2; background:var(--g-accent); color:white; font-size:1.1rem; }
 
-    .progress-info { font-size:0.78rem; color:var(--g-muted); text-align:center; }
+    .progress-info { font-size:.78rem; color:var(--g-muted); text-align:center; }
   </style>
 </head>
 
 <body class="game-page">
 
+  <!-- ══ HEADER ═══════════════════════════════════════════════════════════ -->
   <header class="game-header">
     <a href="/games/" class="brand">🦁 Games</a>
-    <button id="btn-browse" class="g-btn secondary small" style="width:auto;">📋 Prompts</button>
+    <button id="btn-goto-prompts" class="g-btn secondary small" style="width:auto;">📋 Edit Prompts</button>
   </header>
 
 
-  <!-- ══ BROWSE PROMPTS MODAL ══════════════════════════════════════════════ -->
-  <div id="modal-browse" class="hidden">
-    <div class="browse-inner">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <strong>📋 All Prompts</strong>
-        <button id="btn-close-browse" class="g-btn secondary small" style="width:auto;">✕ Close</button>
-      </div>
-
-      <!-- Filters -->
-      <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
-        <select id="bf-cat"  class="mini-select" style="flex:1;">
-          <option value="">All categories</option>
-          <option value="movies">🎬 Movies</option>
-          <option value="books">📚 Books</option>
-          <option value="artists">🎤 Artists</option>
-          <option value="songs">🎵 Songs</option>
-          <option value="places">🌍 Places</option>
-          <option value="sayings">💬 Sayings</option>
-          <option value="custom">⭐ Custom</option>
-        </select>
-        <select id="bf-diff" class="mini-select">
-          <option value="">All difficulties</option>
-          <option value="easy">🟢 Easy</option>
-          <option value="medium">🟡 Medium</option>
-          <option value="hard">🔴 Hard</option>
-        </select>
-        <select id="bf-lang" class="mini-select">
-          <option value="">All languages</option>
-          <option value="en">🇬🇧 EN</option>
-          <option value="nl">🇳🇱 NL</option>
-          <option value="any">Both</option>
-        </select>
-      </div>
-
-      <div id="browse-count" class="progress-info"></div>
-      <div id="prompt-browser-list" style="display:flex;flex-direction:column;gap:0.3rem;max-height:60vh;overflow-y:auto;"></div>
-    </div>
-  </div>
-
-
   <!-- ══ SETUP ════════════════════════════════════════════════════════════ -->
-  <div id="screen-setup" class="game-content" style="gap:0.85rem;">
+  <div id="screen-setup" class="game-content" style="gap:.85rem;">
 
     <div style="text-align:center;">
       <div style="font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--g-accent),var(--g-accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">CHARADES</div>
       <p class="g-subtitle">Act it out — no talking!</p>
     </div>
 
-    <!-- Language -->
     <div class="setup-block">
       <div class="g-label">Language / Taal</div>
       <div class="chip-group" id="lang-chips">
@@ -253,7 +196,6 @@ import '../../../styles/games.css';
       </div>
     </div>
 
-    <!-- Categories -->
     <div class="setup-block">
       <div class="g-label">Categories / Categorieën</div>
       <div class="chip-group" id="cat-chips">
@@ -267,7 +209,6 @@ import '../../../styles/games.css';
       </div>
     </div>
 
-    <!-- Difficulty -->
     <div class="setup-block">
       <div class="g-label">Difficulty / Moeilijkheidsgraad</div>
       <div class="chip-group" id="diff-chips">
@@ -277,7 +218,6 @@ import '../../../styles/games.css';
       </div>
     </div>
 
-    <!-- Timer (visual only — never auto-advances) -->
     <div class="setup-block">
       <div class="g-label">Timer — visual only, never skips the card</div>
       <div class="chip-group" id="timer-chips">
@@ -289,124 +229,154 @@ import '../../../styles/games.css';
       </div>
     </div>
 
-    <!-- My Custom Prompts (permanently saved in localStorage) -->
-    <details class="setup-block" id="custom-section">
-      <summary>
-        <span class="g-label" style="font-size:0.85rem;">
-          ⭐ My Custom Prompts
-          <span id="custom-count-badge" style="color:var(--g-accent2);font-weight:700;"></span>
-        </span>
-      </summary>
-
-      <p style="font-size:0.78rem;color:var(--g-muted);line-height:1.5;">
-        Saved permanently on this device. Included in every future game when the ⭐ Custom category is enabled.
-      </p>
-
-      <!-- Add single -->
-      <div class="custom-add-row">
-        <input type="text" id="cp-text" placeholder="Word or phrase…" maxlength="120" />
-        <select id="cp-cat" class="mini-select">
-          <option value="custom">⭐ Custom</option>
-          <option value="movies">🎬 Movie</option>
-          <option value="books">📚 Book</option>
-          <option value="artists">🎤 Artist</option>
-          <option value="songs">🎵 Song</option>
-          <option value="places">🌍 Place</option>
-          <option value="sayings">💬 Saying</option>
-        </select>
-        <select id="cp-diff" class="mini-select">
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-        <select id="cp-lang" class="mini-select">
-          <option value="any">Both</option>
-          <option value="en">🇬🇧 EN</option>
-          <option value="nl">🇳🇱 NL</option>
-        </select>
-        <button id="btn-cp-add" class="g-btn green small" style="flex-shrink:0;">+ Add</button>
-      </div>
-
-      <!-- Bulk import -->
-      <details style="margin-top:0.1rem;">
-        <summary style="font-size:0.78rem;color:var(--g-muted);cursor:pointer;list-style:none;">▸ Bulk add (comma-separated)</summary>
-        <div style="display:flex;flex-direction:column;gap:0.4rem;margin-top:0.4rem;">
-          <textarea id="cp-bulk" rows="2"
-            placeholder="Uncle Bob dancing, The family dog, Christmas dinner…"
-            style="width:100%;padding:0.5rem;background:var(--g-bg);border:1px solid var(--g-border);border-radius:var(--g-radius-sm);color:var(--g-text);font-size:0.82rem;resize:vertical;font-family:inherit;"></textarea>
-          <button id="btn-cp-bulk" class="g-btn secondary small" style="align-self:flex-start;">Import as Custom · Easy · Both languages</button>
-        </div>
-      </details>
-
-      <!-- List -->
-      <div id="custom-prompt-list" style="display:flex;flex-direction:column;gap:0.3rem;max-height:260px;overflow-y:auto;"></div>
-      <div id="cp-empty" style="font-size:0.8rem;color:var(--g-muted);text-align:center;padding:0.4rem 0;">No custom prompts yet.</div>
-
-      <!-- Actions -->
-      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.2rem;">
-        <button id="btn-cp-export" class="g-btn secondary small">📋 Copy all to clipboard</button>
-        <button id="btn-cp-clear"  class="g-btn secondary small" style="color:var(--g-accent);">🗑 Clear all</button>
-      </div>
-    </details>
-
-    <!-- Pool count -->
-    <div id="pool-info" class="g-alert info" style="font-size:0.82rem;"></div>
-    <div id="pool-warn" class="g-alert error hidden">No prompts match your filters. Enable more categories or difficulties.</div>
+    <div id="pool-info" class="g-alert info" style="font-size:.82rem;"></div>
+    <div id="pool-warn" class="g-alert error" style="display:none;">No prompts match your filters.</div>
 
     <button id="btn-start" class="g-btn primary" style="font-size:1.1rem;padding:1.1rem;">
       🎭 Start Game
     </button>
 
-  </div><!-- /screen-setup -->
+  </div>
+
+
+  <!-- ══ PROMPT LIBRARY ════════════════════════════════════════════════════ -->
+  <div id="screen-prompts" class="hidden" style="display:flex;flex-direction:column;min-height:calc(100vh - 52px);width:100%;">
+
+    <!-- Sticky toolbar -->
+    <div class="lib-toolbar">
+      <div class="lib-toolbar-top">
+        <button id="btn-back-from-prompts" class="g-btn secondary small" style="width:auto;">← Back</button>
+        <input id="lib-search" class="lib-search" placeholder="🔍 Search prompts…" />
+        <select id="lib-cat"  class="mini-sel">
+          <option value="">All categories</option>
+          <option value="movies">🎬 Movies</option>
+          <option value="books">📚 Books</option>
+          <option value="artists">🎤 Artists</option>
+          <option value="songs">🎵 Songs</option>
+          <option value="places">🌍 Places</option>
+          <option value="sayings">💬 Sayings</option>
+          <option value="custom">⭐ Custom</option>
+        </select>
+        <select id="lib-diff" class="mini-sel">
+          <option value="">All diffs</option>
+          <option value="easy">🟢 Easy</option>
+          <option value="medium">🟡 Medium</option>
+          <option value="hard">🔴 Hard</option>
+        </select>
+        <select id="lib-lang" class="mini-sel">
+          <option value="">All lang</option>
+          <option value="en">🇬🇧 EN</option>
+          <option value="nl">🇳🇱 NL</option>
+          <option value="any">Both</option>
+        </select>
+      </div>
+      <div class="lib-meta">
+        <span id="lib-count"></span>
+        <div style="display:flex;gap:.4rem;">
+          <button id="btn-reset-defaults" class="g-btn secondary small" style="font-size:.72rem;padding:.3rem .6rem;width:auto;color:var(--g-muted);">↺ Reset to defaults</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="prompt-table-wrap" style="flex:1;padding:.5rem;">
+      <table class="prompt-table">
+        <thead>
+          <tr>
+            <th data-sort="text"       class="sorted col-text">Text ▲</th>
+            <th data-sort="category"   style="min-width:90px;">Category</th>
+            <th data-sort="difficulty" style="min-width:70px;">Difficulty</th>
+            <th data-sort="lang"       style="min-width:55px;">Lang</th>
+            <th style="width:32px;cursor:default;"></th>
+          </tr>
+        </thead>
+        <!-- Add-new row (always first) -->
+        <tbody id="add-row-body">
+          <tr class="add-row">
+            <td class="col-text"><input id="new-text" class="row-text" placeholder="New prompt text…" maxlength="150" /></td>
+            <td>
+              <select id="new-cat" class="row-sel">
+                <option value="custom">⭐ Custom</option>
+                <option value="movies">🎬 Movies</option>
+                <option value="books">📚 Books</option>
+                <option value="artists">🎤 Artists</option>
+                <option value="songs">🎵 Songs</option>
+                <option value="places">🌍 Places</option>
+                <option value="sayings">💬 Sayings</option>
+              </select>
+            </td>
+            <td>
+              <select id="new-diff" class="row-sel">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </td>
+            <td>
+              <select id="new-lang" class="row-sel">
+                <option value="any">Both</option>
+                <option value="en">EN</option>
+                <option value="nl">NL</option>
+              </select>
+            </td>
+            <td><button id="btn-add-row" class="g-btn green small" style="padding:.3rem .6rem;width:auto;font-size:.85rem;">+ Add</button></td>
+          </tr>
+        </tbody>
+        <tbody id="prompts-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Sticky save banner -->
+    <div class="save-banner">
+      <span class="dirty-label" id="dirty-label"></span>
+      <button id="btn-reset-view"  class="g-btn secondary small" style="width:auto;" title="Undo unsaved changes">↩ Undo</button>
+      <button id="btn-save-prompts" class="g-btn green" style="width:auto;padding:.55rem 1.25rem;font-size:.95rem;">💾 Save Changes</button>
+    </div>
+
+  </div>
 
 
   <!-- ══ PLAY ══════════════════════════════════════════════════════════════ -->
   <div id="screen-play" class="game-content hidden" style="gap:1rem;">
 
-    <!-- Timer bar -->
     <div id="timer-bar-wrap" class="timer-bar-wrap hidden">
       <div id="timer-bar-fill" class="timer-bar-fill" style="width:100%;"></div>
     </div>
 
-    <!-- Prompt card -->
     <div class="prompt-card" id="prompt-card">
       <div class="cat-label"   id="play-cat">🎬 Movie</div>
       <div class="prompt-text" id="play-text">Loading…</div>
       <div class="diff-badge"  id="play-diff"></div>
-
-      <!-- Hidden overlay -->
       <div class="hidden-overlay hidden" id="hidden-overlay">
         <span style="font-size:2.5rem;">🙈</span>
         <span>Card hidden</span>
-        <span style="font-size:0.75rem;font-weight:400;">Tap "Show" to reveal</span>
+        <span style="font-size:.75rem;font-weight:400;">Tap "Show" to reveal</span>
       </div>
     </div>
 
-    <!-- Buttons -->
-    <div class="play-action-row">
+    <div class="play-row">
       <button class="g-btn btn-hide" id="btn-hide">🙈 Hide</button>
       <button class="g-btn btn-next" id="btn-next">Next →</button>
     </div>
 
-    <!-- Progress -->
     <div class="progress-info" id="play-progress"></div>
 
-    <button id="btn-back-setup" class="g-btn secondary" style="font-size:0.85rem;padding:0.55rem;">
+    <button id="btn-back-setup" class="g-btn secondary" style="font-size:.85rem;padding:.55rem;">
       ⚙ Back to Setup
     </button>
 
-  </div><!-- /screen-play -->
+  </div>
 
 
-  <!-- ══ ALL DONE ═══════════════════════════════════════════════════════════ -->
+  <!-- ══ ALL DONE ════════════════════════════════════════════════════════= -->
   <div id="screen-done" class="game-content hidden" style="gap:1.25rem;">
     <div style="text-align:center;">
       <div style="font-size:2.5rem;">🎉</div>
-      <div style="font-weight:800;font-size:1.3rem;margin-top:0.25rem;">All cards done!</div>
+      <div style="font-weight:800;font-size:1.3rem;margin-top:.25rem;">All cards done!</div>
       <p class="g-subtitle">You've gone through every prompt.</p>
     </div>
     <button id="btn-reshuffle"  class="g-btn green"    style="font-size:1.05rem;">↺ Shuffle &amp; Play Again</button>
-    <button id="btn-done-setup" class="g-btn secondary" style="font-size:0.9rem;">⚙ Change Settings</button>
+    <button id="btn-done-setup" class="g-btn secondary" style="font-size:.9rem;">⚙ Change Settings</button>
   </div>
 
 
@@ -414,43 +384,53 @@ import '../../../styles/games.css';
   <script>
     // ── Types ──────────────────────────────────────────────────────────────
     interface Prompt {
-      id:         number | string;
+      _id:        string;   // stable runtime ID
       text:       string;
       category:   string;
       difficulty: string;
       lang:       string;
     }
 
-    // ── Constants ──────────────────────────────────────────────────────────
-    const LS_KEY = 'charades_custom_prompts';
+    type Screen = 'setup' | 'prompts' | 'play' | 'done';
 
-    const CAT_META: Record<string, { icon: string; label: string }> = {
-      movies:  { icon: '🎬', label: 'Movie'   },
-      books:   { icon: '📚', label: 'Book'    },
-      artists: { icon: '🎤', label: 'Artist'  },
-      songs:   { icon: '🎵', label: 'Song'    },
-      places:  { icon: '🌍', label: 'Place'   },
-      sayings: { icon: '💬', label: 'Saying'  },
-      custom:  { icon: '⭐', label: 'Custom'  },
+    // ── Constants ──────────────────────────────────────────────────────────
+    const LS_ALL = 'charades_prompts_all';    // edited / full list
+    const LS_OLD = 'charades_custom_prompts'; // legacy key from previous version
+
+    const CAT_OPTS = [
+      { v:'movies',  l:'🎬 Movies'  },
+      { v:'books',   l:'📚 Books'   },
+      { v:'artists', l:'🎤 Artists' },
+      { v:'songs',   l:'🎵 Songs'   },
+      { v:'places',  l:'🌍 Places'  },
+      { v:'sayings', l:'💬 Sayings' },
+      { v:'custom',  l:'⭐ Custom'  },
+    ];
+
+    const CAT_META: Record<string, string> = {
+      movies:'🎬 Movie', books:'📚 Book', artists:'🎤 Artist',
+      songs:'🎵 Song', places:'🌍 Place', sayings:'💬 Saying', custom:'⭐ Custom',
     };
 
-    // ── DOM helpers ────────────────────────────────────────────────────────
-    const $ = (id: string) => document.getElementById(id)!;
-    const show = (...ids: string[]) => ids.forEach(id => $(id).classList.remove('hidden'));
-    const hide = (...ids: string[]) => ids.forEach(id => $(id).classList.add('hidden'));
+    // ── DOM ────────────────────────────────────────────────────────────────
+    const $  = (id: string) => document.getElementById(id)!;
+    const sv = (id: string, val: string) => { $( id).textContent = val; };
+    const show = (...ids: string[]) => ids.forEach(id => {
+      const el = $(id); el.classList.remove('hidden'); if (el.style.display === 'none') el.style.display = '';
+    });
+    const hide = (...ids: string[]) => ids.forEach(id => {
+      const el = $(id); el.classList.add('hidden'); el.style.display = 'none';
+    });
 
-    function showScreen(s: 'setup' | 'play' | 'done') {
-      ['setup','play','done'].forEach(sc => hide(`screen-${sc}`));
-      show(`screen-${s}`);
-    }
-
-    function catLabel(cat: string) {
-      const m = CAT_META[cat];
-      return m ? `${m.icon} ${m.label}` : cat;
-    }
-
-    function escHtml(s: string) {
-      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    function showScreen(s: Screen) {
+      (['setup','prompts','play','done'] as Screen[]).forEach(sc => {
+        const el = $(`screen-${sc}`);
+        if (sc === s) { el.classList.remove('hidden'); el.style.display = sc === 'prompts' ? 'flex' : ''; }
+        else          { el.classList.add('hidden');    el.style.display = 'none'; }
+      });
+      // Header "Edit Prompts" button: hide while in prompts or play
+      const hdrBtn = $('btn-goto-prompts') as HTMLButtonElement;
+      hdrBtn.style.display = (s === 'play' || s === 'done') ? 'none' : '';
     }
 
     function activeData(groupId: string, attr: string): string[] {
@@ -459,7 +439,11 @@ import '../../../styles/games.css';
       ).map(c => c.dataset[attr]!).filter(Boolean);
     }
 
-    // ── Chip wire-up ───────────────────────────────────────────────────────
+    function escHtml(s: string) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    // ── Chips ──────────────────────────────────────────────────────────────
     document.querySelectorAll<HTMLElement>('#lang-chips .chip').forEach(c =>
       c.addEventListener('click', () => { c.classList.toggle('lang-on'); updatePoolInfo(); })
     );
@@ -469,7 +453,6 @@ import '../../../styles/games.css';
     document.querySelectorAll<HTMLElement>('#diff-chips .chip').forEach(c =>
       c.addEventListener('click', () => { c.classList.toggle('on');      updatePoolInfo(); })
     );
-    // timer chips: single-select
     document.querySelectorAll<HTMLElement>('#timer-chips .chip').forEach(c =>
       c.addEventListener('click', () => {
         document.querySelectorAll<HTMLElement>('#timer-chips .chip').forEach(x => x.classList.remove('on'));
@@ -477,161 +460,258 @@ import '../../../styles/games.css';
       })
     );
 
-    // ── localStorage prompts ───────────────────────────────────────────────
-    function loadCustom(): Prompt[] {
-      try { return JSON.parse(localStorage.getItem(LS_KEY) ?? '[]'); }
-      catch { return []; }
+    // ── Prompt data ────────────────────────────────────────────────────────
+    let allPrompts: Prompt[]     = [];  // live working copy
+    let savedPrompts: Prompt[]   = [];  // last-saved snapshot (for undo)
+    let isDirty                  = false;
+    let nextId                   = 1;
+
+    function makeId() { return `p_${nextId++}_${Math.random().toString(36).slice(2,7)}`; }
+
+    function withIds(arr: Record<string,unknown>[]): Prompt[] {
+      return arr.map(p => ({ ...p, _id: (p._id as string) ?? makeId() } as unknown as Prompt));
     }
 
-    function saveCustom(list: Prompt[]) {
-      localStorage.setItem(LS_KEY, JSON.stringify(list));
-    }
-
-    let customPrompts: Prompt[] = loadCustom();
-
-    function renderCustomList() {
-      const list = $('custom-prompt-list');
-      list.innerHTML = '';
-
-      if (customPrompts.length === 0) {
-        show('cp-empty');
-      } else {
-        hide('cp-empty');
-        customPrompts.forEach((p, i) => {
-          const el = document.createElement('div');
-          el.className = 'cp-item';
-          el.innerHTML = `
-            <span class="cp-text">${escHtml(p.text)}</span>
-            <span class="cp-badge">${catLabel(p.category)} · ${p.difficulty} · ${p.lang}</span>
-            <button class="cp-del" data-i="${i}" title="Remove">×</button>
-          `;
-          el.querySelector<HTMLButtonElement>('.cp-del')!.addEventListener('click', () => {
-            customPrompts.splice(i, 1);
-            saveCustom(customPrompts);
-            renderCustomList();
-            updatePoolInfo();
-          });
-          list.appendChild(el);
-        });
+    async function initPrompts() {
+      // 1. Try saved/edited list
+      const saved = localStorage.getItem(LS_ALL);
+      if (saved) {
+        allPrompts  = withIds(JSON.parse(saved));
+        savedPrompts = allPrompts.map(p => ({ ...p }));
+        return;
       }
 
-      $('custom-count-badge').textContent = customPrompts.length > 0 ? `(${customPrompts.length})` : '';
+      // 2. Load built-in from JSON
+      const res   = await fetch('/charades/prompts.json');
+      const base: Record<string,unknown>[] = await res.json();
+
+      // 3. Merge legacy custom prompts if they exist
+      let legacy: Record<string,unknown>[] = [];
+      try { legacy = JSON.parse(localStorage.getItem(LS_OLD) ?? '[]'); } catch { /* */ }
+
+      allPrompts   = withIds([...base, ...legacy]);
+      savedPrompts = allPrompts.map(p => ({ ...p }));
     }
 
-    function addCustom(text: string, cat: string, diff: string, lang: string) {
-      const t = text.trim();
-      if (!t) return;
-      customPrompts.push({ id: `cp_${Date.now()}_${Math.random()}`, text: t, category: cat, difficulty: diff, lang });
-      saveCustom(customPrompts);
-      renderCustomList();
-      updatePoolInfo();
+    function markDirty() {
+      isDirty = true;
+      $('dirty-label').textContent = '⚠️ Unsaved changes';
+      ($('btn-save-prompts') as HTMLButtonElement).disabled = false;
     }
 
-    $('btn-cp-add').addEventListener('click', () => {
-      const inp = $('cp-text') as HTMLInputElement;
-      addCustom(
-        inp.value,
-        ($('cp-cat')  as HTMLSelectElement).value,
-        ($('cp-diff') as HTMLSelectElement).value,
-        ($('cp-lang') as HTMLSelectElement).value,
-      );
-      inp.value = '';
-      inp.focus();
-    });
-
-    ($('cp-text') as HTMLInputElement).addEventListener('keydown', e => {
-      if (e.key === 'Enter') $('btn-cp-add').click();
-    });
-
-    $('btn-cp-bulk').addEventListener('click', () => {
-      const raw = ($('cp-bulk') as HTMLTextAreaElement).value;
-      raw.split(',').map(w => w.trim()).filter(Boolean).forEach(w => addCustom(w, 'custom', 'easy', 'any'));
-      ($('cp-bulk') as HTMLTextAreaElement).value = '';
-    });
-
-    $('btn-cp-export').addEventListener('click', async () => {
-      const text = customPrompts.map(p => p.text).join(', ');
-      try {
-        await navigator.clipboard.writeText(text);
-        $('btn-cp-export').textContent = '✅ Copied!';
-        setTimeout(() => { $('btn-cp-export').textContent = '📋 Copy all to clipboard'; }, 2000);
-      } catch { prompt('Copy these:', text); }
-    });
-
-    $('btn-cp-clear').addEventListener('click', () => {
-      if (!confirm(`Delete all ${customPrompts.length} custom prompt(s)?`)) return;
-      customPrompts = [];
-      saveCustom(customPrompts);
-      renderCustomList();
-      updatePoolInfo();
-    });
-
-    // ── Built-in prompts ───────────────────────────────────────────────────
-    let builtIn: Prompt[] = [];
-
-    async function loadBuiltIn(): Promise<Prompt[]> {
-      if (builtIn.length) return builtIn;
-      const res = await fetch('/charades/prompts.json');
-      builtIn = await res.json();
-      return builtIn;
+    function markClean() {
+      isDirty = false;
+      $('dirty-label').textContent = '';
+      ($('btn-save-prompts') as HTMLButtonElement).disabled = true;
     }
 
-    // ── Pool info ──────────────────────────────────────────────────────────
-    async function updatePoolInfo() {
-      const base  = await loadBuiltIn().catch(() => [] as Prompt[]);
+    // ── Pool info (setup screen) ───────────────────────────────────────────
+    function updatePoolInfo() {
       const langs = activeData('lang-chips', 'lang');
       const cats  = activeData('cat-chips',  'cat');
       const diffs = activeData('diff-chips', 'diff');
-
-      const count = [...base, ...customPrompts].filter(p =>
+      const count = allPrompts.filter(p =>
         (p.lang === 'any' || langs.includes(p.lang)) &&
         cats.includes(p.category) &&
         diffs.includes(p.difficulty)
       ).length;
-
-      $('pool-info').textContent = `${count} prompt${count !== 1 ? 's' : ''} match your current filters.`;
-      count > 0 ? hide('pool-warn') : show('pool-warn');
+      $('pool-info').textContent = `${count} prompt${count !== 1 ? 's' : ''} match your filters.`;
+      count > 0 ? ($('pool-warn').style.display = 'none') : ($('pool-warn').style.display = '');
     }
 
-    // ── Browse modal ───────────────────────────────────────────────────────
-    async function renderBrowser() {
-      const base     = await loadBuiltIn().catch(() => [] as Prompt[]);
-      const all      = [...base, ...customPrompts];
-      const cat      = ($('bf-cat')  as HTMLSelectElement).value;
-      const diff     = ($('bf-diff') as HTMLSelectElement).value;
-      const lang     = ($('bf-lang') as HTMLSelectElement).value;
-      const filtered = all.filter(p =>
+    // ── Prompt Library screen ──────────────────────────────────────────────
+    let sortCol: keyof Prompt = 'text';
+    let sortDir: 'asc' | 'desc' = 'asc';
+
+    const LIB_SEARCH = () => ($('lib-search') as HTMLInputElement).value.toLowerCase().trim();
+    const LIB_CAT    = () => ($('lib-cat')    as HTMLSelectElement).value;
+    const LIB_DIFF   = () => ($('lib-diff')   as HTMLSelectElement).value;
+    const LIB_LANG   = () => ($('lib-lang')   as HTMLSelectElement).value;
+
+    function filteredPrompts(): Prompt[] {
+      const q    = LIB_SEARCH();
+      const cat  = LIB_CAT();
+      const diff = LIB_DIFF();
+      const lang = LIB_LANG();
+      return allPrompts.filter(p =>
+        (!q    || p.text.toLowerCase().includes(q)) &&
         (!cat  || p.category   === cat)  &&
         (!diff || p.difficulty === diff) &&
         (!lang || p.lang       === lang)
       );
-
-      $('browse-count').textContent = `Showing ${filtered.length} of ${all.length} prompts`;
-      $('prompt-browser-list').innerHTML = filtered.map(p => `
-        <div class="pb-item">
-          <span class="pb-text">${escHtml(p.text)}</span>
-          <span class="pb-cat">${catLabel(p.category)}</span>
-          <span class="pb-diff diff-${p.difficulty}">${p.difficulty}</span>
-        </div>
-      `).join('');
     }
 
-    $('btn-browse').addEventListener('click', async () => {
-      $('modal-browse').style.display = 'flex';
-      await renderBrowser();
-    });
-    $('btn-close-browse').addEventListener('click', () => { $('modal-browse').style.display = 'none'; });
-    $('modal-browse').addEventListener('click', e => {
-      if (e.target === $('modal-browse')) $('modal-browse').style.display = 'none';
-    });
-    ['bf-cat','bf-diff','bf-lang'].forEach(id => $(id).addEventListener('change', renderBrowser));
+    function sortedPrompts(list: Prompt[]): Prompt[] {
+      return [...list].sort((a, b) => {
+        const av = a[sortCol] as string;
+        const bv = b[sortCol] as string;
+        const cmp = av.localeCompare(bv);
+        return sortDir === 'asc' ? cmp : -cmp;
+      });
+    }
 
-    // ── Game state ─────────────────────────────────────────────────────────
-    let queue:         Prompt[] = [];
-    let totalInQueue   = 0;
-    let cardHidden     = false;
-    let timerSecs      = 0;
-    let timerEndTime   = 0;
+    // Build a <select> for a row cell with current value
+    function makeSelect(name: string, opts: {v:string;l:string}[], current: string, cls: string): string {
+      const options = opts.map(o =>
+        `<option value="${o.v}"${o.v === current ? ' selected' : ''}>${escHtml(o.l)}</option>`
+      ).join('');
+      return `<select class="${cls} row-sel" data-field="${name}">${options}</select>`;
+    }
+
+    const DIFF_OPTS = [{v:'easy',l:'🟢 Easy'},{v:'medium',l:'🟡 Medium'},{v:'hard',l:'🔴 Hard'}];
+    const LANG_OPTS = [{v:'any',l:'Both'},{v:'en',l:'🇬🇧 EN'},{v:'nl',l:'🇳🇱 NL'}];
+
+    function renderTable() {
+      const list   = sortedPrompts(filteredPrompts());
+      const tbody  = $('prompts-tbody');
+      tbody.innerHTML = '';
+
+      $('lib-count').textContent =
+        `${list.length} of ${allPrompts.length} prompts`;
+
+      list.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.dataset.id = p._id;
+        tr.innerHTML = `
+          <td class="col-text">
+            <input type="text" class="row-text" value="${escHtml(p.text)}" maxlength="150" />
+          </td>
+          <td>${makeSelect('category',   CAT_OPTS,   p.category,   'row-cat')}</td>
+          <td>${makeSelect('difficulty', DIFF_OPTS,  p.difficulty, 'row-diff')}</td>
+          <td>${makeSelect('lang',       LANG_OPTS,  p.lang,       'row-lang')}</td>
+          <td><button class="row-del" title="Delete">✕</button></td>
+        `;
+
+        // Text change
+        tr.querySelector<HTMLInputElement>('.row-text')!.addEventListener('input', e => {
+          const p2 = allPrompts.find(x => x._id === tr.dataset.id);
+          if (p2) { p2.text = (e.target as HTMLInputElement).value; markDirty(); }
+        });
+
+        // Select changes
+        tr.querySelectorAll<HTMLSelectElement>('.row-sel').forEach(sel => {
+          sel.addEventListener('change', () => {
+            const p2 = allPrompts.find(x => x._id === tr.dataset.id);
+            if (p2) { (p2 as unknown as Record<string,string>)[sel.dataset.field!] = sel.value; markDirty(); }
+          });
+        });
+
+        // Delete
+        tr.querySelector<HTMLButtonElement>('.row-del')!.addEventListener('click', () => {
+          if (!confirm(`Delete "${p.text}"?`)) return;
+          allPrompts = allPrompts.filter(x => x._id !== tr.dataset.id);
+          tr.remove();
+          $('lib-count').textContent = `${filteredPrompts().length} of ${allPrompts.length} prompts`;
+          markDirty();
+        });
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Sort header clicks
+    document.querySelectorAll<HTMLElement>('table.prompt-table thead th[data-sort]').forEach(th => {
+      th.addEventListener('click', () => {
+        const col = th.dataset.sort as keyof Prompt;
+        if (sortCol === col) { sortDir = sortDir === 'asc' ? 'desc' : 'asc'; }
+        else { sortCol = col; sortDir = 'asc'; }
+
+        document.querySelectorAll<HTMLElement>('table.prompt-table thead th').forEach(h => {
+          h.classList.remove('sorted');
+          if (h.dataset.sort === col) {
+            h.classList.add('sorted');
+            h.textContent = h.textContent!.replace(/ [▲▼]$/, '') + (sortDir === 'asc' ? ' ▲' : ' ▼');
+          } else {
+            h.textContent = h.textContent!.replace(/ [▲▼]$/, '');
+          }
+        });
+
+        renderTable();
+      });
+    });
+
+    // Filter changes
+    ['lib-search','lib-cat','lib-diff','lib-lang'].forEach(id =>
+      $(id).addEventListener('input', renderTable)
+    );
+
+    // Add new row
+    $('btn-add-row').addEventListener('click', () => {
+      const textEl = $('new-text') as HTMLInputElement;
+      const text   = textEl.value.trim();
+      if (!text) { textEl.focus(); return; }
+
+      allPrompts.unshift({
+        _id:        makeId(),
+        text,
+        category:   ($('new-cat')  as HTMLSelectElement).value,
+        difficulty: ($('new-diff') as HTMLSelectElement).value,
+        lang:       ($('new-lang') as HTMLSelectElement).value,
+      });
+
+      textEl.value = '';
+      textEl.focus();
+      markDirty();
+      renderTable();
+    });
+
+    ($('new-text') as HTMLInputElement).addEventListener('keydown', e => {
+      if (e.key === 'Enter') $('btn-add-row').click();
+    });
+
+    // Save
+    $('btn-save-prompts').addEventListener('click', () => {
+      localStorage.setItem(LS_ALL, JSON.stringify(allPrompts));
+      // Remove legacy key now that everything is merged
+      localStorage.removeItem(LS_OLD);
+      savedPrompts = allPrompts.map(p => ({ ...p }));
+      markClean();
+      $('btn-save-prompts').textContent = '✅ Saved!';
+      setTimeout(() => { $('btn-save-prompts').textContent = '💾 Save Changes'; }, 2000);
+      updatePoolInfo();
+    });
+
+    // Undo
+    $('btn-reset-view').addEventListener('click', () => {
+      if (!isDirty) return;
+      if (!confirm('Discard all unsaved changes?')) return;
+      allPrompts = savedPrompts.map(p => ({ ...p }));
+      markClean();
+      renderTable();
+    });
+
+    // Reset to defaults
+    $('btn-reset-defaults').addEventListener('click', async () => {
+      if (!confirm('Reset ALL prompts back to the original built-in list? This will delete all your edits and custom prompts.')) return;
+      localStorage.removeItem(LS_ALL);
+      localStorage.removeItem(LS_OLD);
+      const res = await fetch('/charades/prompts.json');
+      const base: Record<string,unknown>[] = await res.json();
+      allPrompts   = withIds(base);
+      savedPrompts = allPrompts.map(p => ({ ...p }));
+      markClean();
+      renderTable();
+      updatePoolInfo();
+    });
+
+    // Navigate to/from prompts
+    $('btn-goto-prompts').addEventListener('click', () => {
+      showScreen('prompts');
+      renderTable();
+      markClean();
+    });
+
+    $('btn-back-from-prompts').addEventListener('click', () => {
+      if (isDirty && !confirm('You have unsaved changes. Leave anyway?')) return;
+      showScreen('setup');
+    });
+
+    // ── Game ───────────────────────────────────────────────────────────────
+    let queue:       Prompt[] = [];
+    let totalInQueue = 0;
+    let cardHidden   = false;
+    let timerSecs    = 0;
+    let timerEndTime = 0;
     let timerInterval: number | null = null;
 
     function shuffle<T>(a: T[]): T[] {
@@ -643,100 +723,88 @@ import '../../../styles/games.css';
       return arr;
     }
 
-    function buildQueue(): Prompt[] {
+    $('btn-start').addEventListener('click', () => {
       const langs = activeData('lang-chips', 'lang');
       const cats  = activeData('cat-chips',  'cat');
       const diffs = activeData('diff-chips', 'diff');
-      return shuffle([...builtIn, ...customPrompts].filter(p =>
+
+      const filtered = allPrompts.filter(p =>
         (p.lang === 'any' || langs.includes(p.lang)) &&
         cats.includes(p.category) &&
         diffs.includes(p.difficulty)
-      ));
-    }
+      );
 
-    // ── Start ──────────────────────────────────────────────────────────────
-    $('btn-start').addEventListener('click', async () => {
-      ($('btn-start') as HTMLButtonElement).disabled = true;
-      $('btn-start').textContent = '⏳ Loading…';
-      try {
-        await loadBuiltIn();
-        const q = buildQueue();
-        if (q.length === 0) { show('pool-warn'); return; }
-        hide('pool-warn');
+      if (filtered.length === 0) { $('pool-warn').style.display = ''; return; }
+      $('pool-warn').style.display = 'none';
 
-        queue        = q;
-        totalInQueue = q.length;
-        timerSecs    = parseInt(
-          document.querySelector<HTMLElement>('#timer-chips .chip.on')?.dataset.timer ?? '0', 10
-        );
+      queue        = shuffle(filtered);
+      totalInQueue = queue.length;
+      timerSecs    = parseInt(
+        document.querySelector<HTMLElement>('#timer-chips .chip.on')?.dataset.timer ?? '0', 10
+      );
 
-        showScreen('play');
-        displayCard();
-      } finally {
-        ($('btn-start') as HTMLButtonElement).disabled = false;
-        $('btn-start').textContent = '🎭 Start Game';
-      }
+      showScreen('play');
+      displayCard();
     });
 
-    // ── Display card ───────────────────────────────────────────────────────
     function displayCard() {
       cardHidden = false;
-      hide('hidden-overlay');
+      $('hidden-overlay').classList.add('hidden');
       $('prompt-card').classList.remove('hidden-card');
       $('btn-hide').textContent = '🙈 Hide';
 
       if (queue.length === 0) { stopTimer(); showScreen('done'); return; }
 
       const p = queue[0];
-      $('play-cat').textContent  = catLabel(p.category);
+      $('play-cat').textContent  = CAT_META[p.category] ?? p.category;
       $('play-text').textContent = p.text;
       const diff = $('play-diff');
-      diff.className = `diff-badge diff-${p.difficulty}`;
+      diff.className   = `diff-badge diff-${p.difficulty}`;
       diff.textContent = p.difficulty.charAt(0).toUpperCase() + p.difficulty.slice(1);
 
-      const done = totalInQueue - queue.length;
-      $('play-progress').textContent = `Card ${done + 1} of ${totalInQueue}`;
+      $('play-progress').textContent = `Card ${totalInQueue - queue.length + 1} of ${totalInQueue}`;
 
-      // Fade in
       const card = $('prompt-card') as HTMLElement;
       card.style.opacity = '0';
-      requestAnimationFrame(() => { card.style.opacity = '1'; });
+      requestAnimationFrame(() => { card.style.transition = 'opacity .18s'; card.style.opacity = '1'; });
 
-      // Timer
       if (timerSecs > 0) { show('timer-bar-wrap'); startTimer(timerSecs); }
-      else                { hide('timer-bar-wrap'); stopTimer(); }
+      else               { hide('timer-bar-wrap'); stopTimer(); }
     }
 
-    // ── Hide / Show ────────────────────────────────────────────────────────
     $('btn-hide').addEventListener('click', () => {
       cardHidden = !cardHidden;
       if (cardHidden) {
-        show('hidden-overlay');
+        $('hidden-overlay').classList.remove('hidden');
         $('prompt-card').classList.add('hidden-card');
         $('btn-hide').textContent = '👁 Show';
         stopTimer();
       } else {
-        hide('hidden-overlay');
+        $('hidden-overlay').classList.add('hidden');
         $('prompt-card').classList.remove('hidden-card');
         $('btn-hide').textContent = '🙈 Hide';
         if (timerSecs > 0) startTimer(timerSecs);
       }
     });
 
-    // ── Next ───────────────────────────────────────────────────────────────
     $('btn-next').addEventListener('click', () => { queue.shift(); displayCard(); });
 
-    // ── Back / reshuffle ───────────────────────────────────────────────────
     $('btn-back-setup').addEventListener('click', () => { stopTimer(); showScreen('setup'); });
     $('btn-done-setup').addEventListener('click', () => { stopTimer(); showScreen('setup'); });
-    $('btn-reshuffle').addEventListener('click', () => {
-      queue        = buildQueue();
+    $('btn-reshuffle').addEventListener('click',  () => {
+      const langs = activeData('lang-chips', 'lang');
+      const cats  = activeData('cat-chips',  'cat');
+      const diffs = activeData('diff-chips', 'diff');
+      queue = shuffle(allPrompts.filter(p =>
+        (p.lang === 'any' || langs.includes(p.lang)) &&
+        cats.includes(p.category) &&
+        diffs.includes(p.difficulty)
+      ));
       totalInQueue = queue.length;
       showScreen('play');
       displayCard();
     });
 
-    // ── Timer ──────────────────────────────────────────────────────────────
     function startTimer(secs: number) {
       stopTimer();
       timerEndTime = Date.now() + secs * 1000;
@@ -744,12 +812,9 @@ import '../../../styles/games.css';
       timerInterval = window.setInterval(() => {
         const rem = (timerEndTime - Date.now()) / 1000;
         if (rem <= 0) {
-          updateBar(0, secs);
-          stopTimer();
+          updateBar(0, secs); stopTimer();
           if ('vibrate' in navigator) navigator.vibrate([100, 60, 100]);
-        } else {
-          updateBar(rem, secs);
-        }
+        } else { updateBar(rem, secs); }
       }, 200);
     }
 
@@ -764,8 +829,9 @@ import '../../../styles/games.css';
     }
 
     // ── Init ───────────────────────────────────────────────────────────────
-    renderCustomList();
-    loadBuiltIn().then(updatePoolInfo).catch(() => {});
+    markClean();
+    initPrompts().then(updatePoolInfo);
+
   </script>
 
 </body>
