@@ -55,18 +55,18 @@ import '../../../styles/games.css';
       border-radius: var(--g-radius); width: 100%; overflow: hidden;
     }
     .prompt-row {
-      display: flex; align-items: center; gap: .75rem;
-      padding: .9rem 1rem; border-bottom: 1px solid var(--g-border);
-      cursor: pointer; user-select: none; transition: background 100ms; min-height: 3.2rem;
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem; border-bottom: 1px solid var(--g-border);
+      cursor: pointer; user-select: none; transition: background 100ms; min-height: 4rem;
     }
     .prompt-row:last-child { border-bottom: none; }
     .prompt-row:active { background: var(--g-surface2); }
     .prompt-row.checked { background: rgba(34,113,177,.1); }
     .prompt-row.checked .prompt-text { text-decoration: line-through; color: var(--g-muted); }
     .prompt-row.checked .prompt-check { color: var(--g-accent2); }
-    .prompt-cat  { font-size: 1.05rem; flex-shrink: 0; width: 1.5rem; text-align: center; }
-    .prompt-text { flex: 1; font-size: 1rem; font-weight: 600; line-height: 1.3; }
-    .prompt-check { font-size: 1.15rem; flex-shrink: 0; color: var(--g-border); transition: color .1s; }
+    .prompt-cat  { font-size: 1.4rem; flex-shrink: 0; width: 2rem; text-align: center; }
+    .prompt-text { flex: 1; font-size: clamp(1.2rem, 4vw, 1.5rem); font-weight: 700; line-height: 1.25; }
+    .prompt-check { font-size: 1.4rem; flex-shrink: 0; color: var(--g-border); transition: color .1s; }
     .score-adj-row { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
     .adj-btn {
       width: clamp(2.75rem, 12vw, 3rem); height: clamp(2.75rem, 12vw, 3rem); border-radius: 999px;
@@ -146,6 +146,15 @@ import '../../../styles/games.css';
       <div class="g-label">Teams</div>
       <div id="teams-list" style="display:flex;flex-direction:column;gap:.45rem;"></div>
       <button id="btn-add-team" class="g-btn secondary small" style="width:auto;align-self:flex-start;">+ Add Team</button>
+    </div>
+
+    <div class="setup-block">
+      <div class="g-label">Language / Taal</div>
+      <div class="chip-group" id="lang-chips">
+        <div class="chip on" data-lang="both">&#127757; Both</div>
+        <div class="chip"    data-lang="en">&#127468;&#127463; English</div>
+        <div class="chip"    data-lang="nl">&#127475;&#127473; Nederlands</div>
+      </div>
     </div>
 
     <div class="setup-block">
@@ -252,7 +261,7 @@ import '../../../styles/games.css';
   <!-- ══ SCRIPTS ══════════════════════════════════════════════════════════ -->
   <script>
     interface Team  { name: string; score: number; }
-    interface Prompt { id: number; text: string; category: string; }
+    interface Prompt { id: number; text: string; category: string; lang?: string; }
 
     const CAT_ICON: Record<string,string> = {
       people:'&#128100;', places:'&#128205;', movie:'&#127916;', tv:'&#128250;',
@@ -289,6 +298,7 @@ import '../../../styles/games.css';
     // ── Game state ──────────────────────────────────────────────────────────
     let teams:         Team[]   = [];
     let timerMode:     string   = 'app';
+    let langFilter:    string   = 'both';
     let allPrompts:    Prompt[] = [];
     let promptQueue:   Prompt[] = [];
     let currentCard:   Prompt[] = [];
@@ -309,8 +319,14 @@ import '../../../styles/games.css';
     }
 
     // ── Prompt queue ────────────────────────────────────────────────────────
+    function filteredPrompts(): Prompt[] {
+      if (langFilter === 'both') return allPrompts;
+      return allPrompts.filter(p => (p.lang ?? 'en') === langFilter);
+    }
+
     function drawCard() {
-      if (promptQueue.length < 5) promptQueue = shuffle([...allPrompts]);
+      const pool = filteredPrompts();
+      if (promptQueue.length < 5) promptQueue = shuffle([...pool]);
       currentCard = promptQueue.splice(0, 5);
       checkedIds.clear();
     }
@@ -341,6 +357,15 @@ import '../../../styles/games.css';
       if (teams.length < 8) { teams.push({ name: `Team ${teams.length+1}`, score: 0 }); renderSetup(); }
     });
 
+    document.querySelectorAll<HTMLElement>('#lang-chips .chip').forEach(c => {
+      c.addEventListener('click', () => {
+        document.querySelectorAll<HTMLElement>('#lang-chips .chip').forEach(x => x.classList.remove('on'));
+        c.classList.add('on');
+        langFilter = c.dataset.lang!;
+        promptQueue = []; // reset so next draw uses new filter
+      });
+    });
+
     document.querySelectorAll<HTMLElement>('#timer-mode-chips .chip').forEach(c => {
       c.addEventListener('click', () => {
         document.querySelectorAll<HTMLElement>('#timer-mode-chips .chip').forEach(x => x.classList.remove('on'));
@@ -356,7 +381,7 @@ import '../../../styles/games.css';
       teams = teams.filter(t => t.name.trim());
       teams.forEach(t => t.score = 0);
       currentTeam = 0;
-      promptQueue  = shuffle([...allPrompts]);
+      promptQueue  = shuffle([...filteredPrompts()]);
       toHandover();
     });
 
@@ -524,7 +549,7 @@ import '../../../styles/games.css';
     $('btn-play-again').addEventListener('click', () => {
       teams.forEach(t => t.score = 0);
       currentTeam = 0;
-      promptQueue  = shuffle([...allPrompts]);
+      promptQueue  = shuffle([...filteredPrompts()]);
       resultScore  = 0;
       toHandover();
     });
