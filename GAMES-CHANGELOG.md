@@ -5,7 +5,42 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.2.0] — 2026-04-07
+## [1.4.0] — 2026-04-07
+
+### Added — 30 Seconds
+- New **30 Seconds** game at `/games/30-seconds/` (renamed from "Party&Co")
+- Card shows **5 random prompts** from a 338-prompt database — describe without saying the word
+- **App timer mode**: 60-second countdown with progress bar, turns red/urgent in last 10 s, vibrates on end
+- **Manual / Hourglass mode**: no in-app timer, just the card — use your own hourglass
+- **Team management**: 2–8 teams, custom names, add/remove during setup
+- **Per-turn score adjustment**: +/− buttons on result screen for dispute resolution
+- **Running scoreboard** accessible mid-game via header button
+- **End Game** option from scoreboard shows winner podium with medal emojis
+- **Play Again** resets scores but keeps teams; **New Setup** returns to full setup
+- Prompt database: 338 prompts across 10 categories (people, places, movie, tv, music, object, nature, concept, food, sport)
+- Celebrities: international-famous AND Dutch/Belgian-famous (Johan Cruyff, Marco Borsato, André Hazes, Max Verstappen, Virgil van Dijk, etc.)
+- Prompt queue shuffles automatically; reshuffles when exhausted — no repeats until all used
+- Static JSON at `public/30-seconds/prompts.json` — edit and push to deploy
+
+---
+
+## [1.3.0] — 2026-04-07
+
+### Changed — Design alignment
+- **games.css** completely rewritten to match the main site design language:
+  - Color palette: site charcoal (`#1d2327` bg, `#2c3338` cards) replacing navy; blue accent (`#2271b1`) replacing red
+  - Font: **Inter** (Google Fonts, same as homepage and resume)
+  - Header: glassmorphism matching `site-header` (`backdrop-filter: blur(10px)`)
+  - Buttons: **pill-shaped** (999px radius) with gradient primary, matching `button-primary`
+  - Card hover: `translateY(-2px)` + shadow, matching site card interactions
+- All game page headers updated: consistent **🦁 The Lions Alliance** logo + nav links
+- Charades: removed built-in prompt editor (moved to direct JSON editing)
+- Charades admin page (`/games/charades/admin/`) removed
+- `initPrompts()` simplified: always loads from `public/charades/prompts.json`
+
+---
+
+
 
 ### Added — Charades
 - New **Charades** game at `/games/charades/`
@@ -66,7 +101,7 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ## Roadmap
 
-- `[1.3.0]` Party&Co game
+- `[1.5.0]` Hitster PDF card generator improvements (bleed marks, duplex guide)
 - `[future]` Hitster PDF card generator improvements (bleed marks, duplex guide)
 - `[future]` Charades: animated timer, haptic feedback on phones that support it
 - `[future]` Shared leaderboard (would require a small backend or Supabase)

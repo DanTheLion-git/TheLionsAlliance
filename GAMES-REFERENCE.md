@@ -14,14 +14,16 @@ DanTheLion-Resume/
 │   ├── public/
 │   │   ├── hitster/
 │   │   │   └── songs.json               ← optional song metadata cache
-│   │   └── charades/
-│   │       └── prompts.json             ← all charades prompts (EN + NL)
+│   │   ├── charades/
+│   │   │   └── prompts.json             ← charades prompts (EN + NL, edit to customise)
+│   │   └── 30-seconds/
+│   │       └── prompts.json             ← 30 Seconds prompts (338, edit to customise)
 │   └── src/
 │       ├── lib/
 │       │   ├── spotify.ts               ← Spotify PKCE OAuth + playback helpers
 │       │   └── hitster.ts               ← QR parsing + Spotify track-info fetcher
 │       ├── styles/
-│       │   └── games.css                ← mobile-first dark theme (shared)
+│       │   └── games.css                ← shared theme: Inter font, site charcoal palette
 │       └── pages/
 │           └── games/
 │               ├── index.astro          ← /games/ hub
@@ -29,8 +31,10 @@ DanTheLion-Resume/
 │               │   ├── index.astro      ← /games/hitster/ main game
 │               │   ├── callback.astro   ← /games/hitster/callback Spotify OAuth handler
 │               │   └── admin.astro      ← /games/hitster/admin/ card generator
-│               └── charades/
-│                   └── index.astro      ← /games/charades/ game
+│               ├── charades/
+│               │   └── index.astro      ← /games/charades/ game
+│               └── 30-seconds/
+│                   └── index.astro      ← /games/30-seconds/ game
 ├── .github/
 │   └── workflows/
 │       └── main.yml                     ← GitHub Actions: build Astro → deploy to Pages
@@ -56,17 +60,21 @@ The site is deployed via **GitHub Actions → GitHub Pages** with a custom domai
 
 ## Shared Styles (`src/styles/games.css`)
 
-All game pages import `games.css`. Key CSS custom properties:
+All game pages import `games.css`. CSS custom properties now match the main site (`global.css`):
 
 | Variable | Value | Use |
 |---|---|---|
-| `--g-bg` | `#0d0d1a` | Page background |
-| `--g-surface` | `#16213e` | Cards / panels |
-| `--g-accent` | `#e94560` | Primary action colour (red) |
-| `--g-accent2` | `#f5a623` | Year/highlight colour (amber) |
+| `--g-bg` | `#1d2327` | Page background (site charcoal) |
+| `--g-surface` | `#2c3338` | Cards / panels |
+| `--g-accent` | `#2271b1` | Primary action colour (blue) |
+| `--g-accent2` | `#5fa8d3` | Highlight colour (light blue) |
 | `--g-green` | `#1db954` | Spotify green / success |
-| `--g-text` | `#eaeaea` | Body text |
-| `--g-muted` | `#8892a4` | Secondary text |
+| `--g-text` | `#f0f0f1` | Body text |
+| `--g-muted` | `#a7aaad` | Secondary text |
+| `--g-border` | `#3c434a` | Borders |
+| `--g-radius` | `14px` | Card border radius |
+
+Font: **Inter** via Google Fonts (same as rest of site). Header: glassmorphism `backdrop-filter: blur(10px)`.
 
 Utility classes: `.hidden`, `.g-btn`, `.g-card`, `.g-alert`, `.g-label`, `.game-header`, `.game-content`.
 
@@ -173,7 +181,69 @@ interface Prompt {
 
 ### Adding Prompts
 
-Open `Astro-Resume/public/charades/prompts.json` and append to the array. Keep IDs unique and sequential. Push to `main` — GitHub Actions will redeploy automatically.
+Open `Astro-Resume/public/charades/prompts.json` in VS Code and edit the JSON array directly.
+
+Each prompt object:
+```json
+{ "id": 42, "text": "The Lion King", "category": "movies", "difficulty": "easy", "lang": "en" }
+```
+
+| Field | Valid values |
+|---|---|
+| `category` | `movies` `books` `artists` `songs` `places` `sayings` `custom` |
+| `difficulty` | `easy` `medium` `hard` |
+| `lang` | `en` `nl` `any` (both languages) |
+
+After editing: **git commit + push** → GitHub Actions redeploys in ~1–2 min.
+
+---
+
+## 30 Seconds Prompt Database
+
+### Schema (`public/30-seconds/prompts.json`)
+
+```typescript
+interface Prompt {
+  id:       number;
+  text:     string;     // the word/phrase to describe
+  category: 'people'|'places'|'movie'|'tv'|'music'|'object'|'nature'|'concept'|'food'|'sport';
+}
+```
+
+No `difficulty` or `lang` field — prompts are curated to be medium/hard by default. The database contains 338 prompts including internationally-famous AND Dutch/Belgian-famous entries.
+
+### Adding / Editing Prompts
+
+Open `Astro-Resume/public/30-seconds/prompts.json` in VS Code.
+
+```json
+{ "id": 339, "text": "Windmill", "category": "object" }
+```
+
+Keep `id` values unique and sequential. After editing: **git commit + push**.
+
+### Category Icons (in-game display)
+
+| Category | Icon |
+|---|---|
+| `people` | 👤 |
+| `places` | 📍 |
+| `movie` | 🎬 |
+| `tv` | 📺 |
+| `music` | 🎵 |
+| `object` | 🔧 |
+| `nature` | 🌿 |
+| `concept` | 💡 |
+| `food` | 🍽️ |
+| `sport` | ⚽ |
+
+### Game Flow
+
+```
+Setup  →  Handover (pass to explainer)  →  Play (card + optional timer)
+       →  Result (score ± adjust)       →  next team's Handover
+       →  Scores (mid-game)             →  End Game → Winner screen
+```
 
 ### Category Icons
 

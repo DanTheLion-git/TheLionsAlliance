@@ -1,0 +1,533 @@
+---
+import '../../../../styles/games.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>30 Seconds — The Lions Alliance</title>
+  <style>
+    .setup-block {
+      background: var(--g-surface); border: 1px solid var(--g-border);
+      border-radius: var(--g-radius); padding: .9rem 1rem;
+      width: 100%; display: flex; flex-direction: column; gap: .6rem;
+    }
+    .team-row { display: flex; align-items: center; gap: .5rem; width: 100%; }
+    .team-input {
+      flex: 1; padding: .55rem .9rem;
+      background: var(--g-bg); border: 1px solid var(--g-border);
+      border-radius: 999px; color: var(--g-text); font-size: .95rem;
+      font-family: inherit; transition: border-color 150ms;
+    }
+    .team-input:focus { outline: none; border-color: var(--g-accent); }
+    .team-del {
+      background: none; border: 1px solid var(--g-border); border-radius: 999px;
+      color: var(--g-muted); cursor: pointer; width: 2rem; height: 2rem;
+      font-size: 1rem; display: flex; align-items: center; justify-content: center;
+      transition: border-color 150ms, color 150ms; flex-shrink: 0; font-family: inherit;
+    }
+    .team-del:hover { border-color: var(--g-accent); color: var(--g-text); }
+    .chip-group { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .chip {
+      padding: .4rem .9rem; border-radius: 999px;
+      border: 1.5px solid var(--g-border); background: var(--g-bg);
+      color: var(--g-muted); font-size: .82rem; font-weight: 600;
+      cursor: pointer; user-select: none; transition: all 150ms;
+    }
+    .chip.on { border-color: var(--g-accent); background: rgba(34,113,177,.15); color: var(--g-text); }
+    .timer-bar-wrap { width: 100%; height: 5px; background: var(--g-border); border-radius: 3px; overflow: hidden; }
+    .timer-bar-fill { height: 100%; background: var(--g-accent2); border-radius: 3px; transition: width .15s linear, background .3s; }
+    .timer-bar-fill.urgent { background: #e94560; }
+    .timer-display {
+      font-size: 3.2rem; font-weight: 900; color: var(--g-accent2);
+      line-height: 1; text-align: center; font-variant-numeric: tabular-nums; transition: color .3s;
+    }
+    .timer-display.urgent { color: #e94560; }
+    .manual-badge {
+      display: flex; align-items: center; justify-content: center; gap: .4rem;
+      font-size: .82rem; color: var(--g-muted); font-weight: 600;
+    }
+    .seconds-card {
+      background: var(--g-surface); border: 1px solid var(--g-border);
+      border-radius: var(--g-radius); width: 100%; overflow: hidden;
+    }
+    .prompt-row {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .9rem 1rem; border-bottom: 1px solid var(--g-border);
+      cursor: pointer; user-select: none; transition: background 100ms; min-height: 3.2rem;
+    }
+    .prompt-row:last-child { border-bottom: none; }
+    .prompt-row:active { background: var(--g-surface2); }
+    .prompt-row.checked { background: rgba(34,113,177,.1); }
+    .prompt-row.checked .prompt-text { text-decoration: line-through; color: var(--g-muted); }
+    .prompt-row.checked .prompt-check { color: var(--g-accent2); }
+    .prompt-cat  { font-size: 1.05rem; flex-shrink: 0; width: 1.5rem; text-align: center; }
+    .prompt-text { flex: 1; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+    .prompt-check { font-size: 1.15rem; flex-shrink: 0; color: var(--g-border); transition: color .1s; }
+    .score-adj-row { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
+    .adj-btn {
+      width: 3rem; height: 3rem; border-radius: 999px;
+      border: 1.5px solid var(--g-border); background: var(--g-surface2);
+      color: var(--g-text); font-size: 1.6rem; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 150ms; font-family: inherit; line-height: 1;
+    }
+    .adj-btn:hover { border-color: var(--g-accent2); }
+    .score-big { font-size: 5rem; font-weight: 900; color: var(--g-accent2); line-height: 1; text-align: center; }
+    .score-label { font-size: .9rem; color: var(--g-muted); text-align: center; margin-top: .25rem; }
+    .scoreboard { display: flex; flex-direction: column; gap: .5rem; width: 100%; }
+    .score-row {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .75rem 1rem; background: var(--g-surface);
+      border: 1px solid var(--g-border); border-radius: var(--g-radius-sm); width: 100%;
+      transition: border-color 150ms;
+    }
+    .score-row.leader { border-color: var(--g-accent2); background: rgba(95,168,211,.08); }
+    .score-rank { font-size: 1.1rem; font-weight: 900; color: var(--g-muted); min-width: 2rem; }
+    .score-name { flex: 1; font-weight: 600; font-size: .95rem; }
+    .score-pts  { font-size: 1.3rem; font-weight: 800; color: var(--g-accent2); }
+    .handover-team {
+      font-size: 1.6rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--g-accent), var(--g-accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-align: center;
+    }
+    .current-team-bar {
+      width: 100%; padding: .5rem 1rem; background: rgba(34,113,177,.1);
+      border: 1px solid rgba(34,113,177,.3); border-radius: var(--g-radius-sm);
+      font-size: .8rem; font-weight: 700; color: var(--g-accent2);
+      text-align: center; text-transform: uppercase; letter-spacing: .06em;
+    }
+  </style>
+</head>
+<body class="game-page">
+
+  <header class="game-header">
+    <a href="/" class="brand">&#129409; The Lions Alliance</a>
+    <nav>
+      <a href="/games/">&#8592; Games</a>
+      <button id="btn-show-scores" class="g-btn secondary small hidden" style="width:auto;font-size:.78rem;">&#128202; Scores</button>
+    </nav>
+  </header>
+
+  <!-- ══ SETUP ════════════════════════════════════════════════════════════ -->
+  <div id="screen-setup" class="game-content" style="gap:.85rem;">
+
+    <div style="text-align:center;">
+      <div style="font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--g-accent),var(--g-accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">30 SECONDS</div>
+      <p class="g-subtitle">Describe 5 words in 60 seconds</p>
+    </div>
+
+    <div class="setup-block">
+      <div class="g-label">Teams</div>
+      <div id="teams-list" style="display:flex;flex-direction:column;gap:.45rem;"></div>
+      <button id="btn-add-team" class="g-btn secondary small" style="width:auto;align-self:flex-start;">+ Add Team</button>
+    </div>
+
+    <div class="setup-block">
+      <div class="g-label">Timer Mode</div>
+      <div class="chip-group" id="timer-mode-chips">
+        <div class="chip on" data-mode="app">&#9201; App Timer (60s)</div>
+        <div class="chip"    data-mode="manual">&#8987; Hourglass / Manual</div>
+      </div>
+    </div>
+
+    <div id="setup-warn" class="g-alert error hidden">Add at least 2 teams to play.</div>
+
+    <button id="btn-start-game" class="g-btn primary" style="font-size:1.1rem;padding:1.1rem;">
+      &#127921; Start Game
+    </button>
+
+  </div>
+
+  <!-- ══ HANDOVER ══════════════════════════════════════════════════════════ -->
+  <div id="screen-handover" class="game-content hidden" style="gap:1.25rem;justify-content:center;">
+    <div id="handover-current" class="current-team-bar"></div>
+    <div style="text-align:center;">
+      <div style="font-size:1.6rem;">&#129505;</div>
+      <div id="handover-team" class="handover-team" style="margin:.3rem 0;"></div>
+      <p class="g-subtitle" style="margin-top:.25rem;">it's your turn!</p>
+    </div>
+    <div class="setup-block" style="text-align:center;gap:.35rem;">
+      <p style="font-size:.9rem;color:var(--g-muted);">Pass the phone to the <strong style="color:var(--g-text);">explainer</strong>.</p>
+      <p style="font-size:.82rem;color:var(--g-muted);">They describe 5 words &mdash; no saying the word itself.</p>
+    </div>
+    <button id="btn-flip-card" class="g-btn primary" style="font-size:1.05rem;">
+      &#127924; Flip the Card
+    </button>
+  </div>
+
+  <!-- ══ PLAY ══════════════════════════════════════════════════════════════ -->
+  <div id="screen-play" class="hidden" style="display:flex;flex-direction:column;align-items:center;width:100%;min-height:calc(100vh - 52px);padding:0;">
+
+    <div id="play-timer-bar" class="timer-bar-wrap" style="border-radius:0;"></div>
+
+    <div style="width:100%;max-width:480px;padding:1rem;display:flex;flex-direction:column;gap:.85rem;flex:1;">
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;">
+        <div id="play-team-name" style="font-weight:700;font-size:1rem;color:var(--g-accent2);"></div>
+        <div id="play-timer-display" class="timer-display" style="font-size:2rem;"></div>
+        <div id="play-manual-badge" class="manual-badge hidden">&#8987; Manual</div>
+      </div>
+
+      <div class="seconds-card" id="play-card"></div>
+
+      <button id="btn-end-turn" class="g-btn secondary" style="font-size:.95rem;">
+        &#9209;&#65039; End Turn
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ RESULT ════════════════════════════════════════════════════════════ -->
+  <div id="screen-result" class="game-content hidden" style="gap:1rem;justify-content:center;">
+    <div id="result-team-name" style="font-weight:700;font-size:1rem;color:var(--g-muted);text-align:center;text-transform:uppercase;letter-spacing:.06em;"></div>
+    <div>
+      <div class="score-big" id="result-score">0</div>
+      <div class="score-label" id="result-label">out of 5 correct</div>
+    </div>
+    <div class="score-adj-row">
+      <button class="adj-btn" id="btn-score-minus">&#8722;</button>
+      <div style="font-size:1rem;color:var(--g-muted);font-weight:600;">Adjust if needed</div>
+      <button class="adj-btn" id="btn-score-plus">&#43;</button>
+    </div>
+    <div id="result-running" style="font-size:.85rem;color:var(--g-muted);text-align:center;"></div>
+    <button id="btn-confirm-score" class="g-btn primary" style="font-size:1rem;">
+      &#10003; Confirm &amp; Continue
+    </button>
+  </div>
+
+  <!-- ══ SCOREBOARD ═════════════════════════════════════════════════════════ -->
+  <div id="screen-scores" class="game-content hidden" style="gap:1rem;">
+    <div style="text-align:center;">
+      <div class="g-title">&#128202; Scores</div>
+    </div>
+    <div class="scoreboard" id="scoreboard-list"></div>
+    <button id="btn-continue-playing" class="g-btn primary">&#8592; Continue Playing</button>
+    <button id="btn-end-game" class="g-btn secondary">&#127937; End Game</button>
+  </div>
+
+  <!-- ══ DONE ══════════════════════════════════════════════════════════════ -->
+  <div id="screen-done" class="game-content hidden" style="gap:1.25rem;justify-content:center;">
+    <div style="text-align:center;">
+      <div style="font-size:3rem;">&#127942;</div>
+      <div id="done-winner" style="font-size:1.5rem;font-weight:900;margin:.3rem 0;"></div>
+      <p class="g-subtitle">wins the game!</p>
+    </div>
+    <div class="scoreboard" id="done-scores"></div>
+    <button id="btn-play-again" class="g-btn green" style="font-size:1rem;">&#8635; Play Again</button>
+    <button id="btn-back-to-setup" class="g-btn secondary" style="font-size:.9rem;">&#9881;&#65039; New Setup</button>
+  </div>
+  <!-- ══ SCRIPTS ══════════════════════════════════════════════════════════ -->
+  <script>
+    interface Team  { name: string; score: number; }
+    interface Prompt { id: number; text: string; category: string; }
+
+    const CAT_ICON: Record<string,string> = {
+      people:'&#128100;', places:'&#128205;', movie:'&#127916;', tv:'&#128250;',
+      music:'&#127925;',  object:'&#128295;', nature:'&#127807;', concept:'&#128161;',
+      food:'&#127869;',   sport:'&#9917;',
+    };
+
+    // ── DOM helpers ─────────────────────────────────────────────────────────
+    const $ = (id: string) => document.getElementById(id)!;
+    const show = (...ids: string[]) => ids.forEach(id => {
+      const el = $(id); el.classList.remove('hidden'); el.style.display = '';
+    });
+    const hide = (...ids: string[]) => ids.forEach(id => {
+      const el = $(id); el.classList.add('hidden'); el.style.display = 'none';
+    });
+
+    type Screen = 'setup'|'handover'|'play'|'result'|'scores'|'done';
+
+    function showScreen(s: Screen) {
+      const all: Screen[] = ['setup','handover','play','result','scores','done'];
+      all.forEach(sc => {
+        const el = $(`screen-${sc}`);
+        if (sc === s) {
+          el.classList.remove('hidden');
+          el.style.display = (sc === 'play') ? 'flex' : '';
+        } else {
+          el.classList.add('hidden');
+          el.style.display = 'none';
+        }
+      });
+      $('btn-show-scores').classList.toggle('hidden', s === 'setup' || s === 'scores' || s === 'done');
+    }
+
+    // ── Game state ──────────────────────────────────────────────────────────
+    let teams:         Team[]   = [];
+    let timerMode:     string   = 'app';
+    let allPrompts:    Prompt[] = [];
+    let promptQueue:   Prompt[] = [];
+    let currentCard:   Prompt[] = [];
+    let currentTeam    = 0;
+    let checkedIds:    Set<number> = new Set();
+    let resultScore    = 0;
+    let timerInterval: ReturnType<typeof setInterval> | null = null;
+    let timerEndTime   = 0;
+
+    // ── Shuffle ─────────────────────────────────────────────────────────────
+    function shuffle<T>(arr: T[]): T[] {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // ── Prompt queue ────────────────────────────────────────────────────────
+    function drawCard() {
+      if (promptQueue.length < 5) promptQueue = shuffle([...allPrompts]);
+      currentCard = promptQueue.splice(0, 5);
+      checkedIds.clear();
+    }
+
+    // ── Setup screen ────────────────────────────────────────────────────────
+    function renderSetup() {
+      const list = $('teams-list');
+      list.innerHTML = '';
+      teams.forEach((t, i) => {
+        const row = document.createElement('div');
+        row.className = 'team-row';
+        row.innerHTML = `
+          <input class="team-input" type="text" value="${t.name.replace(/"/g,'&quot;')}" placeholder="Team ${i+1}" maxlength="20" />
+          <button class="team-del" title="Remove team">&#215;</button>
+        `;
+        (row.querySelector('.team-input') as HTMLInputElement).addEventListener('input', e => {
+          teams[i].name = (e.target as HTMLInputElement).value.trim() || `Team ${i+1}`;
+        });
+        (row.querySelector('.team-del') as HTMLButtonElement).addEventListener('click', () => {
+          if (teams.length > 2) { teams.splice(i,1); renderSetup(); }
+        });
+        list.appendChild(row);
+      });
+      (document.querySelector('#btn-add-team') as HTMLButtonElement).disabled = teams.length >= 8;
+    }
+
+    $('btn-add-team').addEventListener('click', () => {
+      if (teams.length < 8) { teams.push({ name: `Team ${teams.length+1}`, score: 0 }); renderSetup(); }
+    });
+
+    document.querySelectorAll<HTMLElement>('#timer-mode-chips .chip').forEach(c => {
+      c.addEventListener('click', () => {
+        document.querySelectorAll<HTMLElement>('#timer-mode-chips .chip').forEach(x => x.classList.remove('on'));
+        c.classList.add('on');
+        timerMode = c.dataset.mode!;
+      });
+    });
+
+    $('btn-start-game').addEventListener('click', () => {
+      const valid = teams.filter(t => t.name.trim()).length >= 2;
+      if (!valid) { $('setup-warn').classList.remove('hidden'); return; }
+      $('setup-warn').classList.add('hidden');
+      teams = teams.filter(t => t.name.trim());
+      teams.forEach(t => t.score = 0);
+      currentTeam = 0;
+      promptQueue  = shuffle([...allPrompts]);
+      toHandover();
+    });
+
+    // ── Handover screen ─────────────────────────────────────────────────────
+    function toHandover() {
+      stopTimer();
+      const t = teams[currentTeam];
+      $('handover-team').textContent = t.name;
+      const prev = teams[(currentTeam - 1 + teams.length) % teams.length];
+      $('handover-current').textContent = currentTeam === 0 && teams.every(t2 => t2.score === 0)
+        ? 'Round 1 — Let\'s go!'
+        : `Last round: ${prev.name} scored ${resultScore} point${resultScore !== 1 ? 's' : ''}`;
+      showScreen('handover');
+    }
+
+    $('btn-flip-card').addEventListener('click', () => {
+      drawCard();
+      renderCard();
+      showScreen('play');
+      if (timerMode === 'app') {
+        show('play-timer-display'); show('play-timer-bar');
+        hide('play-manual-badge');
+        startTimer();
+      } else {
+        hide('play-timer-display'); hide('play-timer-bar');
+        show('play-manual-badge');
+      }
+    });
+
+    // ── Play screen ──────────────────────────────────────────────────────────
+    function renderCard() {
+      const card = $('play-card');
+      card.innerHTML = '';
+      $('play-team-name').textContent = teams[currentTeam].name;
+      currentCard.forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'prompt-row' + (checkedIds.has(p.id) ? ' checked' : '');
+        row.dataset.id = String(p.id);
+        row.innerHTML = `
+          <span class="prompt-cat">${CAT_ICON[p.category] ?? '&#9634;'}</span>
+          <span class="prompt-text">${p.text}</span>
+          <span class="prompt-check">${checkedIds.has(p.id) ? '&#10003;' : '&#9633;'}</span>
+        `;
+        row.addEventListener('click', () => togglePrompt(p.id, row));
+        card.appendChild(row);
+      });
+    }
+
+    function togglePrompt(id: number, row: HTMLElement) {
+      if (checkedIds.has(id)) {
+        checkedIds.delete(id);
+        row.classList.remove('checked');
+        row.querySelector('.prompt-check')!.innerHTML = '&#9633;';
+      } else {
+        checkedIds.add(id);
+        row.classList.add('checked');
+        row.querySelector('.prompt-check')!.innerHTML = '&#10003;';
+      }
+    }
+
+    $('btn-end-turn').addEventListener('click', endTurn);
+
+    // ── Timer ────────────────────────────────────────────────────────────────
+    function startTimer() {
+      stopTimer();
+      timerEndTime = Date.now() + 60000;
+      updateTimerUI(60);
+      timerInterval = setInterval(() => {
+        const rem = Math.max(0, (timerEndTime - Date.now()) / 1000);
+        updateTimerUI(rem);
+        if (rem <= 0) { stopTimer(); endTurn(); }
+      }, 100);
+    }
+
+    function stopTimer() {
+      if (timerInterval !== null) { clearInterval(timerInterval); timerInterval = null; }
+    }
+
+    function updateTimerUI(rem: number) {
+      const display = $('play-timer-display') as HTMLElement;
+      const fill    = $('play-timer-bar').querySelector('.timer-bar-fill') as HTMLElement;
+      const secs    = Math.ceil(rem);
+      display.textContent = String(secs);
+      display.classList.toggle('urgent', rem > 0 && rem <= 10);
+      if (fill) {
+        fill.style.width = `${(rem / 60) * 100}%`;
+        fill.classList.toggle('urgent', rem > 0 && rem <= 10);
+      }
+    }
+
+    // ── End of turn ──────────────────────────────────────────────────────────
+    function endTurn() {
+      stopTimer();
+      resultScore = checkedIds.size;
+      teams[currentTeam].score += resultScore;
+      showResult();
+    }
+
+    // ── Result screen ────────────────────────────────────────────────────────
+    function showResult() {
+      $('result-team-name').textContent = teams[currentTeam].name;
+      renderResultScore();
+      showScreen('result');
+    }
+
+    function renderResultScore() {
+      ($('result-score') as HTMLElement).textContent = String(resultScore);
+      $('result-label').textContent = `out of 5 correct`;
+      $('result-running').textContent = `Running total: ${teams[currentTeam].score} points`;
+    }
+
+    $('btn-score-minus').addEventListener('click', () => {
+      if (resultScore > 0) {
+        teams[currentTeam].score--;
+        resultScore--;
+        renderResultScore();
+      }
+    });
+    $('btn-score-plus').addEventListener('click', () => {
+      if (resultScore < 5) {
+        teams[currentTeam].score++;
+        resultScore++;
+        renderResultScore();
+      }
+    });
+
+    $('btn-confirm-score').addEventListener('click', () => {
+      currentTeam = (currentTeam + 1) % teams.length;
+      toHandover();
+    });
+
+    // ── Scoreboard ───────────────────────────────────────────────────────────
+    function renderScoreboard(containerId: string) {
+      const sorted = [...teams].sort((a,b) => b.score - a.score);
+      const el = $(containerId);
+      el.innerHTML = '';
+      const medals = ['&#127947;','&#129352;','&#129353;'];
+      sorted.forEach((t, i) => {
+        const row = document.createElement('div');
+        row.className = 'score-row' + (i === 0 ? ' leader' : '');
+        row.innerHTML = `
+          <span class="score-rank">${medals[i] ?? (i+1) + '.'}</span>
+          <span class="score-name">${t.name}</span>
+          <span class="score-pts">${t.score}pt</span>
+        `;
+        el.appendChild(row);
+      });
+    }
+
+    $('btn-show-scores').addEventListener('click', () => {
+      renderScoreboard('scoreboard-list');
+      showScreen('scores');
+    });
+
+    $('btn-continue-playing').addEventListener('click', () => toHandover());
+
+    $('btn-end-game').addEventListener('click', () => {
+      const winner = [...teams].sort((a,b) => b.score - a.score)[0];
+      $('done-winner').textContent = winner.name;
+      renderScoreboard('done-scores');
+      showScreen('done');
+    });
+
+    // ── Play again / reset ───────────────────────────────────────────────────
+    $('btn-play-again').addEventListener('click', () => {
+      teams.forEach(t => t.score = 0);
+      currentTeam = 0;
+      promptQueue  = shuffle([...allPrompts]);
+      resultScore  = 0;
+      toHandover();
+    });
+
+    $('btn-back-to-setup').addEventListener('click', () => {
+      teams = [
+        { name: 'Team 1', score: 0 },
+        { name: 'Team 2', score: 0 },
+        { name: 'Team 3', score: 0 },
+      ];
+      renderSetup();
+      showScreen('setup');
+    });
+
+    // ── Play-screen timer bar HTML ───────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrap = $('play-timer-bar');
+      wrap.innerHTML = '<div class="timer-bar-fill" style="width:100%;"></div>';
+    });
+
+    // ── Init ─────────────────────────────────────────────────────────────────
+    teams = [
+      { name: 'Team 1', score: 0 },
+      { name: 'Team 2', score: 0 },
+      { name: 'Team 3', score: 0 },
+    ];
+    renderSetup();
+    showScreen('setup');
+
+    fetch('/30-seconds/prompts.json')
+      .then(r => r.json())
+      .then((data: Prompt[]) => { allPrompts = data; })
+      .catch(() => console.error('Failed to load 30-seconds prompts'));
+  </script>
+
+</body>
+</html>
