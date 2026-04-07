@@ -509,9 +509,9 @@ import '../../../styles/games.css';
     async function fetchAllTracks(playlistId: string, token: string): Promise<Track[]> {
       const tracks: Track[] = [];
 
-      // Strategy 1: try GET /v1/playlists/{id} (embeds first-page tracks without a sub-resource call)
+      // Use GET /v1/playlists/{id} — embeds first-page tracks without needing the /tracks sub-resource
       const infoRes = await fetch(
-        `https://api.spotify.com/v1/playlists/${playlistId}?market=from_token`,
+        `https://api.spotify.com/v1/playlists/${playlistId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (!infoRes.ok) {
@@ -519,9 +519,11 @@ import '../../../styles/games.css';
         throw spotifyError(infoRes.status, body?.error?.message ?? '');
       }
       const playlist = await infoRes.json();
-      tracks.push(...parseTrackItems(playlist.tracks?.items ?? []));
 
-      // Paginate remaining pages via tracks.next (points to /tracks endpoint)
+      const firstItems: unknown[] = playlist.tracks?.items ?? [];
+      tracks.push(...parseTrackItems(firstItems as Array<{ track: null | Record<string, unknown> }>));
+
+      // Paginate remaining pages via tracks.next
       let nextUrl: string | null = playlist.tracks?.next ?? null;
       while (nextUrl) {
         const pageRes = await fetch(nextUrl, { headers: { Authorization: `Bearer ${token}` } });
@@ -532,6 +534,15 @@ import '../../../styles/games.css';
         const page = await pageRes.json();
         tracks.push(...parseTrackItems(page.items ?? []));
         nextUrl = page.next ?? null;
+      }
+
+      if (tracks.length === 0) {
+        const total = playlist.tracks?.total ?? '?';
+        throw new Error(
+          `Loaded playlist but found 0 playable tracks (API reports ${total} total). ` +
+          `This can happen if all tracks are local files, episodes, or unavailable. ` +
+          `Try a different playlist or check it has regular Spotify songs.`
+        );
       }
 
       return tracks;
