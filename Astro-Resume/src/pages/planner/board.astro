@@ -306,6 +306,81 @@
     }
     .column-empty-icon { font-size: 1.6rem; margin-bottom: .4rem; display: block; opacity: .45; }
     .column-empty-text { font-size: .78rem; color: #4a535b; }
+
+    /* ── Project notes section ────────────────────────────── */
+    .notes-section {
+      margin: 1rem 1.5rem 0;
+      background: #252a2d;
+      border: 1px solid #3c434a;
+      border-radius: 14px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .notes-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 1.1rem;
+      cursor: pointer; user-select: none;
+      transition: background .15s;
+    }
+    .notes-header:hover { background: rgba(255,255,255,0.04); }
+    .notes-header-left { display: flex; align-items: center; gap: .55rem; font-size: .85rem; font-weight: 600; color: #f0f0f1; }
+    .notes-header-icon { font-size: .9rem; }
+    .notes-chevron { color: #a7aaad; font-size: .7rem; transition: transform .2s; flex-shrink: 0; }
+    .notes-section.open .notes-chevron { transform: rotate(90deg); }
+    .notes-body { display: none; border-top: 1px solid #3c434a; }
+    .notes-section.open .notes-body { display: flex; flex-direction: column; }
+    .notes-tabs {
+      display: flex; border-bottom: 1px solid #3c434a; padding: 0 1rem; background: rgba(0,0,0,0.12);
+    }
+    .notes-tab {
+      padding: .5rem .9rem; font-size: .78rem; font-weight: 600; color: #a7aaad;
+      cursor: pointer; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color .15s; background: none; font-family: inherit;
+    }
+    .notes-tab.active { color: #5fa8d3; border-bottom-color: #5fa8d3; }
+    .notes-tab:hover:not(.active) { color: #f0f0f1; }
+    .notes-editor {
+      width: 100%; min-height: 130px; max-height: 420px;
+      padding: 1rem 1.15rem;
+      background: #1d2327; color: #f0f0f1;
+      border: none; outline: none;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: .875rem; line-height: 1.65; resize: vertical;
+      tab-size: 2;
+    }
+    .notes-editor::placeholder { color: #4a535b; }
+    .notes-preview {
+      display: none; min-height: 80px;
+      padding: 1rem 1.25rem;
+      font-size: .875rem; line-height: 1.75; color: #f0f0f1;
+    }
+    .notes-preview.active { display: block; }
+    /* Markdown styles inside preview */
+    .notes-preview h1,.notes-preview h2,.notes-preview h3,.notes-preview h4 { color: #f0f0f1; font-weight: 700; margin: .9rem 0 .35rem; }
+    .notes-preview h1 { font-size: 1.2rem; } .notes-preview h2 { font-size: 1.05rem; } .notes-preview h3 { font-size: .95rem; }
+    .notes-preview p { margin-bottom: .6rem; color: #d4d7da; }
+    .notes-preview ul,.notes-preview ol { margin: .4rem 0 .6rem 1.5rem; }
+    .notes-preview li { margin-bottom: .2rem; color: #d4d7da; }
+    .notes-preview code { background: rgba(255,255,255,0.1); padding: 1px 5px; border-radius: 4px; font-size: .85em; font-family: monospace; color: #5fa8d3; }
+    .notes-preview pre { background: #1d2327; padding: .8rem 1rem; border-radius: 8px; overflow-x: auto; margin: .5rem 0; border: 1px solid #3c434a; }
+    .notes-preview pre code { background: none; padding: 0; color: #f0f0f1; }
+    .notes-preview blockquote { border-left: 3px solid #d4a32f; padding: .3rem .85rem; margin: .5rem 0; color: #a7aaad; font-style: italic; }
+    .notes-preview a { color: #5fa8d3; text-decoration: underline; }
+    .notes-preview strong { color: #f0f0f1; font-weight: 700; }
+    .notes-preview em { color: #d4d7da; }
+    .notes-preview hr { border: none; border-top: 1px solid #3c434a; margin: .85rem 0; }
+    .notes-preview table { width: 100%; border-collapse: collapse; margin: .6rem 0; font-size: .85rem; }
+    .notes-preview th,.notes-preview td { border: 1px solid #3c434a; padding: .4rem .75rem; }
+    .notes-preview th { background: rgba(255,255,255,0.06); font-weight: 600; }
+    .notes-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .35rem 1.1rem; border-top: 1px solid #3c434a; background: rgba(0,0,0,0.15);
+    }
+    .notes-hint { font-size: .68rem; color: #3c434a; }
+    .notes-status { font-size: .72rem; color: transparent; transition: color .3s; min-width: 70px; text-align: right; }
+    .notes-status.saving { color: #d4a32f; }
+    .notes-status.saved  { color: #1db954; }
+    .notes-status.error  { color: #fc8181; }
   </style>
 
 </head>
@@ -318,6 +393,30 @@
     </div>
     <button class="btn btn-ghost" id="signout-btn">Sign out</button>
   </header>
+
+  <!-- Project Notes -->
+  <div class="notes-section" id="notes-section">
+    <div class="notes-header" id="notes-header">
+      <div class="notes-header-left">
+        <span class="notes-header-icon">📝</span>
+        <span>Project Notes</span>
+      </div>
+      <span class="notes-chevron">▶</span>
+    </div>
+    <div class="notes-body">
+      <div class="notes-tabs">
+        <button class="notes-tab active" data-tab="edit">Edit</button>
+        <button class="notes-tab" data-tab="preview">Preview</button>
+      </div>
+      <textarea class="notes-editor" id="notes-editor"
+        placeholder="Write project notes, documentation, or context here.&#10;&#10;Supports **markdown**: # headings, **bold**, *italic*, `code`, - lists, > quotes, ---"></textarea>
+      <div class="notes-preview" id="notes-preview"></div>
+      <div class="notes-footer">
+        <span class="notes-hint">Markdown supported · auto-saves</span>
+        <span class="notes-status" id="notes-status"></span>
+      </div>
+    </div>
+  </div>
 
   <div class="board-wrapper">
     <div class="board" id="board">
@@ -373,6 +472,7 @@
   <script>
     import { supabase } from '../../lib/supabase.ts'
     import Sortable from 'sortablejs'
+    import { marked } from 'marked'
 
     const STATUSES = ['backlog', 'todo', 'in_progress', 'done'] as const
     type Status = typeof STATUSES[number]
@@ -400,6 +500,7 @@
       name: string
       color: string
       description: string
+      notes: string
     }
 
     let projectId = ''
@@ -430,6 +531,7 @@
       document.title = `${project.name} — Lions Planner`
 
       await loadBoard()
+      setupNotes(project.notes ?? '')
       setupModal()
       setupSignOut()
     }
@@ -708,6 +810,75 @@
       if (error) { showToast('Failed to delete task', true); return }
       showToast(`Task "${title}" deleted`)
       await loadBoard()
+    }
+
+    function setupNotes(initialNotes: string) {
+      const section  = document.getElementById('notes-section') as HTMLElement
+      const header   = document.getElementById('notes-header') as HTMLElement
+      const editor   = document.getElementById('notes-editor') as HTMLTextAreaElement
+      const preview  = document.getElementById('notes-preview') as HTMLElement
+      const status   = document.getElementById('notes-status') as HTMLElement
+      const tabs     = document.querySelectorAll('.notes-tab')
+
+      editor.value = initialNotes
+
+      // Auto-open if notes exist
+      if (initialNotes.trim()) section.classList.add('open')
+
+      // Toggle collapse on header click
+      header.addEventListener('click', () => section.classList.toggle('open'))
+
+      // Tab switching
+      tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+          e.stopPropagation()
+          const target = (tab as HTMLElement).dataset.tab
+          tabs.forEach(t => t.classList.remove('active'))
+          tab.classList.add('active')
+          if (target === 'preview') {
+            editor.style.display = 'none'
+            preview.classList.add('active')
+            const raw = editor.value.trim() || '*No notes yet. Switch to Edit to start writing.*'
+            preview.innerHTML = marked.parse(raw) as string
+          } else {
+            editor.style.display = 'block'
+            preview.classList.remove('active')
+            setTimeout(() => editor.focus(), 50)
+          }
+        })
+      })
+
+      // Debounced auto-save
+      let saveTimer: ReturnType<typeof setTimeout>
+      editor.addEventListener('input', () => {
+        status.textContent = 'Unsaved…'
+        status.className = 'notes-status saving'
+        clearTimeout(saveTimer)
+        saveTimer = setTimeout(() => saveNotes(editor.value), 1500)
+      })
+    }
+
+    async function saveNotes(notes: string) {
+      const status = document.getElementById('notes-status') as HTMLElement
+      status.textContent = 'Saving…'
+      status.className = 'notes-status saving'
+
+      const { error } = await supabase
+        .from('projects')
+        .update({ notes })
+        .eq('id', projectId)
+
+      if (error) {
+        status.textContent = '✗ Failed'
+        status.className = 'notes-status error'
+      } else {
+        status.textContent = '✓ Saved'
+        status.className = 'notes-status saved'
+        setTimeout(() => {
+          status.textContent = ''
+          status.className = 'notes-status'
+        }, 2500)
+      }
     }
 
     function setupSignOut() {

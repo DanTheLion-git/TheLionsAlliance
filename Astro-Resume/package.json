@@ -12,6 +12,7 @@
     "@supabase/supabase-js": "^2.102.1",
     "astro": "^5.15.9",
     "html5-qrcode": "^2.3.8",
+    "marked": "^18.0.0",
     "qrcode": "^1.5.4",
     "sortablejs": "^1.15.7"
   },
