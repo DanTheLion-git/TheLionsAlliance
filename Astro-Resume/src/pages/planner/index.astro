@@ -1,0 +1,472 @@
+---
+// No server-side logic
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lions Planner — Projects</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      min-height: 100vh;
+      color: #1e293b;
+    }
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      color: white;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .header-actions { display: flex; gap: .75rem; }
+    .btn {
+      padding: .5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .btn-primary { background: #6366f1; color: white; }
+    .btn-primary:hover { background: #4f46e5; }
+    .btn-primary:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-ghost { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+    .btn-danger { background: #ef4444; color: white; }
+    .btn-danger:hover { background: #dc2626; }
+    .btn-secondary { background: #e2e8f0; color: #374151; }
+    .btn-secondary:hover { background: #cbd5e1; }
+    /* Main */
+    .main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .page-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+    .page-heading h2 { font-size: 1.5rem; font-weight: 700; }
+    .page-heading p { color: #64748b; font-size: .875rem; margin-top: .25rem; }
+    /* Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    /* Project card */
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #6366f1;
+      padding: 1.25rem 1.25rem 1rem;
+      cursor: pointer;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .project-card:hover .delete-btn { opacity: 1; }
+    .delete-btn {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: #fef2f2;
+      border: none;
+      border-radius: 6px;
+      color: #dc2626;
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity .2s, background .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .delete-btn:hover { background: #fee2e2; }
+    .project-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: .3rem;
+      padding-right: 2rem;
+    }
+    .project-desc {
+      font-size: .825rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+      min-height: 1.2rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .task-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .badge {
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .badge-backlog { background: #f1f5f9; color: #475569; }
+    .badge-todo { background: #dbeafe; color: #1d4ed8; }
+    .badge-inprogress { background: #ede9fe; color: #6d28d9; }
+    .badge-done { background: #d1fae5; color: #065f46; }
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #94a3b8;
+    }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .empty-state h3 { font-size: 1.1rem; font-weight: 600; color: #64748b; margin-bottom: .5rem; }
+    .empty-state p { font-size: .875rem; }
+    /* Loading */
+    .loading { text-align: center; padding: 3rem; color: #94a3b8; font-size: .875rem; }
+    /* Modal overlay */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    .overlay.show { display: flex; }
+    .modal {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+    .modal h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: #1e293b; }
+    .field { margin-bottom: 1.25rem; }
+    label { display: block; font-size: .875rem; font-weight: 500; color: #374151; margin-bottom: .4rem; }
+    input[type="text"], textarea {
+      width: 100%; padding: .65rem .9rem;
+      border: 1.5px solid #e2e8f0; border-radius: 8px;
+      font-family: inherit; font-size: .9rem;
+      transition: border-color .2s; resize: vertical;
+    }
+    input[type="text"]:focus, textarea:focus { outline: none; border-color: #6366f1; }
+    textarea { min-height: 80px; }
+    .color-swatches { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .swatch {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: transform .15s, border-color .15s;
+    }
+    .swatch:hover { transform: scale(1.15); }
+    .swatch.selected { border-color: #1e293b; transform: scale(1.1); }
+    .modal-actions { display: flex; gap: .75rem; justify-content: flex-end; margin-top: 1.5rem; }
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      background: #1e293b; color: white;
+      padding: .75rem 1.25rem;
+      border-radius: 10px;
+      font-size: .875rem;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all .3s;
+      z-index: 2000;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.error { background: #dc2626; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-title">🦁 Lions Planner</div>
+    <div class="header-actions">
+      <button class="btn btn-primary" id="new-project-btn">+ New Project</button>
+      <button class="btn btn-ghost" id="signout-btn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-heading">
+      <div>
+        <h2>Projects</h2>
+        <p id="projects-count">Loading…</p>
+      </div>
+    </div>
+    <div class="projects-grid" id="projects-grid">
+      <div class="loading">Loading projects…</div>
+    </div>
+  </main>
+
+  <!-- New Project Modal -->
+  <div class="overlay" id="modal-overlay">
+    <div class="modal">
+      <h3>New Project</h3>
+      <form id="project-form">
+        <div class="field">
+          <label for="proj-name">Name <span style="color:#dc2626">*</span></label>
+          <input type="text" id="proj-name" placeholder="My awesome project" required />
+        </div>
+        <div class="field">
+          <label for="proj-desc">Description</label>
+          <textarea id="proj-desc" placeholder="What's this project about?"></textarea>
+        </div>
+        <div class="field">
+          <label>Color</label>
+          <div class="color-swatches" id="color-swatches">
+            <div class="swatch selected" data-color="#6366f1" style="background:#6366f1"></div>
+            <div class="swatch" data-color="#e11d48" style="background:#e11d48"></div>
+            <div class="swatch" data-color="#10b981" style="background:#10b981"></div>
+            <div class="swatch" data-color="#f59e0b" style="background:#f59e0b"></div>
+            <div class="swatch" data-color="#8b5cf6" style="background:#8b5cf6"></div>
+            <div class="swatch" data-color="#0ea5e9" style="background:#0ea5e9"></div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="modal-submit">Create Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    import { supabase } from '../../lib/supabase.ts'
+
+    type Project = {
+      id: string
+      name: string
+      description: string
+      color: string
+      created_at: string
+    }
+
+    type TaskCount = {
+      backlog: number
+      todo: number
+      in_progress: number
+      done: number
+    }
+
+    let selectedColor = '#6366f1'
+
+    async function init() {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { window.location.replace('/planner/login'); return }
+      await loadProjects()
+      setupModal()
+      setupSignOut()
+    }
+
+    async function loadProjects() {
+      const grid = document.getElementById('projects-grid') as HTMLElement
+      const countEl = document.getElementById('projects-count') as HTMLElement
+
+      const { data: projects, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: true })
+
+      if (error) {
+        showToast('Failed to load projects', true)
+        grid.innerHTML = '<div class="loading">Error loading projects.</div>'
+        return
+      }
+
+      countEl.textContent = `${projects?.length ?? 0} project${(projects?.length ?? 0) !== 1 ? 's' : ''}`
+
+      if (!projects || projects.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="icon">📋</div>
+            <h3>No projects yet</h3>
+            <p>Create your first project to get started!</p>
+          </div>`
+        return
+      }
+
+      // Fetch all tasks for these projects
+      const projectIds = projects.map((p: Project) => p.id)
+      const { data: tasks } = await supabase
+        .from('tasks')
+        .select('project_id, status')
+        .in('project_id', projectIds)
+
+      // Build count map
+      const countMap: Record<string, TaskCount> = {}
+      for (const p of projects) {
+        countMap[p.id] = { backlog: 0, todo: 0, in_progress: 0, done: 0 }
+      }
+      for (const t of (tasks ?? [])) {
+        if (countMap[t.project_id]) {
+          const s = t.status as keyof TaskCount
+          if (s in countMap[t.project_id]) countMap[t.project_id][s]++
+        }
+      }
+
+      grid.innerHTML = ''
+      for (const project of projects as Project[]) {
+        grid.appendChild(createProjectCard(project, countMap[project.id]))
+      }
+    }
+
+    function createProjectCard(project: Project, counts: TaskCount): HTMLElement {
+      const card = document.createElement('div')
+      card.className = 'project-card'
+      card.style.borderLeftColor = project.color
+      card.dataset.id = project.id
+
+      const total = counts.backlog + counts.todo + counts.in_progress + counts.done
+
+      card.innerHTML = `
+        <button class="delete-btn" data-id="${project.id}" title="Delete project">×</button>
+        <div class="project-name">${escHtml(project.name)}</div>
+        <div class="project-desc">${escHtml(project.description || '')}</div>
+        <div class="task-badges">
+          ${counts.backlog > 0 ? `<span class="badge badge-backlog">📥 ${counts.backlog} Backlog</span>` : ''}
+          ${counts.todo > 0 ? `<span class="badge badge-todo">📌 ${counts.todo} Todo</span>` : ''}
+          ${counts.in_progress > 0 ? `<span class="badge badge-inprogress">⚡ ${counts.in_progress} In Progress</span>` : ''}
+          ${counts.done > 0 ? `<span class="badge badge-done">✅ ${counts.done} Done</span>` : ''}
+          ${total === 0 ? '<span class="badge badge-backlog">No tasks yet</span>' : ''}
+        </div>`
+
+      card.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement
+        if (target.closest('.delete-btn')) return
+        window.location.href = `/planner/board?id=${project.id}`
+      })
+
+      const deleteBtn = card.querySelector('.delete-btn') as HTMLButtonElement
+      deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation()
+        deleteProject(project.id, project.name)
+      })
+
+      return card
+    }
+
+    async function deleteProject(id: string, name: string) {
+      if (!confirm(`Delete project "${name}"? This will also delete all its tasks. This cannot be undone.`)) return
+      const { error } = await supabase.from('projects').delete().eq('id', id)
+      if (error) { showToast('Failed to delete project', true); return }
+      showToast(`Project "${name}" deleted`)
+      await loadProjects()
+    }
+
+    function setupModal() {
+      const overlay = document.getElementById('modal-overlay') as HTMLElement
+      const form = document.getElementById('project-form') as HTMLFormElement
+      const cancelBtn = document.getElementById('modal-cancel') as HTMLButtonElement
+      const submitBtn = document.getElementById('modal-submit') as HTMLButtonElement
+      const newBtn = document.getElementById('new-project-btn') as HTMLButtonElement
+      const swatches = document.querySelectorAll('.swatch')
+
+      newBtn.addEventListener('click', () => {
+        form.reset()
+        selectedColor = '#6366f1'
+        swatches.forEach(s => s.classList.remove('selected'))
+        swatches[0].classList.add('selected')
+        overlay.classList.add('show')
+        setTimeout(() => (document.getElementById('proj-name') as HTMLInputElement).focus(), 50)
+      })
+
+      cancelBtn.addEventListener('click', () => overlay.classList.remove('show'))
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('show') })
+
+      swatches.forEach(swatch => {
+        swatch.addEventListener('click', () => {
+          swatches.forEach(s => s.classList.remove('selected'))
+          swatch.classList.add('selected')
+          selectedColor = (swatch as HTMLElement).dataset.color ?? '#6366f1'
+        })
+      })
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        submitBtn.disabled = true
+        submitBtn.textContent = 'Creating…'
+
+        const name = (document.getElementById('proj-name') as HTMLInputElement).value.trim()
+        const description = (document.getElementById('proj-desc') as HTMLTextAreaElement).value.trim()
+
+        const { error } = await supabase.from('projects').insert({ name, description, color: selectedColor })
+
+        submitBtn.disabled = false
+        submitBtn.textContent = 'Create Project'
+
+        if (error) { showToast('Failed to create project', true); return }
+
+        overlay.classList.remove('show')
+        showToast(`Project "${name}" created!`)
+        await loadProjects()
+      })
+    }
+
+    function setupSignOut() {
+      document.getElementById('signout-btn')?.addEventListener('click', async () => {
+        await supabase.auth.signOut()
+        window.location.replace('/planner/login')
+      })
+    }
+
+    function escHtml(str: string): string {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    }
+
+    let toastTimer: ReturnType<typeof setTimeout>
+    function showToast(msg: string, isError = false) {
+      const toast = document.getElementById('toast') as HTMLElement
+      toast.textContent = msg
+      toast.className = 'toast show' + (isError ? ' error' : '')
+      clearTimeout(toastTimer)
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3000)
+    }
+
+    init()
+  </script>
+</body>
+</html>

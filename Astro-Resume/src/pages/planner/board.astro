@@ -1,0 +1,704 @@
+---
+// No server-side logic
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lions Planner — Board</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      min-height: 100vh;
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      color: white;
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+    }
+    .header-left { display: flex; align-items: center; gap: .75rem; }
+    .back-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      border-radius: 8px;
+      padding: .4rem .75rem;
+      font-family: inherit;
+      font-size: .875rem;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.25); }
+    .project-indicator {
+      width: 12px; height: 12px; border-radius: 50%;
+      display: inline-block; flex-shrink: 0;
+    }
+    .header-title { font-size: 1.1rem; font-weight: 700; }
+    .btn {
+      padding: .5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .btn-ghost { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+    .btn-primary { background: #6366f1; color: white; border: none; }
+    .btn-primary:hover { background: #4f46e5; }
+    .btn-primary:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-secondary { background: #e2e8f0; color: #374151; border: none; }
+    .btn-secondary:hover { background: #cbd5e1; }
+    .btn-danger { background: #ef4444; color: white; border: none; }
+    .btn-danger:hover { background: #dc2626; }
+    /* Board */
+    .board-wrapper {
+      flex: 1;
+      overflow-x: auto;
+      padding: 1.5rem;
+    }
+    .board {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      min-height: calc(100vh - 60px - 3rem);
+    }
+    /* Column */
+    .column {
+      width: 280px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      max-height: calc(100vh - 60px - 3rem);
+    }
+    .column-header {
+      padding: .875rem 1rem;
+      border-top: 4px solid #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .column-header[data-status="backlog"] { border-top-color: #94a3b8; }
+    .column-header[data-status="todo"] { border-top-color: #3b82f6; }
+    .column-header[data-status="in_progress"] { border-top-color: #8b5cf6; }
+    .column-header[data-status="done"] { border-top-color: #10b981; }
+    .column-title {
+      font-size: .875rem;
+      font-weight: 700;
+      color: #374151;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .count-badge {
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+    }
+    /* Task list */
+    .task-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: .5rem .5rem 0;
+      min-height: 80px;
+    }
+    .task-list::-webkit-scrollbar { width: 4px; }
+    .task-list::-webkit-scrollbar-track { background: transparent; }
+    .task-list::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 4px; }
+    /* Task card */
+    .task-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: .75rem;
+      margin-bottom: .5rem;
+      cursor: grab;
+      user-select: none;
+      transition: box-shadow .2s, transform .15s;
+      position: relative;
+    }
+    .task-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .task-card:active { cursor: grabbing; }
+    .task-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .5rem;
+      margin-bottom: .4rem;
+    }
+    .priority-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      flex-shrink: 0;
+    }
+    .priority-low { background: #d1fae5; color: #065f46; }
+    .priority-medium { background: #fef3c7; color: #92400e; }
+    .priority-high { background: #fee2e2; color: #991b1b; }
+    .menu-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 0 4px;
+      font-size: 1rem;
+      line-height: 1;
+      border-radius: 4px;
+      flex-shrink: 0;
+      transition: color .15s, background .15s;
+    }
+    .menu-btn:hover { color: #64748b; background: #f1f5f9; }
+    .task-title {
+      font-size: .875rem;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.4;
+      margin-bottom: .3rem;
+      flex: 1;
+    }
+    .task-desc {
+      font-size: .775rem;
+      color: #64748b;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      line-height: 1.5;
+      margin-bottom: .4rem;
+    }
+    .task-due {
+      font-size: .725rem;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .task-due.overdue { color: #ef4444; font-weight: 600; }
+    /* Drag ghost */
+    .task-ghost { opacity: .4; border: 2px dashed #6366f1 !important; }
+    /* Add task btn */
+    .add-task-btn {
+      margin: .5rem;
+      padding: .6rem;
+      background: none;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 8px;
+      color: #94a3b8;
+      font-family: inherit;
+      font-size: .8rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: calc(100% - 1rem);
+      text-align: center;
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+    .add-task-btn:hover { border-color: #6366f1; color: #6366f1; background: #f5f3ff; }
+    /* Modal */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    .overlay.show { display: flex; }
+    .modal {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .modal-header h3 { font-size: 1.2rem; font-weight: 700; color: #1e293b; }
+    .close-btn {
+      background: none; border: none;
+      color: #94a3b8; font-size: 1.25rem;
+      cursor: pointer; padding: 4px;
+      border-radius: 6px; line-height: 1;
+      transition: color .15s;
+    }
+    .close-btn:hover { color: #64748b; }
+    .field { margin-bottom: 1.1rem; }
+    label { display: block; font-size: .875rem; font-weight: 500; color: #374151; margin-bottom: .35rem; }
+    .form-input {
+      width: 100%; padding: .65rem .9rem;
+      border: 1.5px solid #e2e8f0; border-radius: 8px;
+      font-family: inherit; font-size: .9rem;
+      transition: border-color .2s;
+    }
+    .form-input:focus { outline: none; border-color: #6366f1; }
+    textarea.form-input { resize: vertical; min-height: 80px; }
+    select.form-input { cursor: pointer; }
+    .modal-actions { display: flex; gap: .75rem; justify-content: space-between; margin-top: 1.5rem; align-items: center; }
+    .modal-actions-right { display: flex; gap: .75rem; }
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      background: #1e293b; color: white;
+      padding: .75rem 1.25rem;
+      border-radius: 10px;
+      font-size: .875rem; font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      opacity: 0; transform: translateY(10px);
+      transition: all .3s;
+      z-index: 2000;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.error { background: #dc2626; }
+    /* Loading */
+    .board-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color: #94a3b8;
+      font-size: .9rem;
+      padding: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <a href="/planner/" class="back-btn">← Back</a>
+      <span class="project-indicator" id="proj-indicator"></span>
+      <span class="header-title" id="proj-title">Loading…</span>
+    </div>
+    <button class="btn btn-ghost" id="signout-btn">Sign out</button>
+  </header>
+
+  <div class="board-wrapper">
+    <div class="board" id="board">
+      <div class="board-loading">Loading board…</div>
+    </div>
+  </div>
+
+  <!-- Task Modal -->
+  <div class="overlay" id="task-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">New Task</h3>
+        <button class="close-btn" id="modal-close">×</button>
+      </div>
+      <form id="task-form">
+        <input type="hidden" id="task-id" />
+        <input type="hidden" id="task-status" />
+        <div class="field">
+          <label for="task-title-input">Title <span style="color:#dc2626">*</span></label>
+          <input type="text" class="form-input" id="task-title-input" placeholder="What needs to be done?" required />
+        </div>
+        <div class="field">
+          <label for="task-desc-input">Description</label>
+          <textarea class="form-input" id="task-desc-input" placeholder="Add more details…"></textarea>
+        </div>
+        <div class="field">
+          <label for="task-priority-input">Priority</label>
+          <select class="form-input" id="task-priority-input">
+            <option value="low">🟢 Low</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="high">🔴 High</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="task-due-input">Due Date</label>
+          <input type="date" class="form-input" id="task-due-input" />
+        </div>
+        <div class="modal-actions">
+          <div>
+            <button type="button" class="btn btn-danger" id="delete-task-btn" style="display:none">Delete task</button>
+          </div>
+          <div class="modal-actions-right">
+            <button type="button" class="btn btn-secondary" id="task-cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="task-submit">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    import { supabase } from '../../lib/supabase.ts'
+    import Sortable from 'sortablejs'
+
+    const STATUSES = ['backlog', 'todo', 'in_progress', 'done'] as const
+    type Status = typeof STATUSES[number]
+
+    const STATUS_CONFIG: Record<Status, { label: string; color: string }> = {
+      backlog:     { label: 'Backlog',      color: '#94a3b8' },
+      todo:        { label: 'To Do',        color: '#3b82f6' },
+      in_progress: { label: 'In Progress',  color: '#8b5cf6' },
+      done:        { label: 'Done',         color: '#10b981' },
+    }
+
+    type Task = {
+      id: string
+      project_id: string
+      title: string
+      description: string
+      status: Status
+      priority: 'low' | 'medium' | 'high'
+      due_date: string | null
+      sort_order: number
+    }
+
+    type Project = {
+      id: string
+      name: string
+      color: string
+      description: string
+    }
+
+    let projectId = ''
+    let currentProject: Project | null = null
+    let modalTaskStatus: Status = 'backlog'
+
+    async function init() {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { window.location.replace('/planner/login'); return }
+
+      const params = new URLSearchParams(window.location.search)
+      projectId = params.get('id') ?? ''
+      if (!projectId) { window.location.replace('/planner/'); return }
+
+      const { data: project, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('id', projectId)
+        .single()
+
+      if (error || !project) { window.location.replace('/planner/'); return }
+
+      currentProject = project as Project
+      const titleEl = document.getElementById('proj-title') as HTMLElement
+      const indicatorEl = document.getElementById('proj-indicator') as HTMLElement
+      titleEl.textContent = project.name
+      indicatorEl.style.background = project.color
+      document.title = `${project.name} — Lions Planner`
+
+      await loadBoard()
+      setupModal()
+      setupSignOut()
+    }
+
+    async function loadBoard() {
+      const { data: tasks, error } = await supabase
+        .from('tasks')
+        .select('*')
+        .eq('project_id', projectId)
+        .order('sort_order', { ascending: true })
+
+      if (error) { showToast('Failed to load tasks', true); return }
+
+      renderBoard(tasks as Task[])
+    }
+
+    function renderBoard(tasks: Task[]) {
+      const board = document.getElementById('board') as HTMLElement
+      board.innerHTML = ''
+
+      const tasksByStatus: Record<Status, Task[]> = {
+        backlog: [], todo: [], in_progress: [], done: []
+      }
+      for (const task of tasks) {
+        if (tasksByStatus[task.status]) tasksByStatus[task.status].push(task)
+      }
+
+      for (const status of STATUSES) {
+        const col = createColumn(status, tasksByStatus[status])
+        board.appendChild(col)
+      }
+
+      setupSortable()
+    }
+
+    function createColumn(status: Status, tasks: Task[]): HTMLElement {
+      const cfg = STATUS_CONFIG[status]
+      const col = document.createElement('div')
+      col.className = 'column'
+
+      const header = document.createElement('div')
+      header.className = 'column-header'
+      header.dataset.status = status
+      header.innerHTML = `
+        <span class="column-title">
+          <span>${cfg.label}</span>
+          <span class="count-badge" id="count-${status}">${tasks.length}</span>
+        </span>`
+      col.appendChild(header)
+
+      const list = document.createElement('div')
+      list.className = 'task-list'
+      list.dataset.status = status
+      list.id = `list-${status}`
+
+      for (const task of tasks) {
+        list.appendChild(createTaskCard(task))
+      }
+      col.appendChild(list)
+
+      const addBtn = document.createElement('button')
+      addBtn.className = 'add-task-btn'
+      addBtn.textContent = '+ Add task'
+      addBtn.dataset.status = status
+      addBtn.addEventListener('click', () => openModal(null, status))
+      col.appendChild(addBtn)
+
+      return col
+    }
+
+    function createTaskCard(task: Task): HTMLElement {
+      const card = document.createElement('div')
+      card.className = 'task-card'
+      card.dataset.id = task.id
+
+      const priorityLabel = { low: 'Low', medium: 'Medium', high: 'High' }[task.priority]
+      const priorityClass = `priority-${task.priority}`
+
+      let dueDateHtml = ''
+      if (task.due_date) {
+        const due = new Date(task.due_date + 'T00:00:00')
+        const today = new Date(); today.setHours(0,0,0,0)
+        const overdue = due < today && task.status !== 'done'
+        const formatted = due.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        dueDateHtml = `<div class="task-due ${overdue ? 'overdue' : ''}">📅 ${formatted}${overdue ? ' · Overdue' : ''}</div>`
+      }
+
+      card.innerHTML = `
+        <div class="task-card-top">
+          <span class="priority-badge ${priorityClass}">${priorityLabel}</span>
+          <button class="menu-btn" title="Delete task" data-id="${task.id}">⋮</button>
+        </div>
+        <div class="task-title">${escHtml(task.title)}</div>
+        ${task.description ? `<div class="task-desc">${escHtml(task.description)}</div>` : ''}
+        ${dueDateHtml}`
+
+      // Click on card body → edit
+      card.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement
+        if (target.closest('.menu-btn')) return
+        openModal(task, task.status)
+      })
+
+      // Menu button → delete
+      const menuBtn = card.querySelector('.menu-btn') as HTMLButtonElement
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation()
+        deleteTask(task.id, task.title)
+      })
+
+      return card
+    }
+
+    function setupSortable() {
+      for (const status of STATUSES) {
+        const list = document.getElementById(`list-${status}`)
+        if (!list) continue
+
+        new Sortable(list, {
+          group: 'tasks',
+          animation: 150,
+          ghostClass: 'task-ghost',
+          onEnd: async (evt) => {
+            const taskId = (evt.item as HTMLElement).dataset.id
+            if (!taskId) return
+            const newStatus = (evt.to as HTMLElement).dataset.status as Status
+            const oldStatus = (evt.from as HTMLElement).dataset.status as Status
+
+            // Update count badges
+            updateColumnCount(oldStatus)
+            updateColumnCount(newStatus)
+
+            const { error } = await supabase
+              .from('tasks')
+              .update({ status: newStatus, sort_order: evt.newIndex ?? 0 })
+              .eq('id', taskId)
+
+            if (error) showToast('Failed to move task', true)
+          }
+        })
+      }
+    }
+
+    function updateColumnCount(status: Status) {
+      const list = document.getElementById(`list-${status}`)
+      const badge = document.getElementById(`count-${status}`)
+      if (list && badge) badge.textContent = String(list.querySelectorAll('.task-card').length)
+    }
+
+    // Modal
+    function openModal(task: Task | null, status: Status) {
+      const overlay = document.getElementById('task-overlay') as HTMLElement
+      const modalTitle = document.getElementById('modal-title') as HTMLElement
+      const taskId = document.getElementById('task-id') as HTMLInputElement
+      const titleInput = document.getElementById('task-title-input') as HTMLInputElement
+      const descInput = document.getElementById('task-desc-input') as HTMLTextAreaElement
+      const priorityInput = document.getElementById('task-priority-input') as HTMLSelectElement
+      const dueInput = document.getElementById('task-due-input') as HTMLInputElement
+      const deleteBtn = document.getElementById('delete-task-btn') as HTMLButtonElement
+
+      modalTaskStatus = status
+
+      if (task) {
+        modalTitle.textContent = 'Edit Task'
+        taskId.value = task.id
+        titleInput.value = task.title
+        descInput.value = task.description ?? ''
+        priorityInput.value = task.priority
+        dueInput.value = task.due_date ?? ''
+        deleteBtn.style.display = 'inline-flex'
+      } else {
+        modalTitle.textContent = 'New Task'
+        taskId.value = ''
+        titleInput.value = ''
+        descInput.value = ''
+        priorityInput.value = 'medium'
+        dueInput.value = ''
+        deleteBtn.style.display = 'none'
+      }
+
+      overlay.classList.add('show')
+      setTimeout(() => titleInput.focus(), 50)
+    }
+
+    function setupModal() {
+      const overlay = document.getElementById('task-overlay') as HTMLElement
+      const form = document.getElementById('task-form') as HTMLFormElement
+      const cancelBtn = document.getElementById('task-cancel') as HTMLButtonElement
+      const closeBtn = document.getElementById('modal-close') as HTMLButtonElement
+      const submitBtn = document.getElementById('task-submit') as HTMLButtonElement
+      const deleteBtn = document.getElementById('delete-task-btn') as HTMLButtonElement
+
+      const closeModal = () => overlay.classList.remove('show')
+      cancelBtn.addEventListener('click', closeModal)
+      closeBtn.addEventListener('click', closeModal)
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal() })
+
+      deleteBtn.addEventListener('click', async () => {
+        const id = (document.getElementById('task-id') as HTMLInputElement).value
+        const title = (document.getElementById('task-title-input') as HTMLInputElement).value
+        if (!confirm(`Delete task "${title}"?`)) return
+        closeModal()
+        await deleteTask(id, title)
+      })
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        submitBtn.disabled = true
+        submitBtn.textContent = 'Saving…'
+
+        const id = (document.getElementById('task-id') as HTMLInputElement).value
+        const title = (document.getElementById('task-title-input') as HTMLInputElement).value.trim()
+        const description = (document.getElementById('task-desc-input') as HTMLTextAreaElement).value.trim()
+        const priority = (document.getElementById('task-priority-input') as HTMLSelectElement).value
+        const due_date = (document.getElementById('task-due-input') as HTMLInputElement).value || null
+
+        let error = null
+
+        if (id) {
+          // Update
+          const result = await supabase.from('tasks').update({
+            title, description, priority, due_date,
+            updated_at: new Date().toISOString()
+          }).eq('id', id)
+          error = result.error
+        } else {
+          // Create
+          const list = document.getElementById(`list-${modalTaskStatus}`)
+          const sort_order = list ? list.querySelectorAll('.task-card').length : 0
+          const result = await supabase.from('tasks').insert({
+            project_id: projectId,
+            title, description, priority, due_date,
+            status: modalTaskStatus,
+            sort_order
+          })
+          error = result.error
+        }
+
+        submitBtn.disabled = false
+        submitBtn.textContent = 'Save'
+
+        if (error) { showToast('Failed to save task', true); return }
+
+        closeModal()
+        showToast(id ? 'Task updated!' : 'Task created!')
+        await loadBoard()
+      })
+    }
+
+    async function deleteTask(id: string, title: string) {
+      const { error } = await supabase.from('tasks').delete().eq('id', id)
+      if (error) { showToast('Failed to delete task', true); return }
+      showToast(`Task "${title}" deleted`)
+      await loadBoard()
+    }
+
+    function setupSignOut() {
+      document.getElementById('signout-btn')?.addEventListener('click', async () => {
+        await supabase.auth.signOut()
+        window.location.replace('/planner/login')
+      })
+    }
+
+    function escHtml(str: string): string {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    }
+
+    let toastTimer: ReturnType<typeof setTimeout>
+    function showToast(msg: string, isError = false) {
+      const toast = document.getElementById('toast') as HTMLElement
+      toast.textContent = msg
+      toast.className = 'toast show' + (isError ? ' error' : '')
+      clearTimeout(toastTimer)
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3000)
+    }
+
+    init()
+  </script>
+</body>
+</html>

@@ -12,7 +12,8 @@ export default defineConfig({
         !page.includes('/songs-with-friends/callback') &&
         !page.includes('/songs-with-friends/print') &&
         !page.includes('/admin') &&
-        !page.includes('/resume/test'),
+        !page.includes('/resume/test') &&
+        !page.includes('/planner'),
     }),
   ],
 });
