@@ -201,10 +201,11 @@ Each project has a collapsible **Notes** section above the Kanban board.
 
 ### Behaviour
 
-- The section is **collapsed by default** if the project has no notes; **auto-expanded** if notes already exist
-- Click the "📝 Project Notes ▶" header to toggle it
-- Two tabs: **Edit** (monospace textarea) and **Preview** (rendered markdown)
+- The section is **always visible** above the board — never collapsed
+- **Default (view mode)**: shows rendered markdown. Empty state shows *"No notes yet — click Edit to start writing."* in muted italic
+- Click **✏ Edit** to enter edit mode: the preview hides and the textarea appears
 - **Auto-saves** 1.5 seconds after you stop typing — no manual save needed
+- Click **✓ Save & Close** to explicitly save and return to the rendered preview
 - Saves to the `notes` TEXT column on the `projects` table in Supabase
 
 ### Markdown supported

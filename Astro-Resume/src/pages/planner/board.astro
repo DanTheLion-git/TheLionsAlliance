@@ -316,47 +316,35 @@
       overflow: hidden;
       flex-shrink: 0;
     }
-    .notes-header {
+    .notes-toolbar {
       display: flex; align-items: center; justify-content: space-between;
-      padding: .75rem 1.1rem;
-      cursor: pointer; user-select: none;
-      transition: background .15s;
+      padding: .55rem 1rem .55rem 1.1rem;
+      border-bottom: 1px solid #3c434a;
+      background: rgba(0,0,0,0.14);
     }
-    .notes-header:hover { background: rgba(255,255,255,0.04); }
-    .notes-header-left { display: flex; align-items: center; gap: .55rem; font-size: .85rem; font-weight: 600; color: #f0f0f1; }
-    .notes-header-icon { font-size: .9rem; }
-    .notes-chevron { color: #a7aaad; font-size: .7rem; transition: transform .2s; flex-shrink: 0; }
-    .notes-section.open .notes-chevron { transform: rotate(90deg); }
-    .notes-body { display: none; border-top: 1px solid #3c434a; }
-    .notes-section.open .notes-body { display: flex; flex-direction: column; }
-    .notes-tabs {
-      display: flex; border-bottom: 1px solid #3c434a; padding: 0 1rem; background: rgba(0,0,0,0.12);
-    }
-    .notes-tab {
-      padding: .5rem .9rem; font-size: .78rem; font-weight: 600; color: #a7aaad;
-      cursor: pointer; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
-      transition: color .15s; background: none; font-family: inherit;
-    }
-    .notes-tab.active { color: #5fa8d3; border-bottom-color: #5fa8d3; }
-    .notes-tab:hover:not(.active) { color: #f0f0f1; }
-    .notes-editor {
-      width: 100%; min-height: 130px; max-height: 420px;
-      padding: 1rem 1.15rem;
-      background: #1d2327; color: #f0f0f1;
-      border: none; outline: none;
-      font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-      font-size: .875rem; line-height: 1.65; resize: vertical;
-      tab-size: 2;
-    }
-    .notes-editor::placeholder { color: #4a535b; }
+    .notes-toolbar-left { display: flex; align-items: center; gap: .5rem; }
+    .notes-icon { font-size: .9rem; }
+    .notes-title { font-size: .75rem; font-weight: 600; color: #a7aaad; letter-spacing: .05em; text-transform: uppercase; }
+    .notes-toolbar-right { display: flex; align-items: center; gap: .6rem; }
+    .notes-status { font-size: .72rem; color: transparent; transition: color .3s; min-width: 70px; text-align: right; }
+    .notes-status.saving { color: #d4a32f; }
+    .notes-status.saved  { color: #1db954; }
+    .notes-status.error  { color: #fc8181; }
+    .notes-edit-btn, .notes-save-btn { padding: .28rem .75rem; font-size: .78rem; }
+    /* Preview (default visible state) */
     .notes-preview {
-      display: none; min-height: 80px;
+      min-height: 56px;
       padding: 1rem 1.25rem;
       font-size: .875rem; line-height: 1.75; color: #f0f0f1;
     }
-    .notes-preview.active { display: block; }
-    /* Markdown styles inside preview */
+    .notes-preview.empty { display: flex; align-items: center; }
+    .notes-preview.empty::before {
+      content: 'No notes yet — click Edit to start writing.';
+      color: #4a535b; font-style: italic; font-size: .85rem;
+    }
+    /* Markdown rendered styles */
     .notes-preview h1,.notes-preview h2,.notes-preview h3,.notes-preview h4 { color: #f0f0f1; font-weight: 700; margin: .9rem 0 .35rem; }
+    .notes-preview h1:first-child,.notes-preview h2:first-child,.notes-preview h3:first-child { margin-top: 0; }
     .notes-preview h1 { font-size: 1.2rem; } .notes-preview h2 { font-size: 1.05rem; } .notes-preview h3 { font-size: .95rem; }
     .notes-preview p { margin-bottom: .6rem; color: #d4d7da; }
     .notes-preview ul,.notes-preview ol { margin: .4rem 0 .6rem 1.5rem; }
@@ -372,15 +360,18 @@
     .notes-preview table { width: 100%; border-collapse: collapse; margin: .6rem 0; font-size: .85rem; }
     .notes-preview th,.notes-preview td { border: 1px solid #3c434a; padding: .4rem .75rem; }
     .notes-preview th { background: rgba(255,255,255,0.06); font-weight: 600; }
-    .notes-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .35rem 1.1rem; border-top: 1px solid #3c434a; background: rgba(0,0,0,0.15);
+    /* Editor (shown only in edit mode) */
+    .notes-editor {
+      display: none;
+      width: 100%; min-height: 160px; max-height: 480px;
+      padding: 1rem 1.15rem;
+      background: #1d2327; color: #f0f0f1;
+      border: none; border-top: 1px solid #3c434a; outline: none;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: .875rem; line-height: 1.65; resize: vertical;
+      tab-size: 2;
     }
-    .notes-hint { font-size: .68rem; color: #3c434a; }
-    .notes-status { font-size: .72rem; color: transparent; transition: color .3s; min-width: 70px; text-align: right; }
-    .notes-status.saving { color: #d4a32f; }
-    .notes-status.saved  { color: #1db954; }
-    .notes-status.error  { color: #fc8181; }
+    .notes-editor::placeholder { color: #4a535b; }
   </style>
 
 </head>
@@ -396,26 +387,20 @@
 
   <!-- Project Notes -->
   <div class="notes-section" id="notes-section">
-    <div class="notes-header" id="notes-header">
-      <div class="notes-header-left">
-        <span class="notes-header-icon">📝</span>
-        <span>Project Notes</span>
+    <div class="notes-toolbar">
+      <div class="notes-toolbar-left">
+        <span class="notes-icon">📝</span>
+        <span class="notes-title">Project Notes</span>
       </div>
-      <span class="notes-chevron">▶</span>
-    </div>
-    <div class="notes-body">
-      <div class="notes-tabs">
-        <button class="notes-tab active" data-tab="edit">Edit</button>
-        <button class="notes-tab" data-tab="preview">Preview</button>
-      </div>
-      <textarea class="notes-editor" id="notes-editor"
-        placeholder="Write project notes, documentation, or context here.&#10;&#10;Supports **markdown**: # headings, **bold**, *italic*, `code`, - lists, > quotes, ---"></textarea>
-      <div class="notes-preview" id="notes-preview"></div>
-      <div class="notes-footer">
-        <span class="notes-hint">Markdown supported · auto-saves</span>
+      <div class="notes-toolbar-right">
         <span class="notes-status" id="notes-status"></span>
+        <button class="btn btn-ghost notes-edit-btn" id="notes-edit-btn">✏ Edit</button>
+        <button class="btn btn-primary notes-save-btn" id="notes-save-btn">✓ Save &amp; Close</button>
       </div>
     </div>
+    <div class="notes-preview" id="notes-preview"></div>
+    <textarea class="notes-editor" id="notes-editor"
+      placeholder="Write project notes, documentation, or context here.&#10;&#10;Supports **markdown**: # headings, **bold**, *italic*, `code`, - lists, > quotes, ---"></textarea>
   </div>
 
   <div class="board-wrapper">
@@ -813,42 +798,55 @@
     }
 
     function setupNotes(initialNotes: string) {
-      const section  = document.getElementById('notes-section') as HTMLElement
-      const header   = document.getElementById('notes-header') as HTMLElement
       const editor   = document.getElementById('notes-editor') as HTMLTextAreaElement
       const preview  = document.getElementById('notes-preview') as HTMLElement
       const status   = document.getElementById('notes-status') as HTMLElement
-      const tabs     = document.querySelectorAll('.notes-tab')
+      const editBtn  = document.getElementById('notes-edit-btn') as HTMLButtonElement
+      const saveBtn  = document.getElementById('notes-save-btn') as HTMLButtonElement
 
       editor.value = initialNotes
 
-      // Auto-open if notes exist
-      if (initialNotes.trim()) section.classList.add('open')
+      function renderPreview() {
+        if (editor.value.trim()) {
+          preview.innerHTML = marked.parse(editor.value) as string
+          preview.classList.remove('empty')
+        } else {
+          preview.innerHTML = ''
+          preview.classList.add('empty')
+        }
+      }
 
-      // Toggle collapse on header click
-      header.addEventListener('click', () => section.classList.toggle('open'))
+      function enterEditMode() {
+        preview.style.display = 'none'
+        editor.style.display = 'block'
+        editBtn.style.display = 'none'
+        saveBtn.style.display = ''
+        setTimeout(() => editor.focus(), 50)
+      }
 
-      // Tab switching
-      tabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-          e.stopPropagation()
-          const target = (tab as HTMLElement).dataset.tab
-          tabs.forEach(t => t.classList.remove('active'))
-          tab.classList.add('active')
-          if (target === 'preview') {
-            editor.style.display = 'none'
-            preview.classList.add('active')
-            const raw = editor.value.trim() || '*No notes yet. Switch to Edit to start writing.*'
-            preview.innerHTML = marked.parse(raw) as string
-          } else {
-            editor.style.display = 'block'
-            preview.classList.remove('active')
-            setTimeout(() => editor.focus(), 50)
-          }
-        })
+      function exitEditMode() {
+        renderPreview()
+        editor.style.display = 'none'
+        preview.style.display = ''
+        editBtn.style.display = ''
+        saveBtn.style.display = 'none'
+        status.textContent = ''
+        status.className = 'notes-status'
+      }
+
+      // Render initial state (preview mode)
+      renderPreview()
+      saveBtn.style.display = 'none'
+
+      editBtn.addEventListener('click', enterEditMode)
+
+      saveBtn.addEventListener('click', async () => {
+        clearTimeout(saveTimer)
+        await saveNotes(editor.value)
+        exitEditMode()
       })
 
-      // Debounced auto-save
+      // Debounced auto-save while in edit mode
       let saveTimer: ReturnType<typeof setTimeout>
       editor.addEventListener('input', () => {
         status.textContent = 'Unsaved…'

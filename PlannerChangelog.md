@@ -4,7 +4,29 @@ All changes are listed newest-first.
 
 ---
 
-## [2026-04-08] — Markdown project notes editor
+## [2026-04-08] — Notes redesign: always-visible preview with Edit / Save & Close
+
+**Request:** Always show rendered markdown notes (no collapse). Add an Edit button that turns the view into the editor. Add Save & Close that saves and returns to the preview.
+
+**Changes:**
+
+- `Astro-Resume/src/pages/planner/board.astro`:
+  - Removed collapsible toggle (header click, chevron, `.notes-section.open`, `.notes-body { display: none }`)
+  - Removed Edit/Preview tab bar (`.notes-tabs`, `.notes-tab`)
+  - Notes section now always visible; default state is **rendered markdown preview**
+  - Empty state: `.notes-preview.empty::before` CSS pseudo-element shows *"No notes yet — click Edit to start writing."* in muted italic when there are no notes
+  - New toolbar: "📝 PROJECT NOTES" label on left; **✏ Edit** and **✓ Save & Close** buttons on right (only one visible at a time)
+  - `setupNotes()` rewritten with `enterEditMode()` / `exitEditMode()` helpers:
+    - `enterEditMode()` — hides preview, shows textarea, swaps buttons
+    - `exitEditMode()` — calls `renderPreview()`, hides textarea, shows preview, swaps buttons back, clears status
+    - `renderPreview()` — runs `marked.parse()`, toggles `.empty` class for placeholder
+  - **✓ Save & Close** clears the autosave timer, explicitly `await saveNotes()`, then calls `exitEditMode()` — guarantees the latest content is saved before leaving edit mode
+  - Autosave (1.5s debounce) still runs while in edit mode
+  - `h1:first-child` / `h2:first-child` margin-top reset added so headings don't add space at the very top of the preview
+
+---
+
+
 
 **Request:** Add a markdown notes editor above the Kanban board on each project page, saving across devices.
 
