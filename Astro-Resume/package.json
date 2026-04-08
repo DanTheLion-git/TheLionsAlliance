@@ -12,5 +12,8 @@
     "astro": "^5.15.9",
     "html5-qrcode": "^2.3.8",
     "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.7.2"
   }
 }

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Keep private/utility pages out of search results
+Disallow: /wedding/photoportal/
+Disallow: /games/songs-with-friends/callback/
+Disallow: /games/songs-with-friends/print/
+Disallow: /admin/
+Disallow: /resume/test/
+
+Sitemap: https://thelionsalliance.com/sitemap-index.xml
