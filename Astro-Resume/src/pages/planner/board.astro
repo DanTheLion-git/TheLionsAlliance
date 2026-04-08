@@ -10,7 +10,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
+  <style is:global>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
@@ -274,6 +274,38 @@
       display: flex; align-items: center; justify-content: center;
       width: 100%; color: #a7aaad; font-size: .9rem; padding: 4rem;
     }
+
+    /* ── Priority left-border on task cards ─────────────── */
+    .task-card { border-left: 3px solid #3c434a; }
+    .task-card.pri-high   { border-left-color: #fc8181; }
+    .task-card.pri-medium { border-left-color: #d4a32f; }
+    .task-card.pri-low    { border-left-color: #1db954; }
+
+    /* ── Task footer ─────────────────────────────────────── */
+    .task-footer {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      margin-top: .55rem; padding-top: .5rem;
+      border-top: 1px solid #3c434a;
+    }
+    .drag-dots {
+      display: grid; grid-template-columns: repeat(2, 4px);
+      gap: 2.5px; opacity: .25;
+      transition: opacity .15s; cursor: grab;
+    }
+    .task-card:hover .drag-dots { opacity: .6; }
+    .drag-dot { width: 3px; height: 3px; border-radius: 50%; background: #a7aaad; }
+
+    /* ── Column status icon ───────────────────────────────── */
+    .col-icon { font-size: .95rem; flex-shrink: 0; }
+
+    /* ── Column empty state ───────────────────────────────── */
+    .column-empty {
+      text-align: center; padding: 2rem .75rem;
+      color: #3c434a; pointer-events: none; user-select: none;
+    }
+    .column-empty-icon { font-size: 1.6rem; margin-bottom: .4rem; display: block; opacity: .45; }
+    .column-empty-text { font-size: .78rem; color: #4a535b; }
   </style>
 
 </head>
@@ -433,6 +465,10 @@
       setupSortable()
     }
 
+    const COLUMN_ICONS: Record<Status, string> = {
+      backlog: '○', todo: '◎', in_progress: '◑', done: '●'
+    }
+
     function createColumn(status: Status, tasks: Task[]): HTMLElement {
       const cfg = STATUS_CONFIG[status]
       const col = document.createElement('div')
@@ -454,6 +490,14 @@
       list.dataset.status = status
       list.id = `list-${status}`
 
+      if (tasks.length === 0) {
+        const empty = document.createElement('div')
+        empty.className = 'column-empty'
+        empty.id = `empty-${status}`
+        empty.innerHTML = `<span class="column-empty-icon">${COLUMN_ICONS[status]}</span><div class="column-empty-text">No tasks here</div>`
+        list.appendChild(empty)
+      }
+
       for (const task of tasks) {
         list.appendChild(createTaskCard(task))
       }
@@ -461,7 +505,7 @@
 
       const addBtn = document.createElement('button')
       addBtn.className = 'add-task-btn'
-      addBtn.textContent = '+ Add task'
+      addBtn.innerHTML = `<span style="font-size:.9rem;margin-right:.3rem">+</span> Add task`
       addBtn.dataset.status = status
       addBtn.addEventListener('click', () => openModal(null, status))
       col.appendChild(addBtn)
@@ -471,19 +515,19 @@
 
     function createTaskCard(task: Task): HTMLElement {
       const card = document.createElement('div')
-      card.className = 'task-card'
+      card.className = `task-card pri-${task.priority}`
       card.dataset.id = task.id
 
       const priorityLabel = { low: 'Low', medium: 'Medium', high: 'High' }[task.priority]
       const priorityClass = `priority-${task.priority}`
 
-      let dueDateHtml = ''
+      let dueHtml = ''
       if (task.due_date) {
         const due = new Date(task.due_date + 'T00:00:00')
         const today = new Date(); today.setHours(0,0,0,0)
         const overdue = due < today && task.status !== 'done'
-        const formatted = due.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-        dueDateHtml = `<div class="task-due ${overdue ? 'overdue' : ''}">📅 ${formatted}${overdue ? ' · Overdue' : ''}</div>`
+        const formatted = due.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+        dueHtml = `<span class="task-due ${overdue ? 'overdue' : ''}">📅 ${formatted}${overdue ? ' !' : ''}</span>`
       }
 
       card.innerHTML = `
@@ -493,7 +537,14 @@
         </div>
         <div class="task-title">${escHtml(task.title)}</div>
         ${task.description ? `<div class="task-desc">${escHtml(task.description)}</div>` : ''}
-        ${dueDateHtml}`
+        <div class="task-footer">
+          ${dueHtml || '<span></span>'}
+          <span class="drag-dots" title="Drag to move">
+            <span class="drag-dot"></span><span class="drag-dot"></span>
+            <span class="drag-dot"></span><span class="drag-dot"></span>
+            <span class="drag-dot"></span><span class="drag-dot"></span>
+          </span>
+        </div>`
 
       // Click on card body → edit
       card.addEventListener('click', (e) => {
@@ -545,7 +596,11 @@
     function updateColumnCount(status: Status) {
       const list = document.getElementById(`list-${status}`)
       const badge = document.getElementById(`count-${status}`)
-      if (list && badge) badge.textContent = String(list.querySelectorAll('.task-card').length)
+      const emptyEl = document.getElementById(`empty-${status}`)
+      if (!list || !badge) return
+      const count = list.querySelectorAll('.task-card').length
+      badge.textContent = String(count)
+      if (emptyEl) emptyEl.style.display = count > 0 ? 'none' : 'block'
     }
 
     // Modal
