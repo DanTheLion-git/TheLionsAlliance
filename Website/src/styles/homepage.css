@@ -107,48 +107,60 @@
   justify-content: space-between;
   height: 68px;
 }
+
+/* Default: nav is over a dark hero, so text must be light */
 .hp-nav__logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--hp-text);
+  color: #F5F2E8;
   text-decoration: none;
   letter-spacing: 0.02em;
+  transition: color var(--hp-ease-slow);
 }
 .hp-nav__logo span { color: var(--hp-gold); }
 
 .hp-nav__links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 32px;
   list-style: none;
 }
 .hp-nav__links a {
-  font-size: 0.875rem;
+  font-size: 0.825rem;
   font-weight: 500;
-  color: var(--hp-text-muted);
+  color: rgba(237, 242, 235, 0.72);
   text-decoration: none;
   transition: color var(--hp-ease);
   letter-spacing: 0.02em;
 }
-.hp-nav__links a:hover { color: var(--hp-text); }
+.hp-nav__links a:hover { color: #F5F2E8; }
 
 .hp-nav__cta {
   display: inline-flex;
   align-items: center;
-  background: var(--hp-text);
-  color: var(--hp-text-light);
-  padding: 10px 22px;
+  background: var(--hp-gold);
+  color: #1A220F;
+  padding: 9px 20px;
   border-radius: var(--hp-radius-sm);
-  font-size: 0.875rem;
+  font-size: 0.825rem;
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: background var(--hp-ease), transform var(--hp-ease);
 }
 .hp-nav__cta:hover {
-  background: var(--hp-gold);
+  background: var(--hp-gold-light);
   transform: translateY(-1px);
+}
+
+/* Scrolled: nav is over light sage content, so text must be dark */
+.hp-nav.scrolled .hp-nav__logo { color: var(--hp-text); }
+.hp-nav.scrolled .hp-nav__links a { color: var(--hp-text-muted); }
+.hp-nav.scrolled .hp-nav__links a:hover { color: var(--hp-text); }
+.hp-nav.scrolled .hp-nav__cta {
+  background: var(--hp-text);
+  color: var(--hp-text-light);
 }
 
 /* ── Buttons ──────────────────────────────────────────── */
@@ -353,7 +365,7 @@
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: var(--hp-text-light);
+  color: #F5F2E8;
   max-width: 900px;
   margin-bottom: 40px;
 }
@@ -363,7 +375,7 @@
 }
 .hp-hero__subtitle {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: var(--hp-text-dim);
+  color: rgba(237, 242, 235, 0.78);
   max-width: 540px;
   line-height: 1.7;
   margin-bottom: 64px;
@@ -385,7 +397,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: var(--hp-text-dim);
+  color: rgba(237, 242, 235, 0.5);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
