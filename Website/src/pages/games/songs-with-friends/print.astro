@@ -2,16 +2,36 @@
 /**
  * Standalone "Songs with Friends" print page — zero site CSS, zero navigation.
  *
- * The card grid is now built dynamically in JavaScript so it can handle
- * variable-length track sets (up to 60 per set, 10 sets max = 600 tracks).
+ * All 60 card slots are pre-built as static HTML at Astro build time.
+ * JavaScript only fills in QR images and text; the grid is always present
+ * even if print fires before JS completes.
  *
+ * Supports playlists up to 600 tracks via sets of 60.
  * Data arrives via localStorage key `swf_print_sets` (array of track arrays).
  * The set index is read from the URL query param `?set=0`.
  *
- * Layout per set: up to 5 sheets × 12 cards (3 cols × 4 rows) = 60 cards max.
+ * Layout: 5 sheets × 12 cards (3 cols × 4 rows) = 60 cards max per set.
  * Double-sided: LONG-EDGE flip (flip left/right like a book).
  *   Back column order = front columns mirrored per row so they align after the flip.
  */
+const SHEETS    = 5;
+const COLS      = 3;
+const ROWS      = 4;
+const PER_PAGE  = COLS * ROWS; // 12
+
+function mirrorColumns(front: number[]): number[] {
+  const out: number[] = [];
+  for (let r = 0; r < ROWS; r++) {
+    const row = front.slice(r * COLS, (r + 1) * COLS);
+    out.push(...[...row].reverse());
+  }
+  return out;
+}
+
+const sheets = Array.from({ length: SHEETS }, (_, s) => {
+  const front = Array.from({ length: PER_PAGE }, (_, i) => s * PER_PAGE + i + 1);
+  return { front, back: mirrorColumns(front), num: s + 1 };
+});
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -167,49 +187,66 @@
 </div>
 <div id="status">⏳ Reading track data…</div>
 
-<!-- ── Pages container — built dynamically by JS ─────────────────────────── -->
-<div id="pages"></div>
+<!-- ── Static pages — all 60 slots pre-built at build time ───────────────── -->
+<div id="pages">
+  {sheets.map(sheet => (<>
 
-<!-- ── Script: build grid dynamically, fill with QR codes ──────────────── -->
+    {/* Front page */}
+    <div class="page-wrapper" data-sheet={sheet.num} data-side="front">
+      <div class="cards-grid"
+           style="display:grid;grid-template-columns:repeat(3,61.33mm);grid-template-rows:repeat(4,67mm);gap:3mm;">
+        {sheet.front.map(n => (
+          <div class="print-card qr-card empty" data-card={n}>
+            <div class="card-brand">SONGS WITH FRIENDS</div>
+            <div class="qr-ph"></div>
+            <img class="qr-img" alt="QR" />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Back page */}
+    <div class="page-wrapper" data-sheet={sheet.num} data-side="back">
+      <div class="cards-grid"
+           style="display:grid;grid-template-columns:repeat(3,61.33mm);grid-template-rows:repeat(4,67mm);gap:3mm;">
+        {sheet.back.map(n => (
+          <div class="print-card info-card empty" data-card={n}>
+            <div class="info-artist">·</div>
+            <div class="info-year">—</div>
+            <div class="info-song">·</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </>))}
+</div>
+
+<!-- ── Script: fill card slots from localStorage ─────────────────────────── -->
 <script type="module">
   const { default: QRCode } = await import('https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm');
 
-  const COLS = 3, ROWS = 4, PER_PAGE = COLS * ROWS; // 12 cards per sheet
   const MAX_PER_SET = 60;
 
   const statusEl = document.getElementById('status');
   const infoEl   = document.getElementById('info');
   const btnPrint = document.getElementById('btn-print');
-  const pagesEl  = document.getElementById('pages');
   const setNavEl = document.getElementById('set-nav');
 
   function setStatus(msg) { statusEl.textContent = msg; }
-  function esc(s) {
-    return String(s)
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
-  // ── Mirror columns for double-sided long-edge printing ────────────────
-  function mirrorColumns(front) {
-    const out = [];
-    for (let r = 0; r < ROWS; r++) {
-      const row = front.slice(r * COLS, (r + 1) * COLS);
-      out.push(...[...row].reverse());
-    }
-    return out;
-  }
 
   // ── Read set data from localStorage ───────────────────────────────────
-  const raw = localStorage.getItem('swf_print_sets');
+  let raw = localStorage.getItem('swf_print_sets');
   if (!raw) {
     // Backwards compatibility: check old single-job format
     const oldJob = localStorage.getItem('swf_print_job');
     if (oldJob) {
       try {
-        const tracks = JSON.parse(oldJob);
-        localStorage.setItem('swf_print_sets', JSON.stringify([tracks.slice(0, MAX_PER_SET)]));
+        const parsed = JSON.parse(oldJob);
+        const migrated = [parsed.slice(0, MAX_PER_SET)];
+        localStorage.setItem('swf_print_sets', JSON.stringify(migrated));
         localStorage.removeItem('swf_print_job');
+        raw = localStorage.getItem('swf_print_sets');
       } catch {
         setStatus('⚠ Track data corrupted — please go back and regenerate.');
         throw new Error('parse');
@@ -221,7 +258,7 @@
   }
 
   let allSets;
-  try { allSets = JSON.parse(localStorage.getItem('swf_print_sets')); }
+  try { allSets = JSON.parse(raw); }
   catch { setStatus('⚠ Track data corrupted — please go back and regenerate.'); throw new Error('parse'); }
 
   if (!Array.isArray(allSets) || allSets.length === 0) {
@@ -246,12 +283,9 @@
   // ── Show set navigation if multiple sets ──────────────────────────────
   if (totalSets > 1) {
     setNavEl.style.display = 'flex';
-    document.getElementById('set-label').textContent =
-      `Set ${setIndex + 1} of ${totalSets} (${tracks.length} tracks)`;
-
     const totalTracks = allSets.reduce((sum, s) => sum + s.length, 0);
-    document.getElementById('set-label').textContent +=
-      ` — ${totalTracks} total tracks`;
+    document.getElementById('set-label').textContent =
+      `Set ${setIndex + 1} of ${totalSets} (${tracks.length} tracks) — ${totalTracks} total`;
 
     const btnPrev = document.getElementById('btn-prev-set');
     const btnNext = document.getElementById('btn-next-set');
@@ -267,63 +301,18 @@
     });
   }
 
-  // ── Build the card grid dynamically ───────────────────────────────────
-  const numSheets = Math.ceil(tracks.length / PER_PAGE);
-  const gridStyle = `display:grid;grid-template-columns:repeat(${COLS},61.33mm);grid-template-rows:repeat(${ROWS},67mm);gap:3mm;`;
+  // ── Fill slots ────────────────────────────────────────────────────────────
+  // card slot n (1-indexed) → DOM element helper
+  const frontCard = n => document.querySelector(`.qr-card[data-card="${n}"]`);
+  const backCard  = n => document.querySelector(`.info-card[data-card="${n}"]`);
 
-  for (let s = 0; s < numSheets; s++) {
-    const startIdx = s * PER_PAGE;
-    const frontIndices = Array.from(
-      { length: Math.min(PER_PAGE, tracks.length - startIdx) },
-      (_, i) => startIdx + i
-    );
-    // Pad to full page for grid alignment
-    while (frontIndices.length < PER_PAGE) frontIndices.push(-1);
-    const backIndices = mirrorColumns(frontIndices);
-
-    // Front page (QR codes)
-    const frontPage = document.createElement('div');
-    frontPage.className = 'page-wrapper';
-    const frontGrid = document.createElement('div');
-    frontGrid.className = 'cards-grid';
-    frontGrid.style.cssText = gridStyle;
-
-    for (const idx of frontIndices) {
-      const card = document.createElement('div');
-      card.className = 'print-card qr-card' + (idx < 0 ? ' empty' : '');
-      card.dataset.idx = String(idx);
-      card.innerHTML = `<div class="card-brand">SONGS WITH FRIENDS</div><div class="qr-ph"></div><img class="qr-img" alt="QR" />`;
-      frontGrid.appendChild(card);
-    }
-    frontPage.appendChild(frontGrid);
-    pagesEl.appendChild(frontPage);
-
-    // Back page (song info)
-    const backPage = document.createElement('div');
-    backPage.className = 'page-wrapper';
-    const backGrid = document.createElement('div');
-    backGrid.className = 'cards-grid';
-    backGrid.style.cssText = gridStyle;
-
-    for (const idx of backIndices) {
-      const card = document.createElement('div');
-      card.className = 'print-card info-card' + (idx < 0 ? ' empty' : '');
-      card.dataset.idx = String(idx);
-      card.innerHTML = `
-        <div class="info-artist">·</div>
-        <div class="info-year">—</div>
-        <div class="info-song">·</div>`;
-      backGrid.appendChild(card);
-    }
-    backPage.appendChild(backGrid);
-    pagesEl.appendChild(backPage);
-  }
-
-  // ── Fill card slots with track data and QR codes ──────────────────────
   for (let i = 0; i < tracks.length; i++) {
     const t = tracks[i];
-    setStatus(`Generating QR code ${i + 1} of ${tracks.length}…`);
+    const n = i + 1; // 1-indexed slot
 
+    setStatus(`Generating QR code ${n} of ${tracks.length}…`);
+
+    // Generate QR
     const qrDataUrl = await QRCode.toDataURL(t.uri, {
       width: 300, margin: 2,
       color: { dark: '#000000', light: '#ffffff' },
@@ -331,7 +320,7 @@
     });
 
     // Fill front card
-    const fc = pagesEl.querySelector(`.qr-card[data-idx="${i}"]`);
+    const fc = frontCard(n);
     if (fc) {
       fc.querySelector('.qr-img').src = qrDataUrl;
       fc.classList.remove('empty');
@@ -339,7 +328,7 @@
     }
 
     // Fill back card
-    const bc = pagesEl.querySelector(`.info-card[data-idx="${i}"]`);
+    const bc = backCard(n);
     if (bc) {
       bc.querySelector('.info-artist').textContent = t.artist || '—';
       bc.querySelector('.info-year').textContent   = t.year   || '—';
@@ -349,11 +338,12 @@
     }
   }
 
-  // ── Done ──────────────────────────────────────────────────────────────
+  // ── Done ──────────────────────────────────────────────────────────────────
+  const totalSheets = Math.ceil(tracks.length / 12);
   const setLabel = totalSets > 1 ? ` (Set ${setIndex + 1}/${totalSets})` : '';
   statusEl.style.display = 'none';
   infoEl.textContent =
-    `${tracks.length} tracks · ${numSheets} sheet${numSheets !== 1 ? 's' : ''} · flip on LONG edge ↔${setLabel}`;
+    `${tracks.length} tracks · ${totalSheets} sheet${totalSheets !== 1 ? 's' : ''} · flip on LONG edge ↔${setLabel}`;
   btnPrint.disabled = false;
 </script>
 </body>
