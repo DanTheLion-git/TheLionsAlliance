@@ -312,31 +312,37 @@ form.addEventListener('submit', (e) => {
   submitBtn.disabled    = true;
   submitBtn.textContent = currentLang === 'nl' ? 'Versturen\u2026' : 'Sending\u2026';
 
-  // Send booking request via Formspree
+  // Send booking request via Formspree + Supabase
   const formData = new FormData(form);
-  fetch('https://formspree.io/f/mvzdqkap', {
-    method: 'POST',
-    body: formData,
-    headers: { 'Accept': 'application/json' },
-  })
-  .then(response => {
-    if (response.ok) {
-      // Also save to localStorage for the admin portal
-      const request = {
-        id:          'req_' + Date.now(),
-        name:        document.getElementById('name').value.trim(),
-        email:       document.getElementById('email').value.trim(),
-        date:        document.getElementById('date').value,
-        guests:      document.getElementById('guests').value || '',
-        package:     document.getElementById('package').value,
-        message:     document.getElementById('message').value.trim(),
-        submittedAt: new Date().toISOString(),
-        status:      'pending',
-      };
-      const existing = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
-      existing.push(request);
-      localStorage.setItem('wcb_booking_requests', JSON.stringify(existing));
+  const requestData = {
+    id:           'req_' + Date.now(),
+    name:         document.getElementById('name').value.trim(),
+    email:        document.getElementById('email').value.trim(),
+    wedding_date: document.getElementById('date').value || null,
+    guests:       document.getElementById('guests').value || '',
+    package:      document.getElementById('package').value,
+    message:      document.getElementById('message').value.trim(),
+    status:       'pending',
+  };
 
+  Promise.all([
+    fetch('https://formspree.io/f/mvzdqkap', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' },
+    }),
+    fetch('https://zxiwsjjvigrxrgkxalet.supabase.co/rest/v1/wcb_booking_requests', {
+      method: 'POST',
+      headers: {
+        'apikey':        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4aXdzamp2aWdyeHJna3hhbGV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2Mjg1MjAsImV4cCI6MjA5MjIwNDUyMH0.fHD7jp7tfDmLbQe-ZqJfNiHyri_0y_5P9jHoQcuK0JY',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4aXdzamp2aWdyeHJna3hhbGV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2Mjg1MjAsImV4cCI6MjA5MjIwNDUyMH0.fHD7jp7tfDmLbQe-ZqJfNiHyri_0y_5P9jHoQcuK0JY',
+        'Content-Type':  'application/json',
+      },
+      body: JSON.stringify(requestData),
+    }),
+  ])
+  .then(([formspreeRes]) => {
+    if (formspreeRes.ok) {
       form.reset();
       submitBtn.style.display = 'none';
       successMsg.classList.add('visible');

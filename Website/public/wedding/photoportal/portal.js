@@ -1,78 +1,81 @@
 // ============================================================
 // CONFIG
 // ============================================================
+const SUPABASE_URL = 'https://zxiwsjjvigrxrgkxalet.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4aXdzamp2aWdyeHJna3hhbGV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2Mjg1MjAsImV4cCI6MjA5MjIwNDUyMH0.fHD7jp7tfDmLbQe-ZqJfNiHyri_0y_5P9jHoQcuK0JY';
+
 const CLOUDINARY_CONFIG = {
   cloudName:    'ds6l7rprf',
   uploadPreset: 'WeddingCamBox_Upload',
 };
 
-let USERS = {
-  'admin':          { password: 'Hondje01',    name: 'Admin',            isAdmin: true },
-  'bob-linda':      { password: 'bobwed25',    name: 'Bob & Linda',      wedding: '15 March 2025' },
-  'james-kim':      { password: 'kimwed25',    name: 'James & Kim',      wedding: '28 February 2025' },
-  'suzie-nathasja': { password: 'suzwed26',    name: 'Suzie & Nathasja', wedding: '20 September 2026' },
-  'demo':           { password: 'wedding2025', name: 'Sophie & Liam',    wedding: '12 April 2025' },
-};
-
-// Customer metadata (admin dashboard)
-let CUSTOMERS = {
-  'bob-linda':      { name: 'Bob & Linda',      weddingDate: '2025-03-15' },
-  'james-kim':      { name: 'James & Kim',      weddingDate: '2025-02-28' },
-  'suzie-nathasja': { name: 'Suzie & Nathasja', weddingDate: '2026-09-20' },
-};
-
-// Merge any dynamically approved users from localStorage
-(function loadDynamicUsers() {
-  try {
-    const du = JSON.parse(localStorage.getItem('wcb_dynamic_users') || '{}');
-    const dc = JSON.parse(localStorage.getItem('wcb_dynamic_customers') || '{}');
-    Object.assign(USERS, du);
-    Object.assign(CUSTOMERS, dc);
-  } catch (_) {}
-})();
-
-// ============================================================
-// EMAIL CONFIG — fill in after setting up emailjs.com (free)
-// Steps:
-//  1. Sign up at https://www.emailjs.com (free = 200 emails/month)
-//  2. Add an Email Service (connect your Gmail / Outlook)
-//  3. Create a Template with variables: {{to_email}}, {{to_name}},
-//     {{couple_name}}, {{subject}}, {{message}}, {{gallery_link}}
-//  4. Replace the placeholder strings below with your real IDs
-// ============================================================
 const EMAILJS_CONFIG = {
-  serviceId:  'YOUR_SERVICE_ID',   // e.g. 'service_abc123'
-  templateId: 'YOUR_TEMPLATE_ID',  // e.g. 'template_xyz789'
-  publicKey:  'YOUR_PUBLIC_KEY',   // e.g. 'AbCdEfGh1234'
+  serviceId:  'service_eoosuj2',
+  templateId: 'template_don7795',
+  publicKey:  'uMloEc253wEBd3sba',
 };
 
 // ============================================================
-// PLACEHOLDER PHOTOS
+// SUPABASE REST HELPER
 // ============================================================
-const DEFAULT_PHOTOS = [
-  { id:'p01', title:'Bouquet',           datetime:'2025-04-12T12:30:00', camera:'Camera 6',  thumb:'https://images.unsplash.com/photo-1524824267900-2b6ed4e51c17?w=500&q=75',  url:'https://images.unsplash.com/photo-1524824267900-2b6ed4e51c17?w=1200&q=85' },
-  { id:'p02', title:'Bridal portrait',   datetime:'2025-04-12T13:00:00', camera:'Camera 2',  thumb:'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&q=75',  url:'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=85' },
-  { id:'p03', title:'Champagne toast',   datetime:'2025-04-12T19:00:00', camera:'Camera 4',  thumb:'https://images.unsplash.com/photo-1478145046317-39761428de82?w=500&q=75',  url:'https://images.unsplash.com/photo-1478145046317-39761428de82?w=1200&q=85' },
-  { id:'p04', title:'Dancing the night', datetime:'2025-04-12T21:00:00', camera:'Camera 10', thumb:'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&q=75',  url:'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1200&q=85' },
-  { id:'p05', title:'Exchanging vows',   datetime:'2025-04-12T15:15:00', camera:'Camera 1',  thumb:'https://images.unsplash.com/photo-1529636162796-fe5e8d23c7e1?w=500&q=75',  url:'https://images.unsplash.com/photo-1529636162796-fe5e8d23c7e1?w=1200&q=85' },
-  { id:'p06', title:'First dance',       datetime:'2025-04-12T20:15:00', camera:'Camera 1',  thumb:'https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=75',  url:'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85' },
-  { id:'p07', title:'Golden hour',       datetime:'2025-04-12T18:45:00', camera:'Camera 5',  thumb:'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=500&q=75',  url:'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=1200&q=85' },
-  { id:'p08', title:'Portrait together', datetime:'2025-04-12T17:30:00', camera:'Camera 3',  thumb:'https://images.unsplash.com/photo-1543332164-6e82f355badc?w=500&q=75',  url:'https://images.unsplash.com/photo-1543332164-6e82f355badc?w=1200&q=85' },
-  { id:'p09', title:'Reception tables',  datetime:'2025-04-12T17:00:00', camera:'Camera 4',  thumb:'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&q=75',  url:'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=85' },
-  { id:'p10', title:'The ceremony',      datetime:'2025-04-12T15:00:00', camera:'Camera 3',  thumb:'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&q=75',  url:'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=85' },
-  { id:'p11', title:'The rings',         datetime:'2025-04-12T14:45:00', camera:'Camera 5',  thumb:'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&q=75',  url:'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=85' },
-  { id:'p12', title:'The venue',         datetime:'2025-04-12T11:00:00', camera:'Camera 2',  thumb:'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=500&q=75',  url:'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=85' },
-  { id:'p13', title:'The wedding party', datetime:'2025-04-12T16:30:00', camera:'Camera 8',  thumb:'https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=500&q=75',  url:'https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=1200&q=85' },
-  { id:'p14', title:'Walking together',  datetime:'2025-04-12T16:00:00', camera:'Camera 7',  thumb:'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&q=75',  url:'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=85' },
-  { id:'p15', title:'Wedding cake',      datetime:'2025-04-12T18:00:00', camera:'Camera 9',  thumb:'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=500&q=75',  url:'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=85' },
-];
+const db = {
+  _headers(extra = {}) {
+    return {
+      'apikey':        SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type':  'application/json',
+      ...extra,
+    };
+  },
+
+  async get(table, query = '') {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, {
+      headers: this._headers(),
+    });
+    if (!res.ok) throw new Error(`GET ${table} failed: ${res.status}`);
+    return res.json();
+  },
+
+  async insert(table, body, extra = {}) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+      method:  'POST',
+      headers: this._headers({ 'Prefer': 'return=representation', ...extra }),
+      body:    JSON.stringify(body),
+    });
+    if (!res.ok) throw new Error(`INSERT ${table} failed: ${res.status}`);
+    return res.json();
+  },
+
+  async upsert(table, body) {
+    return this.insert(table, body, { 'Prefer': 'return=representation,resolution=merge-duplicates' });
+  },
+
+  async update(table, query, body) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, {
+      method:  'PATCH',
+      headers: this._headers({ 'Prefer': 'return=representation' }),
+      body:    JSON.stringify(body),
+    });
+    if (!res.ok) throw new Error(`UPDATE ${table} failed: ${res.status}`);
+    return res.json();
+  },
+
+  async delete(table, query) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, {
+      method:  'DELETE',
+      headers: this._headers(),
+    });
+    if (!res.ok) throw new Error(`DELETE ${table} failed: ${res.status}`);
+    return true;
+  },
+};
 
 // ============================================================
 // STATE
 // ============================================================
 let state = {
   user:           null,
-  adminManaging:  null,   // username being managed by admin
+  adminManaging:  null,
   step:           1,
   photos:         [],
   recycleBin:     [],
@@ -82,64 +85,52 @@ let state = {
 };
 
 // ============================================================
-// STORAGE
+// DATA LOADING (Supabase)
 // ============================================================
-const key  = s => `wcb_${state.user.username}_${s}`;
-const save = (s, d) => localStorage.setItem(key(s), JSON.stringify(d));
-const load = s => { try { const d = localStorage.getItem(key(s)); return d ? JSON.parse(d) : null; } catch { return null; } };
-
-function saveAll() {
-  save('photos',  state.photos);
-  save('bin',     state.recycleBin);
-  save('guests',  state.guests);
-}
-
-function loadUserData() {
-  state.photos     = load('photos')  || DEFAULT_PHOTOS.map(p => ({ ...p }));
-  state.recycleBin = load('bin')     || [];
-  state.guests     = load('guests')  || [];
-}
-
-// ============================================================
-// MOCK DATA — initialise 3 demo clients on first admin login
-// ============================================================
-function initMockData() {
-  // Bob & Linda: all 15 photos + 5 guests + link sent
-  if (!localStorage.getItem('wcb_bob-linda_photos')) {
-    localStorage.setItem('wcb_bob-linda_photos',   JSON.stringify(DEFAULT_PHOTOS.map(p => ({ ...p }))));
-    localStorage.setItem('wcb_bob-linda_guests',   JSON.stringify([
-      { id:'g1', name:'Aunt Maria',    email:'maria@example.com' },
-      { id:'g2', name:'Uncle Pete',    email:'pete@example.com'  },
-      { id:'g3', name:'Sarah Johnson', email:'sarah@example.com' },
-      { id:'g4', name:'Tom Williams',  email:'tom@example.com'   },
-      { id:'g5', name:'Emma Brown',    email:'emma@example.com'  },
-    ]));
-    localStorage.setItem('wcb_bob-linda_linkSent',  'true');
-    localStorage.setItem('wcb_bob-linda_bin',       JSON.stringify([]));
-  }
-  // James & Kim: 10 photos, no guests, no link
-  if (!localStorage.getItem('wcb_james-kim_photos')) {
-    localStorage.setItem('wcb_james-kim_photos',  JSON.stringify(DEFAULT_PHOTOS.slice(0, 10).map(p => ({ ...p }))));
-    localStorage.setItem('wcb_james-kim_guests',  JSON.stringify([]));
-    localStorage.setItem('wcb_james-kim_bin',     JSON.stringify([]));
-  }
-  // Suzie & Nathasja: future wedding, nothing yet
-  if (!localStorage.getItem('wcb_suzie-nathasja_bin')) {
-    localStorage.setItem('wcb_suzie-nathasja_photos',  JSON.stringify([]));
-    localStorage.setItem('wcb_suzie-nathasja_guests',  JSON.stringify([]));
-    localStorage.setItem('wcb_suzie-nathasja_bin',     JSON.stringify([]));
+async function loadUserData() {
+  const username = state.user.username;
+  try {
+    const [photos, binPhotos, guests] = await Promise.all([
+      db.get('wcb_photos', `client_id=eq.${encodeURIComponent(username)}&deleted=eq.false&select=*`),
+      db.get('wcb_photos', `client_id=eq.${encodeURIComponent(username)}&deleted=eq.true&select=*`),
+      db.get('wcb_guests', `client_id=eq.${encodeURIComponent(username)}&select=*`),
+    ]);
+    state.photos     = photos.map(p => ({ id: p.id, title: p.title, datetime: p.datetime, camera: p.camera, url: p.url, thumb: p.thumb }));
+    state.recycleBin = binPhotos.map(p => ({ id: p.id, title: p.title, datetime: p.datetime, camera: p.camera, url: p.url, thumb: p.thumb }));
+    state.guests     = guests.map(g => ({ id: g.id, name: g.name, email: g.email }));
+  } catch (err) {
+    console.error('Failed to load user data:', err);
+    showToast('Failed to load data. Please try again.', 'error');
+    state.photos = [];
+    state.recycleBin = [];
+    state.guests = [];
   }
 }
 
 // ============================================================
 // AUTH
 // ============================================================
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   lucide.createIcons();
   const saved = sessionStorage.getItem('wcb_session');
   if (saved) {
-    const user = USERS[saved];
-    if (user) { state.user = { username: saved, ...user }; routeAfterLogin(); return; }
+    try {
+      const rows = await db.get('wcb_clients', `id=eq.${encodeURIComponent(saved)}&select=*`);
+      if (rows.length === 1) {
+        const c = rows[0];
+        state.user = {
+          username: c.id,
+          password: c.password,
+          name:     c.name,
+          wedding:  c.wedding,
+          isAdmin:  c.is_admin,
+        };
+        await routeAfterLogin();
+        return;
+      }
+    } catch (err) {
+      console.error('Session restore failed:', err);
+    }
   }
   document.getElementById('viewLogin').style.display = '';
 });
@@ -152,26 +143,39 @@ document.getElementById('togglePw').addEventListener('click', function () {
   lucide.createIcons({ nodes: [this] });
 });
 
-document.getElementById('loginForm').addEventListener('submit', function (e) {
+document.getElementById('loginForm').addEventListener('submit', async function (e) {
   e.preventDefault();
   const username = document.getElementById('loginUsername').value.trim().toLowerCase();
   const password = document.getElementById('loginPassword').value;
   const errEl    = document.getElementById('loginError');
-  const user     = USERS[username];
-  if (!user || user.password !== password) {
-    errEl.textContent = 'Incorrect username or password.';
+  try {
+    const rows = await db.get('wcb_clients', `id=eq.${encodeURIComponent(username)}&select=*`);
+    if (rows.length === 0 || rows[0].password !== password) {
+      errEl.textContent = 'Incorrect username or password.';
+      errEl.classList.add('visible');
+      return;
+    }
+    const c = rows[0];
+    errEl.classList.remove('visible');
+    state.user = {
+      username: c.id,
+      password: c.password,
+      name:     c.name,
+      wedding:  c.wedding,
+      isAdmin:  c.is_admin,
+    };
+    sessionStorage.setItem('wcb_session', username);
+    await routeAfterLogin();
+  } catch (err) {
+    console.error('Login error:', err);
+    errEl.textContent = 'Connection error. Please try again.';
     errEl.classList.add('visible');
-    return;
   }
-  errEl.classList.remove('visible');
-  state.user = { username, ...user };
-  sessionStorage.setItem('wcb_session', username);
-  routeAfterLogin();
 });
 
-function routeAfterLogin() {
-  if (state.user.isAdmin) { launchAdmin(); }
-  else                    { launchPortal(); }
+async function routeAfterLogin() {
+  if (state.user.isAdmin) { await launchAdmin(); }
+  else                    { await launchPortal(); }
 }
 
 document.getElementById('logoutBtn').addEventListener('click', doLogout);
@@ -184,10 +188,9 @@ function doLogout() {
 // ============================================================
 // ADMIN — DASHBOARD
 // ============================================================
-function launchAdmin() {
-  initMockData();
+async function launchAdmin() {
   showView('admin');
-  renderDashboard();
+  await renderDashboard();
   lucide.createIcons();
 }
 
@@ -197,61 +200,80 @@ function showView(v) {
   document.getElementById('viewPortal').style.display = v === 'portal' ? '' : 'none';
 }
 
-function renderDashboard() {
+async function renderDashboard() {
   const grid = document.getElementById('clientGrid');
   const emailOk = EMAILJS_CONFIG.serviceId !== 'YOUR_SERVICE_ID';
   document.getElementById('emailConfigWarning').style.display = emailOk ? 'none' : '';
 
-  grid.innerHTML = Object.entries(CUSTOMERS).map(([uname, info]) => {
-    const photos    = JSON.parse(localStorage.getItem(`wcb_${uname}_photos`)  || '[]');
-    const guests    = JSON.parse(localStorage.getItem(`wcb_${uname}_guests`)  || '[]');
-    const linkSent  = localStorage.getItem(`wcb_${uname}_linkSent`) === 'true';
-    const wDate     = new Date(info.weddingDate);
-    const today     = new Date(); today.setHours(0,0,0,0);
-    const diffDays  = Math.round((today - wDate) / 86400000);
-    const isFuture  = diffDays < 0;
-    const dayLabel  = isFuture
-      ? `In ${Math.abs(diffDays)} days`
-      : diffDays === 0 ? 'Today!'
-      : `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+  try {
+    const [clients, allPhotos, allGuests, allStates] = await Promise.all([
+      db.get('wcb_clients', 'is_admin=eq.false&select=*'),
+      db.get('wcb_photos',  'deleted=eq.false&select=id,client_id'),
+      db.get('wcb_guests',  'select=id,client_id'),
+      db.get('wcb_client_state', 'select=*'),
+    ]);
 
-    const photoStatus = photos.length > 0 ? 'done'    : isFuture ? 'future' : 'missing';
-    const guestStatus = guests.length > 0 ? 'done'    : isFuture ? 'future' : 'missing';
-    const sentStatus  = linkSent          ? 'done'    : isFuture ? 'future' : 'missing';
+    const photoCounts = {};
+    allPhotos.forEach(p => { photoCounts[p.client_id] = (photoCounts[p.client_id] || 0) + 1; });
+    const guestCounts = {};
+    allGuests.forEach(g => { guestCounts[g.client_id] = (guestCounts[g.client_id] || 0) + 1; });
+    const stateMap = {};
+    allStates.forEach(s => { stateMap[s.client_id] = s; });
 
-    const pill = (status, text) => {
-      const icon  = status === 'done' ? 'check-circle' : status === 'future' ? 'clock' : 'circle';
-      const cls   = `status-pill status-pill--${status}`;
-      return `<span class="${cls}"><i data-lucide="${icon}"></i>${escHtml(text)}</span>`;
-    };
+    grid.innerHTML = clients.map(c => {
+      const photoCount = photoCounts[c.id] || 0;
+      const guestCount = guestCounts[c.id] || 0;
+      const linkSent   = stateMap[c.id] && stateMap[c.id].link_sent === true;
+      const wDate      = new Date(c.wedding_date);
+      const today      = new Date(); today.setHours(0,0,0,0);
+      const diffDays   = Math.round((today - wDate) / 86400000);
+      const isFuture   = diffDays < 0;
+      const dayLabel   = isFuture
+        ? `In ${Math.abs(diffDays)} days`
+        : diffDays === 0 ? 'Today!'
+        : `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
 
-    return `
-      <div class="client-card" data-username="${uname}">
-        <div class="client-card__head">
-          <div>
-            <h3 class="client-card__name">${escHtml(info.name)}</h3>
-            <span class="client-card__date">${wDate.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' })}</span>
+      const photoStatus = photoCount > 0 ? 'done' : isFuture ? 'future' : 'missing';
+      const guestStatus = guestCount > 0 ? 'done' : isFuture ? 'future' : 'missing';
+      const sentStatus  = linkSent       ? 'done' : isFuture ? 'future' : 'missing';
+
+      const pill = (status, text) => {
+        const icon = status === 'done' ? 'check-circle' : status === 'future' ? 'clock' : 'circle';
+        const cls  = `status-pill status-pill--${status}`;
+        return `<span class="${cls}"><i data-lucide="${icon}"></i>${escHtml(text)}</span>`;
+      };
+
+      return `
+        <div class="client-card" data-username="${c.id}">
+          <div class="client-card__head">
+            <div>
+              <h3 class="client-card__name">${escHtml(c.name)}</h3>
+              <span class="client-card__date">${wDate.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' })}</span>
+            </div>
+            <span class="client-card__days ${isFuture ? 'client-card__days--future' : ''}">${dayLabel}</span>
           </div>
-          <span class="client-card__days ${isFuture ? 'client-card__days--future' : ''}">${dayLabel}</span>
-        </div>
-        <div class="client-card__status">
-          ${pill(photoStatus, photos.length > 0 ? `${photos.length} photos uploaded` : 'No photos yet')}
-          ${pill(guestStatus, guests.length > 0 ? `${guests.length} guests added`    : 'No guests yet')}
-          ${pill(sentStatus,  linkSent            ? 'Gallery link sent'               : 'Link not sent')}
-        </div>
-        <div class="client-card__actions">
-          <button class="btn btn--primary btn--sm" onclick="enterCustomerPortal('${uname}')">
-            <i data-lucide="layout-dashboard"></i> Manage portal
-          </button>
-          <button class="btn btn--ghost btn--sm" onclick="openUploadModal('${uname}')">
-            <i data-lucide="upload"></i> Upload photos
-          </button>
-        </div>
-      </div>`;
-  }).join('');
+          <div class="client-card__status">
+            ${pill(photoStatus, photoCount > 0 ? `${photoCount} photos uploaded` : 'No photos yet')}
+            ${pill(guestStatus, guestCount > 0 ? `${guestCount} guests added`    : 'No guests yet')}
+            ${pill(sentStatus,  linkSent        ? 'Gallery link sent'             : 'Link not sent')}
+          </div>
+          <div class="client-card__actions">
+            <button class="btn btn--primary btn--sm" onclick="enterCustomerPortal('${c.id}')">
+              <i data-lucide="layout-dashboard"></i> Manage portal
+            </button>
+            <button class="btn btn--ghost btn--sm" onclick="openUploadModal('${c.id}')">
+              <i data-lucide="upload"></i> Upload photos
+            </button>
+          </div>
+        </div>`;
+    }).join('');
 
-  lucide.createIcons();
-  updateRequestsBadge();
+    lucide.createIcons();
+    await updateRequestsBadge();
+  } catch (err) {
+    console.error('Dashboard load failed:', err);
+    grid.innerHTML = '<p style="padding:2rem;color:var(--danger)">Failed to load clients. Please refresh.</p>';
+  }
 }
 
 // ── Admin tab switching ──
@@ -263,79 +285,92 @@ function switchAdminTab(tab) {
   if (tab === 'requests') renderRequests();
 }
 
-function updateRequestsBadge() {
-  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
-  const pending  = requests.filter(r => r.status === 'pending').length;
-  const badge    = document.getElementById('requestsBadge');
-  badge.style.display = pending > 0 ? '' : 'none';
-  badge.textContent   = pending;
+async function updateRequestsBadge() {
+  try {
+    const requests = await db.get('wcb_booking_requests', 'status=eq.pending&select=id');
+    const pending  = requests.length;
+    const badge    = document.getElementById('requestsBadge');
+    badge.style.display = pending > 0 ? '' : 'none';
+    badge.textContent   = pending;
+  } catch (err) {
+    console.error('Badge update failed:', err);
+  }
 }
 
 // ── Requests panel ──
-function renderRequests() {
-  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
+async function renderRequests() {
   const list = document.getElementById('requestsList');
+  try {
+    const requests = await db.get('wcb_booking_requests', 'select=*&order=submitted_at.desc');
 
-  if (requests.length === 0) {
-    list.innerHTML = '<p class="requests-empty"><i data-lucide="inbox"></i> No booking requests yet. They will appear here when someone fills in the form on the homepage.</p>';
-    lucide.createIcons({ nodes: [list] });
-    return;
-  }
+    if (requests.length === 0) {
+      list.innerHTML = '<p class="requests-empty"><i data-lucide="inbox"></i> No booking requests yet. They will appear here when someone fills in the form on the homepage.</p>';
+      lucide.createIcons({ nodes: [list] });
+      return;
+    }
 
-  list.innerHTML = requests.slice().reverse().map(r => {
-    const date = new Date(r.submittedAt).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
-    const wDate = r.date ? new Date(r.date).toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }) : '—';
-    const isPending  = r.status === 'pending';
-    const isApproved = r.status === 'approved';
-    const statusCls  = isPending ? 'status-pill--future' : isApproved ? 'status-pill--done' : 'status-pill--missing';
-    const statusTxt  = isPending ? 'Pending' : isApproved ? 'Approved' : 'Declined';
-    return `
-      <div class="request-card ${isApproved ? 'request-card--approved' : ''}">
-        <div class="request-card__head">
-          <div>
-            <h3 class="request-card__name">${escHtml(r.name)}</h3>
-            <span class="request-card__meta">Submitted ${escHtml(date)}</span>
+    list.innerHTML = requests.map(r => {
+      const date = new Date(r.submitted_at).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+      const wDate = r.wedding_date ? new Date(r.wedding_date).toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }) : '—';
+      const isPending  = r.status === 'pending';
+      const isApproved = r.status === 'approved';
+      const statusCls  = isPending ? 'status-pill--future' : isApproved ? 'status-pill--done' : 'status-pill--missing';
+      const statusTxt  = isPending ? 'Pending' : isApproved ? 'Approved' : 'Declined';
+      return `
+        <div class="request-card ${isApproved ? 'request-card--approved' : ''}">
+          <div class="request-card__head">
+            <div>
+              <h3 class="request-card__name">${escHtml(r.name)}</h3>
+              <span class="request-card__meta">Submitted ${escHtml(date)}</span>
+            </div>
+            <span class="status-pill ${statusCls}">${statusTxt}</span>
           </div>
-          <span class="status-pill ${statusCls}">${statusTxt}</span>
-        </div>
-        <div class="request-card__info">
-          <div class="request-info-row"><i data-lucide="mail"></i><a href="mailto:${escHtml(r.email)}">${escHtml(r.email)}</a></div>
-          <div class="request-info-row"><i data-lucide="calendar"></i>${escHtml(wDate)}</div>
-          <div class="request-info-row"><i data-lucide="package"></i>${escHtml(r.package || '—')}</div>
-          ${r.guests ? `<div class="request-info-row"><i data-lucide="users"></i>${escHtml(r.guests)} guests (approx.)</div>` : ''}
-          ${r.message ? `<div class="request-info-row request-info-row--message"><i data-lucide="message-square"></i><span>${escHtml(r.message)}</span></div>` : ''}
-        </div>
-        ${isPending ? `
-        <div class="request-card__actions">
-          <button class="btn btn--primary btn--sm" onclick="openApproveModal('${escHtml(r.id)}')">
-            <i data-lucide="check"></i> Approve
-          </button>
-          <button class="btn btn--ghost btn--sm" onclick="declineRequest('${escHtml(r.id)}')">
-            <i data-lucide="x"></i> Decline
-          </button>
-        </div>` : ''}
-      </div>`;
-  }).join('');
+          <div class="request-card__info">
+            <div class="request-info-row"><i data-lucide="mail"></i><a href="mailto:${escHtml(r.email)}">${escHtml(r.email)}</a></div>
+            <div class="request-info-row"><i data-lucide="calendar"></i>${escHtml(wDate)}</div>
+            <div class="request-info-row"><i data-lucide="package"></i>${escHtml(r.package || '—')}</div>
+            ${r.guests ? `<div class="request-info-row"><i data-lucide="users"></i>${escHtml(r.guests)} guests (approx.)</div>` : ''}
+            ${r.message ? `<div class="request-info-row request-info-row--message"><i data-lucide="message-square"></i><span>${escHtml(r.message)}</span></div>` : ''}
+          </div>
+          ${isPending ? `
+          <div class="request-card__actions">
+            <button class="btn btn--primary btn--sm" onclick="openApproveModal('${escHtml(r.id)}')">
+              <i data-lucide="check"></i> Approve
+            </button>
+            <button class="btn btn--ghost btn--sm" onclick="declineRequest('${escHtml(r.id)}')">
+              <i data-lucide="x"></i> Decline
+            </button>
+          </div>` : ''}
+        </div>`;
+    }).join('');
 
-  lucide.createIcons({ nodes: [list] });
+    lucide.createIcons({ nodes: [list] });
+  } catch (err) {
+    console.error('Render requests failed:', err);
+    list.innerHTML = '<p style="padding:1rem;color:var(--danger)">Failed to load requests.</p>';
+  }
 }
 
 // ── Approve flow ──
 let approveTargetId = null;
 
-function openApproveModal(requestId) {
-  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
-  const req = requests.find(r => r.id === requestId);
-  if (!req) return;
-  approveTargetId = requestId;
+async function openApproveModal(requestId) {
+  try {
+    const rows = await db.get('wcb_booking_requests', `id=eq.${encodeURIComponent(requestId)}&select=*`);
+    if (rows.length === 0) return;
+    const req = rows[0];
+    approveTargetId = requestId;
 
-  // Generate username from name: "Emma & James" → "emma-james"
-  const suggested = req.name.toLowerCase().replace(/\s*&\s*/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
-  document.getElementById('approveUsername').value = suggested || 'couple';
-  document.getElementById('approvePassword').value = generatePassword();
-  document.getElementById('approvePackage').value  = req.package || 'Standard';
-  document.getElementById('approveModal').style.display = '';
-  lucide.createIcons({ nodes: [document.getElementById('approveModal')] });
+    const suggested = req.name.toLowerCase().replace(/\s*&\s*/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    document.getElementById('approveUsername').value = suggested || 'couple';
+    document.getElementById('approvePassword').value = generatePassword();
+    document.getElementById('approvePackage').value  = req.package || 'Standard';
+    document.getElementById('approveModal').style.display = '';
+    lucide.createIcons({ nodes: [document.getElementById('approveModal')] });
+  } catch (err) {
+    console.error('Open approve modal failed:', err);
+    showToast('Failed to load request details.', 'error');
+  }
 }
 
 function generatePassword() {
@@ -350,76 +385,102 @@ function regeneratePassword() {
 document.getElementById('approveModalClose').addEventListener('click',  () => { document.getElementById('approveModal').style.display = 'none'; });
 document.getElementById('approveModalClose2').addEventListener('click', () => { document.getElementById('approveModal').style.display = 'none'; });
 
-document.getElementById('approveConfirmBtn').addEventListener('click', () => {
+document.getElementById('approveConfirmBtn').addEventListener('click', async () => {
   const username = document.getElementById('approveUsername').value.trim();
   const password = document.getElementById('approvePassword').value.trim();
   const pkg      = document.getElementById('approvePackage').value;
   if (!username || !password) { showToast('Username and password are required.', 'error'); return; }
-  if (USERS[username]) { showToast(`Username "${username}" already exists. Choose a different one.`, 'error'); return; }
 
-  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
-  const req = requests.find(r => r.id === approveTargetId);
-  if (!req) return;
+  try {
+    // Check if username already exists
+    const existing = await db.get('wcb_clients', `id=eq.${encodeURIComponent(username)}&select=id`);
+    if (existing.length > 0) { showToast(`Username "${username}" already exists. Choose a different one.`, 'error'); return; }
 
-  // Update request status
-  req.status = 'approved';
-  req.approvedUsername = username;
-  localStorage.setItem('wcb_booking_requests', JSON.stringify(requests));
+    // Fetch the request
+    const rows = await db.get('wcb_booking_requests', `id=eq.${encodeURIComponent(approveTargetId)}&select=*`);
+    if (rows.length === 0) return;
+    const req = rows[0];
 
-  // Create user + customer in memory
-  const weddingDateFormatted = req.date
-    ? new Date(req.date).toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' })
-    : '';
-  const newUser     = { password, name: req.name, wedding: weddingDateFormatted };
-  const newCustomer = { name: req.name, weddingDate: req.date || '', package: pkg };
-  USERS[username]     = newUser;
-  CUSTOMERS[username] = newCustomer;
+    // Update request status
+    await db.update('wcb_booking_requests', `id=eq.${encodeURIComponent(approveTargetId)}`, { status: 'approved' });
 
-  // Persist dynamic users/customers to localStorage
-  const dynUsers = JSON.parse(localStorage.getItem('wcb_dynamic_users')     || '{}');
-  const dynCusts = JSON.parse(localStorage.getItem('wcb_dynamic_customers') || '{}');
-  dynUsers[username] = newUser;
-  dynCusts[username] = newCustomer;
-  localStorage.setItem('wcb_dynamic_users',     JSON.stringify(dynUsers));
-  localStorage.setItem('wcb_dynamic_customers', JSON.stringify(dynCusts));
+    // Create the new client
+    const weddingDateFormatted = req.wedding_date
+      ? new Date(req.wedding_date).toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' })
+      : '';
+    await db.insert('wcb_clients', {
+      id:           username,
+      password:     password,
+      name:         req.name,
+      wedding:      weddingDateFormatted,
+      wedding_date: req.wedding_date || null,
+      package:      pkg,
+      is_admin:     false,
+    });
 
-  // Initialise empty photo/guest/bin storage for the new client
-  if (!localStorage.getItem(`wcb_${username}_photos`)) {
-    localStorage.setItem(`wcb_${username}_photos`, JSON.stringify([]));
-    localStorage.setItem(`wcb_${username}_guests`, JSON.stringify([]));
-    localStorage.setItem(`wcb_${username}_bin`,    JSON.stringify([]));
+    // Create initial client state
+    await db.upsert('wcb_client_state', {
+      client_id: username,
+      link_sent: false,
+      sent_at:   null,
+    });
+
+    document.getElementById('approveModal').style.display = 'none';
+    approveTargetId = null;
+    await updateRequestsBadge();
+    await renderRequests();
+    await renderDashboard();
+    showToast(`Account created for ${req.name}. Username: ${username} / Password: ${password}`, 'success');
+  } catch (err) {
+    console.error('Approve failed:', err);
+    showToast('Failed to approve request. Please try again.', 'error');
   }
-
-  document.getElementById('approveModal').style.display = 'none';
-  approveTargetId = null;
-  updateRequestsBadge();
-  renderRequests();
-  showToast(`Account created for ${req.name}. Username: ${username} / Password: ${password}`, 'success');
 });
 
-function declineRequest(requestId) {
+async function declineRequest(requestId) {
   if (!confirm('Decline this booking request?')) return;
-  const requests = JSON.parse(localStorage.getItem('wcb_booking_requests') || '[]');
-  const req = requests.find(r => r.id === requestId);
-  if (req) { req.status = 'declined'; localStorage.setItem('wcb_booking_requests', JSON.stringify(requests)); }
-  updateRequestsBadge();
-  renderRequests();
+  try {
+    await db.update('wcb_booking_requests', `id=eq.${encodeURIComponent(requestId)}`, { status: 'declined' });
+    await updateRequestsBadge();
+    await renderRequests();
+  } catch (err) {
+    console.error('Decline failed:', err);
+    showToast('Failed to decline request.', 'error');
+  }
 }
 
 // ── Enter a customer's portal as admin ──
-function enterCustomerPortal(username) {
-  state.adminManaging = username;
-  state.user = { username, ...USERS[username] };
-  launchPortal();
-  document.getElementById('adminBanner').style.display = '';
-  document.getElementById('adminBannerName').textContent = CUSTOMERS[username].name;
+async function enterCustomerPortal(username) {
+  try {
+    const rows = await db.get('wcb_clients', `id=eq.${encodeURIComponent(username)}&select=*`);
+    if (rows.length === 0) { showToast('Client not found.', 'error'); return; }
+    const c = rows[0];
+    state.adminManaging = username;
+    state.user = {
+      username: c.id,
+      password: c.password,
+      name:     c.name,
+      wedding:  c.wedding,
+      isAdmin:  false,
+    };
+    await launchPortal();
+    document.getElementById('adminBanner').style.display = '';
+    document.getElementById('adminBannerName').textContent = c.name;
+  } catch (err) {
+    console.error('Enter customer portal failed:', err);
+    showToast('Failed to open client portal.', 'error');
+  }
 }
 
-document.getElementById('adminBannerBack').addEventListener('click', () => {
+document.getElementById('adminBannerBack').addEventListener('click', async () => {
   state.adminManaging = null;
-  state.user = { username: 'admin', ...USERS['admin'] };
+  const rows = await db.get('wcb_clients', 'id=eq.admin&select=*');
+  if (rows.length > 0) {
+    const c = rows[0];
+    state.user = { username: c.id, password: c.password, name: c.name, wedding: c.wedding, isAdmin: c.is_admin };
+  }
   showView('admin');
-  renderDashboard();
+  await renderDashboard();
 });
 
 // ── Upload modal ──
@@ -484,12 +545,14 @@ document.getElementById('uploadConfirmBtn').addEventListener('click', async () =
       const data = await res.json();
       const thumbUrl = data.secure_url.replace('/upload/', '/upload/w_500,q_75/');
       uploaded.push({
-        id:       'up_' + Date.now() + '_' + i,
-        title:    file.name.replace(/\.[^.]+$/, ''),
-        datetime: new Date().toISOString(),
-        camera:   'Uploaded',
-        url:      data.secure_url,
-        thumb:    thumbUrl,
+        id:        'up_' + Date.now() + '_' + i,
+        client_id: uploadTargetUser,
+        title:     file.name.replace(/\.[^.]+$/, ''),
+        datetime:  new Date().toISOString(),
+        camera:    'Uploaded',
+        url:       data.secure_url,
+        thumb:     thumbUrl,
+        deleted:   false,
       });
     } catch (err) {
       console.error('Upload failed for', file.name, err);
@@ -498,24 +561,35 @@ document.getElementById('uploadConfirmBtn').addEventListener('click', async () =
   }
 
   if (uploaded.length > 0) {
-    const existing = JSON.parse(localStorage.getItem(`wcb_${uploadTargetUser}_photos`) || '[]');
-    localStorage.setItem(`wcb_${uploadTargetUser}_photos`, JSON.stringify([...existing, ...uploaded]));
+    try {
+      await db.insert('wcb_photos', uploaded);
+    } catch (err) {
+      console.error('Failed to save photos to Supabase:', err);
+      showToast('Photos uploaded to Cloudinary but failed to save to database.', 'error');
+    }
   }
+
+  // Look up client name for toast message
+  let clientName = uploadTargetUser;
+  try {
+    const clientRows = await db.get('wcb_clients', `id=eq.${encodeURIComponent(uploadTargetUser)}&select=name`);
+    if (clientRows.length > 0) clientName = clientRows[0].name;
+  } catch (_) {}
 
   document.getElementById('uploadModal').style.display = 'none';
   pendingFiles = [];
-  renderDashboard();
+  await renderDashboard();
   const msg = failures > 0
     ? `${uploaded.length} photo${uploaded.length !== 1 ? 's' : ''} uploaded to Cloudinary. ${failures} failed.`
-    : `${uploaded.length} photo${uploaded.length !== 1 ? 's' : ''} uploaded to Cloudinary and added to ${CUSTOMERS[uploadTargetUser].name}'s gallery.`;
+    : `${uploaded.length} photo${uploaded.length !== 1 ? 's' : ''} uploaded to Cloudinary and added to ${clientName}'s gallery.`;
   showToast(msg, failures > 0 ? 'warning' : 'success');
 });
 
 // ============================================================
 // PORTAL — LAUNCH
 // ============================================================
-function launchPortal() {
-  loadUserData();
+async function launchPortal() {
+  await loadUserData();
   showView('portal');
   document.getElementById('headerName').textContent = state.user.name;
   goToStep(1);
@@ -617,21 +691,33 @@ document.getElementById('closeBinBtn').addEventListener('click', () => {
   state.showBin = false;
   document.getElementById('recycleBin').style.display = 'none';
 });
-document.getElementById('emptyBinBtn').addEventListener('click', () => {
+document.getElementById('emptyBinBtn').addEventListener('click', async () => {
   if (!state.recycleBin.length) return;
   if (!confirm(`Permanently delete all ${state.recycleBin.length} photos? This cannot be undone.`)) return;
-  state.recycleBin = [];
-  saveAll(); renderBin(); renderPhotos();
-  showToast('Recycle bin emptied.', 'info');
+  try {
+    await db.delete('wcb_photos', `client_id=eq.${encodeURIComponent(state.user.username)}&deleted=eq.true`);
+    state.recycleBin = [];
+    renderBin(); renderPhotos();
+    showToast('Recycle bin emptied.', 'info');
+  } catch (err) {
+    console.error('Empty bin failed:', err);
+    showToast('Failed to empty recycle bin.', 'error');
+  }
 });
 
-function moveToBin(id) {
+async function moveToBin(id) {
   const idx = state.photos.findIndex(p => p.id === id);
   if (idx === -1) return;
-  state.recycleBin.push(state.photos.splice(idx, 1)[0]);
-  saveAll(); renderPhotos();
-  if (state.showBin) renderBin();
-  showToast('Photo moved to recycle bin.', 'info');
+  try {
+    await db.update('wcb_photos', `id=eq.${encodeURIComponent(id)}`, { deleted: true });
+    state.recycleBin.push(state.photos.splice(idx, 1)[0]);
+    renderPhotos();
+    if (state.showBin) renderBin();
+    showToast('Photo moved to recycle bin.', 'info');
+  } catch (err) {
+    console.error('Move to bin failed:', err);
+    showToast('Failed to move photo to bin.', 'error');
+  }
 }
 
 function renderBin() {
@@ -658,18 +744,31 @@ function renderBin() {
   lucide.createIcons();
 }
 
-function restorePhoto(id) {
+async function restorePhoto(id) {
   const idx = state.recycleBin.findIndex(p => p.id === id);
   if (idx === -1) return;
-  state.photos.push(state.recycleBin.splice(idx, 1)[0]);
-  saveAll(); renderBin(); renderPhotos();
-  showToast('Photo restored.', 'success');
+  try {
+    await db.update('wcb_photos', `id=eq.${encodeURIComponent(id)}`, { deleted: false });
+    state.photos.push(state.recycleBin.splice(idx, 1)[0]);
+    renderBin(); renderPhotos();
+    showToast('Photo restored.', 'success');
+  } catch (err) {
+    console.error('Restore failed:', err);
+    showToast('Failed to restore photo.', 'error');
+  }
 }
-function permanentDelete(id) {
+
+async function permanentDelete(id) {
   if (!confirm('Permanently delete this photo? This cannot be undone.')) return;
-  state.recycleBin = state.recycleBin.filter(p => p.id !== id);
-  saveAll(); renderBin(); renderPhotos();
-  showToast('Photo permanently deleted.', 'info');
+  try {
+    await db.delete('wcb_photos', `id=eq.${encodeURIComponent(id)}`);
+    state.recycleBin = state.recycleBin.filter(p => p.id !== id);
+    renderBin(); renderPhotos();
+    showToast('Photo permanently deleted.', 'info');
+  } catch (err) {
+    console.error('Permanent delete failed:', err);
+    showToast('Failed to delete photo.', 'error');
+  }
 }
 
 // ============================================================
@@ -733,7 +832,7 @@ function renderGuests() {
   lucide.createIcons();
 }
 
-document.getElementById('guestForm').addEventListener('submit', e => {
+document.getElementById('guestForm').addEventListener('submit', async e => {
   e.preventDefault();
   const name  = document.getElementById('guestName').value.trim();
   const email = document.getElementById('guestEmail').value.trim();
@@ -745,15 +844,29 @@ document.getElementById('guestForm').addEventListener('submit', e => {
     errEl.textContent = 'This email is already in your list.'; return;
   }
   errEl.textContent = '';
-  state.guests.push({ id: 'g' + Date.now(), name, email });
-  saveAll(); renderGuests();
-  document.getElementById('guestName').value  = '';
-  document.getElementById('guestEmail').value = '';
-  document.getElementById('guestEmail').focus();
+  const newGuest = { id: 'g_' + Date.now(), client_id: state.user.username, name, email };
+  try {
+    await db.insert('wcb_guests', newGuest);
+    state.guests.push({ id: newGuest.id, name, email });
+    renderGuests();
+    document.getElementById('guestName').value  = '';
+    document.getElementById('guestEmail').value = '';
+    document.getElementById('guestEmail').focus();
+  } catch (err) {
+    console.error('Add guest failed:', err);
+    showToast('Failed to add guest.', 'error');
+  }
 });
-function removeGuest(id) {
-  state.guests = state.guests.filter(g => g.id !== id);
-  saveAll(); renderGuests();
+
+async function removeGuest(id) {
+  try {
+    await db.delete('wcb_guests', `id=eq.${encodeURIComponent(id)}`);
+    state.guests = state.guests.filter(g => g.id !== id);
+    renderGuests();
+  } catch (err) {
+    console.error('Remove guest failed:', err);
+    showToast('Failed to remove guest.', 'error');
+  }
 }
 
 // ============================================================
@@ -805,7 +918,7 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
   if (emailOk) {
     await sendViaEmailJS(subject, bodyText, bodyHTML, galleryLink);
   } else {
-    sendViaMailto(subject, bodyText, galleryLink);
+    await sendViaMailto(subject, bodyText, galleryLink);
   }
 });
 
@@ -837,8 +950,17 @@ async function sendViaEmailJS(subject, bodyText, bodyHTML, galleryLink) {
     }
   }
 
-  // Mark link as sent
-  localStorage.setItem(key('linkSent'), 'true');
+  // Mark link as sent in Supabase
+  try {
+    await db.upsert('wcb_client_state', {
+      client_id: state.user.username,
+      link_sent: true,
+      sent_at:   new Date().toISOString(),
+    });
+  } catch (err) {
+    console.error('Failed to update link_sent:', err);
+  }
+
   sendBtn.disabled = false;
   sendBtn.innerHTML = '<i data-lucide="send"></i> Send to all guests';
   lucide.createIcons();
@@ -851,14 +973,25 @@ async function sendViaEmailJS(subject, bodyText, bodyHTML, galleryLink) {
   }
 }
 
-function sendViaMailto(subject, bodyText, galleryLink) {
+async function sendViaMailto(subject, bodyText, galleryLink) {
   const fullBody = bodyText + '\n\nView & download your photos:\n' + galleryLink;
   const bcc = state.guests.map(g => g.email).join(',');
   window.location.href =
     'mailto:?bcc=' + encodeURIComponent(bcc) +
     '&subject='    + encodeURIComponent(subject) +
     '&body='       + encodeURIComponent(fullBody);
-  localStorage.setItem(key('linkSent'), 'true');
+
+  // Mark link as sent in Supabase
+  try {
+    await db.upsert('wcb_client_state', {
+      client_id: state.user.username,
+      link_sent: true,
+      sent_at:   new Date().toISOString(),
+    });
+  } catch (err) {
+    console.error('Failed to update link_sent:', err);
+  }
+
   showToast('Opening your email client with all guests pre-filled.', 'info');
 }
 
