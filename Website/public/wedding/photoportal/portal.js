@@ -10,7 +10,7 @@ const CLOUDINARY_CONFIG = {
 };
 
 const EMAILJS_CONFIG = {
-  serviceId:  'service_eoosuj2',
+  serviceId:  'service_xcr68kf',
   templateId: 'template_don7795',
   publicKey:  'uMloEc253wEBd3sba',
 };
