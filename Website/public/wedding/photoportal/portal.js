@@ -942,6 +942,8 @@ async function sendViaEmailJS(subject, bodyText, bodyHTML, galleryLink) {
         message:      bodyText,
         message_html: bodyHTML,
         gallery_link: galleryLink,
+        reply_to:     'info@weddingcambox.nl',
+        from_name:    'WeddingCamBox',
       });
       ok++;
     } catch (err) {
