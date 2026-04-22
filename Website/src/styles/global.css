@@ -301,6 +301,20 @@ html.theme-light .theme-icon--moon { display: block; }
 .btn-itch svg { color: #fa5a41; }
 .btn-itch:hover { border-color: #fa5a41; background: rgba(250,90,65,0.08); }
 
+.btn-pdf {
+  border-color: rgba(34, 113, 177, 0.35);
+  color: var(--fg);
+}
+.btn-pdf svg { color: #2271b1; }
+.btn-pdf:hover { border-color: #2271b1; background: rgba(34,113,177,0.08); }
+
+.btn-li {
+  border-color: rgba(10, 102, 194, 0.35);
+  color: var(--fg);
+}
+.btn-li svg { color: #0a66c2; }
+.btn-li:hover { border-color: #0a66c2; background: rgba(10,102,194,0.08); }
+
 /* Light mode overrides for social buttons */
 html.theme-light .btn-social {
   background: #fff;
