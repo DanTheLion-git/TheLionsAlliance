@@ -39,9 +39,12 @@ const posts: WPPostEnriched[] = await getPosts(100);
                   </div>
                 )}
                 <div class="post-card-body">
-                  <span class="post-title">
-                    {decodeHTML(post.title.rendered)}
-                  </span>
+                  <div class="post-title-row">
+                    <span class="post-title">
+                      {decodeHTML(post.title.rendered)}
+                    </span>
+                    <span class={`lang-badge lang-${post.lang}`}>{post.lang === "nl" ? "🇳🇱" : "🇬🇧"}</span>
+                  </div>
 
                   <p class="post-meta">
                     <time datetime={post.date}>

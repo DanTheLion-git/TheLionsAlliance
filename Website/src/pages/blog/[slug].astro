@@ -35,6 +35,7 @@ const { post } = Astro.props as { post: WPPostEnriched };
           day: "2-digit",
         })}
       </time>
+      <span class={`lang-badge lang-${post.lang}`}>{post.langLabel}</span>
     </p>
 
     {post.tagNames.length > 0 && (

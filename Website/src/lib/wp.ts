@@ -45,13 +45,27 @@ function extractTags(post: WPPost): string[] {
 export interface WPPostEnriched extends WPPost {
   featuredImage?: string;
   tagNames: string[];
+  lang: "nl" | "en";
+  langLabel: string;
+}
+
+const DUTCH_MARKERS = /\b(een|het|van|voor|niet|zijn|maar|ook|deze|wordt|hebben|meer|naar|omdat|zoals|mijn|weer|kunnen|andere|eigenlijk)\b/gi;
+
+function detectLanguage(html: string): "nl" | "en" {
+  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const sample = text.slice(0, 2000);
+  const matches = sample.match(DUTCH_MARKERS);
+  return (matches && matches.length >= 8) ? "nl" : "en";
 }
 
 function enrichPost(post: WPPost): WPPostEnriched {
+  const lang = detectLanguage(post.content.rendered);
   return {
     ...post,
     featuredImage: extractFeaturedImage(post),
     tagNames: extractTags(post),
+    lang,
+    langLabel: lang === "nl" ? "🇳🇱 Nederlands" : "🇬🇧 English",
   };
 }
 
