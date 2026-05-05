@@ -1,0 +1,272 @@
+---
+import "../../styles/homepage.css";
+import "../../styles/puzzlequests.css";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Immersive Worlds &mdash; The Lions Alliance</title>
+    <meta name="description" content="Immersive Worlds is The Lions Alliance&rsquo;s vision for large-scale, location-based storytelling &mdash; transforming museums, heritage sites, and public spaces into living narratives." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="tla-page">
+
+    <!-- ── Navigation ─────────────────────────────────── -->
+    <nav class="tla-nav" id="tla-nav">
+      <div class="tla-nav__inner tla-container">
+        <a href="/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
+        <ul class="tla-nav__links">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#collaborate">Work with us</a></li>
+        </ul>
+        <a href="/" class="tla-nav__cta">&larr; Back to Studio</a>
+        <button class="tla-nav__hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="tla-nav__mobile" id="mobile-menu">
+        <a href="#overview">Overview</a>
+        <a href="#projects">Projects</a>
+        <a href="#collaborate">Work with us</a>
+        <a href="/">&larr; Back to Studio</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ───────────────────────────────────────── -->
+    <section class="pl-hero" id="home">
+      <div class="tla-container pl-hero__inner">
+        <div class="pl-hero__text tla-fade">
+          <div class="pl-hero__breadcrumb">
+            <a href="/">The Lions Alliance</a>
+            <span class="pl-hero__breadcrumb-sep">/</span>
+            <span>Pillar 3</span>
+          </div>
+          <div class="pl-hero__badges">
+            <span class="tla-badge tla-badge--future">Future Vision</span>
+            <span class="tla-badge tla-badge--dev">Early Concepts</span>
+          </div>
+          <h1 class="pl-hero__title">Immersive <em>Worlds</em></h1>
+          <p class="pl-hero__subtitle">
+            Large-scale, location-based storytelling for museums, heritage sites, and public spaces. We transform places into living narratives &mdash; where visitors don&rsquo;t just observe history, they step into it.
+          </p>
+          <div class="pl-hero__ctas">
+            <a href="#collaborate" class="tla-btn tla-btn--sage">Let&rsquo;s talk about your space</a>
+            <a href="/" class="tla-btn tla-btn--outline">&larr; The Lions Alliance</a>
+          </div>
+        </div>
+        <div class="pl-hero__visual tla-fade tla-d1">
+          <div class="pl-hero__placeholder">
+            <span class="pl-hero__placeholder-icon">&#127760;</span>
+          </div>
+          <span class="pl-hero__placeholder-caption">Concept stage &mdash; early development</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Overview ──────────────────────────────────── -->
+    <section class="pl-overview" id="overview">
+      <div class="tla-container pl-overview__inner">
+        <div class="pl-overview__text tla-fade">
+          <span class="tla-overline">What is Immersive Worlds</span>
+          <h2 class="tla-section-header">Places that tell their own story</h2>
+          <p>
+            Immersive Worlds is the third pillar of The Lions Alliance &mdash; and the most ambitious. Where the Moments pillar captures personal events, and the Experiences pillar creates interactive props, Immersive Worlds transforms entire locations into narrative spaces.
+          </p>
+          <p>
+            Think of a museum where a portrait comes to life and answers your letters. Or a village square where the ground beneath you shows how the place has changed across centuries. These are not static exhibits &mdash; they are living stories that invite people to participate.
+          </p>
+          <p>
+            We are at the concept and early-prototype stage. The first projects are in development in partnership with local cultural institutions in the Netherlands.
+          </p>
+          <div class="pl-tags">
+            <span class="pl-tag">Museums</span>
+            <span class="pl-tag">Heritage sites</span>
+            <span class="pl-tag">Cultural institutions</span>
+            <span class="pl-tag">Municipalities</span>
+            <span class="pl-tag">Location-based</span>
+            <span class="pl-tag">AI &amp; physical</span>
+          </div>
+        </div>
+        <div class="pl-overview__visual tla-fade tla-d1">
+          <div class="pl-overview__img">&#127760;</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── Projects ──────────────────────────────────── -->
+    <section class="pl-applications" id="projects">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Early projects</span>
+          <h2 class="tla-section-header">Two concepts in development.</h2>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="pl-concept-grid" style="margin-bottom:3rem;">
+          <div class="pl-concept-card tla-fade" style="grid-column:1/-1; max-width:700px; margin:0 auto;">
+            <span class="pl-concept-card__icon">&#9999;&#65039;</span>
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+              <div class="pl-concept-card__title" style="margin:0;">Brief aan Jan Truijen</div>
+              <span class="tla-badge tla-badge--dev">Prototype Stage</span>
+            </div>
+            <p style="font-size:0.85rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--tla-gold,#c9aa71);margin:0 0 0.5rem;">Talking Portrait &mdash; Medelo Museum, Meijel</p>
+            <div class="pl-concept-card__desc">
+              Visitors sit down at a converted antique typewriter and compose a letter to Jan Truijen &mdash; a figure from the village&rsquo;s past, whose portrait hangs in the museum. When they send it, the portrait comes to life: an AI voice and 3D facial animation reads the letter and replies in character, drawing on historical context. The result is a moment of genuine connection across time &mdash; part installation, part conversation, part living history.
+            </div>
+            <div style="margin-top:1rem;padding:0.75rem 1rem;background:rgba(0,0,0,0.04);border-radius:8px;">
+              <strong style="font-size:0.85rem;">Tech stack (planned):</strong>
+              <span style="font-size:0.85rem;color:var(--tla-muted,#666);"> Converted antique typewriter (USB/Bluetooth input) &middot; AI voice synthesis &middot; 3D portrait animation &middot; Museum-grade display</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="pl-concept-grid">
+          <div class="pl-concept-card tla-fade" style="grid-column:1/-1; max-width:700px; margin:0 auto;">
+            <span class="pl-concept-card__icon">&#128506;&#65039;</span>
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+              <div class="pl-concept-card__title" style="margin:0;">Meijel Through the Ages</div>
+              <span class="tla-badge tla-badge--future">Concept Stage</span>
+            </div>
+            <p style="font-size:0.85rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--tla-gold,#c9aa71);margin:0 0 0.5rem;">Interactive Map Table &mdash; Village of Meijel</p>
+            <div class="pl-concept-card__desc">
+              A bird&rsquo;s-eye touchscreen map table showing the village of Meijel across time &mdash; from prehistoric bog to present-day community. Visitors explore a timeline by touching different eras, watching the landscape shift: fields become roads, farms become streets, the peel transforms. Designed for the local museum or a permanent community installation, it turns local history into something you can hold in your hands and navigate for yourself.
+            </div>
+            <div style="margin-top:1rem;padding:0.75rem 1rem;background:rgba(0,0,0,0.04);border-radius:8px;">
+              <strong style="font-size:0.85rem;">Tech stack (planned):</strong>
+              <span style="font-size:0.85rem;color:var(--tla-muted,#666);"> Large-format touchscreen table &middot; Historical GIS / cartographic layers &middot; Custom timeline UI &middot; Heritage imagery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Philosophy ────────────────────────────────── -->
+    <section class="pl-philosophy">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Why we build this</span>
+          <h2 class="tla-section-header">What makes a place come alive</h2>
+        </div>
+        <div class="pl-philosophy__grid">
+          <div class="pl-philosophy__card tla-fade">
+            <span class="pl-philosophy__card-icon">&#127981;</span>
+            <div class="pl-philosophy__card-title">History as participation</div>
+            <div class="pl-philosophy__card-desc">The most powerful museum experiences are the ones that make you feel like a participant, not a spectator. We design for that moment.</div>
+          </div>
+          <div class="pl-philosophy__card tla-fade tla-d1">
+            <span class="pl-philosophy__card-icon">&#129668;</span>
+            <div class="pl-philosophy__card-title">Technology in service of story</div>
+            <div class="pl-philosophy__card-desc">AI, touchscreens, and animation are tools &mdash; not the point. The story and the place always come first.</div>
+          </div>
+          <div class="pl-philosophy__card tla-fade tla-d2">
+            <span class="pl-philosophy__card-icon">&#127968;</span>
+            <div class="pl-philosophy__card-title">Rooted in place</div>
+            <div class="pl-philosophy__card-desc">Every Immersive Worlds project is specific to its location. We build experiences that could only exist in that one place.</div>
+          </div>
+          <div class="pl-philosophy__card tla-fade tla-d3">
+            <span class="pl-philosophy__card-icon">&#9889;</span>
+            <div class="pl-philosophy__card-title">Memorable by design</div>
+            <div class="pl-philosophy__card-desc">We measure success by whether visitors remember the experience a year later &mdash; and whether they tell someone else about it.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Collaborate CTA ───────────────────────────── -->
+    <section class="pl-collaborate" id="collaborate">
+      <div class="tla-container pl-collaborate__inner">
+        <div class="pl-collaborate__text tla-fade">
+          <span class="tla-overline">Work with us</span>
+          <h2 class="tla-section-header">Let&rsquo;s talk about your space</h2>
+          <p>
+            Immersive Worlds is at the early-concept and prototype stage. We&rsquo;re actively looking for cultural partners, heritage institutions, and forward-thinking municipalities who want to bring their location&rsquo;s story to life in a new way.
+          </p>
+          <p>
+            If you work at a museum, heritage site, cultural institution, or municipality and you see a fit &mdash; we&rsquo;d love to start a conversation. These projects take time and the right partners make all the difference.
+          </p>
+          <div class="pl-collaborate__ctas">
+            <a href="mailto:hello@thelionsalliance.com" class="tla-btn tla-btn--gold">Get in touch</a>
+            <a href="/" class="tla-btn tla-btn--outline">Explore the studio &rarr;</a>
+          </div>
+        </div>
+        <div class="pl-collaborate__audiences tla-fade tla-d1">
+          <ul class="pl-audience-list">
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Museums &amp; heritage venues</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Cultural institutions</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Municipalities</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Historic sites &amp; monuments</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Tourism organisations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────── -->
+    <footer class="tla-footer">
+      <div class="tla-container tla-footer__inner">
+        <div class="tla-footer__brand">
+          <div class="tla-footer__logo">The Lions Alliance</div>
+          <p class="tla-footer__tagline">Creative studio for meaningful projects.</p>
+        </div>
+        <div class="tla-footer__links">
+          <a href="/">Studio</a>
+          <a href="#projects">Projects</a>
+          <a href="#collaborate">Work with us</a>
+        </div>
+      </div>
+      <div class="tla-container tla-footer__bottom">
+        <span>&copy; {year} The Lions Alliance. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <!-- ── Scripts ─────────────────────────────────────── -->
+    <script>
+      const nav = document.getElementById('tla-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+      }
+      const faders = document.querySelectorAll('.tla-fade');
+      if (faders.length && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('tla-visible');
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        faders.forEach((el) => obs.observe(el));
+      } else {
+        faders.forEach((el) => el.classList.add('tla-visible'));
+      }
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', String(open));
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

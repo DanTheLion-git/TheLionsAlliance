@@ -1,0 +1,304 @@
+---
+// ShutterShare landing page — English only, no i18n
+const year = new Date().getFullYear();
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ShutterShare — Event Camera Rental | Corporate &amp; Team Events</title>
+  <meta name="description" content="Rent 10 pocket-sized cameras for your corporate event or team day. Colleagues capture the experience naturally — you receive all photos digitally within 5 days. Netherlands-wide." />
+  <meta name="author" content="ShutterShare" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://thelionsalliance.com/shuttershare/" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="ShutterShare" />
+  <meta property="og:url"         content="https://thelionsalliance.com/shuttershare/" />
+  <meta property="og:title"       content="ShutterShare — Your event through your team's eyes" />
+  <meta property="og:description" content="Rent 10 pocket-sized cameras for your corporate event or team day. Colleagues capture the experience naturally — photos delivered digitally within 5 days." />
+
+  <meta name="theme-color" content="#1a2744" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/shuttershare/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script is:inline src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+  <!-- STUDIO TOP-BAR -->
+  <div class="studio-bar">
+    <div class="studio-bar__inner">
+      <a href="/" class="studio-bar__brand">
+        <span class="studio-bar__brand-dot"></span>
+        The Lions Alliance
+      </a>
+      <ul class="studio-bar__links">
+        <li><a href="/">Studio</a></li>
+        <li><a href="/wedding/">WeddingCamBox</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">ShutterShare</a>
+      <ul class="nav__links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#cameras">The cameras</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact" class="btn btn--sm">Book now</a></li>
+      </ul>
+      <div class="nav__right">
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <ul class="nav__mobile" id="mobileMenu">
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#cameras">The cameras</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Book now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__content">
+      <span class="hero__eyebrow">10 cameras &middot; your team&rsquo;s perspective</span>
+      <h1 class="hero__title">Let your team<br />tell the story</h1>
+      <p class="hero__subtitle">Rent 10 thumb-sized cameras for your corporate event or team day. Pass them around &mdash; and watch the day come to life through your colleagues&rsquo; eyes.</p>
+      <div class="hero__cta">
+        <a href="#contact"      class="btn btn--primary">Check availability</a>
+        <a href="#how-it-works" class="btn btn--ghost">See how it works</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="camera-grid">
+        <div class="camera-card" style="--delay:0s"><img src="/wedding/camera.png" alt="ShutterShare mini camera — pocket-sized event rental camera" /></div>
+        <div class="camera-card" style="--delay:.15s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+        <div class="camera-card" style="--delay:.3s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+        <div class="camera-card" style="--delay:.45s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+        <div class="camera-card" style="--delay:.6s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+        <div class="camera-card" style="--delay:.75s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+        <div class="camera-card" style="--delay:.9s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+        <div class="camera-card" style="--delay:1.05s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+        <div class="camera-card" style="--delay:1.2s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+        <div class="camera-card" style="--delay:1.35s"><img src="/wedding/camera.png" alt="ShutterShare mini camera" /></div>
+      </div>
+      <p class="camera-grid__label">10 cameras included in every rental</p>
+    </div>
+  </header>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <h2 class="section__title">How it works</h2>
+      <p class="section__subtitle">Three simple steps from booking to beautiful photos.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">01</div>
+          <h3>Book your date</h3>
+          <p>Fill in our booking form with your event date and we&rsquo;ll confirm availability within 24 hours.</p>
+        </div>
+        <div class="step__connector"></div>
+        <div class="step">
+          <div class="step__number">02</div>
+          <h3>Receive the box</h3>
+          <p>We ship all 10 cameras to you before your event &mdash; pre-charged, ready to shoot, and easy to hand around.</p>
+        </div>
+        <div class="step__connector"></div>
+        <div class="step">
+          <div class="step__number">03</div>
+          <h3>Send them back</h3>
+          <p>After the event, drop the cameras back in the prepaid return box. We extract and deliver all photos digitally within 5 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMERAS -->
+  <section class="section section--alt" id="cameras">
+    <div class="container">
+      <h2 class="section__title">The cameras</h2>
+      <p class="section__subtitle">Small enough to fit in a pocket. Powerful enough to capture the moment.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="feature__icon"><i data-lucide="film"></i></div>
+          <h3>1080P HD photos &amp; video</h3>
+          <p>Crisp, full HD resolution in every lighting condition &mdash; from conference rooms to outdoor venues.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon"><i data-lucide="box"></i></div>
+          <h3>Thumb-sized &amp; portable</h3>
+          <p>Each camera is literally pocket-sized &mdash; small enough that colleagues barely notice they&rsquo;re holding one, until the right moment happens.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon"><i data-lucide="monitor"></i></div>
+          <h3>Built-in HD screen</h3>
+          <p>A tiny built-in screen lets participants instantly review each shot &mdash; so they know they captured the moment before passing it on.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon"><i data-lucide="battery-charging"></i></div>
+          <h3>Pre-charged &amp; ready</h3>
+          <p>Every camera arrives fully charged before your event &mdash; no fiddling, no dead batteries, no technical knowledge required.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon"><i data-lucide="pointer"></i></div>
+          <h3>One-click shooting</h3>
+          <p>Dead-simple operation &mdash; a single button takes the photo. Anyone can pick one up and start shooting in seconds.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon"><i data-lucide="hard-drive"></i></div>
+          <h3>32 GB storage per camera</h3>
+          <p>Enough for approximately 6,700 photos per camera. That&rsquo;s over 67,000 shots across all 10 cameras combined.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <h2 class="section__title">Choose your package</h2>
+      <p class="section__subtitle">All packages include 10 cameras and your photos delivered within 5 days.</p>
+
+      <div class="pricing-grid">
+
+        <!-- BASIC -->
+        <div class="pricing-card">
+          <div class="pricing-card__tier">Basic</div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__amount">[PRICE]</span>
+            <span class="pricing-card__period">/ event</span>
+          </div>
+          <ul class="pricing-card__list">
+            <li><i data-lucide="check"></i> <span>10 thumb-sized cameras</span></li>
+            <li><i data-lucide="check"></i> <span>Pre-charged &amp; ready to shoot</span></li>
+            <li><i data-lucide="check"></i> <span>Raw photo files delivered</span></li>
+            <li><i data-lucide="check"></i> <span>Private download link</span></li>
+            <li class="list-muted"><i data-lucide="minus"></i> <span>No online gallery</span></li>
+            <li class="list-muted"><i data-lucide="minus"></i> <span>No sorting or curation</span></li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost btn--full">Book Basic</a>
+        </div>
+
+        <!-- STANDARD -->
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-card__badge">Most popular</div>
+          <div class="pricing-card__tier">Standard</div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__amount">[PRICE]</span>
+            <span class="pricing-card__period">/ event</span>
+          </div>
+          <ul class="pricing-card__list">
+            <li><i data-lucide="check"></i> <span>10 thumb-sized cameras</span></li>
+            <li><i data-lucide="check"></i> <span>Pre-charged &amp; ready to shoot</span></li>
+            <li><i data-lucide="check"></i> <span>Online photo gallery</span></li>
+            <li><i data-lucide="check"></i> <span>Photo curation before sharing</span></li>
+            <li><i data-lucide="check"></i> <span>Guest sharing link</span></li>
+            <li><i data-lucide="check"></i> <span>Download in full resolution</span></li>
+          </ul>
+          <a href="#contact" class="btn btn--primary btn--full">Book Standard</a>
+        </div>
+
+        <!-- PREMIUM (coming soon) -->
+        <div class="pricing-card pricing-card--disabled">
+          <div class="pricing-card__badge pricing-card__badge--muted">Coming soon</div>
+          <div class="pricing-card__tier">Premium</div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__amount">[PRICE]</span>
+            <span class="pricing-card__period">/ event</span>
+          </div>
+          <ul class="pricing-card__list">
+            <li><i data-lucide="check"></i> <span>Everything in Standard</span></li>
+            <li><i data-lucide="check"></i> <span>Custom branded camera labels</span></li>
+            <li><i data-lucide="check"></i> <span>Custom branded online portal</span></li>
+            <li><i data-lucide="check"></i> <span>Digital photobook creator</span></li>
+          </ul>
+          <button class="btn btn--primary btn--full" disabled>Coming soon</button>
+        </div>
+
+      </div>
+
+      <p class="pricing__note">
+        Need extra cameras or a longer rental period? <a href="#contact">Get in touch</a> for a custom quote.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT / BOOKING -->
+  <section class="section" id="contact">
+    <div class="container container--narrow">
+      <h2 class="section__title">Check availability</h2>
+      <p class="section__subtitle">Fill in the form and we&rsquo;ll get back to you within 24 hours.</p>
+      <form class="form" id="bookingForm" novalidate>
+        <div class="form__row">
+          <div class="form__group">
+            <label for="name">Your name</label>
+            <input type="text"  id="name"  name="name"  placeholder="e.g. Jan de Vries" required />
+            <span class="form__error" id="nameError"></span>
+          </div>
+          <div class="form__group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="jan@company.com" required />
+            <span class="form__error" id="emailError"></span>
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__group">
+            <label for="date">Event date</label>
+            <input type="date" id="date" name="date" required />
+            <span class="form__error" id="dateError"></span>
+          </div>
+          <div class="form__group">
+            <label for="guests">Approximate attendee count</label>
+            <input type="number" id="guests" name="guests" placeholder="e.g. 50" min="1" />
+          </div>
+        </div>
+        <div class="form__group">
+          <label for="package">Package</label>
+          <select id="package" name="package">
+            <option value="Basic">Basic — [PRICE] / event</option>
+            <option value="Standard" selected>Standard — [PRICE] / event</option>
+            <option value="Premium" disabled>Premium — [PRICE] / event (coming soon)</option>
+          </select>
+        </div>
+        <div class="form__group">
+          <label for="message">Anything else we should know? (optional)</label>
+          <textarea id="message" name="message" rows="4" placeholder="Venue, event type, special requests..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Send booking request</button>
+        <div class="form__success" id="formSuccess">
+          Thanks! We&rsquo;ll be in touch within 24 hours to confirm your event date.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__logo">ShutterShare</p>
+      <p class="footer__tagline">Making team memories accessible for everyone.</p>
+      <div class="footer__studio">
+        <span>A product by</span>
+        <a href="/" class="footer__studio-link">The Lions Alliance</a>
+      </div>
+      <p class="footer__copy">&copy; {year} The Lions Alliance. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script is:inline src="/shuttershare/script.js"></script>
+  <script is:inline>lucide.createIcons();</script>
+</body>
+</html>
