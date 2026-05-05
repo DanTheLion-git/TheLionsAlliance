@@ -23,7 +23,6 @@ const year = new Date().getFullYear();
           <li><a href="#roadmap">Roadmap</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="/wedding/" class="tla-nav__cta">WeddingCamBox</a>
         <button class="tla-nav__hamburger" id="tla-hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -33,7 +32,6 @@ const year = new Date().getFullYear();
         <a href="#pillars">Our Work</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#contact">Contact</a>
-        <a href="/wedding/">WeddingCamBox</a>
       </div>
     </nav>
 
@@ -46,7 +44,7 @@ const year = new Date().getFullYear();
         <h1 class="tla-hero__title tla-fade tla-d1">We craft experiences<br /><em>worth remembering.</em></h1>
         <p class="tla-hero__subtitle tla-fade tla-d2">From intimate wedding moments to interactive puzzle routes &mdash; we design story-driven experiences that stay with people long after they leave.</p>
         <div class="tla-hero__actions tla-fade tla-d3">
-          <a href="/wedding/" class="tla-btn tla-btn--primary">Explore WeddingCamBox</a>
+          <a href="#pillars" class="tla-btn tla-btn--primary">Explore our work</a>
           <a href="#roadmap" class="tla-btn tla-btn--outline">See our roadmap</a>
         </div>
         <div class="tla-hero__media tla-fade tla-d3">Showreel coming soon</div>
@@ -61,7 +59,7 @@ const year = new Date().getFullYear();
             <span class="tla-overline">About the studio</span>
             <h2>Three pillars, one vision</h2>
             <p>The Lions Alliance is a creative experience studio. We believe the most memorable experiences share three qualities: they are personal, interactive, and beautifully crafted. Rather than doing everything, we focus on three connected pillars &mdash; each at a different stage of development.</p>
-            <p style="margin-top:1rem;">The studio is built by <strong>Daniel van Leeuwen</strong> and <strong>Thirza</strong> &mdash; with Thirza leading the Murder Mystery strand of the Moments pillar.</p>
+            <p style="margin-top:1rem;">The studio is built by <strong>Daniel van Leeuwen</strong> and <strong>Thirza Leeuwenhage</strong>.</p>
           </div>
           <div class="tla-studio__phases tla-fade tla-d2">
             <div class="tla-phase-item">
@@ -108,18 +106,10 @@ const year = new Date().getFullYear();
             <h3>Moments</h3>
             <p class="tla-pillar-card__tagline">Intimate &middot; Meaningful &middot; Shareable</p>
             <p class="tla-pillar-card__desc">The experiences that matter most &mdash; the kind that become stories people tell for years. Our first pillar focuses on personal, emotional, and beautifully crafted products.</p>
-            <p class="tla-pillar-card__project"><strong>WeddingCamBox</strong> &mdash; Live</p>
-            <p class="tla-pillar-card__project"><strong>ShutterShare</strong> &mdash; Live</p>
-            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-              <a href="/wedding/" class="tla-btn tla-btn--primary tla-btn--sm">WeddingCamBox</a>
-              <a href="/shuttershare/" class="tla-btn tla-btn--outline tla-btn--sm">ShutterShare</a>
-            </div>
-            <div style="margin-top:1rem; padding:1rem; background:rgba(0,0,0,0.04); border-radius:8px; border-left:3px solid var(--tla-gold,#c9aa71);">
-              <p style="margin:0 0 0.35rem; font-size:0.85rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--tla-gold,#c9aa71);">Coming Soon</p>
-              <strong style="font-size:0.95rem;">Murder Mystery Kits</strong>
-              <p style="margin:0.4rem 0 0; font-size:0.85rem; color:var(--tla-muted,#666); line-height:1.5;">
-                Two formats: <em>Classic Role-Play</em> (character-led, host-guided &mdash; birthdays, team nights, date nights) and <em>Detective &amp; Puzzle</em> (all players are detectives, escape-room feel). Led by Thirza.
-              </p>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:auto;">
+              <a href="https://weddingcambox.nl" class="tla-btn tla-btn--outline tla-btn--sm" target="_blank" rel="noopener">WeddingCamBox</a>
+              <a href="https://shuttershare.nl" class="tla-btn tla-btn--outline tla-btn--sm" target="_blank" rel="noopener">ShutterShare</a>
+              <span class="tla-btn tla-btn--outline tla-btn--sm" style="opacity:0.4;cursor:default;pointer-events:none;" aria-disabled="true">Murder Mystery — Coming Soon</span>
             </div>
           </div>
           <!-- Pillar 2 -->
@@ -131,8 +121,7 @@ const year = new Date().getFullYear();
             <h3>Experiences</h3>
             <p class="tla-pillar-card__tagline">Interactive &middot; Playful &middot; Story-Driven</p>
             <p class="tla-pillar-card__desc">Puzzle routes, interactive installations, and narrative games designed for real places. Built for the curious &mdash; people who want to explore and discover.</p>
-            <p class="tla-pillar-card__project"><strong>Puzzle Quests</strong> &mdash; Prototype</p>
-            <a href="/puzzlequests/" class="tla-btn tla-btn--outline tla-btn--sm">See what&rsquo;s coming</a>
+            <a href="/puzzlequests/" class="tla-btn tla-btn--outline tla-btn--sm" style="margin-top:auto;">Puzzle Quests</a>
           </div>
           <!-- Pillar 3 -->
           <div class="tla-pillar-card tla-fade tla-d3">
@@ -143,8 +132,7 @@ const year = new Date().getFullYear();
             <h3>Immersive Worlds</h3>
             <p class="tla-pillar-card__tagline">Layered &middot; Spatial &middot; Unforgettable</p>
             <p class="tla-pillar-card__desc">Large-scale, location-based storytelling for cities, heritage sites, and historic routes. Experiences that transform a place into a living narrative.</p>
-            <p class="tla-pillar-card__project">Concepts in development</p>
-            <a href="/immersive/" class="tla-btn tla-btn--outline tla-btn--sm">See the vision</a>
+            <a href="/immersive/" class="tla-btn tla-btn--outline tla-btn--sm" style="margin-top:auto;">Immersive Worlds</a>
           </div>
         </div>
       </div>
@@ -169,7 +157,7 @@ const year = new Date().getFullYear();
               <li>Available now</li>
             </ul>
             <div class="tla-featured__actions">
-              <a href="/wedding/" class="tla-btn tla-btn--primary tla-btn--sm">Explore WeddingCamBox</a>
+              <a href="https://weddingcambox.nl" class="tla-btn tla-btn--primary tla-btn--sm" target="_blank" rel="noopener">Explore WeddingCamBox</a>
               <a href="#contact" class="tla-btn tla-btn--outline tla-btn--sm">Get in touch</a>
             </div>
           </div>
@@ -275,7 +263,7 @@ const year = new Date().getFullYear();
         <h2 class="tla-fade tla-d1">Let&rsquo;s build something<br />worth remembering</h2>
         <p class="tla-fade tla-d2">Whether you&rsquo;re planning a wedding, curious about our puzzle routes, or want to explore a partnership &mdash; we&rsquo;d love to hear from you.</p>
         <div class="tla-contact__actions tla-fade tla-d3">
-          <a href="/wedding/" class="tla-btn tla-btn--gold">Explore WeddingCamBox</a>
+          <a href="https://weddingcambox.nl" class="tla-btn tla-btn--gold" target="_blank" rel="noopener">Explore WeddingCamBox</a>
           <a href="mailto:hello@thelionsalliance.com" class="tla-btn tla-btn--ghost">Send us a message</a>
         </div>
         <p class="tla-contact__email tla-fade tla-d3"><a href="mailto:hello@thelionsalliance.com">hello@thelionsalliance.com</a></p>
@@ -295,7 +283,8 @@ const year = new Date().getFullYear();
             <a href="#pillars">Our Work</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#contact">Contact</a>
-            <a href="/wedding/">WeddingCamBox</a>
+            <a href="https://weddingcambox.nl" target="_blank" rel="noopener">WeddingCamBox</a>
+            <a href="https://shuttershare.nl" target="_blank" rel="noopener">ShutterShare</a>
             <a href="/immersive/">Immersive Worlds</a>
           </nav>
         </div>
