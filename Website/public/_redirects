@@ -1,0 +1,4 @@
+/wedding/*       https://weddingcambox.nl/:splat    301
+/wedding         https://weddingcambox.nl            301
+/shuttershare/*  https://shuttershare.nl/:splat      301
+/shuttershare    https://shuttershare.nl             301
