@@ -1,0 +1,233 @@
+---
+import "../../styles/homepage.css";
+import "../../styles/contact.css";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact &mdash; The Lions Alliance</title>
+    <meta name="description" content="Get in touch with The Lions Alliance — for museum partnerships, Puzzle Quest enquiries, wedding photo bookings, studio collaboration, or general questions." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="tla-page">
+
+    <!-- ── Navigation ─────────────────────────────────── -->
+    <nav class="tla-nav" id="tla-nav">
+      <div class="tla-nav__inner tla-container">
+        <a href="/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
+        <ul class="tla-nav__links">
+          <li><a href="/#studio">Studio</a></li>
+          <li><a href="/#pillars">Our Work</a></li>
+          <li><a href="/puzzlequests/">Puzzle Quests</a></li>
+          <li><a href="/immersive/">Immersive Worlds</a></li>
+        </ul>
+        <a href="/" class="tla-nav__cta">&larr; Back to Studio</a>
+        <button class="tla-nav__hamburger" id="tla-hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="tla-nav__mobile" id="tla-mobile-menu">
+        <a href="/#studio">Studio</a>
+        <a href="/#pillars">Our Work</a>
+        <a href="/puzzlequests/">Puzzle Quests</a>
+        <a href="/immersive/">Immersive Worlds</a>
+        <a href="/">&larr; Back to Studio</a>
+      </div>
+    </nav>
+
+    <!-- ── Contact Page ───────────────────────────────── -->
+    <section class="tla-contactpage">
+      <div class="tla-container tla-contactpage__inner">
+        <header class="tla-contactpage__intro tla-fade">
+          <span class="tla-overline">Get in touch</span>
+          <h1>Let&rsquo;s start a conversation</h1>
+          <p>
+            Whether you&rsquo;re a museum looking to host a Puzzle Quest, a couple planning a wedding, a venue exploring an immersive collaboration, or simply curious about the studio &mdash; we&rsquo;d love to hear from you. Fill in the form below and we&rsquo;ll reply within one or two business days.
+          </p>
+          <p class="tla-contactpage__direct">
+            You can also reach us directly at <a href="mailto:hello@thelionsalliance.com">hello@thelionsalliance.com</a>.
+          </p>
+        </header>
+
+        <div class="tla-contactpage__card tla-fade tla-d1">
+          <form class="tla-form" id="contactForm" novalidate>
+            <div class="tla-form__row">
+              <div class="tla-form__group">
+                <label for="cName">Your name</label>
+                <input type="text" id="cName" name="name" autocomplete="name" placeholder="e.g. Anna van der Meer" required />
+                <span class="tla-form__error" id="nameError"></span>
+              </div>
+              <div class="tla-form__group">
+                <label for="cEmail">Email address</label>
+                <input type="email" id="cEmail" name="email" autocomplete="email" placeholder="anna@example.com" required />
+                <span class="tla-form__error" id="emailError"></span>
+              </div>
+            </div>
+
+            <div class="tla-form__group">
+              <label for="cTopic">What&rsquo;s your question about?</label>
+              <select id="cTopic" name="topic">
+                <option value="Puzzle Quests — museum / heritage venue">Puzzle Quests &mdash; museum or heritage venue</option>
+                <option value="WeddingCamBox / ShutterShare booking">WeddingCamBox or ShutterShare booking</option>
+                <option value="Studio collaboration / partnership">Studio collaboration or partnership</option>
+                <option value="Immersive Worlds">Immersive Worlds</option>
+                <option value="Press / media">Press or media</option>
+                <option value="General question">General question</option>
+                <option value="Other">Something else</option>
+              </select>
+            </div>
+
+            <div class="tla-form__group">
+              <label for="cMessage">Your message</label>
+              <textarea id="cMessage" name="message" rows="6" placeholder="Tell us what you have in mind&hellip;" required></textarea>
+              <span class="tla-form__error" id="msgError"></span>
+            </div>
+
+            <button type="submit" class="tla-btn tla-btn--gold tla-btn--full" id="submitBtn">Send message</button>
+          </form>
+
+          <div class="tla-form__success" id="formSuccess">
+            <div class="tla-form__success-icon">&#10070;</div>
+            <h2>Message sent</h2>
+            <p>Thank you for reaching out. We&rsquo;ll get back to you within one or two business days. A confirmation has been sent to your email.</p>
+            <a href="/" class="tla-form__success-link">&larr; Back to the studio</a>
+          </div>
+        </div>
+
+        <aside class="tla-contactpage__aside tla-fade tla-d2">
+          <h3>Other ways to reach us</h3>
+          <ul class="tla-contactpage__channels">
+            <li>
+              <span class="tla-contactpage__channel-label">Studio email</span>
+              <a href="mailto:hello@thelionsalliance.com">hello@thelionsalliance.com</a>
+            </li>
+            <li>
+              <span class="tla-contactpage__channel-label">WeddingCamBox bookings</span>
+              <a href="https://weddingcambox.nl" target="_blank" rel="noopener">weddingcambox.nl</a>
+            </li>
+            <li>
+              <span class="tla-contactpage__channel-label">ShutterShare events</span>
+              <a href="https://shuttershare.nl" target="_blank" rel="noopener">shuttershare.nl</a>
+            </li>
+            <li>
+              <span class="tla-contactpage__channel-label">Puzzle Quests &middot; pilot venue</span>
+              <span class="tla-contactpage__channel-text">Museum Medelo, Tomveld 2, Meijel</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────── -->
+    <footer class="tla-footer">
+      <div class="tla-container">
+        <div class="tla-footer__inner">
+          <div class="tla-footer__brand">
+            <span class="tla-footer__logo">The Lions <span>Alliance</span></span>
+            <span class="tla-footer__tagline">A Creative Experience Studio</span>
+          </div>
+          <nav class="tla-footer__links">
+            <a href="/#studio">Studio</a>
+            <a href="/#pillars">Our Work</a>
+            <a href="/puzzlequests/">Puzzle Quests</a>
+            <a href="/immersive/">Immersive Worlds</a>
+            <a href="/contact/">Contact</a>
+          </nav>
+        </div>
+        <p class="tla-footer__copy">&copy; {year} The Lions Alliance. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const API_URL = 'https://api.weddingcambox.nl';
+
+      // Scroll-aware nav
+      const nav = document.getElementById('tla-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+      }
+
+      // Hamburger
+      const hamburger = document.getElementById('tla-hamburger');
+      const mobileMenu = document.getElementById('tla-mobile-menu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', String(open));
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Form submission
+      const form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const nameEl  = document.getElementById('cName');
+          const emailEl = document.getElementById('cEmail');
+          const topicEl = document.getElementById('cTopic');
+          const msgEl   = document.getElementById('cMessage');
+          const btn     = document.getElementById('submitBtn');
+
+          const name    = nameEl.value.trim();
+          const email   = emailEl.value.trim();
+          const topic   = topicEl.value;
+          const message = msgEl.value.trim();
+
+          // Clear prior errors
+          document.getElementById('nameError').textContent  = '';
+          document.getElementById('emailError').textContent = '';
+          document.getElementById('msgError').textContent   = '';
+
+          let valid = true;
+          if (!name) {
+            document.getElementById('nameError').textContent = 'Please enter your name.';
+            valid = false;
+          }
+          if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+            valid = false;
+          }
+          if (!message) {
+            document.getElementById('msgError').textContent = 'Please write a message.';
+            valid = false;
+          }
+          if (!valid) return;
+
+          btn.disabled    = true;
+          btn.textContent = 'Sending…';
+
+          try {
+            const res = await fetch(`${API_URL}/api/tla/contact`, {
+              method:  'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body:    JSON.stringify({ name, email, topic, message }),
+            });
+            if (!res.ok) throw new Error('Server error');
+            form.classList.add('hidden');
+            document.getElementById('formSuccess').classList.add('visible');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } catch (err) {
+            btn.disabled    = false;
+            btn.textContent = 'Send message';
+            document.getElementById('msgError').textContent =
+              'Something went wrong. Please try again or email us directly at hello@thelionsalliance.com.';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

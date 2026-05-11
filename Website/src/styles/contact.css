@@ -1,0 +1,326 @@
+/* ═══════════════════════════════════════════════════════
+   CONTACT PAGE — extends homepage.css tla- design system
+   All page classes prefixed: tla-contactpage- / tla-form-
+   ═══════════════════════════════════════════════════════ */
+
+.tla-contactpage {
+  padding: 140px 0 100px;
+  background:
+    linear-gradient(180deg, var(--tla-bg) 0%, rgba(176, 141, 87, 0.05) 100%);
+  min-height: 100vh;
+}
+
+.tla-contactpage__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: start;
+  grid-template-areas:
+    "intro intro"
+    "card  aside";
+}
+
+.tla-contactpage__intro {
+  grid-area: intro;
+  max-width: 760px;
+}
+
+.tla-contactpage__intro h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 14px 0 22px;
+}
+
+.tla-contactpage__intro p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--tla-text-body);
+  margin: 0 0 16px;
+  max-width: 640px;
+}
+
+.tla-contactpage__intro p:last-child {
+  margin-bottom: 0;
+}
+
+.tla-contactpage__direct {
+  font-size: 0.95rem !important;
+  color: var(--tla-text-muted) !important;
+}
+
+.tla-contactpage__direct a {
+  color: var(--tla-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.tla-contactpage__direct a:hover {
+  border-bottom-color: var(--tla-gold);
+}
+
+/* ── Form card ──────────────────────────────────────── */
+.tla-contactpage__card {
+  grid-area: card;
+  background: var(--tla-white);
+  border: 1px solid var(--tla-border);
+  border-radius: var(--tla-radius-lg);
+  padding: 48px 44px;
+  box-shadow: var(--tla-shadow-md);
+}
+
+/* ── Aside (other channels) ─────────────────────────── */
+.tla-contactpage__aside {
+  grid-area: aside;
+  background: var(--tla-bg-alt);
+  border: 1px solid var(--tla-border);
+  border-radius: var(--tla-radius-lg);
+  padding: 36px 32px;
+  position: sticky;
+  top: 100px;
+}
+
+.tla-contactpage__aside h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--tla-text);
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--tla-border);
+}
+
+.tla-contactpage__channels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tla-contactpage__channels li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--tla-border);
+}
+
+.tla-contactpage__channels li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.tla-contactpage__channel-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tla-gold-dim);
+}
+
+.tla-contactpage__channels a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--tla-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+  width: max-content;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.tla-contactpage__channels a:hover {
+  color: var(--tla-gold);
+  border-bottom-color: var(--tla-gold);
+}
+
+.tla-contactpage__channel-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--tla-text);
+}
+
+/* ═══════════════════════════════════════════════════════
+   FORM
+   ═══════════════════════════════════════════════════════ */
+.tla-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.tla-form.hidden {
+  display: none;
+}
+
+.tla-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.tla-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tla-form__group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tla-text-body);
+}
+
+.tla-form__group input,
+.tla-form__group textarea,
+.tla-form__group select {
+  width: 100%;
+  padding: 13px 16px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.98rem;
+  color: var(--tla-text);
+  background: var(--tla-bg);
+  border: 1px solid var(--tla-border-mid);
+  border-radius: var(--tla-radius-sm);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none;
+}
+
+.tla-form__group input::placeholder,
+.tla-form__group textarea::placeholder {
+  color: var(--tla-text-muted);
+  opacity: 0.7;
+}
+
+.tla-form__group input:focus,
+.tla-form__group textarea:focus,
+.tla-form__group select:focus {
+  border-color: var(--tla-gold);
+  background: var(--tla-white);
+  box-shadow: 0 0 0 3px var(--tla-gold-subtle);
+}
+
+.tla-form__group textarea {
+  resize: vertical;
+  min-height: 140px;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.tla-form__group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path fill='%238A817B' d='M6 7.5 0.5 2l1-1L6 5.5 10.5 1l1 1z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 11px 7px;
+  padding-right: 42px;
+  cursor: pointer;
+}
+
+.tla-form__error {
+  font-size: 0.82rem;
+  color: #b03a2e;
+  min-height: 0;
+}
+
+.tla-form__error:empty {
+  display: none;
+}
+
+.tla-btn--full {
+  width: 100%;
+}
+
+/* ── Success state ──────────────────────────────────── */
+.tla-form__success {
+  display: none;
+  text-align: center;
+  padding: 36px 20px;
+}
+
+.tla-form__success.visible {
+  display: block;
+}
+
+.tla-form__success-icon {
+  font-size: 2.6rem;
+  color: var(--tla-gold);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.tla-form__success h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--tla-text);
+  margin: 0 0 14px;
+}
+
+.tla-form__success p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--tla-text-body);
+  margin: 0 0 26px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tla-form__success-link {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--tla-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.tla-form__success-link:hover {
+  border-bottom-color: var(--tla-gold);
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .tla-contactpage__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "card"
+      "aside";
+    gap: 36px;
+  }
+
+  .tla-contactpage__aside {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .tla-contactpage {
+    padding: 110px 0 72px;
+  }
+
+  .tla-contactpage__card {
+    padding: 32px 24px;
+  }
+
+  .tla-contactpage__aside {
+    padding: 28px 24px;
+  }
+
+  .tla-form__row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}

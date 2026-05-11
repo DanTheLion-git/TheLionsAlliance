@@ -135,6 +135,27 @@ ul, ol { list-style: none; }
   transform: translateY(-1px);
 }
 
+/* Gold CTA variant — used for the Contact button in the nav */
+.tla-nav__cta--gold {
+  background: var(--tla-gold);
+  color: var(--tla-white);
+}
+.tla-nav__cta--gold:hover {
+  background: var(--tla-gold-light);
+  color: var(--tla-white);
+  transform: translateY(-1px);
+}
+
+/* Container when multiple CTAs sit on the nav right side */
+.tla-nav__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.tla-nav__actions .tla-nav__cta {
+  white-space: nowrap;
+}
+
 /* Hamburger */
 .tla-nav__hamburger {
   display: none;
