@@ -1,15 +1,15 @@
 ---
-import "../../styles/homepage.css";
-import "../../styles/contact.css";
+import "../../../styles/homepage.css";
+import "../../../styles/contact.css";
 const year = new Date().getFullYear();
 ---
 <!doctype html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact &mdash; The Lions Alliance</title>
-    <meta name="description" content="Get in touch with The Lions Alliance — for museum partnerships, Puzzle Quest enquiries, wedding photo bookings, studio collaboration, or general questions." />
+    <meta name="description" content="Neem contact op met The Lions Alliance — voor samenwerkingen met musea, Puzzle Quest-vragen, WeddingCamBox-boekingen, studio-partnerships of algemene vragen." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/contact/" />
     <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/contact/nl/" />
@@ -17,45 +17,45 @@ const year = new Date().getFullYear();
   </head>
   <body class="tla-page">
 
-    <!-- ── Navigation ─────────────────────────────────── -->
+    <!-- ── Navigatie ──────────────────────────────────── -->
     <nav class="tla-nav" id="tla-nav">
       <div class="tla-nav__inner tla-container">
-        <a href="/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
+        <a href="/nl/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
         <ul class="tla-nav__links">
-          <li><a href="/#studio">Studio</a></li>
-          <li><a href="/#pillars">Our Work</a></li>
-          <li><a href="/puzzlequests/">Puzzle Quests</a></li>
-          <li><a href="/immersive/">Immersive Worlds</a></li>
+          <li><a href="/nl/#studio">Studio</a></li>
+          <li><a href="/nl/#pillars">Ons werk</a></li>
+          <li><a href="/puzzlequests/nl/">Puzzle Quests</a></li>
+          <li><a href="/immersive/nl/">Immersive Worlds</a></li>
         </ul>
         <div class="tla-nav__actions">
-          <a href="/contact/nl/" class="tla-nav__lang" hreflang="nl" lang="nl" title="Bekijk in het Nederlands">NL</a>
-          <a href="/" class="tla-nav__cta">&larr; Studio</a>
+          <a href="/contact/" class="tla-nav__lang" hreflang="en" lang="en" title="View in English">EN</a>
+          <a href="/nl/" class="tla-nav__cta">&larr; Studio</a>
         </div>
-        <button class="tla-nav__hamburger" id="tla-hamburger" aria-label="Menu">
+        <button class="tla-nav__hamburger" id="tla-hamburger" aria-label="Menu openen">
           <span></span><span></span><span></span>
         </button>
       </div>
       <div class="tla-nav__mobile" id="tla-mobile-menu">
-        <a href="/#studio">Studio</a>
-        <a href="/#pillars">Our Work</a>
-        <a href="/puzzlequests/">Puzzle Quests</a>
-        <a href="/immersive/">Immersive Worlds</a>
-        <a href="/contact/nl/" hreflang="nl" lang="nl">Bekijk in het Nederlands</a>
-        <a href="/">&larr; Back to Studio</a>
+        <a href="/nl/#studio">Studio</a>
+        <a href="/nl/#pillars">Ons werk</a>
+        <a href="/puzzlequests/nl/">Puzzle Quests</a>
+        <a href="/immersive/nl/">Immersive Worlds</a>
+        <a href="/contact/" hreflang="en" lang="en">View in English</a>
+        <a href="/nl/">&larr; Terug naar de studio</a>
       </div>
     </nav>
 
-    <!-- ── Contact Page ───────────────────────────────── -->
+    <!-- ── Contactpagina ──────────────────────────────── -->
     <section class="tla-contactpage">
       <div class="tla-container tla-contactpage__inner">
         <header class="tla-contactpage__intro tla-fade">
-          <span class="tla-overline">Get in touch</span>
-          <h1>Let&rsquo;s start a conversation</h1>
+          <span class="tla-overline">Neem contact op</span>
+          <h1>Laten we een gesprek beginnen</h1>
           <p>
-            Whether you&rsquo;re a museum looking to host a Puzzle Quest, a couple planning a wedding, a venue exploring an immersive collaboration, or simply curious about the studio &mdash; we&rsquo;d love to hear from you. Fill in the form below and we&rsquo;ll reply within one or two business days.
+            Of u nu een museum vertegenwoordigt en een Puzzle Quest wilt verkennen, een trouwdag plant, een locatie heeft die zich leent voor een immersieve samenwerking, of gewoon nieuwsgierig bent naar de studio &mdash; wij horen graag van u. Vul het formulier hieronder in, en wij reageren binnen een tot twee werkdagen.
           </p>
           <p class="tla-contactpage__direct">
-            You can also reach us directly at <a href="mailto:hello@thelionsalliance.com">hello@thelionsalliance.com</a>.
+            U kunt ons ook rechtstreeks bereiken op <a href="mailto:hello@thelionsalliance.com">hello@thelionsalliance.com</a>.
           </p>
         </header>
 
@@ -63,64 +63,64 @@ const year = new Date().getFullYear();
           <form class="tla-form" id="contactForm" novalidate>
             <div class="tla-form__row">
               <div class="tla-form__group">
-                <label for="cName">Your name</label>
-                <input type="text" id="cName" name="name" autocomplete="name" placeholder="e.g. Anna van der Meer" required />
+                <label for="cName">Uw naam</label>
+                <input type="text" id="cName" name="name" autocomplete="name" placeholder="bijv. Anna van der Meer" required />
                 <span class="tla-form__error" id="nameError"></span>
               </div>
               <div class="tla-form__group">
-                <label for="cEmail">Email address</label>
-                <input type="email" id="cEmail" name="email" autocomplete="email" placeholder="anna@example.com" required />
+                <label for="cEmail">E-mailadres</label>
+                <input type="email" id="cEmail" name="email" autocomplete="email" placeholder="anna@voorbeeld.nl" required />
                 <span class="tla-form__error" id="emailError"></span>
               </div>
             </div>
 
             <div class="tla-form__group">
-              <label for="cTopic">What&rsquo;s your question about?</label>
+              <label for="cTopic">Waar gaat uw vraag over?</label>
               <select id="cTopic" name="topic">
-                <option value="Puzzle Quests — museum / heritage venue">Puzzle Quests &mdash; museum or heritage venue</option>
-                <option value="WeddingCamBox / ShutterShare booking">WeddingCamBox or ShutterShare booking</option>
-                <option value="Studio collaboration / partnership">Studio collaboration or partnership</option>
+                <option value="Puzzle Quests — museum / heritage venue">Puzzle Quests &mdash; museum of erfgoedlocatie</option>
+                <option value="WeddingCamBox / ShutterShare booking">WeddingCamBox- of ShutterShare-boeking</option>
+                <option value="Studio collaboration / partnership">Studio-samenwerking of partnership</option>
                 <option value="Immersive Worlds">Immersive Worlds</option>
-                <option value="Press / media">Press or media</option>
-                <option value="General question">General question</option>
-                <option value="Other">Something else</option>
+                <option value="Press / media">Pers of media</option>
+                <option value="General question">Algemene vraag</option>
+                <option value="Other">Iets anders</option>
               </select>
             </div>
 
             <div class="tla-form__group">
-              <label for="cMessage">Your message</label>
-              <textarea id="cMessage" name="message" rows="6" placeholder="Tell us what you have in mind&hellip;" required></textarea>
+              <label for="cMessage">Uw bericht</label>
+              <textarea id="cMessage" name="message" rows="6" placeholder="Vertel ons wat u in gedachten heeft&hellip;" required></textarea>
               <span class="tla-form__error" id="msgError"></span>
             </div>
 
-            <button type="submit" class="tla-btn tla-btn--gold tla-btn--full" id="submitBtn">Send message</button>
+            <button type="submit" class="tla-btn tla-btn--gold tla-btn--full" id="submitBtn">Verstuur bericht</button>
           </form>
 
           <div class="tla-form__success" id="formSuccess">
             <div class="tla-form__success-icon">&#10070;</div>
-            <h2>Message sent</h2>
-            <p>Thank you for reaching out. We&rsquo;ll get back to you within one or two business days. A confirmation has been sent to your email.</p>
-            <a href="/" class="tla-form__success-link">&larr; Back to the studio</a>
+            <h2>Bericht verstuurd</h2>
+            <p>Dank voor uw bericht. Wij reageren binnen een tot twee werkdagen. Een bevestiging is verzonden naar uw e-mailadres.</p>
+            <a href="/nl/" class="tla-form__success-link">&larr; Terug naar de studio</a>
           </div>
         </div>
 
         <aside class="tla-contactpage__aside tla-fade tla-d2">
-          <h3>Other ways to reach us</h3>
+          <h3>Andere manieren om ons te bereiken</h3>
           <ul class="tla-contactpage__channels">
             <li>
-              <span class="tla-contactpage__channel-label">Studio email</span>
+              <span class="tla-contactpage__channel-label">Studio-e-mail</span>
               <a href="mailto:hello@thelionsalliance.com">hello@thelionsalliance.com</a>
             </li>
             <li>
-              <span class="tla-contactpage__channel-label">WeddingCamBox bookings</span>
+              <span class="tla-contactpage__channel-label">WeddingCamBox boekingen</span>
               <a href="https://weddingcambox.nl" target="_blank" rel="noopener">weddingcambox.nl</a>
             </li>
             <li>
-              <span class="tla-contactpage__channel-label">ShutterShare events</span>
+              <span class="tla-contactpage__channel-label">ShutterShare evenementen</span>
               <a href="https://shuttershare.nl" target="_blank" rel="noopener">shuttershare.nl</a>
             </li>
             <li>
-              <span class="tla-contactpage__channel-label">Puzzle Quests &middot; pilot venue</span>
+              <span class="tla-contactpage__channel-label">Puzzle Quests &middot; pilotlocatie</span>
               <span class="tla-contactpage__channel-text">Museum Medelo, Tomveld 2, Meijel</span>
             </li>
           </ul>
@@ -134,24 +134,24 @@ const year = new Date().getFullYear();
         <div class="tla-footer__inner">
           <div class="tla-footer__brand">
             <span class="tla-footer__logo">The Lions <span>Alliance</span></span>
-            <span class="tla-footer__tagline">A Creative Experience Studio</span>
+            <span class="tla-footer__tagline">Een creatieve ervaringsstudio</span>
           </div>
           <nav class="tla-footer__links">
-            <a href="/#studio">Studio</a>
-            <a href="/#pillars">Our Work</a>
-            <a href="/puzzlequests/">Puzzle Quests</a>
-            <a href="/immersive/">Immersive Worlds</a>
-            <a href="/contact/">Contact</a>
+            <a href="/nl/#studio">Studio</a>
+            <a href="/nl/#pillars">Ons werk</a>
+            <a href="/puzzlequests/nl/">Puzzle Quests</a>
+            <a href="/immersive/nl/">Immersive Worlds</a>
+            <a href="/contact/nl/">Contact</a>
+            <a href="/contact/" hreflang="en" lang="en">English version</a>
           </nav>
         </div>
-        <p class="tla-footer__copy">&copy; {year} The Lions Alliance. All rights reserved.</p>
+        <p class="tla-footer__copy">&copy; {year} The Lions Alliance. Alle rechten voorbehouden.</p>
       </div>
     </footer>
 
     <script>
       const API_URL = 'https://api.weddingcambox.nl';
 
-      // Scroll-aware nav
       const nav = document.getElementById('tla-nav');
       if (nav) {
         window.addEventListener('scroll', () => {
@@ -159,7 +159,6 @@ const year = new Date().getFullYear();
         }, { passive: true });
       }
 
-      // Hamburger
       const hamburger = document.getElementById('tla-hamburger');
       const mobileMenu = document.getElementById('tla-mobile-menu');
       if (hamburger && mobileMenu) {
@@ -177,7 +176,6 @@ const year = new Date().getFullYear();
         });
       }
 
-      // Form submission
       const form = document.getElementById('contactForm');
       if (form) {
         form.addEventListener('submit', async (e) => {
@@ -194,28 +192,27 @@ const year = new Date().getFullYear();
           const topic   = topicEl.value;
           const message = msgEl.value.trim();
 
-          // Clear prior errors
           document.getElementById('nameError').textContent  = '';
           document.getElementById('emailError').textContent = '';
           document.getElementById('msgError').textContent   = '';
 
           let valid = true;
           if (!name) {
-            document.getElementById('nameError').textContent = 'Please enter your name.';
+            document.getElementById('nameError').textContent = 'Vul uw naam in.';
             valid = false;
           }
           if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+            document.getElementById('emailError').textContent = 'Vul een geldig e-mailadres in.';
             valid = false;
           }
           if (!message) {
-            document.getElementById('msgError').textContent = 'Please write a message.';
+            document.getElementById('msgError').textContent = 'Schrijf een bericht.';
             valid = false;
           }
           if (!valid) return;
 
           btn.disabled    = true;
-          btn.textContent = 'Sending…';
+          btn.textContent = 'Versturen…';
 
           try {
             const res = await fetch(`${API_URL}/api/tla/contact`, {
@@ -229,9 +226,9 @@ const year = new Date().getFullYear();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           } catch (err) {
             btn.disabled    = false;
-            btn.textContent = 'Send message';
+            btn.textContent = 'Verstuur bericht';
             document.getElementById('msgError').textContent =
-              'Something went wrong. Please try again or email us directly at hello@thelionsalliance.com.';
+              'Er ging iets mis. Probeer het opnieuw of mail ons rechtstreeks op hello@thelionsalliance.com.';
           }
         });
       }
