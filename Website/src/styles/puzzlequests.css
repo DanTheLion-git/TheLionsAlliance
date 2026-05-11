@@ -237,6 +237,7 @@
 /* Overview visual */
 .pl-overview__visual {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
