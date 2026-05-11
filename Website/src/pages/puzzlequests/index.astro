@@ -9,10 +9,10 @@ const year = new Date().getFullYear();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Puzzle Quests &mdash; The Lions Alliance</title>
-    <meta name="description" content="Puzzle Quests is a family of interactive physical prop experiences by The Lions Alliance — built around story, exploration, and hands-on discovery." />
+    <meta name="description" content="Puzzle Quests is a family of three hand-built heritage walking experiences by The Lions Alliance — designed in partnership with regional museums and brought to life with bespoke physical props." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="tla-page">
+  <body class="tla-page pl-body">
 
     <!-- ── Navigation ─────────────────────────────────── -->
     <nav class="tla-nav" id="tla-nav">
@@ -20,8 +20,9 @@ const year = new Date().getFullYear();
         <a href="/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
         <ul class="tla-nav__links">
           <li><a href="#overview">Overview</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#props">The Props</a></li>
+          <li><a href="#pilot">Meijel Pilot</a></li>
+          <li><a href="#quests">The Quests</a></li>
+          <li><a href="#adapt">For Your Venue</a></li>
           <li><a href="#collaborate">Collaborate</a></li>
         </ul>
         <a href="/" class="tla-nav__cta">&larr; Back to Studio</a>
@@ -31,8 +32,9 @@ const year = new Date().getFullYear();
       </div>
       <div class="tla-nav__mobile" id="mobile-menu">
         <a href="#overview">Overview</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#props">The Props</a>
+        <a href="#pilot">Meijel Pilot</a>
+        <a href="#quests">The Quests</a>
+        <a href="#adapt">For Your Venue</a>
         <a href="#collaborate">Collaborate</a>
         <a href="/">&larr; Back to Studio</a>
       </div>
@@ -49,22 +51,22 @@ const year = new Date().getFullYear();
           </div>
           <div class="pl-hero__badges">
             <span class="tla-badge tla-badge--dev">In Development</span>
-            <span class="tla-badge tla-badge--future">Festivals 2027</span>
+            <span class="tla-badge tla-badge--live">Heritage Pilot 2026</span>
           </div>
           <h1 class="pl-hero__title">Puzzle <em>Quests</em></h1>
           <p class="pl-hero__subtitle">
-            A family of interactive physical prop experiences built around story, exploration, and hands-on discovery. Each prop is a self-contained adventure &mdash; perfect for events, parties, and birthdays. Part of The Lions Alliance&rsquo;s Experiences pillar.
+            Three hand-built walking experiences for museums and heritage venues. Each one weaves a local legend into a route through the landscape &mdash; carried in the visitor&rsquo;s hands by a bespoke physical prop. No app, no screen, no host required. The kit ships ready to play and resets in under five minutes between groups.
           </p>
           <div class="pl-hero__ctas">
-            <a href="#collaborate" class="tla-btn tla-btn--sage">Follow the project</a>
-            <a href="/" class="tla-btn tla-btn--outline">&larr; The Lions Alliance</a>
+            <a href="#collaborate" class="tla-btn tla-btn--gold">Bring this to your venue</a>
+            <a href="#quests" class="tla-btn tla-btn--outline">See the three quests &darr;</a>
           </div>
         </div>
         <div class="pl-hero__visual tla-fade tla-d1">
-          <div class="pl-hero__placeholder">
-            <span class="pl-hero__placeholder-icon">&#9670;</span>
-          </div>
-          <span class="pl-hero__placeholder-caption">Concept visual &mdash; in development</span>
+          <figure class="pl-sketch pl-sketch--hero">
+            <img src="/images/puzzle-quests/SkeletonKey.png" alt="Sketchbook design page of the Skeleton Key prop — an ornate brass key with hidden runes that glow along the shaft." loading="eager" />
+          </figure>
+          <span class="pl-sketch__caption">Studio sketchbook &mdash; design page V, Skeleton Key prototype</span>
         </div>
       </div>
     </section>
@@ -74,27 +76,63 @@ const year = new Date().getFullYear();
       <div class="tla-container pl-overview__inner">
         <div class="pl-overview__text tla-fade">
           <span class="tla-overline">The concept</span>
-          <h2 class="tla-section-header">Story-driven exploration through physical interaction</h2>
+          <h2 class="tla-section-header pl-section-header--left">A heritage story, walked through the landscape that holds it</h2>
           <p>
-            Puzzle Quests is a family of interactive physical props, each one a self-contained experience. Participants explore, decode, and discover &mdash; guided not by a screen or a host, but by the objects in their hands and the story woven into the world around them.
+            Puzzle Quests is a family of three hand-built walking experiences. Each starts and ends at the partner museum&rsquo;s reception desk and follows a route through the surrounding village, peatland, or heritage site. As the visitor walks, the prop in their hands responds to the world around them &mdash; lighting up, vibrating, writing itself, illuminating hidden details.
           </p>
           <p>
-            Each prop is designed for a different level of complexity and audience. From a quick seek-and-find adventure to a deep cipher-and-story challenge, Puzzle Quests scales to the occasion. They work as a special addition to events, birthday parties, and any gathering where you want to give people something genuinely memorable to do.
+            Each quest is built around a specific local legend or archival story. The story is the spine of the experience; the prop is the way the visitor enters it. We design everything from the ground up: the narrative, the prop, the route, the booklet, the puzzle, the on-site stations, the staff briefing at the museum desk.
           </p>
           <p>
-            The first real-audience tests are planned for <strong>Castlefest and Elfia 2027</strong>. We&rsquo;re currently in electronics prototyping and route design.
+            The first three instances are being designed and built for <strong>Museum Medelo in Meijel</strong>, in partnership with Heemkundevereniging Medelo. The hardware, the puzzle frameworks, and the operational model are designed for replication &mdash; once the Meijel pilot proves the format, the same props adapt to other regional museums and heritage venues with a story-research effort measured in tens of hours, not years.
           </p>
           <div class="pl-tags">
-            <span class="pl-tag">Physical props</span>
-            <span class="pl-tag">Story-driven</span>
-            <span class="pl-tag">Events &amp; parties</span>
-            <span class="pl-tag">Birthdays</span>
-            <span class="pl-tag">Festivals</span>
-            <span class="pl-tag">Group play</span>
+            <span class="pl-tag">Museums &amp; heritage</span>
+            <span class="pl-tag">Local-legend storytelling</span>
+            <span class="pl-tag">Walking routes</span>
+            <span class="pl-tag">School programmes</span>
+            <span class="pl-tag">Revenue-share model</span>
+            <span class="pl-tag">No app, no host</span>
           </div>
         </div>
         <div class="pl-overview__visual tla-fade tla-d1">
-          <div class="pl-overview__img">&#9670;</div>
+          <figure class="pl-sketch">
+            <img src="/images/puzzle-quests/LivingChronicle.png" alt="Sketchbook design page of the Living Chronicle prop — a leather-bound book with e-ink pages that fill in as the walker progresses." loading="lazy" />
+          </figure>
+          <span class="pl-sketch__caption">Studio sketchbook &mdash; design page III, Living Chronicle prototype</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── Meijel Pilot ───────────────────────────────── -->
+    <section class="pl-pilot" id="pilot">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">First pilot</span>
+          <h2 class="tla-section-header">Museum Medelo, Meijel</h2>
+        </div>
+        <div class="pl-pilot__grid">
+          <div class="pl-pilot__text tla-fade">
+            <p>
+              The first three Puzzle Quests are being designed and built in partnership with <strong>Heemkundevereniging Medelo</strong> &mdash; the local-history society that runs Museum Medelo at Tomveld 2 in Meijel. Each quest is rooted in a real archival story from the Medelo collection: a flight from Prussian recruiters in the 1730s, the life of a Belgian vagrant who walked the Peel for forty years, and a Roman legionary&rsquo;s remains found in the peat near the Meijel&ndash;Sevenum road.
+            </p>
+            <p>
+              The Medelo partnership gives us three things at once: archival depth that makes each story credible, a starting venue where visitors pick up the kit and return to a stamp at the end, and an operating track record that supports approaching other regional museums (Limburgs Museum, Streekmuseum De Locht, and the fortified-town partners across Brabant and Limburg).
+            </p>
+            <p>
+              Our goal for 2026 is to take the first quest from prop prototype to live museum operation. The other two follow on the validated kit and operational pattern.
+            </p>
+          </div>
+          <ul class="pl-pilot__facts tla-fade tla-d1">
+            <li><span class="pl-pilot__label">Venue</span><span class="pl-pilot__value">Museum Medelo, Tomveld 2, Meijel</span></li>
+            <li><span class="pl-pilot__label">Heritage partner</span><span class="pl-pilot__value">Heemkundevereniging Medelo</span></li>
+            <li><span class="pl-pilot__label">First quest live</span><span class="pl-pilot__value">Target late 2026</span></li>
+            <li><span class="pl-pilot__label">Format</span><span class="pl-pilot__value">Walking route, 45&ndash;95 min, return to museum desk</span></li>
+            <li><span class="pl-pilot__label">Audiences</span><span class="pl-pilot__value">Family visits &middot; school groups (90&ndash;120 min) &middot; couples</span></li>
+            <li><span class="pl-pilot__label">Operating model</span><span class="pl-pilot__value">Revenue-share with the host museum</span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -106,61 +144,197 @@ const year = new Date().getFullYear();
       <div class="tla-container">
         <div class="tla-fade" style="text-align:center;">
           <span class="tla-overline">How it works</span>
-          <h2 class="tla-section-header">Each prop is its own complete adventure &mdash; pick it up and play.</h2>
+          <h2 class="tla-section-header">The visitor journey, in three beats</h2>
         </div>
         <div class="pl-steps">
           <div class="pl-step tla-fade">
             <div class="pl-step__number">I</div>
-            <div class="pl-step__title">Receive the prop</div>
-            <div class="pl-step__desc">Each Puzzle Quest prop arrives ready to play &mdash; no app, no screen, no setup required.</div>
+            <div class="pl-step__title">Collect the kit</div>
+            <div class="pl-step__desc">At the museum desk: a prop, a booklet, a route notesheet, and a short briefing in the story. No app, no screen, no setup.</div>
           </div>
           <div class="pl-step tla-fade tla-d1">
             <div class="pl-step__number">II</div>
-            <div class="pl-step__title">Follow the story</div>
-            <div class="pl-step__desc">Clues, ciphers, and hidden interactions unfold the narrative. Every prop has its own flavour of discovery.</div>
+            <div class="pl-step__title">Walk the route</div>
+            <div class="pl-step__desc">The route runs through the village and surrounding landscape. The prop responds at every station &mdash; through lock, page, or lantern &mdash; revealing one more piece of the story.</div>
           </div>
           <div class="pl-step tla-fade tla-d2">
             <div class="pl-step__number">III</div>
-            <div class="pl-step__title">Reach the reveal</div>
-            <div class="pl-step__desc">Every quest builds to a satisfying conclusion &mdash; a moment worth sharing and remembering.</div>
+            <div class="pl-step__title">Return to the desk</div>
+            <div class="pl-step__desc">Visitors return with a completed booklet and the prop lit up with their progress. Staff verify, stamp the notesheet, and use the conversation to share an extra archival detail. The kit resets in under five minutes for the next group.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── The Props ──────────────────────────────────── -->
-    <section class="pl-applications" id="props">
+    <!-- ── The Three Quests ───────────────────────────── -->
+    <section class="pl-quests" id="quests">
       <div class="tla-container">
         <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">The props</span>
-          <h2 class="tla-section-header">Three props. Three kinds of adventure.</h2>
-        </div>
-        <div class="pl-concept-grid">
-          <div class="pl-concept-card tla-fade">
-            <span class="pl-concept-card__icon">&#128273;</span>
-            <div class="pl-concept-card__title">Skeleton Key</div>
-            <div class="pl-concept-card__desc">A seek-and-find adventure driven by NFC. Tap locations, unlock story fragments, and piece together the mystery. Perfect for outdoor routes and venue exploration.</div>
-          </div>
-          <div class="pl-concept-card tla-fade tla-d1">
-            <span class="pl-concept-card__icon">&#128214;</span>
-            <div class="pl-concept-card__title">Living Chronicle</div>
-            <div class="pl-concept-card__desc">A cipher and story-decode experience built around an E-ink display. The prop reveals the narrative piece by piece as players solve encoded clues woven into the story.</div>
-          </div>
-          <div class="pl-concept-card tla-fade tla-d2">
-            <span class="pl-concept-card__icon">&#127982;</span>
-            <div class="pl-concept-card__title">Puzzle Lantern</div>
-            <div class="pl-concept-card__desc">The full sensory experience &mdash; light, UV, and sensor-based interactions guide players through a layered route. Atmospheric, immersive, and built to surprise at every turn.</div>
-          </div>
+          <span class="tla-overline">The quests</span>
+          <h2 class="tla-section-header">Three quests. Three props. Three local legends.</h2>
         </div>
 
-        <!-- Magic Crystal upsell -->
-        <div class="tla-fade" style="margin-top:2.5rem; padding:1.5rem 2rem; background:var(--tla-surface,#f8f6f0); border-radius:12px; border-left:4px solid var(--tla-gold,#c9aa71); max-width:680px; margin-left:auto; margin-right:auto;">
-          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
-            <span style="font-size:1.5rem;">&#10024;</span>
-            <strong style="font-size:1.05rem;">Magic Crystal &mdash; Souvenir Collectible</strong>
-            <span class="tla-badge tla-badge--future" style="margin-left:auto;">Coming Soon</span>
+        <!-- ── Skeleton Key ──────────────────────────── -->
+        <article class="pl-quest pl-quest--key tla-fade" id="quest-key">
+          <div class="pl-quest__visual">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/SkeletonKey.png" alt="Sketchbook design page of the Skeleton Key prop — ornate brass lion's-head bow, translucent shaft with eight hidden Peelschrift runes, heraldic bit." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">The Skeleton Key &mdash; design page V</span>
           </div>
-          <p style="margin:0; color:var(--tla-muted,#666); font-size:0.95rem;">A physical keepsake that guests take home from any Puzzle Quest experience. Part souvenir, part collectible &mdash; the Magic Crystal is an optional upsell that turns a great event into something participants carry with them long after.</p>
+          <div class="pl-quest__body">
+            <div class="pl-quest__eyebrow">Quest I &middot; Skeleton Key</div>
+            <h3 class="pl-quest__title">De Vlucht door de Peel</h3>
+            <p class="pl-quest__story">
+              Between 1713 and 1740, Prussian King Frederick Wilhelm I sent recruiters across the border to collect exceptionally tall young men for his elite Riesengarde. The men who fled used a secret network of safe-houses through the Peel. Those who made it to Meijel were free &mdash; they settled, married, and had tall children. This is documented as the reason Meijel has historically more tall men than its neighbouring villages.
+            </p>
+            <p>
+              The Skeleton Key is the warden&rsquo;s master pass. Eight genuine lock-stations &mdash; hidden in tree trunks, mossy stones, and trail-posts along the route &mdash; each carry one letter of the keyword <strong>VRIJHEID</strong> (Freedom). The key senses each next station via radio proximity, pulsing harder as the walker closes in. At each lock the key is physically turned, an NFC-scan triggers, and one of the runes along the shaft glows softly through the aged brass. By the final lock all eight runes are lit. The walker speaks the keyword aloud at the museum desk &mdash; that is their proof of passage.
+            </p>
+            <ul class="pl-quest__chips">
+              <li><span>Difficulty</span><strong>&#9733;&#9733;&#9733;&#9734;</strong></li>
+              <li><span>Duration</span><strong>75&ndash;95 min</strong></li>
+              <li><span>Distance</span><strong>~5 km</strong></li>
+              <li><span>Group</span><strong>2&ndash;6</strong></li>
+              <li><span>Age</span><strong>10+</strong></li>
+              <li><span>Mechanic</span><strong>Chain of locks &middot; radio proximity &middot; 8-letter word</strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="pl-quest pl-quest--key-stations tla-fade tla-d1">
+          <div class="pl-quest__visual pl-quest__visual--wide">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/SkeletonKey_Stations.png" alt="Three lock-station archetypes for the Skeleton Key quest — tree trunk, mossy stone, and Dutch trail-post — each hiding a keyhole with reactive vein-lighting." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">Lock-station archetypes &mdash; tree-trunk, stone, trail-post; invisible to passers-by, alive to the key</span>
+          </div>
+          <div class="pl-quest__body pl-quest__body--narrow">
+            <p>
+              Stations are designed to disappear into the landscape. A casual passer-by walks past them without noticing &mdash; only the visitor carrying the key sees the hidden veins of light begin to pulse as they close in. Three archetypes distribute across the route: cast bark on a real tree, a Jesmonite-cast glacial-erratic stone, and a Dutch recreational trail-post. One additional station &mdash; the recruiter&rsquo;s decoy &mdash; lures rushed players who ignore the colour chain.
+            </p>
+          </div>
+        </article>
+
+        <!-- ── Living Chronicle ──────────────────────── -->
+        <article class="pl-quest pl-quest--chronicle pl-quest--reverse tla-fade" id="quest-chronicle">
+          <div class="pl-quest__visual">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/LivingChronicle.png" alt="Sketchbook design page of the Living Chronicle prop — a forest-green leather grimoire with embossed tree-and-bog cover and seven flexible e-paper pages that fill in as the walker progresses." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">The Living Chronicle &mdash; design page III</span>
+          </div>
+          <div class="pl-quest__body">
+            <div class="pl-quest__eyebrow">Quest II &middot; Living Chronicle</div>
+            <h3 class="pl-quest__title">Het Pad van Dikke Mie</h3>
+            <p class="pl-quest__story">
+              Anna Marie Mommaerts &mdash; known as <em>Dikke Mie</em> &mdash; was born in Lummen in 1711. She lived as a vagrant through the Peel region for forty years, repeatedly arrested, whipped, and exiled for begging. Despite official prohibition, farmers in Meijel quietly gave her food and shelter in their barns. She passed through Meijel many times. In June 1755, she was found dead in a barn on the Donk. The church register noted only: <em>&lsquo;een zwerfster&rsquo;</em> &mdash; a vagrant woman. This is not a supernatural legend. It is a human life the world chose to forget.
+            </p>
+            <p>
+              The Chronicle is a leather-bound tome with a tree-and-bog motif embossed on the cover and the title in Peelschrift glyphs &mdash; an invented alphabet used across all three quests. Inside are seven flexible e-paper pages, all blank at the start except for one inscription: <em>&ldquo;Loop de cirkels. Ik zal schrijven wat ik mij herinner.&rdquo;</em> At each Magic Circle along the route, the walker places the closed book on the engraved disk. The book trembles, the spine glows faintly, and a new page writes itself. By the end of the walk the visitor holds a complete hand-walked chronicle of a forgotten life.
+            </p>
+            <ul class="pl-quest__chips">
+              <li><span>Difficulty</span><strong>&#9733;&#9733;&#9734;&#9734;</strong></li>
+              <li><span>Duration</span><strong>45&ndash;60 min</strong></li>
+              <li><span>Distance</span><strong>~2 km</strong></li>
+              <li><span>Group</span><strong>1&ndash;4</strong></li>
+              <li><span>Age</span><strong>14+</strong></li>
+              <li><span>Mechanic</span><strong>Memorial walk &middot; seven self-writing pages &middot; comprehension at the desk</strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ── Puzzle Lantern ────────────────────────── -->
+        <article class="pl-quest pl-quest--lantern tla-fade" id="quest-lantern">
+          <div class="pl-quest__visual">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/Lantern.png" alt="Sketchbook design page of the Puzzle Lantern prop — a four-sided verdigris green-bronze Victorian-style lantern with ornate roof, dormer UV window, brass handle and four legs." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">The Puzzle Lantern &mdash; design page VI</span>
+          </div>
+          <div class="pl-quest__body">
+            <div class="pl-quest__eyebrow">Quest III &middot; Puzzle Lantern</div>
+            <h3 class="pl-quest__title">De Schat van het Dolle Moer</h3>
+            <p class="pl-quest__story">
+              A thieving knight rode from the Maaskant across the Peel to raid the peat-farmers&rsquo; village. The farmers drove him off. In his panicked night flight across the Dolle Moer, he and his squire sank into the bog with their stolen gold and the knight&rsquo;s golden sword. His spirit now haunts the road between Meijel and Sevenum &mdash; in mist and rain, his cries lure travellers off the path. The legend is rooted in real archaeology: 4th-century Roman finds &mdash; a silver helmet and Constantine-era coins &mdash; were documented from the peat near the Meijel&ndash;Sevenum road in the 1970s.
+            </p>
+            <p>
+              The Puzzle Lantern is a four-sided verdigris green-bronze Victorian-style lantern with leaded glass-in-lead panels, a dormer UV window in the ornate roof, and a brass carrying handle. The visitor sets the lantern down on top of each station post; the lantern reads the post by NFC and lights its LED ring with a coordinate (count &times; direction) the walker decodes against the journal in their other hand.
+            </p>
+            <ul class="pl-quest__chips">
+              <li><span>Difficulty</span><strong>&#9733;&#9733;&#9733;&#9733;</strong></li>
+              <li><span>Duration</span><strong>60&ndash;90 min</strong></li>
+              <li><span>Distance</span><strong>~3&ndash;4 km</strong></li>
+              <li><span>Group</span><strong>2&ndash;8</strong></li>
+              <li><span>Age</span><strong>10+</strong></li>
+              <li><span>Mechanic</span><strong>Lantern + journal &middot; UV reveal &middot; fold + overlay puzzles</strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="pl-quest pl-quest--lantern-journal pl-quest--reverse tla-fade tla-d1">
+          <div class="pl-quest__visual">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/Lantern_Journal.png" alt="Studio sketchbook page showing the Codex / Journal of Johannes van Leliëndaal — thirteen pages with varied puzzle interactions including UV reveal, fold-to-align, vellum overlay, die-cut window, and dry-erase verification." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">The Journal &mdash; <em>Het Journaal van Johannes van Leli&euml;ndaal</em>, thirteen pages with varied puzzle interactions</span>
+          </div>
+          <div class="pl-quest__body">
+            <h4 class="pl-quest__subtitle">The Journal carries the puzzle</h4>
+            <p>
+              The lantern is the scanning instrument. The puzzle itself lives in a thirteen-page leather-bound journal in the style of an EXIT-game booklet from Kosmos / 999 Games &mdash; rebranded in-world as the field journal of a fictional 1742 surveyor who mapped the Dolle Moer and vanished before completing his work. Pages reveal hidden symbols under the lantern&rsquo;s dormer UV beam, fold along marked lines to align Peelschrift glyphs, layer with translucent vellum to reveal hidden paths, and verify the final answer via a lift-flap.
+            </p>
+          </div>
+        </article>
+
+        <article class="pl-quest pl-quest--lantern-stations tla-fade tla-d2">
+          <div class="pl-quest__visual pl-quest__visual--wide">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/Lantern_Stations.png" alt="Seven station tableaux for the Puzzle Lantern quest — waist-height oak posts with brass NFC discs on top, alongside atmospheric antique items: horseshoe, oil lamp, cracked mirror, framed Roman coin, silver candlestick, oval brass frame." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">Lantern stations &mdash; waist-height oak posts and atmospheric thrift-store antiques, one tableau per legend beat</span>
+          </div>
+          <div class="pl-quest__body pl-quest__body--narrow">
+            <p>
+              Lantern stations are openly placed and visible &mdash; this is a deliberate puzzle, not a search-and-find. Each station pairs a waist-height oak post (the visitor sets the lantern on top to scan) with one atmospheric antique sourced from local thrift shops &mdash; a horseshoe, an oil lamp, a cracked mirror, a brass-framed Roman coin replica, a tarnished silver candlestick, an oval brass frame. The antiques don&rsquo;t carry the puzzle &mdash; they carry the character of each story-beat.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── Adapt for your venue ───────────────────────── -->
+    <section class="pl-adapt" id="adapt">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">For your venue</span>
+          <h2 class="tla-section-header">The hardware is reusable. The story is the work.</h2>
+        </div>
+        <div class="pl-adapt__grid">
+          <div class="pl-adapt__col tla-fade">
+            <h3 class="pl-adapt__title">What stays fixed</h3>
+            <ul class="pl-adapt__list">
+              <li>The prop hardware &mdash; we build it once and re-use it across instances.</li>
+              <li>The puzzle frameworks (chain navigation, memorial page-reveal, lantern coordinate decode).</li>
+              <li>The operating model &mdash; pickup at desk, walk the route, return to desk for the stamp and conversation.</li>
+              <li>The technical platform &mdash; NFC, radio proximity, e-paper, UV-reveal.</li>
+              <li>The five-minute kit reset between groups.</li>
+            </ul>
+          </div>
+          <div class="pl-adapt__col tla-fade tla-d1">
+            <h3 class="pl-adapt__title">What we design per venue</h3>
+            <ul class="pl-adapt__list">
+              <li>The story &mdash; researched from your archive, written for the route.</li>
+              <li>Illustrations, booklet content, and any cipher tied to your venue.</li>
+              <li>The route &mdash; scouted on-site, station placement, length, walking grade.</li>
+              <li>Station object aesthetics adapted to your landscape (cast iron beam, stone, bronze plaque, etc.).</li>
+              <li>Staff briefing for the desk conversation at return.</li>
+            </ul>
+            <p class="pl-adapt__effort">
+              Adaptation effort per quest: <strong>20&ndash;50 hours of design work</strong>, depending on the quest type. The prop hardware is reused as-is; only engraved details, paint colourways, firmware constants, and content are venue-specific.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -169,28 +343,28 @@ const year = new Date().getFullYear();
     <section class="pl-development" id="status">
       <div class="tla-container">
         <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">Progress</span>
-          <h2 class="tla-section-header">Where we are right now</h2>
+          <span class="tla-overline">Where we are</span>
+          <h2 class="tla-section-header">Development status</h2>
         </div>
         <div class="pl-phase-grid">
           <div class="pl-phase-card pl-phase-card--done tla-fade">
             <div class="pl-phase-card__number">01</div>
-            <div class="pl-phase-card__title">Concept &amp; Prop Design</div>
+            <div class="pl-phase-card__title">Story research, prop &amp; route design</div>
             <span class="pl-phase-card__badge">Complete</span>
           </div>
           <div class="pl-phase-card pl-phase-card--active tla-fade tla-d1">
             <div class="pl-phase-card__number">02</div>
-            <div class="pl-phase-card__title">Electronics Prototyping</div>
+            <div class="pl-phase-card__title">Visual design &amp; build guides</div>
             <span class="pl-phase-card__badge">In Progress</span>
           </div>
           <div class="pl-phase-card pl-phase-card--upcoming tla-fade tla-d2">
             <div class="pl-phase-card__number">03</div>
-            <div class="pl-phase-card__title">Real-Audience Testing</div>
+            <div class="pl-phase-card__title">First-prop fabrication &amp; live Meijel pilot</div>
             <span class="pl-phase-card__badge">Late 2026</span>
           </div>
           <div class="pl-phase-card pl-phase-card--future tla-fade tla-d3">
             <div class="pl-phase-card__number">04</div>
-            <div class="pl-phase-card__title">Festival Debut &mdash; Castlefest &amp; Elfia</div>
+            <div class="pl-phase-card__title">Second venue partnerships</div>
             <span class="pl-phase-card__badge">2027</span>
           </div>
         </div>
@@ -208,22 +382,22 @@ const year = new Date().getFullYear();
           <div class="pl-philosophy__card tla-fade">
             <span class="pl-philosophy__card-icon">&#9995;</span>
             <div class="pl-philosophy__card-title">Tactile over purely digital</div>
-            <div class="pl-philosophy__card-desc">Real physical interaction creates moments that screens cannot replicate &mdash; touch, weight, space, and surprise become part of the story.</div>
+            <div class="pl-philosophy__card-desc">Real physical interaction creates moments that screens cannot replicate &mdash; weight, light, vibration, and the surprise of an object that responds to you become part of the story.</div>
           </div>
           <div class="pl-philosophy__card tla-fade tla-d1">
             <span class="pl-philosophy__card-icon">&#129309;</span>
-            <div class="pl-philosophy__card-title">Shared adventure by design</div>
-            <div class="pl-philosophy__card-desc">Built for groups, families, and friends &mdash; the experience is designed to be discovered together, not alone.</div>
+            <div class="pl-philosophy__card-title">Heritage as living material</div>
+            <div class="pl-philosophy__card-desc">Local archives hold stories that no screen can do justice to. We work directly with the heritage society of each venue to ensure the legend on the page is the legend that was actually walked.</div>
           </div>
           <div class="pl-philosophy__card tla-fade tla-d2">
             <span class="pl-philosophy__card-icon">&#127761;</span>
             <div class="pl-philosophy__card-title">Atmosphere as a design material</div>
-            <div class="pl-philosophy__card-desc">Light, space, timing, and mood are deliberate tools &mdash; every element contributes to the feeling of the journey.</div>
+            <div class="pl-philosophy__card-desc">Light, weight, sound, and the timing of a reveal are deliberate tools. Each prop is engineered to feel like it belongs in the century where the story takes place.</div>
           </div>
           <div class="pl-philosophy__card tla-fade tla-d3">
             <span class="pl-philosophy__card-icon">&#127759;</span>
-            <div class="pl-philosophy__card-title">Storytelling through place</div>
-            <div class="pl-philosophy__card-desc">The environment is a co-author. Location, landscape, and architecture shape the narrative as much as any script.</div>
+            <div class="pl-philosophy__card-title">The desk conversation matters</div>
+            <div class="pl-philosophy__card-desc">Every quest ends with the visitor returning to the museum desk for a stamp. We design that conversation: staff are briefed not just to check answers, but to share one more archival detail. That conversation is the highest-value moment a museum has with each visitor.</div>
           </div>
         </div>
       </div>
@@ -233,13 +407,13 @@ const year = new Date().getFullYear();
     <section class="pl-collaborate" id="collaborate">
       <div class="tla-container pl-collaborate__inner">
         <div class="pl-collaborate__text tla-fade">
-          <span class="tla-overline">Early interest</span>
-          <h2 class="tla-section-header">Bring a Puzzle Quest to your event or venue</h2>
+          <span class="tla-overline">Partnership</span>
+          <h2 class="tla-section-header pl-section-header--left">Bring a Puzzle Quest to your museum</h2>
           <p>
-            Puzzle Quests is in active development and we&rsquo;re open to early conversations. Whether you organise events, run a venue, or want to offer guests something truly different at a birthday, festival, or team gathering &mdash; we&rsquo;d love to hear from you.
+            We&rsquo;re looking for the next two or three regional museums and heritage venues to deploy Puzzle Quests after the Meijel pilot completes. If you have a local story that deserves to be walked &mdash; a forgotten figure, a documented escape, an archaeological find, a folk legend with a real archival trace &mdash; we&rsquo;d love to hear from you.
           </p>
           <p>
-            We&rsquo;re looking for pilot partners, creative collaborators, and spaces where physical storytelling can come to life.
+            The model is a revenue-share on net ticket revenue, with the museum hosting the kit, the briefing, and the return conversation. We handle story research, prop adaptation, route scouting, on-site testing, and staff training. The first conversation is usually a visit to your venue, an hour with your archivist, and a walk of one possible route.
           </p>
           <div class="pl-collaborate__ctas">
             <a href="mailto:hello@thelionsalliance.com" class="tla-btn tla-btn--gold">Get in touch</a>
@@ -248,12 +422,12 @@ const year = new Date().getFullYear();
         </div>
         <div class="pl-collaborate__audiences tla-fade tla-d1">
           <ul class="pl-audience-list">
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Museums &amp; heritage venues</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Campsites &amp; outdoor locations</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Event &amp; experience organisers</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Tourism organisations</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Birthday parties &amp; private events</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Festivals (Castlefest &amp; Elfia 2027)</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Regional &amp; local-history museums</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Heritage societies &amp; archives</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Castle &amp; fortified-town visitor centres</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>National parks &amp; landscape trusts</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Municipal heritage &amp; tourism offices</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>School programme partners</li>
           </ul>
         </div>
       </div>
@@ -264,24 +438,28 @@ const year = new Date().getFullYear();
       <div class="tla-container">
         <div class="tla-fade" style="text-align:center;">
           <span class="tla-overline">FAQ</span>
-          <h2 class="tla-section-header">Common questions</h2>
+          <h2 class="tla-section-header">Common questions from museum partners</h2>
         </div>
         <div class="pl-faq__list">
           <div class="pl-faq__item tla-fade">
-            <div class="pl-faq__question">Is Puzzle Quests available yet?</div>
-            <div class="pl-faq__answer">Not yet for the public. We&rsquo;re in active prototype development and planning our first real-audience tests for late 2026. Our festival debut at Castlefest and Elfia is planned for 2027. Get in touch if you&rsquo;d like to be part of the journey.</div>
+            <div class="pl-faq__question">How does the operating model work in practice?</div>
+            <div class="pl-faq__answer">Visitors purchase the quest at the museum reception (we suggest &euro;8&ndash;15 per student for school programmes, scaled for families and adults). The museum keeps a 30&ndash;40% share of net ticket revenue. The kit is reusable and resets in under five minutes between groups. Staff need a short briefing per quest to handle the return-desk conversation; we provide that briefing as part of the launch.</div>
           </div>
           <div class="pl-faq__item tla-fade tla-d1">
-            <div class="pl-faq__question">What are the different props?</div>
-            <div class="pl-faq__answer">There are three props at different complexity levels: the <strong>Skeleton Key</strong> (seek-and-find, NFC-based), the <strong>Living Chronicle</strong> (cipher and story-decode, E-ink display), and the <strong>Puzzle Lantern</strong> (full light, UV, and sensor-driven route experience). Each is self-contained and playable without any additional app or screen.</div>
+            <div class="pl-faq__question">What does adapting a quest to our venue actually involve?</div>
+            <div class="pl-faq__answer">The hardware is reused unchanged. The custom work per venue is: story research (with your archivist), narrative writing, illustration, station-object aesthetics adapted to your landscape, route scouting, and staff briefing. Effort ranges from 20 to 50 hours of design work per quest, depending on which of the three you start with. We start with one quest, validate the operation, then add the others as the partnership grows.</div>
           </div>
           <div class="pl-faq__item tla-fade tla-d2">
-            <div class="pl-faq__question">What kind of events are they suited for?</div>
-            <div class="pl-faq__answer">Puzzle Quests are designed as a special addition to events, birthday parties, team days, and gatherings where you want guests to actually do something memorable together &mdash; not just attend. They also work as installations at museums, campsites, heritage venues, and festivals.</div>
+            <div class="pl-faq__question">Do visitors need a smartphone or an app?</div>
+            <div class="pl-faq__answer">No. Every quest is fully self-contained in the physical prop and booklet. The prop has its own NFC reader, e-paper, lighting, and audio &mdash; the visitor&rsquo;s phone stays in their pocket the entire walk.</div>
           </div>
           <div class="pl-faq__item tla-fade tla-d3">
-            <div class="pl-faq__question">What is the Magic Crystal?</div>
-            <div class="pl-faq__answer">The Magic Crystal is an optional souvenir collectible &mdash; a physical keepsake guests take home after completing a Puzzle Quest experience. It&rsquo;s an upsell item designed to make the memory tangible and lasting. Production is planned alongside the 2027 festival debut.</div>
+            <div class="pl-faq__question">How does it handle weather?</div>
+            <div class="pl-faq__answer">Props are designed for Peel weather &mdash; sealed leather covers, waterproof page materials, exterior-grade varnishes on station objects. Acceptable exposure is light rain and mist. For prolonged downpour or freezing conditions, the quest can be paused at the museum&rsquo;s discretion.</div>
+          </div>
+          <div class="pl-faq__item tla-fade">
+            <div class="pl-faq__question">When can we book a pilot for our venue?</div>
+            <div class="pl-faq__answer">The Meijel pilot is the first live deployment, targeted for late 2026. Second-venue conversations begin in parallel; the first new-venue rollout would realistically be 2027. Early conversations now are how we shape the next year of work &mdash; the earlier we know your story, the sooner it can become a quest.</div>
           </div>
         </div>
       </div>
@@ -297,7 +475,8 @@ const year = new Date().getFullYear();
         <div class="tla-footer__links">
           <a href="/">Studio</a>
           <a href="#overview">Overview</a>
-          <a href="#props">The Props</a>
+          <a href="#pilot">Meijel Pilot</a>
+          <a href="#quests">The Quests</a>
           <a href="#collaborate">Collaborate</a>
         </div>
       </div>
