@@ -180,30 +180,56 @@
 .tla-form__group input,
 .tla-form__group textarea,
 .tla-form__group select {
+  display: block;
   width: 100%;
+  min-height: 48px;
   padding: 13px 16px;
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.98rem;
-  color: var(--tla-text);
-  background: var(--tla-bg);
-  border: 1px solid var(--tla-border-mid);
-  border-radius: var(--tla-radius-sm);
+  font-size: 1rem;
+  line-height: 1.4;
+  /* Defensive: explicit hex fallbacks so the form stays readable even
+     if a CSS variable fails to resolve or a browser dark-mode default
+     overrides via user-agent stylesheet */
+  color: #2C2826;
+  color: var(--tla-text, #2C2826);
+  -webkit-text-fill-color: var(--tla-text, #2C2826);
+  background-color: #FAF6F0;
+  background-color: var(--tla-bg-alt, #F2EDE8);
+  border: 1.5px solid #C9BBAF;
+  border: 1.5px solid var(--tla-border-mid, #D5C8BE);
+  border-radius: var(--tla-radius-sm, 8px);
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   outline: none;
+  color-scheme: light;
+}
+
+.tla-form__group textarea {
+  min-height: 140px;
 }
 
 .tla-form__group input::placeholder,
 .tla-form__group textarea::placeholder {
-  color: var(--tla-text-muted);
-  opacity: 0.7;
+  color: var(--tla-text-muted, #8A817B);
+  -webkit-text-fill-color: var(--tla-text-muted, #8A817B);
+  opacity: 0.8;
 }
 
 .tla-form__group input:focus,
 .tla-form__group textarea:focus,
 .tla-form__group select:focus {
-  border-color: var(--tla-gold);
-  background: var(--tla-white);
-  box-shadow: 0 0 0 3px var(--tla-gold-subtle);
+  border-color: var(--tla-gold, #B08D57);
+  background-color: var(--tla-white, #FFFFFF);
+  box-shadow: 0 0 0 3px var(--tla-gold-subtle, rgba(176, 141, 87, 0.1));
+}
+
+/* Chrome autofill — restore our colours instead of yellow + white text */
+.tla-form__group input:-webkit-autofill,
+.tla-form__group input:-webkit-autofill:hover,
+.tla-form__group input:-webkit-autofill:focus,
+.tla-form__group textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--tla-text, #2C2826);
+  -webkit-box-shadow: 0 0 0 1000px var(--tla-bg-alt, #F2EDE8) inset;
+  caret-color: var(--tla-text, #2C2826);
 }
 
 .tla-form__group textarea {

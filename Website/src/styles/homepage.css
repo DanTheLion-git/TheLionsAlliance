@@ -35,6 +35,10 @@
 /* ── Reset & Base ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Force light form-control rendering so browser dark-mode defaults
+   don't override our input colours and make text invisible */
+html { color-scheme: light; }
+
 .tla-page {
   background: var(--tla-bg);
   color: var(--tla-text);
