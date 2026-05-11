@@ -270,19 +270,19 @@
 
 .pl-steps {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   position: relative;
   margin-top: 56px;
 }
 
-/* Connecting line */
+/* Connecting line — endpoints sit at the centre of the first and last step circles */
 .pl-steps::before {
   content: '';
   position: absolute;
   top: 28px;
-  left: calc(12.5% + 28px);
-  right: calc(12.5% + 28px);
+  left: calc(100% / 6 + 28px);
+  right: calc(100% / 6 + 28px);
   height: 2px;
   background: var(--pl-sage-border);
   z-index: 0;
@@ -724,12 +724,19 @@
   grid-template-columns: 1fr 1fr;
   gap: 70px;
   align-items: center;
-  padding: 56px 0;
-  border-bottom: 1px solid var(--pl-rule);
+  padding: 40px 0;
 }
 
-.pl-quest:last-of-type {
-  border-bottom: none;
+/* Ornamental divider rendered between main quests */
+.pl-quest-divider {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.85em;
+  color: var(--tla-gold);
+  opacity: 0.55;
+  margin: 48px 0 32px;
+  user-select: none;
 }
 
 .pl-quest__visual { order: 0; }
@@ -775,15 +782,17 @@
 
 .pl-quest__story {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-size: 1.08rem;
+  font-size: 1.18rem;
   font-style: italic;
-  line-height: 1.7;
+  font-weight: 600;
+  line-height: 1.6;
   color: var(--tla-text);
-  padding: 16px 22px;
+  padding: 18px 24px;
   margin: 0 0 22px;
   border-left: 3px solid var(--tla-gold);
   background: rgba(244, 236, 219, 0.45);
   border-radius: 0 6px 6px 0;
+  letter-spacing: 0.005em;
 }
 
 .pl-quest__body p {
@@ -834,13 +843,22 @@
   letter-spacing: 0.01em;
 }
 
-/* Secondary quest rows (stations, journal) — visually subordinate */
+/* Secondary quest rows (stations, journal) — visually subordinate to the main quest above */
 .pl-quest--key-stations,
 .pl-quest--lantern-stations,
 .pl-quest--lantern-journal {
-  padding-top: 24px;
-  padding-bottom: 56px;
-  border-bottom: 1px dashed var(--pl-rule);
+  padding-top: 8px;
+  padding-bottom: 16px;
+  gap: 56px;
+}
+
+/* Slightly smaller imagery on subordinate rows */
+.pl-quest--key-stations .pl-sketch,
+.pl-quest--lantern-stations .pl-sketch,
+.pl-quest--lantern-journal .pl-sketch {
+  max-width: 92%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pl-quest--key-stations .pl-quest__body--narrow,
