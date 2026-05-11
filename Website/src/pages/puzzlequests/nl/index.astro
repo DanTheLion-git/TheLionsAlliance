@@ -1,0 +1,545 @@
+---
+import "../../../styles/homepage.css";
+import "../../../styles/puzzlequests.css";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puzzle Quests &mdash; The Lions Alliance</title>
+    <meta name="description" content="Drie handgemaakte wandelervaringen voor musea en erfgoedlocaties. Elke wandeling weeft een lokale legende door het landschap dat haar bewaart — gedragen in de hand van de bezoeker door een op maat gemaakt rekwisiet." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/puzzlequests/" />
+    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/puzzlequests/nl/" />
+    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/puzzlequests/" />
+  </head>
+  <body class="tla-page pl-body">
+
+    <!-- ── Navigatie ──────────────────────────────────── -->
+    <nav class="tla-nav" id="tla-nav">
+      <div class="tla-nav__inner tla-container">
+        <a href="/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
+        <ul class="tla-nav__links">
+          <li><a href="#overview">Overzicht</a></li>
+          <li><a href="#pilot">Pilot Meijel</a></li>
+          <li><a href="#quests">De Quests</a></li>
+          <li><a href="#adapt">Voor uw locatie</a></li>
+        </ul>
+        <div class="tla-nav__actions">
+          <a href="/puzzlequests/" class="tla-nav__lang" hreflang="en" lang="en" title="View in English">EN</a>
+          <a href="/contact/" class="tla-nav__cta tla-nav__cta--gold">Contact</a>
+          <a href="/" class="tla-nav__cta">&larr; Studio</a>
+        </div>
+        <button class="tla-nav__hamburger" id="hamburger" aria-label="Menu openen">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="tla-nav__mobile" id="mobile-menu">
+        <a href="#overview">Overzicht</a>
+        <a href="#pilot">Pilot Meijel</a>
+        <a href="#quests">De Quests</a>
+        <a href="#adapt">Voor uw locatie</a>
+        <a href="/contact/">Contact</a>
+        <a href="/puzzlequests/" hreflang="en" lang="en">View in English</a>
+        <a href="/">&larr; Terug naar de studio</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ───────────────────────────────────────── -->
+    <section class="pl-hero" id="home">
+      <div class="tla-container pl-hero__inner">
+        <div class="pl-hero__text tla-fade">
+          <div class="pl-hero__breadcrumb">
+            <a href="/">The Lions Alliance</a>
+            <span class="pl-hero__breadcrumb-sep">/</span>
+            <span>Pijler &middot; Experiences</span>
+          </div>
+          <div class="pl-hero__badges">
+            <span class="tla-badge tla-badge--dev">In ontwikkeling</span>
+            <span class="tla-badge tla-badge--live">Erfgoedpilot 2026</span>
+          </div>
+          <h1 class="pl-hero__title">Puzzle <em>Quests</em></h1>
+          <p class="pl-hero__subtitle">
+            Drie handgemaakte wandelervaringen voor musea en erfgoedlocaties. Elke wandeling verbindt een lokale legende met het landschap waarin zij thuishoort &mdash; meegedragen in de hand van de bezoeker, in de vorm van een op maat gemaakt rekwisiet. Geen app, geen scherm, geen gids nodig. De kit ligt klaar aan de balie en is binnen vijf minuten gereset voor de volgende groep.
+          </p>
+          <div class="pl-hero__ctas">
+            <a href="/contact/" class="tla-btn tla-btn--gold">Breng dit naar uw locatie</a>
+            <a href="#quests" class="tla-btn tla-btn--outline">Bekijk de drie quests &darr;</a>
+          </div>
+        </div>
+        <div class="pl-hero__visual tla-fade tla-d1">
+          <figure class="pl-sketch pl-sketch--hero">
+            <img src="/images/puzzle-quests/Hero_StudioOverview.png" alt="Studio-frontispice van The Lions Alliance: de drie Puzzle Quests in &eacute;&eacute;n oogopslag &mdash; Skeleton Key, Living Chronicle en Puzzle Lantern, met daaronder een klein Peellandschap en de route vanuit Museum Medelo." loading="eager" />
+          </figure>
+          <span class="pl-sketch__caption">Studio-frontispice &mdash; drie wandelingen, &eacute;&eacute;n Peellandschap</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Het idee ───────────────────────────────────── -->
+    <section class="pl-overview" id="overview">
+      <div class="tla-container pl-overview__inner">
+        <div class="pl-overview__text tla-fade">
+          <span class="tla-overline">Het idee</span>
+          <h2 class="tla-section-header pl-section-header--left">Een lokale legende, gelopen door het landschap dat haar bewaart</h2>
+          <p>
+            Puzzle Quests is een familie van drie handgemaakte wandelervaringen. Elke wandeling begint en eindigt aan de balie van het samenwerkende museum en volgt een route door het dorp, het veen of het erfgoedlandschap eromheen. Terwijl de bezoeker loopt, reageert het rekwisiet in zijn hand op de wereld om hem heen &mdash; het licht op, trilt, schrijft zichzelf, onthult verborgen details.
+          </p>
+          <p>
+            Elke quest is gebouwd rond een specifieke lokale legende of een verhaal uit het archief. Het verhaal is de ruggegraat van de ervaring; het rekwisiet is de manier waarop de bezoeker erin stapt. Wij ontwerpen alles van begin tot eind: het narratief, het rekwisiet, de route, het boekje, de puzzel, de stations onderweg en de briefing voor het balie-personeel.
+          </p>
+          <p>
+            De eerste drie versies worden ontwikkeld voor <strong>Museum Medelo in Meijel</strong>, in samenwerking met Heemkundevereniging Medelo. De hardware, de puzzelraamwerken en het draaiboek zijn opgezet met replicatie in gedachten &mdash; zodra de pilot in Meijel het format heeft bewezen, kunnen dezelfde rekwisieten met enkele tientallen uren ontwerpwerk worden aangepast voor andere streekmusea en erfgoedlocaties.
+          </p>
+          <div class="pl-tags">
+            <span class="pl-tag">Musea &amp; erfgoed</span>
+            <span class="pl-tag">Lokale legenden</span>
+            <span class="pl-tag">Wandelroutes</span>
+            <span class="pl-tag">Schoolprogramma&rsquo;s</span>
+            <span class="pl-tag">Omzetdeling met museum</span>
+            <span class="pl-tag">Geen app, geen gids</span>
+          </div>
+        </div>
+        <div class="pl-overview__visual tla-fade tla-d1">
+          <figure class="pl-sketch">
+            <img src="/images/puzzle-quests/Concept_WorkingDesk.png" alt="Werkbank van de studio met een geopende archiefmap van Heemkundevereniging Medelo, een hand die met een ganzenveer schrijft, drie ontwerpbladen van de rekwisieten op de achtergrond, en een procesoverzicht van archief tot museumbalie." loading="lazy" />
+          </figure>
+          <span class="pl-sketch__caption">Werkbank &mdash; van het Medelo-archief naar een gelopen route</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── Pilot Meijel ───────────────────────────────── -->
+    <section class="pl-pilot" id="pilot">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Eerste pilot</span>
+          <h2 class="tla-section-header">Museum Medelo, Meijel</h2>
+        </div>
+        <div class="pl-pilot__grid">
+          <div class="pl-pilot__text tla-fade">
+            <p>
+              De eerste drie Puzzle Quests worden ontwikkeld in samenwerking met <strong>Heemkundevereniging Medelo</strong> &mdash; de heemkundevereniging die Museum Medelo aan het Tomveld 2 in Meijel beheert. Elke quest is geworteld in een echt verhaal uit het Medelo-archief: een vlucht voor Pruisische ronselaars in de jaren 1730, het leven van een Belgische zwerfster die veertig jaar door de Peel trok, en de resten van een Romeinse soldaat die in het veen langs de weg Meijel&ndash;Sevenum werden gevonden.
+            </p>
+            <p>
+              De samenwerking met Medelo geeft ons drie dingen tegelijk: archiefdiepte die elk verhaal geloofwaardig maakt, een startlocatie waar bezoekers de kit ophalen en aan het eind een stempel komen halen, en een operationele staat van dienst die helpt om andere streekmusea te benaderen (Limburgs Museum, Streekmuseum De Locht en partnerinstellingen in Brabantse en Limburgse vestingsteden).
+            </p>
+            <p>
+              Ons doel voor 2026 is om de eerste quest van prototype naar live museum-operatie te brengen. De andere twee volgen zodra de kit en het draaiboek bewezen zijn.
+            </p>
+          </div>
+          <ul class="pl-pilot__facts tla-fade tla-d1">
+            <li><span class="pl-pilot__label">Locatie</span><span class="pl-pilot__value">Museum Medelo, Tomveld 2, Meijel</span></li>
+            <li><span class="pl-pilot__label">Erfgoedpartner</span><span class="pl-pilot__value">Heemkundevereniging Medelo</span></li>
+            <li><span class="pl-pilot__label">Eerste quest live</span><span class="pl-pilot__value">Streefdatum eind 2026</span></li>
+            <li><span class="pl-pilot__label">Format</span><span class="pl-pilot__value">Wandelroute, 45&ndash;95 min, terugkomst aan de balie</span></li>
+            <li><span class="pl-pilot__label">Doelgroepen</span><span class="pl-pilot__value">Gezinsbezoek &middot; schoolklassen (90&ndash;120 min) &middot; stellen</span></li>
+            <li><span class="pl-pilot__label">Verdienmodel</span><span class="pl-pilot__value">Omzetdeling met het ontvangende museum</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── Hoe het werkt ──────────────────────────────── -->
+    <section class="pl-steps-section" id="how-it-works">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Hoe het werkt</span>
+          <h2 class="tla-section-header">De bezoekerservaring, in drie stappen</h2>
+        </div>
+        <div class="pl-steps">
+          <div class="pl-step tla-fade">
+            <div class="pl-step__number">I</div>
+            <div class="pl-step__title">Haal de kit op</div>
+            <div class="pl-step__desc">Aan de balie van het museum: een rekwisiet, een boekje, een routekaart en een korte introductie op het verhaal. Geen app, geen scherm, geen installatie.</div>
+          </div>
+          <div class="pl-step tla-fade tla-d1">
+            <div class="pl-step__number">II</div>
+            <div class="pl-step__title">Loop de route</div>
+            <div class="pl-step__desc">De route loopt door het dorp en het omliggende landschap. Het rekwisiet reageert bij elk station &mdash; via een slot, een pagina of een lantaarn &mdash; en onthult telkens een nieuw stukje van het verhaal.</div>
+          </div>
+          <div class="pl-step tla-fade tla-d2">
+            <div class="pl-step__number">III</div>
+            <div class="pl-step__title">Kom terug naar de balie</div>
+            <div class="pl-step__desc">Bezoekers komen terug met een ingevuld boekje en een rekwisiet dat hun voortgang oplicht. De medewerker controleert het resultaat, zet een stempel op de routekaart en deelt tijdens dat gesprek nog &eacute;&eacute;n extra detail uit het archief. Binnen vijf minuten staat de kit klaar voor de volgende groep.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── De drie quests ─────────────────────────────── -->
+    <section class="pl-quests" id="quests">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">De quests</span>
+          <h2 class="tla-section-header">Drie quests. Drie rekwisieten. Drie lokale legenden.</h2>
+        </div>
+
+        <!-- ── Skeleton Key ──────────────────────────── -->
+        <article class="pl-quest pl-quest--key tla-fade" id="quest-key">
+          <div class="pl-quest__visual">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/SkeletonKey.png" alt="Ontwerpblad uit het studio-schetsboek van de Skeleton Key: een sierlijke koperen leeuwenkop als boog, een doorschijnende schacht met acht verborgen Peelschrift-runen, en een heraldische baard." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">De Skeleton Key &mdash; ontwerpblad V</span>
+          </div>
+          <div class="pl-quest__body">
+            <div class="pl-quest__eyebrow">Quest I &middot; Skeleton Key</div>
+            <h3 class="pl-quest__title">De Vlucht door de Peel</h3>
+            <p class="pl-quest__story">
+              Tussen 1713 en 1740 stuurde de Pruisische koning Frederik Wilhelm I ronselaars over de grens om bijzonder lange jonge mannen te verzamelen voor zijn elite Riesengarde. Wie vluchtte, gebruikte een geheim netwerk van veilige onderkomens door de Peel. Wie Meijel bereikte, was vrij &mdash; zij vestigden zich, trouwden er, en kregen lange kinderen. Het is in de archieven gedocumenteerd als de reden waarom in Meijel historisch meer lange mannen wonen dan in de omliggende dorpen.
+            </p>
+            <p>
+              De Skeleton Key is de hoofdsleutel van de wachter. Acht echte slotstations &mdash; verstopt in boomstammen, mossen stenen en houten wandelpalen langs de route &mdash; dragen elk &eacute;&eacute;n letter van het woord <strong>VRIJHEID</strong>. De sleutel voelt het volgende station via een radiosignaal en pulseert sterker naarmate de wandelaar dichterbij komt. Bij elk slot wordt de sleutel fysiek omgedraaid, een NFC-scan wordt geactiveerd, en een van de runen langs de schacht licht zacht op door het verouderde brons heen. Bij het achtste slot branden alle runen. De wandelaar spreekt het woord hardop uit aan de museumbalie &mdash; dat is het bewijs van de tocht.
+            </p>
+            <ul class="pl-quest__chips">
+              <li><span>Moeilijkheid</span><strong>&#9733;&#9733;&#9733;&#9734;</strong></li>
+              <li><span>Duur</span><strong>75&ndash;95 min</strong></li>
+              <li><span>Afstand</span><strong>~5 km</strong></li>
+              <li><span>Groep</span><strong>2&ndash;6</strong></li>
+              <li><span>Leeftijd</span><strong>10+</strong></li>
+              <li><span>Mechanisme</span><strong>Slotketen &middot; radio-nabijheid &middot; woord van acht letters</strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="pl-quest pl-quest--key-stations tla-fade tla-d1">
+          <div class="pl-quest__visual pl-quest__visual--wide">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/SkeletonKey_Stations.png" alt="Drie verschijningsvormen van de slotstations voor de Skeleton Key &mdash; boomstam, mossen steen en Nederlandse wandelpaal &mdash; elk met een verborgen sleutelgat en aders die oplichten als de sleutel dichtbij is." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">Slotstations &mdash; boomstam, steen, wandelpaal; onzichtbaar voor voorbijgangers, levend voor wie de sleutel draagt</span>
+          </div>
+          <div class="pl-quest__body pl-quest__body--narrow">
+            <p>
+              De stations zijn gemaakt om in het landschap te verdwijnen. Een toevallige voorbijganger loopt erlangs zonder iets te merken &mdash; alleen de bezoeker met de sleutel ziet de verborgen lichtaderen langzaam pulseren wanneer hij dichterbij komt. Drie verschijningsvormen wisselen elkaar af op de route: gegoten boomschors om een echte boom, een Jesmonite-replica van een zwerfsteen, en een Nederlandse wandelpaal. &Eacute;&eacute;n extra station &mdash; de val van de ronselaars &mdash; lokt haastige wandelaars die de kleurketen negeren.
+            </p>
+          </div>
+        </article>
+
+        <div class="pl-quest-divider" aria-hidden="true">&middot; &middot; &middot;</div>
+
+        <!-- ── Living Chronicle ──────────────────────── -->
+        <article class="pl-quest pl-quest--chronicle pl-quest--reverse tla-fade" id="quest-chronicle">
+          <div class="pl-quest__visual">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/LivingChronicle.png" alt="Ontwerpblad uit het studio-schetsboek van de Living Chronicle: een in donkergroen leder gebonden grimoire met een boom-en-veen-motief op de kaft, vinen langs de randen en zeven buigzame e-paper pagina's die zichzelf vullen tijdens de wandeling." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">De Living Chronicle &mdash; ontwerpblad III</span>
+          </div>
+          <div class="pl-quest__body">
+            <div class="pl-quest__eyebrow">Quest II &middot; Living Chronicle</div>
+            <h3 class="pl-quest__title">Het Pad van Dikke Mie</h3>
+            <p class="pl-quest__story">
+              Anna Marie Mommaerts &mdash; bekend als <em>Dikke Mie</em> &mdash; werd in 1711 geboren in Lummen. Veertig jaar lang trok zij als zwerfster door de Peel, telkens opnieuw opgepakt, gegeseld en verbannen wegens bedelarij. Hoewel het officieel verboden was, gaven boeren in Meijel haar in stilte eten en onderdak in hun schuren. Zij passeerde Meijel vele malen. In juni 1755 werd zij dood aangetroffen in een schuur op de Donk. Het kerkregister noteerde alleen: <em>&lsquo;een zwerfster&rsquo;</em>. Dit is geen bovennatuurlijke legende. Het is een menselijk leven dat de wereld vergeten wilde.
+            </p>
+            <p>
+              De Living Chronicle is een in leder gebonden boek, met een boom-en-veen-motief gedreven in de kaft en de titel in Peelschrift-glyphs &mdash; een verzonnen schrift dat in alle drie de quests terugkeert. Binnenin liggen zeven buigzame e-paper pagina&rsquo;s, bij het begin allemaal blanco op &eacute;&eacute;n regel na: <em>&ldquo;Loop de cirkels. Ik zal schrijven wat ik mij herinner.&rdquo;</em> Bij elke magische cirkel op de route legt de wandelaar het gesloten boek op de gegraveerde schijf. Het boek trilt, de rug gloeit zacht op, en er schrijft zichzelf een nieuwe pagina. Aan het eind van de wandeling houdt de bezoeker een complete kroniek in handen &mdash; neergeschreven tijdens de wandeling zelf, over een vergeten leven.
+            </p>
+            <ul class="pl-quest__chips">
+              <li><span>Moeilijkheid</span><strong>&#9733;&#9733;&#9734;&#9734;</strong></li>
+              <li><span>Duur</span><strong>45&ndash;60 min</strong></li>
+              <li><span>Afstand</span><strong>~2 km</strong></li>
+              <li><span>Groep</span><strong>1&ndash;4</strong></li>
+              <li><span>Leeftijd</span><strong>14+</strong></li>
+              <li><span>Mechanisme</span><strong>Herdenkingstocht &middot; zeven zelfschrijvende pagina&rsquo;s &middot; gesprek aan de balie</strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="pl-quest-divider" aria-hidden="true">&middot; &middot; &middot;</div>
+
+        <!-- ── Puzzle Lantern ────────────────────────── -->
+        <article class="pl-quest pl-quest--lantern tla-fade" id="quest-lantern">
+          <div class="pl-quest__visual">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/Lantern.png" alt="Ontwerpblad uit het studio-schetsboek van de Puzzle Lantern: een vierzijdige Victoriaanse lantaarn in patine-groen brons, met sierdak, UV-dakvenstertje, koperen draagbeugel en vier kleine pootjes." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">De Puzzle Lantern &mdash; ontwerpblad VI</span>
+          </div>
+          <div class="pl-quest__body">
+            <div class="pl-quest__eyebrow">Quest III &middot; Puzzle Lantern</div>
+            <h3 class="pl-quest__title">De Schat van het Dolle Moer</h3>
+            <p class="pl-quest__story">
+              Een rovende ridder reed vanuit de Maaskant door de Peel om het dorp van de turfboeren te plunderen. De boeren joegen hem terug. Op zijn nachtelijke vlucht door het Dolle Moer zonken hij en zijn schildknaap weg in het veen, samen met de gestolen goudschat en het gouden zwaard van de ridder. Zijn geest waart nog altijd over de weg tussen Meijel en Sevenum &mdash; in mist en regen lokken zijn kreten reizigers van het pad af. De legende is geworteld in echte archeologie: in de jaren zeventig werden in het veen langs de weg Meijel&ndash;Sevenum 4e-eeuwse Romeinse vondsten gedocumenteerd &mdash; een zilveren helm en munten uit de tijd van Constantijn.
+            </p>
+            <p>
+              De Puzzle Lantern is een vierzijdige Victoriaanse lantaarn in patine-groen brons, met glas-in-lood panelen, een UV-dakvenstertje in het sierdak en een koperen draagbeugel. De bezoeker zet de lantaarn boven op elke stationpaal; de lantaarn leest de paal via NFC en toont in zijn LED-ring een co&ouml;rdinaat (aantal &times; richting), dat de wandelaar in het journaal in de andere hand ontcijfert.
+            </p>
+            <ul class="pl-quest__chips">
+              <li><span>Moeilijkheid</span><strong>&#9733;&#9733;&#9733;&#9733;</strong></li>
+              <li><span>Duur</span><strong>60&ndash;90 min</strong></li>
+              <li><span>Afstand</span><strong>~3&ndash;4 km</strong></li>
+              <li><span>Groep</span><strong>2&ndash;8</strong></li>
+              <li><span>Leeftijd</span><strong>10+</strong></li>
+              <li><span>Mechanisme</span><strong>Lantaarn + journaal &middot; UV-onthulling &middot; vouw- en overlay-puzzels</strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="pl-quest pl-quest--lantern-journal pl-quest--reverse tla-fade tla-d1">
+          <div class="pl-quest__visual">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/Lantern_Journal.png" alt="Studio-schetsboekblad van het journaal van Johannes van Leli&euml;ndaal &mdash; dertien pagina&rsquo;s met verschillende puzzelinteracties: UV-onthulling, vouwlijnen voor Peelschrift, doorzichtig vellum, uitgesneden vensters en een opklapbaar luikje voor de oplossing." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">Het Journaal &mdash; <em>Het Journaal van Johannes van Leli&euml;ndaal</em>, dertien pagina&rsquo;s met verschillende puzzelinteracties</span>
+          </div>
+          <div class="pl-quest__body">
+            <h4 class="pl-quest__subtitle">Het Journaal draagt de puzzel</h4>
+            <p>
+              De lantaarn is het meetinstrument. De puzzel zelf zit in een in leder gebonden journaal van dertien pagina&rsquo;s, in de stijl van een EXIT-spelboekje van Kosmos / 999 Games &mdash; in het verhaal omgevormd tot het veldjournaal van een fictieve landmeter uit 1742 die het Dolle Moer in kaart wilde brengen en spoorloos verdween voor hij klaar was. Pagina&rsquo;s onthullen verborgen symbolen onder de UV-straal van het dakvenstertje, vouwen langs gemarkeerde lijnen om Peelschrift-glyphs uit te lijnen, leggen door doorzichtig vellum een verborgen pad bloot, en bevestigen het uiteindelijke antwoord via een opklapbaar luikje.
+            </p>
+          </div>
+        </article>
+
+        <article class="pl-quest pl-quest--lantern-stations tla-fade tla-d2">
+          <div class="pl-quest__visual pl-quest__visual--wide">
+            <figure class="pl-sketch">
+              <img src="/images/puzzle-quests/Lantern_Stations.png" alt="Zeven station-taferelen voor de Puzzle Lantern &mdash; eikenhouten palen op heuphoogte met een koperen NFC-schijf bovenop, naast sfeerbepalend antiek: hoefijzer, olielamp, gebarsten spiegel, Romeinse muntreplica in lijst, zilveren kandelaar en ovaal koperen lijst." loading="lazy" />
+            </figure>
+            <span class="pl-sketch__caption">Lantaarn-stations &mdash; eikenhouten palen op heuphoogte met sfeerbepalend antiek uit lokale kringloopwinkels, &eacute;&eacute;n tafereel per verhaalmoment</span>
+          </div>
+          <div class="pl-quest__body pl-quest__body--narrow">
+            <p>
+              De stations van de lantaarn staan open en zichtbaar &mdash; dit is een bewuste puzzeltocht, geen zoektocht. Elk station combineert een eikenhouten paal op heuphoogte (waarop de bezoeker de lantaarn plaatst om te scannen) met &eacute;&eacute;n sfeerbepalend antiek voorwerp uit lokale kringloopwinkels &mdash; een hoefijzer, een olielamp, een gebarsten spiegel, een Romeinse muntreplica in een koperen lijst, een verzilverde kandelaar, een ovaal koperen lijst. Het antiek draagt de puzzel niet &mdash; het draagt het karakter van elk verhaalmoment.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── Voor uw locatie ────────────────────────────── -->
+    <section class="pl-adapt" id="adapt">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Voor uw locatie</span>
+          <h2 class="tla-section-header">De hardware is herbruikbaar. Het verhaal is het maatwerk.</h2>
+        </div>
+        <div class="pl-adapt__grid">
+          <div class="pl-adapt__col tla-fade">
+            <h3 class="pl-adapt__title">Wat hetzelfde blijft</h3>
+            <ul class="pl-adapt__list">
+              <li>De rekwisiet-hardware &mdash; wij bouwen elk rekwisiet &eacute;&eacute;n keer en hergebruiken het voor elke nieuwe locatie.</li>
+              <li>De puzzelraamwerken (slotketen, herdenkende paginareveal, lantaarn-co&ouml;rdinaten).</li>
+              <li>Het draaiboek &mdash; kit ophalen aan de balie, route lopen, terugkomen voor stempel en gesprek.</li>
+              <li>Het technische platform &mdash; NFC, radio-nabijheid, e-paper, UV-onthulling.</li>
+              <li>De kit-reset binnen vijf minuten tussen groepen door.</li>
+            </ul>
+          </div>
+          <div class="pl-adapt__col tla-fade tla-d1">
+            <h3 class="pl-adapt__title">Wat wij per locatie ontwerpen</h3>
+            <ul class="pl-adapt__list">
+              <li>Het verhaal &mdash; onderzocht in uw archief, geschreven voor de route.</li>
+              <li>Illustraties, de inhoud van het boekje, en eventuele cijferspraak die aan uw locatie verbonden is.</li>
+              <li>De route &mdash; ter plekke uitgezocht, met stationplaatsing, lengte en wandelmoeilijkheid.</li>
+              <li>De vormgeving van de stations, aangepast aan uw landschap (gietijzeren paal, steen, bronzen plaquette, enzovoort).</li>
+              <li>Een briefing voor het balie-personeel ten behoeve van het terugkomstgesprek.</li>
+            </ul>
+            <p class="pl-adapt__effort">
+              Aanpassingsinspanning per quest: <strong>20&ndash;50 uur ontwerpwerk</strong>, afhankelijk van het quest-type. De rekwisiet-hardware wordt ongewijzigd hergebruikt; alleen graveringen, kleuren, firmware-constanten en inhoud zijn locatie-specifiek.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Ontwikkelstatus ────────────────────────────── -->
+    <section class="pl-development" id="status">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Waar we staan</span>
+          <h2 class="tla-section-header">Ontwikkelstatus</h2>
+        </div>
+        <div class="pl-phase-grid">
+          <div class="pl-phase-card pl-phase-card--done tla-fade">
+            <div class="pl-phase-card__number">01</div>
+            <div class="pl-phase-card__title">Verhaalonderzoek, rekwisiet- en route-ontwerp</div>
+            <span class="pl-phase-card__badge">Voltooid</span>
+          </div>
+          <div class="pl-phase-card pl-phase-card--active tla-fade tla-d1">
+            <div class="pl-phase-card__number">02</div>
+            <div class="pl-phase-card__title">Visueel ontwerp &amp; bouwhandleidingen</div>
+            <span class="pl-phase-card__badge">Lopend</span>
+          </div>
+          <div class="pl-phase-card pl-phase-card--upcoming tla-fade tla-d2">
+            <div class="pl-phase-card__number">03</div>
+            <div class="pl-phase-card__title">Eerste rekwisiet-bouw &amp; live pilot in Meijel</div>
+            <span class="pl-phase-card__badge">Eind 2026</span>
+          </div>
+          <div class="pl-phase-card pl-phase-card--future tla-fade tla-d3">
+            <div class="pl-phase-card__number">04</div>
+            <div class="pl-phase-card__title">Samenwerking met een tweede locatie</div>
+            <span class="pl-phase-card__badge">2027</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Waarom we dit bouwen ───────────────────────── -->
+    <section class="pl-philosophy">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Onze gedachten</span>
+          <h2 class="tla-section-header">Waarom we dit bouwen</h2>
+        </div>
+        <div class="pl-philosophy__grid">
+          <div class="pl-philosophy__card tla-fade">
+            <span class="pl-philosophy__card-icon">&#9995;</span>
+            <div class="pl-philosophy__card-title">Tastbaar boven puur digitaal</div>
+            <div class="pl-philosophy__card-desc">Echte fysieke interactie roept momenten op die een scherm niet kan benaderen &mdash; gewicht, licht, trilling en de verrassing van een object dat reageert worden onderdeel van het verhaal.</div>
+          </div>
+          <div class="pl-philosophy__card tla-fade tla-d1">
+            <span class="pl-philosophy__card-icon">&#129309;</span>
+            <div class="pl-philosophy__card-title">Erfgoed als levend materiaal</div>
+            <div class="pl-philosophy__card-desc">Lokale archieven dragen verhalen die op een scherm tekortgedaan worden. Wij werken direct samen met de heemkundevereniging van elke locatie, zodat de legende op de pagina ook de legende is die werkelijk gelopen werd.</div>
+          </div>
+          <div class="pl-philosophy__card tla-fade tla-d2">
+            <span class="pl-philosophy__card-icon">&#127761;</span>
+            <div class="pl-philosophy__card-title">Sfeer als ontwerpmateriaal</div>
+            <div class="pl-philosophy__card-desc">Licht, gewicht, geluid en de timing van een onthulling zijn doelbewuste keuzes. Elk rekwisiet is zo gemaakt dat het thuishoort in de eeuw waarin het verhaal zich afspeelt.</div>
+          </div>
+          <div class="pl-philosophy__card tla-fade tla-d3">
+            <span class="pl-philosophy__card-icon">&#127759;</span>
+            <div class="pl-philosophy__card-title">Het gesprek aan de balie telt</div>
+            <div class="pl-philosophy__card-desc">Elke quest eindigt met een bezoeker die terugkomt voor een stempel. Dat gesprek is ontworpen: de medewerker krijgt niet alleen een antwoordsleutel, maar ook een briefing om &eacute;&eacute;n archiefdetail extra te delen. Dat moment is voor het museum het waardevolste contactmoment per bezoeker.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Samenwerking ───────────────────────────────── -->
+    <section class="pl-collaborate" id="collaborate">
+      <div class="tla-container pl-collaborate__inner">
+        <div class="pl-collaborate__text tla-fade">
+          <span class="tla-overline">Samenwerking</span>
+          <h2 class="tla-section-header pl-section-header--left">Breng een Puzzle Quest naar uw museum</h2>
+          <p>
+            Na de pilot in Meijel zoeken wij de volgende twee tot drie streekmusea of erfgoedlocaties waar Puzzle Quests neergezet kan worden. Heeft u een lokaal verhaal dat een wandeling waard is &mdash; een vergeten figuur, een gedocumenteerde vlucht, een archeologische vondst, een volksverhaal met een echte archiefsporen &mdash; dan horen wij graag van u.
+          </p>
+          <p>
+            Het model is een omzetdeling op de netto kaartopbrengst. Het museum is gastheer voor de kit, de briefing en het terugkomstgesprek. Wij verzorgen het verhaalonderzoek, de aanpassing van het rekwisiet, het route-scouten, het ter plekke testen en de training van het personeel. Het eerste gesprek is meestal een bezoek aan uw locatie, een uur met uw archivaris, en een wandeling langs een mogelijke route.
+          </p>
+          <div class="pl-collaborate__ctas">
+            <a href="/contact/" class="tla-btn tla-btn--gold">Neem contact op</a>
+            <a href="/" class="tla-btn tla-btn--outline">Bekijk de studio &rarr;</a>
+          </div>
+        </div>
+        <div class="pl-collaborate__audiences tla-fade tla-d1">
+          <ul class="pl-audience-list">
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Streek- en heemkundemusea</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Heemkundeverenigingen &amp; archieven</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Bezoekerscentra van kastelen &amp; vestingsteden</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Nationale parken &amp; landschapsbeheerders</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Gemeentelijke erfgoed- &amp; toerisme-afdelingen</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Schoolprogramma-partners</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Veelgestelde vragen ────────────────────────── -->
+    <section class="pl-faq">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Veelgestelde vragen</span>
+          <h2 class="tla-section-header">Veelgestelde vragen van museumpartners</h2>
+        </div>
+        <div class="pl-faq__list">
+          <div class="pl-faq__item tla-fade">
+            <div class="pl-faq__question">Hoe werkt het verdienmodel in de praktijk?</div>
+            <div class="pl-faq__answer">Bezoekers boeken de quest aan de balie van het museum (voor schoolprogramma&rsquo;s adviseren wij &euro;8&ndash;15 per leerling, oplopend voor gezinnen en volwassenen). Het museum houdt 30&ndash;40% van de netto kaartopbrengst. De kit is herbruikbaar en in minder dan vijf minuten gereset voor de volgende groep. Het balie-personeel krijgt per quest een korte briefing voor het terugkomstgesprek; die leveren wij mee bij de oplevering.</div>
+          </div>
+          <div class="pl-faq__item tla-fade tla-d1">
+            <div class="pl-faq__question">Wat houdt het aanpassen van een quest aan onze locatie precies in?</div>
+            <div class="pl-faq__answer">De hardware blijft ongewijzigd. Het maatwerk per locatie bestaat uit: verhaalonderzoek (samen met uw archivaris), het schrijven van het narratief, illustraties, de vormgeving van de stationsobjecten in uw landschap, route-scouten en de personeelsbriefing. De inspanning ligt tussen de 20 en 50 uur ontwerpwerk per quest, afhankelijk van welke van de drie u als eerste kiest. We beginnen met &eacute;&eacute;n quest, valideren de werking, en breiden uit naarmate de samenwerking groeit.</div>
+          </div>
+          <div class="pl-faq__item tla-fade tla-d2">
+            <div class="pl-faq__question">Hebben bezoekers een smartphone of app nodig?</div>
+            <div class="pl-faq__answer">Nee. Elke quest is volledig zelfvoorzienend, dankzij het rekwisiet en het boekje. Het rekwisiet heeft een eigen NFC-lezer, e-paper, verlichting en geluid &mdash; de telefoon van de bezoeker mag de hele wandeling in de tas blijven.</div>
+          </div>
+          <div class="pl-faq__item tla-fade tla-d3">
+            <div class="pl-faq__question">Hoe gaat de kit om met het weer?</div>
+            <div class="pl-faq__answer">De rekwisieten zijn ontworpen op Peelse omstandigheden &mdash; verzegelde leren kaften, waterdichte pagina&rsquo;s en buiten-vernis op de stationsobjecten. Lichte regen en mist zijn geen probleem. Bij aanhoudende slagregen of vorst kan het museum de quest tijdelijk pauzeren.</div>
+          </div>
+          <div class="pl-faq__item tla-fade">
+            <div class="pl-faq__question">Wanneer kunnen wij een pilot voor onze locatie inplannen?</div>
+            <div class="pl-faq__answer">De pilot in Meijel is onze eerste live-implementatie en wordt eind 2026 verwacht. Gesprekken met een tweede locatie starten daar parallel aan; een eerste uitrol op een nieuwe locatie ligt realistisch in 2027. Een gesprek nu vormt het werk van het komende jaar &mdash; hoe eerder wij uw verhaal kennen, hoe eerder het een quest kan worden.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────── -->
+    <footer class="tla-footer">
+      <div class="tla-container tla-footer__inner">
+        <div class="tla-footer__brand">
+          <div class="tla-footer__logo">The Lions Alliance</div>
+          <p class="tla-footer__tagline">Een creatieve ervaringsstudio.</p>
+        </div>
+        <div class="tla-footer__links">
+          <a href="/">Studio</a>
+          <a href="#overview">Overzicht</a>
+          <a href="#pilot">Pilot Meijel</a>
+          <a href="#quests">De Quests</a>
+          <a href="/contact/">Contact</a>
+          <a href="/puzzlequests/" hreflang="en" lang="en">English version</a>
+        </div>
+      </div>
+      <div class="tla-container tla-footer__bottom">
+        <span>&copy; {year} The Lions Alliance. Alle rechten voorbehouden.</span>
+      </div>
+    </footer>
+
+    <!-- ── Scripts ─────────────────────────────────────── -->
+    <script>
+      const nav = document.getElementById('tla-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+      }
+
+      const faders = document.querySelectorAll('.tla-fade');
+      if (faders.length && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('tla-visible');
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        faders.forEach((el) => obs.observe(el));
+      } else {
+        faders.forEach((el) => el.classList.add('tla-visible'));
+      }
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', String(open));
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
