@@ -159,6 +159,26 @@ const year = new Date().getFullYear();
         }, { passive: true });
       }
 
+      // Fade-in observer — without this, every .tla-fade element stays
+      // at opacity:0 (from homepage.css) and the whole page looks blank
+      const faders = document.querySelectorAll('.tla-fade');
+      if (faders.length && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('tla-visible');
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.05 }
+        );
+        faders.forEach((el) => obs.observe(el));
+      } else {
+        faders.forEach((el) => el.classList.add('tla-visible'));
+      }
+
       // Hamburger
       const hamburger = document.getElementById('tla-hamburger');
       const mobileMenu = document.getElementById('tla-mobile-menu');
