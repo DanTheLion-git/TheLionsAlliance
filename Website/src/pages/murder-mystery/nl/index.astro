@@ -1,0 +1,338 @@
+---
+import "../../../styles/homepage.css";
+import "../../../styles/puzzlequests.css";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Murder Mystery &mdash; The Lions Alliance</title>
+    <meta name="description" content="Murder mystery-ervaringen door The Lions Alliance &mdash; complete avonden voor dinerfeesten, mijlpaalverjaardagen en bijeenkomsten die meer verdienen dan oppervlakkige praat. Formats Verdachten en Detectives, thema- en gepersonaliseerde kits." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/murder-mystery/" />
+    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/murder-mystery/nl/" />
+    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/murder-mystery/" />
+  </head>
+  <body class="tla-page pl-body">
+
+    <!-- ── Navigatie ──────────────────────────────────── -->
+    <nav class="tla-nav" id="tla-nav">
+      <div class="tla-nav__inner tla-container">
+        <a href="/nl/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
+        <ul class="tla-nav__links">
+          <li><a href="#formats">Formats</a></li>
+          <li><a href="#kits">Kit-typen</a></li>
+          <li><a href="#themes">Thema&rsquo;s</a></li>
+        </ul>
+        <div class="tla-nav__actions">
+          <a href="/murder-mystery/" class="tla-nav__lang" hreflang="en" lang="en" title="View in English">EN</a>
+          <a href="/contact/nl/" class="tla-nav__cta tla-nav__cta--gold">Contact</a>
+          <a href="/nl/" class="tla-nav__cta">&larr; Studio</a>
+        </div>
+        <button class="tla-nav__hamburger" id="hamburger" aria-label="Menu wisselen">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="tla-nav__mobile" id="mobile-menu">
+        <a href="#formats">Formats</a>
+        <a href="#kits">Kit-typen</a>
+        <a href="#themes">Thema&rsquo;s</a>
+        <a href="/contact/nl/">Contact</a>
+        <a href="/murder-mystery/" hreflang="en" lang="en">View in English</a>
+        <a href="/nl/">&larr; Terug naar Studio</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ───────────────────────────────────────── -->
+    <section class="pl-hero" id="home">
+      <div class="tla-container pl-hero__inner">
+        <div class="pl-hero__text tla-fade">
+          <div class="pl-hero__breadcrumb">
+            <a href="/nl/">The Lions Alliance</a>
+            <span class="pl-hero__breadcrumb-sep">/</span>
+            <span>Moments-pijler</span>
+          </div>
+          <div class="pl-hero__badges">
+            <span class="tla-badge tla-badge--live">Nu beschikbaar</span>
+            <span class="tla-badge tla-badge--dev">Gepersonaliseerde opdrachten</span>
+          </div>
+          <h1 class="pl-hero__title">Murder <em>Mystery</em></h1>
+          <p class="pl-hero__subtitle">
+            Een avond om niet te vergeten. Wij ontwerpen murder mystery-ervaringen voor dinerfeesten, mijlpaalverjaardagen en bijeenkomsten die meer verdienen dan oppervlakkige praat. Elk kit is een complete avond op zich &mdash; een verzegelde envelop per gast, een misdaad om op te lossen, een verhaal dat je vrienden nog jaren navertellen.
+          </p>
+          <p class="pl-hero__subtitle" style="margin-top:0.75rem;">
+            Kies je format. Kies je thema. Of laat ons de hele avond rond jouw groep bouwen.
+          </p>
+          <div class="pl-hero__ctas">
+            <a href="#contact-cta" class="tla-btn tla-btn--gold">Bouw jouw avond</a>
+            <a href="#formats" class="tla-btn tla-btn--outline">Bekijk de formats &darr;</a>
+          </div>
+        </div>
+        <div class="pl-hero__visual tla-fade tla-d1">
+          <div class="pl-hero__placeholder">
+            <span class="pl-hero__placeholder-icon">&#128269;</span>
+          </div>
+          <span class="pl-hero__placeholder-caption">Kitfotografie volgt binnenkort</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Twee Formats ───────────────────────────────── -->
+    <section class="pl-overview" id="formats">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">De formats</span>
+          <h2 class="tla-section-header">Twee manieren om te spelen.</h2>
+          <p style="max-width:600px;margin:1rem auto 0;color:var(--tla-muted,#666);">Elke groep is anders. Sommige willen <em>iemand anders zijn</em> voor de avond. Andere willen <em>samen de puzzel oplossen</em>. Wij bieden beide.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem;">
+
+          <div class="pl-philosophy__card tla-fade">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <span class="tla-pillar-card__num" style="font-size:1.5rem;">01</span>
+              <span class="tla-badge tla-badge--live">Beschikbaar</span>
+            </div>
+            <div class="pl-philosophy__card-title">Verdachten</div>
+            <p style="font-style:italic;font-size:0.875rem;color:var(--tla-muted,#666);margin:0.25rem 0 0.75rem;">Rollenspel &middot; Theatraal &middot; Performatief</p>
+            <div class="pl-philosophy__card-desc">
+              Iedereen aan tafel speelt een personage. &Eacute;&eacute;n van hen is de moordenaar &mdash; en alleen die speler weet het. De avond ontvouwt zich door gesprek, beschuldiging en onthulling, terwijl je gasten elkaar in karakter ondervragen.
+            </div>
+            <ul style="margin-top:1rem;list-style:none;padding:0;font-size:0.875rem;display:flex;flex-direction:column;gap:0.4rem;">
+              <li><strong>Geschikt voor:</strong> zelfverzekerde groepen, themadiners, kostuumfeesten, theatrale vriendengroepen</li>
+              <li><strong>Groepsgrootte:</strong> 6&ndash;10</li>
+              <li><strong>Wat het van gasten vraagt:</strong> bereidheid om te performen, te liegen en te improviseren</li>
+              <li><strong>Wat het hen geeft:</strong> een onvergetelijk uur als iemand anders</li>
+            </ul>
+          </div>
+
+          <div class="pl-philosophy__card tla-fade tla-d1">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <span class="tla-pillar-card__num" style="font-size:1.5rem;">02</span>
+              <span class="tla-badge tla-badge--live">Beschikbaar</span>
+            </div>
+            <div class="pl-philosophy__card-title">Detectives</div>
+            <p style="font-style:italic;font-size:0.875rem;color:var(--tla-muted,#666);margin:0.25rem 0 0.75rem;">Onderzoek &middot; Puzzelgedreven &middot; Samenwerking</p>
+            <div class="pl-philosophy__card-desc">
+              Niemand speelt een personage. Iedereen komt aan als onderzoeker. Een dossier wordt geopend, bewijs wordt over drie rondes onderzocht, puzzels worden opgelost, en je groep werkt samen &mdash; of strijdt &mdash; om de juiste verdachte te beschuldigen.
+            </div>
+            <ul style="margin-top:1rem;list-style:none;padding:0;font-size:0.875rem;display:flex;flex-direction:column;gap:0.4rem;">
+              <li><strong>Geschikt voor:</strong> gemengde groepen, verjaardagen, bijeenkomsten met verlegen gasten, gastheren die ook mee willen spelen</li>
+              <li><strong>Groepsgrootte:</strong> 3&ndash;10</li>
+              <li><strong>Wat het van gasten vraagt:</strong> nieuwsgierigheid en aandacht</li>
+              <li><strong>Wat het hen geeft:</strong> de voldoening om samen iets op te lossen</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── Kit-typen ──────────────────────────────────── -->
+    <section class="pl-adapt" id="kits">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Kit-typen</span>
+          <h2 class="tla-section-header">Thema-kit of gepersonaliseerd.</h2>
+        </div>
+        <div class="pl-adapt__grid">
+          <div class="pl-adapt__col tla-fade">
+            <h3 class="pl-adapt__title">Thema-kits</h3>
+            <p>Kies uit een groeiende bibliotheek van volledig uitgewerkte werelden. Elk detail &mdash; personages, bewijs, props &mdash; is vooraf zorgvuldig gemaakt. Open de doos, steek de kaarsen aan, begin.</p>
+          </div>
+          <div class="pl-adapt__col tla-fade tla-d1">
+            <h3 class="pl-adapt__title">Gepersonaliseerde kits</h3>
+            <p>Gebouwd rond jouw gasten. We beginnen met een korte vragenlijst en bouwen de cast, motieven en aanwijzingen rond de mensen die daadwerkelijk in de kamer zullen zijn. Perfect voor mijlpaalmomenten waarbij de avond zelf het cadeau is.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── Thema's ─────────────────────────────────────── -->
+    <section class="pl-applications" id="themes">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Thema-kits</span>
+          <h2 class="tla-section-header">Een paar werelden om in te stappen.</h2>
+          <p style="max-width:600px;margin:1rem auto 0;color:var(--tla-muted,#666);font-style:italic;">Een startpunt, geen lijst. Heb je een thema in gedachten dat hier niet staat? We horen het graag.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;margin-top:3rem;">
+
+          <div class="pl-concept-card tla-fade">
+            <div class="pl-concept-card__title">Gouden Eeuw</div>
+            <div class="pl-concept-card__desc">Amsterdam, 1669. Een diner in een grachtenpand. Rembrandt staat in het rood, Spinoza is niet welkom, en de gastheer draagt geheimen die hij beter niet had kunnen bewaren.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade">
+            <div class="pl-concept-card__title">Griekse mythologie</div>
+            <div class="pl-concept-card__desc">Een sterveling wordt verheven tot god. De Olympi&euml;rs zijn het oneens. Iemand aan tafel wil niet dat de verheffing plaatsvindt.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d1">
+            <div class="pl-concept-card__title">Speakeasy in de jaren &rsquo;20</div>
+            <div class="pl-concept-card__desc">Prohibition New York. Een geheime ruimte achter een boekenkast. Een smokkelaar, een cabaretzangeres, de vrouw van een senator &mdash; en een lijk in de achterste nis.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d1">
+            <div class="pl-concept-card__title">Victoriaanse s&eacute;ance</div>
+            <div class="pl-concept-card__desc">Een herenhuis, een onweersbui, een medium opgeroepen om contact te maken met de overleden patriarch. Eerst verschijnt er iets anders.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d2">
+            <div class="pl-concept-card__title">Hobbit-feest</div>
+            <div class="pl-concept-card__desc">Een langverwachte verjaardag in een rustige hoek van de Gouw. Pijprook, champignonpastei, en een erfstuk dat niet had mogen verdwijnen.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d2">
+            <div class="pl-concept-card__title">Re&uuml;nie in de jaren &rsquo;80</div>
+            <div class="pl-concept-card__desc">Twintig jaar later, de populaire groep en de rest. Oude wrok, oude geheimen, en iemand haalt de dansvloer niet.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d3">
+            <div class="pl-concept-card__title">Cruise om middernacht</div>
+            <div class="pl-concept-card__desc">Een luxe oceaanstomer, een gesloten zee, twaalf vreemden en &eacute;&eacute;n kapitein die meer weet dan hij zegt.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d3" style="border:2px dashed var(--tla-gold,#c9aa71);">
+            <div class="pl-concept-card__title" style="color:var(--tla-gold,#c9aa71);">Jouw wereld</div>
+            <div class="pl-concept-card__desc">Een thema van jou. Wij bouwen het van de grond af op.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── In Ontwikkeling ────────────────────────────── -->
+    <section class="pl-development" id="coming-soon">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Wat er aan komt</span>
+          <h2 class="tla-section-header">In ontwikkeling.</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem;">
+
+          <div class="pl-philosophy__card tla-fade">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <span class="tla-pillar-card__num" style="font-size:1.5rem;">03</span>
+              <span class="tla-badge tla-badge--dev">In ontwikkeling</span>
+            </div>
+            <div class="pl-philosophy__card-title">Mixed Format</div>
+            <div class="pl-philosophy__card-desc" style="font-style:italic;">
+              Sommige gasten spelen personages. Andere komen aan als detectives. De twee helften van de tafel ontmoeten elkaar, ondervragen elkaar, en ontrafelen samen de zaak. Ontworpen voor grotere groepen (10+) waarbij &eacute;&eacute;n format alleen de avond niet kan dragen.
+            </div>
+          </div>
+
+          <div class="pl-philosophy__card tla-fade tla-d1">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <span class="tla-pillar-card__num" style="font-size:1.5rem;">03</span>
+              <span class="tla-badge tla-badge--dev">In ontwikkeling</span>
+            </div>
+            <div class="pl-philosophy__card-title">Season 2</div>
+            <div class="pl-philosophy__card-desc" style="font-style:italic;">
+              Murder Mysteries die met elkaar verbonden zijn. Een terugkerende detective. Een terugkerende schurk. Werelden die groeien van de ene avond naar de volgende, voor de groepen die opnieuw bij elkaar willen komen.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Call to Action ─────────────────────────────── -->
+    <section class="pl-collaborate" id="contact-cta">
+      <div class="tla-container pl-collaborate__inner">
+        <div class="pl-collaborate__text tla-fade">
+          <span class="tla-overline">Neem contact op</span>
+          <h2 class="tla-section-header pl-section-header--left">Laten we jouw avond bouwen.</h2>
+          <p>
+            Of je nu een datum, thema en gastenlijst hebt &mdash; of alleen een idee &mdash; we horen graag van je.
+          </p>
+          <div class="pl-collaborate__ctas">
+            <a href="/contact/nl/" class="tla-btn tla-btn--gold">Stuur ons een bericht</a>
+            <a href="/nl/" class="tla-btn tla-btn--outline">Bekijk de studio &rarr;</a>
+          </div>
+        </div>
+        <div class="pl-collaborate__audiences tla-fade tla-d1">
+          <ul class="pl-audience-list">
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Dinerfeesten &amp; mijlpaalverjaardagen</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Bedrijfsevenementen &amp; teamuitjes</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Trouwverjaardag-diners</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Vrijgezellenfeesten</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Vriendengroepen die van een goed raadsel houden</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────── -->
+    <footer class="tla-footer">
+      <div class="tla-container tla-footer__inner">
+        <div class="tla-footer__brand">
+          <div class="tla-footer__logo">The Lions Alliance</div>
+          <p class="tla-footer__tagline">Een creatieve ervaringsstudio.</p>
+        </div>
+        <div class="tla-footer__links">
+          <a href="/nl/">Studio</a>
+          <a href="#formats">Formats</a>
+          <a href="#kits">Kit-typen</a>
+          <a href="#themes">Thema&rsquo;s</a>
+          <a href="/contact/nl/">Contact</a>
+        </div>
+      </div>
+      <div class="tla-container tla-footer__bottom">
+        <span>&copy; {year} The Lions Alliance. Alle rechten voorbehouden.</span>
+      </div>
+    </footer>
+
+    <!-- ── Scripts ─────────────────────────────────────── -->
+    <script>
+      const nav = document.getElementById('tla-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+      }
+
+      const faders = document.querySelectorAll('.tla-fade');
+      if (faders.length && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('tla-visible');
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        faders.forEach((el) => obs.observe(el));
+      } else {
+        faders.forEach((el) => el.classList.add('tla-visible'));
+      }
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', String(open));
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

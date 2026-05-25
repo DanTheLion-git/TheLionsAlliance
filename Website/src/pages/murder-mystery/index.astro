@@ -1,0 +1,338 @@
+---
+import "../../styles/homepage.css";
+import "../../styles/puzzlequests.css";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Murder Mystery &mdash; The Lions Alliance</title>
+    <meta name="description" content="Murder Mystery experiences by The Lions Alliance &mdash; self-contained evenings for dinner parties, milestone birthdays, and gatherings that deserve more than small talk. Suspects and Detectives formats, themed and personalised kits." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/murder-mystery/" />
+    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/murder-mystery/nl/" />
+    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/murder-mystery/" />
+  </head>
+  <body class="tla-page pl-body">
+
+    <!-- ── Navigation ─────────────────────────────────── -->
+    <nav class="tla-nav" id="tla-nav">
+      <div class="tla-nav__inner tla-container">
+        <a href="/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
+        <ul class="tla-nav__links">
+          <li><a href="#formats">Formats</a></li>
+          <li><a href="#kits">Kit Types</a></li>
+          <li><a href="#themes">Themes</a></li>
+        </ul>
+        <div class="tla-nav__actions">
+          <a href="/murder-mystery/nl/" class="tla-nav__lang" hreflang="nl" lang="nl" title="Bekijk in het Nederlands">NL</a>
+          <a href="/contact/" class="tla-nav__cta tla-nav__cta--gold">Contact</a>
+          <a href="/" class="tla-nav__cta">&larr; Studio</a>
+        </div>
+        <button class="tla-nav__hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="tla-nav__mobile" id="mobile-menu">
+        <a href="#formats">Formats</a>
+        <a href="#kits">Kit Types</a>
+        <a href="#themes">Themes</a>
+        <a href="/contact/">Contact</a>
+        <a href="/murder-mystery/nl/" hreflang="nl" lang="nl">Bekijk in het Nederlands</a>
+        <a href="/">&larr; Back to Studio</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ───────────────────────────────────────── -->
+    <section class="pl-hero" id="home">
+      <div class="tla-container pl-hero__inner">
+        <div class="pl-hero__text tla-fade">
+          <div class="pl-hero__breadcrumb">
+            <a href="/">The Lions Alliance</a>
+            <span class="pl-hero__breadcrumb-sep">/</span>
+            <span>Moments Pillar</span>
+          </div>
+          <div class="pl-hero__badges">
+            <span class="tla-badge tla-badge--live">Available Now</span>
+            <span class="tla-badge tla-badge--dev">Personalised Commissions</span>
+          </div>
+          <h1 class="pl-hero__title">Murder <em>Mystery</em></h1>
+          <p class="pl-hero__subtitle">
+            An evening worth remembering. We design murder mystery experiences for dinner parties, milestone birthdays, and gatherings that deserve more than small talk. Each kit is a self-contained evening &mdash; a sealed envelope per guest, a crime to solve, a story your friends will tell each other for years.
+          </p>
+          <p class="pl-hero__subtitle" style="margin-top:0.75rem;">
+            Choose your format. Choose your theme. Or let us build the whole evening around your group.
+          </p>
+          <div class="pl-hero__ctas">
+            <a href="#contact-cta" class="tla-btn tla-btn--gold">Build your evening</a>
+            <a href="#formats" class="tla-btn tla-btn--outline">See the formats &darr;</a>
+          </div>
+        </div>
+        <div class="pl-hero__visual tla-fade tla-d1">
+          <div class="pl-hero__placeholder">
+            <span class="pl-hero__placeholder-icon">&#128269;</span>
+          </div>
+          <span class="pl-hero__placeholder-caption">Kit photography coming soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Two Formats ────────────────────────────────── -->
+    <section class="pl-overview" id="formats">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">The formats</span>
+          <h2 class="tla-section-header">Two ways to play.</h2>
+          <p style="max-width:600px;margin:1rem auto 0;color:var(--tla-muted,#666);">Every group is different. Some want to <em>become someone else</em> for the evening. Others want to <em>solve the puzzle together</em>. We offer both.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem;">
+
+          <div class="pl-philosophy__card tla-fade">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <span class="tla-pillar-card__num" style="font-size:1.5rem;">01</span>
+              <span class="tla-badge tla-badge--live">Available</span>
+            </div>
+            <div class="pl-philosophy__card-title">Suspects</div>
+            <p style="font-style:italic;font-size:0.875rem;color:var(--tla-muted,#666);margin:0.25rem 0 0.75rem;">Roleplay-driven &middot; Theatrical &middot; Performative</p>
+            <div class="pl-philosophy__card-desc">
+              Everyone at the table plays a character. One of them is the killer &mdash; and only that player knows. The evening unfolds through conversation, accusation, and revelation as your guests interrogate each other in character.
+            </div>
+            <ul style="margin-top:1rem;list-style:none;padding:0;font-size:0.875rem;display:flex;flex-direction:column;gap:0.4rem;">
+              <li><strong>Best for:</strong> confident groups, themed dinners, costume parties, theatrical friend groups</li>
+              <li><strong>Group size:</strong> 6&ndash;10</li>
+              <li><strong>What it asks of guests:</strong> willingness to perform, lie, and improvise</li>
+              <li><strong>What it gives them:</strong> an unforgettable hour of being someone else</li>
+            </ul>
+          </div>
+
+          <div class="pl-philosophy__card tla-fade tla-d1">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <span class="tla-pillar-card__num" style="font-size:1.5rem;">02</span>
+              <span class="tla-badge tla-badge--live">Available</span>
+            </div>
+            <div class="pl-philosophy__card-title">Detectives</div>
+            <p style="font-style:italic;font-size:0.875rem;color:var(--tla-muted,#666);margin:0.25rem 0 0.75rem;">Investigation-driven &middot; Puzzle-led &middot; Collaborative</p>
+            <div class="pl-philosophy__card-desc">
+              No one plays a character. Everyone arrives as an investigator. A case file is opened, evidence is examined across three rounds, puzzles are solved, and your group works together &mdash; or competes &mdash; to accuse the right suspect.
+            </div>
+            <ul style="margin-top:1rem;list-style:none;padding:0;font-size:0.875rem;display:flex;flex-direction:column;gap:0.4rem;">
+              <li><strong>Best for:</strong> mixed groups, birthdays, gatherings with shy guests, hosts who want to play</li>
+              <li><strong>Group size:</strong> 3&ndash;10</li>
+              <li><strong>What it asks of guests:</strong> curiosity and attention</li>
+              <li><strong>What it gives them:</strong> the satisfaction of solving something together</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── Kit Types ──────────────────────────────────── -->
+    <section class="pl-adapt" id="kits">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Kit types</span>
+          <h2 class="tla-section-header">Themed or Personalised.</h2>
+        </div>
+        <div class="pl-adapt__grid">
+          <div class="pl-adapt__col tla-fade">
+            <h3 class="pl-adapt__title">Themed kits</h3>
+            <p>Choose from a growing library of fully developed worlds. Every detail &mdash; characters, evidence, props &mdash; is crafted in advance. Open the box, light the candles, begin.</p>
+          </div>
+          <div class="pl-adapt__col tla-fade tla-d1">
+            <h3 class="pl-adapt__title">Personalised kits</h3>
+            <p>Built around your guests. We start with a short questionnaire and build the cast, motives, and clues around the people who will actually be in the room. Perfect for milestone events where the evening itself is the gift.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── Themes ──────────────────────────────────────── -->
+    <section class="pl-applications" id="themes">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Themed kits</span>
+          <h2 class="tla-section-header">A few worlds to step into.</h2>
+          <p style="max-width:600px;margin:1rem auto 0;color:var(--tla-muted,#666);font-style:italic;">A starting point, not a list. If you have a theme in mind that isn&rsquo;t here, we&rsquo;d love to hear it.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;margin-top:3rem;">
+
+          <div class="pl-concept-card tla-fade">
+            <div class="pl-concept-card__title">Dutch Golden Age</div>
+            <div class="pl-concept-card__desc">Amsterdam, 1669. A canal-house dinner. Rembrandt is in debt, Spinoza is unwelcome, and the host has secrets he should not have kept.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade">
+            <div class="pl-concept-card__title">Greek Mythology</div>
+            <div class="pl-concept-card__desc">A mortal is being made a god. The Olympians cannot agree. Someone at the table doesn&rsquo;t want the ascension to happen.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d1">
+            <div class="pl-concept-card__title">1920s Speakeasy</div>
+            <div class="pl-concept-card__desc">Prohibition-era New York. A whisper room behind a bookcase. A bootlegger, a torch singer, a senator&rsquo;s wife &mdash; and a body in the back booth.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d1">
+            <div class="pl-concept-card__title">Victorian S&eacute;ance</div>
+            <div class="pl-concept-card__desc">A grand house, a thunderstorm, a medium summoned to contact the late patriarch. Something else comes through first.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d2">
+            <div class="pl-concept-card__title">Hobbit Gathering</div>
+            <div class="pl-concept-card__desc">A long-awaited birthday in a quiet corner of the Shire. Pipe-smoke, mushroom pie, and an heirloom that should not have gone missing.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d2">
+            <div class="pl-concept-card__title">80s High School Reunion</div>
+            <div class="pl-concept-card__desc">Twenty years later, the cool kids and the rest. Old grudges, old secrets, and someone won&rsquo;t make it to the dance floor.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d3">
+            <div class="pl-concept-card__title">Cruise at Midnight</div>
+            <div class="pl-concept-card__desc">A luxury liner, a sealed sea, twelve strangers and one captain who knows more than he&rsquo;s saying.</div>
+          </div>
+
+          <div class="pl-concept-card tla-fade tla-d3" style="border:2px dashed var(--tla-gold,#c9aa71);">
+            <div class="pl-concept-card__title" style="color:var(--tla-gold,#c9aa71);">Your World</div>
+            <div class="pl-concept-card__desc">A theme of your own. We build it from scratch.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── In Development ─────────────────────────────── -->
+    <section class="pl-development" id="coming-soon">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Coming next</span>
+          <h2 class="tla-section-header">What&rsquo;s coming next.</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem;">
+
+          <div class="pl-philosophy__card tla-fade">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <span class="tla-pillar-card__num" style="font-size:1.5rem;">03</span>
+              <span class="tla-badge tla-badge--dev">In Development</span>
+            </div>
+            <div class="pl-philosophy__card-title">Mixed Format</div>
+            <div class="pl-philosophy__card-desc" style="font-style:italic;">
+              Some guests play characters. Others arrive as detectives. The two halves of the table meet, question each other, and unravel the case together. Designed for larger groups (10+) where one format alone won&rsquo;t carry the room.
+            </div>
+          </div>
+
+          <div class="pl-philosophy__card tla-fade tla-d1">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <span class="tla-pillar-card__num" style="font-size:1.5rem;">03</span>
+              <span class="tla-badge tla-badge--dev">In Development</span>
+            </div>
+            <div class="pl-philosophy__card-title">Season 2</div>
+            <div class="pl-philosophy__card-desc" style="font-style:italic;">
+              Murder Mysteries that connect. A recurring detective. A returning villain. Worlds that grow from one evening to the next, for the groups who want to gather again.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Call to Action ─────────────────────────────── -->
+    <section class="pl-collaborate" id="contact-cta">
+      <div class="tla-container pl-collaborate__inner">
+        <div class="pl-collaborate__text tla-fade">
+          <span class="tla-overline">Get in touch</span>
+          <h2 class="tla-section-header pl-section-header--left">Let&rsquo;s build your evening.</h2>
+          <p>
+            Whether you have a date, a theme, and a guest list &mdash; or just an idea &mdash; we&rsquo;d love to hear from you.
+          </p>
+          <div class="pl-collaborate__ctas">
+            <a href="/contact/" class="tla-btn tla-btn--gold">Send us a message</a>
+            <a href="/" class="tla-btn tla-btn--outline">Explore the studio &rarr;</a>
+          </div>
+        </div>
+        <div class="pl-collaborate__audiences tla-fade tla-d1">
+          <ul class="pl-audience-list">
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Dinner parties &amp; milestone birthdays</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Corporate events &amp; team gatherings</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Wedding anniversary dinners</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Bachelor &amp; bachelorette parties</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Friend groups who love a good puzzle</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────── -->
+    <footer class="tla-footer">
+      <div class="tla-container tla-footer__inner">
+        <div class="tla-footer__brand">
+          <div class="tla-footer__logo">The Lions Alliance</div>
+          <p class="tla-footer__tagline">Creative studio for meaningful projects.</p>
+        </div>
+        <div class="tla-footer__links">
+          <a href="/">Studio</a>
+          <a href="#formats">Formats</a>
+          <a href="#kits">Kit Types</a>
+          <a href="#themes">Themes</a>
+          <a href="/contact/">Contact</a>
+        </div>
+      </div>
+      <div class="tla-container tla-footer__bottom">
+        <span>&copy; {year} The Lions Alliance. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <!-- ── Scripts ─────────────────────────────────────── -->
+    <script>
+      const nav = document.getElementById('tla-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+      }
+
+      const faders = document.querySelectorAll('.tla-fade');
+      if (faders.length && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('tla-visible');
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        faders.forEach((el) => obs.observe(el));
+      } else {
+        faders.forEach((el) => el.classList.add('tla-visible'));
+      }
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', String(open));
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
