@@ -940,11 +940,346 @@
 }
 
 /* ═══════════════════════════════════════════════════════
+   PROTOTYPE BADGE VARIANT
+   ═══════════════════════════════════════════════════════ */
+.tla-badge--built {
+  background: var(--pl-sage-subtle);
+  color: var(--pl-sage-dim);
+  border: 1px solid var(--pl-sage-border);
+}
+.tla-badge--built::before { background: var(--pl-sage); }
+
+/* ═══════════════════════════════════════════════════════
+   RENDER FRAMES — photorealistic renders (dark bg)
+   ═══════════════════════════════════════════════════════ */
+.pl-render {
+  width: 100%;
+  margin: 0;
+  background: #0c0c0c;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--tla-radius-md);
+  box-shadow:
+    0 24px 48px -16px rgba(0, 0, 0, 0.55),
+    0 6px 16px -6px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.pl-render:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 32px 56px -16px rgba(0, 0, 0, 0.65),
+    0 8px 20px -8px rgba(0, 0, 0, 0.5);
+}
+
+.pl-render img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pl-render--light {
+  background: #f5f5f4;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 16px 36px -12px rgba(0, 0, 0, 0.18),
+    0 4px 12px -4px rgba(0, 0, 0, 0.12);
+}
+
+.pl-render__caption {
+  display: block;
+  margin-top: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--tla-text-muted);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* Stack two render frames vertically in the visual column */
+.pl-renders-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Inline prototype status banner inside quest body */
+.pl-quest__status {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 12px 16px;
+  background: var(--pl-sage-subtle);
+  border: 1px solid var(--pl-sage-border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--pl-sage-dim);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.pl-quest__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pl-sage);
+  flex-shrink: 0;
+  margin-top: 4px;
+  animation: pl-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pl-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(122, 155, 109, 0.45); }
+  50%       { box-shadow: 0 0 0 6px rgba(122, 155, 109, 0); }
+}
+
+/* Intro para for re-headed quests section */
+.pl-quests__intro {
+  max-width: 640px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--tla-text-body);
+}
+
+/* ═══════════════════════════════════════════════════════
+   RUNE PROGRESSION STRIP
+   ═══════════════════════════════════════════════════════ */
+.pl-rune-block {
+  margin: 48px 0 24px;
+  padding: 32px 32px 24px;
+  background: rgba(10, 10, 10, 0.035);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: var(--tla-radius-md);
+}
+
+.pl-rune-block__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--tla-text-muted);
+  margin-bottom: 6px;
+}
+
+.pl-rune-block__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--tla-text);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.pl-rune-strip {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0 14px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(122, 155, 109, 0.3) transparent;
+  cursor: grab;
+}
+
+.pl-rune-strip::-webkit-scrollbar { height: 3px; }
+.pl-rune-strip::-webkit-scrollbar-track { background: transparent; }
+.pl-rune-strip::-webkit-scrollbar-thumb {
+  background: rgba(122, 155, 109, 0.3);
+  border-radius: 2px;
+}
+.pl-rune-strip:active { cursor: grabbing; }
+
+.pl-rune-frame {
+  flex: 0 0 200px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.pl-rune-frame img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.pl-rune-frame:hover img { transform: scale(1.03); }
+
+.pl-rune-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.84rem;
+  color: var(--tla-text-muted);
+  text-align: center;
+  line-height: 1.35;
+}
+
+.pl-rune-label strong {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--tla-gold);
+  letter-spacing: 0.1em;
+}
+
+.pl-rune-strip-hint {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--tla-text-muted);
+  opacity: 0.55;
+  text-align: right;
+}
+
+/* ═══════════════════════════════════════════════════════
+   OTHER FORMATS (compact format cards)
+   ═══════════════════════════════════════════════════════ */
+.pl-formats {
+  padding: 80px 0 100px;
+  background: var(--tla-white);
+  border-top: 1px solid var(--tla-border);
+}
+
+.pl-formats__intro {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--tla-text-body);
+  max-width: 680px;
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+.pl-format-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.pl-format-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--tla-bg);
+  border: 1px solid var(--tla-border);
+  border-radius: var(--tla-radius-md);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pl-format-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--tla-shadow-md);
+}
+
+.pl-format-card__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--pl-parchment);
+  border-bottom: 1px solid var(--pl-rule);
+}
+
+.pl-format-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pl-format-card__body {
+  padding: 26px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pl-format-card__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--tla-gold);
+  margin-bottom: 8px;
+}
+
+.pl-format-card__concept-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 0.64rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tla-text-muted);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--tla-border);
+  border-radius: 100px;
+}
+
+.pl-format-card__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--tla-text);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.pl-format-card__subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--tla-text-muted);
+  margin-bottom: 14px;
+}
+
+.pl-format-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--tla-text-body);
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.pl-format-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pl-format-card__chip {
+  font-size: 0.74rem;
+  padding: 4px 12px;
+  border: 1px solid var(--tla-border);
+  border-radius: 100px;
+  color: var(--tla-text-muted);
+  white-space: nowrap;
+  background: var(--tla-white);
+}
+
+/* ═══════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════ */
 
 /* ── Below 960px ── */
 @media (max-width: 960px) {
+  .pl-format-grid {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .pl-hero__inner {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -991,6 +1326,22 @@
 
 /* ── Below 768px ── */
 @media (max-width: 768px) {
+  .pl-formats {
+    padding: 72px 0;
+  }
+
+  .pl-rune-block {
+    padding: 24px 20px 18px;
+    margin: 36px 0 16px;
+  }
+
+  .pl-rune-frame {
+    flex: 0 0 170px;
+  }
+
+  .pl-rune-frame img {
+    width: 170px;
+  }
   .pl-hero {
     padding: 120px 0 72px;
   }
@@ -1032,6 +1383,17 @@
 
 /* ── Below 600px ── */
 @media (max-width: 600px) {
+  .pl-format-grid {
+    max-width: none;
+  }
+
+  .pl-rune-frame {
+    flex: 0 0 150px;
+  }
+
+  .pl-rune-frame img {
+    width: 150px;
+  }
   .pl-hero {
     padding: 110px 0 56px;
   }
