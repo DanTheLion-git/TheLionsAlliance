@@ -233,56 +233,6 @@ const year = new Date().getFullYear();
       </div>
     </section>
 
-    <!-- ── Magisch diagram ──────────────────────────────── -->
-    <section class="pl-diagram tla-fade" id="key-diagram">
-      <div class="tla-container">
-        <div style="text-align:center;">
-          <span class="tla-overline">Wat u vasthoudt</span>
-          <h2 class="tla-section-header">De sleutel, ontleed</h2>
-          <p class="pl-diagram__intro">Vier systemen die samenwerken &mdash; licht, geluid, trilling en radio-sensing &mdash; elk verborgen in een rekwisiet dat aanvoelt alsof het thuis hoort in de jaren 1730.</p>
-        </div>
-
-        <div class="pl-diagram__grid" id="diagram-grid">
-          <svg class="pl-diagram__lines" id="diagram-lines" aria-hidden="true"></svg>
-
-          <figure class="pl-diagram__key-fig">
-            <img class="pl-diagram__key-img" id="diagram-key-img"
-                 src="/images/puzzle-quests/skeleton-key/sk-front-back.webp"
-                 alt="Voor- en achterkant van de Skeleton Key — met leeuwenkop, gegraveerde schacht en NFC-baard."
-                 loading="lazy" />
-          </figure>
-
-          <div class="pl-diagram__side">
-            <div class="pl-diagram__callout" data-anchor="0.22,0.18">
-              <span class="pl-diagram__c-icon">&#9889;</span>
-              <strong class="pl-diagram__c-name">Opladen &amp; Activeren</strong>
-              <span class="pl-diagram__c-desc">USB-C oplaadpoort en activeerknop, verborgen in de kroon van de leeuwenkop.</span>
-            </div>
-            <div class="pl-diagram__callout" data-anchor="0.16,0.44">
-              <span class="pl-diagram__c-icon">&#128266;</span>
-              <strong class="pl-diagram__c-name">Spreekt &amp; Brult</strong>
-              <span class="pl-diagram__c-desc">Speaker en trilmotor. De sleutel pulseert en gromt naarmate een station dichterbij komt.</span>
-            </div>
-          </div>
-
-          <div class="pl-diagram__side">
-            <div class="pl-diagram__callout" data-anchor="0.30,0.35">
-              <span class="pl-diagram__c-icon">&#128065;</span>
-              <strong class="pl-diagram__c-name">Statusoog</strong>
-              <span class="pl-diagram__c-desc">Kleur-LED op de achterkant. Aan&thinsp;/&thinsp;stand-by&thinsp;/&thinsp;station gevonden &mdash; in &eacute;&eacute;n oogopslag leesbaar.</span>
-            </div>
-            <div class="pl-diagram__callout" data-anchor="0.88,0.52">
-              <span class="pl-diagram__c-icon">&#10022;</span>
-              <strong class="pl-diagram__c-name">Slotdetectie</strong>
-              <span class="pl-diagram__c-desc">NFC-lezer ingebouwd in de baard. In het slotkastje gestoken om de rune-onthulling te activeren.</span>
-            </div>
-          </div>
-        </div>
-
-        <p class="pl-diagram__note">Annotatierender in voorbereiding &mdash; het diagram bepaalt wat de definitieve afbeelding moet tonen.</p>
-      </div>
-    </section>
-
     <!-- ── Interactieve runewandeling ────────────────────── -->
     <section class="pl-walk" id="rune-walk">
       <div class="tla-container">
@@ -643,46 +593,6 @@ const year = new Date().getFullYear();
           });
         });
       }
-
-      /* ── Diagram annotation lines ───────────────────── */
-      (function initDiagram() {
-        const grid   = document.getElementById('diagram-grid');
-        const keyImg = document.getElementById('diagram-key-img');
-        const linesEl= document.getElementById('diagram-lines');
-        if (!grid || !keyImg || !linesEl) return;
-
-        function draw() {
-          linesEl.innerHTML = '';
-          if (window.innerWidth <= 960) return;
-          const gridRect = grid.getBoundingClientRect();
-          const imgRect  = keyImg.getBoundingClientRect();
-          document.querySelectorAll('.pl-diagram__callout').forEach((c) => {
-            const [ax, ay] = c.dataset.anchor.split(',').map(Number);
-            const ancX = (imgRect.left - gridRect.left) + ax * imgRect.width;
-            const ancY = (imgRect.top  - gridRect.top)  + ay * imgRect.height;
-            const cR   = c.getBoundingClientRect();
-            const cx   = cR.left - gridRect.left + cR.width  / 2;
-            const cy   = cR.top  - gridRect.top  + cR.height / 2;
-            const NS   = 'http://www.w3.org/2000/svg';
-            const line = document.createElementNS(NS, 'line');
-            line.setAttribute('x1', cx);   line.setAttribute('y1', cy);
-            line.setAttribute('x2', ancX); line.setAttribute('y2', ancY);
-            line.setAttribute('stroke', 'rgba(176,141,87,0.55)');
-            line.setAttribute('stroke-width', '1.5');
-            line.setAttribute('stroke-dasharray', '5 4');
-            const dot = document.createElementNS(NS, 'circle');
-            dot.setAttribute('cx', ancX); dot.setAttribute('cy', ancY);
-            dot.setAttribute('r', '4');
-            dot.setAttribute('fill', 'rgba(176,141,87,0.55)');
-            linesEl.appendChild(line);
-            linesEl.appendChild(dot);
-          });
-        }
-
-        if (keyImg.complete) draw(); else keyImg.addEventListener('load', draw);
-        let rt;
-        window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 120); });
-      })();
 
       /* ── Interactive Rune Walk ──────────────────────── */
       (function initWalk() {
