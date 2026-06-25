@@ -186,15 +186,10 @@ const year = new Date().getFullYear();
         <!-- ── Het rekwisiet ───────────────────────── -->
         <article class="pl-quest pl-quest--key tla-fade" id="quest-key">
           <div class="pl-quest__visual">
-            <div class="pl-renders-stack">
-              <figure class="pl-render pl-render--light">
-                <img src="/images/puzzle-quests/skeleton-key/sk-head.webp" alt="Close-up render van de leeuwenkop van de Skeleton Key: een sierlijk bronzen frame met acanthus-bladwerk rondom een gedetailleerd leeuwengezicht in heraldische stijl, circa 1730." loading="lazy" />
-              </figure>
-              <figure class="pl-render">
-                <img src="/images/puzzle-quests/skeleton-key/sk-front-back.webp" alt="Voor- en achterkant van de volledige Skeleton Key op een donkere achtergrond: leeuwenkop, gegraveerde schacht met acht runeposities en de NFC-baard aan het uiteinde." loading="lazy" />
-              </figure>
-            </div>
-            <span class="pl-render__caption">De Skeleton Key &mdash; prototype-renders, versie I &middot; voor- en achterkant</span>
+            <figure class="pl-render pl-render--blend">
+              <img src="/images/puzzle-quests/skeleton-key/sk-head.webp" alt="Close-up render van de leeuwenkop van de Skeleton Key: een sierlijk bronzen frame met acanthus-bladwerk rondom een gedetailleerd leeuwengezicht in heraldische stijl, circa 1730." loading="lazy" />
+            </figure>
+            <span class="pl-render__caption">De Skeleton Key &mdash; leeuwenkop, prototype-render &middot; versie I</span>
           </div>
           <div class="pl-quest__body">
             <div class="pl-quest__eyebrow">Quest I &middot; Skeleton Key</div>
@@ -220,39 +215,6 @@ const year = new Date().getFullYear();
           </div>
         </article>
 
-        <!-- ── Runenprogressie-strip ─────────────────── -->
-        <div class="pl-rune-block tla-fade">
-          <div class="pl-rune-block__eyebrow">Hoe het mechanisme zich ontvouwt</div>
-          <div class="pl-rune-block__title">Elk omgedraaid slot onthult de volgende rune &mdash; en de volgende letter van het sleutelwoord</div>
-          <div class="pl-rune-strip" role="region" aria-label="Runenprogressie van de Skeleton Key">
-            <div class="pl-rune-frame">
-              <img src="/images/puzzle-quests/skeleton-key/sk-unlit.webp" alt="De Skeleton Key zonder verlichte runen — opgehaald aan de museumbalie" loading="lazy" />
-              <span class="pl-rune-label">Opgehaald aan de balie</span>
-            </div>
-            <div class="pl-rune-frame">
-              <img src="/images/puzzle-quests/skeleton-key/sk-lit-1.webp" alt="Eén rune verlicht op de schacht — eerste slot omgedraaid" loading="lazy" />
-              <span class="pl-rune-label">Eerste slot &mdash; <strong>V</strong></span>
-            </div>
-            <div class="pl-rune-frame">
-              <img src="/images/puzzle-quests/skeleton-key/sk-lit-3.webp" alt="Drie runen verlicht op de schacht — derde slot omgedraaid" loading="lazy" />
-              <span class="pl-rune-label">Derde slot &mdash; <strong>VRI</strong></span>
-            </div>
-            <div class="pl-rune-frame">
-              <img src="/images/puzzle-quests/skeleton-key/sk-lit-5.webp" alt="Vijf runen verlicht op de schacht — vijfde slot omgedraaid" loading="lazy" />
-              <span class="pl-rune-label">Vijfde slot &mdash; <strong>VRIJH</strong></span>
-            </div>
-            <div class="pl-rune-frame">
-              <img src="/images/puzzle-quests/skeleton-key/sk-lit-7.webp" alt="Zeven runen verlicht op de schacht — zevende slot omgedraaid" loading="lazy" />
-              <span class="pl-rune-label">Zevende slot &mdash; <strong>VRIJHEI</strong></span>
-            </div>
-            <div class="pl-rune-frame">
-              <img src="/images/puzzle-quests/skeleton-key/sk-lit-10.webp" alt="Alle acht runen gloeien op de schacht — VRIJHEID volledig gespeld, klaar om terug te keren naar de museumbalie" loading="lazy" />
-              <span class="pl-rune-label">Alle acht &mdash; <strong>VRIJHEID</strong></span>
-            </div>
-          </div>
-          <p class="pl-rune-strip-hint">scroll &rarr;</p>
-        </div>
-
         <!-- ── Slotstations ──────────────────────────── -->
         <article class="pl-quest pl-quest--key-stations tla-fade tla-d1">
           <div class="pl-quest__visual pl-quest__visual--wide">
@@ -268,6 +230,124 @@ const year = new Date().getFullYear();
           </div>
         </article>
 
+      </div>
+    </section>
+
+    <!-- ── Magisch diagram ──────────────────────────────── -->
+    <section class="pl-diagram tla-fade" id="key-diagram">
+      <div class="tla-container">
+        <div style="text-align:center;">
+          <span class="tla-overline">Wat u vasthoudt</span>
+          <h2 class="tla-section-header">De sleutel, ontleed</h2>
+          <p class="pl-diagram__intro">Vier systemen die samenwerken &mdash; licht, geluid, trilling en radio-sensing &mdash; elk verborgen in een rekwisiet dat aanvoelt alsof het thuis hoort in de jaren 1730.</p>
+        </div>
+
+        <div class="pl-diagram__grid" id="diagram-grid">
+          <svg class="pl-diagram__lines" id="diagram-lines" aria-hidden="true"></svg>
+
+          <figure class="pl-diagram__key-fig">
+            <img class="pl-diagram__key-img" id="diagram-key-img"
+                 src="/images/puzzle-quests/skeleton-key/sk-front-back.webp"
+                 alt="Voor- en achterkant van de Skeleton Key — met leeuwenkop, gegraveerde schacht en NFC-baard."
+                 loading="lazy" />
+          </figure>
+
+          <div class="pl-diagram__side">
+            <div class="pl-diagram__callout" data-anchor="0.22,0.18">
+              <span class="pl-diagram__c-icon">&#9889;</span>
+              <strong class="pl-diagram__c-name">Opladen &amp; Activeren</strong>
+              <span class="pl-diagram__c-desc">USB-C oplaadpoort en activeerknop, verborgen in de kroon van de leeuwenkop.</span>
+            </div>
+            <div class="pl-diagram__callout" data-anchor="0.16,0.44">
+              <span class="pl-diagram__c-icon">&#128266;</span>
+              <strong class="pl-diagram__c-name">Spreekt &amp; Brult</strong>
+              <span class="pl-diagram__c-desc">Speaker en trilmotor. De sleutel pulseert en gromt naarmate een station dichterbij komt.</span>
+            </div>
+          </div>
+
+          <div class="pl-diagram__side">
+            <div class="pl-diagram__callout" data-anchor="0.30,0.35">
+              <span class="pl-diagram__c-icon">&#128065;</span>
+              <strong class="pl-diagram__c-name">Statusoog</strong>
+              <span class="pl-diagram__c-desc">Kleur-LED op de achterkant. Aan&thinsp;/&thinsp;stand-by&thinsp;/&thinsp;station gevonden &mdash; in &eacute;&eacute;n oogopslag leesbaar.</span>
+            </div>
+            <div class="pl-diagram__callout" data-anchor="0.88,0.52">
+              <span class="pl-diagram__c-icon">&#10022;</span>
+              <strong class="pl-diagram__c-name">Slotdetectie</strong>
+              <span class="pl-diagram__c-desc">NFC-lezer ingebouwd in de baard. In het slotkastje gestoken om de rune-onthulling te activeren.</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="pl-diagram__note">Annotatierender in voorbereiding &mdash; het diagram bepaalt wat de definitieve afbeelding moet tonen.</p>
+      </div>
+    </section>
+
+    <!-- ── Interactieve runewandeling ────────────────────── -->
+    <section class="pl-walk" id="rune-walk">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">Het mechanisme in beweging</span>
+          <h2 class="tla-section-header">Elk slot onthult een rune</h2>
+          <p class="pl-walk__intro">Sleep de wandelaar langs de route. Bij elk station verandert het sleutelbeeld en gloeit er nog een Peelschrift-rune op langs de schacht. Tijdelijke tekens &mdash; de definitieve Peelschrift-tekens volgen zodra het ontwerp is afgerond.</p>
+        </div>
+
+        <div class="tla-fade">
+          <div class="pl-walk__display">
+            <figure class="pl-walk__key-fig">
+              <img id="walk-key-img" class="pl-walk__key-img"
+                   src="/images/puzzle-quests/skeleton-key/sk-unlit.webp"
+                   alt="De Skeleton Key — het runebeeld wordt bijgewerkt naarmate de wandelaar de route loopt"
+                   loading="lazy" />
+            </figure>
+            <div class="pl-walk__runes" aria-live="polite" aria-label="Runenprogressie">
+              <span class="pl-walk__rune" data-rune="&#5792;">&#9676;</span>
+              <span class="pl-walk__rune" data-rune="&#5794;">&#9676;</span>
+              <span class="pl-walk__rune" data-rune="&#5798;">&#9676;</span>
+              <span class="pl-walk__rune" data-rune="&#5800;">&#9676;</span>
+              <span class="pl-walk__rune" data-rune="&#5809;">&#9676;</span>
+              <span class="pl-walk__rune" data-rune="&#5810;">&#9676;</span>
+              <span class="pl-walk__rune" data-rune="&#5825;">&#9676;</span>
+              <span class="pl-walk__rune" data-rune="&#5848;">&#9676;</span>
+            </div>
+          </div>
+
+          <div class="pl-walk__stage-wrap">
+            <svg id="walk-svg" class="pl-walk__svg" viewBox="0 0 900 240" preserveAspectRatio="xMidYMid meet"
+                 role="img" aria-label="Interactieve wandelroute — sleep om door de stations heen te lopen">
+              <defs>
+                <symbol id="icon-rock" viewBox="-15 -16 30 24" overflow="visible">
+                  <path d="M-10,4 C-13,-7 -7,-16 0,-14 C7,-12 13,-7 11,4 C9,11 -8,11 -10,4Z"
+                        fill="#9B8B78" stroke="#7A6A5A" stroke-width="0.7"/>
+                  <path d="M-5,-7 C-2,-12 3,-11 5,-7" stroke="#C0B098" stroke-width="0.8" fill="none" opacity="0.55"/>
+                </symbol>
+                <symbol id="icon-stump" viewBox="-12 -16 24 24" overflow="visible">
+                  <rect x="-9" y="-7" width="18" height="13" rx="1" fill="#7A5A42"/>
+                  <ellipse cx="0" cy="-7" rx="9" ry="3.5" fill="#6A4A35"/>
+                  <ellipse cx="0" cy="6"  rx="9" ry="3"   fill="#6A4A35"/>
+                  <path d="M-3,-7 L-2,-14 M3,-7 L3,-13 M7,-4 L9,-10"
+                        stroke="#9B7050" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                </symbol>
+                <symbol id="icon-pole" viewBox="-8 -24 16 32" overflow="visible">
+                  <rect x="-2.5" y="-22" width="5" height="28" rx="1.5" fill="#8B7352"/>
+                  <ellipse cx="0" cy="-22" rx="6"  ry="2.5" fill="#A08860"/>
+                  <ellipse cx="0" cy="-22" rx="4"  ry="1.8" fill="#C0A878"/>
+                </symbol>
+              </defs>
+
+              <line x1="0" y1="160" x2="900" y2="160" stroke="rgba(176,141,87,0.07)" stroke-width="1"/>
+
+              <path id="walk-path"
+                    d="M 20,150 C 80,90 170,195 250,150 S 400,90 470,150 S 600,195 680,150 S 820,90 880,150"
+                    stroke="rgba(176,141,87,0.38)"
+                    stroke-width="3"
+                    stroke-dasharray="8 6"
+                    fill="none"
+                    stroke-linecap="round"/>
+            </svg>
+            <p class="pl-walk__hint">&#8592; sleep de wandelaar langs de route &#8594;</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -519,6 +599,7 @@ const year = new Date().getFullYear();
 
     <!-- ── Scripts ─────────────────────────────────────── -->
     <script>
+      /* Nav scroll */
       const nav = document.getElementById('tla-nav');
       if (nav) {
         window.addEventListener('scroll', () => {
@@ -526,6 +607,7 @@ const year = new Date().getFullYear();
         });
       }
 
+      /* Fade-in on scroll */
       const faders = document.querySelectorAll('.tla-fade');
       if (faders.length && 'IntersectionObserver' in window) {
         const obs = new IntersectionObserver(
@@ -544,6 +626,7 @@ const year = new Date().getFullYear();
         faders.forEach((el) => el.classList.add('tla-visible'));
       }
 
+      /* Hamburger */
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobile-menu');
       if (hamburger && mobileMenu) {
@@ -561,23 +644,171 @@ const year = new Date().getFullYear();
         });
       }
 
-      /* Drag-to-scroll on rune strip */
-      const strip = document.querySelector('.pl-rune-strip');
-      if (strip) {
-        let isDown = false, startX = 0, scrollLeft = 0;
-        strip.addEventListener('mousedown', (e) => {
-          isDown = true;
-          startX = e.pageX - strip.offsetLeft;
-          scrollLeft = strip.scrollLeft;
+      /* ── Diagram annotation lines ───────────────────── */
+      (function initDiagram() {
+        const grid   = document.getElementById('diagram-grid');
+        const keyImg = document.getElementById('diagram-key-img');
+        const linesEl= document.getElementById('diagram-lines');
+        if (!grid || !keyImg || !linesEl) return;
+
+        function draw() {
+          linesEl.innerHTML = '';
+          if (window.innerWidth <= 960) return;
+          const gridRect = grid.getBoundingClientRect();
+          const imgRect  = keyImg.getBoundingClientRect();
+          document.querySelectorAll('.pl-diagram__callout').forEach((c) => {
+            const [ax, ay] = c.dataset.anchor.split(',').map(Number);
+            const ancX = (imgRect.left - gridRect.left) + ax * imgRect.width;
+            const ancY = (imgRect.top  - gridRect.top)  + ay * imgRect.height;
+            const cR   = c.getBoundingClientRect();
+            const cx   = cR.left - gridRect.left + cR.width  / 2;
+            const cy   = cR.top  - gridRect.top  + cR.height / 2;
+            const NS   = 'http://www.w3.org/2000/svg';
+            const line = document.createElementNS(NS, 'line');
+            line.setAttribute('x1', cx);   line.setAttribute('y1', cy);
+            line.setAttribute('x2', ancX); line.setAttribute('y2', ancY);
+            line.setAttribute('stroke', 'rgba(176,141,87,0.55)');
+            line.setAttribute('stroke-width', '1.5');
+            line.setAttribute('stroke-dasharray', '5 4');
+            const dot = document.createElementNS(NS, 'circle');
+            dot.setAttribute('cx', ancX); dot.setAttribute('cy', ancY);
+            dot.setAttribute('r', '4');
+            dot.setAttribute('fill', 'rgba(176,141,87,0.55)');
+            linesEl.appendChild(line);
+            linesEl.appendChild(dot);
+          });
+        }
+
+        if (keyImg.complete) draw(); else keyImg.addEventListener('load', draw);
+        let rt;
+        window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 120); });
+      })();
+
+      /* ── Interactive Rune Walk ──────────────────────── */
+      (function initWalk() {
+        const svgEl    = document.getElementById('walk-svg');
+        const walkPath = document.getElementById('walk-path');
+        const keyImg   = document.getElementById('walk-key-img');
+        const runeEls  = document.querySelectorAll('.pl-walk__rune');
+        if (!svgEl || !walkPath || !keyImg) return;
+
+        const pathLen   = walkPath.getTotalLength();
+        const stationTs = [0.08,0.17,0.26,0.35,0.44,0.53,0.62,0.71,0.80,0.91];
+        const iconCycle = ['rock','stump','pole','rock','stump','pole','rock','stump','pole','rock'];
+        const keyImgs   = [
+          '/images/puzzle-quests/skeleton-key/sk-unlit.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-1.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-2.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-3.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-4.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-5.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-6.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-7.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-8.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-9.webp',
+          '/images/puzzle-quests/skeleton-key/sk-lit-10.webp',
+        ];
+        const NS = 'http://www.w3.org/2000/svg';
+
+        stationTs.forEach((t, i) => {
+          const pt = walkPath.getPointAtLength(t * pathLen);
+          const g  = document.createElementNS(NS, 'g');
+          g.setAttribute('class', 'walk-station');
+          g.setAttribute('transform', `translate(${pt.x.toFixed(1)},${pt.y.toFixed(1)})`);
+          const iconG = document.createElementNS(NS, 'g');
+          iconG.setAttribute('transform', 'translate(0,-40)');
+          const use = document.createElementNS(NS, 'use');
+          use.setAttribute('href', `#icon-${iconCycle[i]}`);
+          use.setAttribute('width', '30'); use.setAttribute('height', '28');
+          use.setAttribute('x', '-15');   use.setAttribute('y', '-24');
+          iconG.appendChild(use);
+          const dot = document.createElementNS(NS, 'circle');
+          dot.setAttribute('r', '5');
+          dot.setAttribute('fill', 'rgba(176,141,87,0.18)');
+          dot.setAttribute('stroke', 'rgba(176,141,87,0.5)');
+          dot.setAttribute('stroke-width', '1.5');
+          g.appendChild(iconG);
+          g.appendChild(dot);
+          svgEl.appendChild(g);
         });
-        strip.addEventListener('mouseleave', () => { isDown = false; });
-        strip.addEventListener('mouseup',    () => { isDown = false; });
-        strip.addEventListener('mousemove', (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          strip.scrollLeft = scrollLeft - (e.pageX - strip.offsetLeft - startX);
-        });
-      }
+
+        const walkerG = document.createElementNS(NS, 'g');
+        walkerG.setAttribute('class', 'pl-walk__walker-el');
+        const startPt = walkPath.getPointAtLength(0);
+        walkerG.setAttribute('transform', `translate(${startPt.x.toFixed(1)},${startPt.y.toFixed(1)})`);
+        const halo = document.createElementNS(NS, 'circle');
+        halo.setAttribute('r', '14'); halo.setAttribute('fill', 'rgba(176,141,87,0.1)'); halo.setAttribute('stroke', 'none');
+        const head = document.createElementNS(NS, 'circle');
+        head.setAttribute('cx', '0'); head.setAttribute('cy', '-22'); head.setAttribute('r', '5');
+        head.setAttribute('fill', 'var(--tla-gold,#B08D57)');
+        const body = document.createElementNS(NS, 'path');
+        body.setAttribute('d', 'M0,-17 L0,-6 M-7,-13 L7,-13 M0,-6 L-5,6 M0,-6 L5,6');
+        body.setAttribute('stroke', 'var(--tla-gold,#B08D57)');
+        body.setAttribute('stroke-width', '2.5'); body.setAttribute('fill', 'none');
+        body.setAttribute('stroke-linecap', 'round');
+        walkerG.appendChild(halo); walkerG.appendChild(head); walkerG.appendChild(body);
+        svgEl.appendChild(walkerG);
+
+        let currentStage = -1;
+        let isDragging   = false;
+
+        function getProgressFromX(clientX) {
+          const rect = svgEl.getBoundingClientRect();
+          const svgW = svgEl.viewBox.baseVal.width;
+          const tx   = ((clientX - rect.left) / rect.width) * svgW;
+          let lo = 0, hi = 1;
+          for (let i = 0; i < 28; i++) {
+            const mid = (lo + hi) / 2;
+            if (walkPath.getPointAtLength(mid * pathLen).x < tx) lo = mid; else hi = mid;
+          }
+          return (lo + hi) / 2;
+        }
+
+        function applyProgress(t) {
+          t = Math.max(0, Math.min(1, t));
+          const pt = walkPath.getPointAtLength(t * pathLen);
+          walkerG.setAttribute('transform', `translate(${pt.x.toFixed(1)},${pt.y.toFixed(1)})`);
+          const stage = stationTs.filter((s) => t > s).length;
+          if (stage === currentStage) return;
+          currentStage = stage;
+
+          svgEl.querySelectorAll('.walk-station').forEach((el, i) => {
+            el.classList.toggle('passed', i < stage);
+          });
+
+          const newSrc = keyImgs[Math.min(stage, keyImgs.length - 1)];
+          const cur = keyImg.getAttribute('src') || '';
+          if (!cur.endsWith(newSrc.split('/').pop())) {
+            keyImg.classList.add('fading');
+            setTimeout(() => {
+              keyImg.src = newSrc;
+              keyImg.onload  = () => keyImg.classList.remove('fading');
+              keyImg.onerror = () => keyImg.classList.remove('fading');
+            }, 160);
+          }
+
+          runeEls.forEach((el, i) => {
+            if (i < stage && i < 8) {
+              if (!el.classList.contains('revealed')) {
+                el.textContent = el.dataset.rune || '◌';
+                el.classList.add('revealed');
+              }
+            } else {
+              el.textContent = '◌';
+              el.classList.remove('revealed');
+            }
+          });
+        }
+
+        applyProgress(0);
+
+        svgEl.addEventListener('mousedown', (e) => { isDragging = true; applyProgress(getProgressFromX(e.clientX)); });
+        window.addEventListener('mousemove', (e) => { if (isDragging) applyProgress(getProgressFromX(e.clientX)); });
+        window.addEventListener('mouseup',   () => { isDragging = false; });
+        svgEl.addEventListener('touchstart', (e) => { isDragging = true; applyProgress(getProgressFromX(e.touches[0].clientX)); e.preventDefault(); }, { passive: false });
+        window.addEventListener('touchmove', (e) => { if (isDragging) { applyProgress(getProgressFromX(e.touches[0].clientX)); e.preventDefault(); } }, { passive: false });
+        window.addEventListener('touchend',  () => { isDragging = false; });
+      })();
     </script>
   </body>
 </html>

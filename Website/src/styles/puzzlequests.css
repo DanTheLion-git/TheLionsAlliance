@@ -997,11 +997,16 @@
   letter-spacing: 0.01em;
 }
 
-/* Stack two render frames vertically in the visual column */
-.pl-renders-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+/* Light-background renders: blend into page via multiply */
+.pl-render--blend {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+.pl-render--blend img {
+  mix-blend-mode: multiply;
+  filter: contrast(1.06) saturate(0.85);
 }
 
 /* Inline prototype status banner inside quest body */
@@ -1046,96 +1051,232 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   RUNE PROGRESSION STRIP
+   MAGICAL DIAGRAM — "What you're holding"
    ═══════════════════════════════════════════════════════ */
-.pl-rune-block {
-  margin: 48px 0 24px;
-  padding: 32px 32px 24px;
-  background: rgba(10, 10, 10, 0.035);
-  border: 1px solid rgba(0, 0, 0, 0.07);
+.pl-diagram {
+  padding: 96px 0 104px;
+  background: var(--pl-parchment);
+  background-image:
+    radial-gradient(circle at 18% 28%, rgba(176,141,87,0.07) 0, transparent 55%),
+    radial-gradient(circle at 80% 68%, rgba(176,141,87,0.05) 0, transparent 50%);
+  border-top: 1px solid var(--pl-rule);
+  border-bottom: 1px solid var(--pl-rule);
+}
+
+.pl-diagram__intro {
+  max-width: 580px;
+  margin: 18px auto 0;
+  text-align: center;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--tla-text-body);
+}
+
+.pl-diagram__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 36px;
+  align-items: center;
+  max-width: 960px;
+  margin: 52px auto 0;
+}
+
+.pl-diagram__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+.pl-diagram__key-fig {
+  grid-column: 2;
+  z-index: 1;
+  margin: 0;
   border-radius: var(--tla-radius-md);
+  overflow: hidden;
+  background: #090909;
+  box-shadow:
+    0 24px 48px -16px rgba(0,0,0,0.55),
+    0 6px 16px -6px rgba(0,0,0,0.4);
 }
 
-.pl-rune-block__eyebrow {
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--tla-text-muted);
-  margin-bottom: 6px;
+.pl-diagram__key-img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.pl-rune-block__title {
+.pl-diagram__side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 3;
+}
+
+.pl-diagram__callout {
+  background: var(--tla-white, #fff);
+  border: 1px solid var(--pl-rule);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 4px 14px -6px rgba(140,100,60,0.2);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.pl-diagram__callout:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 8px 22px -8px rgba(140,100,60,0.28);
+}
+
+.pl-diagram__c-icon {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 7px;
+  line-height: 1;
+}
+
+.pl-diagram__c-name {
+  display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
+  font-size: 0.98rem;
   font-weight: 600;
   color: var(--tla-text);
-  margin-bottom: 24px;
-  line-height: 1.3;
+  margin-bottom: 4px;
 }
 
-.pl-rune-strip {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 4px 0 14px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(122, 155, 109, 0.3) transparent;
-  cursor: grab;
+.pl-diagram__c-desc {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--tla-text-muted);
+  line-height: 1.45;
+  font-style: italic;
 }
 
-.pl-rune-strip::-webkit-scrollbar { height: 3px; }
-.pl-rune-strip::-webkit-scrollbar-track { background: transparent; }
-.pl-rune-strip::-webkit-scrollbar-thumb {
-  background: rgba(122, 155, 109, 0.3);
-  border-radius: 2px;
+.pl-diagram__note {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 0.79rem;
+  color: var(--tla-text-muted);
+  font-style: italic;
+  opacity: 0.62;
 }
-.pl-rune-strip:active { cursor: grabbing; }
 
-.pl-rune-frame {
-  flex: 0 0 200px;
-  scroll-snap-align: start;
+/* ═══════════════════════════════════════════════════════
+   INTERACTIVE RUNE WALK
+   ═══════════════════════════════════════════════════════ */
+.pl-walk {
+  padding: 96px 0 104px;
+  background: var(--tla-bg-alt, #f0ede8);
+}
+
+.pl-walk__intro {
+  max-width: 600px;
+  margin: 18px auto 52px;
+  text-align: center;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--tla-text-body);
+}
+
+.pl-walk__display {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 28px;
+  margin-bottom: 44px;
 }
 
-.pl-rune-frame img {
-  width: 200px;
-  height: auto;
-  border-radius: 8px;
+.pl-walk__key-fig {
+  width: 260px;
+  margin: 0;
+  border-radius: var(--tla-radius-md);
+  overflow: hidden;
+  background: #0c0c0c;
+  box-shadow: 0 16px 36px -12px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+}
+
+.pl-walk__key-img {
   display: block;
-  box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.2s ease;
 }
 
-.pl-rune-frame:hover img { transform: scale(1.03); }
+.pl-walk__key-img.fading { opacity: 0.15; }
 
-.pl-rune-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.84rem;
-  color: var(--tla-text-muted);
+.pl-walk__runes {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pl-walk__rune {
+  width: 38px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: rgba(176,141,87,0.2);
+  border-bottom: 2px solid rgba(176,141,87,0.2);
+  transition: color 0.35s ease, text-shadow 0.35s ease, border-color 0.35s ease;
+  line-height: 1;
+  user-select: none;
+}
+
+.pl-walk__rune.revealed {
+  color: var(--tla-gold, #B08D57);
+  text-shadow: 0 0 12px rgba(176,141,87,0.5);
+  border-color: var(--tla-gold, #B08D57);
+  animation: rune-appear 0.45s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes rune-appear {
+  0%  { transform: scale(1.5) translateY(-6px); opacity: 0; }
+  100%{ transform: scale(1)   translateY(0);    opacity: 1; }
+}
+
+.pl-walk__stage-wrap { position: relative; }
+
+.pl-walk__svg {
+  width: 100%;
+  height: auto;
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  display: block;
+  overflow: visible;
+}
+
+.pl-walk__svg:active { cursor: grabbing; }
+
+.walk-station {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.walk-station.passed { opacity: 1; }
+
+.pl-walk__walker-el {
+  filter: drop-shadow(0 0 6px rgba(176,141,87,0.4));
+}
+
+.pl-walk__hint {
   text-align: center;
-  line-height: 1.35;
-}
-
-.pl-rune-label strong {
-  font-style: normal;
-  font-weight: 700;
-  color: var(--tla-gold);
-  letter-spacing: 0.1em;
-}
-
-.pl-rune-strip-hint {
-  margin-top: 10px;
-  font-size: 0.78rem;
+  margin-top: 12px;
+  font-size: 0.8rem;
   color: var(--tla-text-muted);
   opacity: 0.55;
-  text-align: right;
+  font-style: italic;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1326,22 +1467,12 @@
 
 /* ── Below 768px ── */
 @media (max-width: 768px) {
-  .pl-formats {
+  .pl-formats,
+  .pl-diagram,
+  .pl-walk {
     padding: 72px 0;
   }
 
-  .pl-rune-block {
-    padding: 24px 20px 18px;
-    margin: 36px 0 16px;
-  }
-
-  .pl-rune-frame {
-    flex: 0 0 170px;
-  }
-
-  .pl-rune-frame img {
-    width: 170px;
-  }
   .pl-hero {
     padding: 120px 0 72px;
   }
@@ -1381,19 +1512,46 @@
   }
 }
 
+/* ── Below 960px: diagram collapses to single column ── */
+@media (max-width: 960px) {
+  .pl-diagram__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    gap: 24px;
+  }
+  .pl-diagram__side {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .pl-diagram__callout {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 140px;
+  }
+  .pl-diagram__lines { display: none; }
+  .pl-walk__key-fig  { width: 220px; }
+}
+
 /* ── Below 600px ── */
 @media (max-width: 600px) {
   .pl-format-grid {
     max-width: none;
   }
 
-  .pl-rune-frame {
-    flex: 0 0 150px;
+  .pl-diagram__callout {
+    flex: 1 1 100%;
   }
 
-  .pl-rune-frame img {
-    width: 150px;
+  .pl-walk__key-fig { width: 180px; }
+
+  .pl-walk__rune {
+    width: 30px;
+    height: 42px;
+    font-size: 1.2rem;
   }
+
+  .pl-walk__runes { gap: 7px; }
+
   .pl-hero {
     padding: 110px 0 56px;
   }
@@ -1414,7 +1572,9 @@
   .pl-faq,
   .pl-pilot,
   .pl-quests,
-  .pl-adapt {
+  .pl-adapt,
+  .pl-diagram,
+  .pl-walk {
     padding: 56px 0;
   }
 
