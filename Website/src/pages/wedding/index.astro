@@ -1,465 +1,499 @@
 ---
-import "../../styles/homepage.css";
 import "../../styles/wedding.css";
 const year = new Date().getFullYear();
 ---
 <!doctype html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>You&rsquo;re Invited &mdash; Daniel &amp; [PARTNER] Wedding</title>
-    <meta name="description" content="Join Daniel and [PARTNER] for their medieval fantasy wedding. RSVP here." />
+    <title>Daniel &amp; Thirza &mdash; Jullie zijn uitgenodigd</title>
+    <meta name="description" content="Kom vieren met Daniel en Thirza op hun middeleeuws fantasie feest. Meld je aan via de RSVP op deze pagina." />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   </head>
-  <body class="tla-page">
+  <body>
 
-    <!-- ── Navigation ─────────────────────────────────── -->
-    <nav class="tla-nav" id="tla-nav">
-      <div class="tla-nav__inner tla-container">
-        <a href="/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
-        <ul class="tla-nav__links">
-          <li><a href="#details">The Day</a></li>
-          <li><a href="#rsvp">RSVP</a></li>
-        </ul>
-        <div class="tla-nav__actions">
-          <a href="#rsvp" class="tla-nav__cta">RSVP &darr;</a>
-        </div>
-        <button class="tla-nav__hamburger" id="tla-hamburger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-      <div class="tla-nav__mobile" id="tla-mobile-menu">
-        <a href="#details">The Day</a>
-        <a href="#rsvp">RSVP</a>
-      </div>
+    <!-- ── Floating nav ───────────────────────────────── -->
+    <nav class="w-nav" aria-label="Navigatie">
+      <span class="w-nav__brand">D &amp; T &middot; 2026</span>
+      <ul class="w-nav__links" role="list">
+        <li><a href="#avond">De avond</a></li>
+        <li><a href="#dresscode">Dresscode</a></li>
+        <li><a href="#locatie">Locatie</a></li>
+      </ul>
+      <a href="#rsvp" class="w-nav__cta">Aanmelden &darr;</a>
     </nav>
 
-    <!-- ── Hero ──────────────────────────────────────── -->
-    <section class="wedding-hero">
-      <div class="wedding-hero__ornament" aria-hidden="true">&#10022; &#9876; &#10022;</div>
-      <span class="wedding-hero__eyebrow">You are cordially invited</span>
-      <h1 class="wedding-hero__names">
-        Daniel <span class="wedding-hero__amp">&amp;</span> [PARTNER]
-      </h1>
-      <div class="wedding-hero__divider" aria-hidden="true">&#x2042;</div>
-      <!-- TODO: Replace [DATE] and [PLACE] with the actual date and town name -->
-      <p class="wedding-hero__date">[DATE] &bull; Werkhoven</p>
-      <span class="wedding-hero__badge">Medieval Fantasy</span>
-      <a href="#details" class="wedding-hero__scroll" aria-label="Scroll to details">
-        <span>Discover</span>
-      </a>
-    </section>
+    <!-- ═══════════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════════════════ -->
+    <section class="w-hero" aria-label="Uitnodiging">
+      <div class="w-hero__inner">
 
-    <!-- ── Event Details ──────────────────────────────── -->
-    <section class="wedding-details tla-container" id="details">
-      <div class="wedding-details__grid">
-        <div class="wedding-details__card tla-fade">
-          <div class="wedding-details__icon" aria-hidden="true">&#9876;</div>
-          <h3>The Ceremony</h3>
-          <!-- TODO: Replace [TIME] with actual ceremony time -->
-          <p>[TIME]</p>
-          <p class="wedding-details__sub">Werkhovenseweg 18<br />3985 MH Werkhoven</p>
+        <p class="w-hero__pre">Jullie zijn van harte uitgenodigd</p>
+
+        <div class="w-rule" aria-hidden="true">
+          <span>&#10022;</span>
         </div>
-        <div class="wedding-details__card tla-fade tla-d1">
-          <div class="wedding-details__icon" aria-hidden="true">&#127863;</div>
-          <h3>The Feast</h3>
-          <!-- TODO: Replace [TIME] with actual dinner time -->
-          <p>[TIME] &mdash; Dinner</p>
-          <p class="wedding-details__sub">A proper medieval banquet awaits. Please let us know on your RSVP whether you&rsquo;ll be joining us at the table.</p>
-        </div>
-        <div class="wedding-details__card tla-fade tla-d2">
-          <div class="wedding-details__icon" aria-hidden="true">&#127926;</div>
-          <h3>The Revelry</h3>
-          <!-- TODO: Replace [TIME] with actual party start time -->
-          <p>[TIME] &mdash; Party</p>
-          <p class="wedding-details__sub">Music, dancing, and merriment into the night. Let us know if you&rsquo;ll be joining the celebration.</p>
-        </div>
+
+        <h1 class="w-hero__names">
+          <span class="w-hero__first">Daniel</span>
+          <span class="w-hero__amp">&amp;</span>
+          <span class="w-hero__second">Thirza</span>
+        </h1>
+
+        <div class="w-hero__sep" aria-hidden="true"></div>
+
+        <!-- TODO: Replace [DATUM] with the actual date, e.g. "Zaterdag 12 september 2026" -->
+        <p class="w-hero__date">[DATUM] &bull; Werkhoven</p>
+        <p class="w-hero__place">Werkhovenseweg 18, 3985 MH Werkhoven</p>
+
       </div>
 
-      <!-- Dress code -->
-      <div class="wedding-theme tla-fade">
-        <div class="wedding-theme__inner">
-          <span class="tla-overline">Dress code</span>
-          <h2>Medieval Fantasy</h2>
+      <button class="w-hero__scroll" onclick="document.getElementById('avond').scrollIntoView({behavior:'smooth'})" aria-label="Scroll naar inhoud">
+        <span class="w-hero__scroll-text">Scroll</span>
+        <div class="w-hero__scroll-line" aria-hidden="true"></div>
+      </button>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         INTRO
+    ════════════════════════════════════════════════════ -->
+    <section class="w-intro">
+      <div class="w-container--narrow">
+        <div class="w-fade">
+          <span class="w-intro__label">Over de avond</span>
+          <h2>Kom vieren met ons</h2>
           <p>
-            Step out of the ordinary and into a world of magic and adventure. Come dressed as a knight, wizard, ranger, noble, rogue, or any character from the stories you love &mdash; cloaks, tunics, armour, gowns, and fantasy finery are all welcome. If costumes aren&rsquo;t your thing, smart-casual is perfectly fine too.
+            Wij gaan trouwen! De offici&euml;le ceremonie vindt een paar dagen later op het stadhuis plaats, samen met onze ouders. Maar het echte feest &mdash; dat is voor jullie allemaal.
+          </p>
+          <p>
+            Kom genieten van een diner, een bijzonder dansmoment en een avond vol muziek en gezelligheid. We kunnen niet wachten om dit met jullie te vieren.
           </p>
         </div>
       </div>
+    </section>
 
-      <!-- Location -->
-      <div class="wedding-location tla-fade">
-        <span class="tla-overline">Where to find us</span>
-        <h2>Location</h2>
-        <div class="wedding-location__cards">
-          <div class="wedding-location__address">
-            <h3>Address</h3>
-            <address>
+    <!-- ═══════════════════════════════════════════════
+         DE AVOND — TIMELINE
+    ════════════════════════════════════════════════════ -->
+    <section class="w-evening" id="avond">
+      <div class="w-container--narrow">
+        <header class="w-evening__header w-fade">
+          <span class="w-evening__label">Het programma</span>
+          <h2 class="w-evening__title">De Avond</h2>
+        </header>
+
+        <div class="w-timeline" role="list">
+
+          <div class="w-timeline__item w-fade w-d1" role="listitem">
+            <span class="w-timeline__time">17:30</span>
+            <div class="w-timeline__node" aria-hidden="true"></div>
+            <div class="w-timeline__body">
+              <h3 class="w-timeline__name">Welkom</h3>
+              <p class="w-timeline__desc">De deuren gaan open. Kom binnen, ontspan en mix met de andere gasten onder het genot van een drankje.</p>
+            </div>
+          </div>
+
+          <div class="w-timeline__item w-fade w-d2" role="listitem">
+            <span class="w-timeline__time">18:00</span>
+            <div class="w-timeline__node" aria-hidden="true"></div>
+            <div class="w-timeline__body">
+              <h3 class="w-timeline__name">Diner</h3>
+              <p class="w-timeline__desc">We gaan met zijn allen aan tafel. Een gezellig diner vol verhalen, gelach en goed eten.</p>
+            </div>
+          </div>
+
+          <div class="w-timeline__item w-timeline__item--highlight w-fade w-d3" role="listitem">
+            <span class="w-timeline__time">~20:45</span>
+            <div class="w-timeline__node" aria-hidden="true"></div>
+            <div class="w-timeline__body">
+              <h3 class="w-timeline__name">Tover Cirkel</h3>
+              <p class="w-timeline__desc">Op het snijpunt van diner en feest leren we samen een dans. Een korte instructie &mdash; voor iedereen, ongeacht danservaring. Doe mee!</p>
+              <span class="w-timeline__pill">Speciale traditie</span>
+            </div>
+          </div>
+
+          <div class="w-timeline__item w-fade w-d4" role="listitem">
+            <span class="w-timeline__time">21:00</span>
+            <div class="w-timeline__node" aria-hidden="true"></div>
+            <div class="w-timeline__body">
+              <h3 class="w-timeline__name">Feest</h3>
+              <p class="w-timeline__desc">Het feest barst los. Muziek, dans en plezier &mdash; dans de nacht door met ons.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         DRESSCODE
+    ════════════════════════════════════════════════════ -->
+    <section class="w-theme" id="dresscode">
+      <div class="w-container--narrow w-theme__inner w-fade">
+        <span class="w-theme__label">Dresscode</span>
+        <h2 class="w-theme__title">Middeleeuws Fantasie</h2>
+        <p class="w-theme__body">
+          Stap uit de alledaagse wereld en kleed je als een ridder, tovenaar, elf, edelman of welk personage uit een fantasywereld je ook wilt. Mantels, tunics, gewaden, fantasiepantsers &mdash; alles is welkom. Heb je liever gewoon nette kleding aan? Dat is ook prima. Het gaat erom dat je er bent.
+        </p>
+        <div class="w-theme__tags" aria-label="Idee&euml;n voor kleding">
+          <span class="w-theme__tag">Ridder</span>
+          <span class="w-theme__tag">Tovenaar</span>
+          <span class="w-theme__tag">Elf</span>
+          <span class="w-theme__tag">Edelman</span>
+          <span class="w-theme__tag">Ranger</span>
+          <span class="w-theme__tag">Hoveling</span>
+          <span class="w-theme__tag">Magiestaf</span>
+          <span class="w-theme__tag">Fantasie gewaden</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         LOCATIE
+    ════════════════════════════════════════════════════ -->
+    <section class="w-location" id="locatie">
+      <div class="w-container">
+        <header class="w-location__header w-fade">
+          <span class="w-location__label">Waar we zijn</span>
+          <h2 class="w-location__title">Locatie</h2>
+        </header>
+        <div class="w-location__grid">
+          <div class="w-location__card w-fade w-d1">
+            <span class="w-location__card-label">Adres</span>
+            <address class="w-location__address">
               Werkhovenseweg 18<br />
               3985 MH Werkhoven<br />
-              The Netherlands
+              Nederland
             </address>
             <a
               href="https://maps.google.com/?q=Werkhovenseweg+18,+3985+MH+Werkhoven"
               target="_blank"
               rel="noopener noreferrer"
-              class="tla-btn tla-btn--gold"
+              class="w-btn w-btn--outline"
             >
               Open in Maps &#8599;
             </a>
           </div>
-          <div class="wedding-location__notes">
-            <h3>Getting there</h3>
-            <!-- TODO: Add parking, transport, or other logistics info here -->
-            <p>[Add parking and travel information here &mdash; e.g. parking on site, nearest train station, shuttle details, etc.]</p>
+          <div class="w-location__card w-fade w-d2">
+            <span class="w-location__card-label">Bereikbaarheid &amp; parkeren</span>
+            <!-- TODO: Add parking and travel info here -->
+            <p>[Vul hier parkeer- en reisinfo in &mdash; bijv. parkeerplaats op locatie, dichtstbijzijnde station, shuttle, enz.]</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── RSVP ───────────────────────────────────────── -->
-    <section class="wedding-rsvp" id="rsvp">
-      <div class="tla-container wedding-rsvp__inner">
+    <!-- ═══════════════════════════════════════════════
+         RSVP
+    ════════════════════════════════════════════════════ -->
+    <section class="w-rsvp" id="rsvp">
+      <div class="w-container--narrow">
 
-        <header class="wedding-rsvp__header tla-fade">
-          <div class="wedding-hero__ornament" aria-hidden="true">&#10022; &#10022; &#10022;</div>
-          <span class="tla-overline">Reserve your seat</span>
-          <h2>RSVP</h2>
-          <!-- TODO: Replace [RSVP DEADLINE] with the actual deadline date -->
-          <p>Please let us know by <strong>[RSVP DEADLINE]</strong> whether you will be joining us. If your plans change, you can return to this page and update your response at any time &mdash; just enter your email address again.</p>
+        <header class="w-rsvp__header w-fade">
+          <div class="w-rsvp__orn" aria-hidden="true">
+            <span>&#10022;</span>
+          </div>
+          <span class="w-rsvp__label">Aanmelden</span>
+          <h2 class="w-rsvp__title">Ben jij erbij?</h2>
+          <!-- TODO: Replace [DATUM] with the RSVP deadline -->
+          <p class="w-rsvp__intro">Laat ons weten of je erbij bent voor <strong>[AANMELDDATUM]</strong>. Je kunt je aanmelding altijd later aanpassen &mdash; vul gewoon opnieuw je e-mailadres in.</p>
         </header>
 
-        <!-- Email lookup (for updating an existing RSVP) -->
-        <div class="wedding-rsvp__lookup tla-fade tla-d1">
-          <p class="wedding-rsvp__lookup-label">Already sent your RSVP?</p>
-          <div class="wedding-rsvp__lookup-row">
+        <!-- Email lookup -->
+        <div class="w-lookup w-fade w-d1">
+          <span class="w-lookup__label">Al aangemeld? Pas je aanmelding aan</span>
+          <div class="w-lookup__row">
             <input
               type="email"
               id="lookupEmail"
-              placeholder="your@email.com"
+              class="w-form__input"
+              placeholder="jouw@email.nl"
               autocomplete="email"
-              aria-label="Email address for RSVP lookup"
+              aria-label="E-mailadres voor het opzoeken van je aanmelding"
             />
-            <button id="lookupBtn" class="tla-btn tla-btn--gold">Look up &rarr;</button>
+            <button id="lookupBtn" class="w-btn w-btn--gold">Opzoeken &rarr;</button>
           </div>
-          <span class="wedding-rsvp__lookup-msg" id="lookupMsg" role="status" aria-live="polite"></span>
+          <span class="w-lookup__msg" id="lookupMsg" role="status" aria-live="polite"></span>
         </div>
 
-        <!-- RSVP Form -->
-        <div class="wedding-rsvp__card tla-fade tla-d2">
-          <form class="tla-form" id="rsvpForm" novalidate>
+        <!-- RSVP form card -->
+        <div class="w-form-card w-fade w-d2">
+          <form class="w-form" id="rsvpForm" novalidate>
 
-            <!-- Name + Email row -->
-            <div class="tla-form__row">
-              <div class="tla-form__group">
-                <label for="rName">Your full name</label>
+            <!-- Name + Email -->
+            <div class="w-form__row">
+              <div class="w-form__group">
+                <label class="w-form__lbl" for="rName">Jouw naam</label>
                 <input
                   type="text"
                   id="rName"
-                  name="name"
+                  class="w-form__input"
                   autocomplete="name"
-                  placeholder="e.g. Anna van der Meer"
+                  placeholder="bijv. Anna van der Meer"
                   required
                 />
-                <span class="tla-form__error" id="nameError"></span>
+                <span class="w-form__error" id="nameError" role="alert"></span>
               </div>
-              <div class="tla-form__group">
-                <label for="rEmail">Email address</label>
+              <div class="w-form__group">
+                <label class="w-form__lbl" for="rEmail">E-mailadres</label>
                 <input
                   type="email"
                   id="rEmail"
-                  name="email"
+                  class="w-form__input"
                   autocomplete="email"
-                  placeholder="anna@example.com"
+                  placeholder="anna@voorbeeld.nl"
                   required
                 />
-                <span class="tla-form__error" id="emailError"></span>
+                <span class="w-form__error" id="emailError" role="alert"></span>
               </div>
             </div>
 
             <!-- Attending -->
-            <div class="tla-form__group">
-              <label>Will you be attending?</label>
-              <div class="wedding-radio-group" role="radiogroup" aria-label="Attending">
-                <label class="wedding-radio">
+            <div class="w-form__group">
+              <span class="w-form__lbl" id="attendingLbl">Kom je?</span>
+              <div class="w-radios" role="radiogroup" aria-labelledby="attendingLbl">
+                <label class="w-radio">
                   <input type="radio" name="attending" value="yes" />
-                  <span class="wedding-radio__box"></span>
-                  <span>Yes, I&rsquo;ll be there! &#127881;</span>
+                  <span class="w-radio__dot"></span>
+                  <span>Ja, ik kom! &#127881;</span>
                 </label>
-                <label class="wedding-radio">
+                <label class="w-radio">
                   <input type="radio" name="attending" value="no" />
-                  <span class="wedding-radio__box"></span>
-                  <span>No, unfortunately not</span>
+                  <span class="w-radio__dot"></span>
+                  <span>Helaas niet</span>
                 </label>
-                <label class="wedding-radio">
+                <label class="w-radio">
                   <input type="radio" name="attending" value="maybe" />
-                  <span class="wedding-radio__box"></span>
-                  <span>Maybe / Not sure yet</span>
+                  <span class="w-radio__dot"></span>
+                  <span>Nog niet zeker</span>
                 </label>
               </div>
-              <span class="tla-form__error" id="attendingError"></span>
+              <span class="w-form__error" id="attendingError" role="alert"></span>
             </div>
 
-            <!-- Conditional extras (dinner / party / alcohol) — shown only when attending = yes -->
-            <div id="attendingExtras" class="wedding-extras" style="display:none" aria-hidden="true">
-              <div class="tla-form__group">
-                <label>Joining us for the dinner?</label>
-                <div class="wedding-radio-group" role="radiogroup" aria-label="Dinner">
-                  <label class="wedding-radio">
+            <!-- Conditional: dinner / party / alcohol — shown when attending = yes -->
+            <div class="w-extras" id="extras" aria-hidden="true">
+
+              <div class="w-form__group">
+                <span class="w-form__lbl" id="dinnerLbl">Blijf je eten?</span>
+                <div class="w-radios" role="radiogroup" aria-labelledby="dinnerLbl">
+                  <label class="w-radio">
                     <input type="radio" name="dinner" value="yes" />
-                    <span class="wedding-radio__box"></span>
-                    <span>Yes</span>
+                    <span class="w-radio__dot"></span>
+                    <span>Ja</span>
                   </label>
-                  <label class="wedding-radio">
+                  <label class="w-radio">
                     <input type="radio" name="dinner" value="no" />
-                    <span class="wedding-radio__box"></span>
-                    <span>No</span>
+                    <span class="w-radio__dot"></span>
+                    <span>Nee, ik kom later</span>
                   </label>
                 </div>
               </div>
 
-              <div class="tla-form__group">
-                <label>Joining the party?</label>
-                <div class="wedding-radio-group" role="radiogroup" aria-label="Party">
-                  <label class="wedding-radio">
+              <div class="w-form__group">
+                <span class="w-form__lbl" id="partyLbl">Blijf je voor het feest?</span>
+                <div class="w-radios" role="radiogroup" aria-labelledby="partyLbl">
+                  <label class="w-radio">
                     <input type="radio" name="party" value="yes" />
-                    <span class="wedding-radio__box"></span>
-                    <span>Yes</span>
+                    <span class="w-radio__dot"></span>
+                    <span>Ja, tot de vroege uurtjes!</span>
                   </label>
-                  <label class="wedding-radio">
+                  <label class="w-radio">
                     <input type="radio" name="party" value="no" />
-                    <span class="wedding-radio__box"></span>
-                    <span>No</span>
+                    <span class="w-radio__dot"></span>
+                    <span>Nee, ik ga eerder</span>
                   </label>
                 </div>
               </div>
 
-              <div class="tla-form__group">
-                <label>Do you drink alcohol?</label>
-                <div class="wedding-radio-group" role="radiogroup" aria-label="Alcohol">
-                  <label class="wedding-radio">
+              <div class="w-form__group">
+                <span class="w-form__lbl" id="alcoholLbl">Drink je alcohol?</span>
+                <div class="w-radios" role="radiogroup" aria-labelledby="alcoholLbl">
+                  <label class="w-radio">
                     <input type="radio" name="drinks_alcohol" value="yes" />
-                    <span class="wedding-radio__box"></span>
-                    <span>Yes</span>
+                    <span class="w-radio__dot"></span>
+                    <span>Ja</span>
                   </label>
-                  <label class="wedding-radio">
+                  <label class="w-radio">
                     <input type="radio" name="drinks_alcohol" value="no" />
-                    <span class="wedding-radio__box"></span>
-                    <span>No</span>
+                    <span class="w-radio__dot"></span>
+                    <span>Nee</span>
                   </label>
                 </div>
               </div>
+
             </div>
 
-            <!-- Dietary preference -->
-            <div class="tla-form__group">
-              <label>Dietary preferences</label>
-              <div class="wedding-radio-group" role="radiogroup" aria-label="Dietary preference">
-                <label class="wedding-radio">
+            <!-- Dietary -->
+            <div class="w-form__group">
+              <span class="w-form__lbl" id="dietaryLbl">Di&euml;etwensen</span>
+              <div class="w-radios" role="radiogroup" aria-labelledby="dietaryLbl">
+                <label class="w-radio">
                   <input type="radio" name="dietary" value="none" />
-                  <span class="wedding-radio__box"></span>
-                  <span>No restrictions</span>
+                  <span class="w-radio__dot"></span>
+                  <span>Geen beperkingen</span>
                 </label>
-                <label class="wedding-radio">
+                <label class="w-radio">
                   <input type="radio" name="dietary" value="vegetarian" />
-                  <span class="wedding-radio__box"></span>
-                  <span>Vegetarian</span>
+                  <span class="w-radio__dot"></span>
+                  <span>Vegetarisch</span>
                 </label>
-                <label class="wedding-radio">
+                <label class="w-radio">
                   <input type="radio" name="dietary" value="vegan" />
-                  <span class="wedding-radio__box"></span>
-                  <span>Vegan</span>
+                  <span class="w-radio__dot"></span>
+                  <span>Veganistisch</span>
                 </label>
-                <label class="wedding-radio">
+                <label class="w-radio">
                   <input type="radio" name="dietary" value="other" />
-                  <span class="wedding-radio__box"></span>
-                  <span>Other</span>
+                  <span class="w-radio__dot"></span>
+                  <span>Anders</span>
                 </label>
               </div>
             </div>
 
-            <!-- Dietary notes (shown only when dietary = other) -->
-            <div id="dietaryNotesGroup" class="tla-form__group" style="display:none" aria-hidden="true">
-              <label for="rDietaryNotes">Please describe your dietary needs</label>
+            <!-- Dietary notes (shown when dietary = other) -->
+            <div class="w-form__group" id="dietaryNotesGroup" style="display:none" aria-hidden="true">
+              <label class="w-form__lbl" for="rDietaryNotes">Omschrijf jouw di&euml;etwensen</label>
               <textarea
                 id="rDietaryNotes"
-                name="dietary_notes"
+                class="w-form__textarea"
                 rows="3"
-                placeholder="e.g. nut allergy, gluten-free, lactose intolerant&hellip;"
+                placeholder="bijv. notenallergie, glutenvrij, lactose-intolerant&hellip;"
               ></textarea>
             </div>
 
-            <button type="submit" class="tla-btn tla-btn--gold tla-btn--full" id="submitBtn">
-              Send my RSVP &#10022;
+            <button type="submit" class="w-btn w-btn--gold w-btn--full" id="submitBtn">
+              Aanmelden &#10022;
             </button>
+
           </form>
 
           <!-- Success state -->
-          <div class="tla-form__success" id="rsvpSuccess">
-            <div class="tla-form__success-icon">&#10022;</div>
-            <h2 id="successTitle">RSVP received!</h2>
-            <p id="successMsg">Thank you! A confirmation has been sent to your email address. You can return to this page at any time to update your response.</p>
-            <a href="#rsvp" class="tla-form__success-link" id="editRsvpLink">Update your RSVP &rarr;</a>
+          <div class="w-success" id="rsvpSuccess">
+            <div class="w-success__icon" aria-hidden="true">&#10022;</div>
+            <h2 id="successTitle">Aanmelding ontvangen!</h2>
+            <p id="successMsg">Dankjewel! We sturen een bevestiging naar jouw e-mailadres. Je kunt altijd terugkomen om je aanmelding aan te passen.</p>
+            <a href="#rsvp" class="w-success__link" id="editLink">Aanmelding wijzigen &rarr;</a>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ── Footer ─────────────────────────────────────── -->
-    <footer class="tla-footer">
-      <div class="tla-container">
-        <div class="tla-footer__inner">
-          <div class="tla-footer__brand">
-            <span class="tla-footer__logo">The Lions <span>Alliance</span></span>
-            <span class="tla-footer__tagline">A Creative Experience Studio</span>
-          </div>
-          <nav class="tla-footer__links">
-            <a href="/">Studio</a>
-            <a href="/contact/">Contact</a>
-          </nav>
-        </div>
-        <p class="tla-footer__copy">&copy; {year} The Lions Alliance. All rights reserved.</p>
-      </div>
+    <!-- ═══════════════════════════════════════════════
+         FOOTER
+    ════════════════════════════════════════════════════ -->
+    <footer class="w-footer">
+      <p class="w-footer__names">Daniel &amp; Thirza</p>
+      <p class="w-footer__copy">&copy; {year} &middot; Met liefde gemaakt</p>
     </footer>
 
     <script>
-      const API_URL = 'https://api.weddingcambox.nl';
-
-      // ── Scroll-aware nav ───────────────────────────────
-      const nav = document.getElementById('tla-nav');
-      if (nav) {
-        window.addEventListener('scroll', () => {
-          nav.classList.toggle('scrolled', window.scrollY > 40);
-        }, { passive: true });
-      }
+      const API = 'https://api.weddingcambox.nl';
 
       // ── Fade-in observer ───────────────────────────────
-      const faders = document.querySelectorAll('.tla-fade');
-      if (faders.length && 'IntersectionObserver' in window) {
+      const faders = document.querySelectorAll('.w-fade');
+      if ('IntersectionObserver' in window) {
         const obs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add('tla-visible');
-                obs.unobserve(e.target);
-              }
-            });
-          },
-          { threshold: 0.05 }
+          (entries) => entries.forEach((e) => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          }),
+          { threshold: 0.06 }
         );
         faders.forEach((el) => obs.observe(el));
       } else {
-        faders.forEach((el) => el.classList.add('tla-visible'));
-      }
-
-      // ── Hamburger ──────────────────────────────────────
-      const hamburger = document.getElementById('tla-hamburger');
-      const mobileMenu = document.getElementById('tla-mobile-menu');
-      if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-          const open = mobileMenu.classList.toggle('open');
-          hamburger.classList.toggle('open', open);
-          hamburger.setAttribute('aria-expanded', String(open));
-        });
-        mobileMenu.querySelectorAll('a').forEach((a) => {
-          a.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-          });
-        });
+        faders.forEach((el) => el.classList.add('visible'));
       }
 
       // ── Conditional field visibility ───────────────────
-      const attendingExtras = document.getElementById('attendingExtras');
+      const extras           = document.getElementById('extras');
       const dietaryNotesGroup = document.getElementById('dietaryNotesGroup');
 
-      document.querySelectorAll('input[name="attending"]').forEach((radio) => {
-        radio.addEventListener('change', () => {
-          const showExtras = radio.value === 'yes';
-          attendingExtras.style.display = showExtras ? 'flex' : 'none';
-          attendingExtras.setAttribute('aria-hidden', String(!showExtras));
+      document.querySelectorAll('input[name="attending"]').forEach((r) => {
+        r.addEventListener('change', () => {
+          const show = r.value === 'yes';
+          extras.classList.toggle('open', show);
+          extras.setAttribute('aria-hidden', String(!show));
         });
       });
 
-      document.querySelectorAll('input[name="dietary"]').forEach((radio) => {
-        radio.addEventListener('change', () => {
-          const showNotes = radio.value === 'other';
-          dietaryNotesGroup.style.display = showNotes ? 'flex' : 'none';
-          dietaryNotesGroup.setAttribute('aria-hidden', String(!showNotes));
+      document.querySelectorAll('input[name="dietary"]').forEach((r) => {
+        r.addEventListener('change', () => {
+          const show = r.value === 'other';
+          dietaryNotesGroup.style.display = show ? 'flex' : 'none';
+          dietaryNotesGroup.setAttribute('aria-hidden', String(!show));
         });
       });
 
-      // ── Email lookup (pre-fill existing RSVP) ─────────
-      const lookupBtn  = document.getElementById('lookupBtn');
-      const lookupMsg  = document.getElementById('lookupMsg');
+      // ── Email lookup ───────────────────────────────────
+      const lookupBtn = document.getElementById('lookupBtn');
+      const lookupMsg = document.getElementById('lookupMsg');
 
       async function doLookup() {
         const email = document.getElementById('lookupEmail').value.trim();
         if (!email) return;
 
-        lookupBtn.disabled = true;
-        lookupBtn.textContent = 'Looking up…';
+        lookupBtn.disabled    = true;
+        lookupBtn.textContent = 'Zoeken…';
         lookupMsg.textContent = '';
-        lookupMsg.className = 'wedding-rsvp__lookup-msg';
+        lookupMsg.className   = 'w-lookup__msg';
 
         try {
-          const res  = await fetch(`${API_URL}/api/wedding/rsvp/${encodeURIComponent(email)}`);
+          const res  = await fetch(`${API}/api/wedding/rsvp/${encodeURIComponent(email)}`);
           const data = await res.json();
 
           if (data.found) {
             const r = data.rsvp;
-
             document.getElementById('rName').value  = r.name;
             document.getElementById('rEmail').value = r.email;
 
-            const attendingRadio = document.querySelector(`input[name="attending"][value="${r.attending}"]`);
-            if (attendingRadio) {
-              attendingRadio.checked = true;
-              const showExtras = r.attending === 'yes';
-              attendingExtras.style.display = showExtras ? 'flex' : 'none';
-              attendingExtras.setAttribute('aria-hidden', String(!showExtras));
+            const ar = document.querySelector(`input[name="attending"][value="${r.attending}"]`);
+            if (ar) {
+              ar.checked = true;
+              const show = r.attending === 'yes';
+              extras.classList.toggle('open', show);
+              extras.setAttribute('aria-hidden', String(!show));
             }
 
             if (r.attending === 'yes') {
-              const dinnerVal  = r.dinner ? 'yes' : 'no';
-              const partyVal   = r.party  ? 'yes' : 'no';
-              const alcoholVal = r.drinks_alcohol ? 'yes' : 'no';
-              const dinnerR    = document.querySelector(`input[name="dinner"][value="${dinnerVal}"]`);
-              const partyR     = document.querySelector(`input[name="party"][value="${partyVal}"]`);
-              const alcoholR   = document.querySelector(`input[name="drinks_alcohol"][value="${alcoholVal}"]`);
-              if (dinnerR)  dinnerR.checked  = true;
-              if (partyR)   partyR.checked   = true;
-              if (alcoholR) alcoholR.checked = true;
+              const dr = document.querySelector(`input[name="dinner"][value="${r.dinner ? 'yes' : 'no'}"]`);
+              const pr = document.querySelector(`input[name="party"][value="${r.party ? 'yes' : 'no'}"]`);
+              const al = document.querySelector(`input[name="drinks_alcohol"][value="${r.drinks_alcohol ? 'yes' : 'no'}"]`);
+              if (dr) dr.checked = true;
+              if (pr) pr.checked = true;
+              if (al) al.checked = true;
             }
 
-            const dietaryRadio = document.querySelector(`input[name="dietary"][value="${r.dietary || 'none'}"]`);
-            if (dietaryRadio) dietaryRadio.checked = true;
+            const dtr = document.querySelector(`input[name="dietary"][value="${r.dietary || 'none'}"]`);
+            if (dtr) dtr.checked = true;
             if (r.dietary === 'other') {
               dietaryNotesGroup.style.display = 'flex';
               dietaryNotesGroup.setAttribute('aria-hidden', 'false');
               document.getElementById('rDietaryNotes').value = r.dietary_notes || '';
             }
 
-            document.getElementById('submitBtn').textContent = 'Update my RSVP ✦';
-            lookupMsg.textContent = `Welcome back, ${r.name}! Your current response is shown below — make any changes and click Update.`;
-            lookupMsg.className = 'wedding-rsvp__lookup-msg wedding-rsvp__lookup-msg--found';
+            document.getElementById('submitBtn').textContent = 'Aanmelding bijwerken ✦';
+            lookupMsg.className   = 'w-lookup__msg w-lookup__msg--found';
+            lookupMsg.textContent = `Welkom terug, ${r.name}! Je huidige aanmelding staat hieronder. Pas aan en klik op aanmelden om op te slaan.`;
             document.getElementById('rsvpForm').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           } else {
             document.getElementById('rEmail').value = email;
-            lookupMsg.textContent = 'No RSVP found for that email — you can fill in the form below.';
-            lookupMsg.className = 'wedding-rsvp__lookup-msg wedding-rsvp__lookup-msg--notfound';
+            lookupMsg.className   = 'w-lookup__msg w-lookup__msg--notfound';
+            lookupMsg.textContent = 'Geen aanmelding gevonden voor dit e-mailadres — vul het formulier hieronder in.';
           }
         } catch (_) {
-          lookupMsg.textContent = 'Could not look up your RSVP right now. Please fill in the form below.';
-          lookupMsg.className = 'wedding-rsvp__lookup-msg wedding-rsvp__lookup-msg--notfound';
+          lookupMsg.className   = 'w-lookup__msg w-lookup__msg--notfound';
+          lookupMsg.textContent = 'Opzoeken mislukt. Vul het formulier hieronder in.';
         }
 
-        lookupBtn.disabled = false;
-        lookupBtn.textContent = 'Look up →';
+        lookupBtn.disabled    = false;
+        lookupBtn.textContent = 'Opzoeken →';
       }
 
       lookupBtn.addEventListener('click', doLookup);
@@ -467,90 +501,89 @@ const year = new Date().getFullYear();
         if (e.key === 'Enter') { e.preventDefault(); doLookup(); }
       });
 
-      // ── Form submission ────────────────────────────────
-      const form = document.getElementById('rsvpForm');
-      if (form) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
+      // ── Form submit ────────────────────────────────────
+      document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-          const name      = document.getElementById('rName').value.trim();
-          const email     = document.getElementById('rEmail').value.trim();
-          const attending = document.querySelector('input[name="attending"]:checked')?.value;
-          const dinnerEl  = document.querySelector('input[name="dinner"]:checked');
-          const partyEl   = document.querySelector('input[name="party"]:checked');
-          const alcoholEl = document.querySelector('input[name="drinks_alcohol"]:checked');
-          const dietary   = document.querySelector('input[name="dietary"]:checked')?.value || 'none';
-          const dietaryNotes = document.getElementById('rDietaryNotes').value.trim() || null;
+        const name      = document.getElementById('rName').value.trim();
+        const email     = document.getElementById('rEmail').value.trim();
+        const attending = document.querySelector('input[name="attending"]:checked')?.value;
+        const dinnerEl  = document.querySelector('input[name="dinner"]:checked');
+        const partyEl   = document.querySelector('input[name="party"]:checked');
+        const alcoholEl = document.querySelector('input[name="drinks_alcohol"]:checked');
+        const dietary   = document.querySelector('input[name="dietary"]:checked')?.value || 'none';
+        const dietaryNotes = document.getElementById('rDietaryNotes').value.trim() || null;
 
-          // Clear prior errors
-          document.getElementById('nameError').textContent     = '';
-          document.getElementById('emailError').textContent    = '';
-          document.getElementById('attendingError').textContent = '';
-
-          let valid = true;
-          if (!name) {
-            document.getElementById('nameError').textContent = 'Please enter your name.';
-            valid = false;
-          }
-          if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            document.getElementById('emailError').textContent = 'Please enter a valid email address.';
-            valid = false;
-          }
-          if (!attending) {
-            document.getElementById('attendingError').textContent = 'Please select whether you will be attending.';
-            valid = false;
-          }
-          if (!valid) return;
-
-          const btn = document.getElementById('submitBtn');
-          btn.disabled    = true;
-          btn.textContent = 'Sending…';
-
-          try {
-            const res = await fetch(`${API_URL}/api/wedding/rsvp`, {
-              method:  'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body:    JSON.stringify({
-                name,
-                email,
-                attending,
-                dinner:         dinnerEl  ? dinnerEl.value  !== 'no' : true,
-                party:          partyEl   ? partyEl.value   !== 'no' : true,
-                drinks_alcohol: alcoholEl ? alcoholEl.value !== 'no' : true,
-                dietary,
-                dietary_notes:  dietaryNotes,
-              }),
-            });
-
-            if (!res.ok) throw new Error('Server error');
-            const data = await res.json();
-
-            form.classList.add('hidden');
-            const successEl = document.getElementById('rsvpSuccess');
-            if (data.isUpdate) {
-              document.getElementById('successTitle').textContent = 'RSVP updated!';
-              document.getElementById('successMsg').textContent   =
-                'Your response has been updated. A confirmation has been sent to your email address.';
-            }
-            successEl.classList.add('visible');
-
-            document.getElementById('editRsvpLink').addEventListener('click', (ev) => {
-              ev.preventDefault();
-              successEl.classList.remove('visible');
-              form.classList.remove('hidden');
-              btn.disabled    = false;
-              btn.textContent = 'Update my RSVP ✦';
-            }, { once: true });
-
-            window.scrollTo({ top: document.getElementById('rsvp').offsetTop - 80, behavior: 'smooth' });
-          } catch (_) {
-            btn.disabled    = false;
-            btn.textContent = attending ? 'Update my RSVP ✦' : 'Send my RSVP ✦';
-            document.getElementById('attendingError').textContent =
-              'Something went wrong. Please try again or contact us directly.';
-          }
+        // Clear errors
+        ['nameError', 'emailError', 'attendingError'].forEach((id) => {
+          document.getElementById(id).textContent = '';
         });
-      }
+
+        let valid = true;
+        if (!name) {
+          document.getElementById('nameError').textContent = 'Vul je naam in.';
+          valid = false;
+        }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          document.getElementById('emailError').textContent = 'Vul een geldig e-mailadres in.';
+          valid = false;
+        }
+        if (!attending) {
+          document.getElementById('attendingError').textContent = 'Geef aan of je komt.';
+          valid = false;
+        }
+        if (!valid) return;
+
+        const btn = document.getElementById('submitBtn');
+        btn.disabled    = true;
+        btn.textContent = 'Aanmelden…';
+
+        try {
+          const res = await fetch(`${API}/api/wedding/rsvp`, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              email,
+              attending,
+              dinner:         dinnerEl  ? dinnerEl.value  !== 'no' : true,
+              party:          partyEl   ? partyEl.value   !== 'no' : true,
+              drinks_alcohol: alcoholEl ? alcoholEl.value !== 'no' : true,
+              dietary,
+              dietary_notes:  dietaryNotes,
+            }),
+          });
+
+          if (!res.ok) throw new Error('Server error');
+          const data = await res.json();
+
+          document.getElementById('rsvpForm').classList.add('hidden');
+          const successEl = document.getElementById('rsvpSuccess');
+
+          if (data.isUpdate) {
+            document.getElementById('successTitle').textContent = 'Aanmelding bijgewerkt!';
+            document.getElementById('successMsg').textContent   =
+              'Jouw aanmelding is aangepast. We sturen een bevestiging naar jouw e-mailadres.';
+          }
+
+          successEl.classList.add('visible');
+          window.scrollTo({ top: document.getElementById('rsvp').offsetTop - 80, behavior: 'smooth' });
+
+          document.getElementById('editLink').addEventListener('click', (ev) => {
+            ev.preventDefault();
+            successEl.classList.remove('visible');
+            document.getElementById('rsvpForm').classList.remove('hidden');
+            btn.disabled    = false;
+            btn.textContent = 'Aanmelding bijwerken ✦';
+          }, { once: true });
+
+        } catch (_) {
+          btn.disabled    = false;
+          btn.textContent = attending ? 'Aanmelding bijwerken ✦' : 'Aanmelden ✦';
+          document.getElementById('attendingError').textContent =
+            'Er ging iets mis. Probeer het opnieuw.';
+        }
+      });
     </script>
   </body>
 </html>
