@@ -10,13 +10,12 @@ import "../../styles/wedding.css";
     <meta name="robots" content="noindex, nofollow" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
   </head>
 
   <body class="p-page">
     <main class="p-scroll" role="main">
 
-      <!-- Corner flourishes -->
       <span class="p-corner p-corner--tl" aria-hidden="true">&#10022;</span>
       <span class="p-corner p-corner--tr" aria-hidden="true">&#10022;</span>
       <span class="p-corner p-corner--bl" aria-hidden="true">&#10022;</span>
@@ -36,24 +35,18 @@ import "../../styles/wedding.css";
       <!-- ── Form ── -->
       <div id="theForm">
 
-        <!-- E-mail -->
+        <!-- E-mail (for confirmation only) -->
         <div>
           <label class="p-email-lbl" for="submitterEmail">
-            Jouw e-mailadres &mdash; voor bevestiging &amp; wijzigingen
+            Jouw e-mailadres &mdash; voor de bevestiging
           </label>
-          <div class="p-email-row">
-            <input
-              type="email"
-              id="submitterEmail"
-              class="p-inp"
-              placeholder="jouw@email.nl"
-              autocomplete="email"
-            />
-            <button class="p-btn p-btn--outline" id="lookupBtn" type="button">
-              Ophalen &rarr;
-            </button>
-          </div>
-          <span class="p-lookup-msg" id="lookupMsg" role="status" aria-live="polite"></span>
+          <input
+            type="email"
+            id="submitterEmail"
+            class="p-inp"
+            placeholder="jouw@email.nl"
+            autocomplete="email"
+          />
         </div>
 
         <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
@@ -126,13 +119,11 @@ import "../../styles/wedding.css";
       <!-- ── Success ── -->
       <div class="p-success" id="formSuccess" aria-live="polite">
         <div class="p-success__orn" aria-hidden="true">&#10022;</div>
-        <h2 id="successTitle">Aanmelding ontvangen!</h2>
-        <p id="successMsg">
-          Top! We sturen een bevestiging naar jouw e-mailadres. Je kunt altijd terugkomen om je aanmelding aan te passen.
+        <h2>Aanmelding ontvangen!</h2>
+        <p>
+          Top! We hebben jullie antwoorden ontvangen en sturen een bevestiging naar jouw e-mailadres.
+          Tot 10 oktober!
         </p>
-        <button class="p-success__link" id="editBtn" type="button">
-          Aanmelding wijzigen &rarr;
-        </button>
       </div>
 
       <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
@@ -156,20 +147,18 @@ import "../../styles/wedding.css";
         return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
       }
 
-      // Sync DOM values → state before any re-render
       function syncState() {
         guests.forEach(g => {
-          const ne = document.getElementById(`gname-${g.id}`);          if (ne) g.name = ne.value;
+          const ne = document.getElementById(`gname-${g.id}`);             if (ne) g.name = ne.value;
           const ac = document.querySelector(`input[name="att-${g.id}"]:checked`); if (ac) g.attending = ac.value;
-          const ao = document.getElementById(`att-other-${g.id}`);      if (ao) g.attending_other = ao.value;
+          const ao = document.getElementById(`att-other-${g.id}`);         if (ao) g.attending_other = ao.value;
           const dc = document.querySelector(`input[name="din-${g.id}"]:checked`); if (dc) g.dinner = dc.value;
           const sc = document.querySelector(`input[name="slp-${g.id}"]:checked`); if (sc) g.sleeping = sc.value;
-          const di = document.getElementById(`dietary-${g.id}`);        if (di) g.dietary = di.value;
-          const no = document.getElementById(`notes-${g.id}`);          if (no) g.notes = no.value;
+          const di = document.getElementById(`dietary-${g.id}`);           if (di) g.dietary = di.value;
+          const no = document.getElementById(`notes-${g.id}`);             if (no) g.notes = no.value;
         });
       }
 
-      // Live update name labels across sections on keypress
       function updateNameLabels(id) {
         const inp = document.getElementById(`gname-${id}`);
         if (!inp) return;
@@ -179,7 +168,7 @@ import "../../styles/wedding.css";
         document.querySelectorAll(`[data-gn="${id}"]`).forEach(el => { el.textContent = display; });
       }
 
-      // ── Render: guest name inputs ──────────────────────────
+      // ── Renders ─────────────────────────────────────────────
       function renderGuests() {
         document.getElementById('guestList').innerHTML = guests.map((g, i) => `
           <div class="p-guest-row" id="grow-${g.id}">
@@ -198,7 +187,6 @@ import "../../styles/wedding.css";
         `).join('');
       }
 
-      // ── Render: attending pills ────────────────────────────
       function renderAttending() {
         document.getElementById('attSection').innerHTML = guests.map((g, i) => {
           const label   = esc(g.name.trim() || `Gast ${i + 1}`);
@@ -229,7 +217,6 @@ import "../../styles/wedding.css";
             </div>
           `;
         }).join('');
-
         guests.forEach(g => {
           document.querySelectorAll(`input[name="att-${g.id}"]`).forEach(r => {
             r.addEventListener('change', () => {
@@ -240,7 +227,6 @@ import "../../styles/wedding.css";
         });
       }
 
-      // ── Render: ja/nee table ───────────────────────────────
       function renderTable(cid, field) {
         document.getElementById(cid).innerHTML = `
           <div class="p-table">
@@ -268,7 +254,6 @@ import "../../styles/wedding.css";
         `;
       }
 
-      // ── Render: text input rows ────────────────────────────
       function renderTextInputs(cid, field, placeholder) {
         document.getElementById(cid).innerHTML = guests.map((g, i) => {
           const label = esc(g.name.trim() || `Gast ${i + 1}`);
@@ -282,7 +267,6 @@ import "../../styles/wedding.css";
         }).join('');
       }
 
-      // ── Render: notes textareas ────────────────────────────
       function renderNotes() {
         document.getElementById('notesSection').innerHTML = guests.map((g, i) => {
           const label = esc(g.name.trim() || `Gast ${i + 1}`);
@@ -290,13 +274,12 @@ import "../../styles/wedding.css";
             <div class="p-text-row p-text-row--area">
               <label class="p-text-row__name" for="notes-${g.id}" data-gn="${g.id}">${label}</label>
               <textarea id="notes-${g.id}" class="p-inp p-area" rows="2"
-                placeholder="bijv. carpool, vragen, idee&euml;n&hellip;">${esc(g.notes || '')}</textarea>
+                placeholder="bijv. vragen, idee&euml;n&hellip;">${esc(g.notes || '')}</textarea>
             </div>
           `;
         }).join('');
       }
 
-      // ── Master render ──────────────────────────────────────
       function renderAll() {
         renderGuests();
         renderAttending();
@@ -306,7 +289,7 @@ import "../../styles/wedding.css";
         renderNotes();
       }
 
-      // ── Guest management ───────────────────────────────────
+      // ── Guest management ────────────────────────────────────
       function addGuest() {
         syncState();
         guests.push({ id: nextId++, name: '', attending: null, attending_other: '', dinner: null, sleeping: null, dietary: '', notes: '' });
@@ -321,56 +304,13 @@ import "../../styles/wedding.css";
         renderAll();
       }
 
-      // Expose to inline onclick
       window.addGuest         = addGuest;
       window.removeGuest      = removeGuest;
       window.updateNameLabels = updateNameLabels;
 
-      // ── Lookup ─────────────────────────────────────────────
-      async function doLookup() {
-        const email = document.getElementById('submitterEmail').value.trim();
-        if (!email) return;
-        const btn = document.getElementById('lookupBtn');
-        const msg = document.getElementById('lookupMsg');
-        btn.disabled = true; btn.textContent = 'Zoeken…';
-        msg.textContent = ''; msg.className = 'p-lookup-msg';
-
-        try {
-          const res  = await fetch(`${API}/api/wedding/rsvp/${encodeURIComponent(email)}`);
-          const data = await res.json();
-          if (data.found && data.guests && data.guests.length) {
-            guests = data.guests.map(g => ({
-              id:              nextId++,
-              name:            g.name || '',
-              attending:       g.attending || null,
-              attending_other: g.attending_other || '',
-              dinner:          g.dinner   === true ? 'yes' : g.dinner   === false ? 'no' : null,
-              sleeping:        g.sleeping === true ? 'yes' : g.sleeping === false ? 'no' : null,
-              dietary:         g.dietary || '',
-              notes:           g.notes   || '',
-            }));
-            renderAll();
-            document.getElementById('submitBtn').textContent = 'Aanmelding bijwerken ✦';
-            msg.className = 'p-lookup-msg p-lookup-msg--ok';
-            msg.textContent = `Aanmelding gevonden voor ${data.guests.length} gast${data.guests.length > 1 ? 'en' : ''}. Pas aan en verstuur opnieuw.`;
-          } else {
-            msg.className = 'p-lookup-msg p-lookup-msg--miss';
-            msg.textContent = 'Geen aanmelding gevonden — vul het formulier hieronder in.';
-          }
-        } catch (_) {
-          msg.className = 'p-lookup-msg p-lookup-msg--err';
-          msg.textContent = 'Opzoeken mislukt. Vul het formulier hieronder in.';
-        }
-        btn.disabled = false; btn.textContent = 'Ophalen →';
-      }
-
-      document.getElementById('lookupBtn').addEventListener('click', doLookup);
-      document.getElementById('submitterEmail').addEventListener('keydown', e => {
-        if (e.key === 'Enter') { e.preventDefault(); doLookup(); }
-      });
       document.getElementById('addGuestBtn').addEventListener('click', addGuest);
 
-      // ── Submit ─────────────────────────────────────────────
+      // ── Submit ──────────────────────────────────────────────
       document.getElementById('submitBtn').addEventListener('click', async () => {
         syncState();
         const email = document.getElementById('submitterEmail').value.trim();
@@ -411,12 +351,7 @@ import "../../styles/wedding.css";
             }),
           });
           if (!res.ok) throw new Error();
-          const data = await res.json();
           document.getElementById('theForm').classList.add('hidden');
-          if (data.isUpdate) {
-            document.getElementById('successTitle').textContent = 'Aanmelding bijgewerkt!';
-            document.getElementById('successMsg').textContent   = 'Je aanmelding is aangepast. We sturen een bevestiging naar jouw e-mailadres.';
-          }
           const suc = document.getElementById('formSuccess');
           suc.classList.add('visible');
           suc.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -426,14 +361,6 @@ import "../../styles/wedding.css";
         }
       });
 
-      document.getElementById('editBtn').addEventListener('click', () => {
-        document.getElementById('formSuccess').classList.remove('visible');
-        document.getElementById('theForm').classList.remove('hidden');
-        const btn = document.getElementById('submitBtn');
-        btn.disabled = false; btn.textContent = 'Aanmelding bijwerken ✦';
-      });
-
-      // Initial render
       renderAll();
     </script>
   </body>
