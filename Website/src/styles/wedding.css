@@ -324,8 +324,9 @@
 .p-success.visible { display: block; }
 .p-success__orn { font-size: 2rem; color: rgba(80, 45, 10, 0.38); margin-bottom: 14px; }
 .p-success h2 {
-  font-family: 'UnifrakturMaguntia', serif;
-  font-size: 1.9rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
   color: #2C1A0E;
   margin-bottom: 10px;
 }

@@ -38,7 +38,7 @@ import "../../styles/wedding.css";
         <!-- E-mail (for confirmation only) -->
         <div>
           <label class="p-email-lbl" for="submitterEmail">
-            Jouw e-mailadres &mdash; voor de bevestiging
+            Jouw e-mailadres
           </label>
           <input
             type="email"
@@ -121,7 +121,7 @@ import "../../styles/wedding.css";
         <div class="p-success__orn" aria-hidden="true">&#10022;</div>
         <h2>Aanmelding ontvangen!</h2>
         <p>
-          Top! We hebben jullie antwoorden ontvangen en sturen een bevestiging naar jouw e-mailadres.
+          Top! We hebben jullie antwoorden ontvangen.
           Tot 10 oktober!
         </p>
       </div>
@@ -152,8 +152,8 @@ import "../../styles/wedding.css";
           const ne = document.getElementById(`gname-${g.id}`);             if (ne) g.name = ne.value;
           const ac = document.querySelector(`input[name="att-${g.id}"]:checked`); if (ac) g.attending = ac.value;
           const ao = document.getElementById(`att-other-${g.id}`);         if (ao) g.attending_other = ao.value;
-          const dc = document.querySelector(`input[name="din-${g.id}"]:checked`); if (dc) g.dinner = dc.value;
-          const sc = document.querySelector(`input[name="slp-${g.id}"]:checked`); if (sc) g.sleeping = sc.value;
+          const dc = document.querySelector(`input[name="dinner-${g.id}"]:checked`); if (dc) g.dinner = dc.value;
+          const sc = document.querySelector(`input[name="sleeping-${g.id}"]:checked`); if (sc) g.sleeping = sc.value;
           const di = document.getElementById(`dietary-${g.id}`);           if (di) g.dietary = di.value;
           const no = document.getElementById(`notes-${g.id}`);             if (no) g.notes = no.value;
         });
