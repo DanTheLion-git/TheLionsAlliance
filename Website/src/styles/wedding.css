@@ -569,6 +569,62 @@ ul, ol { list-style: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════
+   INFO CARDS (overnachten, cadeaus, etc.)
+   ═══════════════════════════════════════════════════════════ */
+.w-info {
+  padding: 0 0 100px;
+}
+
+.w-info__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.w-info__card {
+  background: var(--w-bg-dark);
+  border-radius: var(--w-radius-md);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.w-info__card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--w-gold), transparent);
+}
+
+.w-info__icon {
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.w-info__card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--w-gold);
+  margin-bottom: 14px;
+}
+
+.w-info__card p {
+  font-size: 0.98rem;
+  line-height: 1.78;
+  color: rgba(239, 227, 200, 0.65);
+}
+
+.w-info__card strong {
+  color: rgba(239, 227, 200, 0.88);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════════════
    LOCATION
    ═══════════════════════════════════════════════════════════ */
 .w-location {
@@ -1029,6 +1085,7 @@ ul, ol { list-style: none; }
   .w-nav__links { display: none; }
 
   .w-location__grid { grid-template-columns: 1fr; gap: 20px; }
+  .w-info__grid     { grid-template-columns: 1fr; gap: 16px; }
 }
 
 @media (max-width: 600px) {
