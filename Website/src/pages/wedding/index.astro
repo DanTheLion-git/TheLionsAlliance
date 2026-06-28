@@ -1,0 +1,556 @@
+---
+import "../../styles/homepage.css";
+import "../../styles/wedding.css";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You&rsquo;re Invited &mdash; Daniel &amp; [PARTNER] Wedding</title>
+    <meta name="description" content="Join Daniel and [PARTNER] for their medieval fantasy wedding. RSVP here." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="tla-page">
+
+    <!-- ── Navigation ─────────────────────────────────── -->
+    <nav class="tla-nav" id="tla-nav">
+      <div class="tla-nav__inner tla-container">
+        <a href="/" class="tla-nav__logo">The Lions <span>Alliance</span></a>
+        <ul class="tla-nav__links">
+          <li><a href="#details">The Day</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+        <div class="tla-nav__actions">
+          <a href="#rsvp" class="tla-nav__cta">RSVP &darr;</a>
+        </div>
+        <button class="tla-nav__hamburger" id="tla-hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="tla-nav__mobile" id="tla-mobile-menu">
+        <a href="#details">The Day</a>
+        <a href="#rsvp">RSVP</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ──────────────────────────────────────── -->
+    <section class="wedding-hero">
+      <div class="wedding-hero__ornament" aria-hidden="true">&#10022; &#9876; &#10022;</div>
+      <span class="wedding-hero__eyebrow">You are cordially invited</span>
+      <h1 class="wedding-hero__names">
+        Daniel <span class="wedding-hero__amp">&amp;</span> [PARTNER]
+      </h1>
+      <div class="wedding-hero__divider" aria-hidden="true">&#x2042;</div>
+      <!-- TODO: Replace [DATE] and [PLACE] with the actual date and town name -->
+      <p class="wedding-hero__date">[DATE] &bull; Werkhoven</p>
+      <span class="wedding-hero__badge">Medieval Fantasy</span>
+      <a href="#details" class="wedding-hero__scroll" aria-label="Scroll to details">
+        <span>Discover</span>
+      </a>
+    </section>
+
+    <!-- ── Event Details ──────────────────────────────── -->
+    <section class="wedding-details tla-container" id="details">
+      <div class="wedding-details__grid">
+        <div class="wedding-details__card tla-fade">
+          <div class="wedding-details__icon" aria-hidden="true">&#9876;</div>
+          <h3>The Ceremony</h3>
+          <!-- TODO: Replace [TIME] with actual ceremony time -->
+          <p>[TIME]</p>
+          <p class="wedding-details__sub">Werkhovenseweg 18<br />3985 MH Werkhoven</p>
+        </div>
+        <div class="wedding-details__card tla-fade tla-d1">
+          <div class="wedding-details__icon" aria-hidden="true">&#127863;</div>
+          <h3>The Feast</h3>
+          <!-- TODO: Replace [TIME] with actual dinner time -->
+          <p>[TIME] &mdash; Dinner</p>
+          <p class="wedding-details__sub">A proper medieval banquet awaits. Please let us know on your RSVP whether you&rsquo;ll be joining us at the table.</p>
+        </div>
+        <div class="wedding-details__card tla-fade tla-d2">
+          <div class="wedding-details__icon" aria-hidden="true">&#127926;</div>
+          <h3>The Revelry</h3>
+          <!-- TODO: Replace [TIME] with actual party start time -->
+          <p>[TIME] &mdash; Party</p>
+          <p class="wedding-details__sub">Music, dancing, and merriment into the night. Let us know if you&rsquo;ll be joining the celebration.</p>
+        </div>
+      </div>
+
+      <!-- Dress code -->
+      <div class="wedding-theme tla-fade">
+        <div class="wedding-theme__inner">
+          <span class="tla-overline">Dress code</span>
+          <h2>Medieval Fantasy</h2>
+          <p>
+            Step out of the ordinary and into a world of magic and adventure. Come dressed as a knight, wizard, ranger, noble, rogue, or any character from the stories you love &mdash; cloaks, tunics, armour, gowns, and fantasy finery are all welcome. If costumes aren&rsquo;t your thing, smart-casual is perfectly fine too.
+          </p>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="wedding-location tla-fade">
+        <span class="tla-overline">Where to find us</span>
+        <h2>Location</h2>
+        <div class="wedding-location__cards">
+          <div class="wedding-location__address">
+            <h3>Address</h3>
+            <address>
+              Werkhovenseweg 18<br />
+              3985 MH Werkhoven<br />
+              The Netherlands
+            </address>
+            <a
+              href="https://maps.google.com/?q=Werkhovenseweg+18,+3985+MH+Werkhoven"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="tla-btn tla-btn--gold"
+            >
+              Open in Maps &#8599;
+            </a>
+          </div>
+          <div class="wedding-location__notes">
+            <h3>Getting there</h3>
+            <!-- TODO: Add parking, transport, or other logistics info here -->
+            <p>[Add parking and travel information here &mdash; e.g. parking on site, nearest train station, shuttle details, etc.]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RSVP ───────────────────────────────────────── -->
+    <section class="wedding-rsvp" id="rsvp">
+      <div class="tla-container wedding-rsvp__inner">
+
+        <header class="wedding-rsvp__header tla-fade">
+          <div class="wedding-hero__ornament" aria-hidden="true">&#10022; &#10022; &#10022;</div>
+          <span class="tla-overline">Reserve your seat</span>
+          <h2>RSVP</h2>
+          <!-- TODO: Replace [RSVP DEADLINE] with the actual deadline date -->
+          <p>Please let us know by <strong>[RSVP DEADLINE]</strong> whether you will be joining us. If your plans change, you can return to this page and update your response at any time &mdash; just enter your email address again.</p>
+        </header>
+
+        <!-- Email lookup (for updating an existing RSVP) -->
+        <div class="wedding-rsvp__lookup tla-fade tla-d1">
+          <p class="wedding-rsvp__lookup-label">Already sent your RSVP?</p>
+          <div class="wedding-rsvp__lookup-row">
+            <input
+              type="email"
+              id="lookupEmail"
+              placeholder="your@email.com"
+              autocomplete="email"
+              aria-label="Email address for RSVP lookup"
+            />
+            <button id="lookupBtn" class="tla-btn tla-btn--gold">Look up &rarr;</button>
+          </div>
+          <span class="wedding-rsvp__lookup-msg" id="lookupMsg" role="status" aria-live="polite"></span>
+        </div>
+
+        <!-- RSVP Form -->
+        <div class="wedding-rsvp__card tla-fade tla-d2">
+          <form class="tla-form" id="rsvpForm" novalidate>
+
+            <!-- Name + Email row -->
+            <div class="tla-form__row">
+              <div class="tla-form__group">
+                <label for="rName">Your full name</label>
+                <input
+                  type="text"
+                  id="rName"
+                  name="name"
+                  autocomplete="name"
+                  placeholder="e.g. Anna van der Meer"
+                  required
+                />
+                <span class="tla-form__error" id="nameError"></span>
+              </div>
+              <div class="tla-form__group">
+                <label for="rEmail">Email address</label>
+                <input
+                  type="email"
+                  id="rEmail"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="anna@example.com"
+                  required
+                />
+                <span class="tla-form__error" id="emailError"></span>
+              </div>
+            </div>
+
+            <!-- Attending -->
+            <div class="tla-form__group">
+              <label>Will you be attending?</label>
+              <div class="wedding-radio-group" role="radiogroup" aria-label="Attending">
+                <label class="wedding-radio">
+                  <input type="radio" name="attending" value="yes" />
+                  <span class="wedding-radio__box"></span>
+                  <span>Yes, I&rsquo;ll be there! &#127881;</span>
+                </label>
+                <label class="wedding-radio">
+                  <input type="radio" name="attending" value="no" />
+                  <span class="wedding-radio__box"></span>
+                  <span>No, unfortunately not</span>
+                </label>
+                <label class="wedding-radio">
+                  <input type="radio" name="attending" value="maybe" />
+                  <span class="wedding-radio__box"></span>
+                  <span>Maybe / Not sure yet</span>
+                </label>
+              </div>
+              <span class="tla-form__error" id="attendingError"></span>
+            </div>
+
+            <!-- Conditional extras (dinner / party / alcohol) — shown only when attending = yes -->
+            <div id="attendingExtras" class="wedding-extras" style="display:none" aria-hidden="true">
+              <div class="tla-form__group">
+                <label>Joining us for the dinner?</label>
+                <div class="wedding-radio-group" role="radiogroup" aria-label="Dinner">
+                  <label class="wedding-radio">
+                    <input type="radio" name="dinner" value="yes" />
+                    <span class="wedding-radio__box"></span>
+                    <span>Yes</span>
+                  </label>
+                  <label class="wedding-radio">
+                    <input type="radio" name="dinner" value="no" />
+                    <span class="wedding-radio__box"></span>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="tla-form__group">
+                <label>Joining the party?</label>
+                <div class="wedding-radio-group" role="radiogroup" aria-label="Party">
+                  <label class="wedding-radio">
+                    <input type="radio" name="party" value="yes" />
+                    <span class="wedding-radio__box"></span>
+                    <span>Yes</span>
+                  </label>
+                  <label class="wedding-radio">
+                    <input type="radio" name="party" value="no" />
+                    <span class="wedding-radio__box"></span>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="tla-form__group">
+                <label>Do you drink alcohol?</label>
+                <div class="wedding-radio-group" role="radiogroup" aria-label="Alcohol">
+                  <label class="wedding-radio">
+                    <input type="radio" name="drinks_alcohol" value="yes" />
+                    <span class="wedding-radio__box"></span>
+                    <span>Yes</span>
+                  </label>
+                  <label class="wedding-radio">
+                    <input type="radio" name="drinks_alcohol" value="no" />
+                    <span class="wedding-radio__box"></span>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dietary preference -->
+            <div class="tla-form__group">
+              <label>Dietary preferences</label>
+              <div class="wedding-radio-group" role="radiogroup" aria-label="Dietary preference">
+                <label class="wedding-radio">
+                  <input type="radio" name="dietary" value="none" />
+                  <span class="wedding-radio__box"></span>
+                  <span>No restrictions</span>
+                </label>
+                <label class="wedding-radio">
+                  <input type="radio" name="dietary" value="vegetarian" />
+                  <span class="wedding-radio__box"></span>
+                  <span>Vegetarian</span>
+                </label>
+                <label class="wedding-radio">
+                  <input type="radio" name="dietary" value="vegan" />
+                  <span class="wedding-radio__box"></span>
+                  <span>Vegan</span>
+                </label>
+                <label class="wedding-radio">
+                  <input type="radio" name="dietary" value="other" />
+                  <span class="wedding-radio__box"></span>
+                  <span>Other</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Dietary notes (shown only when dietary = other) -->
+            <div id="dietaryNotesGroup" class="tla-form__group" style="display:none" aria-hidden="true">
+              <label for="rDietaryNotes">Please describe your dietary needs</label>
+              <textarea
+                id="rDietaryNotes"
+                name="dietary_notes"
+                rows="3"
+                placeholder="e.g. nut allergy, gluten-free, lactose intolerant&hellip;"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="tla-btn tla-btn--gold tla-btn--full" id="submitBtn">
+              Send my RSVP &#10022;
+            </button>
+          </form>
+
+          <!-- Success state -->
+          <div class="tla-form__success" id="rsvpSuccess">
+            <div class="tla-form__success-icon">&#10022;</div>
+            <h2 id="successTitle">RSVP received!</h2>
+            <p id="successMsg">Thank you! A confirmation has been sent to your email address. You can return to this page at any time to update your response.</p>
+            <a href="#rsvp" class="tla-form__success-link" id="editRsvpLink">Update your RSVP &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────── -->
+    <footer class="tla-footer">
+      <div class="tla-container">
+        <div class="tla-footer__inner">
+          <div class="tla-footer__brand">
+            <span class="tla-footer__logo">The Lions <span>Alliance</span></span>
+            <span class="tla-footer__tagline">A Creative Experience Studio</span>
+          </div>
+          <nav class="tla-footer__links">
+            <a href="/">Studio</a>
+            <a href="/contact/">Contact</a>
+          </nav>
+        </div>
+        <p class="tla-footer__copy">&copy; {year} The Lions Alliance. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const API_URL = 'https://api.weddingcambox.nl';
+
+      // ── Scroll-aware nav ───────────────────────────────
+      const nav = document.getElementById('tla-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+      }
+
+      // ── Fade-in observer ───────────────────────────────
+      const faders = document.querySelectorAll('.tla-fade');
+      if (faders.length && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('tla-visible');
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.05 }
+        );
+        faders.forEach((el) => obs.observe(el));
+      } else {
+        faders.forEach((el) => el.classList.add('tla-visible'));
+      }
+
+      // ── Hamburger ──────────────────────────────────────
+      const hamburger = document.getElementById('tla-hamburger');
+      const mobileMenu = document.getElementById('tla-mobile-menu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', String(open));
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // ── Conditional field visibility ───────────────────
+      const attendingExtras = document.getElementById('attendingExtras');
+      const dietaryNotesGroup = document.getElementById('dietaryNotesGroup');
+
+      document.querySelectorAll('input[name="attending"]').forEach((radio) => {
+        radio.addEventListener('change', () => {
+          const showExtras = radio.value === 'yes';
+          attendingExtras.style.display = showExtras ? 'flex' : 'none';
+          attendingExtras.setAttribute('aria-hidden', String(!showExtras));
+        });
+      });
+
+      document.querySelectorAll('input[name="dietary"]').forEach((radio) => {
+        radio.addEventListener('change', () => {
+          const showNotes = radio.value === 'other';
+          dietaryNotesGroup.style.display = showNotes ? 'flex' : 'none';
+          dietaryNotesGroup.setAttribute('aria-hidden', String(!showNotes));
+        });
+      });
+
+      // ── Email lookup (pre-fill existing RSVP) ─────────
+      const lookupBtn  = document.getElementById('lookupBtn');
+      const lookupMsg  = document.getElementById('lookupMsg');
+
+      async function doLookup() {
+        const email = document.getElementById('lookupEmail').value.trim();
+        if (!email) return;
+
+        lookupBtn.disabled = true;
+        lookupBtn.textContent = 'Looking up…';
+        lookupMsg.textContent = '';
+        lookupMsg.className = 'wedding-rsvp__lookup-msg';
+
+        try {
+          const res  = await fetch(`${API_URL}/api/wedding/rsvp/${encodeURIComponent(email)}`);
+          const data = await res.json();
+
+          if (data.found) {
+            const r = data.rsvp;
+
+            document.getElementById('rName').value  = r.name;
+            document.getElementById('rEmail').value = r.email;
+
+            const attendingRadio = document.querySelector(`input[name="attending"][value="${r.attending}"]`);
+            if (attendingRadio) {
+              attendingRadio.checked = true;
+              const showExtras = r.attending === 'yes';
+              attendingExtras.style.display = showExtras ? 'flex' : 'none';
+              attendingExtras.setAttribute('aria-hidden', String(!showExtras));
+            }
+
+            if (r.attending === 'yes') {
+              const dinnerVal  = r.dinner ? 'yes' : 'no';
+              const partyVal   = r.party  ? 'yes' : 'no';
+              const alcoholVal = r.drinks_alcohol ? 'yes' : 'no';
+              const dinnerR    = document.querySelector(`input[name="dinner"][value="${dinnerVal}"]`);
+              const partyR     = document.querySelector(`input[name="party"][value="${partyVal}"]`);
+              const alcoholR   = document.querySelector(`input[name="drinks_alcohol"][value="${alcoholVal}"]`);
+              if (dinnerR)  dinnerR.checked  = true;
+              if (partyR)   partyR.checked   = true;
+              if (alcoholR) alcoholR.checked = true;
+            }
+
+            const dietaryRadio = document.querySelector(`input[name="dietary"][value="${r.dietary || 'none'}"]`);
+            if (dietaryRadio) dietaryRadio.checked = true;
+            if (r.dietary === 'other') {
+              dietaryNotesGroup.style.display = 'flex';
+              dietaryNotesGroup.setAttribute('aria-hidden', 'false');
+              document.getElementById('rDietaryNotes').value = r.dietary_notes || '';
+            }
+
+            document.getElementById('submitBtn').textContent = 'Update my RSVP ✦';
+            lookupMsg.textContent = `Welcome back, ${r.name}! Your current response is shown below — make any changes and click Update.`;
+            lookupMsg.className = 'wedding-rsvp__lookup-msg wedding-rsvp__lookup-msg--found';
+            document.getElementById('rsvpForm').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          } else {
+            document.getElementById('rEmail').value = email;
+            lookupMsg.textContent = 'No RSVP found for that email — you can fill in the form below.';
+            lookupMsg.className = 'wedding-rsvp__lookup-msg wedding-rsvp__lookup-msg--notfound';
+          }
+        } catch (_) {
+          lookupMsg.textContent = 'Could not look up your RSVP right now. Please fill in the form below.';
+          lookupMsg.className = 'wedding-rsvp__lookup-msg wedding-rsvp__lookup-msg--notfound';
+        }
+
+        lookupBtn.disabled = false;
+        lookupBtn.textContent = 'Look up →';
+      }
+
+      lookupBtn.addEventListener('click', doLookup);
+      document.getElementById('lookupEmail').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); doLookup(); }
+      });
+
+      // ── Form submission ────────────────────────────────
+      const form = document.getElementById('rsvpForm');
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const name      = document.getElementById('rName').value.trim();
+          const email     = document.getElementById('rEmail').value.trim();
+          const attending = document.querySelector('input[name="attending"]:checked')?.value;
+          const dinnerEl  = document.querySelector('input[name="dinner"]:checked');
+          const partyEl   = document.querySelector('input[name="party"]:checked');
+          const alcoholEl = document.querySelector('input[name="drinks_alcohol"]:checked');
+          const dietary   = document.querySelector('input[name="dietary"]:checked')?.value || 'none';
+          const dietaryNotes = document.getElementById('rDietaryNotes').value.trim() || null;
+
+          // Clear prior errors
+          document.getElementById('nameError').textContent     = '';
+          document.getElementById('emailError').textContent    = '';
+          document.getElementById('attendingError').textContent = '';
+
+          let valid = true;
+          if (!name) {
+            document.getElementById('nameError').textContent = 'Please enter your name.';
+            valid = false;
+          }
+          if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+            valid = false;
+          }
+          if (!attending) {
+            document.getElementById('attendingError').textContent = 'Please select whether you will be attending.';
+            valid = false;
+          }
+          if (!valid) return;
+
+          const btn = document.getElementById('submitBtn');
+          btn.disabled    = true;
+          btn.textContent = 'Sending…';
+
+          try {
+            const res = await fetch(`${API_URL}/api/wedding/rsvp`, {
+              method:  'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body:    JSON.stringify({
+                name,
+                email,
+                attending,
+                dinner:         dinnerEl  ? dinnerEl.value  !== 'no' : true,
+                party:          partyEl   ? partyEl.value   !== 'no' : true,
+                drinks_alcohol: alcoholEl ? alcoholEl.value !== 'no' : true,
+                dietary,
+                dietary_notes:  dietaryNotes,
+              }),
+            });
+
+            if (!res.ok) throw new Error('Server error');
+            const data = await res.json();
+
+            form.classList.add('hidden');
+            const successEl = document.getElementById('rsvpSuccess');
+            if (data.isUpdate) {
+              document.getElementById('successTitle').textContent = 'RSVP updated!';
+              document.getElementById('successMsg').textContent   =
+                'Your response has been updated. A confirmation has been sent to your email address.';
+            }
+            successEl.classList.add('visible');
+
+            document.getElementById('editRsvpLink').addEventListener('click', (ev) => {
+              ev.preventDefault();
+              successEl.classList.remove('visible');
+              form.classList.remove('hidden');
+              btn.disabled    = false;
+              btn.textContent = 'Update my RSVP ✦';
+            }, { once: true });
+
+            window.scrollTo({ top: document.getElementById('rsvp').offsetTop - 80, behavior: 'smooth' });
+          } catch (_) {
+            btn.disabled    = false;
+            btn.textContent = attending ? 'Update my RSVP ✦' : 'Send my RSVP ✦';
+            document.getElementById('attendingError').textContent =
+              'Something went wrong. Please try again or contact us directly.';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,550 @@
+/* ═══════════════════════════════════════════════════════
+   WEDDING PAGE — extends homepage.css tla- design system
+   All page classes prefixed: wedding-
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Hero ──────────────────────────────────────────── */
+.wedding-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(176, 141, 87, 0.20) 0%, transparent 65%),
+    linear-gradient(170deg, #1C1812 0%, #0F1A0F 50%, #1A120A 100%);
+  color: var(--tla-text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.wedding-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b08d57' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.wedding-hero__ornament {
+  font-size: 1.2rem;
+  color: var(--tla-gold);
+  letter-spacing: 0.6em;
+  margin-bottom: 24px;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-hero__eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--tla-gold);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-hero__names {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: #F5EDD6;
+  margin: 0 0 28px;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-hero__amp {
+  color: var(--tla-gold);
+  font-style: italic;
+}
+
+.wedding-hero__divider {
+  font-size: 1.4rem;
+  color: var(--tla-gold);
+  opacity: 0.65;
+  margin-bottom: 24px;
+  letter-spacing: 0.4em;
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-hero__date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(245, 237, 214, 0.82);
+  margin: 0 0 32px;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-hero__badge {
+  display: inline-block;
+  padding: 9px 28px;
+  border: 1.5px solid var(--tla-gold);
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--tla-gold);
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-hero__scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.wedding-hero__scroll span {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(245, 237, 214, 0.45);
+}
+
+.wedding-hero__scroll::after {
+  content: '';
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, rgba(176, 141, 87, 0.5), transparent);
+}
+
+/* ── Details section ───────────────────────────────── */
+.wedding-details {
+  padding: 100px 40px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.wedding-details__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.wedding-details__card {
+  background: var(--tla-white);
+  border: 1px solid var(--tla-border);
+  border-top: 3px solid var(--tla-gold);
+  border-radius: var(--tla-radius-md);
+  padding: 36px 28px;
+  box-shadow: var(--tla-shadow-sm);
+  text-align: center;
+}
+
+.wedding-details__icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.wedding-details__card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--tla-text);
+  margin: 0 0 12px;
+}
+
+.wedding-details__card p {
+  font-size: 1rem;
+  color: var(--tla-text-body);
+  margin: 0 0 8px;
+  line-height: 1.65;
+}
+
+.wedding-details__card p:last-child { margin-bottom: 0; }
+
+.wedding-details__sub {
+  font-size: 0.9rem !important;
+  color: var(--tla-text-muted) !important;
+}
+
+/* ── Dress code / Theme block ──────────────────────── */
+.wedding-theme {
+  margin-bottom: 80px;
+}
+
+.wedding-theme__inner {
+  background: linear-gradient(135deg, #1C1812 0%, #0F1A0F 100%);
+  border-radius: var(--tla-radius-xl);
+  padding: 72px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.wedding-theme__inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 50% -10%, rgba(176, 141, 87, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wedding-theme__inner .tla-overline {
+  color: var(--tla-gold);
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-theme__inner h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  color: #F5EDD6;
+  margin: 12px 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-theme__inner p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(240, 237, 232, 0.76);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Location ──────────────────────────────────────── */
+.wedding-location {
+  margin-bottom: 20px;
+}
+
+.wedding-location > h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400;
+  color: var(--tla-text);
+  margin: 0 0 36px;
+}
+
+.wedding-location__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.wedding-location__address,
+.wedding-location__notes {
+  background: var(--tla-white);
+  border: 1px solid var(--tla-border);
+  border-radius: var(--tla-radius-md);
+  padding: 36px 32px;
+  box-shadow: var(--tla-shadow-sm);
+}
+
+.wedding-location__address h3,
+.wedding-location__notes h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--tla-text);
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--tla-border);
+}
+
+.wedding-location__address address {
+  font-style: normal;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--tla-text-body);
+  margin-bottom: 24px;
+}
+
+.wedding-location__notes p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--tla-text-body);
+}
+
+/* ── RSVP section ──────────────────────────────────── */
+.wedding-rsvp {
+  background: linear-gradient(180deg, rgba(176, 141, 87, 0.06) 0%, var(--tla-bg) 100%);
+  padding: 100px 0;
+  border-top: 1px solid var(--tla-border);
+}
+
+.wedding-rsvp__inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+.wedding-rsvp__header {
+  text-align: center;
+}
+
+.wedding-rsvp__header .wedding-hero__ornament {
+  color: var(--tla-gold);
+  position: static;
+}
+
+.wedding-rsvp__header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  color: var(--tla-text);
+  margin: 12px 0 16px;
+}
+
+.wedding-rsvp__header p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--tla-text-body);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── Email lookup card ─────────────────────────────── */
+.wedding-rsvp__lookup {
+  background: var(--tla-bg-alt);
+  border: 1px solid var(--tla-border);
+  border-radius: var(--tla-radius-md);
+  padding: 28px 32px;
+}
+
+.wedding-rsvp__lookup-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tla-text-body);
+  margin: 0 0 14px;
+}
+
+.wedding-rsvp__lookup-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.wedding-rsvp__lookup-row input[type="email"] {
+  flex: 1;
+  min-height: 48px;
+  padding: 13px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--tla-text);
+  -webkit-text-fill-color: var(--tla-text);
+  background: var(--tla-white);
+  border: 1.5px solid var(--tla-border-mid);
+  border-radius: var(--tla-radius-sm);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color-scheme: light;
+}
+
+.wedding-rsvp__lookup-row input[type="email"]:focus {
+  border-color: var(--tla-gold);
+  box-shadow: 0 0 0 3px var(--tla-gold-subtle);
+}
+
+.wedding-rsvp__lookup-msg {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  min-height: 1.2em;
+}
+
+.wedding-rsvp__lookup-msg--found {
+  color: #2D6A4F;
+  font-weight: 500;
+}
+
+.wedding-rsvp__lookup-msg--notfound {
+  color: var(--tla-text-muted);
+}
+
+/* ── RSVP form card ────────────────────────────────── */
+.wedding-rsvp__card {
+  background: var(--tla-white);
+  border: 1px solid var(--tla-border);
+  border-radius: var(--tla-radius-lg);
+  padding: 48px 44px;
+  box-shadow: var(--tla-shadow-md);
+}
+
+/* ── Custom radio buttons ──────────────────────────── */
+.wedding-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wedding-radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 12px 18px;
+  background: var(--tla-bg-alt);
+  border: 1.5px solid var(--tla-border-mid);
+  border-radius: var(--tla-radius-sm);
+  transition: border-color 0.18s, background 0.18s;
+  font-size: 0.95rem;
+  color: var(--tla-text-body);
+  user-select: none;
+  flex: 1;
+  min-width: 130px;
+}
+
+.wedding-radio:hover {
+  border-color: var(--tla-gold);
+  background: var(--tla-gold-subtle);
+  color: var(--tla-text);
+}
+
+.wedding-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.wedding-radio__box {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--tla-border-mid);
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.15s;
+}
+
+.wedding-radio__box::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tla-gold);
+  transition: transform 0.15s ease;
+}
+
+.wedding-radio input[type="radio"]:checked ~ .wedding-radio__box {
+  border-color: var(--tla-gold);
+}
+
+.wedding-radio input[type="radio"]:checked ~ .wedding-radio__box::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.wedding-radio:has(input[type="radio"]:checked) {
+  border-color: var(--tla-gold);
+  background: var(--tla-gold-subtle);
+  color: var(--tla-text);
+}
+
+/* ── Conditional extras block ──────────────────────── */
+.wedding-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px 32px;
+  background: var(--tla-bg-alt);
+  border: 1px solid var(--tla-border);
+  border-left: 3px solid var(--tla-gold);
+  border-radius: var(--tla-radius-sm);
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .wedding-details__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+  }
+
+  .wedding-theme__inner {
+    padding: 52px 40px;
+  }
+
+  .wedding-location__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .wedding-hero {
+    padding: 110px 24px 72px;
+  }
+
+  .wedding-details {
+    padding: 72px 20px;
+  }
+
+  .wedding-rsvp {
+    padding: 72px 0;
+  }
+
+  .wedding-rsvp__card {
+    padding: 32px 24px;
+  }
+
+  .wedding-rsvp__lookup {
+    padding: 24px 20px;
+  }
+
+  .wedding-rsvp__lookup-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .wedding-rsvp__lookup-row .tla-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wedding-theme__inner {
+    padding: 44px 28px;
+    border-radius: var(--tla-radius-lg);
+  }
+
+  .wedding-radio {
+    min-width: calc(50% - 5px);
+  }
+
+  .wedding-extras {
+    padding: 20px 16px;
+  }
+}
