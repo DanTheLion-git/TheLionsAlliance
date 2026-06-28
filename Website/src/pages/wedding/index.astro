@@ -1,625 +1,440 @@
 ---
 import "../../styles/wedding.css";
-const year = new Date().getFullYear();
 ---
 <!doctype html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daniel &amp; Thirza &mdash; 10 oktober 2026</title>
-    <meta name="description" content="Kom vieren met Daniel en Thirza op De Matehoeve in Werkhoven. Fantasy feest op 10 oktober 2026. Meld je aan via de RSVP op deze pagina." />
+    <title>RSVP — Bruiloft Daan &amp; Thirza · 10.10.2026</title>
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   </head>
-  <body>
 
-    <!-- ── Floating nav ───────────────────────────────── -->
-    <nav class="w-nav" aria-label="Navigatie">
-      <span class="w-nav__brand">D &amp; T &middot; 10.10.26</span>
-      <ul class="w-nav__links" role="list">
-        <li><a href="#avond">De avond</a></li>
-        <li><a href="#dresscode">Dresscode</a></li>
-        <li><a href="#locatie">Locatie</a></li>
-      </ul>
-      <a href="#rsvp" class="w-nav__cta">Aanmelden &darr;</a>
-    </nav>
+  <body class="p-page">
+    <main class="p-scroll" role="main">
 
-    <!-- ═══════════════════════════════════════════════
-         HERO
-    ════════════════════════════════════════════════════ -->
-    <section class="w-hero" aria-label="Uitnodiging">
-      <div class="w-hero__inner">
+      <!-- Corner flourishes -->
+      <span class="p-corner p-corner--tl" aria-hidden="true">&#10022;</span>
+      <span class="p-corner p-corner--tr" aria-hidden="true">&#10022;</span>
+      <span class="p-corner p-corner--bl" aria-hidden="true">&#10022;</span>
+      <span class="p-corner p-corner--br" aria-hidden="true">&#10022;</span>
 
-        <p class="w-hero__pre">Jullie zijn van harte uitgenodigd</p>
-
-        <div class="w-rule" aria-hidden="true">
-          <span>&#10022;</span>
+      <!-- ── Header ── -->
+      <header class="p-header">
+        <div class="p-seal" aria-hidden="true">
+          <img src="/images/wedding/logo.png" alt="" />
         </div>
+        <h1 class="p-title">Bruiloft Daan &amp; Thirza</h1>
+        <p class="p-sub">10 oktober 2026 &middot; De Matehoeve &middot; Werkhoven</p>
+      </header>
 
-        <h1 class="w-hero__names">
-          <span class="w-hero__first">Daniel</span>
-          <span class="w-hero__amp">&amp;</span>
-          <span class="w-hero__second">Thirza</span>
-        </h1>
+      <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
 
-        <div class="w-hero__sep" aria-hidden="true"></div>
+      <!-- ── Form ── -->
+      <div id="theForm">
 
-        <p class="w-hero__date">Zaterdag 10 oktober 2026 &bull; Werkhoven</p>
-        <p class="w-hero__place">De Matehoeve &middot; Werkhovenseweg 18</p>
-
-      </div>
-
-      <button class="w-hero__scroll" onclick="document.getElementById('avond').scrollIntoView({behavior:'smooth'})" aria-label="Scroll naar inhoud">
-        <span class="w-hero__scroll-text">Scroll</span>
-        <div class="w-hero__scroll-line" aria-hidden="true"></div>
-      </button>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════
-         INTRO
-    ════════════════════════════════════════════════════ -->
-    <section class="w-intro">
-      <div class="w-container--narrow">
-        <div class="w-fade">
-          <span class="w-intro__label">Over de avond</span>
-          <h2>Je bent enorm welkom</h2>
-          <p>
-            Wij gaan trouwen! De offici&euml;le ceremonie doen we een paar dagen later op het stadhuis, samen met onze ouders. Maar het feest &mdash; dat is voor jullie.
-          </p>
-          <p>
-            Kom eten, dansen en vieren met ons op De Matehoeve in Werkhoven. We hebben er enorm veel zin in.
-          </p>
-          <p>
-            Geen zin, tijd of gelegenheid? Voel je absoluut niet verplicht &mdash; we begrijpen het volledig.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════
-         DE AVOND — TIMELINE
-    ════════════════════════════════════════════════════ -->
-    <section class="w-evening" id="avond">
-      <div class="w-container--narrow">
-        <header class="w-evening__header w-fade">
-          <span class="w-evening__label">Het programma</span>
-          <h2 class="w-evening__title">De Avond</h2>
-        </header>
-
-        <div class="w-timeline" role="list">
-
-          <div class="w-timeline__item w-fade w-d1" role="listitem">
-            <span class="w-timeline__time">17:00</span>
-            <div class="w-timeline__node" aria-hidden="true"></div>
-            <div class="w-timeline__body">
-              <h3 class="w-timeline__name">Inloop</h3>
-              <p class="w-timeline__desc">De deuren gaan open. Loop binnen, sla een drankje en begroet de andere gasten. Inloop is van 17:00 tot 17:30.</p>
-            </div>
-          </div>
-
-          <div class="w-timeline__item w-fade w-d2" role="listitem">
-            <span class="w-timeline__time">17:30</span>
-            <div class="w-timeline__node" aria-hidden="true"></div>
-            <div class="w-timeline__body">
-              <h3 class="w-timeline__name">Eten</h3>
-              <p class="w-timeline__desc">We gaan met zijn allen aan tafel. Goed eten, goede gesprekken en veel te lachen.</p>
-            </div>
-          </div>
-
-          <div class="w-timeline__item w-fade w-d3" role="listitem">
-            <span class="w-timeline__time">20:00</span>
-            <div class="w-timeline__node" aria-hidden="true"></div>
-            <div class="w-timeline__body">
-              <h3 class="w-timeline__name">Feest</h3>
-              <p class="w-timeline__desc">Het feest barst los &mdash; en duurt tot het einde der tijden.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════
-         DRESSCODE
-    ════════════════════════════════════════════════════ -->
-    <section class="w-theme" id="dresscode">
-      <div class="w-container--narrow w-theme__inner w-fade">
-        <span class="w-theme__label">Dresscode</span>
-        <h2 class="w-theme__title">Fantasy &mdash; iedereen in outfit</h2>
-        <p class="w-theme__body">
-          Dit is geen suggestie. Wij verwachten iedereen in een fantasykostuum &mdash; en we kunnen niet wachten om te zien wat jullie verzinnen. Ridder, tovenaar, elf, fee, drakentemmer, schurk of iets heel eigens: alles is welkom zolang het maar niet alledaags is. Steek het cadeaugeld in je outfit &mdash; dat is het mooiste cadeau dat je ons kunt geven.
-        </p>
-        <div class="w-theme__tags" aria-label="Idee&euml;n voor kostuum">
-          <span class="w-theme__tag">Ridder</span>
-          <span class="w-theme__tag">Tovenaar</span>
-          <span class="w-theme__tag">Elf</span>
-          <span class="w-theme__tag">Fee</span>
-          <span class="w-theme__tag">Draak</span>
-          <span class="w-theme__tag">Hoveling</span>
-          <span class="w-theme__tag">Schurk</span>
-          <span class="w-theme__tag">Ranger</span>
-          <span class="w-theme__tag">Barbaar</span>
-          <span class="w-theme__tag">Priester</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════
-         OVERNACHTEN + CADEAUS
-    ════════════════════════════════════════════════════ -->
-    <section class="w-info">
-      <div class="w-container">
-        <div class="w-info__grid">
-
-          <div class="w-info__card w-fade">
-            <div class="w-info__icon" aria-hidden="true">&#127956;</div>
-            <h3>Blijven slapen</h3>
-            <p>
-              Blijven slapen is mogelijk op de locatie &mdash; er is ruimte voor tenten en een hooiloze zolder. <strong>Neem je eigen slaapspullen mee.</strong> Checkout is om <strong>11:00 's ochtends</strong>. Geef het aan op het aanmeldformulier zodat we weten hoeveel mensen er blijven.
-            </p>
-          </div>
-
-          <div class="w-info__card w-fade w-d1">
-            <div class="w-info__icon" aria-hidden="true">&#127775;</div>
-            <h3>Geen cadeaus</h3>
-            <p>
-              Cadeaus zijn echt niet nodig. We hebben alles wat we nodig hebben &mdash; en wat we <em>willen</em> hebben is jullie aanwezigheid in een episch kostuum. Steek het geld in je outfit. Dat maakt ons gelukkiger dan wat dan ook.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════
-         LOCATIE
-    ════════════════════════════════════════════════════ -->
-    <section class="w-location" id="locatie">
-      <div class="w-container">
-        <header class="w-location__header w-fade">
-          <span class="w-location__label">Waar we zijn</span>
-          <h2 class="w-location__title">De Matehoeve</h2>
-        </header>
-        <div class="w-location__grid">
-          <div class="w-location__card w-fade w-d1">
-            <span class="w-location__card-label">Adres</span>
-            <address class="w-location__address">
-              Werkhovenseweg 18<br />
-              3985 MH Werkhoven<br />
-              Nederland
-            </address>
-            <a
-              href="https://maps.google.com/?q=Werkhovenseweg+18,+3985+MH+Werkhoven"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-btn w-btn--outline"
-            >
-              Open in Maps &#8599;
-            </a>
-          </div>
-          <div class="w-location__card w-fade w-d2">
-            <span class="w-location__card-label">Bereikbaarheid &amp; parkeren</span>
-            <!-- TODO: Add parking and travel info here -->
-            <p>[Vul hier parkeer- en reisinfo in &mdash; bijv. parkeerplaats op locatie, dichtstbijzijnde station, shuttle, enz.]</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════
-         RSVP
-    ════════════════════════════════════════════════════ -->
-    <section class="w-rsvp" id="rsvp">
-      <div class="w-container--narrow">
-
-        <header class="w-rsvp__header w-fade">
-          <div class="w-rsvp__orn" aria-hidden="true">
-            <span>&#10022;</span>
-          </div>
-          <span class="w-rsvp__label">Aanmelden</span>
-          <h2 class="w-rsvp__title">Ben jij erbij?</h2>
-          <p class="w-rsvp__intro">Vul voor <strong>10 juli 2026</strong> in of je komt, of je mee eet en of je wil blijven slapen. Heb je vragen, id&euml;en of wil je zelf iets heel graag doen? Laat het ook weten!</p>
-        </header>
-
-        <!-- Email lookup -->
-        <div class="w-lookup w-fade w-d1">
-          <span class="w-lookup__label">Al aangemeld? Pas je aanmelding aan</span>
-          <div class="w-lookup__row">
+        <!-- E-mail -->
+        <div>
+          <label class="p-email-lbl" for="submitterEmail">
+            Jouw e-mailadres &mdash; voor bevestiging &amp; wijzigingen
+          </label>
+          <div class="p-email-row">
             <input
               type="email"
-              id="lookupEmail"
-              class="w-form__input"
+              id="submitterEmail"
+              class="p-inp"
               placeholder="jouw@email.nl"
               autocomplete="email"
-              aria-label="E-mailadres voor het opzoeken van je aanmelding"
             />
-            <button id="lookupBtn" class="w-btn w-btn--gold">Opzoeken &rarr;</button>
-          </div>
-          <span class="w-lookup__msg" id="lookupMsg" role="status" aria-live="polite"></span>
-        </div>
-
-        <!-- RSVP form card -->
-        <div class="w-form-card w-fade w-d2">
-          <form class="w-form" id="rsvpForm" novalidate>
-
-            <!-- Name + Email -->
-            <div class="w-form__row">
-              <div class="w-form__group">
-                <label class="w-form__lbl" for="rName">Jouw naam</label>
-                <input
-                  type="text"
-                  id="rName"
-                  class="w-form__input"
-                  autocomplete="name"
-                  placeholder="bijv. Anna van der Meer"
-                  required
-                />
-                <span class="w-form__error" id="nameError" role="alert"></span>
-              </div>
-              <div class="w-form__group">
-                <label class="w-form__lbl" for="rEmail">E-mailadres</label>
-                <input
-                  type="email"
-                  id="rEmail"
-                  class="w-form__input"
-                  autocomplete="email"
-                  placeholder="anna@voorbeeld.nl"
-                  required
-                />
-                <span class="w-form__error" id="emailError" role="alert"></span>
-              </div>
-            </div>
-
-            <!-- Attending -->
-            <div class="w-form__group">
-              <span class="w-form__lbl" id="attendingLbl">Kom je?</span>
-              <div class="w-radios" role="radiogroup" aria-labelledby="attendingLbl">
-                <label class="w-radio">
-                  <input type="radio" name="attending" value="yes" />
-                  <span class="w-radio__dot"></span>
-                  <span>Ja, ik kom! &#127881;</span>
-                </label>
-                <label class="w-radio">
-                  <input type="radio" name="attending" value="no" />
-                  <span class="w-radio__dot"></span>
-                  <span>Helaas niet</span>
-                </label>
-                <label class="w-radio">
-                  <input type="radio" name="attending" value="maybe" />
-                  <span class="w-radio__dot"></span>
-                  <span>Nog niet zeker</span>
-                </label>
-              </div>
-              <span class="w-form__error" id="attendingError" role="alert"></span>
-            </div>
-
-            <!-- Conditional: dinner / sleeping / alcohol — shown when attending = yes -->
-            <div class="w-extras" id="extras" aria-hidden="true">
-
-              <div class="w-form__group">
-                <span class="w-form__lbl" id="dinnerLbl">Eet je mee?</span>
-                <div class="w-radios" role="radiogroup" aria-labelledby="dinnerLbl">
-                  <label class="w-radio">
-                    <input type="radio" name="dinner" value="yes" />
-                    <span class="w-radio__dot"></span>
-                    <span>Ja</span>
-                  </label>
-                  <label class="w-radio">
-                    <input type="radio" name="dinner" value="no" />
-                    <span class="w-radio__dot"></span>
-                    <span>Nee, ik kom later</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="w-form__group">
-                <span class="w-form__lbl" id="sleepingLbl">Blijf je slapen?</span>
-                <p style="font-size:0.88rem;color:var(--w-text-muted);margin-bottom:10px;font-style:italic">Tent of hooiloze zolder &mdash; neem je eigen slaapspullen mee. Checkout 11:00.</p>
-                <div class="w-radios" role="radiogroup" aria-labelledby="sleepingLbl">
-                  <label class="w-radio">
-                    <input type="radio" name="sleeping" value="yes" />
-                    <span class="w-radio__dot"></span>
-                    <span>Ja, ik blijf slapen</span>
-                  </label>
-                  <label class="w-radio">
-                    <input type="radio" name="sleeping" value="no" />
-                    <span class="w-radio__dot"></span>
-                    <span>Nee, ik ga naar huis</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="w-form__group">
-                <span class="w-form__lbl" id="alcoholLbl">Drink je alcohol?</span>
-                <div class="w-radios" role="radiogroup" aria-labelledby="alcoholLbl">
-                  <label class="w-radio">
-                    <input type="radio" name="drinks_alcohol" value="yes" />
-                    <span class="w-radio__dot"></span>
-                    <span>Ja</span>
-                  </label>
-                  <label class="w-radio">
-                    <input type="radio" name="drinks_alcohol" value="no" />
-                    <span class="w-radio__dot"></span>
-                    <span>Nee</span>
-                  </label>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Dietary -->
-            <div class="w-form__group">
-              <span class="w-form__lbl" id="dietaryLbl">Di&euml;etwensen</span>
-              <div class="w-radios" role="radiogroup" aria-labelledby="dietaryLbl">
-                <label class="w-radio">
-                  <input type="radio" name="dietary" value="none" />
-                  <span class="w-radio__dot"></span>
-                  <span>Geen beperkingen</span>
-                </label>
-                <label class="w-radio">
-                  <input type="radio" name="dietary" value="vegetarian" />
-                  <span class="w-radio__dot"></span>
-                  <span>Vegetarisch</span>
-                </label>
-                <label class="w-radio">
-                  <input type="radio" name="dietary" value="vegan" />
-                  <span class="w-radio__dot"></span>
-                  <span>Veganistisch</span>
-                </label>
-                <label class="w-radio">
-                  <input type="radio" name="dietary" value="other" />
-                  <span class="w-radio__dot"></span>
-                  <span>Anders</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Dietary notes (shown when dietary = other) -->
-            <div class="w-form__group" id="dietaryNotesGroup" style="display:none" aria-hidden="true">
-              <label class="w-form__lbl" for="rDietaryNotes">Omschrijf jouw di&euml;etwensen</label>
-              <textarea
-                id="rDietaryNotes"
-                class="w-form__textarea"
-                rows="2"
-                placeholder="bijv. notenallergie, glutenvrij, lactose-intolerant&hellip;"
-              ></textarea>
-            </div>
-
-            <!-- Notes / questions / ideas -->
-            <div class="w-form__group">
-              <label class="w-form__lbl" for="rNotes">Vragen, id&euml;en of wil je iets bijdragen?</label>
-              <textarea
-                id="rNotes"
-                class="w-form__textarea"
-                rows="3"
-                placeholder="laat het ons weten!"
-              ></textarea>
-            </div>
-
-            <button type="submit" class="w-btn w-btn--gold w-btn--full" id="submitBtn">
-              Aanmelden &#10022;
+            <button class="p-btn p-btn--outline" id="lookupBtn" type="button">
+              Ophalen &rarr;
             </button>
-
-          </form>
-
-          <!-- Success state -->
-          <div class="w-success" id="rsvpSuccess">
-            <div class="w-success__icon" aria-hidden="true">&#10022;</div>
-            <h2 id="successTitle">Aanmelding ontvangen!</h2>
-            <p id="successMsg">Top! We sturen een bevestiging naar jouw e-mailadres. Je kunt altijd terugkomen om je aanmelding aan te passen.</p>
-            <a href="#rsvp" class="w-success__link" id="editLink">Aanmelding wijzigen &rarr;</a>
           </div>
+          <span class="p-lookup-msg" id="lookupMsg" role="status" aria-live="polite"></span>
         </div>
 
-      </div>
-    </section>
+        <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
 
-    <!-- ═══════════════════════════════════════════════
-         FOOTER
-    ════════════════════════════════════════════════════ -->
-    <footer class="w-footer">
-      <p class="w-footer__names">Daniel &amp; Thirza</p>
-      <p class="w-footer__copy">10 &middot; 10 &middot; 2026 &middot; De Matehoeve &middot; Werkhoven</p>
-    </footer>
+        <!-- Q1 · Voor wie? -->
+        <div>
+          <p class="p-q__title">Voor wie wordt dit ingevuld?</p>
+          <div class="p-guests" id="guestList"></div>
+          <button class="p-btn p-btn--outline p-btn--sm" id="addGuestBtn" type="button">
+            + Gast toevoegen
+          </button>
+        </div>
+
+        <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
+
+        <!-- Q2 · Kom je? -->
+        <div>
+          <p class="p-q__title">Kom je?</p>
+          <div class="p-att-rows" id="attSection"></div>
+        </div>
+
+        <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
+
+        <!-- Q3 · Eet je mee? -->
+        <div>
+          <p class="p-q__title">Eet je mee?</p>
+          <p class="p-q__hint">Eten start om 17:30</p>
+          <div id="dinnerSection"></div>
+        </div>
+
+        <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
+
+        <!-- Q4 · Dieet / Allergieën -->
+        <div>
+          <p class="p-q__title">Dieet / Allergi&euml;n?</p>
+          <div class="p-text-rows" id="dietarySection"></div>
+        </div>
+
+        <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
+
+        <!-- Q5 · Blijf je slapen? -->
+        <div>
+          <p class="p-q__title">Blijf je slapen?</p>
+          <p class="p-q__hint">
+            Tent of hooiloze zolder &middot; neem eigen spullen mee &middot; checkout 11:00
+          </p>
+          <div id="sleepingSection"></div>
+        </div>
+
+        <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
+
+        <!-- Q6 · Extra opmerkingen -->
+        <div>
+          <p class="p-q__title">Extra opmerkingen?</p>
+          <div class="p-text-rows" id="notesSection"></div>
+        </div>
+
+        <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
+
+        <!-- Submit -->
+        <div class="p-submit-area">
+          <span class="p-error" id="formError" role="alert" aria-live="polite"></span>
+          <button class="p-btn p-btn--dark p-btn--full" id="submitBtn" type="button">
+            Versturen &#10022;
+          </button>
+        </div>
+
+      </div><!-- /theForm -->
+
+      <!-- ── Success ── -->
+      <div class="p-success" id="formSuccess" aria-live="polite">
+        <div class="p-success__orn" aria-hidden="true">&#10022;</div>
+        <h2 id="successTitle">Aanmelding ontvangen!</h2>
+        <p id="successMsg">
+          Top! We sturen een bevestiging naar jouw e-mailadres. Je kunt altijd terugkomen om je aanmelding aan te passen.
+        </p>
+        <button class="p-success__link" id="editBtn" type="button">
+          Aanmelding wijzigen &rarr;
+        </button>
+      </div>
+
+      <div class="p-div" aria-hidden="true"><span>&#9670;</span></div>
+      <footer class="p-foot">
+        <p>Bruiloft Daan &amp; Thirza &middot; 10 &middot; 10 &middot; 2026 &middot; De Matehoeve</p>
+      </footer>
+
+    </main>
 
     <script>
       const API = 'https://api.weddingcambox.nl';
 
-      // ── Fade-in observer ───────────────────────────────
-      const faders = document.querySelectorAll('.w-fade');
-      if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver(
-          (entries) => entries.forEach((e) => {
-            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-          }),
-          { threshold: 0.06 }
-        );
-        faders.forEach((el) => obs.observe(el));
-      } else {
-        faders.forEach((el) => el.classList.add('visible'));
+      // ── State ───────────────────────────────────────────────
+      let guests = [{
+        id: 0, name: '', attending: null, attending_other: '',
+        dinner: null, sleeping: null, dietary: '', notes: ''
+      }];
+      let nextId = 1;
+
+      function esc(s) {
+        return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
       }
 
-      // ── Conditional field visibility ───────────────────
-      const extras            = document.getElementById('extras');
-      const dietaryNotesGroup = document.getElementById('dietaryNotesGroup');
-
-      document.querySelectorAll('input[name="attending"]').forEach((r) => {
-        r.addEventListener('change', () => {
-          const show = r.value === 'yes';
-          extras.classList.toggle('open', show);
-          extras.setAttribute('aria-hidden', String(!show));
+      // Sync DOM values → state before any re-render
+      function syncState() {
+        guests.forEach(g => {
+          const ne = document.getElementById(`gname-${g.id}`);          if (ne) g.name = ne.value;
+          const ac = document.querySelector(`input[name="att-${g.id}"]:checked`); if (ac) g.attending = ac.value;
+          const ao = document.getElementById(`att-other-${g.id}`);      if (ao) g.attending_other = ao.value;
+          const dc = document.querySelector(`input[name="din-${g.id}"]:checked`); if (dc) g.dinner = dc.value;
+          const sc = document.querySelector(`input[name="slp-${g.id}"]:checked`); if (sc) g.sleeping = sc.value;
+          const di = document.getElementById(`dietary-${g.id}`);        if (di) g.dietary = di.value;
+          const no = document.getElementById(`notes-${g.id}`);          if (no) g.notes = no.value;
         });
-      });
+      }
 
-      document.querySelectorAll('input[name="dietary"]').forEach((r) => {
-        r.addEventListener('change', () => {
-          const show = r.value === 'other';
-          dietaryNotesGroup.style.display = show ? 'flex' : 'none';
-          dietaryNotesGroup.setAttribute('aria-hidden', String(!show));
+      // Live update name labels across sections on keypress
+      function updateNameLabels(id) {
+        const inp = document.getElementById(`gname-${id}`);
+        if (!inp) return;
+        const g = guests.find(g => g.id === id);
+        if (g) g.name = inp.value;
+        const display = inp.value.trim() || `Gast ${guests.indexOf(g) + 1}`;
+        document.querySelectorAll(`[data-gn="${id}"]`).forEach(el => { el.textContent = display; });
+      }
+
+      // ── Render: guest name inputs ──────────────────────────
+      function renderGuests() {
+        document.getElementById('guestList').innerHTML = guests.map((g, i) => `
+          <div class="p-guest-row" id="grow-${g.id}">
+            <span class="p-guest-lbl">${i === 0 ? 'Jij' : `Gast ${i + 1}`}</span>
+            <input
+              type="text" id="gname-${g.id}" class="p-inp"
+              placeholder="${i === 0 ? 'Jouw naam' : 'Naam'}"
+              value="${esc(g.name)}"
+              autocomplete="${i === 0 ? 'name' : 'off'}"
+              oninput="updateNameLabels(${g.id})"
+            />
+            ${guests.length > 1
+              ? `<button class="p-btn p-btn--rm" type="button" onclick="removeGuest(${g.id})" aria-label="Verwijder gast">&times;</button>`
+              : ''}
+          </div>
+        `).join('');
+      }
+
+      // ── Render: attending pills ────────────────────────────
+      function renderAttending() {
+        document.getElementById('attSection').innerHTML = guests.map((g, i) => {
+          const label   = esc(g.name.trim() || `Gast ${i + 1}`);
+          const isOther = g.attending === 'other';
+          return `
+            <div class="p-att-row">
+              <span class="p-att-name" data-gn="${g.id}">${label}</span>
+              <div class="p-pills">
+                <label class="p-pill">
+                  <input type="radio" name="att-${g.id}" value="yes"${g.attending === 'yes' ? ' checked' : ''} />
+                  <span class="p-pill__lbl">Ja</span>
+                </label>
+                <label class="p-pill">
+                  <input type="radio" name="att-${g.id}" value="no"${g.attending === 'no' ? ' checked' : ''} />
+                  <span class="p-pill__lbl">Nee</span>
+                </label>
+                <label class="p-pill">
+                  <input type="radio" name="att-${g.id}" value="other"${isOther ? ' checked' : ''} />
+                  <span class="p-pill__lbl">Anders&hellip;</span>
+                </label>
+              </div>
+              <input
+                type="text" id="att-other-${g.id}" class="p-inp p-anders-inp"
+                placeholder="wat houdt je tegen?"
+                value="${esc(g.attending_other)}"
+                style="${isOther ? '' : 'display:none'}"
+              />
+            </div>
+          `;
+        }).join('');
+
+        guests.forEach(g => {
+          document.querySelectorAll(`input[name="att-${g.id}"]`).forEach(r => {
+            r.addEventListener('change', () => {
+              const el = document.getElementById(`att-other-${g.id}`);
+              if (el) el.style.display = r.value === 'other' ? '' : 'none';
+            });
+          });
         });
-      });
+      }
 
-      // ── Email lookup ───────────────────────────────────
-      const lookupBtn = document.getElementById('lookupBtn');
-      const lookupMsg = document.getElementById('lookupMsg');
+      // ── Render: ja/nee table ───────────────────────────────
+      function renderTable(cid, field) {
+        document.getElementById(cid).innerHTML = `
+          <div class="p-table">
+            <div class="p-table__head">
+              <span></span><span class="p-th">Ja</span><span class="p-th">Nee</span>
+            </div>
+            ${guests.map((g, i) => {
+              const label = esc(g.name.trim() || `Gast ${i + 1}`);
+              const val   = g[field];
+              return `
+                <div class="p-table__row">
+                  <span class="p-td-name" data-gn="${g.id}">${label}</span>
+                  <label class="p-td">
+                    <input type="radio" name="${field}-${g.id}" value="yes"${val === 'yes' ? ' checked' : ''} />
+                    <span class="p-rdot"></span>
+                  </label>
+                  <label class="p-td">
+                    <input type="radio" name="${field}-${g.id}" value="no"${val === 'no' ? ' checked' : ''} />
+                    <span class="p-rdot"></span>
+                  </label>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
 
+      // ── Render: text input rows ────────────────────────────
+      function renderTextInputs(cid, field, placeholder) {
+        document.getElementById(cid).innerHTML = guests.map((g, i) => {
+          const label = esc(g.name.trim() || `Gast ${i + 1}`);
+          return `
+            <div class="p-text-row">
+              <label class="p-text-row__name" for="${field}-${g.id}" data-gn="${g.id}">${label}</label>
+              <input type="text" id="${field}-${g.id}" class="p-inp"
+                placeholder="${esc(placeholder)}" value="${esc(g[field] || '')}" />
+            </div>
+          `;
+        }).join('');
+      }
+
+      // ── Render: notes textareas ────────────────────────────
+      function renderNotes() {
+        document.getElementById('notesSection').innerHTML = guests.map((g, i) => {
+          const label = esc(g.name.trim() || `Gast ${i + 1}`);
+          return `
+            <div class="p-text-row p-text-row--area">
+              <label class="p-text-row__name" for="notes-${g.id}" data-gn="${g.id}">${label}</label>
+              <textarea id="notes-${g.id}" class="p-inp p-area" rows="2"
+                placeholder="bijv. carpool, vragen, idee&euml;n&hellip;">${esc(g.notes || '')}</textarea>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // ── Master render ──────────────────────────────────────
+      function renderAll() {
+        renderGuests();
+        renderAttending();
+        renderTable('dinnerSection',   'dinner');
+        renderTextInputs('dietarySection', 'dietary', 'bijv. noten, gluten, lactose…');
+        renderTable('sleepingSection', 'sleeping');
+        renderNotes();
+      }
+
+      // ── Guest management ───────────────────────────────────
+      function addGuest() {
+        syncState();
+        guests.push({ id: nextId++, name: '', attending: null, attending_other: '', dinner: null, sleeping: null, dietary: '', notes: '' });
+        renderAll();
+        const inp = document.getElementById(`gname-${guests[guests.length - 1].id}`);
+        if (inp) inp.focus();
+      }
+
+      function removeGuest(id) {
+        syncState();
+        guests = guests.filter(g => g.id !== id);
+        renderAll();
+      }
+
+      // Expose to inline onclick
+      window.addGuest         = addGuest;
+      window.removeGuest      = removeGuest;
+      window.updateNameLabels = updateNameLabels;
+
+      // ── Lookup ─────────────────────────────────────────────
       async function doLookup() {
-        const email = document.getElementById('lookupEmail').value.trim();
+        const email = document.getElementById('submitterEmail').value.trim();
         if (!email) return;
-
-        lookupBtn.disabled    = true;
-        lookupBtn.textContent = 'Zoeken…';
-        lookupMsg.textContent = '';
-        lookupMsg.className   = 'w-lookup__msg';
+        const btn = document.getElementById('lookupBtn');
+        const msg = document.getElementById('lookupMsg');
+        btn.disabled = true; btn.textContent = 'Zoeken…';
+        msg.textContent = ''; msg.className = 'p-lookup-msg';
 
         try {
           const res  = await fetch(`${API}/api/wedding/rsvp/${encodeURIComponent(email)}`);
           const data = await res.json();
-
-          if (data.found) {
-            const r = data.rsvp;
-            document.getElementById('rName').value  = r.name;
-            document.getElementById('rEmail').value = r.email;
-
-            const ar = document.querySelector(`input[name="attending"][value="${r.attending}"]`);
-            if (ar) {
-              ar.checked = true;
-              const show = r.attending === 'yes';
-              extras.classList.toggle('open', show);
-              extras.setAttribute('aria-hidden', String(!show));
-            }
-
-            if (r.attending === 'yes') {
-              const dr = document.querySelector(`input[name="dinner"][value="${r.dinner ? 'yes' : 'no'}"]`);
-              const sr = document.querySelector(`input[name="sleeping"][value="${r.sleeping ? 'yes' : 'no'}"]`);
-              const al = document.querySelector(`input[name="drinks_alcohol"][value="${r.drinks_alcohol ? 'yes' : 'no'}"]`);
-              if (dr) dr.checked = true;
-              if (sr) sr.checked = true;
-              if (al) al.checked = true;
-            }
-
-            const dtr = document.querySelector(`input[name="dietary"][value="${r.dietary || 'none'}"]`);
-            if (dtr) dtr.checked = true;
-            if (r.dietary === 'other') {
-              dietaryNotesGroup.style.display = 'flex';
-              dietaryNotesGroup.setAttribute('aria-hidden', 'false');
-              document.getElementById('rDietaryNotes').value = r.dietary_notes || '';
-            }
-
-            if (r.notes) document.getElementById('rNotes').value = r.notes;
-
+          if (data.found && data.guests && data.guests.length) {
+            guests = data.guests.map(g => ({
+              id:              nextId++,
+              name:            g.name || '',
+              attending:       g.attending || null,
+              attending_other: g.attending_other || '',
+              dinner:          g.dinner   === true ? 'yes' : g.dinner   === false ? 'no' : null,
+              sleeping:        g.sleeping === true ? 'yes' : g.sleeping === false ? 'no' : null,
+              dietary:         g.dietary || '',
+              notes:           g.notes   || '',
+            }));
+            renderAll();
             document.getElementById('submitBtn').textContent = 'Aanmelding bijwerken ✦';
-            lookupMsg.className   = 'w-lookup__msg w-lookup__msg--found';
-            lookupMsg.textContent = `Welkom terug, ${r.name}! Je huidige aanmelding staat hieronder. Pas aan en klik op aanmelden.`;
-            document.getElementById('rsvpForm').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            msg.className = 'p-lookup-msg p-lookup-msg--ok';
+            msg.textContent = `Aanmelding gevonden voor ${data.guests.length} gast${data.guests.length > 1 ? 'en' : ''}. Pas aan en verstuur opnieuw.`;
           } else {
-            document.getElementById('rEmail').value = email;
-            lookupMsg.className   = 'w-lookup__msg w-lookup__msg--notfound';
-            lookupMsg.textContent = 'Geen aanmelding gevonden voor dit e-mailadres — vul het formulier hieronder in.';
+            msg.className = 'p-lookup-msg p-lookup-msg--miss';
+            msg.textContent = 'Geen aanmelding gevonden — vul het formulier hieronder in.';
           }
         } catch (_) {
-          lookupMsg.className   = 'w-lookup__msg w-lookup__msg--notfound';
-          lookupMsg.textContent = 'Opzoeken mislukt. Vul het formulier hieronder in.';
+          msg.className = 'p-lookup-msg p-lookup-msg--err';
+          msg.textContent = 'Opzoeken mislukt. Vul het formulier hieronder in.';
         }
-
-        lookupBtn.disabled    = false;
-        lookupBtn.textContent = 'Opzoeken →';
+        btn.disabled = false; btn.textContent = 'Ophalen →';
       }
 
-      lookupBtn.addEventListener('click', doLookup);
-      document.getElementById('lookupEmail').addEventListener('keydown', (e) => {
+      document.getElementById('lookupBtn').addEventListener('click', doLookup);
+      document.getElementById('submitterEmail').addEventListener('keydown', e => {
         if (e.key === 'Enter') { e.preventDefault(); doLookup(); }
       });
+      document.getElementById('addGuestBtn').addEventListener('click', addGuest);
 
-      // ── Form submit ────────────────────────────────────
-      document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+      // ── Submit ─────────────────────────────────────────────
+      document.getElementById('submitBtn').addEventListener('click', async () => {
+        syncState();
+        const email = document.getElementById('submitterEmail').value.trim();
+        const errEl = document.getElementById('formError');
+        errEl.textContent = '';
 
-        const name      = document.getElementById('rName').value.trim();
-        const email     = document.getElementById('rEmail').value.trim();
-        const attending = document.querySelector('input[name="attending"]:checked')?.value;
-        const dinnerEl  = document.querySelector('input[name="dinner"]:checked');
-        const sleepEl   = document.querySelector('input[name="sleeping"]:checked');
-        const alcoholEl = document.querySelector('input[name="drinks_alcohol"]:checked');
-        const dietary   = document.querySelector('input[name="dietary"]:checked')?.value || 'none';
-        const dietaryNotes = document.getElementById('rDietaryNotes').value.trim() || null;
-        const notes        = document.getElementById('rNotes').value.trim() || null;
-
-        // Clear errors
-        ['nameError', 'emailError', 'attendingError'].forEach((id) => {
-          document.getElementById(id).textContent = '';
-        });
-
-        let valid = true;
-        if (!name) {
-          document.getElementById('nameError').textContent = 'Vul je naam in.';
-          valid = false;
-        }
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          document.getElementById('emailError').textContent = 'Vul een geldig e-mailadres in.';
-          valid = false;
+          errEl.textContent = 'Vul een geldig e-mailadres in.';
+          document.getElementById('submitterEmail').focus();
+          return;
         }
-        if (!attending) {
-          document.getElementById('attendingError').textContent = 'Geef aan of je komt.';
-          valid = false;
+        const filled = guests.filter(g => g.name.trim());
+        if (!filled.length) { errEl.textContent = 'Vul minimaal één naam in.'; return; }
+        const noAtt = filled.filter(g => !g.attending);
+        if (noAtt.length) {
+          errEl.textContent = `Geef voor alle gasten aan of ze komen (${noAtt.map(g => g.name.trim()).join(', ')}).`;
+          return;
         }
-        if (!valid) return;
 
         const btn = document.getElementById('submitBtn');
-        btn.disabled    = true;
-        btn.textContent = 'Aanmelden…';
+        btn.disabled = true; btn.textContent = 'Versturen…';
 
         try {
           const res = await fetch(`${API}/api/wedding/rsvp`, {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              name,
               email,
-              attending,
-              dinner:         dinnerEl  ? dinnerEl.value  !== 'no' : true,
-              sleeping:       sleepEl?.value === 'yes',
-              drinks_alcohol: alcoholEl ? alcoholEl.value !== 'no' : true,
-              dietary,
-              dietary_notes:  dietaryNotes,
-              notes,
+              guests: filled.map(g => ({
+                name:            g.name.trim(),
+                attending:       g.attending,
+                attending_other: g.attending === 'other' ? (g.attending_other || null) : null,
+                dinner:          g.dinner   === 'yes' ? true : g.dinner   === 'no' ? false : null,
+                sleeping:        g.sleeping === 'yes' ? true : g.sleeping === 'no' ? false : null,
+                dietary:         g.dietary  || null,
+                notes:           g.notes    || null,
+              })),
             }),
           });
-
-          if (!res.ok) throw new Error('Server error');
+          if (!res.ok) throw new Error();
           const data = await res.json();
-
-          document.getElementById('rsvpForm').classList.add('hidden');
-          const successEl = document.getElementById('rsvpSuccess');
-
+          document.getElementById('theForm').classList.add('hidden');
           if (data.isUpdate) {
             document.getElementById('successTitle').textContent = 'Aanmelding bijgewerkt!';
-            document.getElementById('successMsg').textContent   =
-              'Jouw aanmelding is aangepast. We sturen een bevestiging naar jouw e-mailadres.';
+            document.getElementById('successMsg').textContent   = 'Je aanmelding is aangepast. We sturen een bevestiging naar jouw e-mailadres.';
           }
-
-          successEl.classList.add('visible');
-          window.scrollTo({ top: document.getElementById('rsvp').offsetTop - 80, behavior: 'smooth' });
-
-          document.getElementById('editLink').addEventListener('click', (ev) => {
-            ev.preventDefault();
-            successEl.classList.remove('visible');
-            document.getElementById('rsvpForm').classList.remove('hidden');
-            btn.disabled    = false;
-            btn.textContent = 'Aanmelding bijwerken ✦';
-          }, { once: true });
-
+          const suc = document.getElementById('formSuccess');
+          suc.classList.add('visible');
+          suc.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (_) {
-          btn.disabled    = false;
-          btn.textContent = attending ? 'Aanmelding bijwerken ✦' : 'Aanmelden ✦';
-          document.getElementById('attendingError').textContent =
-            'Er ging iets mis. Probeer het opnieuw.';
+          errEl.textContent = 'Er ging iets mis. Probeer het opnieuw.';
+          btn.disabled = false; btn.textContent = 'Versturen ✦';
         }
       });
+
+      document.getElementById('editBtn').addEventListener('click', () => {
+        document.getElementById('formSuccess').classList.remove('visible');
+        document.getElementById('theForm').classList.remove('hidden');
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = false; btn.textContent = 'Aanmelding bijwerken ✦';
+      });
+
+      // Initial render
+      renderAll();
     </script>
   </body>
 </html>
