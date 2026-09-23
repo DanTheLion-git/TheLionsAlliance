@@ -1,0 +1,83 @@
+{
+ "frame": {
+  "col0": 75381,
+  "row0": 75352,
+  "grid": 8,
+  "xmin": 119338.39999999851,
+  "ymin": 486095.9999999955,
+  "xmax": 122589.5999999985,
+  "ymax": 489347.19999999553
+ },
+ "editions": [
+  {
+   "id": "1815",
+   "from": 1815,
+   "to": 1815,
+   "fingerprint": "422d4f65576089f4d4d198af495540fdefbfa355",
+   "series": "Kraijenhoff"
+  },
+  {
+   "id": "1850",
+   "from": 1850,
+   "to": 1853,
+   "fingerprint": "7c0f1855806493f9ed61f8b3952859a49ab91a69",
+   "series": "TMK 1850"
+  },
+  {
+   "id": "1854",
+   "from": 1854,
+   "to": 1878,
+   "fingerprint": "2ab43f1adce6b5ffa3b95627e0dfe0c1bdf06c0d",
+   "series": "TMK 50D"
+  },
+  {
+   "id": "1882",
+   "from": 1882,
+   "to": 1893,
+   "fingerprint": "c89c3a2989cb9bfc077e47f8a4821ca452d83b65",
+   "series": "Bonnebladen"
+  },
+  {
+   "id": "1908",
+   "from": 1908,
+   "to": 1908,
+   "fingerprint": "3a1744215c1d1d65762cf42e60a61a1159fb80f1",
+   "series": "Bonnebladen"
+  },
+  {
+   "id": "1929",
+   "from": 1929,
+   "to": 1934,
+   "fingerprint": "6238aef58f906d4a951348cbbae51689a036ce32",
+   "series": "Bonnebladen"
+  },
+  {
+   "id": "1952",
+   "from": 1952,
+   "to": 1960,
+   "fingerprint": "ccc301db279aec1bad4cde02780be80e4a87d66a",
+   "series": "TOP25"
+  },
+  {
+   "id": "1981",
+   "from": 1981,
+   "to": 1987,
+   "fingerprint": "4d88c058f161e8227e00375ac4588778d4b8413b",
+   "series": "TOP25"
+  },
+  {
+   "id": "2001",
+   "from": 2001,
+   "to": 2006,
+   "fingerprint": "92fa49c070126c24c912acaa5127cd63284eb4a5",
+   "series": "TOP25"
+  },
+  {
+   "id": "2024",
+   "from": 2024,
+   "to": 2025,
+   "fingerprint": "e7757ba871bbd3c7b45d97367fe6c9e4111d10bc",
+   "series": "TOP25"
+  }
+ ]
+}

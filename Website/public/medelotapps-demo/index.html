@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex" />
+<title>Medelotapps — demo</title>
+<link rel="stylesheet" href="hub/hub.css" />
+<link rel="stylesheet" href="demo.css" />
+</head>
+<body>
+  <div id="stage-wrap">
+    <div id="stage-shrink">
+      <div id="stage">
+        <header class="tt-header" id="tt-header"></header>
+
+        <div id="home" class="screen"></div>
+        <div id="components"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The two corner home buttons. On the table these are separate
+       always-on-top WPF windows (App.xaml.cs makes one per corner), not part
+       of the page at all — so they sit outside #stage-wrap here too, fixed to
+       the viewport rather than to the scaled stage, which is what "screen
+       corner" means. Same 70x71 diagonally-cut assets the host ships. -->
+  <button class="demo-home demo-home--tr" type="button" id="demo-home-tr" aria-label="Home">
+    <img src="shell/homebutton2.png" alt="" width="70" height="71" />
+  </button>
+  <button class="demo-home demo-home--bl" type="button" id="demo-home-bl" aria-label="Home">
+    <img src="shell/homebutton1.png" alt="" width="70" height="71" />
+  </button>
+
+  <div id="demo-boot">
+    <div class="demo-boot__mark">M</div>
+    <div class="demo-boot__text">Medelotapps</div>
+  </div>
+
+  <script>
+  /* ------------------------------------------------------------------
+     Browser bootstrap.
+
+     On the touch table a WPF host scans the content folders and injects
+     four globals before any page script runs. There is no host here, so
+     this fetches the same four things off disk and injects them the same
+     way, then loads the hub's own scripts in the order hub.html does.
+
+     The hub is unmodified product code. Everything demo-specific lives
+     in the JSON this fetches and in demo.css.
+     ------------------------------------------------------------------ */
+  (function () {
+    const HUB = 'hub/';
+
+    /* ----------------------------------------------------------------
+       The corner home buttons, and the one piece of host behaviour they
+       need.
+
+       hub.js already posts {type:'immersive'} through chrome.webview
+       whenever a film goes edge to edge, so the WPF host can collapse its
+       two always-on-top button windows and keep a house icon out of the
+       picture. Outside WebView2 that call is swallowed by a try/catch —
+       which is why the demo had no corner buttons and no need for them.
+
+       Now that it has them, the cheapest way to get the same behaviour is
+       to BE the host: expose the one API hub.js expects and listen. That
+       keeps hub.js untouched, which matters — it is product code, and a
+       demo that forks it stops demonstrating the product.
+       ---------------------------------------------------------------- */
+    const homeButtons = [document.getElementById('demo-home-tr'),
+                         document.getElementById('demo-home-bl')];
+
+    homeButtons.forEach(b => b && b.addEventListener('click', () => {
+      if (typeof window.goHome === 'function') window.goHome();
+    }));
+
+    /* ----------------------------------------------------------------
+       Mouse drag-to-scroll on the Tijdlijn rail.
+
+       On the table the rail is swiped with a finger, which overflow-x and
+       touch-action: pan-x already handle. A mouse has no swipe, and the
+       scrollbar is hidden on purpose, so without this a laptop visitor sees
+       three eras and no way to the other seven.
+
+       Delegated on the document because the rail is rebuilt on every
+       navigation and language switch. Mouse only — touch keeps the native
+       scroll it already has. A drag that moved never also opens the era it
+       started on: the click that follows it is swallowed.
+       ---------------------------------------------------------------- */
+    const DRAG_THRESHOLD = 6;   // screen px before a press becomes a drag
+    let drag = null;
+    let swallowClickUntil = 0;
+
+    document.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      const strip = e.target.closest && e.target.closest('.timeline-strip');
+      if (!strip) return;
+      // The stage is CSS-scaled, and scrollLeft is in the strip's own unscaled
+      // pixels, so a screen-pixel movement has to be divided by the scale.
+      const scale = strip.getBoundingClientRect().width / strip.offsetWidth || 1;
+      drag = { strip, x: e.clientX, left: strip.scrollLeft, scale, moved: false };
+    });
+
+    window.addEventListener('pointermove', e => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x;
+      if (!drag.moved) {
+        if (Math.abs(dx) < DRAG_THRESHOLD) return;
+        drag.moved = true;
+        drag.strip.classList.add('is-dragging');
+      }
+      drag.strip.scrollLeft = drag.left - dx / drag.scale;
+    });
+
+    const endDrag = () => {
+      if (!drag) return;
+      if (drag.moved) swallowClickUntil = performance.now() + 80;
+      drag.strip.classList.remove('is-dragging');
+      drag = null;
+    };
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
+
+    document.addEventListener('click', e => {
+      if (performance.now() < swallowClickUntil) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    }, true);
+
+    // The thumbnails are <img>s, and a browser drags an image out as a file.
+    document.addEventListener('dragstart', e => {
+      if (e.target.closest && e.target.closest('.timeline-strip')) e.preventDefault();
+    });
+
+    window.chrome = window.chrome || {};
+    window.chrome.webview = window.chrome.webview || {
+      postMessage(msg) {
+        if (!msg || msg.type !== 'immersive') return;
+        homeButtons.forEach(b => { if (b) b.hidden = !!msg.on; });
+      },
+    };
+    const SCRIPTS = [
+      'data.js', 'icons.js', 'interactive.js', 'videocontrols.js',
+      'keyboard.js', 'namesearch.js', 'collection.js',
+      'views/generations.js', 'views/yearwheel.js',
+      'views/youtube.js', 'views/storyplayer.js',
+      'views/kaartlagen.js', 'views/placemap.js', 'views/photoalbums.js',
+      'hub.js',
+    ];
+
+    const json = url => fetch(url).then(r => {
+      if (!r.ok) throw new Error(url + ' → ' + r.status);
+      return r.json();
+    });
+
+    function loadSequentially(list) {
+      return list.reduce((chain, src) => chain.then(() => new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = HUB + src;
+        s.onload = resolve;
+        s.onerror = () => reject(new Error('failed to load ' + src));
+        document.body.appendChild(s);
+      })), Promise.resolve());
+    }
+
+    const LANGS = ['nl', 'en', 'de', 'fr'];
+
+    Promise.all([
+      json(HUB + 'product.json'),
+      json('demo/manifest.json'),
+      json('demo/strings.json'),
+      Promise.all(LANGS.map(l => json(HUB + 'strings/' + l + '.json'))),
+    ]).then(([product, manifest, overrides, base]) => {
+      const strings = {};
+      LANGS.forEach((lang, i) => {
+        strings[lang] = Object.assign({}, base[i], overrides[lang] || {});
+      });
+
+      window.__PRODUCT__ = product;
+      window.__MANIFEST__ = manifest;
+      window.__STRINGS__ = strings;
+      window.__FEATURES__ = [];
+
+      return loadSequentially(SCRIPTS);
+    }).then(() => {
+      const boot = document.getElementById('demo-boot');
+      if (boot) { boot.classList.add('is-done'); setTimeout(() => boot.remove(), 500); }
+      document.documentElement.classList.add('demo-ready');
+    }).catch(err => {
+      console.error('[demo] boot failed', err);
+      const boot = document.getElementById('demo-boot');
+      if (boot) boot.innerHTML = '<div class="demo-boot__text">De demo kon niet laden.<br><small>' + String(err.message || err) + '</small></div>';
+    });
+  })();
+  </script>
+</body>
+</html>

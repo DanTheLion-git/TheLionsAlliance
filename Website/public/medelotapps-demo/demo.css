@@ -1,0 +1,249 @@
+/* ------------------------------------------------------------------
+   Demo-only overrides, loaded after hub.css.
+
+   What the host provides on the table (the corner home buttons), the
+   demo's own Foto-archief albums, a few sizing choices made for a
+   browser window rather than a 55" table, and the cover shown before
+   the hub's scripts have run.
+
+   The home grid is deliberately NOT overridden: tiles are the
+   product's own size in its own 3x3 grid.
+   ------------------------------------------------------------------ */
+
+/* ---------- Corner home buttons ----------
+   The host's two always-on-top windows, as viewport-fixed elements. Anchored
+   to the viewport and not to #stage, because #stage is transform-scaled and
+   these belong to the screen, exactly as they do on the table.
+
+   Three quarters of the asset's own 70x71, scaled with the smaller viewport
+   axis. At full size they sat heavier in a browser window than they do in
+   the corner of a 55" table. */
+
+.demo-home {
+  position: fixed;
+  z-index: 900;
+  width: clamp(35px, 4.8vmin, 53px);
+  aspect-ratio: 70 / 71;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 160ms ease;
+}
+.demo-home img { width: 100%; height: 100%; display: block; }
+.demo-home:hover { opacity: 0.72; }
+.demo-home:active { opacity: 0.55; }
+.demo-home:focus-visible { outline: 2px solid #5B4B8A; outline-offset: 2px; }
+.demo-home[hidden] { display: none; }
+
+.demo-home--tr { top: 0; right: 0; }
+.demo-home--bl { bottom: 0; left: 0; }
+
+/* ---------- Tijdlijn rail ----------
+   Half the product's thumbnail height. The strip itself keeps its size and
+   centres each node on the rail line, so only the plates shrink.
+
+   The rail scrolls by touch on the table. A mouse cannot swipe, so the demo
+   shell (index.html) adds click-and-drag; these cursors say that it can. */
+
+.timeline-node-thumb { height: 50%; }
+
+/* Half a plate's width between plates. A plate is half the strip's height
+   and 3:4 (build_demo.py composes every one at 720x960), so its width is
+   0.375 x the strip height and half of that is 18.75%. The strip's height is
+   set inline by hub.js, so the gap follows it through every stage size —
+   which is why this is container-query units and not pixels. */
+.timeline-strip { container-type: size; }
+.timeline-node + .timeline-node { margin-left: 18.75cqh; }
+
+.timeline-strip { cursor: grab; }
+.timeline-strip.is-dragging,
+.timeline-strip.is-dragging .timeline-node { cursor: grabbing; }
+.timeline-strip.is-dragging { user-select: none; }
+
+/* ---------- Foto-archief albums (hub/views/photoalbums.js) ----------
+   Design pixels: the stage is 2160 tall and scaled to the window. */
+
+.pa-view { padding-bottom: 60px; }
+.pa-list { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.pa-view .stub-head { flex: none; }
+
+.pa-shelf {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(560px, 1fr));
+  gap: 72px 56px;
+  align-content: center;
+}
+
+.pa-album {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--on-surface);
+  cursor: pointer;
+  animation: pa-rise 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.pa-album:active .pa-stack { transform: scale(0.97); }
+
+.pa-stack {
+  position: relative;
+  width: 520px;
+  height: 400px;
+  margin-bottom: 30px;
+  transition: transform 220ms ease;
+}
+.pa-print {
+  position: absolute;
+  inset: 22px 30px;
+  background-color: var(--white, #fff);
+  background-size: cover;
+  background-position: center;
+  border: 14px solid var(--white, #fff);
+  border-bottom-width: 40px;               /* a print's border, not a card's */
+  border-radius: 4px;
+  box-shadow: 0 14px 34px rgba(30, 24, 18, 0.22);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pa-print--0 { transform: rotate(-7deg) translate(-18px, 6px); }
+.pa-print--1 { transform: rotate(4deg) translate(16px, -4px); }
+.pa-print--2 { transform: rotate(-1deg); }
+.pa-album:hover .pa-print--0 { transform: rotate(-11deg) translate(-44px, 8px); }
+.pa-album:hover .pa-print--1 { transform: rotate(8deg) translate(40px, -8px); }
+
+.pa-name {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 50px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-align: center;
+}
+.pa-sub {
+  font-size: 25px;
+  color: var(--on-surface-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.pa-table-label {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  z-index: 1;                  /* under the prints: a thrown photo may cover it */
+  pointer-events: none;
+}
+.pa-table-name {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--on-surface);
+}
+.pa-table-sub { font-size: 26px; color: var(--on-surface-soft); margin-top: 6px; }
+
+@keyframes pa-rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pa-album { animation: none; }
+  .pa-print { transition: none; }
+}
+
+/* ---------- YouTube film ----------
+   The shim in hub/views/youtube.js hands the story player a <div> where it
+   expects a <video>, so it needs the same box and the iframe inside it needs
+   to fill that box. */
+
+.sp-video--yt {
+  position: relative;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+}
+.sp-video--yt iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.sp-video--yt.is-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 17, 14, 0.45);
+}
+.sp-video--yt.is-error::after {
+  content: 'Deze film kon niet laden.';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 17, 14, 0.82);
+  color: #e8e2d6;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 28px;
+}
+
+/* ---------- Boot cover ---------- */
+
+#demo-boot {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  background: #F7F4EF;
+  transition: opacity 420ms ease;
+}
+#demo-boot.is-done { opacity: 0; pointer-events: none; }
+
+.demo-boot__mark {
+  width: 74px;
+  height: 74px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: #5B4B8A;
+  color: #fff;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 38px;
+  line-height: 1;
+  animation: demo-pulse 1.4s ease-in-out infinite;
+}
+
+.demo-boot__text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6B6357;
+  text-align: center;
+}
+.demo-boot__text small {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #9A9186;
+}
+
+@keyframes demo-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(0.94); opacity: 0.72; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-boot__mark { animation: none; }
+}

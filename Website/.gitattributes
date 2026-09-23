@@ -1,0 +1,2 @@
+# Generated PDFs contain bare LFs; never let autocrlf rewrite them.
+*.pdf binary

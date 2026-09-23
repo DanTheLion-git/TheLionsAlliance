@@ -1,0 +1,265 @@
+---
+import "../../styles/homepage.css";
+import "../../styles/puzzlequests.css";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brief aan Jan Truijen &mdash; The Lions Alliance</title>
+    <meta name="description" content="Brief aan Jan Truijen is a talking-portrait installation for museums and heritage venues — visitors write a letter on a converted antique typewriter, and a historical figure writes back in character with an AI voice and 3D facial animation." />
+    <link rel="icon" type="image/png" href="/favicon-logo.png" />
+    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/jan-truijen/" />
+    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/jan-truijen/nl/" />
+    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/jan-truijen/" />
+  </head>
+  <body class="tla-page pl-body">
+
+    <!-- ── Navigation ─────────────────────────────────── -->
+    <nav class="tla-nav" id="tla-nav">
+      <div class="tla-nav__inner tla-container">
+        <a href="/" class="tla-nav__logo"><img src="/images/branding/lions-logo.webp" alt="" class="tla-nav__logo-img" />The Lions <span>Alliance</span></a>
+        <ul class="tla-nav__links">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#adapt">For Your Venue</a></li>
+        </ul>
+        <div class="tla-nav__actions">
+          <a href="/jan-truijen/nl/" class="tla-nav__lang" hreflang="nl" lang="nl" title="Bekijk in het Nederlands">NL</a>
+          <a href="/contact/" class="tla-nav__cta tla-nav__cta--gold">Contact</a>
+          <a href="/" class="tla-nav__cta">&larr; Studio</a>
+        </div>
+        <button class="tla-nav__hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="tla-nav__mobile" id="mobile-menu">
+        <a href="#overview">Overview</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#adapt">For Your Venue</a>
+        <a href="/contact/">Contact</a>
+        <a href="/jan-truijen/nl/" hreflang="nl" lang="nl">Bekijk in het Nederlands</a>
+        <a href="/">&larr; Back to Studio</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ───────────────────────────────────────── -->
+    <section class="pl-hero" id="home">
+      <div class="tla-container pl-hero__inner">
+        <div class="pl-hero__text tla-fade">
+          <div class="pl-hero__breadcrumb">
+            <a href="/">The Lions Alliance</a>
+            <span class="pl-hero__breadcrumb-sep">/</span>
+            <span>Brief aan Jan Truijen</span>
+          </div>
+          <div class="pl-hero__badges">
+            <span class="tla-badge tla-badge--dev">Working Prototype</span>
+            <span class="tla-badge tla-badge--live">Shown Live &mdash; 20 Sept 2026</span>
+          </div>
+          <h1 class="pl-hero__title">Brief aan <em>Jan Truijen</em></h1>
+          <p class="pl-hero__subtitle">
+            A talking-portrait installation for museums and heritage venues. Visitors write a letter on a converted antique typewriter &mdash; and a historical figure writes back, in character, with an AI voice and real-time 3D facial animation.
+          </p>
+          <div class="pl-hero__ctas">
+            <a href="#adapt" class="tla-btn tla-btn--sage">Bring this to your venue</a>
+            <a href="/contact/" class="tla-btn tla-btn--outline">Get in touch</a>
+          </div>
+        </div>
+        <div class="pl-hero__visual tla-fade tla-d1">
+          <img src="/images/brief-aan-jan/prototype-20-09-2026/IMG20260920135157.webp" alt="The Brief aan Jan Truijen installation running at Museum Medelo — antique desk, typewriter, and the talking portrait, with the period costume of Jan Truijen beside it" loading="eager" style="width:100%; border-radius:var(--tla-radius-xl); box-shadow:var(--tla-shadow-md);" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Overview ──────────────────────────────────── -->
+    <section class="pl-overview" id="overview">
+      <div class="tla-container pl-overview__inner">
+        <div class="pl-overview__text tla-fade">
+          <span class="tla-overline">The installation</span>
+          <h2 class="tla-section-header pl-section-header--left">A letter to the past, answered</h2>
+          <p>
+            Jan Truijen (1838&ndash;1919) was Meijel&rsquo;s mayor, surveyor, town clerk and MP &mdash; a real historical figure whose portrait hangs in Museum Medelo. Visitors sit down at a converted antique typewriter and compose him a letter. When they send it, the portrait comes to life: an AI voice and real-time 3D facial animation reads the letter aloud and replies in character &mdash; grounded in the historical archive rather than invented, and honest when it doesn&rsquo;t know something.
+          </p>
+          <p>
+            We showed it live to the public for the first time at Museum Medelo&rsquo;s members-only opening on 20 September 2026 &mdash; a working prototype, not yet a permanent unattended installation. Medelo is the proof-of-concept; the format is built to travel.
+          </p>
+        </div>
+        <div class="pl-overview__visual tla-fade tla-d1">
+          <div style="width:100%; padding:1.5rem; background:rgba(0,0,0,0.04); border-radius:var(--tla-radius-md);">
+            <strong style="font-size:0.85rem; letter-spacing:0.02em; text-transform:uppercase; color:var(--tla-gold,#c9aa71);">From typed letter to spoken reply</strong>
+            <ol style="margin-top:0.9rem; display:flex; flex-direction:column; gap:0.65rem;">
+              <li style="display:flex; gap:0.65rem; align-items:baseline; font-size:0.9rem; color:var(--tla-text-body); line-height:1.5;">
+                <span style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.05rem; color:var(--tla-gold,#c9aa71); flex-shrink:0;">1</span>
+                <span>The visitor types a message on the typewriter</span>
+              </li>
+              <li style="display:flex; gap:0.65rem; align-items:baseline; font-size:0.9rem; color:var(--tla-text-body); line-height:1.5;">
+                <span style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.05rem; color:var(--tla-gold,#c9aa71); flex-shrink:0;">2</span>
+                <span>The message is matched against the figure&rsquo;s archive</span>
+              </li>
+              <li style="display:flex; gap:0.65rem; align-items:baseline; font-size:0.9rem; color:var(--tla-text-body); line-height:1.5;">
+                <span style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.05rem; color:var(--tla-gold,#c9aa71); flex-shrink:0;">3</span>
+                <span>A reply is composed, grounded in what&rsquo;s actually known</span>
+              </li>
+              <li style="display:flex; gap:0.65rem; align-items:baseline; font-size:0.9rem; color:var(--tla-text-body); line-height:1.5;">
+                <span style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.05rem; color:var(--tla-gold,#c9aa71); flex-shrink:0;">4</span>
+                <span>The reply is spoken aloud in an AI voice</span>
+              </li>
+              <li style="display:flex; gap:0.65rem; align-items:baseline; font-size:0.9rem; color:var(--tla-text-body); line-height:1.5;">
+                <span style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.05rem; color:var(--tla-gold,#c9aa71); flex-shrink:0;">5</span>
+                <span>The portrait&rsquo;s face animates in sync, on-screen</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tla-divider"></div>
+
+    <!-- ── How It Works ───────────────────────────────── -->
+    <section class="pl-steps-section" id="how-it-works">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">How it works</span>
+          <h2 class="tla-section-header">The visitor journey, in three beats</h2>
+        </div>
+        <div class="pl-steps">
+          <div class="pl-step tla-fade">
+            <div class="pl-step__number">I</div>
+            <div class="pl-step__title">Write your letter</div>
+            <div class="pl-step__desc">The visitor sits at the desk and composes a letter to the figure in the portrait, using a converted antique typewriter. No screen, no keyboard.</div>
+          </div>
+          <div class="pl-step tla-fade tla-d1">
+            <div class="pl-step__number">II</div>
+            <div class="pl-step__title">The portrait wakes</div>
+            <div class="pl-step__desc">The letter is sent, and the portrait comes to life &mdash; an AI voice and real-time 3D facial animation prepare a reply drawn from the historical archive.</div>
+          </div>
+          <div class="pl-step tla-fade tla-d2">
+            <div class="pl-step__number">III</div>
+            <div class="pl-step__title">A living reply</div>
+            <div class="pl-step__desc">The figure answers aloud, in character, referencing real history. If it doesn&rsquo;t know something, it says so &mdash; the moment stays honest, not scripted fantasy.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── For Your Venue ──────────────────────────────── -->
+    <section class="pl-adapt" id="adapt">
+      <div class="tla-container">
+        <div class="tla-fade" style="text-align:center;">
+          <span class="tla-overline">For your venue</span>
+          <h2 class="tla-section-header">The pipeline is reusable. The portrait is yours.</h2>
+        </div>
+        <div class="pl-adapt__grid">
+          <div class="pl-adapt__col tla-fade">
+            <h3 class="pl-adapt__title">What stays fixed</h3>
+            <ul class="pl-adapt__list">
+              <li>The pipeline and the visitor flow, from typed message to spoken reply.</li>
+              <li>The onsite deployment hardware.</li>
+            </ul>
+          </div>
+          <div class="pl-adapt__col tla-fade tla-d1">
+            <h3 class="pl-adapt__title">What we design per venue</h3>
+            <ul class="pl-adapt__list">
+              <li>The historical figure brought to life.</li>
+              <li>The knowledge archive the figure draws on.</li>
+              <li>The input method &mdash; it doesn&rsquo;t have to be a typewriter.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Collaboration CTA ──────────────────────────── -->
+    <section class="pl-collaborate" id="collaborate">
+      <div class="tla-container pl-collaborate__inner">
+        <div class="pl-collaborate__text tla-fade">
+          <span class="tla-overline">Partnership</span>
+          <h2 class="tla-section-header pl-section-header--left">Bring a talking portrait to your venue</h2>
+          <p>
+            The talking-portrait format is repeatable: a different historical figure, a different location, the same proven pipeline. If your museum, heritage site, or historic house has a portrait and an archive worth bringing to life, we&rsquo;d love to hear from you.
+          </p>
+          <div class="pl-collaborate__ctas">
+            <a href="/contact/" class="tla-btn tla-btn--gold">Get in touch</a>
+            <a href="/" class="tla-btn tla-btn--outline">Explore the studio &rarr;</a>
+          </div>
+        </div>
+        <div class="pl-collaborate__audiences tla-fade tla-d1">
+          <ul class="pl-audience-list">
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Regional &amp; local-history museums</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Heritage societies &amp; archives</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Historic houses &amp; estates</li>
+            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Tourism organisations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────── -->
+    <footer class="tla-footer">
+      <div class="tla-container tla-footer__inner">
+        <div class="tla-footer__brand">
+          <div class="tla-footer__brand-row">
+            <img src="/images/branding/lions-logo.webp" alt="" class="tla-footer__logo-img" />
+            <div class="tla-footer__logo">The Lions Alliance</div>
+          </div>
+          <p class="tla-footer__tagline">Museum &amp; heritage technology studio.</p>
+        </div>
+        <div class="tla-footer__links">
+          <a href="/">Studio</a>
+          <a href="#overview">Overview</a>
+          <a href="#adapt">For Your Venue</a>
+          <a href="#collaborate">Collaborate</a>
+        </div>
+      </div>
+      <div class="tla-container tla-footer__bottom">
+        <span>&copy; {year} The Lions Alliance. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <!-- ── Scripts ─────────────────────────────────────── -->
+    <script>
+      const nav = document.getElementById('tla-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+      }
+      const faders = document.querySelectorAll('.tla-fade');
+      if (faders.length && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('tla-visible');
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        faders.forEach((el) => obs.observe(el));
+      } else {
+        faders.forEach((el) => el.classList.add('tla-visible'));
+      }
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', String(open));
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

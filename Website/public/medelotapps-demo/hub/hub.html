@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<title>Medelo TouchTable Hub</title>
+<link rel="stylesheet" href="hub.css" />
+<!-- three.js is vendored under hub/vendor/three (the kiosk is offline — nothing
+     may come from a CDN). Its addons import the bare specifier "three", so an
+     import map is what makes them resolve. Nothing is fetched until
+     views/building3d.js runs its dynamic import(), so the home screen and every
+     other app stay free of it. -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/three.module.min.js",
+    "three/addons/": "./vendor/three/addons/"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="stage-wrap">
+    <div id="stage-shrink">
+      <div id="stage">
+        <header class="tt-header" id="tt-header"></header>
+
+        <div id="home" class="screen"></div>
+        <div id="components"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="icons.js"></script>
+  <script src="interactive.js"></script>
+  <script src="videocontrols.js"></script>
+  <script src="keyboard.js"></script>
+  <script src="namesearch.js"></script>
+  <script src="collection.js"></script>
+  <script src="views/generations.js"></script>
+  <script src="views/yearwheel.js"></script>
+  <script src="views/storyplayer.js"></script>
+  <script src="views/building3d.js"></script>
+  <script src="views/kaartlagen.js"></script>
+  <script src="views/placemap.js"></script>
+  <script src="views/stamboom.js"></script>
+  <script src="hub.js"></script>
+</body>
+</html>

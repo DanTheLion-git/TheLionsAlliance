@@ -1,0 +1,62 @@
+{
+  "//": [
+    "DEMO product configuration for the public web demo at",
+    "thelionsalliance.com/touchscreens/. This is a copy of the Medelo",
+    "configuration with the museum's own apps and branding removed: four",
+    "tiles instead of nine, neutral branding, and content that belongs to",
+    "nobody in particular. None of Museum Medelo's material appears here.",
+    "",
+    "The hub code beside this file is the real product, unmodified except",
+    "for the YouTube path in views/storyplayer.js. Regenerate the content",
+    "with Website/tools/demo/build_demo.py."
+  ],
+  "id": "medelotapps-demo",
+  "brand": {
+    "mark": "M",
+    "name": "Medelotapps"
+  },
+  "maker": {
+    "name": "made by The Lions Alliance",
+    "logo": "content/homescreen/logo.png"
+  },
+  "languages": ["nl", "en", "de", "fr"],
+  "defaultLanguage": "nl",
+  "locales": {
+    "nl": "nl-NL",
+    "en": "en-GB",
+    "de": "de-DE",
+    "fr": "fr-FR"
+  },
+  "features": {},
+
+  "idleMs": 600000,
+  "placeholderComponent": "tijdlijn",
+  "stage": {
+    "height": 2160,
+    "minWidth": 2880,
+    "maxWidth": 7680,
+    "headerHeight": 160
+  },
+  "keyboard": {
+    "rows": [
+      ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+      ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+      ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ij"],
+      ["z", "x", "c", "v", "b", "n", "m", "-", "'"]
+    ],
+    "accents": ["é", "è", "ë", "ê", "ï", "í", "ö", "ó", "ü", "ú", "ä", "à", "ç"]
+  },
+  "//apps": [
+    "Five tiles in the product's own 3x3 grid, at the product's own size. The",
+    "featured Tijdlijn spans two cells, so six of the nine are used and the",
+    "bottom row stays empty — which is what the real table looks like with",
+    "five apps switched on. Order follows the Medelo build."
+  ],
+  "apps": [
+    { "id": "timeline", "component": "tijdlijn", "icon": "clock", "featured": true },
+    { "id": "photos", "component": "fotoarchief", "icon": "photo" },
+    { "id": "stories", "component": "verhalen", "icon": "mic" },
+    { "id": "map", "component": "kaart", "icon": "map" },
+    { "id": "people", "component": "personen", "icon": "user" }
+  ]
+}

@@ -1,0 +1,4 @@
+# Raw API responses and downloaded originals. Re-fetched on demand, and the
+# build is idempotent without them — there is no reason to version any of it.
+.cache/
+editions_amsterdam.all.json

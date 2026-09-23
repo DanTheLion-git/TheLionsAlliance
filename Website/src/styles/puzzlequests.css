@@ -261,6 +261,36 @@
   opacity: 0.45;
 }
 
+/* Auto-rotating crossfade slideshow (CSS-only, no JS) */
+.pl-slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--tla-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--tla-shadow-md);
+}
+.pl-slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: pl-slideshow-fade 28s infinite;
+}
+@keyframes pl-slideshow-fade {
+  0%   { opacity: 0; }
+  3%   { opacity: 1; }
+  17%  { opacity: 1; }
+  20%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pl-slideshow img { animation: none; opacity: 0; }
+  .pl-slideshow img:first-child { opacity: 1; }
+}
+
 /* ═══════════════════════════════════════════════════════
    STEPS (How It Works)
    ═══════════════════════════════════════════════════════ */
@@ -343,6 +373,15 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   margin-top: 56px;
+}
+
+/* Two side-by-side feature cards spanning the full-width breakout wrapper */
+.pl-live-poc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 1920px;
+  margin: 0 auto 3rem;
 }
 
 .pl-concept-card {
@@ -957,6 +996,10 @@
 
   .pl-concept-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .pl-live-poc-grid {
+    grid-template-columns: 1fr;
   }
 
   .pl-phase-grid {

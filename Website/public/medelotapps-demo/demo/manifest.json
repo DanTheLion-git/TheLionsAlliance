@@ -1,0 +1,2842 @@
+{
+ "components": [
+  {
+   "id": "tijdlijn",
+   "name": "Tijdlijn",
+   "type": "timeline",
+   "entries": [
+    {
+     "id": "3200-bc",
+     "title": "3200 v.Chr. — Writing begins",
+     "thumbnail": "content/tijdlijn/3200-bc/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/3200-bc/beeld-1.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "Writing begins",
+        "en": "Writing begins",
+        "de": "Writing begins",
+        "fr": "Writing begins"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/3200-bc/beeld-2.webp",
+       "width": 593,
+       "height": 860,
+       "caption": {
+        "nl": "Writing begins",
+        "en": "Writing begins",
+        "de": "Writing begins",
+        "fr": "Writing begins"
+       },
+       "credit": "Wikimedia Commons · FAL"
+      },
+      {
+       "imagePath": "content/tijdlijn/3200-bc/beeld-3.webp",
+       "width": 860,
+       "height": 860,
+       "caption": {
+        "nl": "Writing begins",
+        "en": "Writing begins",
+        "de": "Writing begins",
+        "fr": "Writing begins"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0 fr"
+      }
+     ]
+    },
+    {
+     "id": "776-bc",
+     "title": "776 v.Chr. — The first Olympiad",
+     "thumbnail": "content/tijdlijn/776-bc/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/776-bc/beeld-1.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "The first Olympiad",
+        "en": "The first Olympiad",
+        "de": "The first Olympiad",
+        "fr": "The first Olympiad"
+       },
+       "credit": "Wikimedia Commons · CC BY 3.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/776-bc/beeld-2.webp",
+       "width": 482,
+       "height": 860,
+       "caption": {
+        "nl": "The first Olympiad",
+        "en": "The first Olympiad",
+        "de": "The first Olympiad",
+        "fr": "The first Olympiad"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      },
+      {
+       "imagePath": "content/tijdlijn/776-bc/beeld-3.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "The first Olympiad",
+        "en": "The first Olympiad",
+        "de": "The first Olympiad",
+        "fr": "The first Olympiad"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 2.0"
+      }
+     ]
+    },
+    {
+     "id": "221-bc",
+     "title": "221 v.Chr. — China unified",
+     "thumbnail": "content/tijdlijn/221-bc/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/221-bc/beeld-1.webp",
+       "width": 860,
+       "height": 646,
+       "caption": {
+        "nl": "China unified",
+        "en": "China unified",
+        "de": "China unified",
+        "fr": "China unified"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/221-bc/beeld-2.webp",
+       "width": 860,
+       "height": 646,
+       "caption": {
+        "nl": "China unified",
+        "en": "China unified",
+        "de": "China unified",
+        "fr": "China unified"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/221-bc/beeld-3.webp",
+       "width": 860,
+       "height": 495,
+       "caption": {
+        "nl": "China unified",
+        "en": "China unified",
+        "de": "China unified",
+        "fr": "China unified"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      }
+     ]
+    },
+    {
+     "id": "79",
+     "title": "79 — Vesuvius buries Pompeii",
+     "thumbnail": "content/tijdlijn/79/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/79/beeld-1.webp",
+       "width": 860,
+       "height": 574,
+       "caption": {
+        "nl": "Vesuvius buries Pompeii",
+        "en": "Vesuvius buries Pompeii",
+        "de": "Vesuvius buries Pompeii",
+        "fr": "Vesuvius buries Pompeii"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/79/beeld-2.webp",
+       "width": 860,
+       "height": 535,
+       "caption": {
+        "nl": "Vesuvius buries Pompeii",
+        "en": "Vesuvius buries Pompeii",
+        "de": "Vesuvius buries Pompeii",
+        "fr": "Vesuvius buries Pompeii"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      },
+      {
+       "imagePath": "content/tijdlijn/79/beeld-3.webp",
+       "width": 860,
+       "height": 604,
+       "caption": {
+        "nl": "Vesuvius buries Pompeii",
+        "en": "Vesuvius buries Pompeii",
+        "de": "Vesuvius buries Pompeii",
+        "fr": "Vesuvius buries Pompeii"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      }
+     ]
+    },
+    {
+     "id": "1088",
+     "title": "1088 — The first university",
+     "thumbnail": "content/tijdlijn/1088/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/1088/beeld-1.webp",
+       "width": 860,
+       "height": 573,
+       "caption": {
+        "nl": "The first university",
+        "en": "The first university",
+        "de": "The first university",
+        "fr": "The first university"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/1088/beeld-2.webp",
+       "width": 860,
+       "height": 568,
+       "caption": {
+        "nl": "The first university",
+        "en": "The first university",
+        "de": "The first university",
+        "fr": "The first university"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/1088/beeld-3.webp",
+       "width": 860,
+       "height": 331,
+       "caption": {
+        "nl": "The first university",
+        "en": "The first university",
+        "de": "The first university",
+        "fr": "The first university"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0"
+      }
+     ]
+    },
+    {
+     "id": "1440",
+     "title": "1440 — Movable type in Europe",
+     "thumbnail": "content/tijdlijn/1440/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/1440/beeld-1.webp",
+       "width": 860,
+       "height": 636,
+       "caption": {
+        "nl": "Movable type in Europe",
+        "en": "Movable type in Europe",
+        "de": "Movable type in Europe",
+        "fr": "Movable type in Europe"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      },
+      {
+       "imagePath": "content/tijdlijn/1440/beeld-2.webp",
+       "width": 645,
+       "height": 860,
+       "caption": {
+        "nl": "Movable type in Europe",
+        "en": "Movable type in Europe",
+        "de": "Movable type in Europe",
+        "fr": "Movable type in Europe"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/1440/beeld-3.webp",
+       "width": 860,
+       "height": 542,
+       "caption": {
+        "nl": "Movable type in Europe",
+        "en": "Movable type in Europe",
+        "de": "Movable type in Europe",
+        "fr": "Movable type in Europe"
+       },
+       "credit": "Wikimedia Commons · No restrictions"
+      }
+     ]
+    },
+    {
+     "id": "1492",
+     "title": "1492 — The Atlantic crossed",
+     "thumbnail": "content/tijdlijn/1492/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/1492/beeld-1.webp",
+       "width": 860,
+       "height": 578,
+       "caption": {
+        "nl": "The Atlantic crossed",
+        "en": "The Atlantic crossed",
+        "de": "The Atlantic crossed",
+        "fr": "The Atlantic crossed"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      },
+      {
+       "imagePath": "content/tijdlijn/1492/beeld-2.webp",
+       "width": 860,
+       "height": 571,
+       "caption": {
+        "nl": "The Atlantic crossed",
+        "en": "The Atlantic crossed",
+        "de": "The Atlantic crossed",
+        "fr": "The Atlantic crossed"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      },
+      {
+       "imagePath": "content/tijdlijn/1492/beeld-3.webp",
+       "width": 860,
+       "height": 642,
+       "caption": {
+        "nl": "The Atlantic crossed",
+        "en": "The Atlantic crossed",
+        "de": "The Atlantic crossed",
+        "fr": "The Atlantic crossed"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      }
+     ]
+    },
+    {
+     "id": "1687",
+     "title": "1687 — Newton's Principia",
+     "thumbnail": "content/tijdlijn/1687/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/1687/beeld-1.webp",
+       "width": 860,
+       "height": 464,
+       "caption": {
+        "nl": "Newton's Principia",
+        "en": "Newton's Principia",
+        "de": "Newton's Principia",
+        "fr": "Newton's Principia"
+       },
+       "credit": "Wikimedia Commons · CC BY 4.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/1687/beeld-2.webp",
+       "width": 860,
+       "height": 646,
+       "caption": {
+        "nl": "Newton's Principia",
+        "en": "Newton's Principia",
+        "de": "Newton's Principia",
+        "fr": "Newton's Principia"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/1687/beeld-3.webp",
+       "width": 860,
+       "height": 572,
+       "caption": {
+        "nl": "Newton's Principia",
+        "en": "Newton's Principia",
+        "de": "Newton's Principia",
+        "fr": "Newton's Principia"
+       },
+       "credit": "Wikimedia Commons · CC0"
+      }
+     ]
+    },
+    {
+     "id": "1869",
+     "title": "1869 — Two seas joined",
+     "thumbnail": "content/tijdlijn/1869/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/1869/beeld-1.webp",
+       "width": 860,
+       "height": 573,
+       "caption": {
+        "nl": "Two seas joined",
+        "en": "Two seas joined",
+        "de": "Two seas joined",
+        "fr": "Two seas joined"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 2.5"
+      }
+     ]
+    },
+    {
+     "id": "1969",
+     "title": "1969 — A footprint on the Moon",
+     "thumbnail": "content/tijdlijn/1969/plaat.webp",
+     "items": [
+      {
+       "imagePath": "content/tijdlijn/1969/beeld-1.webp",
+       "width": 860,
+       "height": 579,
+       "caption": {
+        "nl": "A footprint on the Moon",
+        "en": "A footprint on the Moon",
+        "de": "A footprint on the Moon",
+        "fr": "A footprint on the Moon"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      },
+      {
+       "imagePath": "content/tijdlijn/1969/beeld-2.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "A footprint on the Moon",
+        "en": "A footprint on the Moon",
+        "de": "A footprint on the Moon",
+        "fr": "A footprint on the Moon"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/tijdlijn/1969/beeld-3.webp",
+       "width": 860,
+       "height": 604,
+       "caption": {
+        "nl": "A footprint on the Moon",
+        "en": "A footprint on the Moon",
+        "de": "A footprint on the Moon",
+        "fr": "A footprint on the Moon"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      }
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "id": "fotoarchief",
+   "name": "Foto-archief",
+   "type": "collection",
+   "collection": [
+    {
+     "id": "oorlog",
+     "name": {
+      "nl": "Oorlog en bevrijding",
+      "en": "War and liberation",
+      "de": "Krieg und Befreiung",
+      "fr": "Guerre et libération"
+     },
+     "subtitle": {
+      "nl": "8 foto's · 1916–1945",
+      "en": "8 photographs · 1916–1945",
+      "de": "8 Fotos · 1916–1945",
+      "fr": "8 photographies · 1916–1945"
+     },
+     "period": {
+      "from": 1916,
+      "to": 1945
+     },
+     "hero": {
+      "url": "content/fotoarchief/oorlog/foto-2.webp",
+      "width": 860,
+      "height": 636
+     },
+     "items": [
+      {
+       "imagePath": "content/fotoarchief/oorlog/foto-2.webp",
+       "width": 860,
+       "height": 636,
+       "caption": "1916 · Photograph of British 13 pounder 6 cwt anti-aircraft gun on Mk II mounting, on a…",
+       "credit": "Wikimedia Commons · Ernest Brooks · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/oorlog/foto-4.webp",
+       "width": 860,
+       "height": 582,
+       "caption": "1916 · A sentry in the front line trenches at Blaireville using mirror periscope, 16th April…",
+       "credit": "Wikimedia Commons · Ernest Brooks · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/oorlog/foto-1.webp",
+       "width": 860,
+       "height": 622,
+       "caption": "1917 · Battle of Langemarck 16-18 August: A 6 inch howitzer is manhandled past some ruins near…",
+       "credit": "Wikimedia Commons · Ernest Brooks · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/oorlog/foto-3.webp",
+       "width": 860,
+       "height": 619,
+       "caption": "1917 · 4th East Lancs troops 1917 IWM Q 2876",
+       "credit": "Wikimedia Commons · Ernest Brooks · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/oorlog/foto-5.webp",
+       "width": 860,
+       "height": 650,
+       "caption": "1945 · Infantry of the Regiment de Maisonneuve moving through Holten to Rijssen, both towns in…",
+       "credit": "Wikimedia Commons · Lt. D. Guravitch · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/oorlog/foto-6.webp",
+       "width": 649,
+       "height": 860,
+       "caption": "1945 · Bewaker staat op wacht terwijl \"pianolessen\" worden gegeven aan muziekstudenten…",
+       "credit": "Wikimedia Commons · Marius Meijboom / Anefo · CC0"
+      },
+      {
+       "imagePath": "content/fotoarchief/oorlog/foto-7.webp",
+       "width": 854,
+       "height": 860,
+       "caption": "1945 · Canadese soldaat deelt sigaretten uit aan een groep mannen met ransels of rugzakken…",
+       "credit": "Wikimedia Commons · Fotograaf Onbekend / Anefo · CC0"
+      },
+      {
+       "imagePath": "content/fotoarchief/oorlog/foto-8.webp",
+       "width": 860,
+       "height": 613,
+       "caption": "1945 · Afbeelding van de aankomst van gerepatrieerden uit Duitsland met de trein op het…",
+       "credit": "Wikimedia Commons · Nederlandse Spoorwegen · Public domain"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "landbouw",
+     "name": {
+      "nl": "Landbouw",
+      "en": "Agriculture",
+      "de": "Landwirtschaft",
+      "fr": "Agriculture"
+     },
+     "subtitle": {
+      "nl": "8 foto's · 1893–1971",
+      "en": "8 photographs · 1893–1971",
+      "de": "8 Fotos · 1893–1971",
+      "fr": "8 photographies · 1893–1971"
+     },
+     "period": {
+      "from": 1893,
+      "to": 1971
+     },
+     "hero": {
+      "url": "content/fotoarchief/landbouw/foto-3.webp",
+      "width": 860,
+      "height": 537
+     },
+     "items": [
+      {
+       "imagePath": "content/fotoarchief/landbouw/foto-3.webp",
+       "width": 860,
+       "height": 537,
+       "caption": "1893 · The last load",
+       "credit": "Wikimedia Commons · Rudolf Eickemeyer, Jr. · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/landbouw/foto-1.webp",
+       "width": 860,
+       "height": 645,
+       "caption": "1899 · Etterstad pløining",
+       "credit": "Wikimedia Commons · Narve Skarpmoen · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/landbouw/foto-6.webp",
+       "width": 860,
+       "height": 498,
+       "caption": "1902 · Dreschmaschine mit Selbsteinleger und Strohbindeapparat",
+       "credit": "Wikimedia Commons · Unknown author Unknown author · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/landbouw/foto-5.webp",
+       "width": 860,
+       "height": 681,
+       "caption": "1910 · Hofherr-Schrantz-Clayton-Shuttleworth cséplőgép és tüzesgép",
+       "credit": "Wikimedia Commons · Fortepan adományozó : FORTEPAN · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/fotoarchief/landbouw/foto-7.webp",
+       "width": 860,
+       "height": 588,
+       "caption": "1946 · Bloemenzaadteelt Enkhuizen",
+       "credit": "Wikimedia Commons · Nationaal Archief · CC0"
+      },
+      {
+       "imagePath": "content/fotoarchief/landbouw/foto-4.webp",
+       "width": 718,
+       "height": 860,
+       "caption": "1960 · Enfant s'amusant à faner derrière la charrette chargée (tractée par 2 boeufs) en Béarn",
+       "credit": "Wikimedia Commons · My father · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/fotoarchief/landbouw/foto-2.webp",
+       "width": 860,
+       "height": 592,
+       "caption": "1970 · Ritratto di una famiglia contadina composta da due uomini, due bambini su aratro fermo…",
+       "credit": "Wikimedia Commons · Anonimo · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/landbouw/foto-8.webp",
+       "width": 572,
+       "height": 860,
+       "caption": "1971 · Openbare bestuursvergadering van Landbouwschap in het SER-gebouw in Den Haag…",
+       "credit": "Wikimedia Commons · Hans Peters for Anefo · CC0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "vooruitgang",
+     "name": {
+      "nl": "Sociale vooruitgang",
+      "en": "Social progress",
+      "de": "Sozialer Fortschritt",
+      "fr": "Progrès social"
+     },
+     "subtitle": {
+      "nl": "8 foto's · 1905–1963",
+      "en": "8 photographs · 1905–1963",
+      "de": "8 Fotos · 1905–1963",
+      "fr": "8 photographies · 1905–1963"
+     },
+     "period": {
+      "from": 1905,
+      "to": 1963
+     },
+     "hero": {
+      "url": "content/fotoarchief/vooruitgang/foto-6.webp",
+      "width": 860,
+      "height": 591
+     },
+     "items": [
+      {
+       "imagePath": "content/fotoarchief/vooruitgang/foto-6.webp",
+       "width": 860,
+       "height": 591,
+       "caption": "1905 · From F. P. Sargent, Commissioner General of Immigration Children's Roof Garden, Ellis…",
+       "credit": "Wikimedia Commons · From F. P. Sargent, Commissioner General of… · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vooruitgang/foto-4.webp",
+       "width": 641,
+       "height": 860,
+       "caption": "1908 · She. It is time I got out of this place. Where Shall I Find The Key? Convicts Lunatics…",
+       "credit": "Wikimedia Commons · Emily Jane Harding Andrews (1850-1940)… · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vooruitgang/foto-3.webp",
+       "width": 860,
+       "height": 552,
+       "caption": "1909 · The Great Procession and Women's Demonstration\" organised by the Women's Social and…",
+       "credit": "Wikimedia Commons · James Patrick 1863 - 1933 · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vooruitgang/foto-5.webp",
+       "width": 860,
+       "height": 569,
+       "caption": "1909 · New York. Ellis Island",
+       "credit": "Wikimedia Commons · National Photo Company Collection · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vooruitgang/foto-1.webp",
+       "width": 620,
+       "height": 860,
+       "caption": "1933 · William L. Carden, of Anderson County, Tennessee, acetylene burner at Norris Dam site",
+       "credit": "Wikimedia Commons · Lewis Hine · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vooruitgang/foto-2.webp",
+       "width": 860,
+       "height": 621,
+       "caption": "1933 · Another view of Aunt Lizzie Reagan weaving old-fashioned jean at the Pi Beta Phi…",
+       "credit": "Wikimedia Commons · Lewis Hine · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vooruitgang/foto-7.webp",
+       "width": 671,
+       "height": 860,
+       "caption": "1963 · In front of 170 W 130 St., March on Washington, l t[o] r Bayard Rustin, Deputy…",
+       "credit": "Wikimedia Commons · New York World-Telegram and the Sun staff… · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vooruitgang/foto-8.webp",
+       "width": 573,
+       "height": 860,
+       "caption": "1963 · Aerial view of marchers, from the Lincoln Monument to the Washington Monument, at the…",
+       "credit": "Wikimedia Commons · O'Halloran, Thomas J., photographer · Public domain"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "industrie",
+     "name": {
+      "nl": "Industrie en arbeid",
+      "en": "Industry and labour",
+      "de": "Industrie und Arbeit",
+      "fr": "Industrie et travail"
+     },
+     "subtitle": {
+      "nl": "8 foto's · 1885–1972",
+      "en": "8 photographs · 1885–1972",
+      "de": "8 Fotos · 1885–1972",
+      "fr": "8 photographies · 1885–1972"
+     },
+     "period": {
+      "from": 1885,
+      "to": 1972
+     },
+     "hero": {
+      "url": "content/fotoarchief/industrie/foto-5.webp",
+      "width": 860,
+      "height": 483
+     },
+     "items": [
+      {
+       "imagePath": "content/fotoarchief/industrie/foto-5.webp",
+       "width": 860,
+       "height": 483,
+       "caption": "1885 · Eagle Brewery Workers",
+       "credit": "Wikimedia Commons · self-scanned · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/industrie/foto-1.webp",
+       "width": 860,
+       "height": 509,
+       "caption": "1891 · Iron Works at Catasauqua, 1891. Catasauqua, Pennsylvania",
+       "credit": "Wikimedia Commons · Unknown author Unknown author · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/industrie/foto-6.webp",
+       "width": 860,
+       "height": 544,
+       "caption": "1902 · Mitarbeiter der Stickereifabrik Arnold B. Heine & Co., auch Knaben, auf dem…",
+       "credit": "Wikimedia Commons · Unknown author Unknown author · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/industrie/foto-3.webp",
+       "width": 860,
+       "height": 150,
+       "caption": "1905 · Ohio Steel Works and furnaces, view of west side, Youngstown, Ohio, 1905",
+       "credit": "Wikimedia Commons · R.W. Johnston Studios · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/industrie/foto-7.webp",
+       "width": 860,
+       "height": 573,
+       "caption": "1925 · photo interior of Beacon Manufacturing, undated",
+       "credit": "Wikimedia Commons · Unknown author Unknown author · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/industrie/foto-4.webp",
+       "width": 860,
+       "height": 636,
+       "caption": "1936 · Workers at the AWA factory, Ashfield, NSW, 1936. Under Australian law, all photographs…",
+       "credit": "Wikimedia Commons · Unknown author Unknown author · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/industrie/foto-8.webp",
+       "width": 860,
+       "height": 609,
+       "caption": "1937 · Endmontage von Röhrenradios in New Jersey 1937",
+       "credit": "Wikimedia Commons · Lewis Hine · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/industrie/foto-2.webp",
+       "width": 860,
+       "height": 585,
+       "caption": "1972 · Shredded steel to be recycled",
+       "credit": "Wikimedia Commons · William C. Shrout · Public domain"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "vervoer",
+     "name": {
+      "nl": "Vervoer",
+      "en": "Transport",
+      "de": "Verkehr",
+      "fr": "Transports"
+     },
+     "subtitle": {
+      "nl": "8 foto's · 1900–1954",
+      "en": "8 photographs · 1900–1954",
+      "de": "8 Fotos · 1900–1954",
+      "fr": "8 photographies · 1900–1954"
+     },
+     "period": {
+      "from": 1900,
+      "to": 1954
+     },
+     "hero": {
+      "url": "content/fotoarchief/vervoer/foto-4.webp",
+      "width": 860,
+      "height": 628
+     },
+     "items": [
+      {
+       "imagePath": "content/fotoarchief/vervoer/foto-4.webp",
+       "width": 860,
+       "height": 628,
+       "caption": "1900 · Brookins and Coffyn flying",
+       "credit": "Wikimedia Commons · Bain News Service, publisher · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vervoer/foto-5.webp",
+       "width": 860,
+       "height": 427,
+       "caption": "1903 · Side view of the original Wright Aeroplane near Kitty Hawk, NC. 1903",
+       "credit": "Wikimedia Commons · Wright brothers · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vervoer/foto-6.webp",
+       "width": 860,
+       "height": 645,
+       "caption": "1918 · Balancing the Ford car on a see-saw at a gymkhana event, Unley Oval",
+       "credit": "Wikimedia Commons · State Government Photographer · CC0"
+      },
+      {
+       "imagePath": "content/fotoarchief/vervoer/foto-7.webp",
+       "width": 860,
+       "height": 572,
+       "caption": "1938 · Automobile with crank used to get the motor started, Worthington, Ohio August 1938",
+       "credit": "Wikimedia Commons · Ben Shahn · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vervoer/foto-1.webp",
+       "width": 860,
+       "height": 824,
+       "caption": "1939 · Carriage, automobile Fortepan",
+       "credit": "Wikimedia Commons · FOTO:Fortepan — ID 92241 : Adományozó/Donor… · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/fotoarchief/vervoer/foto-3.webp",
+       "width": 860,
+       "height": 569,
+       "caption": "1944 · Landelijke frontzorg collecte te Amsterdam op 27-5-1944. Deze foto is afkomstig uit het…",
+       "credit": "Wikimedia Commons · Adrianus Swart · Public domain"
+      },
+      {
+       "imagePath": "content/fotoarchief/vervoer/foto-2.webp",
+       "width": 850,
+       "height": 860,
+       "caption": "1945 · Centrale Werkplaats Gemeentevervoerbedrijf Amsterdam",
+       "credit": "Wikimedia Commons · Charles Breijer / Anefo · CC0"
+      },
+      {
+       "imagePath": "content/fotoarchief/vervoer/foto-8.webp",
+       "width": 860,
+       "height": 648,
+       "caption": "1954 · Zwarte damesfiets van RS Stokvis met trommelremmen, model Dames Super Tour",
+       "credit": "Wikimedia Commons · fabrikant: R.S. Stokvis · CC BY-SA 3.0"
+      }
+     ],
+     "media": []
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "id": "verhalen",
+   "name": "Verhalen",
+   "type": "collection",
+   "collection": [
+    {
+     "id": "boyes",
+     "name": {
+      "nl": "Steve Boyes's Journey",
+      "en": "Steve Boyes's Journey",
+      "de": "Steve Boyes's Journey",
+      "fr": "Steve Boyes's Journey"
+     },
+     "subtitle": {
+      "nl": "Africa, Earth's Wild Home · National Geographic",
+      "en": "Africa, Earth's Wild Home · National Geographic",
+      "de": "Africa, Earth's Wild Home · National Geographic",
+      "fr": "Africa, Earth's Wild Home · National Geographic"
+     },
+     "period": {
+      "from": 2024,
+      "to": 2024
+     },
+     "bodyHtml": {
+      "nl": "<p>Deze film wordt afgespeeld via YouTube en blijft eigendom van National Geographic. In een echte opstelling staat hier het eigen beeldmateriaal van het museum, met eigen hoofdstukmarkeringen.</p>",
+      "en": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>",
+      "de": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>",
+      "fr": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>"
+     },
+     "archival": true,
+     "youtube": "1SheNUm9KpM",
+     "hero": {
+      "url": "content/verhalen/boyes.webp",
+      "width": 860,
+      "height": 484,
+      "credit": "© National Geographic"
+     },
+     "items": [],
+     "media": [],
+     "chapters": []
+    },
+    {
+     "id": "lion-king",
+     "name": {
+      "nl": "From the Savanna to Broadway",
+      "en": "From the Savanna to Broadway",
+      "de": "From the Savanna to Broadway",
+      "fr": "From the Savanna to Broadway"
+     },
+     "subtitle": {
+      "nl": "LION · National Geographic",
+      "en": "LION · National Geographic",
+      "de": "LION · National Geographic",
+      "fr": "LION · National Geographic"
+     },
+     "period": {
+      "from": 2024,
+      "to": 2024
+     },
+     "bodyHtml": {
+      "nl": "<p>Deze film wordt afgespeeld via YouTube en blijft eigendom van National Geographic. In een echte opstelling staat hier het eigen beeldmateriaal van het museum, met eigen hoofdstukmarkeringen.</p>",
+      "en": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>",
+      "de": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>",
+      "fr": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>"
+     },
+     "archival": true,
+     "youtube": "l-GnAVB1xYM",
+     "hero": {
+      "url": "content/verhalen/lion-king.webp",
+      "width": 860,
+      "height": 484,
+      "credit": "© National Geographic"
+     },
+     "items": [],
+     "media": [],
+     "chapters": []
+    },
+    {
+     "id": "photography",
+     "name": {
+      "nl": "The Art of Authentic Photography",
+      "en": "The Art of Authentic Photography",
+      "de": "The Art of Authentic Photography",
+      "fr": "The Art of Authentic Photography"
+     },
+     "subtitle": {
+      "nl": "National Geographic · National Geographic",
+      "en": "National Geographic · National Geographic",
+      "de": "National Geographic · National Geographic",
+      "fr": "National Geographic · National Geographic"
+     },
+     "period": {
+      "from": 2023,
+      "to": 2023
+     },
+     "bodyHtml": {
+      "nl": "<p>Deze film wordt afgespeeld via YouTube en blijft eigendom van National Geographic. In een echte opstelling staat hier het eigen beeldmateriaal van het museum, met eigen hoofdstukmarkeringen.</p>",
+      "en": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>",
+      "de": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>",
+      "fr": "<p>This film plays through YouTube and remains National Geographic's. In a real installation this is the venue's own footage, with its own chapter marks.</p>"
+     },
+     "archival": true,
+     "youtube": "CTGwl_4Mny0",
+     "hero": {
+      "url": "content/verhalen/photography.webp",
+      "width": 860,
+      "height": 484,
+      "credit": "© National Geographic"
+     },
+     "items": [],
+     "media": [],
+     "chapters": []
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "id": "kaart",
+   "name": "Kaart van Amsterdam",
+   "type": "collection",
+   "collection": [
+    {
+     "id": "oude-kerk",
+     "name": {
+      "nl": "Oude Kerk",
+      "en": "Oude Kerk",
+      "de": "Oude Kerk",
+      "fr": "Oude Kerk"
+     },
+     "subtitle": {
+      "nl": "Amsterdam · vanaf 1306",
+      "en": "Amsterdam · from 1306",
+      "de": "Amsterdam · ab 1306",
+      "fr": "Amsterdam · dès 1306"
+     },
+     "period": {
+      "from": 1306,
+      "to": null
+     },
+     "bodyHtml": {
+      "nl": "<p>De Oude Kerk is het oudste nog bestaande gebouw van Amsterdam en een centrum voor hedendaagse kunst. Het gebouw bevindt zich aan het Oudekerksplein in het stadsdeel Amsterdam-Centrum. Het kerkgebouw behoort tot de Top 100 der Nederlandse rijksmonumenten.</p>",
+      "en": "<p>The Oude Kerk is a Reformed church in Amsterdam, Netherlands, being the oldest parish church in the city. The oldest structure in Amsterdam, the building was founded around 1213 and consecrated in 1306 as a Roman Catholic church by the bishop of Utrecht with Saint Nicolas as its patron saint. After the Reformation in 1578, it became a Reformed (Calvinist) church, which it remains today. It is located in De Wallen and since 2012, the church has also housed contemporary art exhibitions. The square surrounding the church is the Oudekerksplein.</p>",
+      "de": "<p>Die Oude Kerk ist ein protestantisches Kirchengebäude und das älteste erhaltene Bauwerk in der niederländischen Hauptstadt Amsterdam. Sie befindet sich im Amsterdamer Rotlichtviertel. Die Kirche wurde im Jahre 1306 dem Patrozinium des heiligen Nikolaus anvertraut. Neben Gottesdiensten finden hier Ausstellungen und Konzerte statt.</p>",
+      "fr": "<p>L'Oude Kerk est une église d'Amsterdam dont la construction a débuté en 1300. Elle est la plus ancienne église de la ville.</p>"
+     },
+     "place": {
+      "rd": [
+       121670.0,
+       487473.0
+      ],
+      "precision": "exact",
+      "origin": "PDOK locatieserver: Oudekerksplein 23, 1012GX Amsterdam"
+     },
+     "facts": [
+      {
+       "key": "Adres",
+       "value": "Oudekerksplein 23, Amsterdam"
+      },
+      {
+       "key": "Gebouwd",
+       "value": "1306"
+      }
+     ],
+     "hero": {
+      "url": "content/kaart/oude-kerk/beeld-1.webp",
+      "width": 860,
+      "height": 661
+     },
+     "items": [
+      {
+       "imagePath": "content/kaart/oude-kerk/beeld-1.webp",
+       "width": 860,
+       "height": 661,
+       "caption": {
+        "nl": "Oude Kerk",
+        "en": "Oude Kerk",
+        "de": "Oude Kerk",
+        "fr": "Oude Kerk"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/kaart/oude-kerk/beeld-2.webp",
+       "width": 573,
+       "height": 860,
+       "caption": {
+        "nl": "Oude Kerk",
+        "en": "Oude Kerk",
+        "de": "Oude Kerk",
+        "fr": "Oude Kerk"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0 de"
+      },
+      {
+       "imagePath": "content/kaart/oude-kerk/beeld-3.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "Oude Kerk",
+        "en": "Oude Kerk",
+        "de": "Oude Kerk",
+        "fr": "Oude Kerk"
+       },
+       "credit": "Wikimedia Commons · CC BY 2.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "dam",
+     "name": {
+      "nl": "Dam",
+      "en": "Dam",
+      "de": "Dam",
+      "fr": "Dam"
+     },
+     "subtitle": {
+      "nl": "Amsterdam · vanaf 1270",
+      "en": "Amsterdam · from 1270",
+      "de": "Amsterdam · ab 1270",
+      "fr": "Amsterdam · dès 1270"
+     },
+     "period": {
+      "from": 1270,
+      "to": null
+     },
+     "bodyHtml": {
+      "nl": "",
+      "en": "<p>Dam Square, also known as the Dam, is a town square in Amsterdam, the capital and most populous city of the Netherlands. Its notable buildings and frequent events make it one of the best-known and most important locations in the city and the country.</p>",
+      "de": "",
+      "fr": "<p>La place du Dam, en abrégé le Dam, est la principale place de la capitale néerlandaise Amsterdam. Ses remarquables bâtiments en font l'un des endroits les plus connus et importants de la ville. Elle est située en son centre historique, dans l'arrondissement Centrum, à environ 750 mètres au sud de la place de la Gare. Les deux places sont jointes par le Damrak et l'axe continue vers la place de la Monnaie (Muntplein) par le Rokin.</p>"
+     },
+     "place": {
+      "rd": [
+       121347.914,
+       487347.519
+      ],
+      "precision": "exact",
+      "origin": "PDOK locatieserver: Dam, Amsterdam"
+     },
+     "facts": [
+      {
+       "key": "Adres",
+       "value": "Dam, Amsterdam"
+      },
+      {
+       "key": "Gebouwd",
+       "value": "1270"
+      }
+     ],
+     "hero": {
+      "url": "content/kaart/dam/beeld-1.webp",
+      "width": 860,
+      "height": 573
+     },
+     "items": [
+      {
+       "imagePath": "content/kaart/dam/beeld-1.webp",
+       "width": 860,
+       "height": 573,
+       "caption": {
+        "nl": "Dam",
+        "en": "Dam",
+        "de": "Dam",
+        "fr": "Dam"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/kaart/dam/beeld-2.webp",
+       "width": 860,
+       "height": 570,
+       "caption": {
+        "nl": "Dam",
+        "en": "Dam",
+        "de": "Dam",
+        "fr": "Dam"
+       },
+       "credit": "Wikimedia Commons · CC0"
+      },
+      {
+       "imagePath": "content/kaart/dam/beeld-3.webp",
+       "width": 560,
+       "height": 860,
+       "caption": {
+        "nl": "Dam",
+        "en": "Dam",
+        "de": "Dam",
+        "fr": "Dam"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "montelbaanstoren",
+     "name": {
+      "nl": "Montelbaanstoren",
+      "en": "Montelbaanstoren",
+      "de": "Montelbaanstoren",
+      "fr": "Montelbaanstoren"
+     },
+     "subtitle": {
+      "nl": "Amsterdam · vanaf 1516",
+      "en": "Amsterdam · from 1516",
+      "de": "Amsterdam · ab 1516",
+      "fr": "Amsterdam · dès 1516"
+     },
+     "period": {
+      "from": 1516,
+      "to": null
+     },
+     "bodyHtml": {
+      "nl": "<p>De Montelbaanstoren is een toren uit 1516 aan de Oudeschans in Amsterdam. De Montelbaanstoren staat op de hoek met de Oude Waal, bij Brug 280 over de Waalseilandsgracht. De toren werd in 1970 aangewezen als rijksmonument.</p>",
+      "en": "<p>The Montelbaanstoren is a tower on the bank of the Oudeschans – a canal in Amsterdam. The original tower was built in 1516 as part of the Walls of Amsterdam for the purpose of defending the city and the harbour. The top half, designed by Hendrick de Keyser, was extended to its current, decorative form in 1606. Since then the tower has been 48m tall.</p>",
+      "de": "<p>Der Montelbaanstoren ist ein historischer Turm im heutigen Amsterdamer Wohnviertel Lastage. Er wurde 1516 an der Gracht Oude Schans, die gelegentlich auch Montelbaansgracht genannt wird, erbaut und erfüllte im 16. Jahrhundert als Teil der mittelalterlichen Stadtmauer zunächst die Funktion eines Wartturms über die Hafenanlagen und das damalige Industriegebiet Lastage, nachdem die Lastage wiederholt von den Geldernschen in Brand gesetzt worden war.</p>",
+      "fr": "<p>La Montelbaanstoren est une tour d'Amsterdam aux Pays-Bas, situé à l'est de la vieille ville, à l'angle de deux canaux : l'Oudeschans et le Waalseilandsgracht.\nL'origine de son nom reste inconnue. Il pourrait s'agir du nom d'une maison proche ayant appartenu à la famille de Montalban.</p>"
+     },
+     "place": {
+      "rd": [
+       122092.294,
+       487166.844
+      ],
+      "precision": "exact",
+      "origin": "PDOK locatieserver: Oudeschans, Amsterdam"
+     },
+     "facts": [
+      {
+       "key": "Adres",
+       "value": "Oudeschans 2, Amsterdam"
+      },
+      {
+       "key": "Gebouwd",
+       "value": "1516"
+      }
+     ],
+     "hero": {
+      "url": "content/kaart/montelbaanstoren/beeld-1.webp",
+      "width": 860,
+      "height": 643
+     },
+     "items": [
+      {
+       "imagePath": "content/kaart/montelbaanstoren/beeld-1.webp",
+       "width": 860,
+       "height": 643,
+       "caption": {
+        "nl": "Montelbaanstoren",
+        "en": "Montelbaanstoren",
+        "de": "Montelbaanstoren",
+        "fr": "Montelbaanstoren"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/kaart/montelbaanstoren/beeld-2.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "Montelbaanstoren",
+        "en": "Montelbaanstoren",
+        "de": "Montelbaanstoren",
+        "fr": "Montelbaanstoren"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/kaart/montelbaanstoren/beeld-3.webp",
+       "width": 860,
+       "height": 774,
+       "caption": {
+        "nl": "Montelbaanstoren",
+        "en": "Montelbaanstoren",
+        "de": "Montelbaanstoren",
+        "fr": "Montelbaanstoren"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0 de"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "rembrandthuis",
+     "name": {
+      "nl": "Rembrandthuis",
+      "en": "Rembrandthuis",
+      "de": "Rembrandthuis",
+      "fr": "Rembrandthuis"
+     },
+     "subtitle": {
+      "nl": "Amsterdam · vanaf 1606",
+      "en": "Amsterdam · from 1606",
+      "de": "Amsterdam · ab 1606",
+      "fr": "Amsterdam · dès 1606"
+     },
+     "period": {
+      "from": 1606,
+      "to": null
+     },
+     "bodyHtml": {
+      "nl": "",
+      "en": "<p>The Rembrandt House Museum is a museum located in a former house in the Jodenbreestraat, in the center of Amsterdam. Between 1639 and 1658, the house was occupied by the Dutch painter Rembrandt van Rijn, who also had his studio and art dealership there. The museum now includes the house next door, which has the museum shop and more conventional gallery spaces.</p>",
+      "de": "",
+      "fr": ""
+     },
+     "place": {
+      "rd": [
+       121904.0,
+       486943.0
+      ],
+      "precision": "exact",
+      "origin": "PDOK locatieserver: Jodenbreestraat 4, 1011NK Amsterdam"
+     },
+     "facts": [
+      {
+       "key": "Adres",
+       "value": "Jodenbreestraat 4, Amsterdam"
+      },
+      {
+       "key": "Gebouwd",
+       "value": "1606"
+      }
+     ],
+     "hero": {
+      "url": "content/kaart/rembrandthuis/beeld-1.webp",
+      "width": 860,
+      "height": 645
+     },
+     "items": [
+      {
+       "imagePath": "content/kaart/rembrandthuis/beeld-1.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "Rembrandthuis",
+        "en": "Rembrandthuis",
+        "de": "Rembrandthuis",
+        "fr": "Rembrandthuis"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/kaart/rembrandthuis/beeld-2.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "Rembrandthuis",
+        "en": "Rembrandthuis",
+        "de": "Rembrandthuis",
+        "fr": "Rembrandthuis"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/kaart/rembrandthuis/beeld-3.webp",
+       "width": 860,
+       "height": 645,
+       "caption": {
+        "nl": "Rembrandthuis",
+        "en": "Rembrandthuis",
+        "de": "Rembrandthuis",
+        "fr": "Rembrandthuis"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "westerkerk",
+     "name": {
+      "nl": "Westerkerk",
+      "en": "Westerkerk",
+      "de": "Westerkerk",
+      "fr": "Westerkerk"
+     },
+     "subtitle": {
+      "nl": "Amsterdam · vanaf 1631",
+      "en": "Amsterdam · from 1631",
+      "de": "Amsterdam · ab 1631",
+      "fr": "Amsterdam · dès 1631"
+     },
+     "period": {
+      "from": 1631,
+      "to": null
+     },
+     "bodyHtml": {
+      "nl": "<p>Westerkerk kan verwijzen naar:Westerkerk (Aalten)\nWesterkerk (Amersfoort)\nWesterkerk (Amsterdam)\nde daarbij behorende Westertoren (Amsterdam)\nWesterkerk (Brunnepe)\nWesterkerk \nWesterkerk (Delft)\nWesterkerk \nWesterkerk (Deventer)\nWesterkerk (Eindhoven), de oorspronkelijke naam van de Maranathakerk\nWesterkerk (Enkhuizen)\nWesterkerk (Goes)\nWesterkerk ('s-Gravenzande)\nWesterkerk (Groningen)\nWesterkerk (Hilversum)\nWesterkerk (Leeuwarden)\nWesterkerk (Middelburg)\nWesterkerk (Rijssen)\nWesterkerk (Rotterdam)\nWesterkerk (Utrecht)\nWesterkerk (West-Terschelling)</p>",
+      "en": "<p>The Westerkerk is a Reformed church within Dutch Protestant Calvinism in central Amsterdam, Netherlands. It lies in the most western part of the Grachtengordel neighborhood, next to the Jordaan, between the Prinsengracht and Keizersgracht.</p>",
+      "de": "<p>Westkirche steht für:Westliches Christentum, die Gesamtheit des westlichen Christentums\nlateinische Kirche, größte und bedeutendste Kirche eigenen Rechts innerhalb der römisch-katholischen Kirche</p>",
+      "fr": "<p>Westerkerk, en français église de l'ouest, est le nom de plusieurs églises protestantes néerlandaises :Westerkerk (Amsterdam)\nWesterkerk (Rotterdam)</p>"
+     },
+     "place": {
+      "rd": [
+       120699.0,
+       487514.0
+      ],
+      "precision": "exact",
+      "origin": "PDOK locatieserver: Prinsengracht 281, 1016GW Amsterdam"
+     },
+     "facts": [
+      {
+       "key": "Adres",
+       "value": "Prinsengracht 281, Amsterdam"
+      },
+      {
+       "key": "Gebouwd",
+       "value": "1631"
+      }
+     ],
+     "hero": {
+      "url": "content/kaart/westerkerk/beeld-1.webp",
+      "width": 593,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/kaart/westerkerk/beeld-1.webp",
+       "width": 593,
+       "height": 860,
+       "caption": {
+        "nl": "Westerkerk",
+        "en": "Westerkerk",
+        "de": "Westerkerk",
+        "fr": "Westerkerk"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/kaart/westerkerk/beeld-2.webp",
+       "width": 645,
+       "height": 860,
+       "caption": {
+        "nl": "Westerkerk",
+        "en": "Westerkerk",
+        "de": "Westerkerk",
+        "fr": "Westerkerk"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/kaart/westerkerk/beeld-3.webp",
+       "width": 645,
+       "height": 860,
+       "caption": {
+        "nl": "Westerkerk",
+        "en": "Westerkerk",
+        "de": "Westerkerk",
+        "fr": "Westerkerk"
+       },
+       "credit": "Wikimedia Commons · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    }
+   ],
+   "warnings": [],
+   "mapLayers": {
+    "attribution": "Historische kaarten: Kadaster (via Esri Nederland) — vrij te gebruiken onder bronvermelding",
+    "source": "Esri Nederland / Kadaster — Historische tijdreis map services",
+    "harvested": "2026-09-23",
+    "crs": "EPSG:28992",
+    "extent": {
+     "xmin": 119338.39999999851,
+     "ymin": 486095.9999999955,
+     "xmax": 122589.5999999985,
+     "ymax": 489347.19999999553
+    },
+    "focus": [
+     121347.914,
+     487347.519
+    ],
+    "tileSize": 640,
+    "tileExt": "webp",
+    "levels": [
+     {
+      "z": 0,
+      "tiles": 1,
+      "resolution": 6.35
+     },
+     {
+      "z": 1,
+      "tiles": 2,
+      "resolution": 3.175
+     },
+     {
+      "z": 2,
+      "tiles": 4,
+      "resolution": 1.5875
+     }
+    ],
+    "layers": [
+     {
+      "id": "1815",
+      "from": 1815,
+      "to": 1815,
+      "series": "Kraijenhoff"
+     },
+     {
+      "id": "1850",
+      "from": 1850,
+      "to": 1853,
+      "series": "TMK 1850"
+     },
+     {
+      "id": "1854",
+      "from": 1854,
+      "to": 1878,
+      "series": "TMK 50D"
+     },
+     {
+      "id": "1882",
+      "from": 1882,
+      "to": 1893,
+      "series": "Bonnebladen"
+     },
+     {
+      "id": "1908",
+      "from": 1908,
+      "to": 1908,
+      "series": "Bonnebladen"
+     },
+     {
+      "id": "1929",
+      "from": 1929,
+      "to": 1934,
+      "series": "Bonnebladen"
+     },
+     {
+      "id": "1952",
+      "from": 1952,
+      "to": 1960,
+      "series": "TOP25"
+     },
+     {
+      "id": "1981",
+      "from": 1981,
+      "to": 1987,
+      "series": "TOP25"
+     },
+     {
+      "id": "2001",
+      "from": 2001,
+      "to": 2006,
+      "series": "TOP25"
+     },
+     {
+      "id": "2024",
+      "from": 2024,
+      "to": 2025,
+      "series": "TOP25"
+     }
+    ],
+    "baseUrl": "content/kaart/kaartlagen"
+   }
+  },
+  {
+   "id": "personen",
+   "name": "Personen",
+   "type": "collection",
+   "collection": [
+    {
+     "id": "hatshepsut",
+     "name": {
+      "nl": "Hatsjepsoet",
+      "en": "Hatshepsut",
+      "de": "Hatschepsut",
+      "fr": "Hatchepsout"
+     },
+     "subtitle": {
+      "nl": "Egyptische farao (1507 v.Chr.-1458 v.Chr.) · r. 1479 BC – 1458 BC",
+      "en": "Pharaoh of Egypt from 1479 to 1458 BC · r. 1479 BC – 1458 BC",
+      "de": "altägyptische Königin, 5. Pharaonin der 18. Dynastie · r. 1479 BC – 1458 BC",
+      "fr": "reine-pharaon, cinquième souverain de la XVIIIe dynastie de l'Égypte a · r. 1479 BC – 1458 BC"
+     },
+     "period": {
+      "from": -1479,
+      "to": -1458
+     },
+     "bodyHtml": {
+      "nl": "<p>Hatsjepsoet is een farao van de 18e dynastie van het oude Egypte. Ze was de Grote koninklijke vrouwe van farao Thoetmosis II. Nadat deze overleed riep ze zichzelf tot farao uit, ten koste van Thoetmosis III, de zoon van Thoetmosis II en Iset, een van zijn bijvrouwen. Ze was een van de weinige vrouwelijke heersers van Egypte. Haar naam betekent \"eerste onder de vrouwen\", en haar tweede naam Maätkare \"rechtvaardig is de ka van Re\". Hatsjepsoet heeft naar schatting ongeveer 22 jaar geregeerd, dit is langer dan iedere andere vrouwelijke monarch in het oude Egypte. Men weet dit door de bestudering van oude teksten van Sextus Julius Africanus en Flavius Josephus die de lijst overnamen van Manetho.</p>",
+      "en": "<p>Hatshepsut was the sixth pharaoh of the Eighteenth Dynasty of Egypt, ruling first as regent, then as queen regnant from c. 1479 BC until c. 1458 BC and the Great Royal Wife of Pharaoh Thutmose II. She was Egypt's second confirmed woman who ruled in her own right, the first being Sobekneferu/Neferusobek in the Twelfth Dynasty.</p>",
+      "de": "<p>Hatschepsut war eine altägyptische Königin (Pharaonin). Sie wird der 18. Dynastie zugerechnet. Nach ägyptischer Chronologie regierte sie etwa von 1479 bis 1458 v. Chr..</p>",
+      "fr": "<p>Hatchepsout est une reine de l'Égypte antique, qui est devenue pharaonne, cinquième souveraine de la XVIIIe dynastie.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "Egypt"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 1479 BC – 1458 BC"
+      }
+     ],
+     "document": {
+      "title": "Hatshepsut — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hatshepsut"
+     },
+     "hero": {
+      "url": "content/personen/hatshepsut/beeld-1.webp",
+      "width": 646,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/hatshepsut/beeld-1.webp",
+       "width": 646,
+       "height": 860,
+       "caption": {
+        "nl": "Seated Statue of Hatshepsut MET Hatshepsut2012 %28cropped%29",
+        "en": "Seated Statue of Hatshepsut MET Hatshepsut2012 %28cropped%29",
+        "de": "Seated Statue of Hatshepsut MET Hatshepsut2012 %28cropped%29",
+        "fr": "Seated Statue of Hatshepsut MET Hatshepsut2012 %28cropped%29"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/hatshepsut/beeld-2.webp",
+       "width": 646,
+       "height": 860,
+       "caption": {
+        "nl": "Seated Statue of Hatshepsut MET Hatshepsut2012 (cropped)",
+        "en": "Seated Statue of Hatshepsut MET Hatshepsut2012 (cropped)",
+        "de": "Seated Statue of Hatshepsut MET Hatshepsut2012 (cropped)",
+        "fr": "Seated Statue of Hatshepsut MET Hatshepsut2012 (cropped)"
+       },
+       "credit": "Wikimedia Commons · CC0"
+      },
+      {
+       "imagePath": "content/personen/hatshepsut/beeld-3.webp",
+       "width": 573,
+       "height": 860,
+       "caption": {
+        "nl": "S F-E-CAMERON Hatshepsut Hawk",
+        "en": "S F-E-CAMERON Hatshepsut Hawk",
+        "de": "S F-E-CAMERON Hatshepsut Hawk",
+        "fr": "S F-E-CAMERON Hatshepsut Hawk"
+       },
+       "credit": "Wikimedia Commons · Steve F-E-Cameron (Merlin-UK) · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/personen/hatshepsut/beeld-4.webp",
+       "width": 860,
+       "height": 762,
+       "caption": {
+        "nl": "Quartz sarcophagus of Queen Hatshepsut",
+        "en": "Quartz sarcophagus of Queen Hatshepsut",
+        "de": "Quartz sarcophagus of Queen Hatshepsut",
+        "fr": "Quartz sarcophagus of Queen Hatshepsut"
+       },
+       "credit": "Wikimedia Commons · Merja Attia · CC BY-SA 2.0"
+      },
+      {
+       "imagePath": "content/personen/hatshepsut/beeld-5.webp",
+       "width": 860,
+       "height": 632,
+       "caption": {
+        "nl": "Mummy of Hatshepsut",
+        "en": "Mummy of Hatshepsut",
+        "de": "Mummy of Hatshepsut",
+        "fr": "Mummy of Hatshepsut"
+       },
+       "credit": "Wikimedia Commons · Vrangel1924 · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/hatshepsut/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/hatshepsut/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/hatshepsut/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/hatshepsut/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "ashoka",
+     "name": {
+      "nl": "Ashoka",
+      "en": "Ashoka",
+      "de": "Ashoka",
+      "fr": "Ashoka"
+     },
+     "subtitle": {
+      "nl": "heerser uit Mauriaanse Rijk (304v Chr-232v Chr) · r. 268 BC – 232 BC",
+      "en": "Mauryan emperor from 269 to 232 BCE · r. 268 BC – 232 BC",
+      "de": "Herrscher der altindischen Dynastie der Maurya · r. 268 BC – 232 BC",
+      "fr": "empereur indien de la dynastie Maurya (IIIe s. av. notre ère) · r. 268 BC – 232 BC"
+     },
+     "period": {
+      "from": -268,
+      "to": -232
+     },
+     "bodyHtml": {
+      "nl": "<p>Ashoka de Grote was de heerser van het Mauryarijk van 268 tot 232 voor Christus. Na een bloedige en gewelddadige overwinning in de oorlog om Kalinga kreeg hij spijt van het leed dat hij met deze oorlog anderen had aangedaan en bekeerde zich tot het boeddhisme. De naam Ashoka betekent in het Pali vrij van zorgen, vrij van leed, vrij van verdriet.</p>",
+      "en": "<p>Ashoka, also known as Asoka or Aśoka, most commonly known as Ashoka the Great, was Emperor of Magadha from c. 268 BCE until his death, and the third ruler from the Mauryan dynasty. His empire covered a large part of the Indian subcontinent, stretching from present-day Afghanistan in the west to present-day Bangladesh in the east, with its capital at Pataliputra. A patron of Buddhism, he is credited with an important role in the spread of Buddhism across ancient Asia.</p>",
+      "de": "<p>Aśoka oder Ashoka war ein Herrscher der indischen Dynastie der Maurya. Er regierte in den Jahren 268–232 v. Chr.; er war der Sohn von Bindusara und Enkel des Dynastiegründers Chandragupta Maurya, der im nordostindischen Reich Magadha – dem Kernland des frühen Buddhismus – die Grundlagen für das größte Reich der indischen Antike gelegt hatte.</p>",
+      "fr": "<p>Ashoka ou Aśoka, né vers 304 av. J.-C. et mort en 232 av. J.-C., est le troisième empereur de la dynastie indienne des Maurya.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "Maurya Empire"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 268 BC – 232 BC"
+      }
+     ],
+     "document": {
+      "title": "Ashoka — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Ashoka"
+     },
+     "hero": {
+      "url": "content/personen/ashoka/beeld-1.webp",
+      "width": 860,
+      "height": 821
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/ashoka/beeld-1.webp",
+       "width": 860,
+       "height": 821,
+       "caption": {
+        "nl": "Ashoka%27s visit to the Ramagrama stupa Sanchi Stupa 1 Southern gateway",
+        "en": "Ashoka%27s visit to the Ramagrama stupa Sanchi Stupa 1 Southern gateway",
+        "de": "Ashoka%27s visit to the Ramagrama stupa Sanchi Stupa 1 Southern gateway",
+        "fr": "Ashoka%27s visit to the Ramagrama stupa Sanchi Stupa 1 Southern gateway"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/ashoka/beeld-2.webp",
+       "width": 860,
+       "height": 796,
+       "caption": {
+        "nl": "Minor Rock Edicts and Minor Pillar Edicts of Ashoka",
+        "en": "Minor Rock Edicts and Minor Pillar Edicts of Ashoka",
+        "de": "Minor Rock Edicts and Minor Pillar Edicts of Ashoka",
+        "fr": "Minor Rock Edicts and Minor Pillar Edicts of Ashoka"
+       },
+       "credit": "Wikimedia Commons · Natural Earth. Free vector and raster map data @ naturalearthdata.com\n\nOwn work · CC BY-SA 3.0"
+      },
+      {
+       "imagePath": "content/personen/ashoka/beeld-3.webp",
+       "width": 497,
+       "height": 860,
+       "caption": {
+        "nl": "Khalsi rock edict of Ashoka",
+        "en": "Khalsi rock edict of Ashoka",
+        "de": "Khalsi rock edict of Ashoka",
+        "fr": "Khalsi rock edict of Ashoka"
+       },
+       "credit": "Wikimedia Commons · Cunningham, Alexander (1814-1893) · Public domain"
+      },
+      {
+       "imagePath": "content/personen/ashoka/beeld-4.webp",
+       "width": 860,
+       "height": 381,
+       "caption": {
+        "nl": "I15 1karshapana Maurya Ashoka MACW4229 1ar (8486624862)",
+        "en": "I15 1karshapana Maurya Ashoka MACW4229 1ar (8486624862)",
+        "de": "I15 1karshapana Maurya Ashoka MACW4229 1ar (8486624862)",
+        "fr": "I15 1karshapana Maurya Ashoka MACW4229 1ar (8486624862)"
+       },
+       "credit": "Wikimedia Commons · Jean-Michel Moullec from Vern sur Seiche (35, Bretagne), France · CC BY 2.0"
+      },
+      {
+       "imagePath": "content/personen/ashoka/beeld-5.webp",
+       "width": 571,
+       "height": 860,
+       "caption": {
+        "nl": "Ashokan Pillar - Stupa 1 - Sanchi Hill 2013-02-21 4361",
+        "en": "Ashokan Pillar - Stupa 1 - Sanchi Hill 2013-02-21 4361",
+        "de": "Ashokan Pillar - Stupa 1 - Sanchi Hill 2013-02-21 4361",
+        "fr": "Ashokan Pillar - Stupa 1 - Sanchi Hill 2013-02-21 4361"
+       },
+       "credit": "Wikimedia Commons · Biswarup Ganguly · CC BY 3.0"
+      },
+      {
+       "imagePath": "content/personen/ashoka/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/ashoka/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/ashoka/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/ashoka/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "cleopatra",
+     "name": {
+      "nl": "Cleopatra VII",
+      "en": "Cleopatra",
+      "de": "Kleopatra VII.",
+      "fr": "Cléopâtre VII"
+     },
+     "subtitle": {
+      "nl": "politica uit het oude Egypte (68v Chr–29v Chr) · r. 51 BC – 30 BC",
+      "en": "Pharaoh of Egypt from 51 to 30 BC · r. 51 BC – 30 BC",
+      "de": "letzte Königin des ägyptischen Ptolemäerreiches und letzter weiblicher · r. 51 BC – 30 BC",
+      "fr": "reine d'Égypte, de 51 à 30 av. J.-C. · r. 51 BC – 30 BC"
+     },
+     "period": {
+      "from": -51,
+      "to": -30
+     },
+     "bodyHtml": {
+      "nl": "<p>Cleopatra VII Philopator was koningin van het oude Egypte, het laatste lid van de Ptolemaeïsche dynastie en daarmee de laatste Hellenistische heerseres van Egypte. Ze is de bekendste van de verschillende gelijknamige Egyptische vorstinnen en wordt gewoonlijk kortweg als Cleopatra aangeduid. Haar familie was oorspronkelijk van Grieks-Macedonische afkomst. Ze was mede-heerseres over Egypte naast haar vader Ptolemaeus XII Auletes, haar broers/echtgenoten Ptolemaeus XIII Theos Philopator, Ptolemaeus XIV Theos Philopator II en later haar zoon Ptolemaeus XV Caesarion.</p>",
+      "en": "<p>Cleopatra VII Thea Philopator was Queen of the Ptolemaic Kingdom of Egypt from 51 to 30 BC, and the last active Hellenistic pharaoh. A member of the Ptolemaic dynasty, she was a descendant of its founder, Ptolemy I Soter, a Macedonian Greek general and companion of Alexander the Great. Cleopatra's first language was Koine Greek, and she is the only Ptolemaic ruler known to have learned the Egyptian language, among several others. After her death, Egypt became a province of the Roman Empire, marking the end of the Hellenistic period, which had begun with the death of Alexander in 323 BC.</p>",
+      "de": "<p>Kleopatra VII. Thea Philopator herrschte als letzter Pharao der makedonisch-griechischen Dynastie der Ptolemäer von 51 v. Chr. bis 30 v. Chr. über Ägypten. In den ersten vier Jahren regierte sie zunächst gemeinsam mit ihrem Bruder Ptolemaios XIII., der 47 v. Chr. im Alter von 14 Jahren starb, später mit anderen männlichen Mitregenten, da unter der Garantie Roms gesetzliche Regelungen eine Doppelbesetzung des Thrones vorsahen.</p>",
+      "fr": "<p>Cléopâtre VII Philopator ou simplement Cléopâtre, née vers 69 av. J.-C. à Alexandrie (Égypte) et morte dans la même ville le 12 août 30 av. J.-C., est une reine d'Égypte antique de la dynastie lagide.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "Ptolemaic Egypt"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 51 BC – 30 BC"
+      }
+     ],
+     "document": {
+      "title": "Cleopatra — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Cleopatra"
+     },
+     "hero": {
+      "url": "content/personen/cleopatra/beeld-1.webp",
+      "width": 649,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/cleopatra/beeld-1.webp",
+       "width": 649,
+       "height": 860,
+       "caption": {
+        "nl": "Kleopatra-VII.-Altes-Museum-Berlin1",
+        "en": "Kleopatra-VII.-Altes-Museum-Berlin1",
+        "de": "Kleopatra-VII.-Altes-Museum-Berlin1",
+        "fr": "Kleopatra-VII.-Altes-Museum-Berlin1"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/cleopatra/beeld-2.webp",
+       "width": 860,
+       "height": 390,
+       "caption": {
+        "nl": "Mark Antony & Cleopatra, denarius, 34 BC, 543-1",
+        "en": "Mark Antony & Cleopatra, denarius, 34 BC, 543-1",
+        "de": "Mark Antony & Cleopatra, denarius, 34 BC, 543-1",
+        "fr": "Mark Antony & Cleopatra, denarius, 34 BC, 543-1"
+       },
+       "credit": "Wikimedia Commons · CNG · CC BY-SA 2.5"
+      },
+      {
+       "imagePath": "content/personen/cleopatra/beeld-3.webp",
+       "width": 672,
+       "height": 860,
+       "caption": {
+        "nl": "Limestone stela of a high priest of god Ptah. It bears the cartouches of Cleopatra and Cae",
+        "en": "Limestone stela of a high priest of god Ptah. It bears the cartouches of Cleopatra and Cae",
+        "de": "Limestone stela of a high priest of god Ptah. It bears the cartouches of Cleopatra and Cae",
+        "fr": "Limestone stela of a high priest of god Ptah. It bears the cartouches of Cleopatra and Cae"
+       },
+       "credit": "Wikimedia Commons · Osama Shukir Muhammed Amin FRCP(Glasg) · Public domain"
+      },
+      {
+       "imagePath": "content/personen/cleopatra/beeld-4.webp",
+       "width": 860,
+       "height": 687,
+       "caption": {
+        "nl": "Jean-Baptiste Regnault - Death of Cleopatra - Google Art Project",
+        "en": "Jean-Baptiste Regnault - Death of Cleopatra - Google Art Project",
+        "de": "Jean-Baptiste Regnault - Death of Cleopatra - Google Art Project",
+        "fr": "Jean-Baptiste Regnault - Death of Cleopatra - Google Art Project"
+       },
+       "credit": "Wikimedia Commons · Jean-Baptiste Regnault · Public domain"
+      },
+      {
+       "imagePath": "content/personen/cleopatra/beeld-5.webp",
+       "width": 860,
+       "height": 771,
+       "caption": {
+        "nl": "Guido Cagnacci - The Death of Cleopatra",
+        "en": "Guido Cagnacci - The Death of Cleopatra",
+        "de": "Guido Cagnacci - The Death of Cleopatra",
+        "fr": "Guido Cagnacci - The Death of Cleopatra"
+       },
+       "credit": "Wikimedia Commons · Guido Cagnacci · Public domain"
+      },
+      {
+       "imagePath": "content/personen/cleopatra/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/cleopatra/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/cleopatra/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/cleopatra/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "charlemagne",
+     "name": {
+      "nl": "Karel de Grote",
+      "en": "Charlemagne",
+      "de": "Karl der Große",
+      "fr": "Charlemagne"
+     },
+     "subtitle": {
+      "nl": "koning der Franken (vanaf 9 oktober 768) en keizer van het Roomse Rijk · r. 768 AD – 814 AD",
+      "en": "Carolingian emperor from 800 to 814 · r. 768 AD – 814 AD",
+      "de": "König des Fränkischen Reiches und römischer Kaiser · r. 768 AD – 814 AD",
+      "fr": "empereur d'Occident et roi des Francs · r. 768 AD – 814 AD"
+     },
+     "period": {
+      "from": 768,
+      "to": 814
+     },
+     "bodyHtml": {
+      "nl": "<p>Karel de Grote, afkomstig uit het geslacht der Karolingen, was vanaf 9 oktober 768 koning der Franken en vanaf 25 december 800 eerste keizer van het Heilige Roomse Rijk.</p>",
+      "en": "<p>Charlemagne was King of the Franks from 768, King of the Lombards from 774, and Emperor of what is now known as the Carolingian Empire from 800. He united most of Western and Central Europe and was the first recognised emperor to rule from the west after the fall of the Western Roman Empire approximately three centuries earlier. Charlemagne's reign was marked by political and social changes that had lasting influence on Europe throughout the Middle Ages.</p>",
+      "de": "<p>Karl der Große war von 768 bis 814 König des Fränkischen Reichs. Er erlangte am 25. Dezember 800 als erster westeuropäischer Herrscher seit der Antike die Kaiserwürde, die mit ihm erneuert wurde. Der Enkel des Hausmeiers Karl Martell war der bedeutendste Herrscher aus dem Geschlecht der Karolinger. Das Frankenreich gelangte unter ihm zu seiner größten Ausdehnung und Machtentfaltung.</p>",
+      "fr": "<p>Charlemagne, \ndu latin Carolus Magnus, ou Charles Ier, Karl de son nom usuel dans sa langue maternelle le francique rhénan, né à une date inconnue, mort le 28 janvier 814 à Aix-la-Chapelle, est un roi des Francs et empereur. Il appartient à la dynastie des Carolingiens. Fils de Pépin le Bref et de Bertrade de Laon, il est roi des Francs à partir de 768, devient par conquête roi des Lombards en 774 et est couronné empereur à Rome par le pape Léon III le 24 ou 25 décembre 800, relevant une dignité disparue en Occident depuis la déposition, trois siècles auparavant, de Romulus Augustule en 476.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "Frankish Empire"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 768 AD – 814 AD"
+      }
+     ],
+     "document": {
+      "title": "Charlemagne — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Charlemagne"
+     },
+     "hero": {
+      "url": "content/personen/charlemagne/beeld-1.webp",
+      "width": 860,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/charlemagne/beeld-1.webp",
+       "width": 860,
+       "height": 860,
+       "caption": {
+        "nl": "Charlemagne denier Mayence 812 814",
+        "en": "Charlemagne denier Mayence 812 814",
+        "de": "Charlemagne denier Mayence 812 814",
+        "fr": "Charlemagne denier Mayence 812 814"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/charlemagne/beeld-2.webp",
+       "width": 860,
+       "height": 812,
+       "caption": {
+        "nl": "Woodcut illustration of Irene, Empress of the East, and Charlemagne - Penn Provenance Proj",
+        "en": "Woodcut illustration of Irene, Empress of the East, and Charlemagne - Penn Provenance Proj",
+        "de": "Woodcut illustration of Irene, Empress of the East, and Charlemagne - Penn Provenance Proj",
+        "fr": "Woodcut illustration of Irene, Empress of the East, and Charlemagne - Penn Provenance Proj"
+       },
+       "credit": "Wikimedia Commons · kladcat · CC BY 2.0"
+      },
+      {
+       "imagePath": "content/personen/charlemagne/beeld-3.webp",
+       "width": 860,
+       "height": 859,
+       "caption": {
+        "nl": "Charles Marville, Hôtel Carnavalet, statue of Charlemagne, ca. 1853–70 (cropped)",
+        "en": "Charles Marville, Hôtel Carnavalet, statue of Charlemagne, ca. 1853–70 (cropped)",
+        "de": "Charles Marville, Hôtel Carnavalet, statue of Charlemagne, ca. 1853–70 (cropped)",
+        "fr": "Charles Marville, Hôtel Carnavalet, statue of Charlemagne, ca. 1853–70 (cropped)"
+       },
+       "credit": "Wikimedia Commons · Charles Marville · Public domain"
+      },
+      {
+       "imagePath": "content/personen/charlemagne/beeld-4.webp",
+       "width": 860,
+       "height": 797,
+       "caption": {
+        "nl": "Charlemagne et Louis le Pieux",
+        "en": "Charlemagne et Louis le Pieux",
+        "de": "Charlemagne et Louis le Pieux",
+        "fr": "Charlemagne et Louis le Pieux"
+       },
+       "credit": "Wikimedia Commons · Unknown authorUnknown author · Public domain"
+      },
+      {
+       "imagePath": "content/personen/charlemagne/beeld-5.webp",
+       "width": 860,
+       "height": 860,
+       "caption": {
+        "nl": "Charlemagne denier Mayence 812 814",
+        "en": "Charlemagne denier Mayence 812 814",
+        "de": "Charlemagne denier Mayence 812 814",
+        "fr": "Charlemagne denier Mayence 812 814"
+       },
+       "credit": "Wikimedia Commons · Charlemagne. Autorité émettrice de monnaie\n\nindéterminé. Atelier monétaire. Émet · Public domain"
+      },
+      {
+       "imagePath": "content/personen/charlemagne/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/charlemagne/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/charlemagne/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/charlemagne/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "mansa-musa",
+     "name": {
+      "nl": "Mansa Moussa",
+      "en": "Mansa Musa",
+      "de": "Mansa Musa",
+      "fr": "Mansa Moussa"
+     },
+     "subtitle": {
+      "nl": "staatsman uit Mali (1280-1337) · r. 1312 AD – 1337 AD",
+      "en": "Ruler of Mali from c. 1312 to c. 1337 · r. 1312 AD – 1337 AD",
+      "de": "König von Mali (1308 oder 1312–1337) · r. 1312 AD – 1337 AD",
+      "fr": "empereur (Mansa) de l'Empire du Mali au XIVe siècle · r. 1312 AD – 1337 AD"
+     },
+     "period": {
+      "from": 1312,
+      "to": 1337
+     },
+     "bodyHtml": {
+      "nl": "<p>Mansa Moussa was koning (\"Mansa\") van het Koninkrijk Mali tussen 1312 en 1337. Hij is vooral bekend van zijn hadj en als mecenas van islamitische geleerdheid. Mansa Moussa is ook gekend als Kankou Moussa, een naam die refereert aan zijn moeder: \"Moussa, zoon van Kankou\". Alternatieve namen die hem toebedeeld werden, zijn Kanga Moussa, Gonga Moussa, Kankan Moussa, Musa I van Mali en De leeuw van Mali.</p>",
+      "en": "<p>Mansa Musa was the ninth Mansa of the Mali Empire, which reached its territorial peak during his reign. Musa's reign is often regarded as the zenith of Mali's power and prestige, although he features less in Mandinka oral traditions than his predecessors.</p>",
+      "de": "<p>Kankan Mansa Musa I. war von 1307 oder 1312 bis zu seinem Tod König bzw. Mansa von Mali, dem größten Reich der westafrikanischen Geschichte. Unter seiner Herrschaft erreichte das Land seine Blüte, und Timbuktu wurde eine der bedeutendsten Städte Afrikas.</p>",
+      "fr": "<p>Mansa Moussa, aussi connu sous le nom de Mansa Musa et de Kankou Moussa, est le dixième mansa de l’empire du Mali, au pouvoir entre 1312 et 1337. Son règne marque l’apogée politique, économique et culturelle de l’Empire, étendu du Fouta-Djalon jusqu’au Gao, en passant par les anciens territoires du Ghana.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "Mali Empire"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 1312 AD – 1337 AD"
+      }
+     ],
+     "document": {
+      "title": "Mansa Musa — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mansa_Musa"
+     },
+     "hero": {
+      "url": "content/personen/mansa-musa/beeld-1.webp",
+      "width": 754,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/mansa-musa/beeld-1.webp",
+       "width": 754,
+       "height": 860,
+       "caption": {
+        "nl": "Catalan Atlas BNF Sheet 6 Mansa Musa %28cropped%29",
+        "en": "Catalan Atlas BNF Sheet 6 Mansa Musa %28cropped%29",
+        "de": "Catalan Atlas BNF Sheet 6 Mansa Musa %28cropped%29",
+        "fr": "Catalan Atlas BNF Sheet 6 Mansa Musa %28cropped%29"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/mansa-musa/beeld-2.webp",
+       "width": 753,
+       "height": 860,
+       "caption": {
+        "nl": "Catalan Atlas BNF Sheet 6 Mansa Musa (cropped)",
+        "en": "Catalan Atlas BNF Sheet 6 Mansa Musa (cropped)",
+        "de": "Catalan Atlas BNF Sheet 6 Mansa Musa (cropped)",
+        "fr": "Catalan Atlas BNF Sheet 6 Mansa Musa (cropped)"
+       },
+       "credit": "Wikimedia Commons · attributed to Abraham Cresques · Public domain"
+      },
+      {
+       "imagePath": "content/personen/mansa-musa/beeld-3.webp",
+       "width": 860,
+       "height": 716,
+       "caption": {
+        "nl": "Mansa Musa dressed like European",
+        "en": "Mansa Musa dressed like European",
+        "de": "Mansa Musa dressed like European",
+        "fr": "Mansa Musa dressed like European"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      },
+      {
+       "imagePath": "content/personen/mansa-musa/beeld-4.webp",
+       "width": 860,
+       "height": 654,
+       "caption": {
+        "nl": "Mansa Moussa on the map of Angelino Dulcert",
+        "en": "Mansa Moussa on the map of Angelino Dulcert",
+        "de": "Mansa Moussa on the map of Angelino Dulcert",
+        "fr": "Mansa Moussa on the map of Angelino Dulcert"
+       },
+       "credit": "Wikimedia Commons · Angelino Dulcert · Public domain"
+      },
+      {
+       "imagePath": "content/personen/mansa-musa/beeld-5.webp",
+       "width": 860,
+       "height": 627,
+       "caption": {
+        "nl": "Mana Musa holding gold",
+        "en": "Mana Musa holding gold",
+        "de": "Mana Musa holding gold",
+        "fr": "Mana Musa holding gold"
+       },
+       "credit": "Wikimedia Commons · Public domain"
+      },
+      {
+       "imagePath": "content/personen/mansa-musa/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/mansa-musa/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/mansa-musa/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/mansa-musa/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "suleiman",
+     "name": {
+      "nl": "Süleyman I",
+      "en": "Suleiman the Magnificent",
+      "de": "Süleyman I.",
+      "fr": "Soliman le Magnifique"
+     },
+     "subtitle": {
+      "nl": "sultan van het Osmaanse Rijk (1494-1566) · r. 1520 AD – 1566 AD",
+      "en": "Sultan of the Ottoman Empire from 1520 to 1566 · r. 1520 AD – 1566 AD",
+      "de": "Sultan des Osmanischen Reiches (1520-1566) · r. 1520 AD – 1566 AD",
+      "fr": "10e sultan ottoman et calife de 1520 à 1566 (vers 1494-1566) · r. 1520 AD – 1566 AD"
+     },
+     "period": {
+      "from": 1520,
+      "to": 1566
+     },
+     "bodyHtml": {
+      "nl": "<p>Kanuni Sultan Süleyman I of Soleiman de Grote vaak ook Suleiman de Magnifieke of Süleyman de Magnifieke genoemd., was de tiende sultan van het Ottomaanse Rijk. Hij volgde in 1520 zijn vader Selim I op. Hij wordt ook wel de Wetgever of de Prachtlievende genoemd. Hij was gehuwd met Haseki Hürrem Sultan, beter bekend als Roxelana, met wie hij vijf kinderen had, waaronder Selim II, zijn opvolger.</p>",
+      "en": "<p>Suleiman I, commonly known as Suleiman the Magnificent, was the Ottoman sultan from 1520 to 1566.</p><p>The longest reign among the Ottoman sultans, his rule brought about a notable peak in the Ottoman Empire's economic, military and political power, and raised the number of the empire's subjects to at least 25 million people.</p>",
+      "de": "<p>Süleyman I., im Deutschen auch Suleiman regierte von 1520 bis 1566 als der zehnte Sultan des Osmanischen Reiches. Er gilt als einer der bedeutendsten Herrscher der Osmanen. Während seiner mehr als vierzigjährigen Herrschaft erreichten die geographische Ausdehnung und die Macht des Reiches ihren Höhepunkt.</p>",
+      "fr": "<p>Soliman Ier est probablement né le 6 novembre 1494 à Trébizonde dans l'actuelle Turquie et mort le 6 septembre 1566 à Szigetvár dans l'actuelle Hongrie</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "Ottoman Empire"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 1520 AD – 1566 AD"
+      }
+     ],
+     "document": {
+      "title": "Suleiman the Magnificent — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Suleiman_the_Magnificent"
+     },
+     "hero": {
+      "url": "content/personen/suleiman/beeld-1.webp",
+      "width": 735,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/suleiman/beeld-1.webp",
+       "width": 735,
+       "height": 860,
+       "caption": {
+        "nl": "EmperorSuleiman",
+        "en": "EmperorSuleiman",
+        "de": "EmperorSuleiman",
+        "fr": "EmperorSuleiman"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/suleiman/beeld-2.webp",
+       "width": 613,
+       "height": 860,
+       "caption": {
+        "nl": "Suleiman I (portrait) receiving the Transylvanian prince Janos Zsigmond near the town of Z",
+        "en": "Suleiman I (portrait) receiving the Transylvanian prince Janos Zsigmond near the town of Z",
+        "de": "Suleiman I (portrait) receiving the Transylvanian prince Janos Zsigmond near the town of Z",
+        "fr": "Suleiman I (portrait) receiving the Transylvanian prince Janos Zsigmond near the town of Z"
+       },
+       "credit": "Wikimedia Commons · 1568 artist · Public domain"
+      },
+      {
+       "imagePath": "content/personen/suleiman/beeld-3.webp",
+       "width": 860,
+       "height": 694,
+       "caption": {
+        "nl": "Tughra Suleiman",
+        "en": "Tughra Suleiman",
+        "de": "Tughra Suleiman",
+        "fr": "Tughra Suleiman"
+       },
+       "credit": "Wikimedia Commons · Thadswanek, taken from here (uploaded by Pagan) · Public domain"
+      },
+      {
+       "imagePath": "content/personen/suleiman/beeld-4.webp",
+       "width": 555,
+       "height": 860,
+       "caption": {
+        "nl": "The body of Suleiman I arrives to Belgrade, Selim II is waiting for it B",
+        "en": "The body of Suleiman I arrives to Belgrade, Selim II is waiting for it B",
+        "de": "The body of Suleiman I arrives to Belgrade, Selim II is waiting for it B",
+        "fr": "The body of Suleiman I arrives to Belgrade, Selim II is waiting for it B"
+       },
+       "credit": "Wikimedia Commons · Unknown authorUnknown author · Public domain"
+      },
+      {
+       "imagePath": "content/personen/suleiman/beeld-5.webp",
+       "width": 586,
+       "height": 860,
+       "caption": {
+        "nl": "Suleiman I after the capture of Buda, 1529",
+        "en": "Suleiman I after the capture of Buda, 1529",
+        "de": "Suleiman I after the capture of Buda, 1529",
+        "fr": "Suleiman I after the capture of Buda, 1529"
+       },
+       "credit": "Wikimedia Commons · Unknown authorUnknown author · Public domain"
+      },
+      {
+       "imagePath": "content/personen/suleiman/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/suleiman/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/suleiman/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/suleiman/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "elizabeth-i",
+     "name": {
+      "nl": "Elizabeth I van Engeland",
+      "en": "Elizabeth I",
+      "de": "Elisabeth I.",
+      "fr": "Élisabeth Ire (reine d'Angleterre)"
+     },
+     "subtitle": {
+      "nl": "koningin van Engeland uit het huis Tudor · r. 1558 AD – 1603 AD",
+      "en": "Queen of England and Ireland from 1558 to 1603 · r. 1558 AD – 1603 AD",
+      "de": "Königin von England (1558-1603) · r. 1558 AD – 1603 AD",
+      "fr": "reine d’Angleterre et d'Irlande de 1558 à 1603 · r. 1558 AD – 1603 AD"
+     },
+     "period": {
+      "from": 1558,
+      "to": 1603
+     },
+     "bodyHtml": {
+      "nl": "<p>Elizabeth I was koningin van Engeland en van Ierland vanaf 17 november 1558 tot haar dood. Elizabeths bijnaam was de maagdelijke koningin. Engeland ontwikkelde zich onder haar regering tot een wereldmacht op de zeeën en ontwikkelde een nationaal bewustzijn.</p>",
+      "en": "<p>Elizabeth I was Queen of England and Ireland from 17 November 1558 until her death in 1603. She was the last and longest reigning monarch of the House of Tudor. Her eventful reign, and its effect on history and culture, gave name to the Elizabethan era.</p>",
+      "de": "<p>Elisabeth I. aus dem Haus Tudor war vom 17. November 1558 bis zu ihrem Tod Königin von England und Irland.</p>",
+      "fr": "<p>Élisabeth Ire, née le 7 septembre 1533 au palais de Placentia à Londres et morte le 24 mars 1603 au palais de Richmond dans la même ville, est reine d'Angleterre et d'Irlande de 1558 à sa mort.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "England and Ireland"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 1558 AD – 1603 AD"
+      }
+     ],
+     "document": {
+      "title": "Elizabeth I — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Elizabeth_I"
+     },
+     "hero": {
+      "url": "content/personen/elizabeth-i/beeld-1.webp",
+      "width": 588,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/elizabeth-i/beeld-1.webp",
+       "width": 588,
+       "height": 860,
+       "caption": {
+        "nl": "Darnley stage 3",
+        "en": "Darnley stage 3",
+        "de": "Darnley stage 3",
+        "fr": "Darnley stage 3"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/elizabeth-i/beeld-2.webp",
+       "width": 860,
+       "height": 598,
+       "caption": {
+        "nl": "Procession Portrait of Elizabeth I",
+        "en": "Procession Portrait of Elizabeth I",
+        "de": "Procession Portrait of Elizabeth I",
+        "fr": "Procession Portrait of Elizabeth I"
+       },
+       "credit": "Wikimedia Commons · Attributed to Robert Peake the elder · Public domain"
+      },
+      {
+       "imagePath": "content/personen/elizabeth-i/beeld-3.webp",
+       "width": 662,
+       "height": 860,
+       "caption": {
+        "nl": "Nicholas Hilliard (called) - Portrait of Queen Elizabeth I - Google Art Project",
+        "en": "Nicholas Hilliard (called) - Portrait of Queen Elizabeth I - Google Art Project",
+        "de": "Nicholas Hilliard (called) - Portrait of Queen Elizabeth I - Google Art Project",
+        "fr": "Nicholas Hilliard (called) - Portrait of Queen Elizabeth I - Google Art Project"
+       },
+       "credit": "Wikimedia Commons · Nicholas Hilliard (called) (1547 - 1619) Details on Google Art Project · Public domain"
+      },
+      {
+       "imagePath": "content/personen/elizabeth-i/beeld-4.webp",
+       "width": 639,
+       "height": 860,
+       "caption": {
+        "nl": "Elizabeth I portrait, Marcus Gheeraerts the Younger c.1595",
+        "en": "Elizabeth I portrait, Marcus Gheeraerts the Younger c.1595",
+        "de": "Elizabeth I portrait, Marcus Gheeraerts the Younger c.1595",
+        "fr": "Elizabeth I portrait, Marcus Gheeraerts the Younger c.1595"
+       },
+       "credit": "Wikimedia Commons · Marcus Gheeraerts the Younger / Follower of Marcus Gheeraerts the Younger · Public domain"
+      },
+      {
+       "imagePath": "content/personen/elizabeth-i/beeld-5.webp",
+       "width": 678,
+       "height": 860,
+       "caption": {
+        "nl": "Elizabeth I Rainbow Portrait3",
+        "en": "Elizabeth I Rainbow Portrait3",
+        "de": "Elizabeth I Rainbow Portrait3",
+        "fr": "Elizabeth I Rainbow Portrait3"
+       },
+       "credit": "Wikimedia Commons · Formerly attributed to Marcus Gheeraerts the Younger / Formerly attributed to Is · Public domain"
+      },
+      {
+       "imagePath": "content/personen/elizabeth-i/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/elizabeth-i/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/elizabeth-i/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/elizabeth-i/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "louis-xiv",
+     "name": {
+      "nl": "Lodewijk XIV van Frankrijk",
+      "en": "Louis XIV",
+      "de": "Ludwig XIV.",
+      "fr": "Louis XIV"
+     },
+     "subtitle": {
+      "nl": "koning van Frankrijk (1638-1715) · r. 1643 AD – 1715 AD",
+      "en": "King of France from 1643 to 1715 · r. 1643 AD – 1715 AD",
+      "de": "König von Frankreich und Navarra von 1643 bis 1715 · r. 1643 AD – 1715 AD",
+      "fr": "roi de France et de Navarre de 1643 à 1715 · r. 1643 AD – 1715 AD"
+     },
+     "period": {
+      "from": 1643,
+      "to": 1715
+     },
+     "bodyHtml": {
+      "nl": "<p>Lodewijk XIV van Frankrijk, bekend als Lodewijk de Grote en de Zonnekoning, was een telg uit het koninklijke huis Bourbon. Hij was van 1643 tot aan zijn dood in 1715 koning van Frankrijk en Navarra.</p>",
+      "en": "<p>Louis XIV was King of France from 14 May 1643 until his death in 1715. He is a symbol of the Age of Absolutism in Europe for styling himself as \"The Sun King\" and \"Louis the Great\", which portrayed him as supreme leader. He presided over a great expansion of the French colonial empire and a patronage of arts in his court at the Palace of Versailles that defined the Baroque style of French architecture. His reign of 72 years and 110 days remains the longest of any sovereign monarch in history.</p>",
+      "de": "<p>Ludwig XIV., französisch Louis XIV, war ein französischer Prinz aus dem Haus Bourbon und von 1643 bis zu seinem Tod König von Frankreich und Navarra sowie Kofürst von Andorra.</p>",
+      "fr": "<p>Louis XIV, dit « le Grand » ou « le Roi-Soleil », né le 5 septembre 1638 au château Neuf de Saint-Germain-en-Laye et mort le 1er septembre 1715 au château de Versailles, est un roi de France et de Navarre. Son règne s'étend du 14 mai 1643 — sous la régence de sa mère Anne d'Autriche jusqu'au 7 septembre 1651 — à sa mort. Son règne d’une durée de 72 ans est l'un des plus longs de l'histoire de l'Europe et le plus long de l'histoire de France.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "France"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 1643 AD – 1715 AD"
+      }
+     ],
+     "document": {
+      "title": "Louis XIV — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Louis_XIV"
+     },
+     "hero": {
+      "url": "content/personen/louis-xiv/beeld-1.webp",
+      "width": 605,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/louis-xiv/beeld-1.webp",
+       "width": 605,
+       "height": 860,
+       "caption": {
+        "nl": "Louis XIV of France",
+        "en": "Louis XIV of France",
+        "de": "Louis XIV of France",
+        "fr": "Louis XIV of France"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/louis-xiv/beeld-2.webp",
+       "width": 669,
+       "height": 860,
+       "caption": {
+        "nl": "Equestrian portrait louis xiv 1692",
+        "en": "Equestrian portrait louis xiv 1692",
+        "de": "Equestrian portrait louis xiv 1692",
+        "fr": "Equestrian portrait louis xiv 1692"
+       },
+       "credit": "Wikimedia Commons · Pierre Mignard I · Public domain"
+      },
+      {
+       "imagePath": "content/personen/louis-xiv/beeld-3.webp",
+       "width": 655,
+       "height": 860,
+       "caption": {
+        "nl": "Nocret, attributed to - Louis XIV of France - Versailles, MV2066",
+        "en": "Nocret, attributed to - Louis XIV of France - Versailles, MV2066",
+        "de": "Nocret, attributed to - Louis XIV of France - Versailles, MV2066",
+        "fr": "Nocret, attributed to - Louis XIV of France - Versailles, MV2066"
+       },
+       "credit": "Wikimedia Commons · Attributed to Jean Nocret · Public domain"
+      },
+      {
+       "imagePath": "content/personen/louis-xiv/beeld-4.webp",
+       "width": 860,
+       "height": 583,
+       "caption": {
+        "nl": "Louis XIV wedding",
+        "en": "Louis XIV wedding",
+        "de": "Louis XIV wedding",
+        "fr": "Louis XIV wedding"
+       },
+       "credit": "Wikimedia Commons · Jacques Laumosnier · Public domain"
+      },
+      {
+       "imagePath": "content/personen/louis-xiv/beeld-5.webp",
+       "width": 860,
+       "height": 677,
+       "caption": {
+        "nl": "Louis XIV of France and his family attributed to Nicolas de Largillière",
+        "en": "Louis XIV of France and his family attributed to Nicolas de Largillière",
+        "de": "Louis XIV of France and his family attributed to Nicolas de Largillière",
+        "fr": "Louis XIV of France and his family attributed to Nicolas de Largillière"
+       },
+       "credit": "Wikimedia Commons · Formerly attributed to Nicolas de Largillière · Public domain"
+      },
+      {
+       "imagePath": "content/personen/louis-xiv/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/louis-xiv/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/louis-xiv/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/louis-xiv/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "victoria",
+     "name": {
+      "nl": "Victoria van het Verenigd Koninkrijk",
+      "en": "Queen Victoria",
+      "de": "Victoria (Vereinigtes Königreich)",
+      "fr": "Victoria (reine)"
+     },
+     "subtitle": {
+      "nl": "koningin van het Verenigd Koninkrijk (1837–1901), keizerin van India ( · r. 1837 AD – 1901 AD",
+      "en": "Queen of the United Kingdom from 1837 to 1901 · r. 1837 AD – 1901 AD",
+      "de": "Königin von Großbritannien und Irland (1837–1901), Kaiserin von Indien · r. 1837 AD – 1901 AD",
+      "fr": "reine du Royaume-Uni de 1837 à 1901 et impératrice des Indes de 1876 à · r. 1837 AD – 1901 AD"
+     },
+     "period": {
+      "from": 1837,
+      "to": 1901
+     },
+     "bodyHtml": {
+      "nl": "<p>Alexandrina Victoria van Hannover was koningin van het Verenigd Koninkrijk van 1837 tot 1901 en vanaf 1877 tevens keizerin van India.</p>",
+      "en": "<p>Victoria was Queen of the United Kingdom of Great Britain and Ireland from 20 June 1837 until her death in 1901. Her reign of 63 years and 216 days, which was longer than those of any of her predecessors, constituted the Victorian era, a period of industrial, political, scientific, and military change within the United Kingdom marked by a great expansion of the British Empire. In 1876, the British parliament voted to grant her the additional title of Empress of India.</p>",
+      "de": "<p>Victoria war von 1837 bis 1901 Königin des Vereinigten Königreichs Großbritannien und Irland. Seit Mai 1876 trug sie als erste britische Monarchin zusätzlich den Titel Kaiserin von Indien. Sie war die Nichte ihres Vorgängers William IV., genauer die Tochter dessen jüngeren Bruders Edward, Duke of Kent and Strathearn und der Prinzessin Victoire von Sachsen-Coburg-Saalfeld.</p>",
+      "fr": "<p>Victoria, née Alexandrina Victoria le 24 mai 1819 au palais de Kensington à Londres et morte le 22 janvier 1901 à Osborne House sur l'île de Wight, est reine du Royaume-Uni de Grande-Bretagne et d'Irlande du 20 juin 1837 jusqu'à sa mort. À partir du 1er juillet 1867, elle est également reine du Canada, ainsi qu'impératrice des Indes à compter du 1er mai 1876, puis enfin reine d'Australie le 1er janvier 1901.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "United Kingdom"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 1837 AD – 1901 AD"
+      }
+     ],
+     "document": {
+      "title": "Queen Victoria — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Queen_Victoria"
+     },
+     "hero": {
+      "url": "content/personen/victoria/beeld-1.webp",
+      "width": 609,
+      "height": 860
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/victoria/beeld-1.webp",
+       "width": 609,
+       "height": 860,
+       "caption": {
+        "nl": "Queen Victoria by Bassano",
+        "en": "Queen Victoria by Bassano",
+        "de": "Queen Victoria by Bassano",
+        "fr": "Queen Victoria by Bassano"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/victoria/beeld-2.webp",
+       "width": 706,
+       "height": 860,
+       "caption": {
+        "nl": "Winterhalter - Queen Victoria 1843",
+        "en": "Winterhalter - Queen Victoria 1843",
+        "de": "Winterhalter - Queen Victoria 1843",
+        "fr": "Winterhalter - Queen Victoria 1843"
+       },
+       "credit": "Wikimedia Commons · Franz Xaver Winterhalter · Public domain"
+      },
+      {
+       "imagePath": "content/personen/victoria/beeld-3.webp",
+       "width": 860,
+       "height": 634,
+       "caption": {
+        "nl": "The Family of Queen Victoria (Tuxen)",
+        "en": "The Family of Queen Victoria (Tuxen)",
+        "de": "The Family of Queen Victoria (Tuxen)",
+        "fr": "The Family of Queen Victoria (Tuxen)"
+       },
+       "credit": "Wikimedia Commons · Laurits Tuxen · Public domain"
+      },
+      {
+       "imagePath": "content/personen/victoria/beeld-4.webp",
+       "width": 692,
+       "height": 860,
+       "caption": {
+        "nl": "Sir George Hayter (1792-1871) - Queen Victoria (1819-1901) - RCIN 401213 - Royal Collectio",
+        "en": "Sir George Hayter (1792-1871) - Queen Victoria (1819-1901) - RCIN 401213 - Royal Collectio",
+        "de": "Sir George Hayter (1792-1871) - Queen Victoria (1819-1901) - RCIN 401213 - Royal Collectio",
+        "fr": "Sir George Hayter (1792-1871) - Queen Victoria (1819-1901) - RCIN 401213 - Royal Collectio"
+       },
+       "credit": "Wikimedia Commons · George Hayter · Public domain"
+      },
+      {
+       "imagePath": "content/personen/victoria/beeld-5.webp",
+       "width": 668,
+       "height": 860,
+       "caption": {
+        "nl": "Queen Victoria by Heinrich von Angeli",
+        "en": "Queen Victoria by Heinrich von Angeli",
+        "de": "Queen Victoria by Heinrich von Angeli",
+        "fr": "Queen Victoria by Heinrich von Angeli"
+       },
+       "credit": "Wikimedia Commons · Bertha Müller · Public domain"
+      },
+      {
+       "imagePath": "content/personen/victoria/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/victoria/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/victoria/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/victoria/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    },
+    {
+     "id": "haile-selassie",
+     "name": {
+      "nl": "Haile Selassie",
+      "en": "Haile Selassie",
+      "de": "Haile Selassie",
+      "fr": "Haïlé Sélassié Ier"
+     },
+     "subtitle": {
+      "nl": "politicus uit Ethiopië (1892-1975) · r. 1930 AD – 1974 AD",
+      "en": "Emperor of Ethiopia from 1930 to 1974 · r. 1930 AD – 1974 AD",
+      "de": "letzter Kaiser von Äthiopien, Messiassymbol in der Rastafari-Bewegung · r. 1930 AD – 1974 AD",
+      "fr": "empereur d'Éthiopie · r. 1930 AD – 1974 AD"
+     },
+     "period": {
+      "from": 1930,
+      "to": 1974
+     },
+     "bodyHtml": {
+      "nl": "<p>Haile Selassie was keizer van Ethiopië. Tijdens zijn regeerperiode ijverde hij voor onafhankelijkheid, vooruitgang en vrede. Hij kreeg echter veel kritiek, vanwege schending van de mensenrechten en persoonsverheerlijking — onderdanen moesten in zijn bijzijn op handen en knieën zitten. Ook zijn er geruchten dat hij etnische zuiveringen liet uitvoeren.</p>",
+      "en": "<p>Haile Selassie I was Emperor of Ethiopia from 1930 to 1974. He rose to power as the Regent Plenipotentiary of Ethiopia under Empress Zewditu between 1916 and 1930.</p>",
+      "de": "<p>Haile Selassie I. war von 1916 bis 1930 Regent (Enderase) und von 1930 bis 1974 letzter Kaiser von Äthiopien.</p>",
+      "fr": "<p>Tafari Makonnen, né le 23 juillet 1892 à Ejersa Goro, dans l'Empire éthiopien, et mort assassiné le 27 août 1975 à Addis-Abeba, a été le dernier empereur d'Éthiopie de 1930 à 1936 et de 1941 à 1974. Il règne sous le nom de Haïlé Sélassié Ier.</p>"
+     },
+     "facts": [
+      {
+       "key": "Rijk",
+       "value": "Ethiopia"
+      },
+      {
+       "key": "Regeerperiode",
+       "value": "r. 1930 AD – 1974 AD"
+      }
+     ],
+     "document": {
+      "title": "Haile Selassie — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Haile_Selassie"
+     },
+     "hero": {
+      "url": "content/personen/haile-selassie/beeld-1.webp",
+      "width": 600,
+      "height": 800
+     },
+     "items": [
+      {
+       "imagePath": "content/personen/haile-selassie/beeld-1.webp",
+       "width": 600,
+       "height": 800,
+       "caption": {
+        "nl": "Haile Selassie in full dress %283x4 cropped%29",
+        "en": "Haile Selassie in full dress %283x4 cropped%29",
+        "de": "Haile Selassie in full dress %283x4 cropped%29",
+        "fr": "Haile Selassie in full dress %283x4 cropped%29"
+       },
+       "credit": "Wikimedia Commons · see Wikimedia Commons"
+      },
+      {
+       "imagePath": "content/personen/haile-selassie/beeld-2.webp",
+       "width": 860,
+       "height": 493,
+       "caption": {
+        "nl": "Haile Selassie I Coronation Portrait",
+        "en": "Haile Selassie I Coronation Portrait",
+        "de": "Haile Selassie I Coronation Portrait",
+        "fr": "Haile Selassie I Coronation Portrait"
+       },
+       "credit": "Wikimedia Commons · Beatrice Playne · Public domain"
+      },
+      {
+       "imagePath": "content/personen/haile-selassie/beeld-3.webp",
+       "width": 837,
+       "height": 860,
+       "caption": {
+        "nl": "Haile Selassie, Emperor of Abyssinia, with Brigadier Daniel Arthur Sandford (left) and Col",
+        "en": "Haile Selassie, Emperor of Abyssinia, with Brigadier Daniel Arthur Sandford (left) and Col",
+        "de": "Haile Selassie, Emperor of Abyssinia, with Brigadier Daniel Arthur Sandford (left) and Col",
+        "fr": "Haile Selassie, Emperor of Abyssinia, with Brigadier Daniel Arthur Sandford (left) and Col"
+       },
+       "credit": "Wikimedia Commons · No 1 Army Film &amp; Photographic Unit, Palmer F E (Lieut) · Public domain"
+      },
+      {
+       "imagePath": "content/personen/haile-selassie/beeld-4.webp",
+       "width": 860,
+       "height": 587,
+       "caption": {
+        "nl": "HIM Haile Selassie I at Security Council meeting in Addis Ababa",
+        "en": "HIM Haile Selassie I at Security Council meeting in Addis Ababa",
+        "de": "HIM Haile Selassie I at Security Council meeting in Addis Ababa",
+        "fr": "HIM Haile Selassie I at Security Council meeting in Addis Ababa"
+       },
+       "credit": "Wikimedia Commons · UN Photo/Yutaka Nagata · Public domain"
+      },
+      {
+       "imagePath": "content/personen/haile-selassie/beeld-5.webp",
+       "width": 860,
+       "height": 682,
+       "caption": {
+        "nl": "Emperor Haile Selassie I with President FDR",
+        "en": "Emperor Haile Selassie I with President FDR",
+        "de": "Emperor Haile Selassie I with President FDR",
+        "fr": "Emperor Haile Selassie I with President FDR"
+       },
+       "credit": "Wikimedia Commons · U.S. Army / Office for Emergency Management. Office of War Information. Overseas · Public domain"
+      },
+      {
+       "imagePath": "content/personen/haile-selassie/biografie-pagina-1.webp",
+       "pdfPath": "content/personen/haile-selassie/biografie.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "biografie.pdf",
+        "en": "biografie.pdf",
+        "de": "biografie.pdf",
+        "fr": "biografie.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      },
+      {
+       "imagePath": "content/personen/haile-selassie/regeerperiode-pagina-1.webp",
+       "pdfPath": "content/personen/haile-selassie/regeerperiode.pdf",
+       "width": 708,
+       "height": 1000,
+       "caption": {
+        "nl": "regeerperiode.pdf",
+        "en": "regeerperiode.pdf",
+        "de": "regeerperiode.pdf",
+        "fr": "regeerperiode.pdf"
+       },
+       "credit": "Wikipedia · CC BY-SA 4.0"
+      }
+     ],
+     "media": []
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "id": "homescreen",
+   "name": "homescreen",
+   "type": "assets",
+   "warnings": []
+  }
+ ]
+}
