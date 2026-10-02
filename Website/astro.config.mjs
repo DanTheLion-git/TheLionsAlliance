@@ -5,6 +5,11 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://thelionsalliance.com',
+  redirects: {
+    // The old resume case study described the Medelo touch table as a planned
+    // Enversed/Unity project; it shipped as Medelotapps, sold as Touch Station.
+    '/resume/projects/meijel-museum': '/touchscreens/',
+  },
   vite: {
     server: {
       watch: {

@@ -3,354 +3,364 @@ import Layout from "../layouts/ResumeLayout.astro";
 import { getPosts, type WPPost } from "../lib/wp";
 import { decodeHTML } from "../lib/html";
 const posts: WPPost[] = await getPosts(3);
+
+const LINKEDIN = "https://www.linkedin.com/in/dani%C3%ABl-van-leeuwen-235675100/";
+
+// ── Experience ───────────────────────────────────────────────
+const EXPERIENCE = [
+  {
+    role:  "Founder & Creative Technologist",
+    org:   "The Lions Alliance",
+    dates: "Apr 2026 – present",
+    desc:  "Founded a studio that builds storytelling technology for smaller, independent museums and heritage venues. Designed and built the Medelotapps touch-kiosk platform, now live on a touch table and classroom board at Museum Medelo; the Brief aan Jan Truijen talking-portrait installation; and the Skeleton Key walking-quest prop. Also runs WeddingCamBox and ShutterShare, two self-service event-photo products.",
+  },
+  {
+    role:  "Software Developer",
+    org:   "Pebble",
+    dates: "Feb 2026 – Apr 2026",
+    desc:  "Enterprise data engineering for ASML: built an ASP.NET / C# web application on Azure that streamlines how data-retention policies are set up across their data storage.",
+  },
+  {
+    role:  "3D Animation & Video Developer",
+    org:   "Enversed Studios",
+    dates: "Dec 2023 – Feb 2026",
+    desc:  "Took VRVoyage — a 70-minute 360° VR canal-boat journey through Golden Age Amsterdam, now a live tourist attraction — to completion as a near one-person production: modelling, procedural crowds in Geometry Nodes, Xsens motion capture and rendering. Also produced the Oosterschelde underwater VR binoculars, an on-site greenscreen 360° recruitment tour for Schiphol, and product visualisations for Martens Beton and Lucardi.",
+  },
+  {
+    role:  "Graduation Intern",
+    org:   "Het Nieuwe Kader",
+    dates: "Jan 2023 – Jul 2023",
+    desc:  "Built a web-based automatic rigging tool (Python, Flask, MayaPy) that prepares characters for remote motion-capture sessions.",
+  },
+  {
+    role:  "Intern Product Specialist",
+    org:   "Movella / Xsens",
+    dates: "Mar 2022 – Aug 2022",
+    desc:  "Wrote documentation, gave customer demos and provided technical support for the Xsens MVN Animate motion-capture platform.",
+  },
+  {
+    role:  "Junior VR Developer",
+    org:   "Wired Workers",
+    dates: "Jul 2020 – Aug 2021",
+    desc:  "Built a WebGL digital showroom for collaborative robot arms, including the 3D models and animations.",
+  },
+];
+
+// ── Skills ───────────────────────────────────────────────────
+const SKILLS = [
+  {
+    group: "3D, Animation & Video",
+    items: ["Blender (Geometry Nodes)", "After Effects", "Xsens motion capture", "Reallusion", "Unreal Engine", "Unity", "360° VR video", "Greenscreen & on-site recording"],
+  },
+  {
+    group: "Software",
+    items: ["C# / WPF / WebView2", "ASP.NET", "Azure", "Python", "TypeScript / JavaScript", "Three.js / WebGL", "Astro", "SvelteKit", "Next.js", "Electron", "Node.js / Express", "PostgreSQL", "Docker"],
+  },
+  {
+    group: "AI & Media Pipelines",
+    items: ["Local LLMs (Ollama)", "RAG", "Piper TTS", "Rhubarb lip-sync", "ComfyUI (Flux, WAN video)"],
+  },
+  {
+    group: "Hardware & Fabrication",
+    items: ["ESP32 (ESP-NOW)", "Arduino", "Teensy", "Raspberry Pi", "NFC", "Soldering & custom electronics", "Laser cutting", "Resin 3D printing"],
+  },
+];
+
+// ── Earlier work (client & student projects before the studio) ──
+// youtube: video ID used for the thumbnail; null shows a text placeholder.
+const EARLIER = [
+  {
+    title:   "VRVoyage",
+    meta:    "Client project · Enversed Studios · 360° VR",
+    youtube: "sfveQ_2cajM",
+    desc:    "70-minute 360° VR journey aboard a canal boat through Golden Age Amsterdam, with motion-captured characters and procedural crowds.",
+    page:    "/resume/projects/amsterdam-rederij/",
+  },
+  {
+    title:   "Oosterschelde VR",
+    meta:    "Client project · Enversed Studios · 360° VR",
+    youtube: "VprojdpSWek",
+    desc:    "360° underwater VR film in public binoculars on the Oosterschelde dike, bringing the seabed to non-divers.",
+    page:    "/resume/projects/oosterschelde/",
+  },
+  {
+    title:   "Werken bij Schiphol",
+    meta:    "Client project · Enversed Studios · 360° tour",
+    youtube: null,
+    desc:    "Interactive 360° career-orientation tour with on-site greenscreen interviews at Schiphol Airport.",
+    page:    "/resume/projects/werken-bij-schiphol/",
+  },
+  {
+    title:   "Garbage Gary",
+    meta:    "Student project · Saxion · Unity",
+    youtube: "Nn0hLqFrPOk",
+    desc:    "Touch-screen educational game made for the Oyfo technology museum.",
+    page:    "/resume/projects/garbage-gary/",
+  },
+  {
+    title:   "Python Autorigger",
+    meta:    "Graduation project · Het Nieuwe Kader · Python",
+    youtube: "zupK9LBxZwk",
+    desc:    "Web-based automatic rigging tool for remote motion-capture sessions.",
+    page:    "/resume/projects/python-autorigger/",
+  },
+  {
+    title:   "Martens Beton",
+    meta:    "Client project · Enversed Studios · Blender",
+    youtube: "AVFDtIFl_yc",
+    desc:    "Animated product video for a rolling-ring sewer-pipe system.",
+    page:    "/resume/projects/martens-beton/",
+  },
+  {
+    title:   "Lucardi",
+    meta:    "Client project · Enversed Studios · Blender",
+    youtube: "bbm4KqhNv1E",
+    desc:    "Photorealistic 3D jewellery showcase with diamond refraction.",
+    page:    "/resume/projects/lucardi/",
+  },
+];
 ---
 
-<Layout title="Daniël van Leeuwen — CV" description="CV — Creative Technologist specializing in interactive installations, 3D visualization, and immersive experiences." theme="light">
+<Layout
+  title="Daniël van Leeuwen — CV"
+  description="CV of Daniël van Leeuwen — creative technologist and founder of The Lions Alliance, building storytelling technology for museums and heritage venues."
+  wide
+>
 
-  <!-- ── CV Identity ─────────────────────────────────────────── -->
-  <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-main">
-        <p class="hero-tagline">Curriculum Vitae · Creative Technologist</p>
-        <h1 class="hero-title">Daniël <span class="hero-highlight">van Leeuwen</span></h1>
-        <p class="hero-text">
-          Creative developer based in the Netherlands with 2+ years of professional experience in real-time 
-          3D and immersive technologies. Passionate about bringing stories to life through interactive 
-          installations, immersive experiences, and custom-built hardware. Skilled in Blender, motion capture 
-          pipelines, VR production, and embedded prototyping (ESP32, Arduino, Raspberry Pi), with hands-on 
-          experience in Unreal Engine, Unity, and full-stack web development.
-        </p>
-        <div class="hero-actions">
-          <a href="/cv-daniel-van-leeuwen.pdf" class="btn-social btn-pdf" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Download CV
-          </a>
-          <a href="https://www.linkedin.com/in/danielvanleeuwen/" class="btn-social btn-li" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM20 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0014 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://www.youtube.com/@DanTheLionVFX" class="btn-social btn-yt" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M15.7 1.9A2 2 0 0 0 14.3.5C13 .2 8 .2 8 .2S3 .2 1.7.5A2 2 0 0 0 .3 1.9C0 3.2 0 6 0 6s0 2.8.3 4.1A2 2 0 0 0 1.7 11.5C3 11.8 8 11.8 8 11.8s5 0 6.3-.3a2 2 0 0 0 1.4-1.4C16 8.8 16 6 16 6s0-2.8-.3-4.1zM6.4 8.6V3.4L10.6 6 6.4 8.6z"/></svg>
-            YouTube
-          </a>
-          <a href="https://sketchfab.com/superwortel" class="btn-social btn-sf" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            Sketchfab
-          </a>
-          <a href="https://daanvanleeuwen.itch.io" class="btn-social btn-itch" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.1 1C1.7 1.8 0 3.9 0 6v1.2c0 1.5 1.4 2.9 2.7 2.9 1.5 0 2.8-1.3 2.8-2.8 0 1.5 1.3 2.8 2.7 2.8 1.5 0 2.8-1.3 2.8-2.8 0 1.5 1.3 2.8 2.8 2.8 1.5 0 2.8-1.3 2.8-2.8 0 1.5 1.3 2.8 2.8 2.8C21.6 10 23 8.6 23 7.1V6c0-2.1-1.7-4.2-3.1-5C17.5 0 5.6 0 3.1 1zm5 10c-.5.2-1.4.7-2.1 1.4C5 13.4 5 14.1 5 18v4l1 .6c1.2.7 3.7 1.4 6 1.4s4.8-.8 6-1.4l1-.6v-4c0-3.9-.1-4.6-1.1-5.6-.7-.7-1.6-1.2-2.1-1.4-.3-.1-1.4-.2-4-.2s-3.6.1-3.9.2zm.6 3.1c.3-.1 1.4-.2 3.3-.2s3 .1 3.3.2c.8.3 1.6 1 1.6 1.6v2.3c0 .3-.1.4-.8.4H7.8c-.7 0-.8 0-.8-.4v-2.3c0-.6.8-1.3 1.6-1.6z"/></svg>
-            Itch.io
-          </a>
-        </div>
-        <p class="hero-subnote">info.mvdvl@gmail.com &nbsp;·&nbsp; The Netherlands</p>
+  <!-- ── Hero ───────────────────────────────────────── -->
+  <section class="tla-hero cv-hero">
+    <img src="/images/branding/lions-mark.svg" alt="" class="tla-hero__watermark" aria-hidden="true" />
+    <div class="tla-container">
+      <p class="tla-hero__eyebrow">Curriculum Vitae</p>
+      <h1 class="tla-hero__title">Daniël <em>van Leeuwen</em></h1>
+      <p class="tla-hero__subtitle">Creative technologist and founder of The Lions Alliance. I build storytelling technology for museums and heritage venues &mdash; from 3D and VR to kiosk software, local AI and hand-built electronics.</p>
+      <div class="tla-hero__actions cv-hero__actions">
+        <a href="#" class="tla-btn tla-btn--primary" data-print>Download CV</a>
+        <a href={LINKEDIN} class="tla-btn tla-btn--outline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="/contact/" class="tla-btn tla-btn--outline">Contact</a>
       </div>
-      <aside class="hero-side">
-        <div class="pill">Currently exploring</div>
-        <ul class="hero-side-list">
-          <li>• Puzzle Lantern — interactive quest prop</li>
-          <li>• Magic Crystal — ESP-NOW proximity device</li>
-          <li>• Meijel Museum — touch-screen exhibit</li>
-          <li>• WeddingCamBox — event camera rental</li>
-          <li>• Immersive World Demo — Unreal Engine VR</li>
-        </ul>
-      </aside>
+      <p class="cv-socials">
+        <a href="https://www.youtube.com/@DanTheLionVFX" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="https://sketchfab.com/superwortel" target="_blank" rel="noopener noreferrer">Sketchfab</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="https://daanvanleeuwen.itch.io" target="_blank" rel="noopener noreferrer">Itch.io</a>
+      </p>
+      <p class="cv-print-only cv-print-contact">info.mvdvl@gmail.com &middot; linkedin.com/in/daniël-van-leeuwen-235675100 &middot; thelionsalliance.com &middot; The Netherlands</p>
     </div>
   </section>
 
-  <!-- ── Work Experience ─────────────────────────────────────── -->
-  <section id="experience" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Work Experience</h2>
-      <p class="section-subtitle">A short overview of my professional background</p>
+  <!-- ── Profile ────────────────────────────────────── -->
+  <section class="tla-studio" id="profile">
+    <div class="tla-container">
+      <div class="tla-studio__grid">
+        <div class="tla-studio__text tla-fade">
+          <span class="tla-overline">Profile</span>
+          <h2>Story first, technology second</h2>
+          <p>I like to work end to end. On one project that can mean modelling a historical street, writing the kiosk software that shows it, and soldering the hardware a visitor holds in their hand. Today I put that into The Lions Alliance, a studio I run with Thirza van Leeuwen, building touch tables, talking portraits and walking quests for smaller, independent museums.</p>
+          <p style="margin-top:1rem;">Before the studio I spent two years making immersive VR, 360° video and product visualisations at Enversed Studios, and worked as a software developer on enterprise data at Pebble.</p>
+        </div>
+        <div class="tla-studio__phases tla-fade tla-d2">
+          <div class="tla-phase-item">
+            <span class="tla-phase-item__num">01</span>
+            <div>
+              <p class="tla-phase-item__label">Now</p>
+              <p class="tla-phase-item__name">Founder, The Lions Alliance</p>
+            </div>
+          </div>
+          <div class="tla-phase-item">
+            <span class="tla-phase-item__num">02</span>
+            <div>
+              <p class="tla-phase-item__label">Before</p>
+              <p class="tla-phase-item__name">3D &amp; VR at Enversed Studios</p>
+            </div>
+          </div>
+          <div class="tla-phase-item">
+            <span class="tla-phase-item__num">03</span>
+            <div>
+              <p class="tla-phase-item__label">Education</p>
+              <p class="tla-phase-item__name">BSc Creative Media &amp; Game Technologies, Saxion</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="contact-block">
-      <ul class="post-list">
-        <li class="post-card">
-          <h3 class="card-title">Software Developer</h3>
-          <p class="post-meta">Pebble · Feb 2026 – Apr 2026</p>
-          <p class="post-excerpt">Worked with ASP.NET, C#, and Azure to enable data access at ASML by developing a web application that streamlined setting up retention policies for data storage.</p>
+  </section>
+
+  <!-- ── Now: The Lions Alliance ────────────────────── -->
+  <section class="tla-pillars cv-now" id="now">
+    <div class="tla-container">
+      <div class="tla-section-header tla-fade">
+        <span class="tla-overline">Now</span>
+        <h2>Building The Lions Alliance</h2>
+        <div class="tla-divider"></div>
+      </div>
+    </div>
+    <div class="tla-pillars__grid-wrap">
+      <div class="tla-pillars__grid cv-now__grid">
+        <div class="tla-pillar-card tla-fade tla-d1">
+          <img src="/images/touch-tafel/IMG20260920161431.webp" alt="A Medelotapps touch table running at Museum Medelo in Meijel" loading="lazy" class="cv-now__img" />
+          <div class="tla-pillar-card__head">
+            <span class="tla-badge tla-badge--live">Live at Museum Medelo</span>
+          </div>
+          <h3>Medelotapps &amp; Touch Tables</h3>
+          <p class="tla-pillar-card__tagline">Kiosk software &middot; Custom touch tables</p>
+          <p class="tla-pillar-card__desc">A touch-kiosk platform running on a touch table and a classroom board at Museum Medelo since its opening on 20 September 2026. The content inside is built for each venue.</p>
+          <p class="tla-pillar-card__project"><strong>My role:</strong> platform architecture and development (C#, WPF, WebView2), content tooling, hardware set-up.</p>
+          <a href="/touchscreens/" class="tla-btn tla-btn--outline tla-btn--sm">See Touch Station</a>
+        </div>
+        <div class="tla-pillar-card tla-fade tla-d2">
+          <img src="/images/brief-aan-jan/prototype-20-09-2026/IMG20260920135209.webp" alt="The Brief aan Jan Truijen talking-portrait installation, with typewriter and antique desk" loading="lazy" class="cv-now__img" />
+          <div class="tla-pillar-card__head">
+            <span class="tla-badge tla-badge--dev">Working prototype</span>
+          </div>
+          <h3>Brief aan Jan Truijen</h3>
+          <p class="tla-pillar-card__tagline">Talking portrait &middot; AI voice &amp; 3D animation</p>
+          <p class="tla-pillar-card__desc">Visitors write a letter on a converted antique typewriter, and a historical portrait answers in character. Shown live at Museum Medelo's opening and built to travel to new venues.</p>
+          <p class="tla-pillar-card__project"><strong>My role:</strong> concept and full build: local LLM with RAG, Piper TTS, Rhubarb lip-sync, three.js head, typewriter-to-USB electronics.</p>
+          <a href="/jan-truijen/" class="tla-btn tla-btn--outline tla-btn--sm">See the installation</a>
+        </div>
+        <div class="tla-pillar-card tla-fade tla-d3">
+          <img src="/images/puzzle-quests/skeleton-key-wip/IMG20260901145952.webp" alt="The hand-built Skeleton Key prop, a lion's-head brass key" loading="lazy" class="cv-now__img" />
+          <div class="tla-pillar-card__head">
+            <span class="tla-badge tla-badge--dev">In build &amp; testing</span>
+          </div>
+          <h3>Puzzle Quests &mdash; Skeleton Key</h3>
+          <p class="tla-pillar-card__tagline">Walking route &middot; Physical prop</p>
+          <p class="tla-pillar-card__desc">A 5 km walking quest through Meijel, carried by a hand-built brass key that senses eight hidden lock-stations. No app, no screen.</p>
+          <p class="tla-pillar-card__project"><strong>My role:</strong> story and route design, embedded electronics, firmware, 3D-printed and laser-cut prop.</p>
+          <a href="/puzzlequests/" class="tla-btn tla-btn--outline tla-btn--sm">See Puzzle Quests</a>
+        </div>
+      </div>
+    </div>
+    <div class="tla-container">
+      <p class="cv-also tla-fade">Also running: <a href="https://weddingcambox.nl" target="_blank" rel="noopener">WeddingCamBox</a> and <a href="https://shuttershare.nl" target="_blank" rel="noopener">ShutterShare</a>, self-service event-photo products with their own booking, gallery and mail backend.</p>
+    </div>
+  </section>
+
+  <!-- ── Experience ─────────────────────────────────── -->
+  <section class="cv-section cv-section--white" id="experience">
+    <div class="tla-container">
+      <div class="tla-section-header tla-fade">
+        <span class="tla-overline">Career</span>
+        <h2>Experience</h2>
+        <div class="tla-divider"></div>
+      </div>
+      <ol class="cv-list">
+        {EXPERIENCE.map((e) => (
+          <li class="cv-entry tla-fade">
+            <p class="cv-entry__dates">{e.dates}</p>
+            <div>
+              <h3 class="cv-entry__role">{e.role}</h3>
+              <p class="cv-entry__org">{e.org}</p>
+              <p class="cv-entry__desc">{e.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── Education & Skills ─────────────────────────── -->
+  <section class="cv-section" id="education">
+    <div class="tla-container">
+      <div class="tla-section-header tla-fade">
+        <span class="tla-overline">Education</span>
+        <h2>Education &amp; skills</h2>
+        <div class="tla-divider"></div>
+      </div>
+      <ol class="cv-list">
+        <li class="cv-entry tla-fade">
+          <p class="cv-entry__dates">Aug 2018 – Jul 2023</p>
+          <div>
+            <h3 class="cv-entry__role">BSc Creative Media &amp; Game Technologies</h3>
+            <p class="cv-entry__org">Saxion University of Applied Sciences</p>
+          </div>
         </li>
-        <li class="post-card">
-          <h3 class="card-title">3D Animation and Video Developer</h3>
-          <p class="post-meta">Enversed Studios · Dec 2023 – Feb 2026</p>
-          <p class="post-excerpt">Created 3D animations and videos using Blender and After Effects. Used Xsens motion capture and Reallusion to create realistic character animations. Performed on-site recordings at client locations.</p>
-        </li>
-      </ul>
-      <details style="margin-top:0.75rem">
-        <summary class="section-link" style="cursor:pointer">Show more experience</summary>
-        <ul class="post-list" style="margin-top:0.9rem">
-          <li class="post-card">
-            <h3 class="card-title">Graduation Internship</h3>
-            <p class="post-meta">Het Nieuwe Kader · Jan 2023 – Jul 2023</p>
-            <p class="post-excerpt">Created a custom web-based automatic rigging tool for remote motion-capture sessions.</p>
-          </li>
-          <li class="post-card">
-            <h3 class="card-title">Intern Product Specialist</h3>
-            <p class="post-meta">Movella / Xsens · Mar 2022 – Aug 2022</p>
-            <p class="post-excerpt">Documentation, customer demos and technical support for the Xsens MVN Animate platform.</p>
-          </li>
-          <li class="post-card">
-            <h3 class="card-title">Junior VR Developer</h3>
-            <p class="post-meta">Wired Workers · Jul 2020 – Aug 2021</p>
-            <p class="post-excerpt">WebGL digital showroom for collaborative robot arms; 3D models and animations.</p>
-          </li>
-        </ul>
-      </details>
+      </ol>
+      <div class="cv-skills">
+        {SKILLS.map((s) => (
+          <div class="tla-value-card tla-fade">
+            <h3>{s.group}</h3>
+            <ul class="cv-chips">
+              {s.items.map((i) => <li>{i}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
-  <!-- ── Client Projects (Carousel) ───────────────────────── -->
-  <section id="work" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Projects</h2>
-      <p class="section-subtitle">Click the arrows or swipe to browse</p>
-    </div>
-    <div class="carousel-wrap">
-      <button class="carousel-btn carousel-prev" aria-label="Previous project">&#8249;</button>
-      <div class="carousel-track" id="carousel-track"></div>
-      <button class="carousel-btn carousel-next" aria-label="Next project">&#8250;</button>
-    </div>
-    <div class="carousel-dots" id="carousel-dots"></div>
-  </section>
-
-  <!-- ── Skills & Tools ─────────────────────────────────────── -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Skills &amp; Tools</h2>
-    </div>
-    <div class="contact-block">
-      <p class="post-meta" style="margin-bottom:0.4rem"><strong>3D &amp; Animation</strong></p>
-      <p class="post-excerpt" style="margin-bottom:0.85rem">Blender · After Effects · Xsens Motion Capture · Reallusion · Unity · Unreal Engine</p>
-      <p class="post-meta" style="margin-bottom:0.4rem"><strong>Development</strong></p>
-      <p class="post-excerpt" style="margin-bottom:0.85rem">Three.js · WebGL · Python · C# · ASP.NET · Azure · TypeScript · HTML / CSS / JavaScript · Next.js · Astro · Node.js</p>
-      <p class="post-meta" style="margin-bottom:0.4rem"><strong>Prototyping &amp; Fabrication</strong></p>
-      <p class="post-excerpt" style="margin-bottom:0.85rem">ESP32 (ESP-NOW) · Arduino · Raspberry Pi · Docker · Soldering · Laser cutting · Resin 3D printing</p>
-      <p class="post-meta" style="margin-bottom:0.4rem"><strong>Production</strong></p>
-      <p class="post-excerpt">Video editing · 360° VR filming · On-site recording · Greenscreen workflows · Custom electronics</p>
-    </div>
-  </section>
-
-  <!-- ── Latest Blogposts ────────────────────────────────────── -->
-  <section id="writing" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Latest Blogposts</h2>
-      <a href="/blog/" class="section-link">View all posts →</a>
-    </div>
-    {posts.length === 0 && <p>No posts found yet.</p>}
-    {posts.length > 0 && (
-      <ul class="post-list">
-        {posts.map((post) => (
-          <li class="post-card">
-            <a href={`/blog/${post.slug}/`} class="post-title">{decodeHTML(post.title.rendered)}</a>
-            <p class="post-meta">
-              <time datetime={post.date}>
-                {new Date(post.date).toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" })}
-              </time>
-            </p>
-            <p class="post-excerpt" set:html={post.excerpt.rendered} />
+  <!-- ── Earlier work ───────────────────────────────── -->
+  <section class="cv-section cv-section--alt cv-earlier" id="earlier-work">
+    <div class="tla-container">
+      <div class="tla-section-header tla-fade">
+        <span class="tla-overline">Archive</span>
+        <h2>Earlier work</h2>
+        <p>Client and student projects from before the studio.</p>
+        <div class="tla-divider"></div>
+      </div>
+      <ul class="cv-earlier__grid">
+        {EARLIER.map((p) => (
+          <li class="cv-earlier__card tla-fade">
+            <a href={p.page} class="cv-earlier__link">
+              {p.youtube
+                ? <img src={`https://img.youtube.com/vi/${p.youtube}/hqdefault.jpg`} alt="" loading="lazy" class="cv-earlier__thumb" />
+                : <div class="cv-earlier__thumb cv-earlier__thumb--empty"><span>{p.title}</span></div>}
+              <div class="cv-earlier__body">
+                <h3>{p.title}</h3>
+                <p class="cv-earlier__meta">{p.meta}</p>
+                <p class="cv-earlier__desc">{p.desc}</p>
+                <span class="cv-earlier__more">Learn more &rarr;</span>
+              </div>
+            </a>
           </li>
         ))}
       </ul>
-    )}
+    </div>
   </section>
 
-  <!-- ── Contact ─────────────────────────────────────────────── -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Get in contact</h2>
-    </div>
-    <div class="contact-block">
-      <p>Feel free to reach out if you are interested in my work, have any questions, or just want to say hi!</p>
-      <p>You can reach me at <a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a>.</p>
+  <!-- ── From the blog ──────────────────────────────── -->
+  {posts.length > 0 && (
+    <section class="cv-section cv-section--white cv-blog" id="writing">
+      <div class="tla-container">
+        <div class="tla-section-header tla-fade">
+          <span class="tla-overline">Writing</span>
+          <h2>From the blog</h2>
+          <div class="tla-divider"></div>
+        </div>
+        <ul class="cv-blog__grid">
+          {posts.map((post) => (
+            <li class="tla-value-card tla-fade">
+              <a href={`/blog/${post.slug}/`} class="cv-blog__link">
+                <p class="cv-blog__date">
+                  <time datetime={post.date}>
+                    {new Date(post.date).toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" })}
+                  </time>
+                </p>
+                <h3>{decodeHTML(post.title.rendered)}</h3>
+                <div class="cv-blog__excerpt" set:html={post.excerpt.rendered} />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="cv-blog__all"><a href="/blog/" class="tla-btn tla-btn--outline tla-btn--sm">All posts</a></p>
+      </div>
+    </section>
+  )}
+
+  <!-- ── Contact ────────────────────────────────────── -->
+  <section class="tla-contact" id="contact">
+    <div class="tla-container">
+      <span class="tla-overline tla-fade">Get in touch</span>
+      <h2 class="tla-fade tla-d1">Let&rsquo;s work together</h2>
+      <p class="tla-fade tla-d2">Interested in working together, on a museum project or otherwise? I&rsquo;d like to hear from you.</p>
+      <div class="tla-contact__actions tla-fade tla-d3">
+        <a href="/contact/" class="tla-btn tla-btn--gold">Send a message</a>
+        <a href={LINKEDIN} class="tla-btn tla-btn--ghost" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+      </div>
+      <p class="tla-contact__email tla-fade tla-d3"><a href="mailto:info.mvdvl@gmail.com">info.mvdvl@gmail.com</a></p>
     </div>
   </section>
 
 </Layout>
-
-<Fragment slot="body-end">
-<script is:inline>
-(function () {
-
-// ═══════════════════════════════════════════════════════════════════
-// PROJECT CONFIG — edit your project cards here
-// ═══════════════════════════════════════════════════════════════════
-// title   : project name
-// meta    : subtitle / tech stack shown below the title
-// image   : static image path, e.g. '/images/projects/myproject.jpg'
-//           → set to null if you use youtube instead
-// youtube : any YouTube URL (youtu.be/ID  or  watch?v=ID)
-//           → set to null if you use image instead
-//           → youtube takes priority when both are set
-// desc    : description paragraph on the card
-// link    : optional button  →  { label: 'Visit', href: 'https://...' }
-//           set to null for no button
-// ═══════════════════════════════════════════════════════════════════
-var PROJECTS = [
-  {
-    title:   'Meijel Museum',
-    meta:    'Interactive Touch-Screen Installation · Museum',
-    image:   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcy-9dPnImDKqCkmfymIThv7mLA-2zTguw_g&s',
-    youtube: null,
-    desc:    'Interactive touch-screen table installation for Meijel Museum — a historical time-slider map and AI-powered conversation with a historical figure.',
-    link:    null,
-    page:    '/resume/projects/meijel-museum/',
-  },
-  {
-    title:   'Garbage Gary',
-    meta:    'Interactive Museum Exhibit · Unity · Touch Screen',
-    image:   null,
-    youtube: 'https://youtu.be/Nn0hLqFrPOk',
-    desc:    'Interactive touch-screen exhibit for the Oyfo technology museum — an educational game for children built in Unity, delivered as a museum-ready installation.',
-    link:    { label: 'Play Game', href: 'https://daanvanleeuwen.itch.io/viktor-vuilnis' },
-    page:    '/resume/projects/garbage-gary/',
-  },
-  {
-    title:   'Amsterdam Rederij',
-    meta:    'Immersive VR · 3D Production · Motion Capture',
-    image:   null,
-    youtube: 'https://youtu.be/sfveQ_2cajM?si=3svZRFPYH1WRLxwk',
-    desc:    '70-minute immersive VR experience aboard a canal boat — passengers travel back to 1600s Amsterdam via motion-captured characters and procedural crowd systems.',
-    link:    { label: 'Watch Playlist', href: 'https://www.youtube.com/playlist?list=PLh7EOh1n0_buBScK2L7dAFNsPW2xpWRCT' },
-    page:    '/resume/projects/amsterdam-rederij/',
-  },
-  {
-    title:   'Oosterschelde',
-    meta:    '360° VR · Custom Hardware · Immersive Installation',
-    image:   null,
-    youtube: 'https://youtu.be/VprojdpSWek',
-    desc:    'Immersive 360° underwater VR experience for public binoculars on the Oosterschelde dike — custom hardware installation bringing the seabed to non-divers.',
-    link:    null,
-    page:    '/resume/projects/oosterschelde/',
-  },
-  {
-    title:   'Python Autorigger',
-    meta:    'Graduation Project · Python · Flask · MayaPy',
-    image:   null,
-    youtube: 'https://youtu.be/zupK9LBxZwk',
-    desc:    'Web-based automatic rigging tool for remote motion-capture sessions, built as a graduation project at Het Nieuwe Kader / TPose.',
-    link:    { label: 'View on GitHub', href: 'https://github.com/DanTheLion-LA/Maya-Python-Autorigger' },
-    page:    '/resume/projects/python-autorigger/',
-  },
-  {
-    title:   'Martens Beton',
-    meta:    'Product Visualisation · Blender 3D',
-    image:   null,
-    youtube: 'https://youtu.be/AVFDtIFl_yc',
-    desc:    'Animated product video showcasing the innovative rolling-ring sewer pipe system for Martens Beton.',
-    link:    null,
-    page:    '/resume/projects/martens-beton/',
-  },
-  {
-    title:   'Lucardi',
-    meta:    'Product Showcase · Blender 3D',
-    image:   'https://i9.ytimg.com/vi_webp/bbm4KqhNv1E/mq2.webp?sqp=CJi9wM4G-oaymwEoCMACELQB8quKqQMcGADwAQH4AbYIgAK4CIoCDAgAEAEYZSBlKGUwDw==&rs=AOn4CLAg_IDQMhBgqI6J9mGK5QTTxAtOGg',
-    youtube: null,
-    desc:    'Photorealistic 3D jewellery showcase with diamond refraction and layered rendering.',
-    link:    { label: 'Watch on YouTube', href: 'https://youtube.com/shorts/bbm4KqhNv1E' },
-    page:    '/resume/projects/lucardi/',
-  },
-  {
-    title:   'Werken bij Schiphol',
-    meta:    'On-site Recording · Greenscreen · 360° Tour',
-    image:   'https://www.werkopschiphol.nl/App_SkinMaster/images/og-image.jpg',
-    youtube: null,
-    desc:    'Interactive 360° career orientation experience with on-site greenscreen interviews at Schiphol Airport.',
-    link:    null,
-    page:    '/resume/projects/werken-bij-schiphol/',
-  },
-];
-
-// ── Helpers ─────────────────────────────────────────────────────────
-function toEmbedUrl(url) {
-  var m = url.match(/(?:youtu\.be\/|[?&]v=)([\w-]{11})/);
-  return m ? 'https://www.youtube.com/embed/' + m[1] + '?rel=0' : url;
-}
-
-// ── Build cards ─────────────────────────────────────────────────────
-var track  = document.getElementById('carousel-track');
-var dotsEl = document.getElementById('carousel-dots');
-if (!track) return;
-
-PROJECTS.forEach(function (p) {
-  var card = document.createElement('div');
-  card.className = 'project-card';
-
-  var heroHtml;
-  if (p.youtube) {
-    heroHtml = '<div class="project-card-hero"><iframe src="' + toEmbedUrl(p.youtube)
-      + '" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"'
-      + ' allowfullscreen></iframe></div>';
-  } else if (p.image) {
-    heroHtml = '<div class="project-card-hero"><img src="' + p.image
-      + '" alt="' + p.title + '" loading="lazy"></div>';
-  } else {
-    heroHtml = '<div class="project-card-hero project-card-hero--empty"><span>' + p.title + '</span></div>';
-  }
-
-  var btns = '';
-  if (p.page) {
-    btns += '<a href="' + p.page + '" class="button-ghost proj-card-btn">Learn more →</a>';
-  }
-  if (p.link) {
-    btns += '<a href="' + p.link.href + '" class="button-ghost proj-card-btn" target="_blank" rel="noopener noreferrer">'
-      + p.link.label + '</a>';
-  }
-
-  card.innerHTML = heroHtml
-    + '<div class="project-card-body">'
-    + '<h3 class="project-card-title">' + p.title + '</h3>'
-    + '<p class="project-card-meta">' + p.meta + '</p>'
-    + '<p class="project-card-desc">' + p.desc + '</p>'
-    + (btns ? '<div class="proj-card-btns">' + btns + '</div>' : '')
-    + '</div>';
-
-  track.appendChild(card);
-});
-
-// ── Carousel navigation ──────────────────────────────────────────────
-function cpv() { return window.innerWidth >= 680 ? 2 : 1; }
-
-function cardStride() {
-  var first = track.firstElementChild;
-  if (!first) return 300;
-  return first.offsetWidth + (parseFloat(getComputedStyle(track).gap) || 24);
-}
-
-function buildDots() {
-  dotsEl.innerHTML = '';
-  var n = Math.ceil(PROJECTS.length / cpv());
-  for (var i = 0; i < n; i++) {
-    (function (idx) {
-      var d = document.createElement('button');
-      d.className = 'carousel-dot';
-      d.setAttribute('aria-label', 'Slide ' + (idx + 1));
-      d.addEventListener('click', function () { goTo(idx); });
-      dotsEl.appendChild(d);
-    })(i);
-  }
-  updateDots();
-}
-
-function updateDots() {
-  var stride = cardStride();
-  var slide  = stride > 0 ? Math.round(track.scrollLeft / (stride * cpv())) : 0;
-  dotsEl.querySelectorAll('.carousel-dot')
-    .forEach(function (d, i) { d.classList.toggle('active', i === slide); });
-}
-
-function goTo(slideIdx) {
-  track.scrollTo({ left: slideIdx * cardStride() * cpv(), behavior: 'smooth' });
-}
-
-document.querySelector('.carousel-prev')
-  .addEventListener('click', function () { track.scrollBy({ left: -cardStride(), behavior: 'smooth' }); });
-document.querySelector('.carousel-next')
-  .addEventListener('click', function () { track.scrollBy({ left:  cardStride(), behavior: 'smooth' }); });
-
-track.addEventListener('scroll', updateDots, { passive: true });
-window.addEventListener('resize', buildDots);
-buildDots();
-
-})();
-</script>
-</Fragment>
