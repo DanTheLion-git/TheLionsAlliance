@@ -1,0 +1,116 @@
+---
+import Layout from "../../../layouts/ResumeLayout.astro";
+const IMG = "/images/projects/wired-workers";
+const ITCH_PAGE  = "https://daanvanleeuwen.itch.io/wiredworkers-v2";
+const ITCH_EMBED = "https://itch.io/embed-upload/4318294?color=313131";
+
+// Product models made for the showroom, published on Sketchfab
+const MODELS = [
+  { uid: "32fd98f30c324f98b46de2a93c2c3399", title: "Franka Emika Panda" },
+  { uid: "6b6aba7cc2874901b7fb72b42c4997cf", title: "OnRobot 3FG15 gripper demo" },
+  { uid: "95d410bd91964ad2a474a537817c51d0", title: "Conveyor belt" },
+  { uid: "868aadb8ff4d4cdeaaeb4beb06cf5d3c", title: "TrippleA mobile cart" },
+];
+---
+
+<!-- TODO(Daniel): confirm Wired Workers is fine with the showroom being shown here (it's already public on itch.io). -->
+<Layout title="Wired Workers Virtual Showroom — Daniël van Leeuwen" description="A playable Unity WebGL showroom for collaborative robots, built for Wired Workers.">
+
+  <div class="project-page">
+
+    <a href="/resume/#earlier-work" class="project-back">← Back to earlier work</a>
+
+    <div class="project-hero">
+      <p class="hero-tagline">Client Project · Wired Workers · 2020 – 2021</p>
+      <h1 class="project-title">Virtual Showroom</h1>
+      <p class="project-subtitle">A browser-based 3D showroom where customers walk through working cobot set-ups — my first industry job, built alongside my studies</p>
+      <div class="project-tags">
+        <span class="project-tag">Unity</span>
+        <span class="project-tag">WebGL</span>
+        <span class="project-tag">C#</span>
+        <span class="project-tag">Maya</span>
+        <span class="project-tag">Blender</span>
+        <span class="project-tag">Substance Painter</span>
+      </div>
+    </div>
+
+    <!-- Playable build, hosted on itch.io. The build draws into a fixed 1920×1080
+         canvas, so the iframe is rendered at that size and scaled to fit the column. -->
+    <div class="cv-embed" id="showroom">
+      <div class="cv-embed__stage">
+        <button type="button" class="cv-embed__launch" style={`background-image:url(${IMG}/poster.webp)`}>
+          <span class="cv-embed__launch-label">Launch the showroom</span>
+          <span class="cv-embed__launch-note">Unity WebGL · about 110 MB download · desktop browser recommended</span>
+        </button>
+      </div>
+      <p class="cv-embed__links"><a href={ITCH_PAGE} target="_blank" rel="noopener">Open full-screen on itch.io →</a></p>
+    </div>
+
+    <div class="project-video-wrap cv-embed__fallback">
+      <video class="project-loop" src={`${IMG}/trailer.mp4`} poster={`${IMG}/poster.webp`} controls playsinline preload="metadata"></video>
+    </div>
+
+    <div class="project-grid">
+
+      <section class="project-section">
+        <h2>Project Overview</h2>
+        <p>Wired Workers sells and integrates collaborative robots: robot arms, grippers, feeders and complete work cells. To show customers those set-ups without bringing them to a physical demo floor, I built a virtual showroom that runs straight in the browser: a factory hall with live, animated robot cells that visitors can walk through and inspect.</p>
+      </section>
+
+      <section class="project-section">
+        <h2>What I built</h2>
+        <p>I modelled and textured the products, from Universal Robots, Franka Emika and Techman arms to OnRobot grippers and complete palletising and machine-tending cells, and assembled them into the showroom in Unity. Over more than fifty iterative builds I added a custom loading screen, product-information panels, an in-world video menu and a trailer, while keeping the WebGL download small enough to load in a browser.</p>
+      </section>
+
+      <section class="project-section">
+        <h2>Context</h2>
+        <p>This was my first role in the industry, as a junior VR developer working alongside my study. It taught me the whole real-time pipeline end to end, from CAD and STEP files to optimised game-ready assets to a web build that customers open in their own browser.</p>
+      </section>
+
+      <section class="project-section">
+        <h2>Technical Details</h2>
+        <p>Unity 2019.3 with a WebGL 2.0 target. Products arrived as CAD or STEP data and were retopologised in Maya and Blender, textured in Substance Painter, and animated to show each cell's actual motion.</p>
+      </section>
+
+    </div>
+
+    <h2 class="project-subhead">Product models</h2>
+    <p class="project-subnote">A selection of the models made for the showroom. Drag to rotate.</p>
+    <div class="project-sketchfab">
+      {MODELS.map((m) => (
+        <figure>
+          <iframe title={m.title} src={`https://sketchfab.com/models/${m.uid}/embed?ui_theme=dark&ui_infos=0&ui_watermark=0`} loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
+          <figcaption>{m.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="project-section project-section--links">
+      <a href={ITCH_PAGE} class="button-ghost" target="_blank" rel="noopener">Play on itch.io →</a>
+      <a href="https://sketchfab.com/superwortel/models" class="button-ghost" target="_blank" rel="noopener">All models on Sketchfab →</a>
+    </div>
+
+  </div>
+
+  <script define:vars={{ ITCH_EMBED }}>
+    const wrap  = document.getElementById('showroom');
+    const stage = wrap?.querySelector('.cv-embed__stage');
+    const btn   = wrap?.querySelector('.cv-embed__launch');
+
+    btn?.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = ITCH_EMBED;
+      frame.title = 'Wired Workers Virtual Showroom';
+      frame.allow = 'autoplay; fullscreen *';
+      frame.allowFullscreen = true;
+      frame.className = 'cv-embed__frame';
+      stage.replaceChildren(frame);
+
+      // Scale the fixed 1920×1080 canvas down to the column width.
+      const fit = () => { frame.style.transform = `scale(${stage.clientWidth / 1920})`; };
+      new ResizeObserver(fit).observe(stage);
+      fit();
+    });
+  </script>
+
+</Layout>

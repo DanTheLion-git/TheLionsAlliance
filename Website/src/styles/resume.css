@@ -335,6 +335,99 @@
 .post-content th { background: var(--tla-bg-alt); font-weight: 600; }
 .post-content hr { border: 0; border-top: 1px solid var(--tla-border); margin: 2rem 0; }
 
+/* ── Earlier work groups ──────────────────────────────── */
+.cv-earlier__group {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+.cv-earlier__group--small { font-size: 1.25rem; margin-top: 56px; color: var(--tla-text-body); }
+.cv-earlier__grid--small { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
+.cv-earlier__card--small { background: transparent; }
+.cv-earlier__card--small .cv-earlier__thumb { aspect-ratio: 16 / 10; }
+.cv-earlier__card--small .cv-earlier__body { padding: 12px 14px 14px; }
+.cv-earlier__card--small h3 { font-size: 1.05rem; }
+.cv-earlier__card--small .cv-earlier__desc { font-size: .78rem; }
+
+/* ── Project page media ───────────────────────────────── */
+.project-video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.project-video-wrap--wide { aspect-ratio: 1920 / 820; }
+.project-figure { margin: 0 0 32px; }
+.project-figure img { width: 100%; border-radius: var(--tla-radius-lg); border: 1px solid var(--tla-border); }
+.project-figure figcaption { font-size: .82rem; color: var(--tla-text-muted); margin-top: 10px; }
+.project-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0 32px; }
+.project-detail-grid img { width: 100%; border-radius: var(--tla-radius-md); border: 1px solid var(--tla-border); }
+.project-gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 14px; }
+.project-gallery img { width: 100%; border-radius: var(--tla-radius-sm); }
+.project-subhead { font-size: 1.8rem; font-weight: 400; margin: 48px 0 6px; }
+.project-subnote { font-size: .875rem; color: var(--tla-text-muted); margin-bottom: 18px; }
+.project-sketchfab { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+.project-sketchfab iframe {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--tla-border);
+  border-radius: var(--tla-radius-md);
+  background: var(--tla-bg-dark);
+}
+.project-sketchfab figcaption { font-size: .8rem; color: var(--tla-text-muted); margin-top: 6px; }
+
+/* ── Click-to-load scaled embed (Wired Workers showroom) ── */
+.cv-embed { margin-bottom: 32px; }
+.cv-embed__stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--tla-radius-lg);
+  border: 1px solid var(--tla-border);
+  background: #313131;
+}
+.cv-embed__frame {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1920px;
+  height: 1080px;
+  border: 0;
+  transform-origin: 0 0;
+}
+.cv-embed__launch {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+}
+.cv-embed__launch::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 40, 38, .45);
+  transition: background .25s;
+}
+.cv-embed__launch:hover::before { background: rgba(44, 40, 38, .3); }
+.cv-embed__launch-label {
+  position: relative;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: var(--tla-gold);
+  color: var(--tla-white);
+  font-weight: 600;
+  font-size: .95rem;
+}
+.cv-embed__launch-note { position: relative; color: var(--tla-text-light); font-size: .8rem; }
+.cv-embed__links { margin-top: 10px; font-size: .85rem; text-align: right; }
+.cv-embed__links a { color: var(--tla-gold-dim); }
+.cv-embed__links a:hover { color: var(--tla-gold); }
+/* Desktop: playable embed. Mobile: trailer instead (Unity 2019 WebGL isn't mobile-friendly). */
+.cv-embed__fallback { display: none; }
+
 /* ── Responsive ───────────────────────────────────────── */
 @media (max-width: 1180px) {
   .cv-now__grid { grid-template-columns: repeat(3, 1fr); }
@@ -351,6 +444,9 @@
   .cv-entry__dates { padding-top: 0; }
   .cv-skills { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+  .project-gallery, .project-detail-grid, .project-sketchfab { grid-template-columns: 1fr; }
+  .cv-embed { display: none; }
+  .cv-embed__fallback { display: block; }
 }
 @media (max-width: 480px) {
   .post-card-link { flex-direction: column; }
@@ -414,6 +510,8 @@
   .cv-chips li:not(:last-child)::after { content: " · "; white-space: pre; }
 
   .cv-earlier__grid { display: block; }
+  .cv-earlier__group { font-size: 11pt; margin: 8pt 0 2pt; }
+  .cv-earlier__group--small, .cv-earlier__grid--small { display: none !important; }
   .cv-earlier__card { border: 0; background: none; break-inside: avoid; }
   .cv-earlier__body { padding: 2pt 0; display: block; }
   .cv-earlier__body h3 { font-size: 10.5pt; display: inline; }

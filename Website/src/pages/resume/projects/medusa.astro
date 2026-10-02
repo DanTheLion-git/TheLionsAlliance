@@ -1,0 +1,49 @@
+---
+import Layout from "../../../layouts/ResumeLayout.astro";
+const IMG = "/images/projects/medusa";
+// TODO(Daniel): official YouTube URL of "Tiara" by Manuel (and the timestamps of the Medusa shots).
+// When set, the official video is embedded below. Never self-host the music video itself.
+const MUSIC_VIDEO_ID: string | null = null;
+---
+
+<!-- TODO(Daniel): confirm how Endre Nagy wants to be credited, and the split of work between you. -->
+<Layout title="Medusa — Daniël van Leeuwen" description="Animated snake hair for the Medusa VFX shots in the music video 'Tiara' by Manuel.">
+
+  <div class="project-page">
+
+    <a href="/resume/#earlier-work" class="project-back">← Back to earlier work</a>
+
+    <div class="project-hero">
+      <p class="hero-tagline">Freelance VFX · with Endre Nagy · 2024</p>
+      <h1 class="project-title">Medusa</h1>
+      <p class="project-subtitle">Animated snake hair for a handful of Medusa VFX shots in the music video for "Tiara" by Hungarian artist Manuel</p>
+      <div class="project-tags">
+        <span class="project-tag">Blender</span>
+        <span class="project-tag">Animation</span>
+        <span class="project-tag">VFX</span>
+      </div>
+    </div>
+
+    <div class="project-video-wrap">
+      <video class="project-loop" src={`${IMG}/loop.mp4`} poster={`${IMG}/poster.webp`} autoplay muted loop playsinline preload="metadata"></video>
+    </div>
+
+    <div class="project-grid">
+      <section class="project-section">
+        <h2>Project Overview</h2>
+        <p>Together with VFX artist Endre Nagy, I created the Medusa hair for a few short shots in the music video: a crown of animated snakes in place of hair. Above is the animation as I delivered it, rendered in Blender on a neutral head, ready to be composited into the final shots.</p>
+      </section>
+    </div>
+
+    {MUSIC_VIDEO_ID && (
+      <>
+        <h2 class="project-subhead">The final music video</h2>
+        <div class="project-video-wrap">
+          <iframe src={`https://www.youtube.com/embed/${MUSIC_VIDEO_ID}`} title="Manuel — Tiara (official music video)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </>
+    )}
+
+  </div>
+
+</Layout>

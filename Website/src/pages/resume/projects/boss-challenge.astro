@@ -1,0 +1,43 @@
+---
+import Layout from "../../../layouts/ResumeLayout.astro";
+const IMG = "/images/projects/boss-challenge";
+---
+
+<!-- TODO(Daniel): the challenge's name and organiser, and exactly what came from the starter files
+     versus what you built (the ship boss? the Houdini crowd sim?). -->
+<Layout title="Boss Challenge — Daniël van Leeuwen" description="An unfinished Unreal Engine art-challenge entry: a pirate harbour town rendered in real time.">
+
+  <div class="project-page">
+
+    <a href="/resume/#earlier-work" class="project-back">← Back to earlier work</a>
+
+    <div class="project-hero">
+      <p class="hero-tagline">Personal Project · Art Challenge · August 2023</p>
+      <h1 class="project-title">Boss Challenge</h1>
+      <p class="project-subtitle">A real-time cinematic test in Unreal Engine: a pirate harbour town at golden hour, staged for a boss fight against a ship</p>
+      <div class="project-tags">
+        <span class="project-tag">Unreal Engine</span>
+        <span class="project-tag">Maya</span>
+        <span class="project-tag">Houdini</span>
+        <span class="project-tag">Lighting</span>
+      </div>
+    </div>
+
+    <div class="project-video-wrap">
+      <video class="project-loop" src={`${IMG}/loop.mp4`} poster={`${IMG}/poster.webp`} autoplay muted loop playsinline preload="metadata"></video>
+    </div>
+
+    <div class="project-grid">
+      <section class="project-section">
+        <h2>Project Overview</h2>
+        <p>An entry for an online art challenge, built around a boss fight. I never finished or submitted it, but the last test render shows what the scene was heading towards and what real-time rendering in Unreal Engine could already do in the summer of 2023.</p>
+      </section>
+      <section class="project-section">
+        <h2>What I did</h2>
+        <p>The town is dressed from a purchased environment kit and the challenge's starter files. On top of that, I worked on composition, lighting, the camera and the character and crowd animation set-up, using motion-capture clips and a crowd simulation prepared in Houdini.</p>
+      </section>
+    </div>
+
+  </div>
+
+</Layout>

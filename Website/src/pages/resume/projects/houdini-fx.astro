@@ -1,0 +1,44 @@
+---
+import Layout from "../../../layouts/ResumeLayout.astro";
+const IMG = "/images/projects/houdini-fx";
+---
+
+<!-- TODO(Daniel): confirm the creature scene / plate was supplied (scene file is named rebelway_fx_scene),
+     and how it should be credited. -->
+<Layout title="Houdini FX Study — Daniël van Leeuwen" description="A Houdini effects study: particle, energy and simulation effects composited onto a creature battle.">
+
+  <div class="project-page">
+
+    <a href="/resume/#earlier-work" class="project-back">← Back to earlier work</a>
+
+    <div class="project-hero">
+      <p class="hero-tagline">VFX Study · 2022</p>
+      <h1 class="project-title">Houdini FX Study</h1>
+      <p class="project-subtitle">Energy, spark and simulation effects for a short creature-battle shot, made as a skills test for a VFX training programme</p>
+      <div class="project-tags">
+        <span class="project-tag">Houdini</span>
+        <span class="project-tag">FLIP</span>
+        <span class="project-tag">Particles</span>
+        <span class="project-tag">Arnold / Mantra</span>
+        <span class="project-tag">After Effects</span>
+      </div>
+    </div>
+
+    <div class="project-video-wrap project-video-wrap--wide">
+      <video class="project-loop" src={`${IMG}/loop.mp4`} poster={`${IMG}/poster.webp`} autoplay muted loop playsinline preload="metadata"></video>
+    </div>
+
+    <div class="project-grid">
+      <section class="project-section">
+        <h2>Project Overview</h2>
+        <p>A ten-day effects test on a supplied creature-battle shot: glowing energy veins, an impact burst of sparks, and simulated elements, rendered and composited into a single cinematic frame. Progress was tracked day by day, from first sims to final comp.</p>
+      </section>
+      <section class="project-section">
+        <h2>Context</h2>
+        <p>The test was the entry to a VFX training programme that was meant to lead into the film industry. The programme was discontinued before it started, but the test became a concentrated deep-dive into Houdini's simulation and rendering pipeline.</p>
+      </section>
+    </div>
+
+  </div>
+
+</Layout>

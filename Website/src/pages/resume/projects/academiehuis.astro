@@ -1,0 +1,65 @@
+---
+import Layout from "../../../layouts/ResumeLayout.astro";
+const IMG = "/images/projects/academiehuis";
+---
+
+<!-- TODO(Daniel): confirm the trail's public name, the venue name (Academiehuis De Grote Kerk, Zwolle?),
+     whether it is live, who made the Michael illustration, and that Enversed/the venue are OK with it being shown. -->
+<Layout title="Academiehuis Zwolle — Daniël van Leeuwen" description="Animated dialogue panels, route maps and year countdowns for a children's discovery trail through a historic church in Zwolle.">
+
+  <div class="project-page">
+
+    <a href="/resume/#earlier-work" class="project-back">← Back to earlier work</a>
+
+    <div class="project-hero">
+      <p class="hero-tagline">Client Project · Enversed Studios · 2025</p>
+      <h1 class="project-title">Academiehuis Zwolle</h1>
+      <p class="project-subtitle">Animated dialogue panels for a children's puzzle trail through a historic church — the archangel Michael guides young visitors to the building's hidden stories</p>
+      <div class="project-tags">
+        <span class="project-tag">After Effects</span>
+        <span class="project-tag">Photoshop</span>
+        <span class="project-tag">Illustrator</span>
+        <span class="project-tag">Motion Design</span>
+        <span class="project-tag">Heritage</span>
+      </div>
+    </div>
+
+    <div class="project-video-wrap">
+      <video class="project-loop" src={`${IMG}/montage.mp4`} poster={`${IMG}/panel.webp`} autoplay muted loop playsinline preload="metadata"></video>
+    </div>
+
+    <div class="project-grid">
+
+      <section class="project-section">
+        <h2>Project Overview</h2>
+        <p>A puzzle game takes children through the church in Zwolle, room by room, to discover the secrets the building holds. At every stop, the archangel Michael appears on screen to tell part of the story, set the next puzzle, or point the way.</p>
+        <p>I produced the complete set of on-screen clips for the trail: more than forty short dialogue panels, nine animated route maps and nine year countdowns, each built to slot straight into the game.</p>
+      </section>
+
+      <section class="project-section">
+        <h2>Three clip formats</h2>
+        <p><strong>Dialogue panels</strong>: Michael enters, gestures and speaks through a torn-paper caption over a photo of the spot where the children are standing.</p>
+        <p><strong>Route maps</strong>: a dashed line draws across the historic floor plan to the next location.</p>
+        <p><strong>Year countdowns</strong>: an old postcard of the church while the year rolls back to the moment the next story takes place.</p>
+      </section>
+
+      <section class="project-section">
+        <h2>Approach</h2>
+        <p>The illustrated Michael was cut into separate layers in Photoshop — wings, arms, sword, feathers — and rigged as a puppet in After Effects, so one artwork could carry dozens of poses: flying, thinking, remembering, hurt, fallen. Each clip also exports a still of its final frame, so the game can hold a panel on screen for as long as a child needs to read it.</p>
+      </section>
+
+      <section class="project-section">
+        <h2>Why it matters</h2>
+        <p>It is a small production, but it shows how a heritage venue can tell its story to children without building a full app: one consistent character, a recognisable visual language and short, reusable clips. That is the same thinking behind the studio's museum work today.</p>
+      </section>
+
+      <section class="project-section project-gallery">
+        <img src={`${IMG}/panel.webp`} alt="Dialogue panel: Michael beside a caption over carved graffiti on an old church bench" loading="lazy" />
+        <img src={`${IMG}/route.webp`} alt="Route map: a dashed red line across the historic floor plan of the church" loading="lazy" />
+        <img src={`${IMG}/countdown.webp`} alt="Year countdown: an old postcard of the church interior with the year rolling back" loading="lazy" />
+      </section>
+
+    </div>
+  </div>
+
+</Layout>

@@ -1,0 +1,57 @@
+---
+import Layout from "../../../layouts/ResumeLayout.astro";
+const IMG = "/images/projects/isometric-game-boards";
+---
+
+<!-- TODO(Daniel): confirm the two games' names, whether they are live, your exact scope
+     (modelling / layout / rendering / the label sheet), and that the clients are OK with it being shown. -->
+<Layout title="Isometric Game Boards — Daniël van Leeuwen" description="Stylised isometric Blender renders used as game boards for two serious games.">
+
+  <div class="project-page">
+
+    <a href="/resume/#earlier-work" class="project-back">← Back to earlier work</a>
+
+    <div class="project-hero">
+      <p class="hero-tagline">Client Project · Enversed Studios · 2025</p>
+      <h1 class="project-title">Isometric Game Boards</h1>
+      <p class="project-subtitle">Stylised, cut-away isometric buildings rendered in Blender as the playing field for two serious games</p>
+      <div class="project-tags">
+        <span class="project-tag">Blender</span>
+        <span class="project-tag">Cycles</span>
+        <span class="project-tag">Isometric</span>
+        <span class="project-tag">Serious Games</span>
+      </div>
+    </div>
+
+    <figure class="project-figure">
+      <img src={`${IMG}/annazorg.webp`} alt="Isometric game board for AnnaZorg: a hospital, elderly-care home and sports-care wing with 24 numbered rooms" />
+      <figcaption>AnnaZorg — a serious-game board with 24 numbered rooms across three care settings: hospital, elderly care and sports care.</figcaption>
+    </figure>
+
+    <div class="project-grid">
+
+      <section class="project-section">
+        <h2>Project Overview</h2>
+        <p>Both games needed a single, readable overview of an entire building that players can explore room by room. I designed and rendered each one as a cut-away isometric model, so every room is visible at once and instantly recognisable by its furniture and colour.</p>
+      </section>
+
+      <section class="project-section">
+        <h2>Approach</h2>
+        <p>The buildings are modelled in a clean, slightly stylised style: low-poly trees, soft lighting, no clutter. That keeps the boards friendly and legible at any size. Each final render runs to 8K or more, so the game can zoom deep into any room without losing detail.</p>
+      </section>
+
+    </div>
+
+    <div class="project-detail-grid">
+      <img src={`${IMG}/annazorg-detail.webp`} alt="Detail of the AnnaZorg board: coffee bar, lab room and treatment room" loading="lazy" />
+      <img src={`${IMG}/vandenbuijs-detail.webp`} alt="Detail of the school board: a science classroom with microscopes and lab benches" loading="lazy" />
+    </div>
+
+    <figure class="project-figure">
+      <img src={`${IMG}/vandenbuijs.webp`} alt="Isometric game board of a school building with sports hall, classrooms, canteen and technical room" loading="lazy" />
+      <figcaption>Van den Buijs — a school building, from sports hall and science lab to canteen and technical room.</figcaption>
+    </figure>
+
+  </div>
+
+</Layout>

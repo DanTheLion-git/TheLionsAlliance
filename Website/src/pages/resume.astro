@@ -24,7 +24,7 @@ const EXPERIENCE = [
     role:  "3D Animation & Video Developer",
     org:   "Enversed Studios",
     dates: "Dec 2023 – Feb 2026",
-    desc:  "Took VRVoyage — a 70-minute 360° VR canal-boat journey through Golden Age Amsterdam, now a live tourist attraction — to completion as a near one-person production: modelling, procedural crowds in Geometry Nodes, Xsens motion capture and rendering. Also produced the Oosterschelde underwater VR binoculars, an on-site greenscreen 360° recruitment tour for Schiphol, and product visualisations for Martens Beton and Lucardi.",
+    desc:  "Took VRVoyage — a 70-minute 360° VR canal-boat journey through Golden Age Amsterdam, now a live tourist attraction — to completion as a near one-person production: modelling, procedural crowds in Geometry Nodes, Xsens motion capture and rendering. Also produced the Oosterschelde underwater VR binoculars, an on-site greenscreen 360° recruitment tour for Schiphol, animated dialogue panels for a children's discovery trail through a historic church in Zwolle, isometric game boards for two serious games, and product visualisations for Martens Beton and Lucardi.",
   },
   {
     role:  "Graduation Intern",
@@ -42,7 +42,7 @@ const EXPERIENCE = [
     role:  "Junior VR Developer",
     org:   "Wired Workers",
     dates: "Jul 2020 – Aug 2021",
-    desc:  "Built a WebGL digital showroom for collaborative robot arms, including the 3D models and animations.",
+    desc:  "Built a Unity WebGL virtual showroom for collaborative robots, alongside my studies, including the product models, animations and more than fifty iterative web builds.",
   },
 ];
 
@@ -66,59 +66,108 @@ const SKILLS = [
   },
 ];
 
-// ── Earlier work (client & student projects before the studio) ──
-// youtube: video ID used for the thumbnail; null shows a text placeholder.
-const EARLIER = [
+// ── Earlier work: client & student projects before the studio ──
+// thumb: local image; youtube: video ID used for the thumbnail; neither shows a text placeholder.
+type Earlier = { title: string; meta: string; desc: string; page: string; thumb?: string; youtube?: string };
+
+const CLIENT_WORK: Earlier[] = [
   {
     title:   "VRVoyage",
-    meta:    "Client project · Enversed Studios · 360° VR",
+    meta:    "Enversed Studios · 360° VR",
     youtube: "sfveQ_2cajM",
     desc:    "70-minute 360° VR journey aboard a canal boat through Golden Age Amsterdam, with motion-captured characters and procedural crowds.",
     page:    "/resume/projects/amsterdam-rederij/",
   },
   {
+    title:   "Academiehuis Zwolle",
+    meta:    "Enversed Studios · Motion design",
+    thumb:   "/images/projects/academiehuis/thumb.webp",
+    desc:    "Animated dialogue panels, route maps and year countdowns for a children's discovery trail through a historic church.",
+    page:    "/resume/projects/academiehuis/",
+  },
+  {
+    title:   "Virtual Showroom",
+    meta:    "Wired Workers · Unity WebGL · playable",
+    thumb:   "/images/projects/wired-workers/thumb.webp",
+    desc:    "Browser-based 3D showroom for collaborative robots, with product models built for the job. Playable on the page.",
+    page:    "/resume/projects/wired-workers-showroom/",
+  },
+  {
+    title:   "Isometric Game Boards",
+    meta:    "Enversed Studios · Blender",
+    thumb:   "/images/projects/isometric-game-boards/thumb.webp",
+    desc:    "Cut-away isometric buildings rendered as the playing field for two serious games.",
+    page:    "/resume/projects/isometric-game-boards/",
+  },
+  {
     title:   "Oosterschelde VR",
-    meta:    "Client project · Enversed Studios · 360° VR",
+    meta:    "Enversed Studios · 360° VR",
     youtube: "VprojdpSWek",
     desc:    "360° underwater VR film in public binoculars on the Oosterschelde dike, bringing the seabed to non-divers.",
     page:    "/resume/projects/oosterschelde/",
   },
   {
     title:   "Werken bij Schiphol",
-    meta:    "Client project · Enversed Studios · 360° tour",
-    youtube: null,
+    meta:    "Enversed Studios · 360° tour",
     desc:    "Interactive 360° career-orientation tour with on-site greenscreen interviews at Schiphol Airport.",
     page:    "/resume/projects/werken-bij-schiphol/",
   },
   {
-    title:   "Garbage Gary",
-    meta:    "Student project · Saxion · Unity",
-    youtube: "Nn0hLqFrPOk",
-    desc:    "Touch-screen educational game made for the Oyfo technology museum.",
-    page:    "/resume/projects/garbage-gary/",
-  },
-  {
-    title:   "Python Autorigger",
-    meta:    "Graduation project · Het Nieuwe Kader · Python",
-    youtube: "zupK9LBxZwk",
-    desc:    "Web-based automatic rigging tool for remote motion-capture sessions.",
-    page:    "/resume/projects/python-autorigger/",
-  },
-  {
     title:   "Martens Beton",
-    meta:    "Client project · Enversed Studios · Blender",
+    meta:    "Enversed Studios · Blender",
     youtube: "AVFDtIFl_yc",
     desc:    "Animated product video for a rolling-ring sewer-pipe system.",
     page:    "/resume/projects/martens-beton/",
   },
   {
     title:   "Lucardi",
-    meta:    "Client project · Enversed Studios · Blender",
+    meta:    "Enversed Studios · Blender",
     youtube: "bbm4KqhNv1E",
     desc:    "Photorealistic 3D jewellery showcase with diamond refraction.",
     page:    "/resume/projects/lucardi/",
   },
 ];
+
+const STUDIES: Earlier[] = [
+  {
+    title:   "Python Autorigger",
+    meta:    "Graduation project · 2023",
+    youtube: "zupK9LBxZwk",
+    desc:    "Web-based automatic rigging tool for remote motion-capture sessions.",
+    page:    "/resume/projects/python-autorigger/",
+  },
+  {
+    title:   "Medusa",
+    meta:    "Music-video VFX · 2024",
+    thumb:   "/images/projects/medusa/thumb.webp",
+    desc:    "Animated snake hair for the music video \"Tiara\" by Manuel.",
+    page:    "/resume/projects/medusa/",
+  },
+  {
+    title:   "Boss Challenge",
+    meta:    "Unreal Engine · 2023",
+    thumb:   "/images/projects/boss-challenge/thumb.webp",
+    desc:    "Real-time cinematic test of a pirate harbour town.",
+    page:    "/resume/projects/boss-challenge/",
+  },
+  {
+    title:   "Houdini FX Study",
+    meta:    "Houdini · 2022",
+    thumb:   "/images/projects/houdini-fx/thumb.webp",
+    desc:    "Energy, spark and simulation effects for a creature battle.",
+    page:    "/resume/projects/houdini-fx/",
+  },
+  {
+    title:   "Garbage Gary",
+    meta:    "Student project · Saxion",
+    youtube: "Nn0hLqFrPOk",
+    desc:    "Touch-screen educational game for the Oyfo technology museum.",
+    page:    "/resume/projects/garbage-gary/",
+  },
+];
+
+const thumbOf = (p: Earlier) =>
+  p.thumb ?? (p.youtube ? `https://img.youtube.com/vi/${p.youtube}/hqdefault.jpg` : null);
 ---
 
 <Layout
@@ -300,18 +349,37 @@ const EARLIER = [
         <p>Client and student projects from before the studio.</p>
         <div class="tla-divider"></div>
       </div>
+      <h3 class="cv-earlier__group">Client work</h3>
       <ul class="cv-earlier__grid">
-        {EARLIER.map((p) => (
+        {CLIENT_WORK.map((p) => (
           <li class="cv-earlier__card tla-fade">
             <a href={p.page} class="cv-earlier__link">
-              {p.youtube
-                ? <img src={`https://img.youtube.com/vi/${p.youtube}/hqdefault.jpg`} alt="" loading="lazy" class="cv-earlier__thumb" />
+              {thumbOf(p)
+                ? <img src={thumbOf(p)} alt="" loading="lazy" class="cv-earlier__thumb" />
                 : <div class="cv-earlier__thumb cv-earlier__thumb--empty"><span>{p.title}</span></div>}
               <div class="cv-earlier__body">
                 <h3>{p.title}</h3>
                 <p class="cv-earlier__meta">{p.meta}</p>
                 <p class="cv-earlier__desc">{p.desc}</p>
                 <span class="cv-earlier__more">Learn more &rarr;</span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="cv-earlier__group cv-earlier__group--small">Studies &amp; side projects</h3>
+      <ul class="cv-earlier__grid cv-earlier__grid--small">
+        {STUDIES.map((p) => (
+          <li class="cv-earlier__card cv-earlier__card--small tla-fade">
+            <a href={p.page} class="cv-earlier__link">
+              {thumbOf(p)
+                ? <img src={thumbOf(p)} alt="" loading="lazy" class="cv-earlier__thumb" />
+                : <div class="cv-earlier__thumb cv-earlier__thumb--empty"><span>{p.title}</span></div>}
+              <div class="cv-earlier__body">
+                <h3>{p.title}</h3>
+                <p class="cv-earlier__meta">{p.meta}</p>
+                <p class="cv-earlier__desc">{p.desc}</p>
               </div>
             </a>
           </li>
