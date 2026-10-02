@@ -1,12 +1,10 @@
 ---
 import Layout from "../../../layouts/ResumeLayout.astro";
 const IMG = "/images/projects/medusa";
-// TODO(Daniel): official YouTube URL of "Tiara" by Manuel (and the timestamps of the Medusa shots).
-// When set, the official video is embedded below. Never self-host the music video itself.
-const MUSIC_VIDEO_ID: string | null = null;
+// Official music video (Gold Record Hungary). Embedded from YouTube — never self-host it.
+const MUSIC_VIDEO_ID: string | null = "jTvzTFpx0wc";
 ---
 
-<!-- TODO(Daniel): confirm how Endre Nagy wants to be credited, and the split of work between you. -->
 <Layout title="Medusa — Daniël van Leeuwen" description="Animated snake hair for the Medusa VFX shots in the music video 'Tiara' by Manuel.">
 
   <div class="project-page">
@@ -39,7 +37,7 @@ const MUSIC_VIDEO_ID: string | null = null;
       <>
         <h2 class="project-subhead">The final music video</h2>
         <div class="project-video-wrap">
-          <iframe src={`https://www.youtube.com/embed/${MUSIC_VIDEO_ID}`} title="Manuel — Tiara (official music video)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src={`https://www.youtube.com/embed/${MUSIC_VIDEO_ID}`} title="Manuel – Tiara | Official Music Video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </>
     )}
