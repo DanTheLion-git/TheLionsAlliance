@@ -196,6 +196,21 @@ Each prompt object:
 
 After editing: **git commit + push** → GitHub Actions redeploys in ~1–2 min.
 
+**Ids are permanent.** Each phone stores its 24-hour play history and 👍/👎 ratings by `id`, so never renumber or reuse ids — new prompts get the next free number, and a removed prompt's id stays unused.
+
+### Play history, ratings and phone handover
+
+All kept in the phone's `localStorage`, no server:
+
+| Key | Content |
+|---|---|
+| `charades-seen-v1` | `{ id: timestampMs }` — prompts shown in the last 24 h; excluded from new games |
+| `charades-ratings-v1` | `{ id: "good" \| "bad" }` — bad ones hidden while "Hide prompts rated bad" is on |
+
+"Continue on another phone" encodes both as three bitsets (played / good / bad, indexed by id) in `#sync=` on the page URL, shown as a QR code. Opening that link merges it into the other phone and strips the hash.
+
+To clean up the database: tap **Copy bad list** in setup and remove or fix those ids in `prompts.json`.
+
 ---
 
 ## 30 Seconds Prompt Database

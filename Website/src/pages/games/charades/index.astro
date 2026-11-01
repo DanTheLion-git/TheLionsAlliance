@@ -63,6 +63,24 @@ import '../../../styles/games.css';
     .btn-next { flex:2; background:var(--g-accent); color:white; font-size:1.1rem; }
 
     .progress-info { font-size:.78rem; color:var(--g-muted); text-align:center; }
+
+    /* ── Rating ─────────────────────────────────────────────────────────── */
+    .rate-row { display:flex; gap:.5rem; width:100%; }
+    .rate-btn {
+      flex:1; min-height:44px; border-radius:var(--g-radius-sm);
+      border:1.5px solid var(--g-border); background:var(--g-bg);
+      color:var(--g-muted); font-size:.85rem; font-weight:600; cursor:pointer;
+    }
+    .rate-btn.good.on { border-color:var(--g-green);  background:rgba(29,185,84,.15); color:var(--g-text); }
+    .rate-btn.bad.on  { border-color:#e94560;         background:rgba(233,69,96,.15); color:var(--g-text); }
+
+    /* ── Memory / handover ──────────────────────────────────────────────── */
+    .mem-stats { font-size:.82rem; color:var(--g-muted); line-height:1.5; }
+    .mem-actions { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .mem-actions .g-btn { flex:1 1 auto; }
+    .handover { display:flex; flex-direction:column; align-items:center; gap:.6rem; text-align:center; }
+    .handover img { width:min(260px,70vw); height:auto; background:#fff; padding:8px; border-radius:var(--g-radius-sm); }
+    .handover p { font-size:.8rem; color:var(--g-muted); margin:0; }
   </style>
 </head>
 
@@ -142,6 +160,25 @@ import '../../../styles/games.css';
       </div>
     </div>
 
+    <div class="setup-block">
+      <div class="g-label">Played &amp; ratings</div>
+      <div class="mem-stats" id="mem-stats"></div>
+      <div class="chip-group">
+        <div class="chip on" id="chip-hide-bad">👎 Hide prompts rated bad</div>
+      </div>
+      <div class="mem-actions">
+        <button class="g-btn secondary small" id="btn-handover">📲 Continue on another phone</button>
+        <button class="g-btn secondary small" id="btn-copy-bad">📋 Copy bad list</button>
+        <button class="g-btn secondary small" id="btn-reset-played">↺ Forget played</button>
+      </div>
+      <div class="handover hidden" id="handover" style="display:none;">
+        <img id="handover-qr" alt="QR code to continue on another phone" />
+        <p>Scan this with the other phone. It skips everything played in the last 24 hours and keeps your ratings.</p>
+        <button class="g-btn secondary small" id="btn-copy-link">🔗 Copy link instead</button>
+      </div>
+      <div class="mem-stats" id="mem-msg"></div>
+    </div>
+
     <div id="pool-info" class="g-alert info" style="font-size:.82rem;"></div>
     <div id="pool-warn" class="g-alert error" style="display:none;">No prompts match your filters.</div>
 
@@ -168,6 +205,11 @@ import '../../../styles/games.css';
         <span>Card hidden</span>
         <span style="font-size:.75rem;font-weight:400;">Tap "Show" to reveal</span>
       </div>
+    </div>
+
+    <div class="rate-row">
+      <button class="rate-btn good" id="btn-good">👍 Good prompt</button>
+      <button class="rate-btn bad"  id="btn-bad">👎 Bad prompt</button>
     </div>
 
     <div class="play-row">
@@ -199,7 +241,10 @@ import '../../../styles/games.css';
   <!-- ══ SCRIPTS ══════════════════════════════════════════════════════════ -->
   <script>
     // ── Types ──────────────────────────────────────────────────────────────
+    import QRCode from 'qrcode';
+
     interface Prompt {
+      id:         number;   // id from prompts.json — what play history and ratings are keyed on
       _id:        string;   // stable runtime ID
       text:       string;
       category:   string;
@@ -272,12 +317,9 @@ import '../../../styles/games.css';
 
     // ── Prompt data ────────────────────────────────────────────────────────
     let allPrompts: Prompt[] = [];
-    let nextId               = 1;
-
-    function makeId() { return `p_${nextId++}_${Math.random().toString(36).slice(2,7)}`; }
 
     function withIds(arr: Record<string,unknown>[]): Prompt[] {
-      return arr.map(p => ({ ...p, _id: (p._id as string) ?? makeId() } as unknown as Prompt));
+      return arr.map(p => ({ ...p, _id: `p_${p.id}` } as unknown as Prompt));
     }
 
     async function initPrompts() {
@@ -285,19 +327,171 @@ import '../../../styles/games.css';
       allPrompts = withIds(await res.json());
     }
 
-    // ── Pool info (setup screen) ───────────────────────────────────────────
-    function updatePoolInfo() {
+    // ── Play history (24 h) and ratings — kept on this phone ───────────────
+    // seen:    prompt id → time it was last shown (ms). Older than 24 h is dropped.
+    // ratings: prompt id → 'good' | 'bad'. Kept until changed.
+    const SEEN_KEY = 'charades-seen-v1';
+    const RATE_KEY = 'charades-ratings-v1';
+    const DAY_MS   = 24 * 60 * 60 * 1000;
+    type Rating = 'good' | 'bad';
+
+    function load<T>(key: string, fallback: T): T {
+      try { const v = localStorage.getItem(key); return v ? JSON.parse(v) as T : fallback; }
+      catch { return fallback; }
+    }
+    function save(key: string, value: unknown) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* private mode: memory only */ }
+    }
+
+    let seen:    Record<string, number> = load(SEEN_KEY, {});
+    let ratings: Record<string, Rating> = load(RATE_KEY, {});
+
+    function pruneSeen() {
+      const cutoff = Date.now() - DAY_MS;
+      let changed = false;
+      for (const k of Object.keys(seen)) if (seen[k] < cutoff) { delete seen[k]; changed = true; }
+      if (changed) save(SEEN_KEY, seen);
+    }
+    function markSeen(p: Prompt) { seen[p.id] = Date.now(); save(SEEN_KEY, seen); }
+
+    const hideBad = () => $('chip-hide-bad').classList.contains('on');
+
+    function matching(): Prompt[] {
       const langs = activeData('lang-chips', 'lang');
       const cats  = activeData('cat-chips',  'cat');
       const diffs = activeData('diff-chips', 'diff');
-      const count = allPrompts.filter(p =>
+      return allPrompts.filter(p =>
         (p.lang === 'any' || langs.includes(p.lang)) &&
         cats.includes(p.category) &&
         diffs.includes(p.difficulty)
-      ).length;
-      $('pool-info').textContent = `${count} prompt${count !== 1 ? 's' : ''} match your filters.`;
-      count > 0 ? ($('pool-warn').style.display = 'none') : ($('pool-warn').style.display = '');
+      );
     }
+    const notBad   = (list: Prompt[]) => hideBad() ? list.filter(p => ratings[p.id] !== 'bad') : list;
+    const unplayed = (list: Prompt[]) => list.filter(p => !seen[p.id]);
+
+    // ── Pool info (setup screen) ───────────────────────────────────────────
+    function updatePoolInfo() {
+      pruneSeen();
+      const match  = matching();
+      const usable = notBad(match);
+      const ready  = unplayed(usable);
+      const played = usable.length - ready.length;
+      const bad    = match.length - usable.length;
+
+      const parts = [`${ready.length} of ${match.length} matching prompts ready`];
+      if (played) parts.push(`${played} played in the last 24 h`);
+      if (bad)    parts.push(`${bad} hidden as bad`);
+      $('pool-info').textContent = parts.join(' · ') + '.';
+
+      const warn = $('pool-warn');
+      if (match.length === 0)      { warn.textContent = 'No prompts match your filters.'; warn.style.display = ''; }
+      else if (ready.length === 0) { warn.textContent = 'Everything matching was played in the last 24 hours. Widen the filters or tap "Forget played".'; warn.style.display = ''; }
+      else                         { warn.style.display = 'none'; }
+
+      updateMemStats();
+    }
+
+    function updateMemStats() {
+      const vals  = Object.values(ratings);
+      const good  = vals.filter(r => r === 'good').length;
+      const bad   = vals.filter(r => r === 'bad').length;
+      const nSeen = Object.keys(seen).length;
+      $('mem-stats').textContent =
+        `${nSeen} prompt${nSeen !== 1 ? 's' : ''} played in the last 24 h won't come back until then. Rated: ${good} 👍 · ${bad} 👎.`;
+    }
+
+    function flash(msg: string) { $('mem-msg').textContent = msg; }
+
+    // ── Hand over to another phone ─────────────────────────────────────────
+    // Three bitsets (played in last 24 h, good, bad) indexed by prompt id,
+    // packed into the URL hash so nothing is sent to a server.
+    function b64urlEncode(bytes: Uint8Array) {
+      let s = ''; bytes.forEach(b => { s += String.fromCharCode(b); });
+      return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+    function b64urlDecode(str: string) {
+      const s = atob(str.replace(/-/g, '+').replace(/_/g, '/'));
+      return Uint8Array.from(s, c => c.charCodeAt(0));
+    }
+
+    function encodeState(): string {
+      pruneSeen();
+      const ids = [...Object.keys(seen), ...Object.keys(ratings)].map(Number);
+      const maxId = Math.max(0, ...ids);
+      const len = Math.ceil((maxId + 1) / 8);
+      const out = new Uint8Array(3 + len * 3);
+      out[0] = 1; out[1] = len >> 8; out[2] = len & 255;   // version, bytes per set
+      const set = (block: number, id: number) => { out[3 + block * len + (id >> 3)] |= 1 << (id & 7); };
+      Object.keys(seen).forEach(k => set(0, Number(k)));
+      Object.entries(ratings).forEach(([k, r]) => set(r === 'good' ? 1 : 2, Number(k)));
+      return b64urlEncode(out);
+    }
+
+    function importFromHash() {
+      const m = location.hash.match(/sync=([A-Za-z0-9_-]+)/);
+      if (!m) return;
+      history.replaceState(null, '', location.pathname + location.search);
+      try {
+        const b = b64urlDecode(m[1]);
+        if (b[0] !== 1) return;
+        const len = (b[1] << 8) | b[2];
+        const has = (block: number, id: number) => (b[3 + block * len + (id >> 3)] >> (id & 7)) & 1;
+        const now = Date.now();
+        let nSeen = 0, nRated = 0;
+        for (let id = 0; id < len * 8; id++) {
+          if (has(0, id)) { seen[id] = Math.max(seen[id] ?? 0, now); nSeen++; }
+          if (has(1, id)) { ratings[id] = 'good'; nRated++; }
+          else if (has(2, id)) { ratings[id] = 'bad'; nRated++; }
+        }
+        save(SEEN_KEY, seen); save(RATE_KEY, ratings);
+        flash(`Picked up ${nSeen} played prompts and ${nRated} ratings from the other phone.`);
+      } catch { flash("That handover link couldn't be read."); }
+    }
+
+    function handoverUrl() { return `${location.origin}${location.pathname}#sync=${encodeState()}`; }
+
+    $('btn-handover').addEventListener('click', async () => {
+      const box = $('handover');
+      if (box.style.display !== 'none') { hide('handover'); return; }
+      ($('handover-qr') as HTMLImageElement).src =
+        await QRCode.toDataURL(handoverUrl(), { errorCorrectionLevel: 'L', margin: 1, width: 520 });
+      show('handover');
+    });
+
+    async function copyText(text: string, okMsg: string) {
+      try { await navigator.clipboard.writeText(text); flash(okMsg); }
+      catch { window.prompt('Copy this:', text); }
+    }
+
+    $('btn-copy-link').addEventListener('click', () => copyText(handoverUrl(), 'Link copied — open it on the other phone.'));
+
+    $('btn-copy-bad').addEventListener('click', () => {
+      const bad = allPrompts.filter(p => ratings[p.id] === 'bad');
+      if (!bad.length) { flash('No prompts rated bad yet.'); return; }
+      const text = bad.map(p => `${p.id}\t${p.text}\t(${p.category}, ${p.lang})`).join('\n');
+      copyText(text, `Copied ${bad.length} bad prompt${bad.length !== 1 ? 's' : ''}.`);
+    });
+
+    $('btn-reset-played').addEventListener('click', () => {
+      if (!confirm('Forget which prompts were played? Ratings are kept.')) return;
+      seen = {}; save(SEEN_KEY, seen); flash('Play history cleared.'); updatePoolInfo();
+    });
+
+    $('chip-hide-bad').addEventListener('click', () => { $('chip-hide-bad').classList.toggle('on'); updatePoolInfo(); });
+
+    // ── Rating the current card ────────────────────────────────────────────
+    function updateRateButtons(p: Prompt) {
+      $('btn-good').classList.toggle('on', ratings[p.id] === 'good');
+      $('btn-bad').classList.toggle('on',  ratings[p.id] === 'bad');
+    }
+    function rate(r: Rating) {
+      const p = queue[0]; if (!p) return;
+      if (ratings[p.id] === r) delete ratings[p.id]; else ratings[p.id] = r;
+      save(RATE_KEY, ratings);
+      updateRateButtons(p);
+    }
+    $('btn-good').addEventListener('click', () => rate('good'));
+    $('btn-bad').addEventListener('click',  () => rate('bad'));
 
     // ── Game ───────────────────────────────────────────────────────────────
     let queue:       Prompt[] = [];
@@ -317,17 +511,13 @@ import '../../../styles/games.css';
     }
 
     $('btn-start').addEventListener('click', () => {
-      const langs = activeData('lang-chips', 'lang');
-      const cats  = activeData('cat-chips',  'cat');
-      const diffs = activeData('diff-chips', 'diff');
+      // Re-read storage: another tab or a handover may have changed it.
+      seen    = load(SEEN_KEY, {});
+      ratings = load(RATE_KEY, {});
+      pruneSeen();
+      const filtered = unplayed(notBad(matching()));
 
-      const filtered = allPrompts.filter(p =>
-        (p.lang === 'any' || langs.includes(p.lang)) &&
-        cats.includes(p.category) &&
-        diffs.includes(p.difficulty)
-      );
-
-      if (filtered.length === 0) { $('pool-warn').style.display = ''; return; }
+      if (filtered.length === 0) { updatePoolInfo(); return; }
       $('pool-warn').style.display = 'none';
 
       queue        = shuffle(filtered);
@@ -349,6 +539,8 @@ import '../../../styles/games.css';
       if (queue.length === 0) { stopTimer(); showScreen('done'); return; }
 
       const p = queue[0];
+      markSeen(p);
+      updateRateButtons(p);
       $('play-cat').textContent  = CAT_META[p.category] ?? p.category;
       $('play-text').textContent = p.text;
       const diff = $('play-diff');
@@ -382,17 +574,11 @@ import '../../../styles/games.css';
 
     $('btn-next').addEventListener('click', () => { queue.shift(); displayCard(); });
 
-    $('btn-back-setup').addEventListener('click', () => { stopTimer(); showScreen('setup'); });
-    $('btn-done-setup').addEventListener('click', () => { stopTimer(); showScreen('setup'); });
+    $('btn-back-setup').addEventListener('click', () => { stopTimer(); updatePoolInfo(); showScreen('setup'); });
+    $('btn-done-setup').addEventListener('click', () => { stopTimer(); updatePoolInfo(); showScreen('setup'); });
+    // After the whole pool is used up, "play again" deliberately allows repeats (bad ones stay hidden).
     $('btn-reshuffle').addEventListener('click',  () => {
-      const langs = activeData('lang-chips', 'lang');
-      const cats  = activeData('cat-chips',  'cat');
-      const diffs = activeData('diff-chips', 'diff');
-      queue = shuffle(allPrompts.filter(p =>
-        (p.lang === 'any' || langs.includes(p.lang)) &&
-        cats.includes(p.category) &&
-        diffs.includes(p.difficulty)
-      ));
+      queue = shuffle(notBad(matching()));
       totalInQueue = queue.length;
       showScreen('play');
       displayCard();
@@ -422,6 +608,7 @@ import '../../../styles/games.css';
     }
 
     // ── Init ───────────────────────────────────────────────────────────────
+    importFromHash();
     initPrompts().then(updatePoolInfo);
 
   </script>

@@ -5,6 +5,18 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.7.0] — 2026-11-01
+
+### Added — Charades
+- **No repeats within 24 hours:** every prompt shown is stored on the phone (`localStorage` key `charades-seen-v1`, prompt id → time shown) and left out of new games for 24 h. Setup shows how many are ready vs. played; "Forget played" clears the history. "Shuffle & Play Again" after using up the whole pool still allows repeats.
+- **Rate prompts:** 👍 Good / 👎 Bad buttons on the card (`charades-ratings-v1`, prompt id → `good`/`bad`, tap again to undo). "Hide prompts rated bad" (on by default) drops them from the pool; "Copy bad list" copies id, text, category and language of every bad prompt for cleaning up `prompts.json`.
+- **Continue on another phone:** setup shows a QR code / link carrying the 24 h history and ratings as three bitsets in the URL hash (nothing goes to a server). Opening it merges them into the new phone; played prompts count from the moment of handover.
+
+### Changed — Charades
+- Prompt runtime IDs now come from the `id` in `prompts.json` (was random per load) so history and ratings survive reloads. **Never renumber existing ids.**
+
+---
+
 ## [1.6.0] — 2026-11-01
 
 ### Added — Charades
