@@ -5,6 +5,18 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.6.0] — 2026-11-01
+
+### Added — Charades
+- **500 new hard prompts** (ids 221–720) in `public/charades/prompts.json`; database now 720 prompts
+  - Sayings: 80 English idioms + 80 Dutch spreekwoorden/uitdrukkingen in their standard wording, chosen for literal, actable imagery
+  - Movies 90 · Books 60 · Songs 70 · Artists 50 · Places 70, split over `en`, `nl` and `any`
+
+### Fixed — Charades
+- "De mosterd na de maaltijd komen" → "Mosterd na de maaltijd"
+
+---
+
 ## [1.5.0] — 2026-04-07
 
 ### Changed — Site-wide header & footer unification
