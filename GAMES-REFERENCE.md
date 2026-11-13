@@ -173,7 +173,7 @@ Both formats are parsed by `parseQRToTrackUri()` in `src/lib/hitster.ts`.
 interface Prompt {
   id:         number;
   text:       string;                          // the word/phrase to act out
-  category:   'movies'|'books'|'artists'|'songs'|'places'|'sayings';
+  category:   'movies'|'books'|'artists'|'songs'|'places'|'sayings'|'bible'|'custom';
   difficulty: 'easy'|'medium'|'hard';
   lang:       'en'|'nl'|'any';                 // 'any' = works in either language
 }
@@ -190,7 +190,7 @@ Each prompt object:
 
 | Field | Valid values |
 |---|---|
-| `category` | `movies` `books` `artists` `songs` `places` `sayings` `custom` |
+| `category` | `movies` `books` `artists` `songs` `places` `sayings` `bible` `custom` |
 | `difficulty` | `easy` `medium` `hard` |
 | `lang` | `en` `nl` `any` (both languages) |
 

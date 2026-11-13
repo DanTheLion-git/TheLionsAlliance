@@ -5,6 +5,15 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.8.0] — 2026-11-14
+
+### Added — Charades
+- **New category 📖 Bible** (`bible`): all books of the Bible (Dutch and English names; `any` where they're the same), Bible stories, parables and biblical/theological terms in NL + EN, including Ultradispensationalisme / Ultradispensationalism
+- Artists: Creedence Clearwater Revival, NSYNC
+- 249 new prompts (ids 721–969); database now 969 prompts
+
+---
+
 ## [1.7.0] — 2026-11-01
 
 ### Added — Charades
