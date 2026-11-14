@@ -5,10 +5,19 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.10.1] — 2026-11-14
+
+### Changed — Charades
+- Lord of the Rings prompts now `any` (play in English and Dutch games)
+- Characters use full names and titles (Arwen Undómiel, Elrond Half-elven, Denethor, Steward of Gondor…)
+- Added Gandalf the White, Strider, Mithrandir, King Elessar, Sméagol of the river folk (ids 1183–1187)
+
+---
+
 ## [1.10.0] — 2026-11-14
 
 ### Added — Charades
-- **New category 💍 Lord of the Rings** (`lotr`, English): 116 prompts (ids 1067–1182) — characters, Middle-earth locations and short film lines
+- **New category 💍 Lord of the Rings** (`lotr`): 116 prompts (ids 1067–1182) — characters, Middle-earth locations and short film lines
 
 ---
 
