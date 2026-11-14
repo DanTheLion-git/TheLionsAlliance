@@ -5,6 +5,13 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.10.0] — 2026-11-14
+
+### Added — Charades
+- **New category 💍 Lord of the Rings** (`lotr`, English): 116 prompts (ids 1067–1182) — characters, Middle-earth locations and short film lines
+
+---
+
 ## [1.9.0] — 2026-11-14
 
 ### Added — Charades
