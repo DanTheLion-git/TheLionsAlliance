@@ -5,6 +5,16 @@ Format: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.9.0] — 2026-11-14
+
+### Added — Charades
+- 97 hard Dutch Bible prompts (ids 970–1066) in Statenvertaling spelling: difficult names (Methusalah, Mefiboseth, Nebukadnezar, Ahasveros…), people, places, Hebrew/Aramaic words and lesser-known stories
+
+### Changed — Charades
+- Dutch Bible book names switched to Statenvertaling spelling: Esther, Zefanja, Mattheüs, Markus, Lukas, Korinthiërs, Thessalonicenzen, Timotheüs
+
+---
+
 ## [1.8.0] — 2026-11-14
 
 ### Added — Charades
