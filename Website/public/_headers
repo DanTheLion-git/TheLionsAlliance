@@ -1,0 +1,9 @@
+# The party games moved to spelletjesavondje.nl. /games stays for personal use but
+# is kept out of search results so it doesn't compete with the new site.
+# (Not disallowed in robots.txt on purpose: Google must be able to fetch the page to see this.)
+/games
+  X-Robots-Tag: noindex
+/games/
+  X-Robots-Tag: noindex
+/games/*
+  X-Robots-Tag: noindex

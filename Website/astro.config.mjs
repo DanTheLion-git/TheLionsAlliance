@@ -25,8 +25,7 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/wedding/photoportal') &&
-        !page.includes('/songs-with-friends/callback') &&
-        !page.includes('/songs-with-friends/print') &&
+        !page.includes('/games/') && // moved to spelletjesavondje.nl; kept for personal use, noindex via _headers
         !page.includes('/resume/test') &&
         !page.includes('/planner'),
     }),
