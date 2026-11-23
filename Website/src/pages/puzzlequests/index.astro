@@ -1,290 +1,125 @@
 ---
-import "../../styles/homepage.css";
-import "../../styles/puzzlequests.css";
-const year = new Date().getFullYear();
+// Catalogue entry. Dutch mirror: ./nl/index.astro (edit both together).
+import CataloguePage from "../../components/hall/CataloguePage.astro";
+const wip = "/images/puzzle-quests/skeleton-key-wip";
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puzzle Quests &mdash; The Lions Alliance</title>
-    <meta name="description" content="Puzzle Quests is a family of hand-built heritage walking experiences by The Lions Alliance — designed in partnership with regional museums and brought to life with bespoke physical props. Skeleton Key is first, in build and testing at Museum Medelo." />
-    <link rel="icon" type="image/png" href="/favicon-logo.png" />
-    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/puzzlequests/" />
-    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/puzzlequests/nl/" />
-    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/puzzlequests/" />
-  </head>
-  <body class="tla-page pl-body">
+<CataloguePage
+  lang="en"
+  path="/puzzlequests/"
+  title="Puzzle Quests | The Lions Alliance"
+  description="Hand-built walking quests for museums and heritage venues, carried by a physical prop instead of an app. Skeleton Key is first, in build and testing with Museum Medelo in Meijel."
+  crumb="Walking quests"
+  h1="Puzzle Quests"
+  facts={[
+    ["Object", "Walking quest with a hand-built prop"],
+    ["First quest", "Skeleton Key: De Vlucht door de Peel"],
+    ["Route", "Meijel, about 5 km, eight hidden lock-stations"],
+    ["Venue", "Museum Medelo, Tomveld 2, Meijel"],
+    ["Partner", "Heemkundevereniging Medelo"],
+    ["Status", "In build and testing; trail run next"],
+  ]}
+  lede="A local legend, discovered on foot. Visitors carry a hand-built key out of the museum and along a route through the landscape. No app, no screen, no host needed."
+  plate={{
+    src: `${wip}/IMG20260901145952.webp`, w: 1600, h: 1200, vt: "exhibit-key",
+    alt: "The Skeleton Key in build: a 3D-printed key with a lion's head and a clear shaft for eight lights, on a green workbench mat",
+    caption: "The Skeleton Key in build, before its brass finish. The clear shaft holds the eight lights.",
+  }}
+  cta={{ href: "/contact/", label: "Enquire about a quest" }}
+  link={{ href: "#quest", label: "Read the quest" }}
+>
+  <section class="cat-section">
+    <h2>The legend behind the route</h2>
+    <p>Skeleton Key is built around a real Meijel legend. In the 1730s, young men fled Prussian recruiters through the Peel, using a network of hidden safe-houses. Visitors carry a hand-built brass key that sends them out to find that escape route for themselves. The key leaves the museum desk with them and grows more insistent as they near each hidden station, until the story is complete and they return with their answer.</p>
+    <p>It is being built with <strong>Heemkundevereniging Medelo</strong>, the local-history society behind Museum Medelo, the same museum where Medelotapps and Brief aan Jan Truijen run. Skeleton Key is the first of three quests planned for the site. Once it is proven with real players, the same hardware and format carry over to Living Chronicle and Puzzle Lantern, and later to other venues.</p>
+  </section>
 
-    <!-- ── Navigation ─────────────────────────────────── -->
-    <nav class="tla-nav" id="tla-nav">
-      <div class="tla-nav__inner tla-container">
-        <a href="/" class="tla-nav__logo"><img src="/images/branding/lions-logo.webp" alt="" class="tla-nav__logo-img" />The Lions <span>Alliance</span></a>
-        <ul class="tla-nav__links">
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#quests">The Quest</a></li>
-          <li><a href="#adapt">For Your Venue</a></li>
+  <section class="cat-section">
+    <h2>What a group does</h2>
+    <ol class="cat-steps">
+      <li><div><strong>Collect the kit</strong><span>At the museum desk: the key, a booklet, a route sheet and a short briefing in the story. No app, no screen, no setup.</span></div></li>
+      <li><div><strong>Walk the route</strong><span>Through the village and the landscape around it. The key responds at every station and gives one more piece of the story.</span></div></li>
+      <li><div><strong>Return to the desk</strong><span>With a completed booklet and the key lit up with their progress. Staff check it, stamp the sheet and share one extra detail from the archive. The kit is ready for the next group in under five minutes.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="cat-section" id="quest">
+    <h2>The quests</h2>
+    <div class="cat-sub">
+      <h3>De Vlucht door de Peel <span class="tla-badge tla-badge--dev">In build and testing</span></h3>
+      <dl class="cat-table">
+        <dt>Difficulty</dt><dd>3 of 4</dd>
+        <dt>Duration</dt><dd>75&ndash;95 minutes</dd>
+        <dt>Distance</dt><dd>About 5 km</dd>
+        <dt>Group</dt><dd>2&ndash;6 people, age 10 and up</dd>
+        <dt>Mechanic</dt><dd>A chain of locks, sensed by radio</dd>
+      </dl>
+      <p class="cat-sub__story">Between 1713 and 1740, Prussian King Frederick Wilhelm I sent recruiters across the border to collect exceptionally tall young men for his elite Riesengarde. The men who fled used a secret network of safe-houses through the Peel. Those who made it to Meijel were free. They settled, married and had tall children. This is documented as the reason Meijel has historically had more tall men than its neighbouring villages.</p>
+      <p>The Skeleton Key is the warden&rsquo;s master pass. Eight lock-stations are hidden in tree trunks, mossy stones and trail posts along the route, invisible to a casual passer-by. Each one pulses with light when the key senses it. At each lock the key is turned, an NFC scan triggers, and one more rune along its shaft glows through the aged brass. At the final lock all eight are lit, and the walker speaks the answer aloud at the museum desk as proof of the journey.</p>
+    </div>
+    <div class="cat-sub">
+      <h3>Living Chronicle: Het Pad van Dikke Mie <span class="tla-badge tla-badge--future">Planned</span></h3>
+      <p>A self-writing leather chronicle that fills in as you walk a memorial route for a forgotten 18th-century vagrant. The prop is built once Skeleton Key&rsquo;s trail run has proven the format.</p>
+    </div>
+    <div class="cat-sub">
+      <h3>Puzzle Lantern: De Schat van het Dolle Moer <span class="tla-badge tla-badge--future">Planned</span></h3>
+      <p>A Victorian-style lantern that reveals UV-hidden clues at each station, decoded against a field journal. Same story family, after Skeleton Key in the build queue.</p>
+    </div>
+  </section>
+
+  <section class="cat-section" id="venue">
+    <h2>The hardware is reusable. The story is the work.</h2>
+    <div class="cat-lists">
+      <div>
+        <h3>What stays the same</h3>
+        <ul>
+          <li>The prop hardware.</li>
+          <li>The puzzle framework.</li>
+          <li>How the desk runs it.</li>
         </ul>
-        <div class="tla-nav__actions">
-          <a href="/puzzlequests/nl/" class="tla-nav__lang" hreflang="nl" lang="nl" title="Bekijk in het Nederlands">NL</a>
-          <a href="/contact/" class="tla-nav__cta tla-nav__cta--gold">Contact</a>
-          <a href="/" class="tla-nav__cta">&larr; Studio</a>
-        </div>
-        <button class="tla-nav__hamburger" id="hamburger" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
       </div>
-      <div class="tla-nav__mobile" id="mobile-menu">
-        <a href="#overview">Overview</a>
-        <a href="#quests">The Quest</a>
-        <a href="#adapt">For Your Venue</a>
-        <a href="/contact/">Contact</a>
-        <a href="/puzzlequests/nl/" hreflang="nl" lang="nl">Bekijk in het Nederlands</a>
-        <a href="/">&larr; Back to Studio</a>
+      <div>
+        <h3>What we make for your venue</h3>
+        <ul>
+          <li>The story.</li>
+          <li>The booklet.</li>
+          <li>The route.</li>
+          <li>How the stations are disguised.</li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </section>
 
-    <!-- ── Hero ───────────────────────────────────────── -->
-    <section class="pl-hero" id="home">
-      <div class="tla-container pl-hero__inner">
-        <div class="pl-hero__text tla-fade">
-          <div class="pl-hero__breadcrumb">
-            <a href="/">The Lions Alliance</a>
-            <span class="pl-hero__breadcrumb-sep">/</span>
-            <span>Museum Walking Quests</span>
-          </div>
-          <div class="pl-hero__badges">
-            <span class="tla-badge tla-badge--dev">In Development</span>
-            <span class="tla-badge tla-badge--dev">Skeleton Key &mdash; In Testing</span>
-          </div>
-          <h1 class="pl-hero__title">Puzzle <em>Quests</em></h1>
-          <p class="pl-hero__subtitle">
-            Hand-built walking experiences for museums and heritage venues. Each one weaves a local legend into a route through the landscape &mdash; carried in the visitor&rsquo;s hands by a bespoke physical prop. No app, no screen, no host required. Skeleton Key is first in build and testing now; Living Chronicle and Puzzle Lantern follow.
-          </p>
-          <div class="pl-hero__ctas">
-            <a href="#adapt" class="tla-btn tla-btn--gold">Bring this to your venue</a>
-            <a href="#quests" class="tla-btn tla-btn--outline">See the quest &darr;</a>
-          </div>
-        </div>
-        <div class="pl-hero__visual tla-fade tla-d1">
-          <figure class="pl-sketch pl-sketch--hero">
-            <img src="/images/puzzle-quests/skeleton-key-wip/IMG20260901145952.webp" alt="The real, hand-built Skeleton Key prop — a 3D-printed lion's-head brass key, in build" loading="eager" />
-          </figure>
-          <span class="pl-sketch__caption">The Skeleton Key &mdash; the real prop, in build</span>
+  <Fragment slot="plates">
+    <figure class="cat-plate cat-plate--wide">
+      <img src={`${wip}/IMG20260608130746.webp`} width="1600" height="1200" loading="lazy" data-unveil
+           alt="The Skeleton Key workbench mid-build: tools, electronics and parts bins" />
+      <figcaption><b>Plate 2.</b> The workbench, mid-build. Still very much in progress.</figcaption>
+    </figure>
+    <figure class="cat-plate">
+      <img src={`${wip}/IMG20260608105918.webp`} width="1600" height="1200" loading="lazy" data-unveil
+           alt="A small controller board with connectors, held in helping hands on the workbench" />
+      <figcaption><b>Plate 3.</b> Electronics for the key, soldered by hand.</figcaption>
+    </figure>
+  </Fragment>
+
+  <Fragment slot="enquiry">
+    <div class="cat-enquiry__grid">
+      <div>
+        <h2>A quest for your museum or village</h2>
+        <p>Tell us about your place and the story it holds. We reply within one or two working days.</p>
+        <div class="cat-enquiry__actions">
+          <a href="/contact/" class="tla-btn">Get in touch</a>
         </div>
       </div>
-    </section>
-
-    <!-- ── The Concept ────────────────────────────────── -->
-    <section class="pl-overview" id="overview">
-      <div class="tla-container pl-overview__inner">
-        <div class="pl-overview__text tla-fade">
-          <span class="tla-overline">The concept</span>
-          <h2 class="tla-section-header pl-section-header--left">A local legend, discovered on foot &mdash; no screens, no phones</h2>
-          <p>
-            Skeleton Key is a walking quest built around a real Meijel legend: in the 1730s, young men fled Prussian recruiters through the Peel, using a network of hidden safe-houses. Visitors carry a hand-built brass key that sends them out to rediscover that escape route for themselves. The key leaves the museum desk with them and grows more insistent as they near each hidden station along the way &mdash; until the story is complete and they return with their answer.
-          </p>
-          <p>
-            It&rsquo;s being built in partnership with <strong>Heemkundevereniging Medelo</strong>, the local-history society behind Museum Medelo in Meijel &mdash; the same museum behind Medelotapps and Brief aan Jan Truijen. Skeleton Key is the first of three quests planned for the site; once it&rsquo;s proven with real players, the same hardware and format adapt to Living Chronicle and Puzzle Lantern, and eventually to other venues.
-          </p>
-          <ul class="pl-pilot__facts">
-            <li><span class="pl-pilot__label">Venue</span><span class="pl-pilot__value">Museum Medelo, Tomveld 2, Meijel</span></li>
-            <li><span class="pl-pilot__label">Heritage partner</span><span class="pl-pilot__value">Heemkundevereniging Medelo</span></li>
-            <li><span class="pl-pilot__label">Skeleton Key status</span><span class="pl-pilot__value">In build &amp; testing &mdash; trail run next</span></li>
-          </ul>
-        </div>
-        <div class="pl-overview__visual tla-fade tla-d1">
-          <figure class="pl-sketch">
-            <img src="/images/puzzle-quests/skeleton-key-wip/IMG20260608130746.webp" alt="The Skeleton Key workbench, mid-build — tools, electronics, and parts bins, clearly still a work in progress" loading="lazy" />
-          </figure>
-          <span class="pl-sketch__caption">The workshop right now &mdash; still very much in progress</span>
-        </div>
+      <div class="cat-enquiry__for">
+        Made for
+        <ul>
+          <li>Regional and local-history museums</li>
+          <li>Heritage societies</li>
+          <li>Campsites and heritage routes</li>
+          <li>Tourism organisations</li>
+        </ul>
       </div>
-    </section>
-
-    <div class="tla-divider"></div>
-
-    <!-- ── How It Works ───────────────────────────────── -->
-    <section class="pl-steps-section" id="how-it-works">
-      <div class="tla-container">
-        <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">How it works</span>
-          <h2 class="tla-section-header">The visitor journey, in three beats</h2>
-        </div>
-        <div class="pl-steps">
-          <div class="pl-step tla-fade">
-            <div class="pl-step__number">I</div>
-            <div class="pl-step__title">Collect the kit</div>
-            <div class="pl-step__desc">At the museum desk: a prop, a booklet, a route notesheet, and a short briefing in the story. No app, no screen, no setup.</div>
-          </div>
-          <div class="pl-step tla-fade tla-d1">
-            <div class="pl-step__number">II</div>
-            <div class="pl-step__title">Walk the route</div>
-            <div class="pl-step__desc">The route runs through the village and surrounding landscape. The prop responds at every station, revealing one more piece of the story.</div>
-          </div>
-          <div class="pl-step tla-fade tla-d2">
-            <div class="pl-step__number">III</div>
-            <div class="pl-step__title">Return to the desk</div>
-            <div class="pl-step__desc">Visitors return with a completed booklet and the prop lit up with their progress. Staff verify, stamp the notesheet, and share an extra archival detail. The kit resets in under five minutes for the next group.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── The Quest ──────────────────────────────────── -->
-    <section class="pl-quests" id="quests">
-      <div class="tla-container">
-        <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">The quest</span>
-          <h2 class="tla-section-header">Skeleton Key, in build and testing</h2>
-        </div>
-
-        <!-- ── Skeleton Key ──────────────────────────── -->
-        <article class="pl-quest pl-quest--key tla-fade" id="quest-key">
-          <div class="pl-quest__visual">
-            <ul class="pl-quest__chips" style="margin-top:0;">
-              <li><span>Difficulty</span><strong>&#9733;&#9733;&#9733;&#9734;</strong></li>
-              <li><span>Duration</span><strong>75&ndash;95 min</strong></li>
-              <li><span>Distance</span><strong>~5 km</strong></li>
-              <li><span>Group</span><strong>2&ndash;6</strong></li>
-              <li><span>Age</span><strong>10+</strong></li>
-              <li><span>Mechanic</span><strong>Chain of locks &middot; radio proximity</strong></li>
-            </ul>
-          </div>
-          <div class="pl-quest__body">
-            <div class="pl-quest__eyebrow" style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">Quest I &middot; Skeleton Key <span class="tla-badge tla-badge--dev">In Build &amp; Testing</span></div>
-            <h3 class="pl-quest__title">De Vlucht door de Peel</h3>
-            <p class="pl-quest__story">
-              Between 1713 and 1740, Prussian King Frederick Wilhelm I sent recruiters across the border to collect exceptionally tall young men for his elite Riesengarde. The men who fled used a secret network of safe-houses through the Peel. Those who made it to Meijel were free &mdash; they settled, married, and had tall children. This is documented as the reason Meijel has historically more tall men than its neighbouring villages.
-            </p>
-            <p>
-              The Skeleton Key is the warden&rsquo;s master pass. Eight genuine lock-stations &mdash; hidden in tree trunks, mossy stones, and trail-posts along the route, invisible to a casual passer-by &mdash; pulse with light as the key senses each one via radio proximity. At each lock the key is physically turned, an NFC-scan triggers, and one more rune along its shaft glows through the aged brass. By the final lock all eight are lit, and the walker speaks the answer aloud at the museum desk &mdash; proof of passage, discovered entirely on foot.
-            </p>
-          </div>
-        </article>
-
-        <div class="pl-quest-divider" aria-hidden="true">&middot; &middot; &middot;</div>
-
-        <div class="tla-fade" style="text-align:center;margin:3rem 0 2rem;">
-          <span class="tla-overline">What&rsquo;s next</span>
-          <h3 class="tla-section-header" style="margin-bottom:0;">Two more quests, once Skeleton Key is proven</h3>
-        </div>
-        <div class="pl-concept-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
-          <div class="pl-concept-card tla-fade">
-            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
-              <div class="pl-concept-card__title" style="margin:0;">Living Chronicle &mdash; Het Pad van Dikke Mie</div>
-              <span class="tla-badge tla-badge--future">What&rsquo;s Next</span>
-            </div>
-            <div class="pl-concept-card__desc">A self-writing leather chronicle that fills in as you walk a memorial route for a forgotten 18th-century vagrant. Prop build follows once Skeleton Key&rsquo;s trail run validates the format.</div>
-          </div>
-          <div class="pl-concept-card tla-fade tla-d1">
-            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
-              <div class="pl-concept-card__title" style="margin:0;">Puzzle Lantern &mdash; De Schat van het Dolle Moer</div>
-              <span class="tla-badge tla-badge--future">What&rsquo;s Next</span>
-            </div>
-            <div class="pl-concept-card__desc">A Victorian-style lantern that reveals UV-hidden clues at each station, decoded against a field journal. Same story family, still ahead of Skeleton Key in the build queue.</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── Adapt for your venue ───────────────────────── -->
-    <section class="pl-adapt" id="adapt">
-      <div class="tla-container">
-        <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">For your venue</span>
-          <h2 class="tla-section-header">The hardware is reusable. The story is the work.</h2>
-        </div>
-        <div class="pl-adapt__grid">
-          <div class="pl-adapt__col tla-fade">
-            <h3 class="pl-adapt__title">What stays fixed</h3>
-            <ul class="pl-adapt__list">
-              <li>The prop hardware.</li>
-              <li>The puzzle framework.</li>
-              <li>The operating model.</li>
-            </ul>
-          </div>
-          <div class="pl-adapt__col tla-fade tla-d1">
-            <h3 class="pl-adapt__title">What we design per venue</h3>
-            <ul class="pl-adapt__list">
-              <li>The story.</li>
-              <li>The booklet content.</li>
-              <li>The route.</li>
-              <li>The station object disguise.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Footer ─────────────────────────────────────── -->
-    <footer class="tla-footer">
-      <div class="tla-container tla-footer__inner">
-        <div class="tla-footer__brand">
-          <div class="tla-footer__brand-row">
-            <img src="/images/branding/lions-logo.webp" alt="" class="tla-footer__logo-img" />
-            <div class="tla-footer__logo">The Lions Alliance</div>
-          </div>
-          <p class="tla-footer__tagline">Creative studio for meaningful projects.</p>
-        </div>
-        <div class="tla-footer__links">
-          <a href="/">Studio</a>
-          <a href="#overview">Overview</a>
-          <a href="#quests">The Quest</a>
-          <a href="#adapt">For Your Venue</a>
-          <a href="/contact/">Contact</a>
-        </div>
-      </div>
-      <div class="tla-container tla-footer__bottom">
-        <span>&copy; {year} The Lions Alliance. All rights reserved.</span>
-      </div>
-    </footer>
-
-    <!-- ── Scripts ─────────────────────────────────────── -->
-    <script>
-      const nav = document.getElementById('tla-nav');
-      if (nav) {
-        window.addEventListener('scroll', () => {
-          nav.classList.toggle('scrolled', window.scrollY > 40);
-        });
-      }
-
-      const faders = document.querySelectorAll('.tla-fade');
-      if (faders.length && 'IntersectionObserver' in window) {
-        const obs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add('tla-visible');
-                obs.unobserve(e.target);
-              }
-            });
-          },
-          { threshold: 0.15 }
-        );
-        faders.forEach((el) => obs.observe(el));
-      } else {
-        faders.forEach((el) => el.classList.add('tla-visible'));
-      }
-
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-          const open = mobileMenu.classList.toggle('open');
-          hamburger.classList.toggle('open', open);
-          hamburger.setAttribute('aria-expanded', String(open));
-        });
-        mobileMenu.querySelectorAll('a').forEach((a) => {
-          a.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-    </script>
-  </body>
-</html>
+    </div>
+  </Fragment>
+</CataloguePage>

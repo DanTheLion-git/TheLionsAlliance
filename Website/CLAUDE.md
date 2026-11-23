@@ -15,6 +15,10 @@ The TLA business pages below have Dutch mirrors at sibling `/nl/` paths:
 | `src/pages/contact/index.astro` | `src/pages/contact/nl/index.astro` |
 | `src/pages/touchscreens/index.astro` | `src/pages/touchscreens/nl/index.astro` |
 
+**The homepage is the exception:** `src/pages/index.astro` and `src/pages/nl/index.astro` only pass `lang` to `src/components/hall/HomePage.astro`, which holds every word in both languages side by side (`L('english', 'nederlands')`). Edit the homepage there.
+
+**Design system:** every business page imports `src/styles/hall.css` (the "exhibition hall": plaster walls, ink-blue panels, one signal yellow, Schibsted Grotesk) and uses the shared `src/components/hall/` `HallHead` (fonts + motion), `Nav` and `Footer` (KvK number lives there). The old `homepage.css`, `puzzlequests.css`, `touchstation.css` and `contact.css` now serve only `_archive/`. Visual rules: `DESIGN.md`; product facts: `PRODUCT.md`. No kickers/overlines above headings, no centred section headers, no new colours or radii.
+
 **Rule: any edit to one of these pages must update the matching pair.** When adding a new section, paragraph, badge, FAQ item, nav link, footer link, or content tweak to an English page, write the equivalent in the Dutch mirror in the same commit. Same for the other direction.
 
 `src/pages/murder-mystery/` (+ `nl/`) is retired: moved to `src/pages/_archive/murder-mystery/` (Astro excludes any `_`-prefixed path segment under `src/pages/` from routing), kept as a backup, not linked from the live site.
@@ -28,7 +32,7 @@ Dutch translation register:
 - **Contact form values are English** even on the Dutch page (`option value="..."` strings match across languages so backend email subjects stay consistent — only the user-visible option labels are translated).
 
 Language toggle:
-- `.tla-nav__lang` pill styled globally in `homepage.css`. Sits inside `.tla-nav__actions` between the language code and the Contact / Studio CTAs.
+- Rendered by `src/components/hall/Nav.astro` from its `alt` prop (the other language's URL): a plain "NL"/"EN" link before the Contact button.
 - Mobile menu uses full-text equivalents: *"Bekijk in het Nederlands"* on EN pages, *"View in English"* on NL pages.
 - Every page pair has reciprocal `<link rel="alternate" hreflang="en|nl|x-default" href="…" />` tags in `<head>`.
 

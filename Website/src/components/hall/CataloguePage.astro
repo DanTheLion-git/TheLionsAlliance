@@ -1,0 +1,119 @@
+---
+/* A product page as a museum catalogue entry. Plate 1 hangs on the left and
+   stays while the entry is read on the right. Each page file passes its own
+   language's words; the EN and NL files stay a pair (see Website/CLAUDE.md).
+
+   Slots: default = the entry's sections (right column, under the lede)
+          after   = full-width sections between the entry and the plates
+          plates  = <figure class="cat-plate"> items, numbered from 2
+          enquiry = the closing ink block (use .cat-enquiry__grid inside) */
+import "../../styles/hall.css";
+import HallHead from "./HallHead.astro";
+import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
+
+interface Plate { src: string; alt: string; w: number; h: number; caption: string; vt?: string }
+interface Link { href: string; label: string }
+interface Props {
+  lang: 'en' | 'nl';
+  /** This page's path in English, e.g. "/jan-truijen/". The NL path is derived. */
+  path: string;
+  title: string;
+  description: string;
+  crumb: string;
+  h1: string;
+  facts: [string, string][];
+  lede: string;
+  plate: Plate;
+  cta: Link;
+  link?: Link;
+  portrait?: boolean;
+  platesTitle?: string;
+}
+const { lang, path, title, description, crumb, h1, facts, lede, plate, cta, link, portrait, platesTitle } = Astro.props;
+const nl = lang === 'nl';
+const nlPath = `${path}nl/`;
+const site = 'https://thelionsalliance.com';
+const plateWord = nl ? 'Plaat' : 'Plate';
+const hasPlates = Astro.slots.has('plates');
+const hasAfter = Astro.slots.has('after');
+const hasEnquiry = Astro.slots.has('enquiry');
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon-logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={site + (nl ? nlPath : path)} />
+    <link rel="alternate" hreflang="en" href={site + path} />
+    <link rel="alternate" hreflang="nl" href={site + nlPath} />
+    <link rel="alternate" hreflang="x-default" href={site + path} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={site + plate.src} />
+    <HallHead />
+  </head>
+  <body class="tla-page">
+    <Nav lang={lang} alt={nl ? path : nlPath} />
+
+    <main id="main">
+      <article class:list={['cat', { 'cat--portrait': portrait }]}>
+        <div class="hall-wrap cat__grid">
+          <figure class="cat__plate">
+            <img src={plate.src} alt={plate.alt} width={plate.w} height={plate.h} loading="eager" fetchpriority="high"
+                 data-unveil class={plate.vt ? 'vt-exhibit' : undefined}
+                 style={plate.vt ? `view-transition-name:${plate.vt}` : undefined} />
+            <figcaption><b>{plateWord} 1.</b> {plate.caption}</figcaption>
+          </figure>
+
+          <div class="cat__entry">
+            <div class="cat__crumb"><a href={nl ? '/nl/' : '/'}>The Lions Alliance</a> &middot; {crumb}</div>
+            <h1 set:html={h1} />
+            <dl class="cat-table">
+              {facts.map(([k, v]) => (<><dt set:html={k} /><dd set:html={v} /></>))}
+            </dl>
+            <p class="cat__lede" set:html={lede} />
+            <div class="cat__actions">
+              <a href={cta.href} class="tla-btn">{cta.label}</a>
+              {link && <a href={link.href} class="hall-link">{link.label}</a>}
+            </div>
+            <slot />
+          </div>
+        </div>
+      </article>
+
+      {hasAfter && <slot name="after" />}
+
+      {hasPlates && (
+        <section class="cat-plates" aria-labelledby="plates-title">
+          <div class="hall-wrap">
+            <h2 id="plates-title">{platesTitle ?? (nl ? 'Platen' : 'Plates')}</h2>
+            <div class="cat-plates__grid">
+              <slot name="plates" />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {hasEnquiry && (
+        <section class="cat-enquiry" id="enquiry">
+          <div class="hall-wrap"><slot name="enquiry" /></div>
+        </section>
+      )}
+    </main>
+
+    <Footer lang={lang} />
+
+    <script>
+      // Stagger the unveil a little when a row of plates comes into view together.
+      document.querySelectorAll<HTMLElement>('.cat-plates__grid .cat-plate img').forEach((img, i) => {
+        img.style.setProperty('--n', String(i % 3));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+---
+// Fonts, the motion opt-in and the unveil observer, shared by every business page.
+// Sits inside <head>. Content stays visible unless this inline script runs first.
+---
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+<meta name="theme-color" content="#e6e6e1" />
+<script is:inline>
+  (function () {
+    var d = document.documentElement;
+    if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    d.classList.add('js-motion');
+    // Arriving through a view transition: the exhibit photo morphs in from the
+    // page before, so it must not also be unveiled from nothing.
+    window.addEventListener('pagereveal', function (e) { if (e.viewTransition) d.classList.add('vt-arrival'); });
+    // Failsafe: if the observer below never starts, show everything.
+    setTimeout(function () { if (!window.__hallMotion) d.classList.remove('js-motion'); }, 2500);
+  })();
+</script>
+<script>
+  const SELECTOR = '[data-unveil], [data-mount], .pl-hero__visual img, .pl-overview__visual > img, .pl-sketch img, .ts-photos img, .ts-hero-photo img';
+  (window as any).__hallMotion = true;
+  if (document.documentElement.classList.contains('js-motion')) {
+    // A veiled element is clipped to nothing, and Chrome counts the clip, so it
+    // would never "intersect". Watch its (unclipped) parent and reveal the child.
+    const watched = new Map<Element, Element[]>();
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          (watched.get(e.target) || []).forEach((el) => el.classList.add('is-in'));
+          watched.delete(e.target);
+          io.unobserve(e.target);
+        }
+      }
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    const watch = (el: Element) => {
+      const host = el.parentElement || el;
+      if (!watched.has(host)) { watched.set(host, []); io.observe(host); }
+      watched.get(host)!.push(el);
+    };
+    document.querySelectorAll(SELECTOR).forEach((el) => {
+      // Number the children of a mounting label so they arrive in reading order.
+      if (el.hasAttribute('data-mount')) {
+        Array.from(el.children).forEach((c, i) => (c as HTMLElement).style.setProperty('--i', String(i)));
+      }
+      // Whatever is already on screen starts at once; the observer handles the rest.
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-in');
+      else watch(el);
+    });
+  }
+
+  // Any auto-advancing slideshow gets a pause control (WCAG 2.2.2).
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const nl = document.documentElement.lang === 'nl';
+    document.querySelectorAll<HTMLElement>('.pl-slideshow').forEach((show) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'hall-pause';
+      const set = (paused: boolean) => {
+        show.classList.toggle('is-paused', paused);
+        b.textContent = paused ? (nl ? 'Afspelen' : 'Play') : (nl ? 'Pauzeren' : 'Pause');
+      };
+      set(false);
+      b.addEventListener('click', () => set(!show.classList.contains('is-paused')));
+      show.appendChild(b);
+    });
+  }
+
+  // Navigation: hairline once scrolled, and the small-screen menu.
+  const nav = document.querySelector<HTMLElement>('.hall-nav');
+  if (nav) {
+    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const btn = nav.querySelector<HTMLButtonElement>('.hall-nav__menu-btn');
+    const setOpen = (open: boolean) => {
+      nav.classList.toggle('is-open', open);
+      btn?.setAttribute('aria-expanded', String(open));
+    };
+    btn?.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
+    nav.querySelectorAll('.hall-nav__sheet a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  }
+</script>

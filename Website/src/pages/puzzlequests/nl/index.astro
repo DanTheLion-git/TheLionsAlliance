@@ -1,290 +1,125 @@
 ---
-import "../../../styles/homepage.css";
-import "../../../styles/puzzlequests.css";
-const year = new Date().getFullYear();
+// Catalogusbeschrijving. Engelse versie: ../index.astro (samen bewerken).
+import CataloguePage from "../../../components/hall/CataloguePage.astro";
+const wip = "/images/puzzle-quests/skeleton-key-wip";
 ---
-<!doctype html>
-<html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puzzle Quests &mdash; The Lions Alliance</title>
-    <meta name="description" content="Puzzle Quests is een familie van handgemaakte wandelervaringen voor musea en erfgoedlocaties, ontwikkeld door The Lions Alliance in samenwerking met streekmusea. Skeleton Key is als eerste in bouw en test bij Museum Medelo." />
-    <link rel="icon" type="image/png" href="/favicon-logo.png" />
-    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/puzzlequests/" />
-    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/puzzlequests/nl/" />
-    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/puzzlequests/" />
-  </head>
-  <body class="tla-page pl-body">
+<CataloguePage
+  lang="nl"
+  path="/puzzlequests/"
+  title="Puzzle Quests | The Lions Alliance"
+  description="Handgemaakte wandelquests voor musea en erfgoedlocaties, gedragen door een fysiek rekwisiet in plaats van een app. Skeleton Key is de eerste, in bouw en test met Museum Medelo in Meijel."
+  crumb="Wandelquests"
+  h1="Puzzle Quests"
+  facts={[
+    ["Object", "Wandelquest met een handgemaakt rekwisiet"],
+    ["Eerste quest", "Skeleton Key: De Vlucht door de Peel"],
+    ["Route", "Meijel, ongeveer 5 km, acht verborgen slotstations"],
+    ["Locatie", "Museum Medelo, Tomveld 2, Meijel"],
+    ["Partner", "Heemkundevereniging Medelo"],
+    ["Status", "In bouw en test; proefwandeling volgt"],
+  ]}
+  lede="Een lokale legende, te voet ontdekt. Bezoekers nemen een handgemaakte sleutel mee het museum uit en volgen een route door het landschap. Geen app, geen scherm, geen gids nodig."
+  plate={{
+    src: `${wip}/IMG20260901145952.webp`, w: 1600, h: 1200, vt: "exhibit-key",
+    alt: "De Skeleton Key in aanbouw: een 3D-geprinte sleutel met leeuwenkop en een doorzichtige schacht voor acht lampjes, op een groene werkmat",
+    caption: "De Skeleton Key in aanbouw, nog zonder koperen afwerking. In de doorzichtige schacht zitten de acht lampjes.",
+  }}
+  cta={{ href: "/contact/nl/", label: "Informeer naar een quest" }}
+  link={{ href: "#quest", label: "Lees de quest" }}
+>
+  <section class="cat-section">
+    <h2>De legende achter de route</h2>
+    <p>Skeleton Key is gebouwd rond een echte Meijelse legende. In de jaren 1730 vluchtten jonge mannen voor Pruisische ronselaars door de Peel, via een netwerk van schuilplaatsen. Bezoekers dragen een handgemaakte koperen sleutel die hen op pad stuurt om die vluchtroute zelf te vinden. De sleutel vertrekt met hen vanaf de museumbalie en wordt dringender naarmate zij dichter bij elk verborgen station komen, tot het verhaal compleet is en zij met hun antwoord terugkeren.</p>
+    <p>De quest wordt gebouwd met <strong>Heemkundevereniging Medelo</strong>, de heemkundevereniging achter Museum Medelo, hetzelfde museum waar Medelotapps en Brief aan Jan Truijen draaien. Skeleton Key is de eerste van drie geplande quests voor deze locatie. Zodra hij bewezen is met echte spelers, gaan dezelfde hardware en opzet over naar Living Chronicle en Puzzle Lantern, en later naar andere locaties.</p>
+  </section>
 
-    <!-- ── Navigatie ──────────────────────────────────── -->
-    <nav class="tla-nav" id="tla-nav">
-      <div class="tla-nav__inner tla-container">
-        <a href="/" class="tla-nav__logo"><img src="/images/branding/lions-logo.webp" alt="" class="tla-nav__logo-img" />The Lions <span>Alliance</span></a>
-        <ul class="tla-nav__links">
-          <li><a href="#overview">Overzicht</a></li>
-          <li><a href="#quests">De Quest</a></li>
-          <li><a href="#adapt">Voor uw locatie</a></li>
+  <section class="cat-section">
+    <h2>Wat een groep doet</h2>
+    <ol class="cat-steps">
+      <li><div><strong>De kit ophalen</strong><span>Aan de museumbalie: de sleutel, een boekje, een routekaart en een korte introductie op het verhaal. Geen app, geen scherm, geen installatie.</span></div></li>
+      <li><div><strong>De route lopen</strong><span>Door het dorp en het landschap eromheen. De sleutel reageert bij elk station en geeft telkens een nieuw stukje van het verhaal prijs.</span></div></li>
+      <li><div><strong>Terug naar de balie</strong><span>Met een ingevuld boekje en een sleutel die hun voortgang laat oplichten. De medewerker controleert het, zet een stempel en deelt nog &eacute;&eacute;n extra detail uit het archief. Binnen vijf minuten staat de kit klaar voor de volgende groep.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="cat-section" id="quest">
+    <h2>De quests</h2>
+    <div class="cat-sub">
+      <h3>De Vlucht door de Peel <span class="tla-badge tla-badge--dev">In bouw en test</span></h3>
+      <dl class="cat-table">
+        <dt>Moeilijkheid</dt><dd>3 van 4</dd>
+        <dt>Duur</dt><dd>75&ndash;95 minuten</dd>
+        <dt>Afstand</dt><dd>Ongeveer 5 km</dd>
+        <dt>Groep</dt><dd>2&ndash;6 personen, vanaf 10 jaar</dd>
+        <dt>Mechanisme</dt><dd>Een keten van sloten, die de sleutel via radio aanvoelt</dd>
+      </dl>
+      <p class="cat-sub__story">Tussen 1713 en 1740 stuurde de Pruisische koning Frederik Wilhelm I ronselaars over de grens om bijzonder lange jonge mannen te verzamelen voor zijn elite Riesengarde. Wie vluchtte, gebruikte een geheim netwerk van veilige onderkomens door de Peel. Wie Meijel bereikte, was vrij. Zij vestigden zich, trouwden er en kregen lange kinderen. Het is in de archieven gedocumenteerd als de reden waarom in Meijel historisch meer lange mannen wonen dan in de omliggende dorpen.</p>
+      <p>De Skeleton Key is de hoofdsleutel van de wachter. Acht slotstations zitten verstopt in boomstammen, bemoste stenen en wandelpalen langs de route, onzichtbaar voor een toevallige voorbijganger. Elk station licht op zodra de sleutel het aanvoelt. Bij elk slot wordt de sleutel omgedraaid, een NFC-scan wordt geactiveerd, en er licht weer een rune langs de schacht op door het verouderde koper heen. Bij het laatste slot branden alle acht, en de wandelaar spreekt het antwoord hardop uit aan de museumbalie, als bewijs van de tocht.</p>
+    </div>
+    <div class="cat-sub">
+      <h3>Living Chronicle: Het Pad van Dikke Mie <span class="tla-badge tla-badge--future">Gepland</span></h3>
+      <p>Een zichzelf beschrijvende, in leer gebonden kroniek die zich vult tijdens een herdenkingsroute voor een vergeten 18e-eeuwse zwerfster. Het rekwisiet wordt gebouwd zodra de proefwandeling van Skeleton Key het format heeft bewezen.</p>
+    </div>
+    <div class="cat-sub">
+      <h3>Puzzle Lantern: De Schat van het Dolle Moer <span class="tla-badge tla-badge--future">Gepland</span></h3>
+      <p>Een Victoriaanse lantaarn die bij elk station met uv-licht verborgen aanwijzingen onthult, te ontcijferen met een veldjournaal. Dezelfde verhalenfamilie, na Skeleton Key in de bouwwachtrij.</p>
+    </div>
+  </section>
+
+  <section class="cat-section" id="venue">
+    <h2>De hardware is herbruikbaar. Het verhaal is het maatwerk.</h2>
+    <div class="cat-lists">
+      <div>
+        <h3>Wat hetzelfde blijft</h3>
+        <ul>
+          <li>De hardware van het rekwisiet.</li>
+          <li>Het puzzelraamwerk.</li>
+          <li>Hoe de balie het draait.</li>
         </ul>
-        <div class="tla-nav__actions">
-          <a href="/puzzlequests/" class="tla-nav__lang" hreflang="en" lang="en" title="View in English">EN</a>
-          <a href="/contact/" class="tla-nav__cta tla-nav__cta--gold">Contact</a>
-          <a href="/" class="tla-nav__cta">&larr; Studio</a>
-        </div>
-        <button class="tla-nav__hamburger" id="hamburger" aria-label="Menu openen">
-          <span></span><span></span><span></span>
-        </button>
       </div>
-      <div class="tla-nav__mobile" id="mobile-menu">
-        <a href="#overview">Overzicht</a>
-        <a href="#quests">De Quest</a>
-        <a href="#adapt">Voor uw locatie</a>
-        <a href="/contact/">Contact</a>
-        <a href="/puzzlequests/" hreflang="en" lang="en">View in English</a>
-        <a href="/">&larr; Terug naar de studio</a>
+      <div>
+        <h3>Wat wij voor uw locatie maken</h3>
+        <ul>
+          <li>Het verhaal.</li>
+          <li>Het boekje.</li>
+          <li>De route.</li>
+          <li>Hoe de stations vermomd zijn.</li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </section>
 
-    <!-- ── Hero ───────────────────────────────────────── -->
-    <section class="pl-hero" id="home">
-      <div class="tla-container pl-hero__inner">
-        <div class="pl-hero__text tla-fade">
-          <div class="pl-hero__breadcrumb">
-            <a href="/">The Lions Alliance</a>
-            <span class="pl-hero__breadcrumb-sep">/</span>
-            <span>Museale wandelquests</span>
-          </div>
-          <div class="pl-hero__badges">
-            <span class="tla-badge tla-badge--dev">In ontwikkeling</span>
-            <span class="tla-badge tla-badge--dev">Skeleton Key &mdash; in test</span>
-          </div>
-          <h1 class="pl-hero__title">Puzzle <em>Quests</em></h1>
-          <p class="pl-hero__subtitle">
-            Handgemaakte wandelervaringen voor musea en erfgoedlocaties. Elke wandeling verbindt een lokale legende met het landschap waarin zij thuishoort &mdash; meegedragen in de hand van de bezoeker, in de vorm van een op maat gemaakt rekwisiet. Geen app, geen scherm, geen gids nodig. Skeleton Key staat nu als eerste in bouw en test; Living Chronicle en Puzzle Lantern volgen.
-          </p>
-          <div class="pl-hero__ctas">
-            <a href="#adapt" class="tla-btn tla-btn--gold">Breng dit naar uw locatie</a>
-            <a href="#quests" class="tla-btn tla-btn--outline">Bekijk de quest &darr;</a>
-          </div>
-        </div>
-        <div class="pl-hero__visual tla-fade tla-d1">
-          <figure class="pl-sketch pl-sketch--hero">
-            <img src="/images/puzzle-quests/skeleton-key-wip/IMG20260901145952.webp" alt="Het echte, handgebouwde Skeleton Key-rekwisiet — een 3D-geprinte koperen sleutel met leeuwenkop, in aanbouw" loading="eager" />
-          </figure>
-          <span class="pl-sketch__caption">De Skeleton Key &mdash; het echte rekwisiet, in aanbouw</span>
+  <Fragment slot="plates">
+    <figure class="cat-plate cat-plate--wide">
+      <img src={`${wip}/IMG20260608130746.webp`} width="1600" height="1200" loading="lazy" data-unveil
+           alt="De werkbank van de Skeleton Key midden in de bouw: gereedschap, elektronica en onderdelenbakjes" />
+      <figcaption><b>Plaat 2.</b> De werkbank, midden in de bouw. Nog volop in ontwikkeling.</figcaption>
+    </figure>
+    <figure class="cat-plate">
+      <img src={`${wip}/IMG20260608105918.webp`} width="1600" height="1200" loading="lazy" data-unveil
+           alt="Een klein besturingsprintje met connectoren, vastgeklemd in een derde hand op de werkbank" />
+      <figcaption><b>Plaat 3.</b> Elektronica voor de sleutel, met de hand gesoldeerd.</figcaption>
+    </figure>
+  </Fragment>
+
+  <Fragment slot="enquiry">
+    <div class="cat-enquiry__grid">
+      <div>
+        <h2>Een quest voor uw museum of dorp</h2>
+        <p>Vertel ons over uw plek en het verhaal dat er ligt. Wij antwoorden binnen een of twee werkdagen.</p>
+        <div class="cat-enquiry__actions">
+          <a href="/contact/nl/" class="tla-btn">Neem contact op</a>
         </div>
       </div>
-    </section>
-
-    <!-- ── Het idee ───────────────────────────────────── -->
-    <section class="pl-overview" id="overview">
-      <div class="tla-container pl-overview__inner">
-        <div class="pl-overview__text tla-fade">
-          <span class="tla-overline">Het idee</span>
-          <h2 class="tla-section-header pl-section-header--left">Een lokale legende, te voet ontdekt &mdash; geen schermen, geen telefoons</h2>
-          <p>
-            Skeleton Key is een wandelquest rond een echte Meijelse legende: in de jaren 1730 vluchtten jonge mannen voor Pruisische ronselaars door de Peel, via een netwerk van schuilplaatsen. Bezoekers dragen een handgemaakte koperen sleutel die hen op pad stuurt om die vluchtroute zelf opnieuw te ontdekken. De sleutel vertrekt met hen vanaf de museumbalie en wordt dringender naarmate zij dichter bij elk verborgen station komen &mdash; tot het verhaal compleet is en zij met hun antwoord terugkeren.
-          </p>
-          <p>
-            De quest wordt gebouwd in samenwerking met <strong>Heemkundevereniging Medelo</strong>, de heemkundevereniging achter Museum Medelo in Meijel &mdash; hetzelfde museum als achter Medelotapps en Brief aan Jan Truijen. Skeleton Key is de eerste van drie geplande quests voor deze locatie; zodra hij bewezen is met echte bezoekers, worden dezelfde hardware en opzet aangepast voor Living Chronicle en Puzzle Lantern, en uiteindelijk voor andere locaties.
-          </p>
-          <ul class="pl-pilot__facts">
-            <li><span class="pl-pilot__label">Locatie</span><span class="pl-pilot__value">Museum Medelo, Tomveld 2, Meijel</span></li>
-            <li><span class="pl-pilot__label">Erfgoedpartner</span><span class="pl-pilot__value">Heemkundevereniging Medelo</span></li>
-            <li><span class="pl-pilot__label">Status Skeleton Key</span><span class="pl-pilot__value">In bouw &amp; test &mdash; proefwandeling volgt</span></li>
-          </ul>
-        </div>
-        <div class="pl-overview__visual tla-fade tla-d1">
-          <figure class="pl-sketch">
-            <img src="/images/puzzle-quests/skeleton-key-wip/IMG20260608130746.webp" alt="De werkbank van de Skeleton Key, midden in de bouw — gereedschap, elektronica en onderdelenbakjes, duidelijk nog in ontwikkeling" loading="lazy" />
-          </figure>
-          <span class="pl-sketch__caption">De werkplaats op dit moment &mdash; nog volop in ontwikkeling</span>
-        </div>
+      <div class="cat-enquiry__for">
+        Gemaakt voor
+        <ul>
+          <li>Streek- en heemkundemusea</li>
+          <li>Heemkundeverenigingen</li>
+          <li>Campings en erfgoedroutes</li>
+          <li>Toerismeorganisaties</li>
+        </ul>
       </div>
-    </section>
-
-    <div class="tla-divider"></div>
-
-    <!-- ── Hoe het werkt ──────────────────────────────── -->
-    <section class="pl-steps-section" id="how-it-works">
-      <div class="tla-container">
-        <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">Hoe het werkt</span>
-          <h2 class="tla-section-header">De bezoekerservaring, in drie stappen</h2>
-        </div>
-        <div class="pl-steps">
-          <div class="pl-step tla-fade">
-            <div class="pl-step__number">I</div>
-            <div class="pl-step__title">Haal de kit op</div>
-            <div class="pl-step__desc">Aan de balie van het museum: een rekwisiet, een boekje, een routekaart en een korte introductie op het verhaal. Geen app, geen scherm, geen installatie.</div>
-          </div>
-          <div class="pl-step tla-fade tla-d1">
-            <div class="pl-step__number">II</div>
-            <div class="pl-step__title">Loop de route</div>
-            <div class="pl-step__desc">De route loopt door het dorp en het omliggende landschap. Het rekwisiet reageert bij elk station en onthult telkens een nieuw stukje van het verhaal.</div>
-          </div>
-          <div class="pl-step tla-fade tla-d2">
-            <div class="pl-step__number">III</div>
-            <div class="pl-step__title">Kom terug naar de balie</div>
-            <div class="pl-step__desc">Bezoekers komen terug met een ingevuld boekje en een rekwisiet dat hun voortgang oplicht. De medewerker controleert het resultaat, zet een stempel en deelt nog &eacute;&eacute;n extra detail uit het archief. Binnen vijf minuten staat de kit klaar voor de volgende groep.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── De quest ───────────────────────────────────── -->
-    <section class="pl-quests" id="quests">
-      <div class="tla-container">
-        <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">De quest</span>
-          <h2 class="tla-section-header">Skeleton Key, in bouw en test</h2>
-        </div>
-
-        <!-- ── Skeleton Key ──────────────────────────── -->
-        <article class="pl-quest pl-quest--key tla-fade" id="quest-key">
-          <div class="pl-quest__visual">
-            <ul class="pl-quest__chips" style="margin-top:0;">
-              <li><span>Moeilijkheid</span><strong>&#9733;&#9733;&#9733;&#9734;</strong></li>
-              <li><span>Duur</span><strong>75&ndash;95 min</strong></li>
-              <li><span>Afstand</span><strong>~5 km</strong></li>
-              <li><span>Groep</span><strong>2&ndash;6</strong></li>
-              <li><span>Leeftijd</span><strong>10+</strong></li>
-              <li><span>Mechanisme</span><strong>Slotketen &middot; radio-nabijheid</strong></li>
-            </ul>
-          </div>
-          <div class="pl-quest__body">
-            <div class="pl-quest__eyebrow" style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">Quest I &middot; Skeleton Key <span class="tla-badge tla-badge--dev">In bouw &amp; test</span></div>
-            <h3 class="pl-quest__title">De Vlucht door de Peel</h3>
-            <p class="pl-quest__story">
-              Tussen 1713 en 1740 stuurde de Pruisische koning Frederik Wilhelm I ronselaars over de grens om bijzonder lange jonge mannen te verzamelen voor zijn elite Riesengarde. Wie vluchtte, gebruikte een geheim netwerk van veilige onderkomens door de Peel. Wie Meijel bereikte, was vrij &mdash; zij vestigden zich, trouwden er, en kregen lange kinderen. Het is in de archieven gedocumenteerd als de reden waarom in Meijel historisch meer lange mannen wonen dan in de omliggende dorpen.
-            </p>
-            <p>
-              De Skeleton Key is de hoofdsleutel van de wachter. Acht echte slotstations &mdash; verstopt in boomstammen, mossen stenen en wandelpalen langs de route, onzichtbaar voor een toevallige voorbijganger &mdash; lichten op zodra de sleutel ze via een radiosignaal voelt naderen. Bij elk slot wordt de sleutel fysiek omgedraaid, een NFC-scan wordt geactiveerd, en er licht weer een rune langs de schacht op door het verouderde brons heen. Bij het laatste slot branden alle acht, en de wandelaar spreekt het antwoord hardop uit aan de museumbalie &mdash; bewijs van de tocht, volledig te voet ontdekt.
-            </p>
-          </div>
-        </article>
-
-        <div class="pl-quest-divider" aria-hidden="true">&middot; &middot; &middot;</div>
-
-        <div class="tla-fade" style="text-align:center;margin:3rem 0 2rem;">
-          <span class="tla-overline">Wat volgt</span>
-          <h3 class="tla-section-header" style="margin-bottom:0;">Twee quests meer, zodra Skeleton Key bewezen is</h3>
-        </div>
-        <div class="pl-concept-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
-          <div class="pl-concept-card tla-fade">
-            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
-              <div class="pl-concept-card__title" style="margin:0;">Living Chronicle &mdash; Het Pad van Dikke Mie</div>
-              <span class="tla-badge tla-badge--future">Wat volgt</span>
-            </div>
-            <div class="pl-concept-card__desc">Een zichzelf beschrijvende, in leder gebonden kroniek die zich vult tijdens een herdenkingsroute voor een vergeten 18e-eeuwse zwerfster. De bouw van het rekwisiet volgt zodra de proefwandeling van Skeleton Key het format heeft bewezen.</div>
-          </div>
-          <div class="pl-concept-card tla-fade tla-d1">
-            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
-              <div class="pl-concept-card__title" style="margin:0;">Puzzle Lantern &mdash; De Schat van het Dolle Moer</div>
-              <span class="tla-badge tla-badge--future">Wat volgt</span>
-            </div>
-            <div class="pl-concept-card__desc">Een Victoriaanse lantaarn die UV-verborgen aanwijzingen onthult bij elk station, te ontcijferen met een veldjournaal. Dezelfde verhalenfamilie, nog altijd na Skeleton Key in de bouwwachtrij.</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── Voor uw locatie ────────────────────────────── -->
-    <section class="pl-adapt" id="adapt">
-      <div class="tla-container">
-        <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">Voor uw locatie</span>
-          <h2 class="tla-section-header">De hardware is herbruikbaar. Het verhaal is het maatwerk.</h2>
-        </div>
-        <div class="pl-adapt__grid">
-          <div class="pl-adapt__col tla-fade">
-            <h3 class="pl-adapt__title">Wat hetzelfde blijft</h3>
-            <ul class="pl-adapt__list">
-              <li>De rekwisiet-hardware.</li>
-              <li>Het puzzelraamwerk.</li>
-              <li>Het draaiboek.</li>
-            </ul>
-          </div>
-          <div class="pl-adapt__col tla-fade tla-d1">
-            <h3 class="pl-adapt__title">Wat wij per locatie ontwerpen</h3>
-            <ul class="pl-adapt__list">
-              <li>Het verhaal.</li>
-              <li>De inhoud van het boekje.</li>
-              <li>De route.</li>
-              <li>De vermomming van het stationsobject.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Footer ─────────────────────────────────────── -->
-    <footer class="tla-footer">
-      <div class="tla-container tla-footer__inner">
-        <div class="tla-footer__brand">
-          <div class="tla-footer__brand-row">
-            <img src="/images/branding/lions-logo.webp" alt="" class="tla-footer__logo-img" />
-            <div class="tla-footer__logo">The Lions Alliance</div>
-          </div>
-          <p class="tla-footer__tagline">Een creatieve ervaringsstudio.</p>
-        </div>
-        <div class="tla-footer__links">
-          <a href="/">Studio</a>
-          <a href="#overview">Overzicht</a>
-          <a href="#quests">De Quest</a>
-          <a href="#adapt">Voor uw locatie</a>
-          <a href="/contact/">Contact</a>
-        </div>
-      </div>
-      <div class="tla-container tla-footer__bottom">
-        <span>&copy; {year} The Lions Alliance. Alle rechten voorbehouden.</span>
-      </div>
-    </footer>
-
-    <!-- ── Scripts ─────────────────────────────────────── -->
-    <script>
-      const nav = document.getElementById('tla-nav');
-      if (nav) {
-        window.addEventListener('scroll', () => {
-          nav.classList.toggle('scrolled', window.scrollY > 40);
-        });
-      }
-
-      const faders = document.querySelectorAll('.tla-fade');
-      if (faders.length && 'IntersectionObserver' in window) {
-        const obs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add('tla-visible');
-                obs.unobserve(e.target);
-              }
-            });
-          },
-          { threshold: 0.15 }
-        );
-        faders.forEach((el) => obs.observe(el));
-      } else {
-        faders.forEach((el) => el.classList.add('tla-visible'));
-      }
-
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-          const open = mobileMenu.classList.toggle('open');
-          hamburger.classList.toggle('open', open);
-          hamburger.setAttribute('aria-expanded', String(open));
-        });
-        mobileMenu.querySelectorAll('a').forEach((a) => {
-          a.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-    </script>
-  </body>
-</html>
+    </div>
+  </Fragment>
+</CataloguePage>

@@ -1,246 +1,104 @@
 ---
-import "../../styles/homepage.css";
-import "../../styles/puzzlequests.css";
-const year = new Date().getFullYear();
+// Catalogue entry. Dutch mirror: ./nl/index.astro (edit both together).
+import CataloguePage from "../../components/hall/CataloguePage.astro";
+const iw = "/images/immersive-worlds";
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Immersive Worlds &mdash; The Lions Alliance</title>
-    <meta name="description" content="Immersive Worlds is The Lions Alliance&rsquo;s vision for large-scale, location-based storytelling &mdash; transforming museums, heritage sites, and public spaces into living narratives." />
-    <link rel="icon" type="image/png" href="/favicon-logo.png" />
-    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/immersive/" />
-    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/immersive/nl/" />
-    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/immersive/" />
-  </head>
-  <body class="tla-page">
+<CataloguePage
+  lang="en"
+  path="/immersive/"
+  title="Immersive Worlds | The Lions Alliance"
+  description="Location-based storytelling in 360° VR for museums, heritage sites and public spaces, starting with VRVoyage on the water in Amsterdam."
+  crumb="360&deg; VR and location-based stories"
+  h1="Immersive Worlds"
+  facts={[
+    ["Object", "360&deg; VR experiences tied to a real place"],
+    ["Live now", "VRVoyage, on the water in Amsterdam"],
+    ["Length", "70 minutes"],
+    ["Next", "Immersive World Demo, built in Unreal Engine"],
+    ["In concept", "Meijel Through the Ages"],
+  ]}
+  lede="Stories visitors step into rather than look at. VRVoyage already carries tourists back to Amsterdam&rsquo;s Golden Age, and we are building what comes next in Unreal Engine."
+  plate={{
+    src: `${iw}/Preview_1.png`, w: 1616, h: 948, vt: "exhibit-vr",
+    alt: "360° VR still from the Immersive World Demo: a canal boat passing beneath a bridge in 17th-century Amsterdam, rendered in Unreal Engine",
+    caption: "Still from the Immersive World Demo, rendered in Unreal Engine.",
+  }}
+  cta={{ href: "/contact/", label: "Tell us about your space" }}
+  link={{ href: "#projects", label: "Watch the previews" }}
+>
+  <section class="cat-section">
+    <h2>Places that tell their own story</h2>
+    <p>Immersive Worlds is where we take technology and storytelling furthest: a place, a landscape or a whole city becomes something visitors step into.</p>
+    <p>VRVoyage is a 70-minute 360&deg; VR canal-boat journey through Amsterdam&rsquo;s Golden Age, running today as a tourist attraction. To explore where the format goes next, we built the Immersive World Demo, a one-minute proof of concept of the same kind of experience in Unreal Engine, with a clear step up in visual quality.</p>
+  </section>
 
-    <!-- ── Navigation ─────────────────────────────────── -->
-    <nav class="tla-nav" id="tla-nav">
-      <div class="tla-nav__inner tla-container">
-        <a href="/" class="tla-nav__logo"><img src="/images/branding/lions-logo.webp" alt="" class="tla-nav__logo-img" />The Lions <span>Alliance</span></a>
-        <ul class="tla-nav__links">
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#collaborate">Work with us</a></li>
+  <section class="cat-section" id="projects">
+    <h2>Running in Amsterdam, and what comes next</h2>
+    <div class="cat-sub">
+      <h3>VRVoyage <span class="tla-badge tla-badge--live">Live</span></h3>
+      <p>A 70-minute VR journey aboard a real Amsterdam canal boat. Passengers put on headsets and are carried back to the year 1600, seeing the streets and waterways they just passed rebuilt in 3D as they looked four centuries ago, guided by a fictional boatman and filled with motion-captured crowds. Built in Blender, with Xsens motion capture for the crowds and Reallusion iClone to clean it up.</p>
+      <div class="cat-video"><iframe src="https://www.youtube.com/embed/sfveQ_2cajM" title="VRVoyage: preview of the final experience" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+      <p><a href="https://vrvoyage.nl" rel="noopener">Visit VRVoyage</a></p>
+    </div>
+    <div class="cat-sub">
+      <h3>Immersive World Demo <span class="tla-badge tla-badge--dev">Proof of concept</span></h3>
+      <p>A one-minute preview of what a project like VRVoyage looks like built in Unreal Engine instead of Blender, using OWL360 capture and MetaHuman characters. Drag to look around; it is a full 360&deg; scene.</p>
+      <div class="cat-video"><iframe src="https://www.youtube.com/embed/bQfjhIv4A0c" title="Immersive World Demo: 360° proof of concept built in Unreal Engine" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    </div>
+    <div class="cat-sub">
+      <h3>Meijel Through the Ages <span class="tla-badge tla-badge--future">In concept</span></h3>
+      <p>A 360&deg; VR ride through the fields while the village of Meijel grows up around you, from its earliest days to the Second World War. Planned on the same Unreal Engine setup as the demo.</p>
+    </div>
+  </section>
+
+  <Fragment slot="plates">
+    <figure class="cat-plate cat-plate--wide">
+      <img src={`${iw}/Michiel-Coehorst_Dag1_40_VR-brillen-op-Michiel-Lara-bootje-3.webp`} width="1200" height="658" loading="lazy" data-unveil
+           alt="Visitors wearing VRVoyage headsets aboard the boat in Amsterdam" />
+      <figcaption><b>Plate 2.</b> Passengers on board VRVoyage in Amsterdam.</figcaption>
+    </figure>
+    <figure class="cat-plate">
+      <img src={`${iw}/VR3_Piet-wijst-Schreierstoren-aan-4.webp`} width="1200" height="658" loading="lazy" data-unveil
+           alt="Piet, the VRVoyage boatman, pointing out the Schreierstoren in 17th-century Amsterdam" />
+      <figcaption><b>Plate 3.</b> Piet the boatman points out the Schreierstoren.</figcaption>
+    </figure>
+    <figure class="cat-plate">
+      <img src={`${iw}/VR3_Enversed_Piet-tussen-boten-4.webp`} width="1200" height="658" loading="lazy" data-unveil
+           alt="Piet rowing between tall sailing ships in VRVoyage" />
+      <figcaption><b>Plate 4.</b> Between the tall ships of the harbour.</figcaption>
+    </figure>
+    <figure class="cat-plate">
+      <img src={`${iw}/VR7_Enversed_Utrechtsepoort-donker-2.webp`} width="1200" height="658" loading="lazy" data-unveil
+           alt="A nighttime scene from VRVoyage passing beneath a torch-lit gate" />
+      <figcaption><b>Plate 5.</b> Under a torch-lit city gate at night.</figcaption>
+    </figure>
+    <figure class="cat-plate">
+      <img src={`${iw}/VR7_Bootjes_huizen-3.webp`} width="1200" height="658" loading="lazy" data-unveil
+           alt="A VRVoyage canal scene with historic houses and moored ships" />
+      <figcaption><b>Plate 6.</b> Canal houses and moored ships, around 1600.</figcaption>
+    </figure>
+  </Fragment>
+
+  <Fragment slot="enquiry">
+    <div class="cat-enquiry__grid">
+      <div>
+        <h2>Tell us about your space</h2>
+        <p>VRVoyage shows the format works at city scale, and more installations are in concept and design. We&rsquo;re looking for heritage institutions, cultural partners and municipalities that want to tell the story of their place on site.</p>
+        <p>These projects take time, and they work best with partners who are in it for the long run.</p>
+        <div class="cat-enquiry__actions">
+          <a href="/contact/" class="tla-btn">Get in touch</a>
+        </div>
+      </div>
+      <div class="cat-enquiry__for">
+        Made for
+        <ul>
+          <li>Museums and heritage venues</li>
+          <li>Cultural institutions</li>
+          <li>Municipalities</li>
+          <li>Historic sites and monuments</li>
+          <li>Tourism organisations</li>
         </ul>
-        <div class="tla-nav__actions">
-          <a href="/immersive/nl/" class="tla-nav__lang" hreflang="nl" lang="nl" title="Bekijk in het Nederlands">NL</a>
-          <a href="/contact/" class="tla-nav__cta tla-nav__cta--gold">Contact</a>
-          <a href="/" class="tla-nav__cta">&larr; Studio</a>
-        </div>
-        <button class="tla-nav__hamburger" id="hamburger" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
       </div>
-      <div class="tla-nav__mobile" id="mobile-menu">
-        <a href="#overview">Overview</a>
-        <a href="#projects">Projects</a>
-        <a href="#collaborate">Work with us</a>
-        <a href="/contact/">Contact</a>
-        <a href="/immersive/nl/" hreflang="nl" lang="nl">Bekijk in het Nederlands</a>
-        <a href="/">&larr; Back to Studio</a>
-      </div>
-    </nav>
-
-    <!-- ── Hero ───────────────────────────────────────── -->
-    <section class="pl-hero" id="home">
-      <div class="tla-container pl-hero__inner">
-        <div class="pl-hero__text tla-fade">
-          <div class="pl-hero__breadcrumb">
-            <a href="/">The Lions Alliance</a>
-            <span class="pl-hero__breadcrumb-sep">/</span>
-            <span>Museum Installations</span>
-          </div>
-          <h1 class="pl-hero__title">Immersive <em>Worlds</em></h1>
-          <p class="pl-hero__subtitle">
-            Large-scale, location-based storytelling for museums, heritage sites, and public spaces. VRVoyage, our flagship 360&deg; VR experience, is already a live tourist attraction in Amsterdam &mdash; and we&rsquo;re proving what comes next with Unreal Engine.
-          </p>
-          <div class="pl-hero__ctas">
-            <a href="#collaborate" class="tla-btn tla-btn--sage">Let&rsquo;s talk about your space</a>
-            <a href="/" class="tla-btn tla-btn--outline">&larr; The Lions Alliance</a>
-          </div>
-        </div>
-        <div class="pl-hero__visual tla-fade tla-d1">
-          <img src="/images/immersive-worlds/Preview_1.png" alt="360&deg; VR still from the Immersive World Demo &mdash; a canal boat passing beneath a bridge in 17th-century Amsterdam, rendered in Unreal Engine" loading="eager" style="width:100%; border-radius:var(--tla-radius-xl); box-shadow:var(--tla-shadow-md);" />
-          <span class="pl-hero__placeholder-caption">Immersive World Demo &mdash; built in Unreal Engine</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Overview ──────────────────────────────────── -->
-    <section class="pl-overview" id="overview">
-      <div class="tla-container pl-overview__inner">
-        <div class="pl-overview__text tla-fade">
-          <span class="tla-overline">What is Immersive Worlds</span>
-          <h2 class="tla-section-header">Places that tell their own story</h2>
-          <p>
-            Immersive Worlds is where The Lions Alliance pushes technology and storytelling furthest &mdash; transforming a place, a landscape, or a whole city into something visitors step into, rather than just look at.
-          </p>
-          <p>
-            Our clearest proof of what this pillar can do already exists: VRVoyage, a 70-minute 360&deg; VR canal-boat journey through Amsterdam&rsquo;s Golden Age, live today as a tourist attraction in Amsterdam. To explore where the format goes next, we built the Immersive World Demo &mdash; a one-minute proof of concept showing what the same kind of experience looks like built in Unreal Engine, for a real step up in visual fidelity.
-          </p>
-          <p>
-            Meijel Through the Ages takes the same idea to a single village: a 360&deg; VR ride through the fields as Meijel grows up around you, from its earliest days through the Second World War, built on the same Unreal pipeline as the demo.
-          </p>
-        </div>
-        <div class="pl-overview__visual tla-fade tla-d1">
-          <div class="pl-slideshow">
-            <img src="/images/immersive-worlds/Michiel-Coehorst_Dag1_40_VR-brillen-op-Michiel-Lara-bootje-3.webp" alt="Real visitors wearing VRVoyage headsets aboard the boat in Amsterdam" loading="lazy" style="animation-delay:0s;" />
-            <img src="/images/immersive-worlds/VR3_Piet-wijst-Schreierstoren-aan-4.webp" alt="Piet, the VRVoyage boatman, pointing out the Schreierstoren in 17th-century Amsterdam" loading="lazy" style="animation-delay:-4s;" />
-            <img src="/images/immersive-worlds/VR7_Enversed_Utrechtsepoort-donker-2.webp" alt="A nighttime scene from VRVoyage passing beneath a torch-lit gate" loading="lazy" style="animation-delay:-8s;" />
-            <img src="/images/immersive-worlds/VR5_Piet-wijst-4.webp" alt="Piet poling the boat through a busy 17th-century Amsterdam harbour in VRVoyage" loading="lazy" style="animation-delay:-12s;" />
-            <img src="/images/immersive-worlds/VR3_Enversed_Piet-tussen-boten-4.webp" alt="Piet rowing between tall sailing ships in VRVoyage" loading="lazy" style="animation-delay:-16s;" />
-            <img src="/images/immersive-worlds/VR7_Bootjes_huizen-3.webp" alt="A VRVoyage canal scene with historic houses and moored ships" loading="lazy" style="animation-delay:-20s;" />
-            <img src="/images/immersive-worlds/VR5_achteren_brug-dichter-4.webp" alt="A nighttime bridge crossing from VRVoyage, lit by torchlight" loading="lazy" style="animation-delay:-24s;" />
-          </div>
-          <span class="pl-sketch__caption">VRVoyage &mdash; live now in Amsterdam</span>
-        </div>
-      </div>
-    </section>
-
-    <div class="tla-divider"></div>
-
-    <!-- ── Projects ──────────────────────────────────── -->
-    <section class="pl-applications" id="projects">
-      <div class="tla-container">
-        <div class="tla-fade" style="text-align:center;">
-          <span class="tla-overline">Our work</span>
-          <h2 class="tla-section-header">One live attraction. One proof of concept. One concept ahead.</h2>
-        </div>
-      </div>
-
-      <!-- Project 1 & 2: VRVoyage + Immersive World Demo, side by side -->
-      <div class="tla-pillars__grid-wrap">
-        <div class="pl-live-poc-grid">
-          <div class="pl-concept-card tla-fade" style="border-top-color:var(--tla-gold,#c9aa71);">
-            <div class="pl-concept-card__title" style="margin:0 0 0.5rem;">VRVoyage</div>
-            <div class="pl-concept-card__desc" style="margin-bottom:1rem;">
-              A 70-minute immersive VR journey aboard a real Amsterdam canal boat: passengers put on headsets and are carried back to the year 1600, seeing the exact streets and waterways they just passed rebuilt in full 3D as they looked four centuries ago, guided by a fictional boatman and populated by motion-captured crowds. Built entirely in Blender, using Xsens motion capture for the crowd animation and Reallusion iClone to clean and prepare it. This preview shows what the final experience looks like.
-            </div>
-            <div style="position:relative; width:100%; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:var(--tla-radius-md); margin-bottom:1rem;">
-              <iframe src="https://www.youtube.com/embed/sfveQ_2cajM" title="VRVoyage &mdash; preview of the final experience" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
-            <a href="https://vrvoyage.nl" target="_blank" rel="noopener" class="tla-btn tla-btn--outline tla-btn--sm">Visit VRVoyage &rarr;</a>
-          </div>
-          <div class="pl-concept-card tla-fade tla-d1">
-            <div class="pl-concept-card__title" style="margin:0 0 0.5rem;">Immersive World Demo</div>
-            <div class="pl-concept-card__desc" style="margin-bottom:1rem;">
-              A one-minute preview showing what a project like VRVoyage could look like built in Unreal Engine instead of Blender &mdash; using OWL360 capture and MetaHuman characters for a real step up in visual fidelity. Drag to look around; it&rsquo;s rendered as a full 360&deg; scene.
-            </div>
-            <div style="position:relative; width:100%; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:var(--tla-radius-md);">
-              <iframe src="https://www.youtube.com/embed/bQfjhIv4A0c" title="Immersive World Demo &mdash; 360&deg; proof of concept built in Unreal Engine" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tla-container">
-        <!-- Project 3: Meijel Through the Ages -->
-        <div class="pl-concept-grid">
-          <div class="pl-concept-card tla-fade" style="grid-column:1/-1; max-width:700px; margin:0 auto;">
-            <div class="pl-concept-card__title" style="margin:0 0 0.5rem;">Meijel Through the Ages</div>
-            <div class="pl-concept-card__desc">
-              A 360&deg; VR experience where you ride through the fields as the village of Meijel grows up around you &mdash; from its earliest days through the Second World War. Planned on the same Unreal Engine pipeline as the Immersive World Demo.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Collaborate CTA ───────────────────────────── -->
-    <section class="pl-collaborate" id="collaborate">
-      <div class="tla-container pl-collaborate__inner">
-        <div class="pl-collaborate__text tla-fade">
-          <span class="tla-overline">Work with us</span>
-          <h2 class="tla-section-header">Let&rsquo;s talk about your space</h2>
-          <p>
-            Immersive Worlds has already proven the format at city scale, with more installations in concept and design. We&rsquo;re actively looking for cultural partners, heritage institutions, and forward-thinking municipalities who want to bring their location&rsquo;s story to life in a new way.
-          </p>
-          <p>
-            If you work at a museum, heritage site, cultural institution, or municipality and you see a fit &mdash; we&rsquo;d love to start a conversation. These projects take time and the right partners make all the difference.
-          </p>
-          <div class="pl-collaborate__ctas">
-            <a href="/contact/" class="tla-btn tla-btn--gold">Get in touch</a>
-            <a href="/" class="tla-btn tla-btn--outline">Explore the studio &rarr;</a>
-          </div>
-        </div>
-        <div class="pl-collaborate__audiences tla-fade tla-d1">
-          <ul class="pl-audience-list">
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Museums &amp; heritage venues</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Cultural institutions</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Municipalities</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Historic sites &amp; monuments</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Tourism organisations</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Footer ─────────────────────────────────────── -->
-    <footer class="tla-footer">
-      <div class="tla-container tla-footer__inner">
-        <div class="tla-footer__brand">
-          <div class="tla-footer__brand-row">
-            <img src="/images/branding/lions-logo.webp" alt="" class="tla-footer__logo-img" />
-            <div class="tla-footer__logo">The Lions Alliance</div>
-          </div>
-          <p class="tla-footer__tagline">Creative studio for meaningful projects.</p>
-        </div>
-        <div class="tla-footer__links">
-          <a href="/">Studio</a>
-          <a href="#projects">Projects</a>
-          <a href="#collaborate">Work with us</a>
-        </div>
-      </div>
-      <div class="tla-container tla-footer__bottom">
-        <span>&copy; {year} The Lions Alliance. All rights reserved.</span>
-      </div>
-    </footer>
-
-    <!-- ── Scripts ─────────────────────────────────────── -->
-    <script>
-      const nav = document.getElementById('tla-nav');
-      if (nav) {
-        window.addEventListener('scroll', () => {
-          nav.classList.toggle('scrolled', window.scrollY > 40);
-        });
-      }
-      const faders = document.querySelectorAll('.tla-fade');
-      if (faders.length && 'IntersectionObserver' in window) {
-        const obs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add('tla-visible');
-                obs.unobserve(e.target);
-              }
-            });
-          },
-          { threshold: 0.15 }
-        );
-        faders.forEach((el) => obs.observe(el));
-      } else {
-        faders.forEach((el) => el.classList.add('tla-visible'));
-      }
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-          const open = mobileMenu.classList.toggle('open');
-          hamburger.classList.toggle('open', open);
-          hamburger.setAttribute('aria-expanded', String(open));
-        });
-        mobileMenu.querySelectorAll('a').forEach((a) => {
-          a.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-    </script>
-  </body>
-</html>
+    </div>
+  </Fragment>
+</CataloguePage>

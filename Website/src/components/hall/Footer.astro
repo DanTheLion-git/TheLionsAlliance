@@ -1,0 +1,47 @@
+---
+interface Props { lang: 'en' | 'nl' }
+const { lang } = Astro.props;
+const nl = lang === 'nl';
+const year = new Date().getFullYear();
+const p = (en: string, nlPath: string) => (nl ? nlPath : en);
+---
+<footer class="hall-footer">
+  <div class="hall-wrap">
+    <div class="hall-footer__grid">
+      <div class="hall-footer__brand">
+        <img src="/images/branding/lions-logo.webp" alt="" width="56" height="56" loading="lazy" />
+        <div>
+          <div class="hall-footer__name">The Lions Alliance</div>
+          <p>{nl ? 'Interactieve exposities voor musea en erfgoedlocaties.' : 'Interactive exhibits for museums and heritage venues.'}</p>
+        </div>
+      </div>
+      <div>
+        <h2>{nl ? 'Werk' : 'Work'}</h2>
+        <ul>
+          <li><a href={p('/touchscreens/', '/touchscreens/nl/')}>Touch Station</a></li>
+          <li><a href={p('/jan-truijen/', '/jan-truijen/nl/')}>Brief aan Jan Truijen</a></li>
+          <li><a href={p('/puzzlequests/', '/puzzlequests/nl/')}>Puzzle Quests</a></li>
+          <li><a href={p('/immersive/', '/immersive/nl/')}>Immersive Worlds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>{nl ? 'Evenementen' : 'Events'}</h2>
+        <ul>
+          <li><a href="https://weddingcambox.nl" rel="noopener">WeddingCamBox</a></li>
+          <li><a href="https://shuttershare.nl" rel="noopener">ShutterShare</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:hello@thelionsalliance.com">hello@thelionsalliance.com</a></li>
+          <li><a href={p('/contact/', '/contact/nl/')}>{nl ? 'Stuur een bericht' : 'Send a message'}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hall-footer__legal">
+      <span>&copy; {year} The Lions Alliance</span>
+      <span>KvK 42062105</span>
+    </div>
+  </div>
+</footer>

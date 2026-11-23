@@ -1,7 +1,6 @@
 ---
-import "../../../styles/homepage.css";
-import "../../../styles/puzzlequests.css";
-import "../../../styles/touchstation.css";
+// Catalogue entry. Mirror: the other language's file (edit both together).
+import CataloguePage from "../../../components/hall/CataloguePage.astro";
 const year = new Date().getFullYear();
 
 /* Interne kostprijs- en urencijfers. Zet op false voor de klantgerichte versie. */
@@ -16,14 +15,14 @@ const tiers = [
     totalIncl: "vanaf &euro; 2.057",
     plus: [
       "Draait hetzelfde platform als de grootste tafel",
-      "Inbedrijfstelling op afstand &mdash; geen bezoek in te plannen",
+      "Inbedrijfstelling op afstand, zonder bezoek in te plannen",
       "Later opwaarderen verrekent wat u al betaalde",
     ],
     satellite: "vanaf &euro; 1.430",
     ownHwEx: "&euro; 1.350",
     ownHwIncl: "&euro; 1.634",
     lines: [
-      { k: "Techniek &mdash; paneel, mini-pc, beugel, bekabeling", v: "ca. &euro; 700" },
+      { k: "Techniek: paneel, mini-pc, beugel, bekabeling", v: "ca. &euro; 700" },
       { k: "Medelotapps instaplicentie", v: "&euro; 750" },
       { k: "Inbedrijfstelling op afstand en overdracht", v: "&euro; 250" },
     ],
@@ -33,8 +32,8 @@ const tiers = [
     hwLine: "&euro; 685",
     services: "&euro; 750 + &euro; 250",
     bom: [
-      { k: "Paneel &mdash; iiyama ProLite T2252MSC-B2AG", v: "&euro; 247" },
-      { k: "Mini-pc &mdash; N100/N150, 16GB, OEM Win 11 Pro", v: "&euro; 200" },
+      { k: "Paneel: iiyama ProLite T2252MSC-B2AG", v: "&euro; 247" },
+      { k: "Mini-pc: N100/N150, 16GB, OEM Win 11 Pro", v: "&euro; 200" },
       { k: "VESA-beugel", v: "&euro; 35" },
       { k: "Bekabeling en bevestiging", v: "&euro; 30" },
       { k: "Vracht", v: "&euro; 20" },
@@ -49,16 +48,16 @@ const tiers = [
     totalEx: "vanaf &euro; 3.050",
     totalIncl: "vanaf &euro; 3.691",
     plus: [
-      "Bijna twee keer zo helder &mdash; leesbaar in een ruimte met daglicht",
+      "Bijna twee keer zo helder, leesbaar in een ruimte met daglicht",
       "Interface 26% fysiek groter dan de Instap",
       "Twee bezoekers naast elkaar",
-      "Staat op een verzwaard vloerstatief &mdash; een lessenaar op maat is mogelijk",
+      "Staat op een verzwaard vloerstatief, of in een lessenaar op maat",
     ],
     satellite: "vanaf &euro; 1.890",
     ownHwEx: "&euro; 2.565",
     ownHwIncl: "&euro; 3.104",
     lines: [
-      { k: "Techniek &mdash; paneel, mini-pc, bekabeling", v: "ca. &euro; 835" },
+      { k: "Techniek: paneel, mini-pc, bekabeling", v: "ca. &euro; 835" },
       { k: "Vloerstatief op verzwaarde voetplaat, gemonteerd", v: "&euro; 325" },
       { k: "Medelotapps licentie + huisstijl", v: "&euro; 1.250" },
       { k: "Installatie en inbedrijfstelling", v: "&euro; 640" },
@@ -69,11 +68,11 @@ const tiers = [
     hwLine: "&euro; 815 + &euro; 325",
     services: "&euro; 1.250 + &euro; 640",
     bom: [
-      { k: "Paneel &mdash; iiyama ProLite T2755QSC-B1", v: "&euro; 379" },
-      { k: "Mini-pc &mdash; N100/N150, 16GB, OEM Win 11 Pro", v: "&euro; 200" },
-      { k: "Vloerstatief &mdash; staal, VESA 100/200", v: "&euro; 125" },
-      { k: "Verzwaarde voetplaat &mdash; 18 mm multiplex, betontegels als ballast", v: "&euro; 40" },
-      { k: "Beslag &mdash; naamplaat, kabelafdekking, pc-houder", v: "&euro; 15" },
+      { k: "Paneel: iiyama ProLite T2755QSC-B1", v: "&euro; 379" },
+      { k: "Mini-pc: N100/N150, 16GB, OEM Win 11 Pro", v: "&euro; 200" },
+      { k: "Vloerstatief: staal, VESA 100/200", v: "&euro; 125" },
+      { k: "Verzwaarde voetplaat: 18 mm multiplex, betontegels als ballast", v: "&euro; 40" },
+      { k: "Beslag: naamplaat, kabelafdekking, pc-houder", v: "&euro; 15" },
       { k: "Bekabeling en bevestiging", v: "&euro; 30" },
       { k: "Vracht", v: "&euro; 20" },
       { k: "Subtotaal", v: "&euro; 809" },
@@ -88,7 +87,7 @@ const tiers = [
     totalIncl: "vanaf &euro; 6.716",
     plus: [
       "Drie tot vier bezoekers rond &eacute;&eacute;n object",
-      "Zithoogte &mdash; geschikt voor kinderen en rolstoelgebruikers",
+      "Zithoogte, geschikt voor kinderen en rolstoelgebruikers",
       "Past in een ruimte waar een tafel van 150 &times; 95 cm niet in kan",
       "Ingebouwd in een antieke tafel, niet in een kast",
     ],
@@ -98,8 +97,8 @@ const tiers = [
     ownTableEx: "vanaf &euro; 5.250",
     ownTableIncl: "vanaf &euro; 6.353",
     lines: [
-      { k: "Techniek &mdash; 43&quot; 4K-paneel, mini-pc, bekabeling, transport", v: "ca. &euro; 2.090" },
-      { k: "Tafelbouw op maat &mdash; antieke tafel, gehard glas, subframe, ventilatie", v: "&euro; 1.570", craft: true },
+      { k: "Techniek: 43&quot; 4K-paneel, mini-pc, bekabeling, transport", v: "ca. &euro; 2.090" },
+      { k: "Tafelbouw op maat: antieke tafel, gehard glas, subframe, ventilatie", v: "&euro; 1.570", craft: true },
       { k: "Medelotapps licentie + huisstijl", v: "&euro; 1.250" },
       { k: "Installatie en inbedrijfstelling", v: "&euro; 640" },
     ],
@@ -109,8 +108,8 @@ const tiers = [
     hwLine: "&euro; 2.055 + &euro; 1.570",
     services: "&euro; 1.250 + &euro; 640",
     bom: [
-      { k: "Paneel &mdash; iiyama ProLite TF4339AS-B1AG", v: "&euro; 1.125" },
-      { k: "Mini-pc &mdash; Beelink EQR7, Ryzen 7 7735U", v: "&euro; 344" },
+      { k: "Paneel: iiyama ProLite TF4339AS-B1AG", v: "&euro; 1.125" },
+      { k: "Mini-pc: Beelink EQR7, Ryzen 7 7735U", v: "&euro; 344" },
       { k: "Tafel, glas, onderframe en ventilatie", v: "&euro; 430" },
       { k: "Bekabeling en bevestiging", v: "&euro; 35" },
       { k: "Vracht", v: "&euro; 80" },
@@ -125,7 +124,7 @@ const tiers = [
     totalEx: "vanaf &euro; 7.000",
     totalIncl: "vanaf &euro; 8.470",
     plus: [
-      "1,64&times; het oppervlak van de 43&quot; &mdash; 121,8 &times; 68,5 cm",
+      "1,64&times; het oppervlak van de 43&quot;: 121,8 &times; 68,5 cm",
       "Interface 28% fysiek groter dan de 43&quot;",
       "Vier of meer bezoekers tegelijk",
       "Ingebouwd in een antieke tafel van 150 &times; 95 cm, niet in een kast",
@@ -136,8 +135,8 @@ const tiers = [
     ownTableEx: "vanaf &euro; 6.550",
     ownTableIncl: "vanaf &euro; 7.926",
     lines: [
-      { k: "Techniek &mdash; 55&quot; 4K-paneel, mini-pc, bekabeling, transport", v: "ca. &euro; 2.930" },
-      { k: "Tafelbouw op maat &mdash; antieke tafel, gehard glas, staalframe, ventilatie", v: "&euro; 2.180", craft: true },
+      { k: "Techniek: 55&quot; 4K-paneel, mini-pc, bekabeling, transport", v: "ca. &euro; 2.930" },
+      { k: "Tafelbouw op maat: antieke tafel, gehard glas, staalframe, ventilatie", v: "&euro; 2.180", craft: true },
       { k: "Medelotapps licentie + huisstijl", v: "&euro; 1.250" },
       { k: "Installatie en inbedrijfstelling", v: "&euro; 640" },
     ],
@@ -147,15 +146,15 @@ const tiers = [
     hwLine: "&euro; 2.880 + &euro; 2.180",
     services: "&euro; 1.250 + &euro; 640",
     bom: [
-      { k: "Paneel &mdash; iiyama ProLite TF5539AS-B1AG", v: "&euro; 1.689" },
-      { k: "Mini-pc &mdash; Beelink EQR7, Ryzen 7 7735U", v: "&euro; 344" },
+      { k: "Paneel: iiyama ProLite TF5539AS-B1AG", v: "&euro; 1.689" },
+      { k: "Mini-pc: Beelink EQR7, Ryzen 7 7735U", v: "&euro; 344" },
       { k: "Tafel + constructief staalframe", v: "&euro; 360" },
-      { k: "Glas &mdash; 4 mm gehard extra helder, 1500 &times; 950", v: "&euro; 185" },
-      { k: "Koeling &mdash; 3&times; Noctua NF-A14 ULN + voeding", v: "&euro; 93" },
+      { k: "Glas: 4 mm gehard extra helder, 1500 &times; 950", v: "&euro; 185" },
+      { k: "Koeling: 3&times; Noctua NF-A14 ULN + voeding", v: "&euro; 93" },
       { k: "Filters en roosters", v: "&euro; 90" },
       { k: "Bevestiging, pakkingen, uitzetstrip", v: "&euro; 25" },
       { k: "Bekabeling en bevestiging", v: "&euro; 40" },
-      { k: "Vracht &mdash; pallet + ophalen tafel", v: "&euro; 140" },
+      { k: "Vracht: pallet + ophalen tafel", v: "&euro; 140" },
       { k: "Subtotaal", v: "&euro; 2.966" },
       { k: "Onvoorzien / DOA 3%", v: "&euro; 89" },
     ],
@@ -177,17 +176,17 @@ const compare = [
 
 const compareInternal = [
   { k: "Onderdelenkostprijs", v: ["&euro; 548", "&euro; 831", "&euro; 2.074", "&euro; 3.055"] },
-  { k: "&mdash; waarvan techniek", v: ["&euro; 548", "&euro; 651", "&euro; 1.644", "&euro; 2.302"] },
-  { k: "&mdash; waarvan fabricagematerialen", v: ["&mdash;", "&euro; 180", "&euro; 430", "&euro; 753"] },
-  { k: "Fabricage-uren &agrave; &euro; 95/uur", v: ["&mdash;", "1,5 uur", "12 uur", "15 uur"] },
+  { k: "waarvan techniek", v: ["&euro; 548", "&euro; 651", "&euro; 1.644", "&euro; 2.302"] },
+  { k: "waarvan fabricagematerialen", v: ["n.v.t.", "&euro; 180", "&euro; 430", "&euro; 753"] },
+  { k: "Fabricage-uren &agrave; &euro; 95/uur", v: ["n.v.t.", "1,5 uur", "12 uur", "15 uur"] },
   { k: "Uren incl. inbedrijfstelling", v: ["3 uur", "9,5 uur", "20 uur", "23 uur"] },
   { k: "Opbrengst per uur, hele opdracht", v: ["&euro; 379", "&euro; 231", "&euro; 172", "&euro; 169"] },
-  { k: "Eerste bouw &mdash; uren / per uur", v: ["&mdash;", "&mdash;", "32 uur / &euro; 108", "38 uur / &euro; 102"] },
+  { k: "Eerste bouw: uren / per uur", v: ["n.v.t.", "n.v.t.", "32 uur / &euro; 108", "38 uur / &euro; 102"] },
 ];
 
 const compareMoney = [
   { k: "Techniek", v: ["ca. &euro; 700", "ca. &euro; 835", "ca. &euro; 2.090", "ca. &euro; 2.930"] },
-  { k: "Behuizing en fabricage", v: ["&mdash;", "&euro; 325", "&euro; 1.570", "&euro; 2.180"] },
+  { k: "Behuizing en fabricage", v: ["n.v.t.", "&euro; 325", "&euro; 1.570", "&euro; 2.180"] },
   { k: "Licentie en diensten", v: ["&euro; 1.000", "&euro; 1.890", "&euro; 1.890", "&euro; 1.890"] },
   { k: "E&eacute;n station, excl. btw", v: ["vanaf &euro; 1.700", "vanaf &euro; 3.050", "vanaf &euro; 5.550", "vanaf &euro; 7.000"] },
   { k: "E&eacute;n station, incl. btw", v: ["vanaf &euro; 2.057", "vanaf &euro; 3.691", "vanaf &euro; 6.716", "vanaf &euro; 8.470"] },
@@ -203,20 +202,20 @@ const services = [
   { name: "Inbedrijfstelling op afstand", what: "Begeleide sessie op afstand plus een opgenomen overdracht. Alleen bij Instap.", price: "&euro; 250" },
   { name: "Integratie bij eigen hardware", what: "U koopt het paneel en de mini-pc zelf, op onze exacte inkooplijst. Wij adviseren over die lijst en verzorgen configuratie en integratie.", price: "&euro; 350" },
   { name: "Contentintegratie", what: "Wij laden en vormgeven uw materiaal in plaats van u het gereedschap te geven. Op volume per locatie.", price: "vanaf &euro; 800" },
-  { name: "App op maat", what: "Gebouwd naar briefing &mdash; zoals Pr&ograve;t m&egrave;r M&eacute;&eacute;ls, de dialecttrainer voor Museum Medelo.", price: "vanaf &euro; 1.600" },
+  { name: "App op maat", what: "Gebouwd naar briefing, zoals Pr&ograve;t m&egrave;r M&eacute;&eacute;ls, de dialecttrainer voor Museum Medelo.", price: "vanaf &euro; 1.600" },
   { name: "Lessenaar op maat", what: "Een lessenaar van berkenmultiplex, op bestelling gebouwd rond het 27&quot;-Station: verzwaarde voet, scherm verzonken in een schuin blad, servicedeur, ventilatie. Vervangt het vloerstatief.", price: "+ &euro; 775" },
   { name: "Vloerbevestiging", what: "Het station vastzetten aan de vloer. Wij raden het aan overal waar kinderen zonder toezicht komen.", price: "&euro; 60" },
-  { name: "Vrijwilligersbox", what: "Drie verlichte knoppen &mdash; AAN / OPSTARTEN / UIT &mdash; die een vrijwilliger op dinsdagmorgen kan bedienen zonder de pc aan te raken. Geen netspanning in de kast.", price: "&euro; 120" },
+  { name: "Vrijwilligersbox", what: "Drie verlichte knoppen (AAN, OPSTARTEN, UIT) die een vrijwilliger op dinsdagmorgen kan bedienen zonder de pc aan te raken. Geen netspanning in de kast.", price: "&euro; 120" },
 ];
 
 const faq = [
-  { q: "Wat moeten wij precies aanleveren?", a: "Uw eigen materiaal &mdash; foto&rsquo;s, films, documenten, artikelen, personenrecords, kaartmateriaal en een genealogie-export &mdash; in de ondersteunde formaten. Wij leveren het raamwerk en het gereedschap om het te laden. Uw vrijwilligers voegen zelf materiaal toe; u wacht nooit op ons om een foto te publiceren." },
+  { q: "Wat moeten wij precies aanleveren?", a: "Uw eigen materiaal in de ondersteunde formaten: foto&rsquo;s, films, documenten, artikelen, personenrecords, kaartmateriaal en een genealogie-export. Wij leveren het raamwerk en het gereedschap om het te laden. Uw vrijwilligers voegen zelf materiaal toe; u wacht nooit op ons om een foto te publiceren." },
   { q: "Wat is het verschil tussen Instap en de rest?", a: "Instap draait &eacute;&eacute;n app, die u zelf vult, op hetzelfde platform als de grootste tafel. De uitvoering bestaat zodat u kunt toetsen of een touchscreen zijn plaats in uw museum verdient v&oacute;&oacute;r u aan een volledige opstelling begint. Later opwaarderen verrekent wat u al betaalde." },
   { q: "Kunnen wij met &eacute;&eacute;n scherm beginnen en later uitbreiden?", a: "Ja, en het is de voordeligste manier om te groeien. De licentie geldt per locatie, dus een tweede of derde scherm kost de hardware plus &euro; 350 voor de machine en ongeveer vier uur configuratie." },
-  { q: "Waarom is de tafel duurder dan het scherm dat erin zit?", a: "Omdat die regel grotendeels uit werk bestaat en niet uit onderdelen &mdash; en wij laten dat liever zien dan dat we het wegmoffelen. Een tafel wordt gezocht, ingemeten, uitgezaagd, voorzien van een staalframe, geventileerd, beglaasd en getest; de opgave zegt dat op een eigen regel. U betaalt voor een meubel dat in uw gebouw thuishoort en met de hand is gebouwd, niet voor een grijze kast die op een pallet arriveert." },
-  { q: "Kunnen wij het scherm en de computer zelf kopen?", a: "Ja, en voor veel locaties is dat de eenvoudigste aankoop. U krijgt onze exacte inkooplijst, u koopt de onderdelen &mdash; of laat ze sponsoren of schenken, wat vaker gebeurt dan u denkt &mdash; en wij rekenen &euro; 350 voor advies, configuratie en integratie. De hardware en de garantie staan op uw naam. Het scheelt ruwweg &euro; 2.000 op een tafelopgave en kost ons nauwelijks iets, omdat onze marge nooit in de doos zat." },
+  { q: "Waarom is de tafel duurder dan het scherm dat erin zit?", a: "Omdat die regel grotendeels uit werk bestaat en niet uit onderdelen, en dat laten wij liever zien dan dat we het wegmoffelen. Een tafel wordt gezocht, ingemeten, uitgezaagd, voorzien van een staalframe, geventileerd, beglaasd en getest; de opgave zegt dat op een eigen regel. U betaalt voor een meubel dat in uw gebouw thuishoort en met de hand is gebouwd, niet voor een grijze kast die op een pallet arriveert." },
+  { q: "Kunnen wij het scherm en de computer zelf kopen?", a: "Ja, en voor veel locaties is dat de eenvoudigste aankoop. U krijgt onze exacte inkooplijst, u koopt de onderdelen of laat ze sponsoren of schenken, wat vaker gebeurt dan u denkt. Wij rekenen &euro; 350 voor advies, configuratie en integratie. De hardware en de garantie staan op uw naam. Het scheelt ruwweg &euro; 2.000 op een tafelopgave en kost ons nauwelijks iets, omdat onze marge nooit in de doos zat." },
   { q: "Wie beheert het na de installatie?", a: "Dat kunt u zelf; de overdracht is daarop ingericht. De meeste locaties kiezen toch het onderhoudscontract: monitoring op afstand, contentupdates, &eacute;&eacute;n bezoek per jaar en een reserve mini-pc op voorraad." },
-  { q: "Wij hebben geen investeringsbudget.", a: "De meeste erfgoedstichtingen niet, maar veel hebben wel toegang tot subsidie &mdash; Innovatiefonds Noord-Limburg, het Mondriaan Fonds en provinciale culturele budgetten. Wij helpen de aanvraag schrijven. Dat levert doorgaans meer op dan welke hardwarekorting ook." },
+  { q: "Wij hebben geen investeringsbudget.", a: "De meeste erfgoedstichtingen niet, maar veel hebben wel toegang tot subsidie, zoals het Innovatiefonds Noord-Limburg, het Mondriaan Fonds en provinciale culturele budgetten. Wij helpen de aanvraag schrijven. Dat levert doorgaans meer op dan welke hardwarekorting ook." },
 ];
 
 /* Tekeningen per tier. Station heeft er twee: het standaard vloerstatief en de optionele lessenaar. */
@@ -230,134 +229,57 @@ const art = {
   xl: [{ src: "/images/touch-tafel/tier-tafelxl.webp", alt: "Tafel XL: een 55-inch scherm ingebouwd in een tafel van 150 bij 95 cm" }],
 };
 ---
-<!doctype html>
-<html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Touch Station &mdash; The Lions Alliance</title>
-    <meta name="description" content="Een vooraf geconfigureerd touchscreen-station voor musea en erfgoedlocaties: paneel, mini-pc, behuizing en een Medelotapps-licentie. Vier vaste uitvoeringen, van proefopstelling tot 55&quot; 4K-tafel." />
-    <link rel="icon" type="image/png" href="/favicon-logo.png" />
-    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/touchscreens/" />
-    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/touchscreens/nl/" />
-    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/touchscreens/" />
-  </head>
-  <body class="tla-page pl-body">
+<CataloguePage
+  lang="nl"
+  path="/touchscreens/"
+  title="Touch Station | The Lions Alliance"
+  description="Een vooraf geconfigureerd touchscreen-station voor musea en erfgoedlocaties: paneel, mini-pc, behuizing en een Medelotapps-licentie. Vier vaste uitvoeringen, van proefopstelling tot 55&quot; 4K-tafel."
+  crumb="Touchscreen-stations"
+  h1="Touch Station"
+  facts={[
+    ["Object", "Touchscreen-station: paneel, mini-pc, behuizing en een Medelotapps-licentie"],
+    ["Formaten", "Vier vaste uitvoeringen, van 21,5&quot; tot een 55&quot; 4K-tafel"],
+    ["Prijs", "Vanaf &euro; 1.700 excl. btw"],
+    ["In gebruik", "Museum Medelo, Meijel: een touchtafel en een schoolbord"],
+    ["Sinds", "20 september 2026"],
+  ]}
+  lede="Een touchscreen voor uw museum, in vier formaten. Geen maatwerkproject maar vier vaste uitvoeringen: wij leveren het raamwerk, u levert de collectie."
+  plate={{
+    src: "/images/touch-tafel/IMG20260920161431.webp", w: 1600, h: 1200, vt: "exhibit-touch",
+    alt: "De Medelotapps-touchtafel in gebruik bij Museum Medelo in Meijel: een wit stalen frame met het beginscherm van het museum onder glas",
+    caption: "De Medelotapps-touchtafel bij Museum Medelo, in gebruik sinds 20 september 2026.",
+  }}
+  cta={{ href: "/contact/nl/", label: "Prijsopgave aanvragen" }}
+  link={{ href: "#tiers", label: "Bekijk de vier formaten" }}
+>
+  <section class="cat-section">
+    <h2>Het product is de software. De hardware is de bezorging.</h2>
+    <p>Medelotapps is een kioskplatform met vooraf gebouwde erfgoedapps waarin uw locatie het eigen materiaal laadt. Daarom is een tweede station goedkoop en een tweede locatie snel. Uw vrijwilligers voegen zelf materiaal toe, dus u wacht niet op ons om een foto te publiceren. Het platform zelf is af. De eerste twee machines, een touchtafel en een schoolbord, draaien al bij Museum Medelo, en werden live getoond aan het publiek tijdens de ledenopening van het museum op 20 september 2026.</p>
+    <div class="cat-lists">
+      <div><h3>Wij leveren</h3><ul><li>De platformlicentie en de vooraf gebouwde apps</li><li>Huisstijl: logo, palet, typografie, startscherm</li><li>Een geconfigureerde <code>components.json</code> en het kiosk-image</li><li>Overdracht zodat uw eigen vrijwilligers materiaal toevoegen</li><li>Optioneel: contentintegratie en apps op maat</li></ul></div>
+      <div><h3>U levert</h3><ul><li>Foto&rsquo;s, films en documenten</li><li>Artikelen en personenrecords</li><li>Kaartmateriaal</li><li>Een genealogie-export</li><li>In de ondersteunde formaten, die wij voor u op een rij zetten</li></ul></div>
+    </div>
+  </section>
 
-    <!-- ── Navigatie ──────────────────────────────────── -->
-    <nav class="tla-nav" id="tla-nav">
-      <div class="tla-nav__inner tla-container">
-        <a href="/nl/" class="tla-nav__logo"><img src="/images/branding/lions-logo.webp" alt="" class="tla-nav__logo-img" />The Lions <span>Alliance</span></a>
-        <ul class="tla-nav__links">
-          <li><a href="#software">Software</a></li>
-          <li><a href="#tiers">Uitvoeringen</a></li>
-          <li><a href="#variants">Budget</a></li>
-          <li><a href="#compare">Vergelijking</a></li>
-          <li><a href="#services">Diensten</a></li>
-        </ul>
-        <div class="tla-nav__actions">
-          <a href="/touchscreens/" class="tla-nav__lang" hreflang="en" lang="en" title="View in English">EN</a>
-          <a href="/contact/nl/" class="tla-nav__cta tla-nav__cta--gold">Contact</a>
-          <a href="/nl/" class="tla-nav__cta">&larr; Studio</a>
-        </div>
-        <button class="tla-nav__hamburger" id="hamburger" aria-label="Menu openen">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-      <div class="tla-nav__mobile" id="mobile-menu">
-        <a href="#software">Software</a>
-        <a href="#tiers">Uitvoeringen</a>
-        <a href="#variants">Budget</a>
-        <a href="#compare">Vergelijking</a>
-        <a href="#services">Diensten</a>
-        <a href="/contact/nl/">Contact</a>
-        <a href="/touchscreens/" hreflang="en" lang="en">View in English</a>
-        <a href="/nl/">&larr; Terug naar de studio</a>
-      </div>
-    </nav>
+  <section class="cat-section">
+    <h2>E&eacute;n station, excl. btw</h2>
+    <dl class="cat-table">
+      {tiers.map((t) => (<><dt set:html={`${t.name} &middot; ${t.size.split("&middot;")[0].trim()}`} /><dd set:html={t.totalEx} /></>))}
+    </dl>
+    <figure class="cat-plate" style="margin-top:48px;">
+      <img src="/images/touch-tafel/IMG20260920161454.webp" width="1600" height="1200" loading="lazy" data-unveil alt="Het Medelo-klassenbord in gebruik bij Museum Medelo" />
+      <figcaption><b>Plaat 2.</b> Het schoolbord bij Museum Medelo, op hetzelfde platform als de tafel.</figcaption>
+    </figure>
+  </section>
 
-    <!-- ── Hero ───────────────────────────────────────── -->
-    <section class="pl-hero" id="home">
-      <div class="tla-container pl-hero__inner">
-        <div class="pl-hero__text tla-fade">
-          <div class="pl-hero__breadcrumb">
-            <a href="/nl/">The Lions Alliance</a>
-            <span class="pl-hero__breadcrumb-sep">/</span>
-            <span>Touch Station</span>
-          </div>
-          <div class="pl-hero__badges">
-            <span class="tla-badge tla-badge--live">Live bij Museum Medelo &mdash; getoond 20 sept 2026</span>
-          </div>
-          <h1 class="pl-hero__title">E&eacute;n platform.<br />Vier uitvoeringen.<br /><em>Uw eigen verhaal.</em></h1>
-          <p class="pl-hero__subtitle">
-            Een vooraf geconfigureerd touchscreen-station voor musea en erfgoedstichtingen: paneel, mini-pc, behuizing en een Medelotapps-gebruikslicentie. Geen maatwerkproject, maar vier vaste uitvoeringen. Wij leveren het raamwerk; u levert de collectie.
-          </p>
-          <div class="pl-hero__ctas">
-            <a href="#tiers" class="tla-btn tla-btn--sage">Bekijk de uitvoeringen</a>
-            <a href="/contact/nl/" class="tla-btn tla-btn--outline">Prijsopgave aanvragen</a>
-          </div>
-        </div>
-        <div class="pl-hero__visual tla-fade tla-d1">
-          <div class="ts-pricecard">
-            <span class="ts-label">E&eacute;n station, excl. btw</span>
-            <ul class="ts-pricecard__rows">
-              {tiers.map((t) => (
-                <li>
-                  <span set:html={`${t.name} &middot; ${t.size.split("&middot;")[0].trim()}`} />
-                  <strong set:html={t.totalEx} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+  <Fragment slot="after">
 
-    <!-- ── Wat wij verkopen ───────────────────────────── -->
-    <section class="ts-section ts-section--white" id="split">
-      <div class="tla-container">
-        <div class="tla-section-header tla-fade">
-          <span class="tla-overline">De commerci&euml;le vorm</span>
-          <h2>Het product is de software. De hardware is de bezorging.</h2>
-          <p>
-            Medelotapps is een kioskplatform met vooraf gebouwde erfgoedapps waarin uw locatie het eigen materiaal laadt. Daarom is een tweede station goedkoop en een tweede locatie snel. Uw vrijwilligers voegen zelf materiaal toe &mdash; u wacht niet op ons om een foto te publiceren. Het platform zelf is af: de eerste twee machines &mdash; een touchtafel en een schoolbord &mdash; draaien al bij Museum Medelo, en werden live getoond aan het publiek tijdens de ledenopening van het museum op 20 september 2026.
-          </p>
-        </div>
-        <div class="ts-photos tla-fade">
-          <img src="/images/touch-tafel/IMG20260920161431.webp" alt="De Medelotapps-touchtafel in gebruik bij Museum Medelo" loading="lazy" />
-          <img src="/images/touch-tafel/IMG20260920161454.webp" alt="Het Medelo Schoolbord-scherm in gebruik bij Museum Medelo" loading="lazy" />
-        </div>
-        <div class="ts-split">
-          <div class="ts-split__col tla-fade">
-            <span class="ts-label">Wij leveren</span>
-            <ul class="pl-audience-list">
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>De platformlicentie en de vooraf gebouwde apps</li>
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>Huisstijl &mdash; logo, palet, typografie, startscherm</li>
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>Een geconfigureerde <code>components.json</code> en het kiosk-image</li>
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>Overdracht zodat uw eigen vrijwilligers materiaal toevoegen</li>
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>Optioneel: contentintegratie en apps op maat</li>
-            </ul>
-          </div>
-          <div class="ts-split__col tla-fade tla-d1">
-            <span class="ts-label">U levert</span>
-            <ul class="pl-audience-list">
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>Foto&rsquo;s, films en documenten</li>
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>Artikelen en personenrecords</li>
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>Kaartmateriaal</li>
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>Een genealogie-export</li>
-              <li class="pl-audience-item"><span class="pl-audience-dot"></span>In de ondersteunde formaten &mdash; wij laten weten welke</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ── Software ───────────────────────────────────── -->
     <section class="ts-section ts-section--alt" id="software">
       <div class="tla-container">
         <div class="tla-section-header tla-fade">
-          <span class="tla-overline">Medelotapps</span>
-          <h2>De apps die nu klaarstaan &mdash; probeer ze</h2>
+          <h2>Probeer de apps die nu klaarstaan</h2>
           <p>
             Dit is geen filmpje van het product. Dit &iacute;s het product: dezelfde code die de tafel in Museum Medelo draait, hier in uw browser, gevuld met materiaal dat van niemand in het bijzonder is. Pak een foto op en verschuif hem. Sleep de kaart door twee eeuwen. Wissel van taal.
           </p>
@@ -374,11 +296,11 @@ const art = {
           </div>
           <div class="ts-demo__bar">
             <p class="ts-demo__note" id="demo-note">
-              Tien vorsten, tien momenten uit de wereldgeschiedenis, veertig archieffoto's, vijf plekken in Amsterdam en drie films &mdash; als plaatsvervanger voor de collectie van een museum. <strong>Er staat geen materiaal van Museum Medelo in.</strong> De films zijn van National Geographic en spelen via YouTube.
+              Tien vorsten, tien momenten uit de wereldgeschiedenis, veertig archieffoto's, vijf plekken in Amsterdam en drie films staan in voor de collectie van een museum. <strong>Er staat geen materiaal van Museum Medelo in.</strong> De films zijn van National Geographic en spelen via YouTube.
             </p>
             <div class="ts-demo__actions">
               <button class="tla-btn tla-btn--outline tla-btn--sm" type="button" id="demo-full" hidden>Volledig scherm</button>
-              <a class="tla-btn tla-btn--outline tla-btn--sm" href="/medelotapps-demo/index.html" target="_blank" rel="noopener">Openen in nieuw tabblad &#8599;</a>
+              <a class="tla-btn tla-btn--outline tla-btn--sm" href="/medelotapps-demo/index.html" target="_blank" rel="noopener">Openen in nieuw tabblad <svg class="hall-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
             </div>
           </div>
         </div>
@@ -389,10 +311,9 @@ const art = {
     <section class="ts-section ts-section--white" id="tiers">
       <div class="tla-container">
         <div class="tla-section-header tla-fade">
-          <span class="tla-overline">Vier uitvoeringen</span>
           <h2>E&eacute;n formaat voor elke ruimte</h2>
           <p>
-            Instap is de proefopstelling waarmee u begint. Station staat midden in de ruimte. Tafel en Tafel XL zijn meubels met een scherm erin in plaats van een monitor op een beugel &mdash; en die keuze gaat over de maat van de ruimte, niet over het budget. Welke uitvoering past, hangt af van uw ruimte en het licht; vertel ons over de ruimte en wij zeggen welke wij erin zouden zetten.
+            Instap is de proefopstelling waarmee u begint. Station staat midden in de ruimte. Tafel en Tafel XL zijn meubels met een scherm erin in plaats van een monitor op een beugel. Die keuze gaat over de maat van de ruimte, niet over het budget. Welke uitvoering past, hangt af van uw ruimte en het licht; vertel ons over de ruimte en wij zeggen welke wij erin zouden zetten.
           </p>
           <p>
             Elke opgave bestaat uit dezelfde vier regels, en wij tonen ze alle vier: de techniek tegen bijna onze inkoopprijs van dat moment, het deel dat wij met de hand bouwen, de licentie en een vast bedrag voor installatie. Geen verzamelregel die verbergt waar het geld heen ging.
@@ -452,7 +373,7 @@ const art = {
 
                 {showCosts && (
                   <details class="ts-cost">
-                    <summary>Kostprijs en bouw &mdash; intern</summary>
+                    <summary>Kostprijs en bouw (intern)</summary>
                     <div class="ts-cost__inner">
                       <ul class="ts-cost__rows">
                         {t.bom.map((b) => (
@@ -461,7 +382,7 @@ const art = {
                         <li class="is-total"><span>Hardwarekostprijs</span><strong set:html={t.parts} /></li>
                       </ul>
                       <div class="ts-cost__hours">
-                        Bouw: <strong>{t.hours} uur</strong> <span set:html={`&mdash; arbeidswaarde ${t.labour}`} /><br />
+                        Bouw: <strong>{t.hours} uur</strong> <span set:html={`(arbeidswaarde ${t.labour})`} /><br />
                         Kostprijs: <strong set:html={`${t.parts} + ${t.hours} uur`} />
                       </div>
                       <ul class="ts-cost__rows" style="margin-top:12px;">
@@ -485,10 +406,9 @@ const art = {
     <section class="ts-section ts-section--alt" id="variants">
       <div class="tla-container">
         <div class="tla-section-header tla-fade">
-          <span class="tla-overline">Als het budget de drempel is</span>
           <h2>Twee manieren om het goedkoper te maken</h2>
           <p>
-            Geen van beide is een uitgeklede versie. U krijgt hetzelfde platform, dezelfde apps en dezelfde tafel &mdash; u levert alleen meer zelf aan. Vraag ernaar v&oacute;&oacute;r u besluit dat het niet haalbaar is.
+            Geen van beide is een uitgeklede versie. U krijgt hetzelfde platform, dezelfde apps en dezelfde tafel. U levert alleen meer zelf aan. Vraag ernaar v&oacute;&oacute;r u besluit dat het niet haalbaar is.
           </p>
         </div>
 
@@ -498,22 +418,22 @@ const art = {
             <div class="ts-variant__amount">&minus; &euro; 300 tot &euro; 450</div>
             <div class="ts-variant__scope">Bij Tafel en Tafel XL</div>
             <div class="ts-variant__what">
-              Uw museum bezit vrijwel zeker een mooiere tafel dan een kringloopwinkel &mdash; en bovendien een met een verhaal erachter. Levert u die aan, dan bouwen wij daarin. Het staalframe, het geharde glas, de ventilatie en de inbouw blijven ons werk.
+              Uw museum bezit vrijwel zeker een mooiere tafel dan een kringloopwinkel, en bovendien een met een verhaal erachter. Levert u die aan, dan bouwen wij daarin. Het staalframe, het geharde glas, de ventilatie en de inbouw blijven ons werk.
             </div>
             <p class="ts-variant__note">
-              Gaat van de regel tafelbouw op maat af. Het subframe blijft bij ons &mdash; dat draagt het paneel, en bij de 55&quot; draagt het de belasting.
+              Gaat van de regel tafelbouw op maat af. Het subframe blijft bij ons: dat draagt het paneel, en bij de 55&quot; draagt het de belasting.
             </p>
           </div>
 
           <div class="ts-variant tla-fade tla-d1">
             <div class="ts-variant__name">Hardware in eigen beheer</div>
             <div class="ts-variant__amount">&minus; ca. &euro; 350 tot &euro; 2.580</div>
-            <div class="ts-variant__scope">Bij elke uitvoering &mdash; meer bij de grotere schermen</div>
+            <div class="ts-variant__scope">Bij elke uitvoering, meer bij de grotere schermen</div>
             <div class="ts-variant__what">
-              U krijgt onze exacte inkooplijst. U koopt het paneel en de mini-pc zelf &mdash; of laat ze sponsoren of schenken, wat vaker gebeurt dan u denkt. Wij rekenen &euro; 350 voor advies, configuratie en integratie, en de hardware en de garantie staan op uw naam.
+              U krijgt onze exacte inkooplijst. U koopt het paneel en de mini-pc zelf, of laat ze sponsoren of schenken, wat vaker gebeurt dan u denkt. Wij rekenen &euro; 350 voor advies, configuratie en integratie, en de hardware en de garantie staan op uw naam.
             </div>
             <p class="ts-variant__note">
-              De regel techniek gaat van de opgave af en &euro; 350 komt erbij. Het kost ons nauwelijks iets, omdat onze marge nooit in de doos zat &mdash; en juist daarom kunnen wij dit aanbieden waar een hardwareleverancier dat niet kan.
+              De regel techniek gaat van de opgave af en &euro; 350 komt erbij. Het kost ons nauwelijks iets, omdat onze marge nooit in de doos zat. Juist daarom kunnen wij dit aanbieden en een hardwareleverancier niet.
             </p>
           </div>
         </div>
@@ -521,13 +441,13 @@ const art = {
         <div class="ts-stack tla-fade">
           <span class="ts-label">Ze zijn te stapelen</span>
           <ul class="ts-stack__rows">
-            <li><span>Tafel XL, 55&quot; &mdash; excl. btw</span><strong>vanaf &euro; 7.000</strong></li>
+            <li><span>Tafel XL, 55&quot;, excl. btw</span><strong>vanaf &euro; 7.000</strong></li>
             <li><span>Uw eigen tafel</span><strong>&minus; &euro; 450</strong></li>
             <li><span>Uw eigen hardware</span><strong>&minus; ca. &euro; 2.580</strong></li>
             <li class="is-total"><span>Wat u ons betaalt</span><strong>&euro; 3.970 <small>&euro; 4.804 incl. btw</small></strong></li>
           </ul>
           <p class="ts-stack__note">
-            Plus het paneel en de mini-pc die u zelf koopt &mdash; ongeveer &euro; 2.300 tegen de prijzen die wij betalen. Een 55&quot;-touchtafel op maat, en de hardware is van u.
+            Plus het paneel en de mini-pc die u zelf koopt, ongeveer &euro; 2.300 tegen de prijzen die wij betalen. Een 55&quot;-touchtafel op maat, en de hardware is van u.
           </p>
         </div>
       </div>
@@ -537,7 +457,6 @@ const art = {
     <section class="ts-section ts-section--white" id="compare">
       <div class="tla-container">
         <div class="tla-section-header tla-fade">
-          <span class="tla-overline">Naast elkaar</span>
           <h2>Wat er werkelijk verschilt</h2>
           <p>
             Helderheid, oppervlak en de fysieke maat van de interface zijn de echte verschillen. Pixeldichtheid is dat niet: op de tafels koopt u oppervlak, geen scherpte.
@@ -574,7 +493,7 @@ const art = {
             </tbody>
           </table>
         </div>
-        <p class="ts-table__scroll-hint">Schuif opzij voor alle vier de uitvoeringen &rarr;</p>
+        <p class="ts-table__scroll-hint">Schuif opzij voor alle vier de uitvoeringen <svg class="hall-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
         <p class="ts-note">Vanafprijzen, september 2026, exclusief btw tenzij anders vermeld. De regel techniek volgt de actuele hardwareprijs; licentie, bouw en installatie liggen vast. Een opgave is 30 dagen geldig.</p>
       </div>
     </section>
@@ -583,10 +502,9 @@ const art = {
     <section class="ts-section ts-section--alt" id="services">
       <div class="tla-container">
         <div class="tla-section-header tla-fade">
-          <span class="tla-overline">Software en diensten</span>
           <h2>Een licentie op een afgerond platform</h2>
           <p>
-            Het ontwikkelwerk is gedaan. U koopt geen veertig uur werk, maar toegang tot een werkend platform. De licentie geldt per locatie, niet per station &mdash; en dat is de reden om meerdere schermen in &eacute;&eacute;n keer te plaatsen.
+            Het ontwikkelwerk is gedaan. U koopt geen veertig uur werk, maar toegang tot een werkend platform. De licentie geldt per locatie, niet per station. Dat is de reden om meerdere schermen in &eacute;&eacute;n keer te plaatsen.
           </p>
         </div>
 
@@ -607,7 +525,7 @@ const art = {
             <div class="ts-care__price">&euro; 75&ndash;125</div>
             <div class="ts-care__unit">per station, per maand</div>
             <p class="ts-care__note">
-              Veel erfgoedstichtingen hebben geen investeringsbudget maar wel toegang tot subsidie. Wij helpen de aanvraag schrijven &mdash; Innovatiefonds Noord-Limburg, het Mondriaan Fonds en provinciale culturele budgetten.
+              Veel erfgoedstichtingen hebben geen investeringsbudget maar wel toegang tot subsidie. Wij helpen de aanvraag schrijven voor het Innovatiefonds Noord-Limburg, het Mondriaan Fonds of een provinciaal cultureel budget.
             </p>
           </div>
           <ul class="pl-audience-list">
@@ -624,7 +542,6 @@ const art = {
     <section class="pl-faq" id="faq">
       <div class="tla-container">
         <div class="tla-section-header tla-fade">
-          <span class="tla-overline">Veelgestelde vragen</span>
           <h2>Wat musea ons vragen</h2>
         </div>
         <div class="pl-faq__list">
@@ -637,56 +554,24 @@ const art = {
         </div>
       </div>
     </section>
+  </Fragment>
 
-    <!-- ── Samenwerking ───────────────────────────────── -->
-    <section class="pl-collaborate" id="contact">
-      <div class="tla-container pl-collaborate__inner">
-        <div class="pl-collaborate__text tla-fade">
-          <span class="tla-overline">Prijsopgave</span>
-          <h2 class="tla-section-header pl-section-header--left">Vertel ons over de ruimte</h2>
-          <p>
-            Stuur ons de ruimte, het licht en ongeveer hoeveel schermen u voor ogen heeft, en u ontvangt een opgave met btw-inclusieve totalen voor de passende uitvoering.
-          </p>
-          <div class="pl-collaborate__ctas">
-            <a href="/contact/nl/" class="tla-btn tla-btn--gold">Neem contact op</a>
-            <a href="/nl/" class="tla-btn tla-btn--outline">Bekijk de studio &rarr;</a>
-          </div>
-        </div>
-        <div class="pl-collaborate__audiences tla-fade tla-d1">
-          <ul class="pl-audience-list">
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Een opgave met btw-inclusieve eindbedragen</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Advies over het formaat, op basis van de ruimte en het licht</li>
-            <li class="pl-audience-item"><span class="pl-audience-dot"></span>Hulp bij de subsidieaanvraag</li>
-          </ul>
-        </div>
+  <Fragment slot="enquiry">
+    <div class="cat-enquiry__grid">
+      <div>
+        <h2>Vertel ons over de ruimte</h2>
+        <p>Stuur ons de ruimte, het licht en ongeveer hoeveel schermen u voor ogen heeft, en u ontvangt een opgave met btw-inclusieve totalen voor de passende uitvoering.</p>
+        <div class="cat-enquiry__actions"><a href="/contact/nl/" class="tla-btn">Neem contact op</a></div>
       </div>
-    </section>
+      <div class="cat-enquiry__for">
+        Wat u terugkrijgt
+        <ul><li>Een opgave met btw-inclusieve eindbedragen</li><li>Advies over het formaat, op basis van de ruimte en het licht</li><li>Hulp bij de subsidieaanvraag</li></ul>
+      </div>
+    </div>
+  </Fragment>
+</CataloguePage>
 
-    <!-- ── Footer ─────────────────────────────────────── -->
-    <footer class="tla-footer">
-      <div class="tla-container tla-footer__inner">
-        <div class="tla-footer__brand">
-          <div class="tla-footer__brand-row">
-            <img src="/images/branding/lions-logo.webp" alt="" class="tla-footer__logo-img" />
-            <div class="tla-footer__logo">The Lions Alliance</div>
-          </div>
-          <p class="tla-footer__tagline">Studio voor museale technologie &amp; erfgoed.</p>
-        </div>
-        <div class="tla-footer__links">
-          <a href="/nl/">Studio</a>
-          <a href="#tiers">Uitvoeringen</a>
-          <a href="#variants">Budget</a>
-          <a href="#contact">Samenwerking</a>
-          <a href="/touchscreens/" hreflang="en" lang="en">English version</a>
-        </div>
-      </div>
-      <div class="tla-container tla-footer__bottom">
-        <span>&copy; {year} The Lions Alliance. Alle rechten voorbehouden.</span>
-      </div>
-    </footer>
-
-    <!-- ── Scripts ─────────────────────────────────────── -->
-    <script>
+<script>
       // Station card: switch the drawing between floor stand and lectern.
       document.querySelectorAll('.ts-tier__art').forEach((fig) => {
         const imgs = fig.querySelectorAll('img');
@@ -696,29 +581,6 @@ const art = {
           btns.forEach((o, j) => o.setAttribute('aria-pressed', String(j === i)));
         }));
       });
-      const nav = document.getElementById('tla-nav');
-      if (nav) {
-        window.addEventListener('scroll', () => {
-          nav.classList.toggle('scrolled', window.scrollY > 40);
-        });
-      }
-      const faders = document.querySelectorAll('.tla-fade');
-      if (faders.length && 'IntersectionObserver' in window) {
-        const obs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add('tla-visible');
-                obs.unobserve(e.target);
-              }
-            });
-          },
-          { threshold: 0.15 }
-        );
-        faders.forEach((el) => obs.observe(el));
-      } else {
-        faders.forEach((el) => el.classList.add('tla-visible'));
-      }
       /* De demo is een paar megabyte aan code, foto's en kaarttegels. Er wordt
          niets opgehaald tot iemand erom vraagt: vandaar de stilstaande plaat
          en een iframe dat pas hier ontstaat. */
@@ -745,23 +607,4 @@ const art = {
           else demoStage.requestFullscreen && demoStage.requestFullscreen();
         });
       }
-
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-          const open = mobileMenu.classList.toggle('open');
-          hamburger.classList.toggle('open', open);
-          hamburger.setAttribute('aria-expanded', String(open));
-        });
-        mobileMenu.querySelectorAll('a').forEach((a) => {
-          a.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
     </script>
-  </body>
-</html>

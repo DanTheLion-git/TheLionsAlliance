@@ -1,0 +1,58 @@
+---
+interface Link { href: string; label: string }
+interface Props {
+  lang: 'en' | 'nl';
+  /** URL of this page in the other language. */
+  alt: string;
+  /** In-page or cross-page links for this page. Defaults to the studio's products. */
+  links?: Link[];
+}
+const { lang, alt, links } = Astro.props;
+const nl = lang === 'nl';
+const home = nl ? '/nl/' : '/';
+const products: Link[] = nl
+  ? [
+      { href: '/touchscreens/nl/', label: 'Touch Station' },
+      { href: '/jan-truijen/nl/', label: 'Jan Truijen' },
+      { href: '/puzzlequests/nl/', label: 'Puzzle Quests' },
+      { href: '/immersive/nl/', label: 'Immersive Worlds' },
+    ]
+  : [
+      { href: '/touchscreens/', label: 'Touch Station' },
+      { href: '/jan-truijen/', label: 'Jan Truijen' },
+      { href: '/puzzlequests/', label: 'Puzzle Quests' },
+      { href: '/immersive/', label: 'Immersive Worlds' },
+    ];
+const items = links ?? products;
+const path = Astro.url.pathname;
+const t = nl
+  ? { skip: 'Naar de inhoud', menu: 'Menu', contact: 'Contact', langShort: 'EN', langLong: 'View in English', langTitle: 'View in English', studio: 'Studio' }
+  : { skip: 'Skip to content', menu: 'Menu', contact: 'Contact', langShort: 'NL', langLong: 'Bekijk in het Nederlands', langTitle: 'Bekijk in het Nederlands', studio: 'Studio' };
+const contact = nl ? '/contact/nl/' : '/contact/';
+const otherLang = nl ? 'en' : 'nl';
+---
+<a class="hall-skip" href="#main">{t.skip}</a>
+<header class="hall-nav" id="tla-nav">
+  <div class="hall-wrap hall-nav__bar">
+    <a href={home} class="hall-nav__brand" aria-label={`The Lions Alliance, ${t.studio}`}>
+      <img src="/images/branding/lions-logo.webp" alt="" width="36" height="36" />
+      The Lions Alliance
+    </a>
+    <nav class="hall-nav__links" aria-label={nl ? 'Hoofdmenu' : 'Main'}>
+      {items.map((l) => (
+        <a href={l.href} aria-current={l.href === path ? 'page' : undefined}>{l.label}</a>
+      ))}
+    </nav>
+    <div class="hall-nav__actions">
+      <a href={alt} class="hall-nav__lang" hreflang={otherLang} lang={otherLang} title={t.langTitle}>{t.langShort}</a>
+      <a href={contact} class="tla-btn tla-btn--sm">{t.contact}</a>
+    </div>
+    <button class="hall-nav__menu-btn" type="button" aria-expanded="false" aria-controls="hall-sheet">{t.menu}</button>
+  </div>
+  <div class="hall-wrap hall-nav__sheet" id="hall-sheet">
+    {path !== home && <a href={home}>{t.studio}</a>}
+    {items.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href={contact}>{t.contact}</a>
+    <a href={alt} hreflang={otherLang} lang={otherLang}>{t.langLong}</a>
+  </div>
+</header>

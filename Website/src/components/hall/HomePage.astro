@@ -1,0 +1,341 @@
+---
+/* The studio homepage, in both languages. src/pages/index.astro and
+   src/pages/nl/index.astro only pick the language: every word on the page
+   lives here, EN and NL side by side, so the two can't drift apart. */
+import "../../styles/hall.css";
+import HallHead from "./HallHead.astro";
+import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
+
+interface Props { lang: 'en' | 'nl' }
+const { lang } = Astro.props;
+const nl = lang === 'nl';
+const L = (en: string, nlText: string) => (nl ? nlText : en);
+const u = (en: string, nlPath: string) => (nl ? nlPath : en);
+
+const exhibits = [
+  {
+    id: 'touch',
+    img: '/images/touch-tafel/IMG20260920161431.webp',
+    w: 1600, h: 1200,
+    pos: '50% 60%',
+    alt: L('The Medelotapps touch table at Museum Medelo in Meijel, a white steel frame with the museum’s home screen on the glass',
+           'De Medelotapps-touchtafel bij Museum Medelo in Meijel: een wit stalen frame met het beginscherm van het museum onder glas'),
+    title: 'Touch Station',
+    line: L('A touch table and a classroom board running Medelotapps, our kiosk platform. The museum’s own volunteers add the photographs, maps and stories.',
+            'Een touchtafel en een klassenbord met Medelotapps, ons kioskplatform. De vrijwilligers van het museum voegen zelf de foto’s, kaarten en verhalen toe.'),
+    facts: [
+      [L('On view', 'Te zien'), L('Museum Medelo, Meijel', 'Museum Medelo, Meijel')],
+      [L('Status', 'Status'), L('In use since 20 September 2026', 'In gebruik sinds 20 september 2026')],
+      [L('Price', 'Prijs'), L('From €1,700 excl. VAT', 'Vanaf € 1.700 excl. btw')],
+    ],
+    g: { img: '/images/touch-tafel/IMG20260920161454.webp', w: 1600, h: 1200, alt: L('The Medelo classroom board screen in use at Museum Medelo', 'Het Medelo-klassenbord in gebruik bij Museum Medelo') },
+    href: u('/touchscreens/', '/touchscreens/nl/'),
+    cta: L('See Touch Station', 'Bekijk Touch Station'),
+  },
+  {
+    id: 'jan',
+    img: '/images/brief-aan-jan/prototype-20-09-2026/IMG20260920135209.webp',
+    w: 1600, h: 2133,
+    pos: '50% 42%',
+    alt: L('The talking portrait of Jan Truijen in a wooden frame on a desk, beside the converted antique typewriter',
+           'Het sprekende portret van Jan Truijen in een houten lijst op een bureau, naast de omgebouwde antieke typemachine'),
+    title: 'Brief aan Jan Truijen',
+    line: L('Visitors type a letter on an antique typewriter. The portrait, a screen in a period frame, answers in character with an AI voice and 3D facial animation.',
+            'Bezoekers typen een brief op een antieke typemachine. Het portret, een scherm in een historische lijst, antwoordt in karakter met een AI-stem en 3D-gezichtsanimatie.'),
+    facts: [
+      [L('Shown', 'Getoond'), L('Museum Medelo, 20 September 2026', 'Museum Medelo, 20 september 2026')],
+      [L('Status', 'Status'), L('Working prototype', 'Werkend prototype')],
+      [L('Visitors use', 'Bezoekers gebruiken'), L('Only an antique typewriter', 'Alleen een antieke typemachine')],
+      [L('Travels', 'Reist mee'), L('A new portrait for a new venue', 'Een nieuw portret voor een nieuwe locatie')],
+    ],
+    g: { img: '/images/brief-aan-jan/prototype-20-09-2026/IMG20260920135157.webp', w: 1600, h: 1200, alt: L('The installation at Museum Medelo: an antique desk, the typewriter and the talking portrait, with Jan Truijen’s costume beside it', 'De installatie bij Museum Medelo: een antiek bureau, de typemachine en het sprekende portret, met het kostuum van Jan Truijen ernaast') },
+    href: u('/jan-truijen/', '/jan-truijen/nl/'),
+    cta: L('See the installation', 'Bekijk de installatie'),
+  },
+  {
+    id: 'key',
+    img: '/images/puzzle-quests/skeleton-key-wip/IMG20260901145952.webp',
+    w: 1600, h: 1200,
+    pos: '45% 50%',
+    alt: L('The Skeleton Key in build: a 3D-printed lion’s-head key with a clear shaft for eight lights, on a green workbench mat',
+           'De Skeleton Key in aanbouw: een 3D-geprinte sleutel met leeuwenkop en een doorzichtige schacht voor acht lampjes, op een groene werkmat'),
+    title: 'Puzzle Quests: Skeleton Key',
+    line: L('A 5 km walking quest through Meijel. A hand-built key senses eight hidden lock-stations and lights one rune at each. No app, no screen.',
+            'Een wandelquest van 5 km door Meijel. Een handgemaakte sleutel voelt acht verborgen slotstations aan en laat bij elk één rune oplichten. Geen app, geen scherm.'),
+    facts: [
+      [L('Route', 'Route'), L('Meijel, about 5 km', 'Meijel, ongeveer 5 km')],
+      [L('Status', 'Status'), L('In build and testing', 'In bouw en test')],
+      [L('Partner', 'Partner'), 'Heemkundevereniging Medelo'],
+    ],
+    g: { img: '/images/puzzle-quests/skeleton-key-wip/IMG20260608130746.webp', w: 1600, h: 1200, alt: L('The Skeleton Key workbench mid-build: tools, electronics and parts bins', 'De werkbank van de Skeleton Key midden in de bouw: gereedschap, elektronica en onderdelenbakjes') },
+    href: u('/puzzlequests/', '/puzzlequests/nl/'),
+    cta: L('See Puzzle Quests', 'Bekijk Puzzle Quests'),
+  },
+  {
+    id: 'vr',
+    img: '/images/immersive-worlds/Michiel-Coehorst_Dag1_40_VR-brillen-op-Michiel-Lara-bootje-3.webp',
+    w: 1200, h: 658,
+    pos: '50% 50%',
+    alt: L('Visitors wearing VRVoyage headsets on board the boat in Amsterdam',
+           'Bezoekers met een VRVoyage-bril op aan boord van de boot in Amsterdam'),
+    title: 'Immersive Worlds: VRVoyage',
+    line: L('A 70-minute 360° VR boat journey through Amsterdam’s Golden Age, running as a tourist attraction. Next: an Unreal Engine proof of concept.',
+            'Een VR-boottocht van 70 minuten in 360° door de Gouden Eeuw van Amsterdam, in gebruik als toeristische attractie. Hierna: een proof of concept in Unreal Engine.'),
+    facts: [
+      [L('On view', 'Te zien'), L('On the water in Amsterdam', 'Op het water in Amsterdam')],
+      [L('Status', 'Status'), L('Live', 'Live')],
+      [L('Length', 'Duur'), L('70 minutes', '70 minuten')],
+    ],
+    g: { img: '/images/immersive-worlds/VR3_Piet-wijst-Schreierstoren-aan-4.webp', w: 1200, h: 658, alt: L('Piet, the VRVoyage boatman, pointing out the Schreierstoren in 17th-century Amsterdam', 'Piet, de schipper van VRVoyage, wijst de Schreierstoren aan in 17e-eeuws Amsterdam') },
+    href: u('/immersive/', '/immersive/nl/'),
+    cta: L('See Immersive Worlds', 'Bekijk Immersive Worlds'),
+  },
+];
+
+
+const rules = [
+  [L('Story first', 'Eerst het verhaal'), L('Every project starts with a place’s story: a local legend, a historical figure, an archive most visitors never get to see.', 'Elk project begint bij het verhaal van een plek: een streeklegende, een historische figuur, een archief dat de meeste bezoekers nooit te zien krijgen.')],
+  [L('Built for the venue', 'Gebouwd voor de locatie'), L('No off-the-shelf installation. Each table, portrait and quest is designed and built around one site.', 'Geen installatie uit de catalogus. Elke tafel, elk portret en elke quest wordt ontworpen en gebouwd rond één locatie.')],
+  [L('Something to hold', 'Iets om vast te pakken'), L('A glass table top, a typewriter, a brass key. Visitors handle the exhibit instead of only watching it.', 'Een glazen tafelblad, een typemachine, een koperen sleutel. Bezoekers pakken de expositie vast in plaats van er alleen naar te kijken.')],
+  [L('Here for the long run', 'Voor de lange termijn'), L('We build lasting relationships with museums, heritage societies and independent venues, not one-off jobs.', 'Wij bouwen duurzame relaties op met musea, heemkundeverenigingen en zelfstandige locaties, geen losse klussen.')],
+];
+
+const t = {
+  title: L('The Lions Alliance: interactive exhibits for museums', 'The Lions Alliance: interactieve exposities voor musea'),
+  desc: L('Touch tables, a talking portrait, walking quests and 360° VR for museums and heritage venues, designed and built by Daniël and Thirza van Leeuwen.',
+          'Touchtafels, een sprekend portret, wandelquests en 360° VR voor musea en erfgoedlocaties, ontworpen en gebouwd door Daniël en Thirza van Leeuwen.'),
+  h1: L('Interactive exhibits for museums and heritage venues.', 'Interactieve exposities voor musea en erfgoed&shy;locaties.'),
+  lede: L('Touch tables, a portrait that writes back, and a brass key that leads visitors along a 5 km route. We design, write and build each one for one place and its own archive.',
+          'Touchtafels, een portret dat terugschrijft en een koperen sleutel die bezoekers langs een route van 5 km leidt. Wij ontwerpen, schrijven en bouwen elk ervan voor één plek en haar eigen archief.'),
+  cta: L('Get in touch', 'Neem contact op'),
+  seeWork: L('See the work', 'Bekijk het werk'),
+  prev: L('Previous exhibit', 'Vorige expositie'),
+  next: L('Next exhibit', 'Volgende expositie'),
+  of: L('of', 'van'),
+  workH: L('On view now', 'Nu te zien'),
+  workP: L('Four pieces, each running or being built for a real place. Photographed where they stand.', 'Vier projecten, elk in gebruik of in aanbouw voor een echte plek. Gefotografeerd waar ze staan.'),
+  studioH: L('Two people, one venue at a time.', 'Twee mensen, één locatie tegelijk.'),
+  studioP1: L('The Lions Alliance is Daniël and Thirza van Leeuwen. Daniël designs and builds the hardware, the software and the 3D. Thirza writes the stories, the characters and the puzzles.',
+              'The Lions Alliance bestaat uit Daniël en Thirza van Leeuwen. Daniël ontwerpt en bouwt de hardware, de software en het 3D-werk. Thirza schrijft de verhalen, de personages en de puzzels.'),
+  studioP2: L('We work for smaller, independent museums and heritage venues: places with a story worth telling and no corporate production budget.',
+              'Wij werken voor kleinere, zelfstandige musea en erfgoedlocaties: plekken met een verhaal dat verteld moet worden, maar zonder groot productiebudget.'),
+  alsoH: L('For weddings and events', 'Voor bruiloften en evenementen'),
+  alsoP: L('Alongside the museum work we run two self-service photo products.', 'Naast het museumwerk draaien wij twee fotoproducten in zelfbediening.'),
+  wcb: L('A self-service photo booth for weddings, still taking bookings.', 'Een fotohokje in zelfbediening voor bruiloften, nog altijd te boeken.'),
+  ss: L('The same idea, built for corporate events.', 'Hetzelfde idee, gebouwd voor zakelijke evenementen.'),
+  callH: L('Tell us about your venue.', 'Vertel ons over uw locatie.'),
+  callP: L('Whether you run a museum or heritage venue and are curious about a touch table, a talking portrait or a walking quest, or you want to explore a partnership: write to us. We reply within one or two working days.',
+           'Vertegenwoordigt u een museum of erfgoedlocatie en bent u benieuwd naar een touchtafel, een sprekend portret of een wandelquest, of wilt u een samenwerking verkennen? Schrijf ons. Wij antwoorden binnen een of twee werkdagen.'),
+  callBtn: L('Send us a message', 'Stuur ons een bericht'),
+};
+const contact = u('/contact/', '/contact/nl/');
+const ARROW = '<svg class="hall-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>';
+const ARROW_UR = '<svg class="hall-icon hall-icon--ur" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+const self = u('https://thelionsalliance.com/', 'https://thelionsalliance.com/nl/');
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{t.title}</title>
+    <meta name="description" content={t.desc} />
+    <link rel="icon" type="image/png" href="/favicon-logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/branding/lions-logo.png" />
+    <link rel="canonical" href={self} />
+    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/" />
+    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/nl/" />
+    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t.title} />
+    <meta property="og:description" content={t.desc} />
+    <meta property="og:url" content={self} />
+    <meta property="og:image" content="https://thelionsalliance.com/images/touch-tafel/IMG20260920161431.webp" />
+    <HallHead />
+  </head>
+  <body class="tla-page">
+    <Nav lang={lang} alt={u('/nl/', '/')} />
+
+    <main id="main">
+      <!-- First viewport: what this is, the action, and the work itself -->
+      <section class="hall-hero">
+        <div class="hall-wrap hall-hero__grid">
+          <div class="hall-hero__copy">
+            <h1 set:html={t.h1} />
+            <p class="hall-hero__lede">{t.lede}</p>
+            <div class="hall-hero__actions">
+              <a href={contact} class="tla-btn">{t.cta} <Fragment set:html={ARROW} /></a>
+              <a href="#work" class="hall-link">{t.seeWork}</a>
+            </div>
+          </div>
+
+          <div class="hall-stage" id="stage" role="region" aria-roledescription={L('exhibit viewer', 'expositieviewer')} aria-label={L('The work, one exhibit at a time', 'Het werk, één expositie tegelijk')}>
+            <div class="hall-stage__frame" data-unveil>
+              {exhibits.map((x, i) => (
+                <figure class:list={['hall-stage__slide', { 'is-current': i === 0 }]} aria-hidden={i === 0 ? undefined : 'true'}>
+                  <img src={x.img} alt={x.alt} width={x.w} height={x.h} style={`object-position:${x.pos}`}
+                       loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
+                </figure>
+              ))}
+            </div>
+            <div class="hall-stage__below">
+              <div class="hall-stage__labels" aria-live="polite">
+                {exhibits.map((x, i) => (
+                  <div class:list={['hall-label', { 'is-current': i === 0 }]} data-mount={i === 0 ? '' : undefined} aria-hidden={i === 0 ? undefined : 'true'}>
+                    <div class="hall-label__title">{x.title}</div>
+                    <p class="hall-label__line">{x.line}</p>
+                    <dl class="hall-facts">{x.facts.slice(1, 2).map(([k, v]) => (<><dt>{k}</dt><dd>{v}</dd></>))}</dl>
+                    <a href={x.href} class="hall-link" style="display:inline-block;margin-top:12px;font-weight:650;" tabindex={i === 0 ? undefined : -1}>{x.cta} <Fragment set:html={ARROW} /></a>
+                  </div>
+                ))}
+              </div>
+              <div class="hall-stage__controls">
+                <button type="button" class="hall-iconbtn" data-dir="-1" aria-label={t.prev}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+                </button>
+                <span class="hall-stage__count"><span data-count>1</span> {t.of} {exhibits.length}</span>
+                <button type="button" class="hall-iconbtn" data-dir="1" aria-label={t.next}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The gallery: each piece hung with its wall label -->
+      <section class="hall-section" id="work" style="padding-top:64px;">
+        <div class="hall-wrap">
+          <div class="hall-head">
+            <h2>{t.workH}</h2>
+            <p>{t.workP}</p>
+          </div>
+          {exhibits.map((x, i) => (
+            <article class:list={['hall-exhibit', { 'hall-exhibit--flip': i % 2 === 1 }]}>
+              <figure class="hall-exhibit__photo">
+                <img src={x.g.img} alt={x.g.alt} width={x.g.w} height={x.g.h} loading="lazy" decoding="async"
+                     data-unveil class="vt-exhibit" style={`view-transition-name:exhibit-${x.id}`} />
+              </figure>
+              <div class="hall-label">
+                <h3>{x.title}</h3>
+                <p>{x.line}</p>
+                <dl class="hall-facts">
+                  {x.facts.map(([k, v]) => (<><dt>{k}</dt><dd>{v}</dd></>))}
+                </dl>
+                <a href={x.href} class="hall-link">{x.cta} <Fragment set:html={ARROW} /></a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- The studio, on the logo's own ink field -->
+      <section class="hall-section on-hall" id="studio">
+        <div class="hall-wrap hall-studio__grid">
+          <div>
+            <h2>{t.studioH}</h2>
+            <img class="hall-studio__mark" src="/images/branding/lions-logo.webp" alt="" width="200" height="268" loading="lazy" />
+          </div>
+          <div class="hall-studio__body">
+            <p>{t.studioP1}</p>
+            <p>{t.studioP2}</p>
+            <ul class="hall-rules">
+              {rules.map(([k, v]) => (<li><strong>{k}</strong><span>{v}</span></li>))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- The event products, for visitors who came for those -->
+      <section class="hall-section hall-section--tight" style="background:var(--wall-deep);">
+        <div class="hall-wrap">
+          <div class="hall-head" style="margin-bottom:48px;">
+            <h2>{t.alsoH}</h2>
+            <p>{t.alsoP}</p>
+          </div>
+          <div class="hall-also">
+            <a href="https://weddingcambox.nl" rel="noopener">
+              <h3>WeddingCamBox <Fragment set:html={ARROW_UR} /></h3>
+              <p>{t.wcb}</p>
+            </a>
+            <a href="https://shuttershare.nl" rel="noopener">
+              <h3>ShutterShare <Fragment set:html={ARROW_UR} /></h3>
+              <p>{t.ss}</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- The one bright moment: the call to write -->
+      <section class="hall-section on-signal hall-call" id="contact">
+        <div class="hall-wrap hall-call__grid">
+          <div>
+            <h2>{t.callH}</h2>
+            <p>{t.callP}</p>
+          </div>
+          <div class="hall-call__actions">
+            <a href={contact} class="tla-btn">{t.callBtn} <Fragment set:html={ARROW} /></a>
+            <a href="mailto:hello@thelionsalliance.com" class="hall-call__mail">hello@thelionsalliance.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer lang={lang} />
+
+    <script>
+      // The exhibit viewer: the next photo wipes across the current one and its
+      // wall label re-mounts. Driven by the visitor only (no autoplay).
+      const stage = document.getElementById('stage');
+      if (stage) {
+        const slides = Array.from(stage.querySelectorAll<HTMLElement>('.hall-stage__slide'));
+        const labels = Array.from(stage.querySelectorAll<HTMLElement>('.hall-stage__labels > .hall-label'));
+        const count = stage.querySelector<HTMLElement>('[data-count]');
+        let current = 0;
+        labels.forEach((l) => Array.from(l.children).forEach((c, i) => (c as HTMLElement).style.setProperty('--i', String(i))));
+
+        const show = (next: number, dir: number) => {
+          if (next === current) return;
+          const from = current;
+          current = (next + slides.length) % slides.length;
+          slides.forEach((s, i) => {
+            s.classList.remove('is-leaving', 'is-entering', 'is-entering-back');
+            s.classList.toggle('is-current', i === current);
+            if (i === from) s.classList.add('is-leaving');
+            s.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+          });
+          // Restart the entrance even when clicking quickly.
+          void slides[current].offsetWidth;
+          slides[current].classList.add('is-entering');
+          if (dir < 0) slides[current].classList.add('is-entering-back');
+          labels.forEach((l, i) => {
+            l.classList.remove('is-entering');
+            l.classList.toggle('is-current', i === current);
+            l.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+            l.querySelectorAll('a').forEach((a) => (i === current ? a.removeAttribute('tabindex') : a.setAttribute('tabindex', '-1')));
+          });
+          void labels[current].offsetWidth;
+          labels[current].classList.add('is-entering');
+          if (count) count.textContent = String(current + 1);
+          // Warm the slide after this one so the next wipe never waits on the network.
+          const ahead = slides[(current + 1) % slides.length].querySelector('img');
+          if (ahead) ahead.loading = 'eager';
+        };
+
+        stage.querySelectorAll<HTMLButtonElement>('[data-dir]').forEach((b) =>
+          b.addEventListener('click', () => {
+            const dir = Number(b.dataset.dir);
+            show(current + dir, dir);
+          })
+        );
+        stage.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowRight') show(current + 1, 1);
+          if (e.key === 'ArrowLeft') show(current - 1, -1);
+        });
+      }
+    </script>
+  </body>
+</html>
