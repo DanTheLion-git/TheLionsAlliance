@@ -53,6 +53,18 @@ html:focus-within { scroll-behavior: smooth; }
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
+/* The logo hangs behind every page, fixed to the viewport so it stays in view
+   while the content scrolls over it. Solid panels (ink sections, footer) cover it. */
+.tla-page { isolation: isolate; }
+.tla-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("/images/branding/lions-mark.svg") center / auto min(78vh, 92vw) no-repeat;
+  opacity: var(--logo-wall-opacity, 0.75);
+}
 .tla-page ::selection { background: var(--signal); color: var(--ink); }
 .tla-page { caret-color: var(--ink); scrollbar-color: var(--ink-muted) var(--wall-deep); }
 
