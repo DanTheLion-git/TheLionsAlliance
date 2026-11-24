@@ -34,7 +34,7 @@ const { lang, path, title, description, crumb, h1, facts, lede, plate, cta, link
 const nl = lang === 'nl';
 const nlPath = `${path}nl/`;
 const site = 'https://thelionsalliance.com';
-const plateWord = nl ? 'Plaat' : 'Plate';
+const plateWord = nl ? 'Foto' : 'Photo';
 const hasPlates = Astro.slots.has('plates');
 const hasAfter = Astro.slots.has('after');
 const hasEnquiry = Astro.slots.has('enquiry');
@@ -92,7 +92,7 @@ const hasEnquiry = Astro.slots.has('enquiry');
       {hasPlates && (
         <section class="cat-plates" aria-labelledby="plates-title">
           <div class="hall-wrap">
-            <h2 id="plates-title">{platesTitle ?? (nl ? 'Platen' : 'Plates')}</h2>
+            <h2 id="plates-title">{platesTitle ?? (nl ? "Foto's" : 'Photos')}</h2>
             <div class="cat-plates__grid">
               <slot name="plates" />
             </div>

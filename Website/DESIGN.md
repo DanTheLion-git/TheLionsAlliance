@@ -53,7 +53,7 @@ Bans: kickers/overlines above headings, small tracked uppercase labels, italic o
 - **Buttons**: primary = signal yellow with ink border; secondary = transparent with ink border. Hover fills ink from the left (280ms). One primary per view.
 - **Status** (`.tla-badge`): coloured dot + text. Live = green dot, in development = yellow dot, planned = dashed ring.
 - **Nav**: sticky on the wall colour, product links, language link, yellow Contact. Below 900px a "Menu" button opens a full-width sheet.
-- **Catalogue entry** (`CataloguePage.astro`, the product pages): Plate 1 hangs on the left and stays in view (sticky) while the entry is read on the right: crumb, title, a ruled fact table (`.cat-table`), lede, one primary action, then sections. Numbered detail plates (`.cat-plate`, captions start "Plate n.") and an ink enquiry block close the page. Touch Station puts its tiers, demo, comparison and FAQ in the `after` slot.
+- **Catalogue entry** (`CataloguePage.astro`, the product pages): Plate 1 hangs on the left and stays in view (sticky) while the entry is read on the right: crumb, title, a ruled fact table (`.cat-table`), lede, one primary action, then sections. Numbered detail plates (`.cat-plate`, captions start "Photo n." (NL "Foto n."; section heading "Photos" / "Foto's")) and an ink enquiry block close the page. Touch Station puts its tiers, demo, comparison and FAQ in the `after` slot.
 - **Footer**: ink panel, logo, Work / Events / Contact columns, © and KvK 42062105.
 
 ## Motion
