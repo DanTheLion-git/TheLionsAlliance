@@ -191,7 +191,7 @@ const compareMoney = [
   { k: "E&eacute;n station, excl. btw", v: ["vanaf &euro; 1.700", "vanaf &euro; 3.050", "vanaf &euro; 5.550", "vanaf &euro; 7.000"] },
   { k: "E&eacute;n station, incl. btw", v: ["vanaf &euro; 2.057", "vanaf &euro; 3.691", "vanaf &euro; 6.716", "vanaf &euro; 8.470"] },
   { k: "Met eigen hardware, incl. btw", v: ["&euro; 1.634", "&euro; 3.104", "&euro; 4.610", "&euro; 5.348"] },
-  { k: "Satelliet, zelfde locatie", v: ["vanaf &euro; 1.430", "vanaf &euro; 1.890", "vanaf &euro; 4.390", "vanaf &euro; 5.840"] },
+  { k: "Per extra station op dezelfde locatie", v: ["vanaf &euro; 1.430", "vanaf &euro; 1.890", "vanaf &euro; 4.390", "vanaf &euro; 5.840"] },
 ];
 
 const services = [
@@ -367,7 +367,7 @@ const art = {
                 </div>
 
                 <div class="ts-tier__sat">
-                  <span class="ts-label">Satelliet, zelfde locatie</span>
+                  <span class="ts-label">Per extra station op dezelfde locatie</span>
                   <span set:html={t.satellite} />
                 </div>
 
@@ -415,7 +415,7 @@ const art = {
         <div class="ts-variants">
           <div class="ts-variant tla-fade">
             <div class="ts-variant__name">Uw eigen tafel</div>
-            <div class="ts-variant__amount">&minus; &euro; 300 tot &euro; 450</div>
+            <div class="ts-variant__amount">Bespaar &euro; 300 tot &euro; 450</div>
             <div class="ts-variant__scope">Bij Tafel en Tafel XL</div>
             <div class="ts-variant__what">
               Uw museum bezit vrijwel zeker een mooiere tafel dan een kringloopwinkel, en bovendien een met een verhaal erachter. Levert u die aan, dan bouwen wij daarin. Het staalframe, het geharde glas, de ventilatie en de inbouw blijven ons werk.
@@ -427,7 +427,7 @@ const art = {
 
           <div class="ts-variant tla-fade tla-d1">
             <div class="ts-variant__name">Hardware in eigen beheer</div>
-            <div class="ts-variant__amount">&minus; ca. &euro; 350 tot &euro; 2.580</div>
+            <div class="ts-variant__amount">Bespaar ca. &euro; 350 tot &euro; 2.580</div>
             <div class="ts-variant__scope">Bij elke uitvoering, meer bij de grotere schermen</div>
             <div class="ts-variant__what">
               U krijgt onze exacte inkooplijst. U koopt het paneel en de mini-pc zelf, of laat ze sponsoren of schenken, wat vaker gebeurt dan u denkt. Wij rekenen &euro; 350 voor advies, configuratie en integratie, en de hardware en de garantie staan op uw naam.
@@ -442,8 +442,8 @@ const art = {
           <span class="ts-label">Ze zijn te stapelen</span>
           <ul class="ts-stack__rows">
             <li><span>Tafel XL, 55&quot;, excl. btw</span><strong>vanaf &euro; 7.000</strong></li>
-            <li><span>Uw eigen tafel</span><strong>&minus; &euro; 450</strong></li>
-            <li><span>Uw eigen hardware</span><strong>&minus; ca. &euro; 2.580</strong></li>
+            <li><span>Uw eigen tafel</span><strong>Bespaar &euro; 450</strong></li>
+            <li><span>Uw eigen hardware</span><strong>Bespaar ca. &euro; 2.580</strong></li>
             <li class="is-total"><span>Wat u ons betaalt</span><strong>&euro; 3.970 <small>&euro; 4.804 incl. btw</small></strong></li>
           </ul>
           <p class="ts-stack__note">

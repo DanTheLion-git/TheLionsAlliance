@@ -191,7 +191,7 @@ const compareMoney = [
   { k: "One station, excl. VAT", v: ["from &euro; 1,700", "from &euro; 3,050", "from &euro; 5,550", "from &euro; 7,000"] },
   { k: "One station, incl. VAT", v: ["from &euro; 2,057", "from &euro; 3,691", "from &euro; 6,716", "from &euro; 8,470"] },
   { k: "With your own hardware, incl. VAT", v: ["&euro; 1,634", "&euro; 3,104", "&euro; 4,610", "&euro; 5,348"] },
-  { k: "Satellite, same site", v: ["from &euro; 1,430", "from &euro; 1,890", "from &euro; 4,390", "from &euro; 5,840"] },
+  { k: "For each additional station at the same venue", v: ["from &euro; 1,430", "from &euro; 1,890", "from &euro; 4,390", "from &euro; 5,840"] },
 ];
 
 const services = [
@@ -367,7 +367,7 @@ const art = {
                 </div>
 
                 <div class="ts-tier__sat">
-                  <span class="ts-label">Satellite, same site</span>
+                  <span class="ts-label">For each additional station at the same venue</span>
                   <span set:html={t.satellite} />
                 </div>
 
@@ -415,7 +415,7 @@ const art = {
         <div class="ts-variants">
           <div class="ts-variant tla-fade">
             <div class="ts-variant__name">Bring your own table</div>
-            <div class="ts-variant__amount">&minus; &euro; 300 to &euro; 450</div>
+            <div class="ts-variant__amount">Save &euro; 300 to &euro; 450</div>
             <div class="ts-variant__scope">On Tafel and Tafel XL</div>
             <div class="ts-variant__what">
               Your museum almost certainly owns a better table than a second-hand shop does, and one with a story attached to it. Supply it and we build into it. The steel subframe, the toughened glass, the ventilation and the fitting are still ours.
@@ -427,7 +427,7 @@ const art = {
 
           <div class="ts-variant tla-fade tla-d1">
             <div class="ts-variant__name">Buy the hardware yourself</div>
-            <div class="ts-variant__amount">&minus; approx. &euro; 350 to &euro; 2,580</div>
+            <div class="ts-variant__amount">Save approx. &euro; 350 to &euro; 2,580</div>
             <div class="ts-variant__scope">On every tier, more on the larger screens</div>
             <div class="ts-variant__what">
               We give you the exact part list. You buy the panel and the mini PC, or have them sponsored or donated, which happens more often than you would think. We charge &euro; 350 to advise, configure and integrate, and you own the hardware and its warranty outright.
@@ -442,8 +442,8 @@ const art = {
           <span class="ts-label">They stack</span>
           <ul class="ts-stack__rows">
             <li><span>Tafel XL, 55&quot;, excl. VAT</span><strong>from &euro; 7,000</strong></li>
-            <li><span>Your own table</span><strong>&minus; &euro; 450</strong></li>
-            <li><span>Your own hardware</span><strong>&minus; approx. &euro; 2,580</strong></li>
+            <li><span>Your own table</span><strong>Save &euro; 450</strong></li>
+            <li><span>Your own hardware</span><strong>Save approx. &euro; 2,580</strong></li>
             <li class="is-total"><span>What you pay us</span><strong>&euro; 3,970 <small>&euro; 4,804 incl. VAT</small></strong></li>
           </ul>
           <p class="ts-stack__note">
