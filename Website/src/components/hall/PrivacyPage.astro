@@ -1,0 +1,146 @@
+---
+/* The privacy statement, in both languages. src/pages/privacy/index.astro and
+   src/pages/privacy/nl/index.astro only pick the language: every word lives
+   here, EN and NL side by side, so the two can't drift apart.
+   Keep it true: if the site starts using a new service (analytics, embeds,
+   fonts, forms), add it here in the same commit. */
+import "../../styles/hall.css";
+import HallHead from "./HallHead.astro";
+import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
+
+interface Props { lang: 'en' | 'nl' }
+const { lang } = Astro.props;
+const nl = lang === 'nl';
+const L = (en: string, nlText: string) => (nl ? nlText : en);
+const updated = L('Last updated: 25 November 2026', 'Laatst bijgewerkt: 25 november 2026');
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{L('Privacy | The Lions Alliance', 'Privacy | The Lions Alliance')}</title>
+    <meta name="description" content={L(
+      'How The Lions Alliance handles personal data on thelionsalliance.com: the contact form, cookieless visitor statistics and the services we rely on.',
+      'Hoe The Lions Alliance omgaat met persoonsgegevens op thelionsalliance.com: het contactformulier, bezoekersstatistieken zonder cookies en de diensten die wij gebruiken.'
+    )} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" hreflang="en" href="https://thelionsalliance.com/privacy/" />
+    <link rel="alternate" hreflang="nl" href="https://thelionsalliance.com/privacy/nl/" />
+    <link rel="alternate" hreflang="x-default" href="https://thelionsalliance.com/privacy/" />
+    <HallHead />
+  </head>
+  <body class="tla-page">
+    <Nav lang={lang} alt={L('/privacy/nl/', '/privacy/')} />
+
+    <main id="main">
+      <section class="hall-section privacy">
+        <div class="hall-wrap">
+          <div class="cat__entry">
+            <div class="cat__crumb"><a href={L('/', '/nl/')}>The Lions Alliance</a> &middot; Privacy</div>
+            <h1>{L('Privacy statement', 'Privacyverklaring')}</h1>
+            <p class="cat__lede">{L(
+              'We keep this short because we collect very little. This statement covers thelionsalliance.com. WeddingCamBox and ShutterShare have their own privacy statements on their own websites.',
+              'We houden het kort, want we verzamelen weinig. Deze verklaring gaat over thelionsalliance.com. WeddingCamBox en ShutterShare hebben elk een eigen privacyverklaring op hun eigen website.'
+            )}</p>
+            <p class="privacy__updated">{updated}</p>
+          </div>
+
+          <div class="cat-section">
+            <h2>{L('1. Who we are', '1. Wie wij zijn')}</h2>
+            <p>{L(
+              'The Lions Alliance (Chamber of Commerce no. 42062105) is responsible for the processing described here. For any privacy question, email us at ',
+              'The Lions Alliance (KvK 42062105) is verantwoordelijk voor de verwerking die hier beschreven staat. Voor vragen over privacy kunt u mailen naar '
+            )}<a href="mailto:hello@thelionsalliance.com">hello@thelionsalliance.com</a>.</p>
+          </div>
+
+          <div class="cat-section">
+            <h2>{L('2. The contact form', '2. Het contactformulier')}</h2>
+            <p>{L(
+              'When you send a message through our contact form, we receive your name, email address, the topic you chose and your message. Our own server, located in the Netherlands, passes it on as an email to our inbox and sends you a confirmation, both through the email service Brevo. The server does not store your message in a database.',
+              'Als u een bericht stuurt via ons contactformulier, ontvangen wij uw naam, e-mailadres, het gekozen onderwerp en uw bericht. Onze eigen server, die in Nederland staat, stuurt dit als e-mail door naar onze inbox en stuurt u een bevestiging, allebei via de e-maildienst Brevo. De server bewaart uw bericht niet in een database.'
+            )}</p>
+            <p>{L(
+              'We use these details only to answer you and, if it comes to that, to prepare a quote or agreement. We keep the email for as long as the conversation or the work that follows from it needs, plus whatever bookkeeping law requires once there is an agreement. The legal basis is our legitimate interest in answering your question, or taking steps at your request before entering into a contract.',
+              'Wij gebruiken deze gegevens alleen om u te antwoorden en, als het zover komt, om een offerte of overeenkomst voor te bereiden. Wij bewaren de e-mail zolang het contact of het werk dat eruit voortkomt dat nodig maakt, en daarna alleen wat de wet voor de administratie vereist zodra er een overeenkomst is. De grondslag is ons gerechtvaardigd belang om uw vraag te beantwoorden, of het nemen van stappen op uw verzoek voorafgaand aan een overeenkomst.'
+            )}</p>
+          </div>
+
+          <div class="cat-section">
+            <h2>{L('3. Visitor statistics', '3. Bezoekersstatistieken')}</h2>
+            <p>{L(
+              'We count visits with Umami, a privacy-friendly analytics tool we host ourselves on our own server. Umami sets no cookies, does not store IP addresses and builds no profiles. We only see totals, such as which pages are visited, from which country and through which link. We do this on the basis of our legitimate interest in knowing whether the website is used.',
+              'Wij tellen bezoeken met Umami, een privacyvriendelijk statistiekenprogramma dat wij zelf op onze eigen server hosten. Umami plaatst geen cookies, slaat geen IP-adressen op en maakt geen profielen. Wij zien alleen totalen, zoals welke pagina’s bezocht worden, uit welk land en via welke link. Dit doen wij op basis van ons gerechtvaardigd belang om te weten of de website gebruikt wordt.'
+            )}</p>
+          </div>
+
+          <div class="cat-section">
+            <h2>{L('4. Services we rely on', '4. Diensten die wij gebruiken')}</h2>
+            <p>{L(
+              'Like any website, ours cannot load without your browser contacting a few other parties. Each of them sees at least your IP address:',
+              'Zoals elke website kan de onze niet laden zonder dat uw browser contact maakt met een paar andere partijen. Elk daarvan ziet in elk geval uw IP-adres:'
+            )}</p>
+            <ul class="privacy__list">
+              <li>{L(
+                'GitHub Pages hosts the website and Cloudflare sits in front of it for speed and security. Cloudflare may set a strictly necessary security cookie to block bots.',
+                'GitHub Pages host de website en Cloudflare staat ervoor voor snelheid en beveiliging. Cloudflare kan een strikt noodzakelijke beveiligingscookie plaatsen om bots tegen te houden.'
+              )}</li>
+              <li>{L(
+                'Google Fonts delivers the typeface the website is set in.',
+                'Google Fonts levert het lettertype waarin de website gezet is.'
+              )}</li>
+              <li>{L(
+                'YouTube plays the videos embedded on some pages. On the Immersive Worlds page the videos load with the page; elsewhere a video only loads once you click it. YouTube may set its own cookies when a video loads.',
+                'YouTube speelt de video’s af die op sommige pagina’s staan. Op de pagina Immersive Worlds laden de video’s met de pagina mee; elders laadt een video pas als u erop klikt. YouTube kan eigen cookies plaatsen zodra een video laadt.'
+              )}</li>
+              <li>{L(
+                'Brevo delivers the emails from the contact form (see section 2).',
+                'Brevo verstuurt de e-mails van het contactformulier (zie punt 2).'
+              )}</li>
+            </ul>
+            <p>{L(
+              'Some of these companies are based in the United States and may process data there under the safeguards the GDPR requires. We never sell your data.',
+              'Een deel van deze bedrijven zit in de Verenigde Staten en kan daar gegevens verwerken onder de waarborgen die de AVG vereist. Wij verkopen uw gegevens nooit.'
+            )}</p>
+          </div>
+
+          <div class="cat-section">
+            <h2>{L('5. Cookies', '5. Cookies')}</h2>
+            <p>{L(
+              'We set no cookies of our own and use no advertising or tracking cookies, which is why you do not see a cookie banner. The only cookies are the ones described above: Cloudflare’s security cookie and, when a video loads, YouTube’s.',
+              'Wij plaatsen zelf geen cookies en gebruiken geen advertentie- of trackingcookies; daarom ziet u geen cookiemelding. De enige cookies zijn de hierboven genoemde: de beveiligingscookie van Cloudflare en, zodra een video laadt, die van YouTube.'
+            )}</p>
+          </div>
+
+          <div class="cat-section">
+            <h2>{L('6. Your rights', '6. Uw rechten')}</h2>
+            <p>{L(
+              'You may ask us to see, correct or delete the personal data we hold about you, to restrict its use, or object to it. Email us and we will reply within a month. If you are not satisfied with how we handle your data, you can lodge a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).',
+              'U kunt ons vragen om de persoonsgegevens die wij van u hebben in te zien, te corrigeren of te verwijderen, het gebruik ervan te beperken, of bezwaar te maken. Mail ons en wij reageren binnen een maand. Bent u niet tevreden over hoe wij met uw gegevens omgaan, dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens.'
+            )}</p>
+          </div>
+
+          <div class="cat-section">
+            <h2>{L('7. Changes', '7. Wijzigingen')}</h2>
+            <p>{L(
+              'When the website starts using something new, we update this statement and the date at the top.',
+              'Als de website iets nieuws gaat gebruiken, passen wij deze verklaring en de datum bovenaan aan.'
+            )}</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer lang={lang} />
+  </body>
+</html>
+
+<style>
+  .privacy__updated { margin-top: var(--s4); font-size: 0.875rem; color: var(--ink-muted); }
+  .privacy .cat-section > p + p { margin-top: var(--s4); }
+  .privacy .cat-section a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .privacy__list { margin-top: var(--s4); max-width: 62ch; padding-left: 1.25em; list-style: disc; }
+  .privacy__list li { margin-top: var(--s2); }
+</style>

@@ -21,6 +21,7 @@ const {
   wide = false,
 } = Astro.props;
 const year = new Date().getFullYear();
+import Umami from "../components/Umami.astro";
 ---
 
 <!doctype html>
@@ -31,6 +32,7 @@ const year = new Date().getFullYear();
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Umami />
   </head>
   <body class="tla-page">
 

@@ -42,6 +42,7 @@ const p = (en: string, nlPath: string) => (nl ? nlPath : en);
     <div class="hall-footer__legal">
       <span>&copy; {year} The Lions Alliance</span>
       <span>KvK 42062105</span>
+      <a href={p('/privacy/', '/privacy/nl/')}>{nl ? 'Privacyverklaring' : 'Privacy'}</a>
     </div>
   </div>
 </footer>
